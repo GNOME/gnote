@@ -46,7 +46,6 @@ class SearchNotesWidget
 {
 public:
   SearchNotesWidget(IGnote & g, NoteManagerBase & m);
-  virtual ~SearchNotesWidget();
   virtual Glib::ustring get_name() const override;
   void embed(EmbeddableWidgetHost *h) override;
   virtual void foreground() override;
@@ -79,7 +78,7 @@ private:
   void on_notebook_row_edited(const Glib::ustring& path, const Glib::ustring& new_text);
   void on_notebook_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
   void on_notebook_selection_changed();
-  bool on_notebooks_tree_button_pressed(GdkEventButton *);
+  void on_notebooks_tree_right_click(int n_press, double x, double y);
   bool on_notebooks_key_pressed(GdkEventKey *);
   notebooks::Notebook::Ptr get_selected_notebook() const;
   void update_results();
@@ -121,10 +120,10 @@ private:
   void on_note_removed_from_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
   void on_note_pin_status_changed(const Note &, bool);
   Gtk::Popover *get_note_list_context_menu();
-  Gtk::Menu *get_notebook_list_context_menu();
-  void on_open_notebook_template_note();
-  void on_new_notebook();
-  void on_delete_notebook();
+  Gtk::Popover *get_notebook_list_context_menu();
+  void on_open_notebook_template_note(const Glib::VariantBase&);
+  void on_new_notebook(const Glib::VariantBase&);
+  void on_delete_notebook(const Glib::VariantBase&);
   void on_sorting_changed();
   void parse_sorting_setting(const Glib::ustring & sorting);
   void on_rename_notebook();
@@ -155,8 +154,6 @@ private:
   };
 
   Glib::RefPtr<Gtk::EventControllerKey> m_notes_widget_key_ctrl;
-  Gtk::MenuItem *m_delete_notebook_menu_item;
-  Gtk::MenuItem *m_rename_notebook_menu_item;
   void *m_open_note_accel;
   void *m_open_note_new_window_accel;
   RecentSearchColumnTypes m_find_combo_columns;
@@ -177,7 +174,7 @@ private:
   int m_clickX, m_clickY;
   Gtk::TreeViewColumn *m_matches_column;
   std::shared_ptr<Gtk::Popover> m_note_list_context_menu;
-  Gtk::Menu *m_notebook_list_context_menu;
+  std::shared_ptr<Gtk::Popover> m_notebook_list_context_menu;
   bool m_initial_position_restored;
   Glib::ustring m_search_text;
   int m_sort_column_id;

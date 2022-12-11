@@ -51,15 +51,12 @@ Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon(IconManager & manager
 
 
 SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
-  : m_delete_notebook_menu_item(nullptr)
-  , m_rename_notebook_menu_item(nullptr)
-  , m_open_note_accel(nullptr)
+  : m_open_note_accel(nullptr)
   , m_open_note_new_window_accel(nullptr)
   , m_gnote(g)
   , m_manager(m)
   , m_clickX(0), m_clickY(0)
   , m_matches_column(NULL)
-  , m_notebook_list_context_menu(NULL)
   , m_initial_position_restored(false)
   , m_sort_column_id(2)
   , m_sort_column_order(Gtk::SortType::DESCENDING)
@@ -102,13 +99,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
   parse_sorting_setting(g.preferences().search_sorting());
   g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
-}
-
-SearchNotesWidget::~SearchNotesWidget()
-{
-  if(m_notebook_list_context_menu) {
-    delete m_notebook_list_context_menu;
-  }
 }
 
 Glib::ustring SearchNotesWidget::get_name() const
@@ -210,8 +200,12 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_row_activated));
   m_on_notebook_selection_changed_cid = m_notebooksTree->get_selection()->signal_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_selection_changed));
-  m_notebooksTree->signal_button_press_event()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_tree_button_pressed), false);
+
+  auto button_ctrl = Gtk::GestureClick::create();
+  button_ctrl->set_button(3);
+  button_ctrl->signal_pressed()
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_tree_right_click), false);
+  m_notebooksTree->add_controller(button_ctrl);
   m_notebooksTree->signal_key_press_event()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_key_pressed));
 
@@ -319,6 +313,8 @@ void SearchNotesWidget::on_notebook_selection_changed()
 {
   restore_matches_window();
   notebooks::Notebook::Ptr notebook = get_selected_notebook();
+
+  bool allow_edit = false;
   if(!notebook) {
     // Clear out the currently selected tags so that no notebook is selected
     m_selected_tags.clear();
@@ -328,12 +324,6 @@ void SearchNotesWidget::on_notebook_selection_changed()
     // this handler to be called again
     m_on_notebook_selection_changed_cid.block();
     select_all_notes_notebook();
-    if(m_delete_notebook_menu_item) {
-      m_delete_notebook_menu_item->set_sensitive(false);
-    }
-    if(m_rename_notebook_menu_item) {
-      m_rename_notebook_menu_item->set_sensitive(false);
-    }
     m_on_notebook_selection_changed_cid.unblock();
   }
   else {
@@ -341,22 +331,7 @@ void SearchNotesWidget::on_notebook_selection_changed()
     if(notebook->get_tag()) {
       m_selected_tags.insert(notebook->get_tag());
     }
-    bool allow_edit = false;
-    if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
-      if(m_delete_notebook_menu_item) {
-        m_delete_notebook_menu_item->set_sensitive(false);
-      }
-      if(m_rename_notebook_menu_item) {
-        m_rename_notebook_menu_item->set_sensitive(false);
-      }
-    }
-    else {
-      if(m_delete_notebook_menu_item) {
-        m_delete_notebook_menu_item->set_sensitive(true);
-      }
-      if(m_rename_notebook_menu_item) {
-        m_rename_notebook_menu_item->set_sensitive(true);
-      }
+    if(!std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
       allow_edit = true;
     }
 
@@ -370,34 +345,26 @@ void SearchNotesWidget::on_notebook_selection_changed()
     }
   }
 
+  if(auto win = dynamic_cast<MainWindow*>(host())) {
+    if(auto action = win->find_action("rename-notebook")) {
+      action->set_enabled(allow_edit);
+    }
+    if(auto action = win->find_action("delete-notebook")) {
+      action->set_enabled(allow_edit);
+    }
+  }
   update_results();
   signal_name_changed(get_name());
 }
 
-bool SearchNotesWidget::on_notebooks_tree_button_pressed(GdkEventButton *ev)
+void SearchNotesWidget::on_notebooks_tree_right_click(int n_press, double x, double y)
 {
-  auto event = (GdkEvent*)ev;
-  guint button;
-  gdk_event_get_button(event, &button);
-  if(button == 3) {
-    // third mouse button (right-click)
-    Gtk::TreeViewColumn * col = 0; // unused
-    Gtk::TreePath p;
-    int cell_x, cell_y;            // unused
-    const Glib::RefPtr<Gtk::TreeSelection> selection
-      = m_notebooksTree->get_selection();
-
-    gdouble x, y;
-    gdk_event_get_coords(event, &x, &y);
-    if(m_notebooksTree->get_path_at_pos(x, y, p, col, cell_x, cell_y)) {
-      selection->select(p);
-    }
-
-    Gtk::Menu *menu = get_notebook_list_context_menu();
-    popup_context_menu_at_location(menu, event);
-    return true;
-  }
-  return false;
+  auto popover = get_notebook_list_context_menu();
+  Gdk::Rectangle pos;
+  pos.set_x(x);
+  pos.set_y(y);
+  popover->set_pointing_to(pos);
+  popover->popup();
 }
 
 bool SearchNotesWidget::on_notebooks_key_pressed(GdkEventKey *ev)
@@ -1164,32 +1131,23 @@ void SearchNotesWidget::new_note()
   signal_open_note(note);
 }
 
-Gtk::Menu *SearchNotesWidget::get_notebook_list_context_menu()
+Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
 {
   if(!m_notebook_list_context_menu) {
-    m_notebook_list_context_menu = new Gtk::Menu;
-    Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("_Open Template Note"), true));
-    item->signal_activate()
-      .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
-    m_notebook_list_context_menu->add(*item);
-    m_rename_notebook_menu_item = manage(new Gtk::MenuItem(_("Re_name..."), true));
-    m_rename_notebook_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_rename_notebook));
-    m_notebook_list_context_menu->add(*m_rename_notebook_menu_item);
-    m_delete_notebook_menu_item = manage(new Gtk::MenuItem(_("_Delete"), true));
-    m_delete_notebook_menu_item->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_delete_notebook));
-    m_notebook_list_context_menu->add(*m_delete_notebook_menu_item);
-    m_notebook_list_context_menu->add(*manage(new Gtk::SeparatorMenuItem));
-    item = manage(new Gtk::MenuItem(_("_New..."), true));
-    item->signal_activate()
-      .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_new_notebook));
-    m_notebook_list_context_menu->add(*item);
+    auto menu = Gio::Menu::create();
+    menu->append(_("_New..."), "win.new-notebook");
+    menu->append(_("_Open Template Note"), "win.open-template-note");
+    menu->append(_("Re_name..."), "win.rename-notebook");
+    menu->append(_("_Delete"), "win.delete-notebook");
+    m_notebook_list_context_menu = std::make_shared<Gtk::PopoverMenu>(menu);
+    m_notebook_list_context_menu->set_parent(*m_notebooksTree);
   }
 
   on_notebook_selection_changed();
-  return m_notebook_list_context_menu;
+  return m_notebook_list_context_menu.get();
 }
 
-void SearchNotesWidget::on_open_notebook_template_note()
+void SearchNotesWidget::on_open_notebook_template_note(const Glib::VariantBase&)
 {
   notebooks::Notebook::Ptr notebook = get_selected_notebook();
   if(!notebook) {
@@ -1204,12 +1162,12 @@ void SearchNotesWidget::on_open_notebook_template_note()
   signal_open_note(templateNote);
 }
 
-void SearchNotesWidget::on_new_notebook()
+void SearchNotesWidget::on_new_notebook(const Glib::VariantBase&)
 {
   notebooks::NotebookManager::prompt_create_new_notebook(m_gnote, *get_owning_window());
 }
 
-void SearchNotesWidget::on_delete_notebook()
+void SearchNotesWidget::on_delete_notebook(const Glib::VariantBase&)
 {
   notebooks::Notebook::Ptr notebook = get_selected_notebook();
   if(!notebook) {
@@ -1231,6 +1189,18 @@ void SearchNotesWidget::embed(EmbeddableWidgetHost *h)
     }
     if(auto action = win->find_action("delete-note")) {
       action->signal_activate().connect([this](const Glib::VariantBase&) { delete_selected_notes(); });
+    }
+    if(auto action = win->find_action("new-notebook")) {
+      action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_new_notebook));
+    }
+    if(auto action = win->find_action("rename-notebook")) {
+      action->signal_activate().connect([this](const Glib::VariantBase&) { on_rename_notebook(); });
+    }
+    if(auto action = win->find_action("delete-notebook")) {
+      action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_delete_notebook));
+    }
+    if(auto action = win->find_action("open-template-note")) {
+      action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
     }
   }
 }
