@@ -1366,6 +1366,22 @@ void SearchNotesWidget::on_delete_notebook()
   notebooks::NotebookManager::prompt_delete_notebook(m_gnote, get_owning_window(), notebook);
 }
 
+void SearchNotesWidget::embed(EmbeddableWidgetHost *h)
+{
+  EmbeddableWidget::embed(h);
+  if(auto win = dynamic_cast<MainWindow*>(host())) {
+    if(auto action = win->find_action("open-note")) {
+      action->signal_activate().connect([this](const Glib::VariantBase&) { on_open_note(); });
+    }
+    if(auto action = win->find_action("open-note-new-window")) {
+      action->signal_activate().connect([this](const Glib::VariantBase&) { on_open_note_new_window(); });
+    }
+    if(auto action = win->find_action("delete-note")) {
+      action->signal_activate().connect([this](const Glib::VariantBase&) { delete_selected_notes(); });
+    }
+  }
+}
+
 void SearchNotesWidget::foreground()
 {
   EmbeddableWidget::foreground();

@@ -48,6 +48,7 @@ public:
   SearchNotesWidget(IGnote & g, NoteManagerBase & m);
   virtual ~SearchNotesWidget();
   virtual Glib::ustring get_name() const override;
+  void embed(EmbeddableWidgetHost *h) override;
   virtual void foreground() override;
   virtual void background() override;
   virtual void size_internals() override;
