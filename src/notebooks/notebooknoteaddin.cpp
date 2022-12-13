@@ -107,13 +107,7 @@ namespace notebooks {
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
     if(!get_note()->contains_tag(get_template_tag())) {
-      auto notebook_button = new PopoverSubmenuButton(_("Notebook"), true,
-        [this] {
-          auto submenu = new Gtk::Box(Gtk::Orientation::VERTICAL);
-          update_menu(submenu);
-          return submenu;
-        });
-
+      auto notebook_button = Gio::MenuItem::create(_("Notebook"), make_menu());
       widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
     }
 
@@ -142,39 +136,35 @@ namespace notebooks {
   }
 
 
-  void NotebookNoteAddin::update_menu(Gtk::Box *menu) const
+  Glib::RefPtr<Gio::MenuModel> NotebookNoteAddin::make_menu() const
   {
+    auto menu = Gio::Menu::create();
+
     // Add new notebook item
-    Gtk::Widget *new_notebook_item = manage(utils::create_popover_button("win.new-notebook", _("_New notebook...")));
-    menu->append(*new_notebook_item);
-    menu->append(*manage(new Gtk::Separator));
+    auto new_notebook_item = Gio::MenuItem::create(_("_New notebook..."), "win.new-notebook");
+    menu->append_item(new_notebook_item);
 
     // Add the "(no notebook)" item at the top of the list
-    Gtk::Button *no_notebook_item = manage(utils::create_popover_button("win.move-to-notebook", _("No notebook")));
-    no_notebook_item->set_action_target_value(Glib::Variant<Glib::ustring>::create(""));
-    menu->append(*no_notebook_item);
+    auto no_notebook_item = Gio::MenuItem::create(_("No notebook"), "");
+    no_notebook_item->set_action_and_target("win.move-to-notebook", Glib::Variant<Glib::ustring>::create(""));
+    menu->append_item(no_notebook_item);
 
     // Add in all the real notebooks
-    auto notebook_menu_items = get_notebook_menu_items();
-    if(!notebook_menu_items.empty()) {
-      for(auto item : notebook_menu_items) {
-        menu->append(*item);
-      }
-
-    }
+    menu->append_section(get_notebook_menu_items());
+    return menu;
   }
   
 
-  std::vector<Gtk::Widget*> NotebookNoteAddin::get_notebook_menu_items() const
+  Glib::RefPtr<Gio::MenuModel> NotebookNoteAddin::get_notebook_menu_items() const
   {
-    std::vector<Gtk::Widget*> items;
+    auto items = Gio::Menu::create();
     Glib::RefPtr<Gtk::TreeModel> model = ignote().notebook_manager().get_notebooks();
     for(const auto& row : model->children()) {
       Notebook::Ptr notebook;
       row.get_value(0, notebook);
-      Gtk::Button *item = manage(utils::create_popover_button("win.move-to-notebook", notebook->get_name()));
-      item->set_action_target_value(Glib::Variant<Glib::ustring>::create(notebook->get_name()));
-      items.push_back(item);
+      auto item = Gio::MenuItem::create(notebook->get_name(), "");
+      item->set_action_and_target("win.move-to-notebook", Glib::Variant<Glib::ustring>::create(notebook->get_name()));
+      items->append_item(item);
     }
 
     return items;

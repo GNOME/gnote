@@ -49,8 +49,8 @@ namespace notebooks {
     void on_new_notebook_menu_item(const Glib::VariantBase&) const;
     void on_move_to_notebook(const Glib::VariantBase &);
     void on_notebooks_changed();
-    std::vector<Gtk::Widget*> get_notebook_menu_items() const;
-    void update_menu(Gtk::Box *) const;
+    Glib::RefPtr<Gio::MenuModel> get_notebook_menu_items() const;
+    Glib::RefPtr<Gio::MenuModel> make_menu() const;
 
     sigc::connection          m_new_notebook_cid;
     sigc::connection          m_move_to_notebook_cid;
