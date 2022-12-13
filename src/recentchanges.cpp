@@ -867,33 +867,30 @@ namespace gnote {
   Gtk::Popover *NoteRecentChanges::make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items)
   {
     std::sort(items.begin(), items.end());
-    Gtk::Popover *menu = manage(new Gtk::Popover);
-    Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
-    utils::set_common_popover_widget_props(*menu_box);
+    auto menu = Gio::Menu::create();
     if(items.size() > 0) {
       auto iter = items.begin();
       auto current_section = iter->section;
+      auto section = Gio::Menu::create();
       for(; iter != items.end() && iter->section != APP_CUSTOM_SECTION; ++iter) {
-          if(iter->section != current_section) {
-            current_section = iter->section;
-            menu_box->append(*manage(new Gtk::Separator));
-          }
-          menu_box->append(*manage(iter->widget));
-          if(auto submenu_button = dynamic_cast<PopoverButton*>(iter->widget)) {
-            submenu_button->parent_popover(menu);
-          }
+        if(iter->section != current_section) {
+          current_section = iter->section;
+          menu->append_section(section);
+          section = Gio::Menu::create();
+        }
+        section->append_item(iter->widget);
       }
-      menu->set_child(*menu_box);
+
+      menu->append_section(section);
     }
     else {
-      menu_box->append(*manage(new Gtk::Label(_("No configured actions"))));
-      menu->set_child(*menu_box);
+      menu->append(_("No configured actions"));
     }
 
-    menu->set_position(Gtk::PositionType::BOTTOM);
-    menu->signal_closed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_window_menu_closed));
-    menu->set_parent(*button);
-    return menu;
+    auto popover = Gtk::make_managed<Gtk::PopoverMenu>(menu);
+    popover->signal_closed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_window_menu_closed));
+    popover->set_parent(*button);
+    return popover;
   }
 
   void NoteRecentChanges::on_window_menu_closed()
