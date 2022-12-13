@@ -130,7 +130,7 @@ private:
   // <summary>
   // The key for this dictionary is Notebook.Name.ToLower ().
   // </summary>
-  std::map<Glib::ustring, Gtk::TreeIter> m_notebookMap;
+  std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_notebookMap;
   //object locker = new object ();    
   bool                                 m_adding_notebook;
   NotebookEventHandler                 m_note_added_to_notebook;
