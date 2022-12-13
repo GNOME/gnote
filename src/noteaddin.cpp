@@ -175,7 +175,7 @@ namespace gnote {
     return std::vector<gnote::PopoverWidget>();
   }
 
-  void NoteAddin::register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> && callback)
+  void NoteAddin::register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void(const Glib::VariantBase&)> && callback)
   {
     m_action_callbacks.emplace_back(action, std::move(callback));
   }
