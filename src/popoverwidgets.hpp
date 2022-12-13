@@ -20,6 +20,7 @@
 #ifndef _POPOVERWIDGETS_HPP_
 #define _POPOVERWIDGETS_HPP_
 
+#include <giomm/menuitem.h>
 #include <gtkmm/box.h>
 #include <gtkmm/button.h>
 #include <gtkmm/popover.h>
@@ -57,16 +58,16 @@ enum NoteActionOrder {
 
 struct PopoverWidget
 {
-  Gtk::Widget *widget;
+  Glib::RefPtr<Gio::MenuItem> widget;
   int section;
   int order;
   int secondary_order;
 
-  static PopoverWidget create_for_app(int ord, Gtk::Widget *w);
-  static PopoverWidget create_for_note(int ord, Gtk::Widget *w);
-  static PopoverWidget create_custom_section(Gtk::Widget *w);
+  static PopoverWidget create_for_app(int ord, const Glib::RefPtr<Gio::MenuItem> w);
+  static PopoverWidget create_for_note(int ord, const Glib::RefPtr<Gio::MenuItem> w);
+  static PopoverWidget create_custom_section(const Glib::RefPtr<Gio::MenuItem> w);
 
-  PopoverWidget(int sec, int ord, Gtk::Widget *w)
+  PopoverWidget(int sec, int ord, const Glib::RefPtr<Gio::MenuItem> w)
     : widget(w)
     , section(sec)
     , order(ord)

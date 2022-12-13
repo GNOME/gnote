@@ -188,7 +188,8 @@ namespace gnote {
   void ActionManager::add_app_menu_items(std::vector<PopoverWidget> & widgets)
   {
     for(auto& iter : m_app_menu_items) {
-      widgets.push_back(PopoverWidget(iter.first, iter.second.order, utils::create_popover_button(iter.second.action_def, Glib::ustring(iter.second.label))));
+      auto item = Gio::MenuItem::create(iter.second.label, iter.second.action_def);
+      widgets.push_back(PopoverWidget(iter.first, iter.second.order, item));
     }
   }
 
