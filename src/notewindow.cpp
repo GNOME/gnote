@@ -265,13 +265,13 @@ namespace gnote {
     std::vector<PopoverWidget> popover_widgets;
     popover_widgets.reserve(20);
 
-    Gtk::Widget *undo = utils::create_popover_button("win.undo", _("_Undo"));
+    auto undo = Gio::MenuItem::create(_("_Undo"), "win.undo");
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_UNDO, 1, undo));
-    Gtk::Widget *redo = utils::create_popover_button("win.redo", _("_Redo"));
+    auto redo = Gio::MenuItem::create(_("_Redo"), "win.redo");
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_UNDO, 2, redo));
-    Gtk::Widget *link = utils::create_popover_button("win.link", _("_Link to New Note"));
+    auto link = Gio::MenuItem::create(_("_Link to New Note"), "win.link");
     popover_widgets.push_back(PopoverWidget::create_for_note(LINK_ORDER, link));
-    Gtk::Widget *important = utils::create_popover_button("win.important-note", C_("NoteActions", "_Important"));
+    auto important = Gio::MenuItem::create(C_("NoteActions", "_Important"), "win.important-note");
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_FLAGS, IMPORTANT_ORDER, important));
 
     NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
@@ -281,7 +281,7 @@ namespace gnote {
       popover_widgets.insert(popover_widgets.end(), addin_widgets.begin(), addin_widgets.end());
     }
 
-    auto delete_button = utils::create_popover_button("win.delete-note", _("_Delete…"));
+    auto delete_button = Gio::MenuItem::create(_("_Delete…"), "win.delete-note");
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_ACTIONS, 1000, delete_button));
 
     return popover_widgets;
