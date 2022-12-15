@@ -346,42 +346,41 @@ namespace gnote {
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, const Notebook::Ptr & notebook)
     {
       // Confirmation Dialog
-      utils::HIGMessageDialog dialog(parent,
+      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(parent,
                                      GTK_DIALOG_MODAL,
-                                     Gtk::MESSAGE_QUESTION,
-                                     Gtk::BUTTONS_NONE,
+                                     Gtk::MessageType::QUESTION,
+                                     Gtk::ButtonsType::NONE,
                                      _("Really delete this notebook?"),
                                      _("The notes that belong to this notebook will not be "
                                        "deleted, but they will no longer be associated with "
                                        "this notebook.  This action cannot be undone."));
 
       Gtk::Button *button;
-      button = manage(new Gtk::Button(_("_Cancel"), true));
-      button->property_can_default().set_value(true);
-      button->show();
-      dialog.add_action_widget(*button, Gtk::RESPONSE_CANCEL);
-      dialog.set_default_response(Gtk::RESPONSE_CANCEL);
+      button = Gtk::make_managed<Gtk::Button>(_("_Cancel"), true);
+      dialog->add_action_widget(*button, Gtk::ResponseType::CANCEL);
+      dialog->set_default_response(Gtk::ResponseType::CANCEL);
 
-      button = manage(new Gtk::Button(_("_Delete"), true));
-      button->property_can_default().set_value(true);
+      button = Gtk::make_managed<Gtk::Button>(_("_Delete"), true);
       button->get_style_context()->add_class("destructive-action");
-      button->show();
-      dialog.add_action_widget(*button, 666);
+      dialog->add_action_widget(*button, Gtk::ResponseType::YES);
 
-      int response = dialog.run();
-      if(response != Gtk::RESPONSE_YES) {
-        return;
-      }
+      dialog->signal_response().connect([&g, notebook, dialog](int response) {
+        if(response != Gtk::ResponseType::YES) {
+          return;
+        }
 
-      // Grab the template note before removing all the notebook tags
-      Note::Ptr templateNote = notebook->get_template_note ();
-      
-      g.notebook_manager().delete_notebook(notebook);
+        // Grab the template note before removing all the notebook tags
+        Note::Ptr templateNote = notebook->get_template_note ();
 
-      // Delete the template note
-      if (templateNote) {
-        g.notebook_manager().note_manager().delete_note(templateNote);
-      }
+        g.notebook_manager().delete_notebook(notebook);
+
+        // Delete the template note
+        if(templateNote) {
+          g.notebook_manager().note_manager().delete_note(templateNote);
+        }
+        dialog->hide();
+      });
+      dialog->show();
     }
 
 
