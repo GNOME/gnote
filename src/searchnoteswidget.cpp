@@ -713,7 +713,7 @@ void SearchNotesWidget::on_selection_changed()
     if(auto action = win->find_action("open-note-new-window")) {
       action->set_enabled(enabled);
     }
-    if(auto action = win->find_action("delete-note")) {
+    if(auto action = win->find_action("delete-selected-notes")) {
       action->set_enabled(enabled);
     }
   }
@@ -1115,7 +1115,7 @@ Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
     menu->append(_("_New"), "app.new-note");
     menu->append(_("_Open"), "win.open-note");
     menu->append(_("Open In New _Window"), "win.open-note-new-window");
-    menu->append(_("_Delete"), "win.delete-note");
+    menu->append(_("_Delete"), "win.delete-selected-notes");
 
     m_note_list_context_menu = std::make_shared<Gtk::PopoverMenu>(menu);
     m_note_list_context_menu->set_parent(*m_tree);
@@ -1197,7 +1197,7 @@ void SearchNotesWidget::embed(EmbeddableWidgetHost *h)
     if(auto action = win->find_action("open-note-new-window")) {
       action->signal_activate().connect([this](const Glib::VariantBase&) { on_open_note_new_window(); });
     }
-    if(auto action = win->find_action("delete-note")) {
+    if(auto action = win->find_action("delete-selected-notes")) {
       action->signal_activate().connect([this](const Glib::VariantBase&) { delete_selected_notes(); });
     }
     if(auto action = win->find_action("new-notebook")) {
