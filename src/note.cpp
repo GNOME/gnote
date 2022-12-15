@@ -47,7 +47,7 @@ namespace gnote {
 
   namespace noteutils {
 
-    void show_deletion_dialog(const Note::List & notes, Gtk::Window * parent)
+    void show_deletion_dialog(const Note::List & notes, Gtk::Window *parent)
     {
       Glib::ustring message;
 
@@ -60,34 +60,28 @@ namespace gnote {
         message = Glib::ustring::compose(ngettext("Really delete %1 note?", "Really delete %1 notes?", notes.size()), notes.size());
       }
 
-      utils::HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
-                                     Gtk::MESSAGE_QUESTION,
-                                     Gtk::BUTTONS_NONE,
-                                     message,
-                                     _("If you delete a note it is permanently lost."));
+      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(parent, GTK_DIALOG_DESTROY_WITH_PARENT, Gtk::MessageType::QUESTION,
+                                               Gtk::ButtonsType::NONE, message, _("If you delete a note it is permanently lost."));
 
-      Gtk::Button *button;
+      Gtk::Button *button = Gtk::make_managed<Gtk::Button>(_("_Cancel"), true);
+      dialog->add_action_widget(*button, Gtk::ResponseType::CANCEL);
+      dialog->set_default_response(Gtk::ResponseType::CANCEL);
 
-      button = manage(new Gtk::Button(_("_Cancel"), true));
-      button->property_can_default().set_value(true);
-      button->show ();
-      dialog.add_action_widget(*button, Gtk::RESPONSE_CANCEL);
-      dialog.set_default_response(Gtk::RESPONSE_CANCEL);
-
-      button = manage(new Gtk::Button(_("_Delete"), true));
-      button->property_can_default().set_value(true);
+      button = Gtk::make_managed<Gtk::Button>(_("_Delete"), true);
       button->get_style_context()->add_class("destructive-action");
-      button->show ();
-      dialog.add_action_widget(*button, 666);
+      dialog->add_action_widget(*button, 666);
 
-      int result = dialog.run();
-      if (result == 666) {
-        for(auto & note : notes) {
-          note->manager().delete_note(note);
+      dialog->signal_response().connect([dialog, notes](int result) {
+        if (result == 666) {
+          for(auto & note : notes) {
+            note->manager().delete_note(note);
+          }
         }
-      }
-    }
+        dialog->hide();
+      });
 
+      dialog->show();
+    }
   }
 
   namespace {
