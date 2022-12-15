@@ -415,10 +415,9 @@ namespace gnote {
     queue_save(NO_CHANGE);
   }
 
-  bool Note::on_window_destroyed(GdkEventAny * /*ev*/)
+  void Note::on_window_destroyed()
   {
     m_window = NULL;
-    return false;
   }
 
   void Note::queue_save (ChangeType changeType)
@@ -704,8 +703,7 @@ namespace gnote {
   {
     if(!m_window) {
       m_window = new NoteWindow(*this, m_gnote);
-      m_window->signal_delete_event().connect(
-        sigc::mem_fun(*this, &Note::on_window_destroyed));
+      m_window->signal_destroy().connect(sigc::mem_fun(*this, &Note::on_window_destroyed));
 
       m_window->editor()->set_sensitive(enabled());
       if(m_data.data().has_extent()) {
