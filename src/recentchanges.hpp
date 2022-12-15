@@ -69,7 +69,6 @@ protected:
 private:
   void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);
-  void on_delete_note();
   bool on_close();
   bool on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   EmbeddableWidget *currently_foreground();

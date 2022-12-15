@@ -512,11 +512,6 @@ namespace gnote {
     present_in_new_window(m_gnote, note);
   }
 
-  void NoteRecentChanges::on_delete_note()
-  {
-    m_search_notes_widget->delete_selected_notes();
-  }
-
   bool NoteRecentChanges::present_active(const Note::Ptr & note)
   {
     if(note && note->has_window()) {
