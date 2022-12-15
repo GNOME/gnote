@@ -26,7 +26,6 @@
 
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
-#include <gtkmm/stock.h>
 
 #include "ignote.hpp"
 #include "mainwindow.hpp"
@@ -128,7 +127,7 @@ namespace gnote {
   }
 
 
-  const int  NoteData::s_noPosition = -1;
+  const int NoteData::s_noPosition = -1;
 
   NoteData::NoteData(Glib::ustring && _uri)
     : m_uri(std::move(_uri))
@@ -530,13 +529,13 @@ namespace gnote {
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
           iter->remove_links(old_title, self);
-          process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
         }
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
           iter->rename_links(old_title, self);
-          process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
         }
       }
     }
@@ -552,7 +551,7 @@ namespace gnote {
     if(dialog) {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
       const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
-      if(Gtk::RESPONSE_CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
+      if(Gtk::ResponseType::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
         m_gnote.preferences().note_rename_behavior(selected_behavior);
       }
 
@@ -561,7 +560,7 @@ namespace gnote {
       for(std::map<NoteBase::Ptr, bool>::const_iterator iter = notes->begin();
           notes->end() != iter; iter++) {
         const std::pair<NoteBase::Ptr, bool> p = *iter;
-        if(p.second && response == Gtk::RESPONSE_YES) { // Rename
+        if(p.second && response == Gtk::ResponseType::YES) { // Rename
           p.first->rename_links(old_title, self);
         }
         else {
