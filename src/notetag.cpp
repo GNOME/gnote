@@ -470,7 +470,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_serializable(const Glib::RefPtr<const Gtk::TextTag> & tag)
   {
-    NoteTag::ConstPtr note_tag = NoteTag::ConstPtr::cast_dynamic(tag);
+    NoteTag::ConstPtr note_tag = std::dynamic_pointer_cast<const NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_serialize();
     }
@@ -479,7 +479,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_growable(const Glib::RefPtr<Gtk::TextTag> & tag)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_grow();
     }
@@ -488,7 +488,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_undoable(const Glib::RefPtr<Gtk::TextTag> & tag)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_undo();
     }
@@ -498,7 +498,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_spell_checkable(const Glib::RefPtr<const Gtk::TextTag> & tag)
   {
-    NoteTag::ConstPtr note_tag = NoteTag::ConstPtr::cast_dynamic(tag);
+    NoteTag::ConstPtr note_tag = std::dynamic_pointer_cast<const NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_spell_check();
     }
@@ -508,7 +508,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_activatable(const Glib::RefPtr<Gtk::TextTag> & tag)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_activate();
     }
@@ -518,7 +518,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag)
   {
-    return (bool)DepthNoteTag::Ptr::cast_dynamic(tag);
+    return (bool)std::dynamic_pointer_cast<DepthNoteTag>(tag);
   }
 
 
@@ -537,7 +537,7 @@ namespace gnote {
     change = OTHER_DATA_CHANGED;
 
     // Use SaveType for NoteTags
-    Glib::RefPtr<NoteTag> note_tag = Glib::RefPtr<NoteTag>::cast_dynamic(tag);
+    Glib::RefPtr<NoteTag> note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       switch(note_tag->save_type()) {
         case META:
@@ -561,7 +561,7 @@ namespace gnote {
   {
     Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::Direction::LTR);
 
-    DepthNoteTag::Ptr tag = DepthNoteTag::Ptr::cast_dynamic(lookup(name));
+    DepthNoteTag::Ptr tag = std::dynamic_pointer_cast<DepthNoteTag>(lookup(name));
 
     if (!tag) {
       tag = DepthNoteTag::Ptr(new DepthNoteTag(depth));
@@ -603,7 +603,7 @@ namespace gnote {
   {
     m_added_tags.push_back(tag);
 
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if (note_tag) {
 //      note_tag->signal_changed().connect(sigc::mem_fun(*this, &NoteTagTable::on_notetag_changed));
     }
