@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -34,7 +34,7 @@
 
 #include <giomm/settings.h>
 #include <gtkmm/entry.h>
-#include <gtkmm/togglebutton.h>
+#include <gtkmm/checkbutton.h>
 
 namespace sharp {
 
@@ -73,14 +73,14 @@ namespace sharp {
   };
 
 
-  typedef std::function<bool()> BoolPropertyGetterT;
-  typedef std::function<void(bool)> BoolPropertySetterT;
+  typedef sigc::slot<bool()> BoolPropertyGetterT;
+  typedef sigc::slot<void(bool)> BoolPropertySetterT;
 
   class PropertyEditorBool
     : public PropertyEditorBase<BoolPropertyGetterT, BoolPropertySetterT>
   {
   public:
-    PropertyEditorBool(BoolPropertyGetterT && getter, BoolPropertySetterT && setter, Gtk::ToggleButton &button);
+    PropertyEditorBool(BoolPropertyGetterT getter, BoolPropertySetterT setter, Gtk::CheckButton &button);
     void add_guard(Gtk::Widget* w)
       {
         m_guarded.push_back(w);
