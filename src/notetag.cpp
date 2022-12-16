@@ -332,8 +332,7 @@ namespace gnote {
   }
   
   DepthNoteTag::DepthNoteTag(int depth)
-    : NoteTag("depth:" + TO_STRING(depth) 
-              + ":" + TO_STRING((int)Pango::DIRECTION_LTR))
+    : NoteTag("depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::Direction::LTR))
     , m_depth(depth)
   {
   }
@@ -348,7 +347,7 @@ namespace gnote {
 
         // Write the list items writing direction
         xml.write_start_attribute ("dir");
-        if (get_direction() == Pango::DIRECTION_RTL) {
+        if (get_direction() == Pango::Direction::RTL) {
           xml.write_string ("rtl");
         }
         else {
@@ -378,7 +377,7 @@ namespace gnote {
     // Font stylings
 
     tag = NoteTag::create("centered", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-    tag->property_justification() = Gtk::JUSTIFY_CENTER;
+    tag->property_justification() = Gtk::Justification::CENTER;
     add (tag);
 
     tag = NoteTag::create("bold", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
@@ -386,7 +385,7 @@ namespace gnote {
     add (tag);
 
     tag = NoteTag::create("italic", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-    tag->property_style() = Pango::STYLE_ITALIC;
+    tag->property_style() = Pango::Style::ITALIC;
     add (tag);
     
     tag = NoteTag::create("strikethrough", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
@@ -421,7 +420,7 @@ namespace gnote {
     // Used when inserting dropped URLs/text to Start Here
     tag = NoteTag::create("datetime", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
-    tag->property_style() = Pango::STYLE_ITALIC;
+    tag->property_style() = Pango::Style::ITALIC;
     tag->property_foreground_rgba().set_value(visited_link_color);
     tag->set_save_type(META);
     add (tag);
@@ -447,21 +446,21 @@ namespace gnote {
     // Links
 
     tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
-    tag->property_underline() = Pango::UNDERLINE_SINGLE;
+    tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(visited_link_color);
     tag->set_save_type(META);
     add (tag);
     m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
-    tag->property_underline() = Pango::UNDERLINE_SINGLE;
+    tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
     tag->set_save_type(META);
     add (tag);
     m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
-    tag->property_underline() = Pango::UNDERLINE_SINGLE;
+    tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
     tag->set_save_type(META);
     add (tag);
@@ -560,7 +559,7 @@ namespace gnote {
 
   DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth)
   {
-    Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::DIRECTION_LTR);
+    Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::Direction::LTR);
 
     DepthNoteTag::Ptr tag = DepthNoteTag::Ptr::cast_dynamic(lookup(name));
 

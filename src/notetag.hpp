@@ -214,7 +214,7 @@ public:
     }
   Pango::Direction get_direction() const
     {
-      return Pango::DIRECTION_LTR;
+      return Pango::Direction::LTR;
     }
   virtual void write(sharp::XmlWriter &, bool) const override;
 private:
