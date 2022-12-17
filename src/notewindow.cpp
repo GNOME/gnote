@@ -134,18 +134,7 @@ namespace gnote {
       parent->set_focus(*m_editor);
     }
 
-    // Don't allow deleting the "Start Here" note...
-    if(!m_note.is_special()) {
-      m_delete_note_slot = current_host->find_action("delete-note")->signal_activate()
-        .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked));
-    }
-
-    MainWindowAction::Ptr important_action = current_host->find_action("important-note");
-    important_action->set_state(Glib::Variant<bool>::create(m_note.is_pinned()));
-    m_important_note_slot = important_action->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked));
-    m_gnote.notebook_manager().signal_note_pin_status_changed
-      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed));
+    connect_actions(host());
   }
 
   void NoteWindow::background()
@@ -172,8 +161,54 @@ namespace gnote {
     }
 
     m_note.save();  // to update not title immediately in notes list
-    m_delete_note_slot.disconnect();
-    m_important_note_slot.disconnect();
+    disconnect_actions();
+  }
+
+  void NoteWindow::connect_actions(EmbeddableWidgetHost *host)
+  {
+    // Don't allow deleting the "Start Here" note...
+    if(!m_note.is_special()) {
+      m_signal_cids.push_back(host->find_action("delete-note")->signal_activate()
+        .connect(sigc::mem_fun(*this, &NoteWindow::on_delete_button_clicked)));
+    }
+
+    MainWindowAction::Ptr important_action = host->find_action("important-note");
+    important_action->set_state(Glib::Variant<bool>::create(m_note.is_pinned()));
+    m_signal_cids.push_back(important_action->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_button_clicked)));
+    m_signal_cids.push_back(m_gnote.notebook_manager().signal_note_pin_status_changed
+      .connect(sigc::mem_fun(*this, &NoteWindow::on_pin_status_changed)));
+
+    m_signal_cids.push_back(host->find_action("undo")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteWindow::undo_clicked)));
+    m_signal_cids.push_back(host->find_action("redo")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteWindow::redo_clicked)));
+    m_signal_cids.push_back(host->find_action("link")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteWindow::link_clicked)));
+    m_signal_cids.push_back(host->find_action("change-font-bold")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::bold_clicked)));
+    m_signal_cids.push_back(host->find_action("change-font-italic")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::italic_clicked)));
+    m_signal_cids.push_back(host->find_action("change-font-strikeout")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::strikeout_clicked)));
+    m_signal_cids.push_back(host->find_action("change-font-highlight")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::highlight_clicked)));
+    m_signal_cids.push_back(host->find_action("change-font-size")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::font_size_activated)));
+    m_signal_cids.push_back(host->find_action("enable-bullets")->signal_change_state()
+      .connect(sigc::mem_fun(*this, &NoteWindow::toggle_bullets_clicked)));
+    m_signal_cids.push_back(host->find_action("increase-indent")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteWindow::increase_indent_clicked)));
+    m_signal_cids.push_back(host->find_action("decrease-indent")->signal_activate()
+      .connect(sigc::mem_fun(*this, &NoteWindow::decrease_indent_clicked)));
+  }
+
+  void NoteWindow::disconnect_actions()
+  {
+    for(auto & cid : m_signal_cids) {
+      cid.disconnect();
+    }
+    m_signal_cids.clear();
   }
 
   void NoteWindow::size_internals()
@@ -200,6 +235,71 @@ namespace gnote {
       controller->add_shortcut(shortcut);
     }
 
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Z, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::NamedAction::create("win.undo");
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Z, Gdk::ModifierType::CONTROL_MASK | Gdk::ModifierType::SHIFT_MASK);
+      auto action = Gtk::NamedAction::create("win.redo");
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_L, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::NamedAction::create("win.link");
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_B, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::NamedAction::create("win.change-font-bold");
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_I, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::NamedAction::create("win.change-font-italic");
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_S, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::NamedAction::create("win.change-font-strikeout");
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_H, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::NamedAction::create("win.change-font-highlight");
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_plus, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::increase_font_clicked));
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_minus, Gdk::ModifierType::CONTROL_MASK);
+      auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::decrease_font_clicked));
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Right, Gdk::ModifierType::META_MASK);
+      auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::increase_indent_pressed));
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
+
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Left, Gdk::ModifierType::META_MASK);
+      auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::decrease_indent_pressed));
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+    }
   }
 
   void NoteWindow::perform_search(const Glib::ustring & text)
@@ -513,6 +613,189 @@ namespace gnote {
     embeddable_toolbar()->set_sensitive(m_enabled);
   }
 
+  void NoteWindow::undo_clicked(const Glib::VariantBase&)
+  {
+    auto & undo_manager = m_note.get_buffer()->undoer();
+    if(undo_manager.get_can_undo()) {
+      DBG_OUT("Running undo...");
+      undo_manager.undo();
+    }
+  }
+
+  void NoteWindow::redo_clicked(const Glib::VariantBase&)
+  {
+    auto & undo_manager = m_note.get_buffer()->undoer();
+    if(undo_manager.get_can_redo()) {
+      DBG_OUT("Running redo...");
+      undo_manager.redo();
+    }
+  }
+
+  void NoteWindow::link_clicked(const Glib::VariantBase&)
+  {
+    auto & buffer = m_note.get_buffer();
+    Glib::ustring select = buffer->get_selection();
+    if(select.empty()) {
+      return;
+    }
+
+    Glib::ustring body_unused;
+    Glib::ustring title = NoteManagerBase::split_title_from_content(select, body_unused);
+    if(title.empty()) {
+      return;
+    }
+
+    NoteManagerBase & manager(m_note.manager());
+    NoteBase::Ptr match = manager.find(title);
+    if(!match) {
+      try {
+        match = manager.create(std::move(select));
+      }
+      catch(const sharp::Exception & e) {
+        utils::HIGMessageDialog dialog(dynamic_cast<Gtk::Window*>(m_buffer->note().get_window()->host()),
+          GTK_DIALOG_DESTROY_WITH_PARENT,
+          Gtk::MESSAGE_ERROR,  Gtk::BUTTONS_OK,
+          _("Cannot create note"), e.what());
+        dialog.run();
+        return;
+      }
+    }
+    else {
+      Gtk::TextIter start, end;
+      buffer->get_selection_bounds(start, end);
+      buffer->remove_tag(m_note.get_tag_table()->get_broken_link_tag(), start, end);
+      buffer->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
+    }
+
+    MainWindow::present_in(*dynamic_cast<MainWindow*>(m_note.get_window()->host()),
+                           std::static_pointer_cast<Note>(match));
+  }
+
+  //
+  // Font-style menu item activate
+  //
+  // Toggle the style tag for the current text.  Style tags are
+  // stored in a "Tag" member of the menuitem's Data.
+  //
+  void NoteWindow::font_style_clicked(const char * tag)
+  {
+    if(tag) {
+      m_note.get_buffer()->toggle_active_tag(tag);
+    }
+  }
+
+  void NoteWindow::bold_clicked(const Glib::VariantBase & state)
+  {
+    host()->find_action("change-font-bold")->set_state(state);
+    font_style_clicked("bold");
+  }
+
+  void NoteWindow::italic_clicked(const Glib::VariantBase & state)
+  {
+    host()->find_action("change-font-italic")->set_state(state);
+    font_style_clicked("italic");
+  }
+
+  void NoteWindow::strikeout_clicked(const Glib::VariantBase & state)
+  {
+    host()->find_action("change-font-strikeout")->set_state(state);
+    font_style_clicked("strikethrough");
+  }
+
+  void NoteWindow::highlight_clicked(const Glib::VariantBase & state)
+  {
+    host()->find_action("change-font-highlight")->set_state(state);
+    font_style_clicked("highlight");
+  }
+
+  void NoteWindow::font_size_activated(const Glib::VariantBase & state)
+  {
+    auto host = this->host();
+    if(host == NULL) {
+      return;
+    }
+    host->find_action("change-font-size")->set_state(state);
+
+    auto & buffer = m_note.get_buffer();
+    buffer->remove_active_tag ("size:huge");
+    buffer->remove_active_tag ("size:large");
+    buffer->remove_active_tag ("size:small");
+
+    auto tag = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(state).get();
+    if(!tag.empty())
+      buffer->set_active_tag(tag);
+  }
+
+  void NoteWindow::toggle_bullets_clicked(const Glib::VariantBase&)
+  {
+    m_note.get_buffer()->toggle_selection_bullets();
+  }
+
+  void NoteWindow::increase_indent_clicked(const Glib::VariantBase&)
+  {
+    m_note.get_buffer()->increase_cursor_depth();
+  }
+
+  void NoteWindow::decrease_indent_clicked(const Glib::VariantBase&)
+  {
+    m_note.get_buffer()->decrease_cursor_depth();
+  }
+
+  bool NoteWindow::increase_font_clicked(Gtk::Widget&, const Glib::VariantBase&)
+  {
+    auto & buffer = m_note.get_buffer();
+    if(buffer->is_active_tag("size:small")) {
+      buffer->remove_active_tag("size:small");
+    }
+    else if(buffer->is_active_tag("size:large")) {
+      buffer->remove_active_tag("size:large");
+      buffer->set_active_tag("size:huge");
+    }
+    else if(buffer->is_active_tag("size:huge")) {
+      // Maximum font size, do nothing
+    }
+    else {
+      // Current font size is normal
+      buffer->set_active_tag("size:large");
+    }
+
+   return true;
+ }
+
+  bool NoteWindow::decrease_font_clicked(Gtk::Widget&, const Glib::VariantBase&)
+  {
+    auto & buffer = m_note.get_buffer();
+    if(buffer->is_active_tag("size:small")) {
+// Minimum font size, do nothing
+    }
+    else if(buffer->is_active_tag("size:large")) {
+      buffer->remove_active_tag("size:large");
+    }
+    else if(buffer->is_active_tag("size:huge")) {
+      buffer->remove_active_tag("size:huge");
+      buffer->set_active_tag("size:large");
+    }
+    else {
+// Current font size is normal
+      buffer->set_active_tag("size:small");
+    }
+
+    return true;
+  }
+
+  bool NoteWindow::increase_indent_pressed(Gtk::Widget&, const Glib::VariantBase&)
+  {
+    m_note.get_buffer()->toggle_selection_bullets();
+    return true;
+  }
+
+  bool NoteWindow::decrease_indent_pressed(Gtk::Widget&, const Glib::VariantBase&)
+  {
+    m_note.get_buffer()->decrease_cursor_depth();
+    return true;
+  }
+
+
 
   NoteFindHandler::NoteFindHandler(Note & note)
     : m_note(note)
@@ -713,9 +996,6 @@ namespace gnote {
     , m_buffer(buffer)
     , m_undo_manager(undo_manager)
     {
-      m_widget.signal_foregrounded.connect(sigc::mem_fun(*this, &NoteTextMenu::on_widget_foregrounded));
-      m_widget.signal_backgrounded.connect(sigc::mem_fun(*this, &NoteTextMenu::on_widget_backgrounded));
-
       set_position(Gtk::PositionType::BOTTOM);
       Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
 
@@ -798,34 +1078,6 @@ namespace gnote {
     return item;
   }
 
-  void NoteTextMenu::set_accels(utils::GlobalKeybinder & keybinder)
-  {
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::undo_clicked),
-                              GDK_KEY_Z, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::redo_clicked),
-                              GDK_KEY_Z, Gdk::CONTROL_MASK | Gdk::SHIFT_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::link_clicked),
-                              GDK_KEY_L, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::bold_pressed),
-                              GDK_KEY_B, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::italic_pressed),
-                              GDK_KEY_I, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::strikeout_pressed),
-                              GDK_KEY_S, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::highlight_pressed),
-                              GDK_KEY_H, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::increase_font_clicked),
-                              GDK_KEY_plus, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::decrease_font_clicked),
-                              GDK_KEY_minus, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::increase_indent_pressed),
-                              GDK_KEY_Right, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
-    keybinder.add_accelerator(sigc::mem_fun(*this, &NoteTextMenu::decrease_indent_pressed),
-                              GDK_KEY_Left, Gdk::MOD1_MASK, Gtk::ACCEL_VISIBLE);
-
-    signal_set_accels(keybinder);
-  }
-
   void NoteTextMenu::on_show()
   {
     refresh_state();
@@ -894,230 +1146,6 @@ namespace gnote {
     m_event_freeze = false;
   }
 
-  void NoteTextMenu::on_widget_foregrounded()
-  {
-    auto host = m_widget.host();
-
-    m_signal_cids.push_back(host->find_action("undo")->signal_activate()
-      .connect([this](const Glib::VariantBase&) { undo_clicked(); } ));
-    m_signal_cids.push_back(host->find_action("redo")->signal_activate()
-      .connect([this](const Glib::VariantBase&) { redo_clicked(); } ));
-    m_signal_cids.push_back(host->find_action("link")->signal_activate()
-      .connect([this](const Glib::VariantBase&) { link_clicked(); } ));
-    m_signal_cids.push_back(host->find_action("change-font-bold")->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::bold_clicked)));
-    m_signal_cids.push_back(host->find_action("change-font-italic")->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::italic_clicked)));
-    m_signal_cids.push_back(host->find_action("change-font-strikeout")->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::strikeout_clicked)));
-    m_signal_cids.push_back(host->find_action("change-font-highlight")->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::highlight_clicked)));
-    m_signal_cids.push_back(host->find_action("change-font-size")->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::font_size_activated)));
-    m_signal_cids.push_back(host->find_action("enable-bullets")->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::toggle_bullets_clicked)));
-    m_signal_cids.push_back(host->find_action("increase-indent")->signal_activate()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::increase_indent_clicked)));
-    m_signal_cids.push_back(host->find_action("decrease-indent")->signal_activate()
-      .connect(sigc::mem_fun(*this, &NoteTextMenu::decrease_indent_clicked)));
-  }
-
-  void NoteTextMenu::on_widget_backgrounded()
-  {
-    for(auto & cid : m_signal_cids) {
-      cid.disconnect();
-    }
-    m_signal_cids.clear();
-  }
-
-  void NoteTextMenu::link_clicked()
-  {
-    if(m_event_freeze) {
-      return;
-    }
-
-    Glib::ustring select = m_buffer->get_selection();
-    if(select.empty()) {
-      return;
-    }
-
-    Glib::ustring body_unused;
-    Glib::ustring title = NoteManagerBase::split_title_from_content(select, body_unused);
-    if(title.empty()) {
-      return;
-    }
-
-    NoteManagerBase & manager(m_buffer->note().manager());
-    NoteBase::Ptr match = manager.find(title);
-    if(!match) {
-      try {
-        match = manager.create(std::move(select));
-      }
-      catch(const sharp::Exception & e) {
-        utils::HIGMessageDialog dialog(dynamic_cast<Gtk::Window*>(m_buffer->note().get_window()->host()),
-          GTK_DIALOG_DESTROY_WITH_PARENT,
-          Gtk::MESSAGE_ERROR,  Gtk::BUTTONS_OK,
-          _("Cannot create note"), e.what());
-        dialog.run();
-        return;
-      }
-    }
-    else {
-      Gtk::TextIter start, end;
-      m_buffer->get_selection_bounds(start, end);
-      m_buffer->remove_tag(m_buffer->note().get_tag_table()->get_broken_link_tag(), start, end);
-      m_buffer->apply_tag(m_buffer->note().get_tag_table()->get_link_tag(), start, end);
-    }
-
-    MainWindow::present_in(*dynamic_cast<MainWindow*>(m_buffer->note().get_window()->host()),
-                           std::static_pointer_cast<Note>(match));
-  }
-
-  //
-  // Font-style menu item activate
-  //
-  // Toggle the style tag for the current text.  Style tags are
-  // stored in a "Tag" member of the menuitem's Data.
-  //
-  void NoteTextMenu::font_style_clicked(const char * tag)
-  {
-    if (m_event_freeze)
-      return;
-
-    if(tag) {
-      m_buffer->toggle_active_tag(tag);
-    }
-  }
-
-  void NoteTextMenu::font_clicked(const char *action, const Glib::VariantBase & state, void (NoteTextMenu::*func)())
-  {
-    auto host = m_widget.host();
-    if(host == NULL) {
-      return;
-    }
-    host->find_action(action)->set_state(state);
-    (this->*func)();
-  }
-
-  void NoteTextMenu::bold_clicked(const Glib::VariantBase & state)
-  {
-    font_clicked("change-font-bold", state, &NoteTextMenu::bold_pressed);
-  }
-
-  void NoteTextMenu::bold_pressed()
-  {
-    font_style_clicked("bold");
-  }
-
-  void NoteTextMenu::italic_clicked(const Glib::VariantBase & state)
-  {
-    font_clicked("change-font-italic", state, &NoteTextMenu::italic_pressed);
-  }
-
-  void NoteTextMenu::italic_pressed()
-  {
-    font_style_clicked("italic");
-  }
-
-  void NoteTextMenu::strikeout_clicked(const Glib::VariantBase & state)
-  {
-    font_clicked("change-font-strikeout", state, &NoteTextMenu::strikeout_pressed);
-  }
-
-  void NoteTextMenu::strikeout_pressed()
-  {
-    font_style_clicked("strikethrough");
-  }
-
-  void NoteTextMenu::highlight_clicked(const Glib::VariantBase & state)
-  {
-    font_clicked("change-font-highlight", state, &NoteTextMenu::highlight_pressed);
-  }
-
-  void NoteTextMenu::highlight_pressed()
-  {
-    font_style_clicked("highlight");
-  }
-
-  // Font-style menu item activate
-  void NoteTextMenu::font_size_activated(const Glib::VariantBase & state)
-  {
-    if (m_event_freeze)
-      return;
-
-    auto host = m_widget.host();
-    if(host == NULL) {
-      return;
-    }
-    host->find_action("change-font-size")->set_state(state);
-
-    m_buffer->remove_active_tag ("size:huge");
-    m_buffer->remove_active_tag ("size:large");
-    m_buffer->remove_active_tag ("size:small");
-
-    auto tag = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(state).get();
-    if(!tag.empty())
-      m_buffer->set_active_tag(tag);
-  }
-
-  void NoteTextMenu::increase_font_clicked ()
-  {
-    if (m_event_freeze)
-      return;
-
-    if (m_buffer->is_active_tag ("size:small")) {
-      m_buffer->remove_active_tag ("size:small");
-    } 
-    else if (m_buffer->is_active_tag ("size:large")) {
-      m_buffer->remove_active_tag ("size:large");
-      m_buffer->set_active_tag ("size:huge");
-    } 
-    else if (m_buffer->is_active_tag ("size:huge")) {
-      // Maximum font size, do nothing
-    } 
-    else {
-      // Current font size is normal
-      m_buffer->set_active_tag ("size:large");
-    }
- }
-
-  void NoteTextMenu::decrease_font_clicked ()
-  {
-    if (m_event_freeze)
-      return;
-
-    if (m_buffer->is_active_tag ("size:small")) {
-// Minimum font size, do nothing
-    } 
-    else if (m_buffer->is_active_tag ("size:large")) {
-      m_buffer->remove_active_tag ("size:large");
-    } 
-    else if (m_buffer->is_active_tag ("size:huge")) {
-      m_buffer->remove_active_tag ("size:huge");
-      m_buffer->set_active_tag ("size:large");
-    } 
-    else {
-// Current font size is normal
-      m_buffer->set_active_tag ("size:small");
-    }
-  }
-
-  void NoteTextMenu::undo_clicked()
-  {
-    if (m_undo_manager.get_can_undo()) {
-      DBG_OUT("Running undo...");
-      m_undo_manager.undo();
-    }
-  }
-
-  void NoteTextMenu::redo_clicked()
-  {
-    if (m_undo_manager.get_can_redo()) {
-      DBG_OUT("Running redo...");
-      m_undo_manager.redo();
-    }
-  }
-
   void NoteTextMenu::undo_changed ()
   {
     EmbeddableWidgetHost *host = m_widget.host();
@@ -1126,35 +1154,6 @@ namespace gnote {
     }
     host->find_action("undo")->property_enabled() = m_undo_manager.get_can_undo();
     host->find_action("redo")->property_enabled() = m_undo_manager.get_can_redo();
-  }
-
-
-    //
-    // Bulleted list handlers
-    //
-  void NoteTextMenu::toggle_bullets_clicked(const Glib::VariantBase&)
-  {
-    m_buffer->toggle_selection_bullets();
-  }
-
-  void NoteTextMenu::increase_indent_clicked(const Glib::VariantBase&)
-  {
-    m_buffer->increase_cursor_depth();
-  }
-
-  void NoteTextMenu::increase_indent_pressed()
-  {
-    m_buffer->toggle_selection_bullets();
-  }
-
-  void NoteTextMenu::decrease_indent_clicked(const Glib::VariantBase&)
-  {
-    m_buffer->decrease_cursor_depth();
-  }
-
-  void NoteTextMenu::decrease_indent_pressed()
-  {
-    m_buffer->decrease_cursor_depth();
   }
 
 }

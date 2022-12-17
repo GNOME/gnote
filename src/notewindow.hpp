@@ -49,47 +49,20 @@ class NoteTextMenu
 {
 public:
   NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
-  void set_accels(utils::GlobalKeybinder & keybinder);
   void refresh_state();
-
-  sigc::signal<void, utils::GlobalKeybinder> signal_set_accels;
 protected:
   virtual void on_show() override;
 
 private:
-  void on_widget_foregrounded();
-  void on_widget_backgrounded();
   void refresh_sizing_state();
-  void link_clicked();
-  void font_clicked(const char *action, const Glib::VariantBase & state, void (NoteTextMenu::*func)());
-  void bold_clicked(const Glib::VariantBase & state);
-  void bold_pressed();
-  void italic_clicked(const Glib::VariantBase & state);
-  void italic_pressed();
-  void strikeout_clicked(const Glib::VariantBase & state);
-  void strikeout_pressed();
-  void highlight_clicked(const Glib::VariantBase & state);
-  void highlight_pressed();
   Gtk::Widget *create_font_size_item(const char *label, const char *markup, const char *size);
-  void font_style_clicked(const char * tag);
-  void font_size_activated(const Glib::VariantBase & state);
-  void undo_clicked();
-  void redo_clicked();
   void undo_changed();
-  void toggle_bullets_clicked(const Glib::VariantBase&);
-  void increase_indent_clicked(const Glib::VariantBase&);
-  void increase_indent_pressed();
-  void decrease_indent_clicked(const Glib::VariantBase&);
-  void decrease_indent_pressed();
-  void increase_font_clicked();
-  void decrease_font_clicked();
   Gtk::Widget *create_font_item(const char *action, const char *label, const char *markup);
 
   EmbeddableWidget     &m_widget;
   Glib::RefPtr<NoteBuffer> m_buffer;
   UndoManager          &m_undo_manager;
   bool                  m_event_freeze;
-  std::vector<sigc::connection> m_signal_cids;
 };
 
 class NoteFindHandler
@@ -177,6 +150,8 @@ private:
   static Glib::RefPtr<Gio::Icon> get_icon_pin_active(IconManager & icon_manager);
   static Glib::RefPtr<Gio::Icon> get_icon_pin_down(IconManager & icon_manager);
 
+  void connect_actions(EmbeddableWidgetHost *host);
+  void disconnect_actions();
   void on_delete_button_clicked(const Glib::VariantBase&);
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark>&);
@@ -197,6 +172,22 @@ private:
   void on_pin_status_changed(const Note &, bool);
   void on_pin_button_clicked(const Glib::VariantBase & state);
   void on_text_button_clicked(Gtk::Widget*);
+  void undo_clicked(const Glib::VariantBase&);
+  void redo_clicked(const Glib::VariantBase&);
+  void link_clicked(const Glib::VariantBase&);
+  void font_style_clicked(const char * tag);
+  void bold_clicked(const Glib::VariantBase & state);
+  void italic_clicked(const Glib::VariantBase & state);
+  void strikeout_clicked(const Glib::VariantBase & state);
+  void highlight_clicked(const Glib::VariantBase & state);
+  void font_size_activated(const Glib::VariantBase & state);
+  void toggle_bullets_clicked(const Glib::VariantBase&);
+  void increase_indent_clicked(const Glib::VariantBase&);
+  void decrease_indent_clicked(const Glib::VariantBase&);
+  bool increase_font_clicked(Gtk::Widget&, const Glib::VariantBase&);
+  bool decrease_font_clicked(Gtk::Widget&, const Glib::VariantBase&);
+  bool increase_indent_pressed(Gtk::Widget&, const Glib::VariantBase&);
+  bool decrease_indent_pressed(Gtk::Widget&, const Glib::VariantBase&);
 
   Note                        & m_note;
   IGnote                      & m_gnote;
@@ -207,12 +198,11 @@ private:
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
-  sigc::connection              m_delete_note_slot;
-  sigc::connection              m_important_note_slot;
   Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;
 
+  std::vector<sigc::connection> m_signal_cids;
   bool                         m_enabled;
 
   Tag::Ptr m_template_tag;
