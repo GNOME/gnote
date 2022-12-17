@@ -83,7 +83,7 @@ namespace gnote {
 
     // The main editor widget
     m_editor = manage(new NoteEditor(note.get_buffer(), g.preferences()));
-    m_editor->signal_populate_popup().connect(sigc::mem_fun(*this, &NoteWindow::on_populate_popup));
+    m_editor->set_extra_menu(editor_extra_menu());
 
     note.get_buffer()->signal_mark_set().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
     note.get_buffer()->signal_mark_deleted().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_deleted));
@@ -385,35 +385,11 @@ namespace gnote {
     }
   }
 
-  void NoteWindow::on_populate_popup(Gtk::Menu* menu)
+  Glib::RefPtr<Gio::MenuModel> NoteWindow::editor_extra_menu()
   {
-    menu->set_accel_group(m_accel_group);
-
-    DBG_OUT("Populating context menu...");
-
-    // Remove the lame-o gigantic Insert Unicode Control
-    // Characters menu item.
-    Gtk::Widget *lame_unicode;
-    std::vector<Gtk::Widget*> children(menu->get_children());
-      
-    lame_unicode = *children.rbegin();
-    menu->remove(*lame_unicode);
-
-    Gtk::MenuItem *spacer1 = manage(new Gtk::SeparatorMenuItem());
-    spacer1->show ();
-
-    auto link = manage(new Gtk::MenuItem(_("_Link to New Note"), true));
-    link->set_sensitive(!m_note.get_buffer()->get_selection().empty());
-    link->signal_activate().connect(sigc::mem_fun(*this, &NoteWindow::link_button_clicked));
-    link->add_accelerator("activate", m_accel_group, GDK_KEY_L,
-                          Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    link->show();
-      
-    Gtk::MenuItem *spacer2 = manage(new Gtk::SeparatorMenuItem());
-    spacer2->show();
-
-    menu->prepend(*spacer1);
-    menu->prepend(*link);
+    auto menu = Gio::Menu::create();
+    menu->append(_("_Link to New Note"), "win.link");
+    return menu;
   }
   
   //

@@ -156,7 +156,7 @@ private:
   void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
   void on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark>&);
   void on_buffer_changed();
-  void on_populate_popup(Gtk::Menu*);
+  Glib::RefPtr<Gio::MenuModel> editor_extra_menu();
   Gtk::Grid *make_toolbar();
   Gtk::Grid * make_template_bar();
   void on_untemplate_button_click();
