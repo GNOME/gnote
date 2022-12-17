@@ -27,8 +27,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/separator.h>
-#include <gtkmm/separatortoolitem.h>
-#include <gtkmm/separatormenuitem.h>
+#include <gtkmm/shortcutcontroller.h>
 
 #include "debug.hpp"
 #include "addinmanager.hpp"
@@ -68,8 +67,8 @@ namespace gnote {
     , m_name(note.get_title())
     , m_height(450)
     , m_width(600)
+    , m_text_menu(nullptr)
     , m_find_handler(note)
-    , m_global_keys(NULL)
     , m_enabled(true)
   {
     ITagManager & tag_manager = note.manager().tag_manager();
@@ -102,13 +101,12 @@ namespace gnote {
 
     attach(*m_template_widget, 0, 0, 1, 1);
     attach(*m_editor_window, 0, 1, 1, 1);
+    add_shortcuts();
   }
 
 
   NoteWindow::~NoteWindow()
   {
-    delete m_global_keys;
-    m_global_keys = NULL;
     // make sure editor is NULL. See bug 586084
     m_editor = NULL;
   }
@@ -130,9 +128,6 @@ namespace gnote {
     //addins may add accelarators, so accel group must be there
     EmbeddableWidgetHost *current_host = host();
     Gtk::Window *parent = dynamic_cast<Gtk::Window*>(current_host);
-    if(parent) {
-      add_accel_group(*parent);
-    }
 
     EmbeddableWidget::foreground();
     if(parent) {
@@ -161,7 +156,6 @@ namespace gnote {
     if(!parent) {
       return;
     }
-    remove_accel_group(*parent);
     if(parent->get_window()
        && (parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0) {
       int cur_width, cur_height;
@@ -192,47 +186,20 @@ namespace gnote {
     m_editor->grab_focus();
   }
 
-  void NoteWindow::add_accel_group(Gtk::Window & window)
+  void NoteWindow::add_shortcuts()
   {
-    if(!m_accel_group) {
-      m_accel_group = Gtk::AccelGroup::create();
-      window.add_accel_group(m_accel_group);
+    auto controller = Gtk::ShortcutController::create();
+    controller->set_scope(Gtk::ShortcutScope::LOCAL);
+    add_controller(controller);
 
-      if(!m_global_keys) {
-        // NOTE: Since some of our keybindings are only
-        // available in the context menu, and the context menu
-        // is created on demand, register them with the
-        // global keybinder
-        m_global_keys = new utils::GlobalKeybinder(m_accel_group);
-
-        // Open Help (F1)
-        m_global_keys->add_accelerator(sigc::mem_fun(*this, &NoteWindow::open_help_activate),
-                                       GDK_KEY_F1, (Gdk::ModifierType)0, (Gtk::AccelFlags)0);
-
-        // Increase Indent
-        m_global_keys->add_accelerator(sigc::mem_fun(*this, &NoteWindow::change_depth_right_handler),
-                                       GDK_KEY_Right, Gdk::MOD1_MASK,
-                                       Gtk::ACCEL_VISIBLE);
-
-        // Decrease Indent
-        m_global_keys->add_accelerator(sigc::mem_fun(*this, &NoteWindow::change_depth_left_handler),
-                                      GDK_KEY_Left, Gdk::MOD1_MASK,
-                                      Gtk::ACCEL_VISIBLE);
-        m_global_keys->enabled(m_enabled);
-      }
-
-      m_text_menu->set_accels(*m_global_keys);
+    // Open Help (F1)
+    {
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_F1);
+      auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::open_help_activate));
+      auto shortcut = Gtk::Shortcut::create(trigger, action);
+      controller->add_shortcut(shortcut);
     }
-    else {
-      window.add_accel_group(m_accel_group);
-    }
-  }
 
-  void NoteWindow::remove_accel_group(Gtk::Window & window)
-  {
-    if(m_accel_group) {
-      window.remove_accel_group(m_accel_group);
-    }
   }
 
   void NoteWindow::perform_search(const Glib::ustring & text)
@@ -492,9 +459,10 @@ namespace gnote {
     MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), std::static_pointer_cast<Note>(match));
   }
 
-  void NoteWindow::open_help_activate()
+  bool NoteWindow::open_help_activate(Gtk::Widget&, const Glib::VariantBase&)
   {
     utils::show_help("gnote", "editing-notes", *dynamic_cast<Gtk::Window*>(host()));
+    return true;
   }
 
   void NoteWindow::change_depth_right_handler()
@@ -543,8 +511,6 @@ namespace gnote {
     m_enabled = enable;
     m_editor->set_editable(m_enabled);
     embeddable_toolbar()->set_sensitive(m_enabled);
-    if(m_global_keys)
-      m_global_keys->enabled(m_enabled);
   }
 
 

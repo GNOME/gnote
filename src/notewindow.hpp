@@ -24,11 +24,9 @@
 #ifndef _NOTEWINDOW_HPP__
 #define _NOTEWINDOW_HPP__
 
-#include <gtkmm/accelgroup.h>
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/searchentry.h>
-#include <gtkmm/toolbutton.h>
 #include <gtkmm/popovermenu.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
@@ -165,10 +163,6 @@ public:
     {
       return m_text_menu;
     }
-  const Glib::RefPtr<Gtk::AccelGroup> & get_accel_group()
-    {
-      return m_accel_group;
-    }
   NoteFindHandler & get_find_handler()
     {
       return m_find_handler;
@@ -196,11 +190,10 @@ private:
   void on_note_tag_added(const NoteBase&, const Tag::Ptr&);
   void on_note_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
   void link_button_clicked();
-  void open_help_activate();
+  bool open_help_activate(Gtk::Widget&, const Glib::VariantBase&);
   void change_depth_right_handler();
   void change_depth_left_handler();
-  void add_accel_group(Gtk::Window &);
-  void remove_accel_group(Gtk::Window &);
+  void add_shortcuts();
   void on_pin_status_changed(const Note &, bool);
   void on_pin_button_clicked(const Glib::VariantBase & state);
   void on_text_button_clicked(Gtk::Widget*);
@@ -210,7 +203,6 @@ private:
   Glib::ustring                 m_name;
   int                           m_height;
   int                           m_width;
-  Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
   NoteTextMenu                 *m_text_menu;
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
@@ -221,7 +213,6 @@ private:
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;
 
-  utils::GlobalKeybinder       *m_global_keys;
   bool                         m_enabled;
 
   Tag::Ptr m_template_tag;
