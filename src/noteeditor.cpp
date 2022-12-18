@@ -21,6 +21,7 @@
 
 #include <string.h>
 
+#include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/settings.h>
 
 #include "notebuffer.hpp"
@@ -61,7 +62,9 @@ namespace gnote {
     list->add ("text/uri-list", (Gtk::TargetFlags)0, 1);
     list->add ("_NETSCAPE_URL", (Gtk::TargetFlags)0, 1);
 
-    signal_key_press_event().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
+    auto key_controller = Gtk::EventControllerKey::create();
+    key_controller->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
+    add_controller(key_controller);
     signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed), false);
 
     g_signal_connect(gobj(), "paste-clipboard", G_CALLBACK(paste_started), this);
@@ -168,65 +171,59 @@ namespace gnote {
     }
   }
 
-  bool NoteEditor::key_pressed(GdkEventKey *ev)
+  bool NoteEditor::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
   {
-      bool ret_value = false;
-      if(!get_editable()) {
-        return ret_value;
-      }
-
-      guint keyval;
-      GdkModifierType state;
-      GdkEvent *event = (GdkEvent*)ev;
-      if(!gdk_event_get_keyval(event, &keyval) || !gdk_event_get_state(event, &state)) {
-        return false;
-      }
-      switch(keyval)
-      {
-      case GDK_KEY_KP_Enter:
-      case GDK_KEY_Return:
-        // Allow opening notes with Ctrl + Enter
-        if(state != GDK_CONTROL_MASK) {
-          if(state & Gdk::SHIFT_MASK) {
-            ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->add_new_line (true);
-          } 
-          else {
-            ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->add_new_line (false);
-          }          
-          scroll_to (get_buffer()->get_insert());
-        }
-        break;
-      case GDK_KEY_Tab:
-        ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->add_tab ();
-        scroll_to (get_buffer()->get_insert());
-        break;
-      case GDK_KEY_ISO_Left_Tab:
-        ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->remove_tab ();
-        scroll_to (get_buffer()->get_insert());
-        break;
-      case GDK_KEY_Delete:
-        if(Gdk::SHIFT_MASK != (state & Gdk::SHIFT_MASK)) {
-          ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->delete_key_handler();
-          scroll_to (get_buffer()->get_insert());
-        }
-        break;
-      case GDK_KEY_BackSpace:
-        ret_value = NoteBuffer::Ptr::cast_static(get_buffer())->backspace_key_handler();
-        break;
-      case GDK_KEY_Left:
-      case GDK_KEY_Right:
-      case GDK_KEY_Up:
-      case GDK_KEY_Down:
-      case GDK_KEY_End:
-        ret_value = false;
-        break;
-      default:
-        NoteBuffer::Ptr::cast_static(get_buffer())->check_selection();
-        break;
-      }
-
+    bool ret_value = false;
+    if(!get_editable()) {
       return ret_value;
     }
+
+    switch(keyval)
+    {
+    case GDK_KEY_KP_Enter:
+    case GDK_KEY_Return:
+      // Allow opening notes with Ctrl + Enter
+      if(state != Gdk::ModifierType::CONTROL_MASK) {
+        if((state & Gdk::ModifierType::SHIFT_MASK) == Gdk::ModifierType::SHIFT_MASK) {
+          ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->add_new_line(true);
+        }
+        else {
+          ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->add_new_line(false);
+        }
+        scroll_to(get_buffer()->get_insert());
+      }
+      break;
+    case GDK_KEY_Tab:
+      ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->add_tab();
+      scroll_to(get_buffer()->get_insert());
+      return true;
+    case GDK_KEY_ISO_Left_Tab:
+      ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->remove_tab();
+      scroll_to(get_buffer()->get_insert());
+      return true;
+    case GDK_KEY_Delete:
+      if(Gdk::ModifierType::SHIFT_MASK != (state & Gdk::ModifierType::SHIFT_MASK)) {
+        ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->delete_key_handler();
+        scroll_to(get_buffer()->get_insert());
+      }
+      break;
+    case GDK_KEY_BackSpace:
+      ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->backspace_key_handler();
+      break;
+    case GDK_KEY_Left:
+    case GDK_KEY_Right:
+    case GDK_KEY_Up:
+    case GDK_KEY_Down:
+    case GDK_KEY_End:
+      ret_value = false;
+      break;
+    default:
+      std::static_pointer_cast<NoteBuffer>(get_buffer())->check_selection();
+      break;
+    }
+
+    return ret_value;
+  }
 
 
   bool NoteEditor::button_pressed (GdkEventButton * )
