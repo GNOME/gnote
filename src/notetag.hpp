@@ -304,7 +304,6 @@ protected:
 
   virtual void on_tag_added(const Glib::RefPtr<Gtk::TextTag> &) override;
   virtual void on_tag_removed(const Glib::RefPtr<Gtk::TextTag> &) override;
-//  virtual void on_notetag_changed(Glib::RefPtr<Gtk::TextTag>& tag, bool size_changed);
 
 private:
   void _init_common_tags();

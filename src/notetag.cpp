@@ -621,13 +621,5 @@ namespace gnote {
     }
   }
 
-
-#if 0
-  void NoteTagTable::on_notetag_changed(Glib::RefPtr<Gtk::TextTag>& tag, bool size_changed)
-  {
-    m_signal_changed(tag, size_changed);
-  }
-#endif
-
 }
 
