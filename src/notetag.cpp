@@ -378,29 +378,29 @@ namespace gnote {
 
     tag = NoteTag::create("centered", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_justification() = Gtk::Justification::CENTER;
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("bold", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_weight() = PANGO_WEIGHT_BOLD;
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("italic", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_style() = Pango::Style::ITALIC;
-    add (tag);
+    add_tag(tag);
     
     tag = NoteTag::create("strikethrough", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_strikethrough() = true;
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "yellow";
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "green";
     tag->set_can_serialize(false);
     tag->set_save_type(META);
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("note-title", 0);
     tag->property_foreground_rgba().set_value(active_link_color);
@@ -408,14 +408,14 @@ namespace gnote {
     // FiXME: Hack around extra rewrite on open
     tag->set_can_serialize(false);
     tag->set_save_type(META);
-    add (tag);
+    add_tag(tag);
       
     tag = NoteTag::create("related-to", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_left_margin() = 40;
     tag->property_editable() = false;
     tag->set_save_type(META);
-    add (tag);
+    add_tag(tag);
 
     // Used when inserting dropped URLs/text to Start Here
     tag = NoteTag::create("datetime", 0);
@@ -423,25 +423,25 @@ namespace gnote {
     tag->property_style() = Pango::Style::ITALIC;
     tag->property_foreground_rgba().set_value(visited_link_color);
     tag->set_save_type(META);
-    add (tag);
+    add_tag(tag);
 
     // Font sizes
 
     tag = NoteTag::create("size:huge", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_XX_LARGE;
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("size:large", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_X_LARGE;
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("size:normal", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_MEDIUM;
-    add (tag);
+    add_tag(tag);
 
     tag = NoteTag::create("size:small", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_SMALL;
-    add (tag);
+    add_tag(tag);
 
     // Links
 
@@ -449,21 +449,21 @@ namespace gnote {
     tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(visited_link_color);
     tag->set_save_type(META);
-    add (tag);
+    add_tag(tag);
     m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
     tag->set_save_type(META);
-    add (tag);
+    add_tag(tag);
     m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
     tag->set_save_type(META);
-    add (tag);
+    add_tag(tag);
     m_url_tag = tag;
   }
 
@@ -599,27 +599,10 @@ namespace gnote {
     return m_tag_types.find(tag_name) != m_tag_types.end();
   }
 
-  void NoteTagTable::on_tag_added(const Glib::RefPtr<Gtk::TextTag> & tag)
+  void NoteTagTable::add_tag(Glib::RefPtr<Gtk::TextTag> && tag)
   {
-    m_added_tags.push_back(tag);
-
-    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
-    if (note_tag) {
-//      note_tag->signal_changed().connect(sigc::mem_fun(*this, &NoteTagTable::on_notetag_changed));
-    }
+    add(tag);
+    m_added_tags.emplace_back(std::move(tag));
   }
-
-  
-  void NoteTagTable::on_tag_removed(const Glib::RefPtr<Gtk::TextTag> & tag)
-  {
-    utils::remove_swap_back(m_added_tags, tag);
-
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
-    if (note_tag) {
-// TODO disconnect the signal
-//      note_tag.Changed -= OnTagChanged;
-    }
-  }
-
 }
 

@@ -302,15 +302,14 @@ protected:
       _init_common_tags();
     }
 
-  virtual void on_tag_added(const Glib::RefPtr<Gtk::TextTag> &) override;
-  virtual void on_tag_removed(const Glib::RefPtr<Gtk::TextTag> &) override;
+  void add_tag(Glib::RefPtr<Gtk::TextTag> && tag);
 
 private:
   void _init_common_tags();
 
   static NoteTagTable::Ptr           s_instance;
   std::map<Glib::ustring, Factory>   m_tag_types;
-  std::vector<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
+  std::vector<Glib::RefPtr<Gtk::TextTag>> m_added_tags;
 
   NoteTag::Ptr m_url_tag;
   NoteTag::Ptr m_link_tag;
