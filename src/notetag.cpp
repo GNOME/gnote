@@ -397,6 +397,7 @@ namespace gnote {
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "yellow";
+    tag->property_background_set() = true;
     add_tag(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
@@ -407,6 +408,7 @@ namespace gnote {
 
     tag = NoteTag::create("note-title", 0);
     tag->property_foreground_rgba().set_value(active_link_color);
+    tag->property_foreground_set() = true;
     tag->property_scale() = Pango::SCALE_XX_LARGE;
     // FiXME: Hack around extra rewrite on open
     tag->set_can_serialize(false);
@@ -425,6 +427,7 @@ namespace gnote {
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_style() = Pango::Style::ITALIC;
     tag->property_foreground_rgba().set_value(visited_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add_tag(tag);
 
@@ -451,6 +454,7 @@ namespace gnote {
     tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(visited_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add_tag(tag);
     m_broken_link_tag = tag;
@@ -458,6 +462,7 @@ namespace gnote {
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add_tag(tag);
     m_link_tag = tag;
@@ -465,6 +470,7 @@ namespace gnote {
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add_tag(tag);
     m_url_tag = tag;
