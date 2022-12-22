@@ -370,8 +370,11 @@ namespace gnote {
     Gdk::RGBA active_link_color, visited_link_color;
     {
       Gtk::LinkButton link;
-      active_link_color = link.get_style_context()->get_color(Gtk::STATE_FLAG_LINK);
-      visited_link_color = link.get_style_context()->get_color(Gtk::STATE_FLAG_VISITED);
+      auto style_ctx = link.get_style_context();
+      style_ctx->set_state(Gtk::StateFlags::LINK);
+      active_link_color = style_ctx->get_color();
+      style_ctx->set_state(Gtk::StateFlags::VISITED);
+      visited_link_color = style_ctx->get_color();
     }
 
     // Font stylings
