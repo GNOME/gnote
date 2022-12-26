@@ -145,6 +145,15 @@ namespace utils {
     popover->signal_hide().connect(sigc::mem_fun(*popover, &Gtk::Widget::unparent));
     return popover;
   }
+
+  template <typename T, typename... Args>
+  std::shared_ptr<T> make_owned_popover(Gtk::Widget & parent, Args... args)
+  {
+    auto popover = std::make_shared<T>(args...);
+    popover->set_parent(parent);
+    popover->signal_hide().connect(sigc::mem_fun(*popover, &Gtk::Widget::unparent));
+    return popover;
+  }
 }
 
 }
