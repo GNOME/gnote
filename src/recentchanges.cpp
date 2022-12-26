@@ -882,9 +882,8 @@ namespace gnote {
       menu->append(_("No configured actions"));
     }
 
-    auto popover = Gtk::make_managed<Gtk::PopoverMenu>(menu);
+    auto popover = utils::make_popover<Gtk::PopoverMenu>(*button, menu);
     popover->signal_closed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_window_menu_closed));
-    popover->set_parent(*button);
     return popover;
   }
 
