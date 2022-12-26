@@ -48,7 +48,7 @@ class NoteTextMenu
   : public Gtk::PopoverMenu
 {
 public:
-  NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, UndoManager& undo_manager);
+  NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);
   void refresh_state();
 protected:
   virtual void on_show() override;
@@ -60,7 +60,6 @@ private:
 
   EmbeddableWidget     &m_widget;
   Glib::RefPtr<NoteBuffer> m_buffer;
-  UndoManager          &m_undo_manager;
   bool                  m_event_freeze;
 };
 

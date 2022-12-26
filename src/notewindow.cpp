@@ -576,7 +576,7 @@ namespace gnote {
   void NoteWindow::on_text_button_clicked(Gtk::Widget *parent)
   {
     if(!m_text_menu) {
-      m_text_menu = Gtk::manage(new NoteTextMenu(*this, m_note.get_buffer(), m_note.get_buffer()->undoer()));
+      m_text_menu = Gtk::manage(new NoteTextMenu(*this, m_note.get_buffer()));
       m_text_menu->set_parent(*parent);
     }
     m_text_menu->refresh_state();
@@ -978,11 +978,10 @@ namespace gnote {
   // Menu for font style and size, and set the active radio
   // menuitem depending on the cursor poition.
   //
-  NoteTextMenu::NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, UndoManager & undo_manager)
+  NoteTextMenu::NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer)
     : Gtk::PopoverMenu()
     , m_widget(widget)
     , m_buffer(buffer)
-    , m_undo_manager(undo_manager)
     {
       set_position(Gtk::PositionType::BOTTOM);
       Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
