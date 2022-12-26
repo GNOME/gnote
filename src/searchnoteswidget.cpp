@@ -1117,7 +1117,9 @@ Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
     menu->append(_("Open In New _Window"), "win.open-note-new-window");
     menu->append(_("_Delete"), "win.delete-selected-notes");
 
-    m_note_list_context_menu = std::make_shared<Gtk::PopoverMenu>(menu);
+    m_note_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_tree, menu);
+  }
+  else {
     m_note_list_context_menu->set_parent(*m_tree);
   }
 
@@ -1149,7 +1151,9 @@ Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
     menu->append(_("_Open Template Note"), "win.open-template-note");
     menu->append(_("Re_name..."), "win.rename-notebook");
     menu->append(_("_Delete"), "win.delete-notebook");
-    m_notebook_list_context_menu = std::make_shared<Gtk::PopoverMenu>(menu);
+    m_notebook_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_notebooksTree, menu);
+  }
+  else {
     m_notebook_list_context_menu->set_parent(*m_notebooksTree);
   }
 
