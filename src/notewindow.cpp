@@ -329,6 +329,7 @@ namespace gnote {
 
   std::vector<PopoverWidget> NoteWindow::get_popover_widgets()
   {
+    undo_changed();
     std::vector<PopoverWidget> popover_widgets;
     popover_widgets.reserve(20);
 
@@ -771,6 +772,17 @@ namespace gnote {
     return true;
   }
 
+  void NoteWindow::undo_changed()
+  {
+    EmbeddableWidgetHost *host = this->host();
+    if(host == NULL) {
+      return;
+    }
+
+    auto & undo_manager = m_note.get_buffer()->undoer();
+    host->find_action("undo")->property_enabled() = undo_manager.get_can_undo();
+    host->find_action("redo")->property_enabled() = undo_manager.get_can_redo();
+  }
 
 
   NoteFindHandler::NoteFindHandler(Note & note)
@@ -975,10 +987,6 @@ namespace gnote {
       set_position(Gtk::PositionType::BOTTOM);
       Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
 
-      // Listen to events so we can sensitize and
-      // enable keybinding
-      undo_manager.signal_undo_changed().connect(sigc::mem_fun(*this, &NoteTextMenu::undo_changed));
-
       Glib::Quark tag_quark("Tag");
       Gtk::Widget *bold = create_font_item("win.change-font-bold", _("_Bold"), "b");
       Gtk::Widget *italic = create_font_item("win.change-font-italic", _("_Italic"), "i");
@@ -1117,19 +1125,6 @@ namespace gnote {
 
     refresh_sizing_state ();
 
-    undo_changed();
-
     m_event_freeze = false;
   }
-
-  void NoteTextMenu::undo_changed ()
-  {
-    EmbeddableWidgetHost *host = m_widget.host();
-    if(host == NULL) {
-      return;
-    }
-    host->find_action("undo")->property_enabled() = m_undo_manager.get_can_undo();
-    host->find_action("redo")->property_enabled() = m_undo_manager.get_can_redo();
-  }
-
 }

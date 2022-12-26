@@ -56,7 +56,6 @@ protected:
 private:
   void refresh_sizing_state();
   Gtk::Widget *create_font_size_item(const char *label, const char *markup, const char *size);
-  void undo_changed();
   Gtk::Widget *create_font_item(const char *action, const char *label, const char *markup);
 
   EmbeddableWidget     &m_widget;
@@ -188,6 +187,7 @@ private:
   bool decrease_font_clicked(Gtk::Widget&, const Glib::VariantBase&);
   bool increase_indent_pressed(Gtk::Widget&, const Glib::VariantBase&);
   bool decrease_indent_pressed(Gtk::Widget&, const Glib::VariantBase&);
+  void undo_changed();
 
   Note                        & m_note;
   IGnote                      & m_gnote;
