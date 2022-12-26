@@ -136,6 +136,15 @@ namespace utils {
   Gtk::Box *create_popover_submenu(Glib::ustring && name);
   void set_common_popover_widget_props(Gtk::Widget & widget);
   void set_common_popover_widget_props(Gtk::Box & widget);
+
+  template <typename T, typename... Args>
+  T *make_popover(Gtk::Widget & parent, Args... args)
+  {
+    auto popover = Gtk::make_managed<T>(args...);
+    popover->set_parent(parent);
+    popover->signal_hide().connect(sigc::mem_fun(*popover, &Gtk::Widget::unparent));
+    return popover;
+  }
 }
 
 }
