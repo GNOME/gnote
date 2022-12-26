@@ -24,6 +24,7 @@
 #include <gtkmm/gestureclick.h>
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/liststore.h>
+#include <gtkmm/popovermenu.h>
 #include <gtkmm/shortcutcontroller.h>
 
 #include "debug.hpp"

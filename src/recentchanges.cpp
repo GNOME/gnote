@@ -26,6 +26,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
+#include <gtkmm/popovermenu.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/shortcutcontroller.h>
 
