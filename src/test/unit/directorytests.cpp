@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2018-2019 Aurimas Cernius
+ * Copyright (C) 2018-2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -99,7 +99,7 @@ SUITE(directory)
     for(auto f : dirsf) {
       auto name = Glib::path_get_basename(f->get_path());
       for(auto iter = dirss.begin(); iter != dirss.end(); ++iter) {
-        if(name == Glib::path_get_basename(*iter)) {
+        if(name == Glib::path_get_basename(iter->c_str())) {
           dirss.erase(iter);
           break;
         }
