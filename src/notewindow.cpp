@@ -142,10 +142,9 @@ namespace gnote {
     if(!parent) {
       return;
     }
-    if(parent->get_window()
-       && (parent->get_window()->get_state() & Gdk::WINDOW_STATE_MAXIMIZED) == 0) {
-      int cur_width, cur_height;
-      parent->get_size(cur_width, cur_height);
+    if(!parent->is_maximized()) {
+      int cur_width = parent->get_width();
+      int cur_height = parent->get_height();;
 
       if(!(m_note.data().width() == cur_width && m_note.data().height() == cur_height)) {
         m_note.data().set_extent(cur_width, cur_height);
