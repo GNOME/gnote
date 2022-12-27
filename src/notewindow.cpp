@@ -686,11 +686,18 @@ namespace gnote {
   void NoteWindow::increase_indent_clicked(const Glib::VariantBase&)
   {
     m_note.get_buffer()->increase_cursor_depth();
+    if(auto h = host()) {
+      h->find_action("decrease-indent")->property_enabled() = true;
+    }
   }
 
   void NoteWindow::decrease_indent_clicked(const Glib::VariantBase&)
   {
-    m_note.get_buffer()->decrease_cursor_depth();
+    auto & buffer = m_note.get_buffer();
+    buffer->decrease_cursor_depth();
+    if(auto h = host()) {
+      h->find_action("decrease-indent")->property_enabled() = buffer->is_bulleted_list_active();
+    }
   }
 
   bool NoteWindow::increase_font_clicked(Gtk::Widget&, const Glib::VariantBase&)
