@@ -86,7 +86,6 @@ namespace gnote {
     register_main_window_action("change-font-strikeout", &Glib::Variant<bool>::variant_type(), true);
     register_main_window_action("change-font-highlight", &Glib::Variant<bool>::variant_type(), true);
     register_main_window_action("change-font-size", &Glib::Variant<Glib::ustring>::variant_type(), true);
-    register_main_window_action("enable-bullets", &Glib::Variant<bool>::variant_type(), true);
     register_main_window_action("increase-indent", NULL, true);
     register_main_window_action("decrease-indent", NULL, true);
 
