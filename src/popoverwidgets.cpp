@@ -18,40 +18,11 @@
  */
 
 #include <gtkmm/label.h>
-#include <gtkmm/modelbutton.h>
 
 #include "iactionmanager.hpp"
 #include "popoverwidgets.hpp"
 
 namespace gnote {
-  namespace {
-    class PopoverSubmenuBox
-      : public Gtk::Box
-      , public PopoverSubmenu
-    {
-    public:
-      PopoverSubmenuBox(Glib::ustring && submenu)
-        : Gtk::Box(Gtk::ORIENTATION_VERTICAL)
-        , PopoverSubmenu(std::move(submenu))
-      {
-        utils::set_common_popover_widget_props(*this);
-      }
-    };
-
-
-    void set_common_popover_button_props(Gtk::ModelButton & button)
-    {
-      button.set_use_underline(true);
-      button.property_margin_top() = 3;
-      button.property_margin_bottom() = 3;
-      auto lbl = dynamic_cast<Gtk::Label*>(button.get_child());
-      if(lbl) {
-        lbl->set_xalign(0.0f);
-      }
-      utils::set_common_popover_widget_props(button);
-    }
-  }
-
 
 const int APP_SECTION_NEW = 1;
 const int APP_SECTION_MANAGE = 2;
@@ -80,67 +51,7 @@ PopoverWidget PopoverWidget::create_custom_section(const Glib::RefPtr<Gio::MenuI
 }
 
 
-PopoverButton::PopoverButton(Glib::ustring && label, bool mnemonic)
-  : Gtk::Button(std::move(label), mnemonic)
-  , m_parent_po(nullptr)
-{
-}
-
-
-PopoverSubmenuButton::PopoverSubmenuButton(Glib::ustring && label, bool mnemonic, sigc::slot<Gtk::Widget*()> && submenu_builder)
-  : PopoverButton(std::move(label), mnemonic)
-  , m_builder(std::move(submenu_builder))
-{
-  set_common_popover_button_props(*this);
-  signal_clicked().connect(sigc::mem_fun(*this, &PopoverSubmenuButton::on_clicked));
-}
-
-void PopoverSubmenuButton::on_clicked()
-{
-  parent_popover()->set_child(*manage(m_builder()));
-}
-
-
 namespace utils {
-
-  Gtk::Button *create_popover_button(const Glib::ustring & action, Glib::ustring && label)
-  {
-    Gtk::Button *item = new Gtk::Button(std::move(label), true);
-    item->set_action_name(action);
-    set_common_popover_button_props(*item);
-    return item;
-  }
-
-
-  Gtk::Widget *create_popover_submenu_button(const Glib::ustring & submenu, Glib::ustring && label)
-  {
-    Gtk::ModelButton *button = new Gtk::ModelButton;
-    button->property_menu_name() = submenu;
-    button->set_label(std::move(label));
-    set_common_popover_button_props(*button);
-    return button;
-  }
-
-
-  Gtk::Box *create_popover_submenu(Glib::ustring && name)
-  {
-    return new PopoverSubmenuBox(std::move(name));
-  }
-
-
-  void set_common_popover_widget_props(Gtk::Widget & widget)
-  {
-    widget.property_hexpand() = true;
-  }
-
-  void set_common_popover_widget_props(Gtk::Box & widget)
-  {
-    widget.property_margin_top() = 9;
-    widget.property_margin_bottom() = 9;
-    widget.property_margin_start() = 12;
-    widget.property_margin_end() = 12;
-    set_common_popover_widget_props(static_cast<Gtk::Widget&>(widget));
-  }
 
   void unparent_popover_on_close(Gtk::Popover *popover)
   {

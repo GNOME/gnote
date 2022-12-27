@@ -83,59 +83,8 @@ struct PopoverWidget
     }
 };
 
-class PopoverSubmenu
-{
-public:
-  PopoverSubmenu(Glib::ustring && name)
-    : m_name(std::move(name))
-  {}
-
-  const Glib::ustring & name() const
-    {
-      return m_name;
-    }
-private:
-  const Glib::ustring m_name;
-};
-
-
-class PopoverButton
-  : public Gtk::Button
-{
-public:
-  PopoverButton(Glib::ustring && label, bool mnemonic);
-
-  void parent_popover(Gtk::Popover *popover)
-    {
-      m_parent_po = popover;
-    }
-  Gtk::Popover *parent_popover() const
-    {
-      return m_parent_po;
-    }
-private:
-  Gtk::Popover *m_parent_po;
-};
-
-
-class PopoverSubmenuButton
-  : public PopoverButton
-{
-public:
-  PopoverSubmenuButton(Glib::ustring && label, bool mnemonic, sigc::slot<Gtk::Widget*()> && submenu_builder);
-private:
-  void on_clicked();
-
-  sigc::slot<Gtk::Widget*()> m_builder;
-};
-
 
 namespace utils {
-  Gtk::Button *create_popover_button(const Glib::ustring & action, Glib::ustring && label);
-  Gtk::Widget *create_popover_submenu_button(const Glib::ustring & submenu, Glib::ustring && label);
-  Gtk::Box *create_popover_submenu(Glib::ustring && name);
-  void set_common_popover_widget_props(Gtk::Widget & widget);
-  void set_common_popover_widget_props(Gtk::Box & widget);
   void unparent_popover_on_close(Gtk::Popover *popover);
 
   template <typename T, typename... Args>
