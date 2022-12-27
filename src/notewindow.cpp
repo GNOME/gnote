@@ -1076,8 +1076,6 @@ namespace gnote {
       return;
     }
 
-    m_event_freeze = true;
-
     Gtk::TextIter start, end;
     host->find_action("link")->property_enabled() = buffer->get_selection_bounds(start, end);
     host->find_action("change-font-bold")->set_state(Glib::Variant<bool>::create(buffer->is_active_tag("bold")));
@@ -1088,7 +1086,5 @@ namespace gnote {
     host->find_action("decrease-indent")->property_enabled() = buffer->is_bulleted_list_active();
 
     refresh_sizing_state(widget, buffer);
-
-    m_event_freeze = false;
   }
 }

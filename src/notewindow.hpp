@@ -54,8 +54,6 @@ private:
   void refresh_sizing_state(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);
   Gtk::Widget *create_font_size_item(const char *label, const char *markup, const char *size);
   Gtk::Widget *create_font_item(const char *action, const char *icon_name);
-
-  bool                  m_event_freeze;
 };
 
 class NoteFindHandler
