@@ -492,11 +492,11 @@ namespace gnote {
         match = m_note.manager().create(std::move(select));
       } 
       catch (const sharp::Exception & e) {
-        utils::HIGMessageDialog dialog(dynamic_cast<Gtk::Window*>(host()),
+        auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(dynamic_cast<Gtk::Window*>(host()),
           GTK_DIALOG_DESTROY_WITH_PARENT,
-          Gtk::MESSAGE_ERROR,  Gtk::BUTTONS_OK,
+          Gtk::MessageType::ERROR, Gtk::ButtonsType::OK,
           _("Cannot create note"), e.what());
-        dialog.run ();
+        dialog->show();
         return;
       }
     }
@@ -603,11 +603,11 @@ namespace gnote {
         match = manager.create(std::move(select));
       }
       catch(const sharp::Exception & e) {
-        utils::HIGMessageDialog dialog(dynamic_cast<Gtk::Window*>(m_buffer->note().get_window()->host()),
+        auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(dynamic_cast<Gtk::Window*>(m_note.get_window()->host()),
           GTK_DIALOG_DESTROY_WITH_PARENT,
-          Gtk::MESSAGE_ERROR,  Gtk::BUTTONS_OK,
+          Gtk::MessageType::ERROR,  Gtk::ButtonsType::OK,
           _("Cannot create note"), e.what());
-        dialog.run();
+        dialog->show();
         return;
       }
     }
