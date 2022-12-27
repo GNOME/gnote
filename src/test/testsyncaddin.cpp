@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2019 Aurimas Cernius
+ * Copyright (C) 2017-2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ Gtk::Widget *SyncAddin::create_preferences_control(EventHandler /*requiredPrefCh
   return NULL;
 }
 
-bool SyncAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
+bool SyncAddin::save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved)
 {
   on_saved(true, "");
   return true;
