@@ -18,6 +18,8 @@
  */
 
 
+#include <giomm/file.h>
+
 #include "testsyncaddin.hpp"
 #include "synchronization/filesystemsyncserver.hpp"
 
