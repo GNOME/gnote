@@ -142,6 +142,21 @@ namespace utils {
     set_common_popover_widget_props(static_cast<Gtk::Widget&>(widget));
   }
 
+  void unparent_popover_on_close(Gtk::Popover *popover)
+  {
+    auto unparent_fn = [](gpointer data)
+    {
+      static_cast<Gtk::Popover*>(data)->unparent();
+    };
+    auto callback = [popover, unparent_fn]
+    {
+      // unparenting at once breaks popover menu - actions not invoked
+      // unparent with small delay
+      g_timeout_add_once(1, unparent_fn, popover);
+    };
+    popover->signal_closed().connect(callback);
+  }
+
 }
 
 }
