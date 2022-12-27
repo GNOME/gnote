@@ -69,7 +69,7 @@ namespace gnote {
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));
     signal_mark_set().connect(sigc::mem_fun(*this, &NoteBuffer::mark_set_event));
 
-    signal_apply_tag().connect(sigc::mem_fun(*this, &NoteBuffer::on_tag_applied));
+    signal_apply_tag().connect(sigc::mem_fun(*this, &NoteBuffer::on_tag_applied), false);
     
 
     tags->signal_tag_changed().connect(sigc::mem_fun(*this, &NoteBuffer::on_tag_changed));
