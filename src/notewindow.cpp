@@ -28,6 +28,7 @@
 #include <gtkmm/label.h>
 #include <gtkmm/separator.h>
 #include <gtkmm/shortcutcontroller.h>
+#include <gtkmm/togglebutton.h>
 
 #include "debug.hpp"
 #include "addinmanager.hpp"
@@ -84,10 +85,6 @@ namespace gnote {
     // The main editor widget
     m_editor = manage(new NoteEditor(note.get_buffer(), g.preferences()));
     m_editor->set_extra_menu(editor_extra_menu());
-
-    note.get_buffer()->signal_mark_set().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_set));
-    note.get_buffer()->signal_mark_deleted().connect(sigc::mem_fun(*this, &NoteWindow::on_selection_mark_deleted));
-    note.get_buffer()->signal_changed().connect(sigc::mem_fun(*this, &NoteWindow::on_buffer_changed));
 
     // FIXME: I think it would be really nice to let the
     //        window get bigger up till it grows more than
@@ -195,8 +192,6 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteWindow::highlight_clicked)));
     m_signal_cids.push_back(host->find_action("change-font-size")->signal_change_state()
       .connect(sigc::mem_fun(*this, &NoteWindow::font_size_activated)));
-    m_signal_cids.push_back(host->find_action("enable-bullets")->signal_change_state()
-      .connect(sigc::mem_fun(*this, &NoteWindow::toggle_bullets_clicked)));
     m_signal_cids.push_back(host->find_action("increase-indent")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteWindow::increase_indent_clicked)));
     m_signal_cids.push_back(host->find_action("decrease-indent")->signal_activate()
@@ -290,14 +285,14 @@ namespace gnote {
     }
 
     {
-      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Right, Gdk::ModifierType::META_MASK);
-      auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::increase_indent_pressed));
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Right, Gdk::ModifierType::ALT_MASK);
+      auto action = Gtk::NamedAction::create("win.increase-indent");
       controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
     }
 
     {
-      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Left, Gdk::ModifierType::META_MASK);
-      auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::decrease_indent_pressed));
+      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Left, Gdk::ModifierType::ALT_MASK);
+      auto action = Gtk::NamedAction::create("win.decrease-indent");
       controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
     }
   }
@@ -364,26 +359,6 @@ namespace gnote {
     Note::List single_note_list;
     single_note_list.push_back(std::static_pointer_cast<Note>(m_note.shared_from_this()));
     noteutils::show_deletion_dialog(single_note_list, dynamic_cast<Gtk::Window*>(host()));
-  }
-
-  void NoteWindow::on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark> & mark)
-  {
-    on_selection_mark_deleted(mark);
-  }
-
-  void NoteWindow::on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark> & mark)
-  {
-    auto buffer = m_note.get_buffer();
-    if(m_text_menu && (mark == buffer->get_insert() || mark == buffer->get_selection_bound())) {
-      m_text_menu->refresh_state();
-    }
-  }
-
-  void NoteWindow::on_buffer_changed()
-  {
-    if(m_text_menu) {
-      m_text_menu->refresh_state();
-    }
   }
 
   Glib::RefPtr<Gio::MenuModel> NoteWindow::editor_extra_menu()
@@ -760,18 +735,6 @@ namespace gnote {
     return true;
   }
 
-  bool NoteWindow::increase_indent_pressed(Gtk::Widget&, const Glib::VariantBase&)
-  {
-    m_note.get_buffer()->toggle_selection_bullets();
-    return true;
-  }
-
-  bool NoteWindow::decrease_indent_pressed(Gtk::Widget&, const Glib::VariantBase&)
-  {
-    m_note.get_buffer()->decrease_cursor_depth();
-    return true;
-  }
-
   void NoteWindow::undo_changed()
   {
     EmbeddableWidgetHost *host = this->host();
@@ -979,20 +942,24 @@ namespace gnote {
   // menuitem depending on the cursor poition.
   //
   NoteTextMenu::NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer)
-    : Gtk::PopoverMenu()
-    , m_widget(widget)
-    , m_buffer(buffer)
+    : Gtk::Popover()
     {
       set_position(Gtk::PositionType::BOTTOM);
-      Gtk::Box *menu_box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
+      auto menu_box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL);
 
-      Glib::Quark tag_quark("Tag");
-      Gtk::Widget *bold = create_font_item("win.change-font-bold", _("_Bold"), "b");
-      Gtk::Widget *italic = create_font_item("win.change-font-italic", _("_Italic"), "i");
-      Gtk::Widget *strikeout = create_font_item("win.change-font-strikeout", _("_Strikeout"), "s");
+      auto font_box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::HORIZONTAL);
+      font_box->set_name("font-box");
+      Gtk::Widget *bold = create_font_item("win.change-font-bold", "format-text-bold-symbolic");
+      Gtk::Widget *italic = create_font_item("win.change-font-italic", "format-text-italic-symbolic");
+      Gtk::Widget *strikeout = create_font_item("win.change-font-strikeout", "format-text-strikethrough-symbolic");
+      font_box->append(*bold);
+      font_box->append(*italic);
+      font_box->append(*strikeout);
 
-      auto highlight = manage(utils::create_popover_button("win.change-font-highlight", ""));
-      auto label = manage(new Gtk::Label);
+      auto highlight = Gtk::make_managed<Gtk::ToggleButton>();
+      highlight->set_action_name("win.change-font-highlight");
+      highlight->set_has_frame(false);
+      auto label = Gtk::make_managed<Gtk::Label>();
       Glib::ustring markup = Glib::ustring::compose("<span background=\"yellow\">%1</span>", _("_Highlight"));
       label->set_markup_with_mnemonic(markup);
       highlight->set_child(*label);
@@ -1002,52 +969,57 @@ namespace gnote {
       Gtk::Widget *large = create_font_size_item(_("_Large"), "large", "size:large");
       Gtk::Widget *huge = create_font_size_item(_("Hu_ge"), "x-large", "size:huge");
 
-      auto box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
-      utils::set_common_popover_widget_props(*box);
+      auto box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL);
       box->set_name("formatting");
-      box->append(*bold);
-      box->append(*italic);
-      box->append(*strikeout);
+      box->append(*font_box);
       box->append(*highlight);
       menu_box->append(*box);
-      menu_box->append(*manage(new Gtk::Separator));
+      menu_box->append(*Gtk::make_managed<Gtk::Separator>());
 
-      box = manage(new Gtk::Box(Gtk::Orientation::VERTICAL));
-      utils::set_common_popover_widget_props(*box);
+      box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL);
       box->set_name("font-size");
       box->append(*small);
       box->append(*normal);
       box->append(*large);
       box->append(*huge);
       menu_box->append(*box);
-      menu_box->append(*manage(new Gtk::Separator));
+      menu_box->append(*Gtk::make_managed<Gtk::Separator>());
 
-      Gtk::Widget *bullets = manage(utils::create_popover_button("win.enable-bullets", _("⦁ Bullets")));
-      menu_box->append(*bullets);
-      Gtk::Widget *increase_indent = manage(utils::create_popover_button("win.increase-indent", _("→ Increase indent")));
-      menu_box->append(*increase_indent);
-      Gtk::Widget *decrease_indent = manage(utils::create_popover_button("win.decrease-indent", _("← Decrease indent")));
-      menu_box->append(*decrease_indent);
+      box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::HORIZONTAL);
+      box->set_name("indentation");
+      auto increase_indent = Gtk::make_managed<Gtk::Button>();
+      increase_indent->set_icon_name("format-indent-more-symbolic");
+      increase_indent->set_action_name("win.increase-indent");
+      increase_indent->set_has_frame(false);
+      box->append(*increase_indent);
+      auto decrease_indent = Gtk::make_managed<Gtk::Button>();
+      decrease_indent->set_icon_name("format-indent-less-symbolic");
+      decrease_indent->set_action_name("win.decrease-indent");
+      decrease_indent->set_has_frame(false);
+      box->append(*decrease_indent);
+      menu_box->append(*box);
 
       set_child(*menu_box);
 
-      refresh_state();
+      refresh_state(widget, buffer);
     }
 
-  Gtk::Widget *NoteTextMenu::create_font_item(const char *action, const char *label, const char *markup)
+  Gtk::Widget *NoteTextMenu::create_font_item(const char *action, const char *icon_name)
   {
-    auto widget = manage(utils::create_popover_button(action, ""));
-    auto lbl = manage(new Gtk::Label);
-    Glib::ustring m = Glib::ustring::compose("<%1>%2</%1>", markup, label);
-    lbl->set_markup_with_mnemonic(m);
-    widget->set_child(*lbl);
+    auto widget = Gtk::make_managed<Gtk::ToggleButton>();
+    widget->set_action_name(action);
+    widget->set_icon_name(icon_name);
+    widget->set_has_frame(false);
     return widget;
   }
 
   Gtk::Widget *NoteTextMenu::create_font_size_item(const char *label, const char *markup, const char *size)
   {
-    auto item = manage(utils::create_popover_button("win.change-font-size", ""));
-    auto lbl = manage(new Gtk::Label);
+    auto item = Gtk::make_managed<Gtk::ToggleButton>();
+    item->set_action_name("win.change-font-size");
+    item->set_action_target_value(Glib::Variant<Glib::ustring>::create(size));
+    item->set_has_frame(false);
+    auto lbl = Gtk::make_managed<Gtk::Label>();
     Glib::ustring mrkp;
     if(markup != NULL) {
       mrkp = Glib::ustring::compose("<span size=\"%1\">%2</span>", markup, label);
@@ -1057,25 +1029,18 @@ namespace gnote {
     }
     lbl->set_markup_with_mnemonic(mrkp);
     item->set_child(*lbl);
-    item->set_action_target_value(Glib::Variant<Glib::ustring>::create(size));
     return item;
   }
 
-  void NoteTextMenu::on_show()
+  void NoteTextMenu::refresh_sizing_state(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer)
   {
-    refresh_state();
-    Gtk::PopoverMenu::on_show();
-  }
-
-  void NoteTextMenu::refresh_sizing_state()
-  {
-    EmbeddableWidgetHost *host = m_widget.host();
+    EmbeddableWidgetHost *host = widget.host();
     if(host == NULL) {
       return;
     }
     auto action = host->find_action("change-font-size");
-    Gtk::TextIter cursor = m_buffer->get_iter_at_mark(m_buffer->get_insert());
-    Gtk::TextIter selection = m_buffer->get_iter_at_mark(m_buffer->get_selection_bound());
+    Gtk::TextIter cursor = buffer->get_iter_at_mark(buffer->get_insert());
+    Gtk::TextIter selection = buffer->get_iter_at_mark(buffer->get_selection_bound());
 
     // When on title line, activate the hidden menu item
     if ((cursor.get_line() == 0) || (selection.get_line() == 0)) {
@@ -1084,13 +1049,13 @@ namespace gnote {
     }
 
     action->set_enabled(true);
-    if(m_buffer->is_active_tag ("size:huge")) {
+    if(buffer->is_active_tag ("size:huge")) {
       action->set_state(Glib::Variant<Glib::ustring>::create("size:huge"));
     }
-    else if(m_buffer->is_active_tag ("size:large")) {
+    else if(buffer->is_active_tag ("size:large")) {
       action->set_state(Glib::Variant<Glib::ustring>::create("size:large"));
     }
-    else if(m_buffer->is_active_tag ("size:small")) {
+    else if(buffer->is_active_tag ("size:small")) {
       action->set_state(Glib::Variant<Glib::ustring>::create("size:small"));
     }
     else {
@@ -1098,9 +1063,9 @@ namespace gnote {
     }
   }
 
-  void NoteTextMenu::refresh_state ()
+  void NoteTextMenu::refresh_state(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer)
   {
-    EmbeddableWidgetHost *host = m_widget.host();
+    EmbeddableWidgetHost *host = widget.host();
     if(host == NULL) {
       return;
     }
@@ -1108,21 +1073,15 @@ namespace gnote {
     m_event_freeze = true;
 
     Gtk::TextIter start, end;
-    host->find_action("link")->property_enabled() = m_buffer->get_selection_bounds(start, end);
-    host->find_action("change-font-bold")->set_state(Glib::Variant<bool>::create(m_buffer->is_active_tag("bold")));
-    host->find_action("change-font-italic")->set_state(Glib::Variant<bool>::create(m_buffer->is_active_tag("italic")));
-    host->find_action("change-font-strikeout")->set_state(Glib::Variant<bool>::create(m_buffer->is_active_tag("strikethrough")));
-    host->find_action("change-font-highlight")->set_state(Glib::Variant<bool>::create(m_buffer->is_active_tag("highlight")));
+    host->find_action("link")->property_enabled() = buffer->get_selection_bounds(start, end);
+    host->find_action("change-font-bold")->set_state(Glib::Variant<bool>::create(buffer->is_active_tag("bold")));
+    host->find_action("change-font-italic")->set_state(Glib::Variant<bool>::create(buffer->is_active_tag("italic")));
+    host->find_action("change-font-strikeout")->set_state(Glib::Variant<bool>::create(buffer->is_active_tag("strikethrough")));
+    host->find_action("change-font-highlight")->set_state(Glib::Variant<bool>::create(buffer->is_active_tag("highlight")));
 
-    bool inside_bullets = m_buffer->is_bulleted_list_active();
-    bool can_make_bulleted_list = m_buffer->can_make_bulleted_list();
-    auto enable_bullets = host->find_action("enable-bullets");
-    enable_bullets->set_state(Glib::Variant<bool>::create(inside_bullets));
-    enable_bullets->property_enabled() = can_make_bulleted_list;
-    host->find_action("increase-indent")->property_enabled() = inside_bullets;
-    host->find_action("decrease-indent")->property_enabled() = inside_bullets;
+    host->find_action("decrease-indent")->property_enabled() = buffer->is_bulleted_list_active();
 
-    refresh_sizing_state ();
+    refresh_sizing_state(widget, buffer);
 
     m_event_freeze = false;
   }

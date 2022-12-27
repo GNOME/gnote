@@ -27,7 +27,7 @@
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/searchentry.h>
-#include <gtkmm/popovermenu.h>
+#include <gtkmm/popover.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
 
@@ -45,21 +45,16 @@ class IconManager;
 
 
 class NoteTextMenu
-  : public Gtk::PopoverMenu
+  : public Gtk::Popover
 {
 public:
   NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);
-  void refresh_state();
-protected:
-  virtual void on_show() override;
-
 private:
-  void refresh_sizing_state();
+  void refresh_state(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);
+  void refresh_sizing_state(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);
   Gtk::Widget *create_font_size_item(const char *label, const char *markup, const char *size);
-  Gtk::Widget *create_font_item(const char *action, const char *label, const char *markup);
+  Gtk::Widget *create_font_item(const char *action, const char *icon_name);
 
-  EmbeddableWidget     &m_widget;
-  Glib::RefPtr<NoteBuffer> m_buffer;
   bool                  m_event_freeze;
 };
 
@@ -130,7 +125,7 @@ public:
     {
       return m_editor;
     }
-  Gtk::PopoverMenu * text_menu() const
+  Gtk::Popover *text_menu() const
     {
       return m_text_menu;
     }
@@ -151,9 +146,6 @@ private:
   void connect_actions(EmbeddableWidgetHost *host);
   void disconnect_actions();
   void on_delete_button_clicked(const Glib::VariantBase&);
-  void on_selection_mark_set(const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextMark>&);
-  void on_selection_mark_deleted(const Glib::RefPtr<Gtk::TextMark>&);
-  void on_buffer_changed();
   Glib::RefPtr<Gio::MenuModel> editor_extra_menu();
   Gtk::Grid *make_toolbar();
   Gtk::Grid * make_template_bar();
@@ -184,8 +176,6 @@ private:
   void decrease_indent_clicked(const Glib::VariantBase&);
   bool increase_font_clicked(Gtk::Widget&, const Glib::VariantBase&);
   bool decrease_font_clicked(Gtk::Widget&, const Glib::VariantBase&);
-  bool increase_indent_pressed(Gtk::Widget&, const Glib::VariantBase&);
-  bool decrease_indent_pressed(Gtk::Widget&, const Glib::VariantBase&);
   void undo_changed();
 
   Note                        & m_note;
