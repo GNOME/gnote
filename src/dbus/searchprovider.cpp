@@ -18,6 +18,8 @@
  */
 
 
+#include "config.h"
+
 #include <giomm/dbusconnection.h>
 #include <giomm/dbuserror.h>
 
@@ -227,14 +229,9 @@ Glib::VariantContainerBase SearchProvider::LaunchSearch_stub(const Glib::Variant
   return Glib::VariantContainerBase();
 }
 
-gchar *SearchProvider::get_icon()
+const gchar *SearchProvider::get_icon() const
 {
-  if(!m_note_icon) {
-    Gtk::IconInfo info = m_gnote.icon_manager().lookup_icon(gnote::IconManager::NOTE, 48);
-    m_note_icon = Gio::Icon::create(info.get_filename());
-  }
-
-  return g_icon_to_string(m_note_icon->gobj());
+  return DATADIR"/gnote/icons/hicolor/24x24/places/note.png";
 }
 
 
