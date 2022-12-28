@@ -28,6 +28,7 @@
 #include <glibmm/stringutils.h>
 #include <gtkmm/eventcontrollerfocus.h>
 #include <gtkmm/eventcontrollermotion.h>
+#include <gtkmm/gestureclick.h>
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
@@ -1217,84 +1218,49 @@ namespace gnote {
   }
   
 
-  void MouseHandWatcher::on_note_opened ()
+  void MouseHandWatcher::on_note_opened()
   {
     Gtk::TextView *editor = get_window()->editor();
     auto motion_ctrl = Gtk::EventControllerMotion::create();
     motion_ctrl->signal_motion()
       .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_motion), false);
     editor->add_controller(motion_ctrl);
-    editor->signal_key_press_event()
+    auto & key_ctrl = dynamic_cast<NoteEditor*>(editor)->key_controller();
+    key_ctrl.signal_key_pressed()
       .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_press), false);
-    editor->signal_key_release_event()
-      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_release), false);
+    auto click_ctrl = Gtk::GestureClick::create();
+    click_ctrl->set_button(1);
+    click_ctrl->signal_released()
+      .connect([this, click_ctrl](int, double x, double y) {
+        on_button_release(x, y, click_ctrl->get_current_event_state());
+      }, false);
+    editor->add_controller(click_ctrl);
   }
 
-  bool MouseHandWatcher::on_editor_key_press(GdkEventKey* ev)
+  bool MouseHandWatcher::on_editor_key_press(guint keyval, guint, Gdk::ModifierType modifier)
   {
     bool retval = false;
-    auto event = (GdkEvent*)ev;
-    guint keyval;
-    gdk_event_get_keyval(event, &keyval);
 
     switch(keyval) {
-    case GDK_KEY_Shift_L:
-    case GDK_KEY_Shift_R:
-    case GDK_KEY_Control_L:
-    case GDK_KEY_Control_R:
-    {
-      // Control or Shift when hovering over a link
-      // swiches to a bar cursor...
-
-      if (!m_hovering_on_link)
-        break;
-
-      Glib::RefPtr<Gdk::Window> win = get_window()->editor()->get_window (Gtk::TEXT_WINDOW_TEXT);
-      win->set_cursor(s_normal_cursor);
-      break;
-    }
     case GDK_KEY_Return:
     case GDK_KEY_KP_Enter:
     {
-      Gtk::TextIter iter = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
+      if(Gdk::ModifierType::CONTROL_MASK == (modifier & Gdk::ModifierType::CONTROL_MASK)) {
+        break;
+      }
 
-      Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
-      for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-          tag_iter != tag_list.end(); ++tag_iter) {
-        const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
+      Gtk::TextIter iter = get_buffer()->get_iter_at_mark(get_buffer()->get_insert());
 
-        if (NoteTagTable::tag_is_activatable (tag)) {
-          retval = gtk_text_tag_event(tag->gobj(), G_OBJECT(get_window()->editor()->gobj()), event, iter.gobj());
-          if (retval) {
-            break;
+      for(const auto & tag : iter.get_tags()) {
+        if(NoteTagTable::tag_is_activatable(tag)) {
+          if(auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag)) {
+            retval = note_tag->activate(*dynamic_cast<NoteEditor*>(get_window()->editor()), iter);
+            if(retval) {
+              break;
+            }
           }
         }
       }
-      break;
-    }
-    default:
-      break;
-    }
-    return retval;
-  }
-
-
-  bool MouseHandWatcher::on_editor_key_release(GdkEventKey* ev)
-  {
-    bool retval = false;
-    guint keyval;
-    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
-    switch(keyval) {
-    case GDK_KEY_Shift_L:
-    case GDK_KEY_Shift_R:
-    case GDK_KEY_Control_L:
-    case GDK_KEY_Control_R:
-    {
-      if (!m_hovering_on_link)
-        break;
-
-      Glib::RefPtr<Gdk::Window> win = get_window()->editor()->get_window (Gtk::TEXT_WINDOW_TEXT);
-      win->set_cursor(s_hand_cursor);
       break;
     }
     default:
@@ -1320,7 +1286,7 @@ namespace gnote {
     editor->get_iter_at_location(iter, buffer_x, buffer_y);
 
     for(const auto & tag : iter.get_tags()) {
-      if (NoteTagTable::tag_is_activatable (tag)) {
+      if(NoteTagTable::tag_is_activatable(tag)) {
         hovering = true;
         break;
       }
@@ -1334,6 +1300,33 @@ namespace gnote {
       }
       else {
         editor->set_cursor(s_normal_cursor);
+      }
+    }
+  }
+
+
+  void MouseHandWatcher::on_button_release(double x, double y, Gdk::ModifierType state)
+  {
+    if(Gdk::ModifierType::CONTROL_MASK == (state & Gdk::ModifierType::CONTROL_MASK)) {
+      return;
+    }
+    if(Gdk::ModifierType::SHIFT_MASK == (state & Gdk::ModifierType::SHIFT_MASK)) {
+      return;
+    }
+
+    auto editor = get_window()->editor();
+    int buffer_x, buffer_y;
+    editor->window_to_buffer_coords(Gtk::TextWindowType::WIDGET, x, y, buffer_x, buffer_y);
+    Gtk::TextIter iter;
+    editor->get_iter_at_location(iter, buffer_x, buffer_y);
+
+    for(const auto & tag : iter.get_tags()) {
+      if(NoteTagTable::tag_is_activatable(tag)) {
+        if(auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag)) {
+          if(note_tag->activate(*dynamic_cast<NoteEditor*>(get_window()->editor()), iter)) {
+            break;
+          }
+        }
       }
     }
   }

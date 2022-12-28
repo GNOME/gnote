@@ -278,9 +278,9 @@ namespace gnote {
       }
   private:
     void _init_static();
-    bool on_editor_key_press(GdkEventKey*);
-    bool on_editor_key_release(GdkEventKey*);
+    bool on_editor_key_press(guint, guint, Gdk::ModifierType);
     void on_editor_motion(double, double);
+    void on_button_release(double, double, Gdk::ModifierType);
     bool m_hovering_on_link;
     static bool s_static_inited;
     static Glib::RefPtr<Gdk::Cursor> s_normal_cursor;
