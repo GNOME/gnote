@@ -46,12 +46,6 @@
 namespace gnote {
 
 
-Glib::RefPtr<Gdk::Pixbuf> SearchNotesWidget::get_note_icon(IconManager & manager)
-{
-  return manager.get_icon(IconManager::NOTE, 22);
-}
-
-
 SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   : m_gnote(g)
   , m_manager(m)

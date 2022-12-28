@@ -179,8 +179,6 @@ private:
   Glib::ustring m_search_text;
   int m_sort_column_id;
   Gtk::SortType m_sort_column_order;
-
-  static Glib::RefPtr<Gdk::Pixbuf> get_note_icon(IconManager &);
 };
 
 }
