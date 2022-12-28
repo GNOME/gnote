@@ -572,13 +572,13 @@ namespace gnote {
 
     DepthNoteTag::Ptr tag = std::dynamic_pointer_cast<DepthNoteTag>(lookup(name));
 
-    if (!tag) {
-      tag = DepthNoteTag::Ptr(new DepthNoteTag(depth));
+    if(!tag) {
+      tag = std::make_shared<DepthNoteTag>(depth);
       tag->property_indent().set_value(-14);
       tag->property_left_margin().set_value((depth+1) * 25);
       tag->property_pixels_below_lines().set_value(4);
       tag->property_scale().set_value(Pango::SCALE_MEDIUM);
-      add (tag);
+      add_tag(tag);
     }
 
     return tag;
