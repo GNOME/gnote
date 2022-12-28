@@ -161,6 +161,9 @@ namespace gnote {
   bool NoteTag::activate(const NoteEditor & editor, const Gtk::TextIter & pos)
   {
     bool retval = false;
+    if(!can_activate()) {
+      return retval;
+    }
 
     Gtk::TextIter start, end;
     get_extents(pos, start, end);
