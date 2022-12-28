@@ -605,9 +605,11 @@ void SearchNotesWidget::make_recent_tree()
   title->set_expand(true);
   title->set_resizable(true);
 
-  renderer = manage(new Gtk::CellRendererPixbuf());
-  title->pack_start(*renderer, false);
-  title->add_attribute(*renderer, "pixbuf", 0 /* icon */);
+  {
+    auto renderer = Gtk::make_managed<Gtk::CellRendererPixbuf>();
+    renderer->property_icon_name() = IconManager::NOTE;
+    title->pack_start(*renderer, false);
+  }
 
   renderer = manage(new Gtk::CellRendererText());
   static_cast<Gtk::CellRendererText*>(renderer)->property_ellipsize() = Pango::EllipsizeMode::END;
