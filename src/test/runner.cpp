@@ -29,6 +29,8 @@ int main(int /*argc*/, char ** /*argv*/)
 {
   // force certain timezone so that time tests work
   setenv("TZ", "Europe/London", 1);
+  // also force the locale for formatting tests
+  setenv("LC_ALL", "en_US", 1);
   Glib::init();
   Gio::init();
 
