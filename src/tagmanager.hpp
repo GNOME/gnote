@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 #define __TAG_MANAGER_HPP_
 
 
+#include <mutex>
 #include <sigc++/signal.h>
 
 #include <gtkmm/liststore.h>
