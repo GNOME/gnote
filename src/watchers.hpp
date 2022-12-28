@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -69,7 +69,7 @@ namespace gnote {
   private:
     Gtk::TextIter get_title_end() const;
     Gtk::TextIter get_title_start() const;
-    bool on_editor_focus_out(GdkEventFocus *);
+    void on_editor_focus_out();
     void on_mark_set(const Gtk::TextIter &, const Glib::RefPtr<Gtk::TextMark>&);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);

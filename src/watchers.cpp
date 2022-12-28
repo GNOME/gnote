@@ -26,7 +26,7 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
-#include <gtkmm/separatormenuitem.h>
+#include <gtkmm/eventcontrollerfocus.h>
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
@@ -88,15 +88,11 @@ namespace gnote {
     buffer->signal_erase().connect(
       sigc::mem_fun(*this, &NoteRenameWatcher::on_delete_range));
 
-    get_window()->editor()->signal_focus_out_event().connect(
-      sigc::mem_fun(*this, &NoteRenameWatcher::on_editor_focus_out));
+    auto focus_controller = Gtk::EventControllerFocus::create();
+    focus_controller->signal_leave().connect(sigc::mem_fun(*this, &NoteRenameWatcher::on_editor_focus_out));
+    get_window()->editor()->add_controller(focus_controller);
     get_window()->signal_backgrounded.connect(
       sigc::mem_fun(*this, &NoteRenameWatcher::on_window_backgrounded));
-
-    // FIXME: Needed because we hide on delete event, and
-    // just hide on accelerator key, so we can't use delete
-    // event.  This means the window will flash if closed
-    // with a name clash.
 
     // Clean up title line
     buffer->remove_all_tags (get_title_start(), get_title_end());
@@ -104,15 +100,13 @@ namespace gnote {
   }
 
 
-  bool NoteRenameWatcher::on_editor_focus_out(GdkEventFocus *)
+  void NoteRenameWatcher::on_editor_focus_out()
   {
-    // TODO: Duplicated from Update(); refactor instead
-    if (m_editing_title) {
-      changed ();
+    if(m_editing_title) {
+      changed();
       update_note_title(false);
       m_editing_title = false;
     }
-    return false;
   }
 
 
@@ -240,8 +234,8 @@ namespace gnote {
       m_title_taken_dialog =
         new utils::HIGMessageDialog (parent,
                                      GTK_DIALOG_DESTROY_WITH_PARENT,
-                                     Gtk::MESSAGE_WARNING,
-                                     Gtk::BUTTONS_OK,
+                                     Gtk::MessageType::WARNING,
+                                     Gtk::ButtonsType::OK,
                                      _("Note title taken"),
                                      message);
       m_title_taken_dialog->signal_response().connect(
