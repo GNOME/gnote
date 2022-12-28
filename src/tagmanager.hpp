@@ -73,9 +73,6 @@ private:
   typedef std::map<Glib::ustring, Tag::Ptr> InternalMap;
   InternalMap                      m_internal_tags;
   mutable std::mutex               m_locker;
-  
-  sigc::signal<void, Tag::Ptr, const Gtk::TreeIter &> m_signal_tag_added;
-  sigc::signal<void, const Glib::ustring &> m_signal_tag_removed;
 };
 
 }

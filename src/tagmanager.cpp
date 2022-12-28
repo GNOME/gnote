@@ -117,7 +117,6 @@ namespace gnote {
       }
     }
     Gtk::TreeIter iter;
-    bool tag_added = false;
     Tag::Ptr tag = get_tag (normalized_tag_name);
     if (!tag) {
       std::lock_guard<std::mutex> lock(m_locker);
@@ -128,13 +127,7 @@ namespace gnote {
         iter = m_tags->append ();
         (*iter)[m_columns.m_tag] = tag;
         m_tag_map [tag->normalized_name()] = iter;
-
-        tag_added = true;
       }
-    }
-
-    if (tag_added) {
-      m_signal_tag_added(tag, iter);
     }
 
     return tag;
@@ -185,7 +178,6 @@ namespace gnote {
 
       m_internal_tags.erase(tag->normalized_name());
     }
-    bool tag_removed = false;
     auto map_iter = m_tag_map.find(tag->normalized_name());
     if (map_iter != m_tag_map.end()) {
       std::lock_guard<std::mutex> lock(m_locker);
@@ -203,17 +195,12 @@ namespace gnote {
 
         m_tag_map.erase(map_iter);
         DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
-        tag_removed = true;
 
         auto notes = tag->get_notes();
         for(NoteBase *note_iter : notes) {
           note_iter->remove_tag(tag);
         }
       }
-    }
-
-    if (tag_removed) {
-      m_signal_tag_removed(tag->normalized_name());
     }
   }
   
