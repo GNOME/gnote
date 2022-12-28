@@ -21,7 +21,6 @@
 #include "config.h"
 
 #include <glibmm/i18n.h>
-#include <gtkmm/actiongroup.h>
 #include <sigc++/sigc++.h>
 
 #include "iactionmanager.hpp"
@@ -363,10 +362,6 @@ namespace sync {
 
       set_state(IDLE);
 
-    }
-    catch(Glib::Exception & e) {
-      ERR_OUT(_("Synchronization failed with the following Glib exception: %s"), e.what().c_str());
-      abort_sync(server.get());
     }
     catch(std::exception & e) { // top-level try
       ERR_OUT(_("Synchronization failed with the following exception: %s"), e.what());
