@@ -440,7 +440,7 @@ void SearchNotesWidget::update_results()
   // Save the currently selected notes
   Note::List selected_notes = get_selected_notes();
 
-  int sort_column = 2; /* change date */
+  int sort_column = RecentNotesColumnTypes::CHANGE_DATE;
   Gtk::SortType sort_type = Gtk::SortType::DESCENDING;
   if(m_store_sort) {
     m_store_sort->get_sort_column_id(sort_column, sort_type);
@@ -451,8 +451,8 @@ void SearchNotesWidget::update_results()
   m_store_filter = Gtk::TreeModelFilter::create(m_store);
   m_store_filter->set_visible_func(sigc::mem_fun(*this, &SearchNotesWidget::filter_notes));
   m_store_sort = Gtk::TreeModelSort::create(m_store_filter);
-  m_store_sort->set_sort_func(1 /* title */, sigc::mem_fun(*this, &SearchNotesWidget::compare_titles));
-  m_store_sort->set_sort_func(2 /* change date */, sigc::mem_fun(*this, &SearchNotesWidget::compare_dates));
+  m_store_sort->set_sort_func(RecentNotesColumnTypes::TITLE, sigc::mem_fun(*this, &SearchNotesWidget::compare_titles));
+  m_store_sort->set_sort_func(RecentNotesColumnTypes::CHANGE_DATE, sigc::mem_fun(*this, &SearchNotesWidget::compare_dates));
   m_store_sort->set_sort_column(m_sort_column_id, m_sort_column_order);
   m_store_sort->signal_sort_column_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
@@ -463,9 +463,9 @@ void SearchNotesWidget::update_results()
 
     Gtk::TreeIter iter = m_store->append();
     iter->set_value(0, get_note_icon(m_gnote.icon_manager()));  /* icon */
-    iter->set_value(1, note->get_title()); /* title */
-    iter->set_value(2, nice_date);  /* change date */
-    iter->set_value(3, note);      /* note */
+    iter->set_value(RecentNotesColumnTypes::TITLE, note->get_title());
+    iter->set_value(RecentNotesColumnTypes::CHANGE_DATE, nice_date);
+    iter->set_value(RecentNotesColumnTypes::NOTE, note);
   }
 
   m_tree->set_model(m_store_sort);
@@ -614,8 +614,8 @@ void SearchNotesWidget::make_recent_tree()
   renderer = manage(new Gtk::CellRendererText());
   static_cast<Gtk::CellRendererText*>(renderer)->property_ellipsize() = Pango::EllipsizeMode::END;
   title->pack_start(*renderer, true);
-  title->add_attribute(*renderer, "text", 1 /* title */);
-  title->set_sort_column(1); /* title */
+  title->add_attribute(*renderer, "text", RecentNotesColumnTypes::TITLE);
+  title->set_sort_column(RecentNotesColumnTypes::TITLE);
   title->set_sort_indicator(false);
   title->set_reorderable(false);
   title->set_sort_order(Gtk::SortType::ASCENDING);
@@ -630,8 +630,8 @@ void SearchNotesWidget::make_recent_tree()
   renderer = manage(new Gtk::CellRendererText());
   renderer->property_xalign() = 1.0;
   change->pack_start(*renderer, false);
-  change->add_attribute(*renderer, "text", 2 /* change date */);
-  change->set_sort_column(2); /* change date */
+  change->add_attribute(*renderer, "text", RecentNotesColumnTypes::CHANGE_DATE);
+  change->set_sort_column(RecentNotesColumnTypes::CHANGE_DATE);
   change->set_sort_indicator(false);
   change->set_reorderable(false);
   change->set_sort_order(Gtk::SortType::DESCENDING);
@@ -1255,10 +1255,10 @@ void SearchNotesWidget::on_sorting_changed()
     m_store_sort->get_sort_column_id(m_sort_column_id, m_sort_column_order);
     Glib::ustring value;
     switch(m_sort_column_id) {
-    case 1:
+    case RecentNotesColumnTypes::TITLE:
       value = "note:";
       break;
-    case 2:
+    case RecentNotesColumnTypes::CHANGE_DATE:
       value = "change:";
       break;
     default:
@@ -1286,10 +1286,10 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
   int column_id;
   Gtk::SortType order;
   if(tokens[0] == "note") {
-    column_id = 1;
+    column_id = RecentNotesColumnTypes::TITLE;
   }
   else if(tokens[0] == "change") {
-    column_id = 2;
+    column_id = RecentNotesColumnTypes::CHANGE_DATE;
   }
   else {
     ERR_OUT(_("Failed to parse setting search-sorting (Value: %s):"), sorting.c_str());
