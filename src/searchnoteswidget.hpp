@@ -141,16 +141,15 @@ private:
     : public Gtk::TreeModelColumnRecord
   {
   public:
-    static constexpr int TITLE = 1;
-    static constexpr int CHANGE_DATE = 2;
-    static constexpr int NOTE = 3;
+    static constexpr int TITLE = 0;
+    static constexpr int CHANGE_DATE = 1;
+    static constexpr int NOTE = 2;
 
     RecentNotesColumnTypes()
       {
-        add(icon); add(title); add(change_date); add(note);
+        add(title); add(change_date); add(note);
       }
 
-    Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf> > icon;
     Gtk::TreeModelColumn<Glib::ustring> title;
     Gtk::TreeModelColumn<Glib::ustring> change_date;
     Gtk::TreeModelColumn<Note::Ptr> note;

@@ -462,7 +462,6 @@ void SearchNotesWidget::update_results()
     Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
 
     Gtk::TreeIter iter = m_store->append();
-    iter->set_value(0, get_note_icon(m_gnote.icon_manager()));  /* icon */
     iter->set_value(RecentNotesColumnTypes::TITLE, note->get_title());
     iter->set_value(RecentNotesColumnTypes::CHANGE_DATE, nice_date);
     iter->set_value(RecentNotesColumnTypes::NOTE, note);
@@ -1024,7 +1023,6 @@ void SearchNotesWidget::add_note(const Note::Ptr & note)
 {
   Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
   Gtk::TreeIter iter = m_store->append();
-  iter->set_value(m_column_types.icon, get_note_icon(m_gnote.icon_manager()));
   iter->set_value(m_column_types.title, note->get_title());
   iter->set_value(m_column_types.change_date, nice_date);
   iter->set_value(m_column_types.note, note);
