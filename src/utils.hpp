@@ -26,12 +26,7 @@
 #include <sigc++/signal.h>
 
 #include <glibmm/datetime.h>
-#include <gdkmm/pixbuf.h>
-#include <gtkmm/applicationwindow.h>
-#include <gtkmm/dialog.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/image.h>
-#include <gtkmm/menu.h>
 #include <gtkmm/messagedialog.h>
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/textiter.h>
@@ -47,8 +42,6 @@ class Preferences;
 
 
   namespace utils {
-
-    void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
 
     void show_help(const Glib::ustring & filename, const Glib::ustring & link_id, Gtk::Window & parent);
     void open_url(Gtk::Window & parent, const Glib::ustring & url);
@@ -74,28 +67,6 @@ class Preferences;
 
       return false;
     }
-
-    class GlobalKeybinder
-    {
-    public:
-      
-      GlobalKeybinder(const Glib::RefPtr<Gtk::AccelGroup> & accel_group)
-        : m_accel_group(accel_group)
-        {
-          m_fake_menu.set_accel_group(accel_group);
-        }
-
-      void *add_accelerator(const sigc::slot<void> & , guint, Gdk::ModifierType, Gtk::AccelFlags);
-      void remove_accelerator(void*);
-      void enabled(bool enable);
-      bool enabled() const
-        {
-          return m_fake_menu.get_sensitive();
-        }
-    private:
-      Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
-      Gtk::Menu m_fake_menu;
-    };
 
 
     class HIGMessageDialog

@@ -30,7 +30,6 @@
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <gtkmm/label.h>
-#include <gtkmm/textbuffer.h>
 
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
@@ -45,14 +44,6 @@ namespace gnote {
   namespace utils {
 
     namespace {
-      void deactivate_menu(Gtk::Menu *menu)
-      {
-        menu->popdown();
-        if(menu->get_attach_widget()) {
-          menu->get_attach_widget()->set_state_flags(Gtk::STATE_FLAG_NORMAL);
-        }
-      }
-
       gboolean main_context_invoke_func(gpointer data)
       {
         sigc::slot<void()> *slot = static_cast<sigc::slot<void()>*>(data);
@@ -61,24 +52,6 @@ namespace gnote {
         return FALSE;
       }
    }
-
-
-    void popup_menu(Gtk::Menu &menu, const GdkEventButton *ev)
-    {
-      auto event = (const GdkEvent*)ev;
-      menu.signal_deactivate().connect(sigc::bind(&deactivate_menu, &menu));
-      if(!menu.get_attach_widget() || !menu.get_attach_widget()->get_window()) {
-        menu.popup_at_pointer(event);
-      }
-      else {
-        int x, y;
-        menu.get_attach_widget()->get_window()->get_origin(x, y);
-        menu.popup_at_rect(menu.get_attach_widget()->get_window(), Gdk::Rectangle(x, y, 0, 0), Gdk::GRAVITY_NORTH_WEST, Gdk::GRAVITY_NORTH_WEST, event);
-      }
-      if(menu.get_attach_widget()) {
-        menu.get_attach_widget()->set_state_flags(Gtk::STATE_FLAG_SELECTED);
-      }
-    }
 
 
     void show_help(const Glib::ustring & filename, const Glib::ustring & link_id, Gtk::Window & parent)
@@ -237,39 +210,6 @@ namespace gnote {
       }
       if(ex) {
         std::rethrow_exception(ex);
-      }
-    }
-
-
-    void* GlobalKeybinder::add_accelerator(const sigc::slot<void> & handler, guint key,
-                                          Gdk::ModifierType modifiers, Gtk::AccelFlags flags)
-    {
-      Gtk::MenuItem *foo = manage(new Gtk::MenuItem ());
-      foo->signal_activate().connect(handler);
-      foo->add_accelerator ("activate",
-                          m_accel_group,
-                          key,
-                          modifiers,
-                          flags);
-      foo->show ();
-      foo->set_sensitive(m_fake_menu.get_sensitive());
-      m_fake_menu.append (*foo);
-      return foo;
-    }
-
-    void GlobalKeybinder::remove_accelerator(void *accel)
-    {
-      auto widget = static_cast<Gtk::Widget*>(accel);
-      m_fake_menu.remove(*widget);
-      delete widget;
-    }
-
-    void GlobalKeybinder::enabled(bool enable)
-    {
-      m_fake_menu.set_sensitive(enable);
-      std::vector<Gtk::Widget*> items = m_fake_menu.get_children();
-      for(Gtk::Widget *item : items) {
-        item->set_sensitive(enable);
       }
     }
 
