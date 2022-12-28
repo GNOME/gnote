@@ -25,6 +25,7 @@
 #define __NOTE_EDITOR_HPP_
 
 #include <glibmm/refptr.h>
+#include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/textview.h>
 
 
@@ -48,6 +49,10 @@ public:
     {
       return 8;
     }
+  Gtk::EventControllerKey & key_controller()
+    {
+      return *m_key_controller;
+    }
 
 protected:
   virtual void on_drag_data_received(const Glib::RefPtr<Gdk::DragContext> & context,
@@ -67,6 +72,7 @@ private:
   void on_paste_end();
 
   Preferences & m_preferences;
+  Glib::RefPtr<Gtk::EventControllerKey> m_key_controller;
 };
 
 

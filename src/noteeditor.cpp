@@ -21,7 +21,6 @@
 
 #include <string.h>
 
-#include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/settings.h>
 
 #include "notebuffer.hpp"
@@ -62,9 +61,9 @@ namespace gnote {
     list->add ("text/uri-list", (Gtk::TargetFlags)0, 1);
     list->add ("_NETSCAPE_URL", (Gtk::TargetFlags)0, 1);
 
-    auto key_controller = Gtk::EventControllerKey::create();
-    key_controller->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
-    add_controller(key_controller);
+    m_key_controller = Gtk::EventControllerKey::create();
+    m_key_controller->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
+    add_controller(m_key_controller);
     signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed), false);
 
     g_signal_connect(gobj(), "paste-clipboard", G_CALLBACK(paste_started), this);
