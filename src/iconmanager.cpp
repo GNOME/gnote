@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,11 +63,6 @@ Glib::RefPtr<Gdk::Pixbuf> IconManager::get_icon(const Glib::ustring & name, int 
     ERR_OUT(_("Failed to load icon (%s, %d): %s"), name.c_str(), size, e.what().c_str());
   }
   return Glib::RefPtr<Gdk::Pixbuf>();
-}
-
-Gtk::IconInfo IconManager::lookup_icon(const Glib::ustring & name, int size)
-{
-  return Gtk::IconTheme::get_default()->lookup_icon(name, size, (Gtk::IconLookupFlags) 0);
 }
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,7 +45,6 @@ public:
   static const char *SPECIAL_NOTES;
 
   Glib::RefPtr<Gdk::Pixbuf> get_icon(const Glib::ustring &, int);
-  Gtk::IconInfo lookup_icon(const Glib::ustring &, int);
 private:
   typedef std::pair<Glib::ustring, int> IconDef;
   typedef std::map<IconDef, Glib::RefPtr<Gdk::Pixbuf> > IconMap;
