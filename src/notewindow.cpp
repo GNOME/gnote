@@ -396,7 +396,7 @@ namespace gnote {
 
     Gtk::Label * infoLabel = manage(new Gtk::Label(
       _("This note is a template note. It determines the default content of regular notes, and will not show up in the note menu or search window.")));
-    infoLabel->set_line_wrap(true);
+    infoLabel->set_wrap(true);
 
     Gtk::Button * untemplateButton = manage(new Gtk::Button(_("Convert to regular note")));
     untemplateButton->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_untemplate_button_click));
