@@ -52,7 +52,7 @@ namespace gnote {
     ,  m_sorted_tags(Gtk::TreeModelSort::create(m_tags))
   {
     m_sorted_tags->set_sort_func (0, sigc::ptr_fun(&compare_tags_sort_func));
-    m_sorted_tags->set_sort_column(0, Gtk::SORT_ASCENDING);
+    m_sorted_tags->set_sort_column(0, Gtk::SortType::ASCENDING);
     
   }
 
