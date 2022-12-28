@@ -32,8 +32,7 @@
 namespace gnote {
 
   namespace {
-    int compare_tags_sort_func (const Gtk::TreeIter & a, 
-                                const Gtk::TreeIter & b)
+    int compare_tags_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
     {
       Tag::Ptr tag_a;
       a->get_value(0, tag_a);
@@ -116,7 +115,7 @@ namespace gnote {
         return t;
       }
     }
-    Gtk::TreeIter iter;
+    Gtk::TreeIter<Gtk::TreeRow> iter;
     Tag::Ptr tag = get_tag (normalized_tag_name);
     if (!tag) {
       std::lock_guard<std::mutex> lock(m_locker);

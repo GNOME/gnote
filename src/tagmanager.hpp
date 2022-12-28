@@ -68,7 +68,7 @@ private:
   Glib::RefPtr<Gtk::ListStore>     m_tags;
   Glib::RefPtr<Gtk::TreeModelSort> m_sorted_tags;
   // The key for this dictionary is Tag.Name.ToLower ().
-  typedef std::map<Glib::ustring, Gtk::TreeIter> TagMap;
+  typedef std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> TagMap;
   TagMap                           m_tag_map;
   typedef std::map<Glib::ustring, Tag::Ptr> InternalMap;
   InternalMap                      m_internal_tags;
