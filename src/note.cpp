@@ -87,18 +87,18 @@ namespace gnote {
     
     void show_io_error_dialog (Gtk::Window * parent)
     {
-      utils::HIGMessageDialog dialog(
+      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(
                               parent,
                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                              Gtk::MESSAGE_ERROR,
-                              Gtk::BUTTONS_OK,
+                              Gtk::MessageType::ERROR,
+                              Gtk::ButtonsType::OK,
                               _("Error saving note data."),
                               _("An error occurred while saving your notes. "
                                 "Please check that you have sufficient disk "
                                 "space, and that you have appropriate rights "
                                 "on ~/.local/share/gnote. Error details can be found in "
                                 "~/.gnote.log."));
-      dialog.run();
+      dialog->show();
     }
 
     void place_cursor_and_selection(const NoteData & data, const Glib::RefPtr<NoteBuffer> & buffer)
