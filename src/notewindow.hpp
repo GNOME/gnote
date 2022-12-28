@@ -138,9 +138,6 @@ public:
     }
   virtual void set_initial_focus() override;
 private:
-  static Glib::RefPtr<Gio::Icon> get_icon_pin_active(IconManager & icon_manager);
-  static Glib::RefPtr<Gio::Icon> get_icon_pin_down(IconManager & icon_manager);
-
   void connect_actions(EmbeddableWidgetHost *host);
   void disconnect_actions();
   void on_delete_button_clicked(const Glib::VariantBase&);
