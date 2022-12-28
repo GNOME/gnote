@@ -37,7 +37,6 @@ namespace gnote {
     : Gtk::TextTag(tag_name)
     , m_element_name(std::move(tag_name))
     , m_widget(NULL)
-    , m_allow_middle_activate(false)
     , m_flags(flags | CAN_SERIALIZE | CAN_SPLIT)
   {
     if(m_element_name.empty()) {
@@ -52,7 +51,6 @@ namespace gnote {
   NoteTag::NoteTag()
     : Gtk::TextTag()
     , m_widget(NULL)
-    , m_allow_middle_activate(false)
     , m_flags(0)
   {
   }
@@ -159,89 +157,6 @@ namespace gnote {
       }
     }
   }
-
-  bool NoteTag::on_event(const Glib::RefPtr<Glib::Object> & sender, GdkEvent *ev, const Gtk::TextIter & iter)
-  {
-    auto editor = dynamic_cast<NoteEditor*>(sender.get());
-    Gtk::TextIter start, end;
-
-    if (!can_activate())
-      return false;
-
-    switch (ev->type) {
-    case GDK_BUTTON_PRESS:
-    {
-      guint button;
-      gdk_event_get_button(ev, &button);
-
-      // Do not insert selected text when activating links with
-      // middle mouse button
-      if(button == 2) {
-        m_allow_middle_activate = true;
-        return true;
-      }
-
-      return false;
-    }
-    case GDK_BUTTON_RELEASE:
-    {
-      guint button;
-      gdk_event_get_button(ev, &button);
-      if((button != 1) && (button != 2))
-        return false;
-
-      GdkModifierType state;
-      gdk_event_get_state(ev, &state);
-      /* Don't activate if Shift or Control is pressed */
-      if((state & (Gdk::SHIFT_MASK | Gdk::CONTROL_MASK)) != 0)
-        return false;
-
-      // Prevent activation when selecting links with the mouse
-      if(editor && editor->get_buffer()->get_has_selection()) {
-        return false;
-      }
-
-      // Don't activate if the link has just been pasted with the
-      // middle mouse button (no preceding ButtonPress event)
-      if(button == 2 && !m_allow_middle_activate) {
-        return false;
-      }
-      else {
-        m_allow_middle_activate = false;
-      }
-
-      get_extents (iter, start, end);
-      if(editor) {
-        on_activate(*editor, start, end);
-      }
-      return false;
-    }
-    case GDK_KEY_PRESS:
-    {
-      GdkModifierType state;
-      gdk_event_get_state(ev, &state);
-
-      // Control-Enter activates the link at point...
-      if((state & Gdk::CONTROL_MASK) == 0)
-        return false;
-
-      guint keyval;
-      gdk_event_get_keyval(ev, &keyval);
-      if(keyval != GDK_KEY_Return && keyval != GDK_KEY_KP_Enter)
-        return false;
-
-      get_extents (iter, start, end);
-      if(editor) {
-        return on_activate(*editor, start, end);
-      }
-    }
-    default:
-      break;
-    }
-
-    return false;
-  }
-
 
   bool NoteTag::activate(const NoteEditor & editor, const Gtk::TextIter & pos)
   {

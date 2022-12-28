@@ -151,13 +151,10 @@ protected:
   virtual void initialize(Glib::ustring && element_name);
 
   friend class NoteTagTable;
-
-  virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & ) override;
 private:
   Glib::ustring       m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;
   Gtk::Widget       * m_widget;
-  bool                m_allow_middle_activate;
   int                 m_flags;
   TagActivatedHandler m_signal_activate;
   sigc::signal<void(const Gtk::TextTag&, bool)> m_signal_changed;
