@@ -243,19 +243,12 @@ namespace gnote {
   }
 
 
-  bool NoteTag::on_activate(const NoteEditor & editor , const Gtk::TextIter & start, 
-                            const Gtk::TextIter & end)
+  bool NoteTag::activate(const NoteEditor & editor, const Gtk::TextIter & pos)
   {
     bool retval = false;
 
-#if 0
-    if (Activated != null) {
-      foreach (Delegate d in Activated.GetInvocationList()) {
-        TagActivatedHandler handler = (TagActivatedHandler) d;
-        retval |= handler (*this, editor, start, end);
-      }
-    }
-#endif
+    Gtk::TextIter start, end;
+    get_extents(pos, start, end);
     retval = m_signal_activate(editor, start, end);
 
     return retval;

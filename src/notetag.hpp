@@ -110,6 +110,7 @@ public:
       return (m_flags & CAN_ACTIVATE) != 0;
     }
   void set_can_activate(bool value);
+  bool activate(const NoteEditor & , const Gtk::TextIter &);
   bool can_split() const
     {
       return (m_flags & CAN_SPLIT) != 0;
@@ -152,7 +153,6 @@ protected:
   friend class NoteTagTable;
 
   virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & ) override;
-  virtual bool on_activate(const NoteEditor & , const Gtk::TextIter &, const Gtk::TextIter &);
 private:
   Glib::ustring       m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;
