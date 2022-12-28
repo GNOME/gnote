@@ -67,7 +67,6 @@ private:
   void update_custom_font_setting();
   void modify_font_from_string (const Glib::ustring & fontString);
   bool key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
-  bool button_pressed (GdkEventButton * ev);
   void on_paste_start();
   void on_paste_end();
 

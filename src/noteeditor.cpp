@@ -64,7 +64,6 @@ namespace gnote {
     m_key_controller = Gtk::EventControllerKey::create();
     m_key_controller->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
     add_controller(m_key_controller);
-    signal_button_press_event().connect(sigc::mem_fun(*this, &NoteEditor::button_pressed), false);
 
     g_signal_connect(gobj(), "paste-clipboard", G_CALLBACK(paste_started), this);
     g_signal_connect_after(gobj(), "paste-clipboard", G_CALLBACK(paste_ended), this);
@@ -222,13 +221,6 @@ namespace gnote {
     }
 
     return ret_value;
-  }
-
-
-  bool NoteEditor::button_pressed (GdkEventButton * )
-  {
-    NoteBuffer::Ptr::cast_static(get_buffer())->check_selection();
-    return false;
   }
 
   void NoteEditor::paste_started(GtkTextView*, NoteEditor *_this)
