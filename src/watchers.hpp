@@ -280,7 +280,7 @@ namespace gnote {
     void _init_static();
     bool on_editor_key_press(GdkEventKey*);
     bool on_editor_key_release(GdkEventKey*);
-    bool on_editor_motion(GdkEventMotion *);
+    void on_editor_motion(double, double);
     bool m_hovering_on_link;
     static bool s_static_inited;
     static Glib::RefPtr<Gdk::Cursor> s_normal_cursor;

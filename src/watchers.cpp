@@ -27,6 +27,7 @@
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <gtkmm/eventcontrollerfocus.h>
+#include <gtkmm/eventcontrollermotion.h>
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
@@ -1190,8 +1191,8 @@ namespace gnote {
   void MouseHandWatcher::_init_static()
   {
     if(!s_static_inited) {
-      s_normal_cursor = Gdk::Cursor::create(Gdk::XTERM);
-      s_hand_cursor = Gdk::Cursor::create(Gdk::HAND2);
+      s_normal_cursor = Gdk::Cursor::create("text");
+      s_hand_cursor = Gdk::Cursor::create("pointer");
       s_static_inited = true;
     }
   }
@@ -1219,8 +1220,10 @@ namespace gnote {
   void MouseHandWatcher::on_note_opened ()
   {
     Gtk::TextView *editor = get_window()->editor();
-    editor->signal_motion_notify_event()
+    auto motion_ctrl = Gtk::EventControllerMotion::create();
+    motion_ctrl->signal_motion()
       .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_motion), false);
+    editor->add_controller(motion_ctrl);
     editor->signal_key_press_event()
       .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_press), false);
     editor->signal_key_release_event()
@@ -1301,58 +1304,38 @@ namespace gnote {
   }
 
 
-  bool MouseHandWatcher::on_editor_motion(GdkEventMotion *)
+  void MouseHandWatcher::on_editor_motion(double x, double y)
   {
-    bool retval = false;
-
-    int pointer_x, pointer_y;
-    Gdk::ModifierType pointer_mask;
-
-    get_window()->editor()->Gtk::Widget::get_window()->get_pointer (pointer_x,
-                                                                  pointer_y,
-                                                                  pointer_mask);
-
     bool hovering = false;
+    auto editor = get_window()->editor();
 
     // Figure out if we're on a link by getting the text
     // iter at the mouse point, and checking for tags that
     // start with "link:"...
 
     int buffer_x, buffer_y;
-    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_WIDGET,
-                                        pointer_x, pointer_y,
-                                                      buffer_x, buffer_y);
+    editor->window_to_buffer_coords(Gtk::TextWindowType::WIDGET, x, y, buffer_x, buffer_y);
 
     Gtk::TextIter iter;
-    get_window()->editor()->get_iter_at_location (iter, buffer_x, buffer_y);
+    editor->get_iter_at_location(iter, buffer_x, buffer_y);
 
-    Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
-    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-        tag_iter != tag_list.end(); ++tag_iter) {
-      const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
-
+    for(const auto & tag : iter.get_tags()) {
       if (NoteTagTable::tag_is_activatable (tag)) {
         hovering = true;
         break;
       }
     }
 
-    // Don't show hand if Shift or Control is pressed
-    bool avoid_hand = (pointer_mask & (Gdk::SHIFT_MASK |
-                                       Gdk::CONTROL_MASK)) != 0;
-
-    if (hovering != m_hovering_on_link) {
+    if(hovering != m_hovering_on_link) {
       m_hovering_on_link = hovering;
 
-      Glib::RefPtr<Gdk::Window> win = get_window()->editor()->get_window(Gtk::TEXT_WINDOW_TEXT);
-      if (hovering && !avoid_hand) {
-        win->set_cursor(s_hand_cursor);
+      if(hovering) {
+        editor->set_cursor(s_hand_cursor);
       }
       else {
-        win->set_cursor(s_normal_cursor);
+        editor->set_cursor(s_normal_cursor);
       }
     }
-    return retval;
   }
 
   ////////////////////////////////////////////////////////////////////////
