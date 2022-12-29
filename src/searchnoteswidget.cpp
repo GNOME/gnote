@@ -34,7 +34,6 @@
 #include "mainwindow.hpp"
 #include "notemanager.hpp"
 #include "notewindow.hpp"
-#include "recenttreeview.hpp"
 #include "search.hpp"
 #include "searchnoteswidget.hpp"
 #include "itagmanager.hpp"
@@ -564,7 +563,7 @@ void SearchNotesWidget::make_recent_tree()
   m_targets.push_back(Gtk::TargetEntry("text/plain", Gtk::TARGET_SAME_APP, 0));
   m_targets.push_back(Gtk::TargetEntry("text/uri-list", Gtk::TARGET_SAME_APP, 1));
 
-  m_tree = Gtk::make_managed<RecentTreeView>();
+  m_tree = Gtk::make_managed<Gtk::TreeView>();
   m_tree->set_headers_visible(true);
   m_tree->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
   m_tree->get_selection()->set_mode(Gtk::SelectionMode::MULTIPLE);
