@@ -846,7 +846,7 @@ namespace gnote {
 
   void AppLinkWatcher::remove_link_tag(const Note::Ptr & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag && note_tag->can_activate()) {
       note->get_buffer()->remove_tag(note_tag, start, end);
     }
