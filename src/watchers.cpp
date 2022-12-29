@@ -952,9 +952,11 @@ namespace gnote {
   void NoteLinkWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
                                      const Gtk::TextIter & start, const Gtk::TextIter &end)
   {
-    if (tag->property_name() != get_note()->get_tag_table()->get_link_tag()->property_name())
+    Glib::ustring tag_name = tag->property_name();
+    Glib::ustring link_tag_name = get_note()->get_tag_table()->get_link_tag()->property_name();
+    if(tag_name != link_tag_name)
       return;
-    Glib::ustring link_name = start.get_text (end);
+    Glib::ustring link_name = start.get_text(end);
     NoteBase::Ptr link = manager().find(link_name);
     if(!link)
         unhighlight_in_block(start, end);
