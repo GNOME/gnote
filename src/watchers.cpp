@@ -325,7 +325,7 @@ namespace gnote {
     if (!get_note()->get_tag_table()->lookup ("gtkspell-misspelled")) {
       NoteTag::Ptr tag = NoteTag::create ("gtkspell-misspelled", NoteTag::CAN_SPELL_CHECK);
       tag->set_can_serialize(false);
-      tag->property_underline() = Pango::UNDERLINE_ERROR;
+      tag->property_underline() = Pango::Underline::ERROR;
       get_note()->get_tag_table()->add (tag);
     }
 
@@ -394,12 +394,8 @@ namespace gnote {
 
     if (tag->property_name() == "gtkspell-misspelled") {
         // Remove misspelled tag for links & title
-      Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = start_char.get_tags();
-      for(Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-          tag_iter != tag_list.end(); ++tag_iter) {
-        const Glib::RefPtr<const Gtk::TextTag>& atag(*tag_iter);
-        if ((tag != atag) &&
-            !NoteTagTable::tag_is_spell_checkable (atag)) {
+      for(const auto & atag : start_char.get_tags()) {
+        if(tag != atag && !NoteTagTable::tag_is_spell_checkable(atag)) {
           // cancel attempt to add misspelled tag on non-spell-check place
           get_buffer()->signal_apply_tag().emission_stop();
           break;
