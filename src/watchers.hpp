@@ -165,14 +165,8 @@ namespace gnote {
                       const Gtk::TextIter & start, const Gtk::TextIter &end);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
-    bool on_button_press(GdkEventButton *);
-    void on_populate_popup(Gtk::Menu *);
-    bool on_popup_menu();
-    void copy_link_activate();
-    void open_link_activate();
 
     NoteTag::Ptr                m_url_tag;
-    Glib::RefPtr<Gtk::TextMark> m_click_mark;
     Glib::RefPtr<Glib::Regex>   m_regex;
     static const char * URL_REGEX;
     static bool  s_text_event_connected;

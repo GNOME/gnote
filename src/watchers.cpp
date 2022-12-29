@@ -508,7 +508,7 @@ namespace gnote {
   
 
   NoteUrlWatcher::NoteUrlWatcher()
-    : m_regex(Glib::Regex::create(URL_REGEX, Glib::REGEX_CASELESS))
+    : m_regex(Glib::Regex::create(URL_REGEX, Glib::Regex::CompileFlags::CASELESS))
   {
   }
 
@@ -545,22 +545,12 @@ namespace gnote {
       s_text_event_connected = true;
     }
 
-    m_click_mark = get_buffer()->create_mark(get_buffer()->begin(), true);
-
     get_buffer()->signal_insert().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_insert_text));
     get_buffer()->signal_apply_tag().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_apply_tag));
     get_buffer()->signal_erase().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_delete_range));
-
-    Gtk::TextView * editor(get_window()->editor());
-    editor->signal_button_press_event().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_button_press), false);
-    editor->signal_populate_popup().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_populate_popup));
-    editor->signal_popup_menu().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_popup_menu), false);
   }
 
   Glib::ustring NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)
@@ -666,83 +656,6 @@ namespace gnote {
     if(!m_regex->match(s)) {
       get_buffer()->remove_tag(m_url_tag, start, end);
     }
-  }
-
-
-
-  bool NoteUrlWatcher::on_button_press(GdkEventButton *ev)
-  {
-    int x, y;
-    gdouble ev_x, ev_y;
-    gdk_event_get_coords((GdkEvent*)ev, &ev_x, &ev_y);
-
-    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_TEXT, ev_x, ev_y, x, y);
-    Gtk::TextIter click_iter;
-    get_window()->editor()->get_iter_at_location (click_iter, x, y);
-
-    // Move click_mark to click location
-    get_buffer()->move_mark (m_click_mark, click_iter);
-
-    // Continue event processing
-    return false;
-  }
-
-
-  void NoteUrlWatcher::on_populate_popup(Gtk::Menu *menu)
-  {
-    Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (m_click_mark);
-    if (click_iter.has_tag (m_url_tag) || click_iter.ends_tag (m_url_tag)) {
-      Gtk::MenuItem *item;
-
-      item = manage(new Gtk::SeparatorMenuItem ());
-      item->show ();
-      menu->prepend (*item);
-
-      item = manage(new Gtk::MenuItem (_("_Copy Link Address"), true));
-      item->signal_activate().connect(
-        sigc::mem_fun(*this, &NoteUrlWatcher::copy_link_activate));
-      item->show ();
-      menu->prepend (*item);
-
-      item = manage(new Gtk::MenuItem (_("_Open Link"), true));
-      item->signal_activate().connect(
-        sigc::mem_fun(*this, &NoteUrlWatcher::open_link_activate));
-      item->show ();
-      menu->prepend (*item);
-    }
-  }
-
-
-  bool NoteUrlWatcher::on_popup_menu()
-  {
-    Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
-    get_buffer()->move_mark (m_click_mark, click_iter);
-    return false;
-  }
-
-  void NoteUrlWatcher::open_link_activate()
-  {
-    Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (m_click_mark);
-
-    Gtk::TextIter start, end;
-    m_url_tag->get_extents (click_iter, start, end);
-
-    on_url_tag_activated(*(NoteEditor*)get_window()->editor(), start, end);
-  }
-
-
-  void NoteUrlWatcher::copy_link_activate()
-  {
-    Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (m_click_mark);
-
-    Gtk::TextIter start, end;
-    m_url_tag->get_extents (click_iter, start, end);
-
-    Glib::ustring url = get_url(start, end);
-
-    Glib::RefPtr<Gtk::Clipboard> clip 
-      = get_window()->editor()->get_clipboard ("CLIPBOARD");
-    clip->set_text(url);
   }
 
 
