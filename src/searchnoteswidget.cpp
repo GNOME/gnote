@@ -21,7 +21,9 @@
 
 
 #include <glibmm/i18n.h>
+#include <gtkmm/dragsource.h>
 #include <gtkmm/gestureclick.h>
+#include <gtkmm/icontheme.h>
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/popovermenu.h>
@@ -559,10 +561,6 @@ int SearchNotesWidget::compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> & a,
 
 void SearchNotesWidget::make_recent_tree()
 {
-  m_targets.push_back(Gtk::TargetEntry("STRING", Gtk::TARGET_SAME_APP, 0));
-  m_targets.push_back(Gtk::TargetEntry("text/plain", Gtk::TARGET_SAME_APP, 0));
-  m_targets.push_back(Gtk::TargetEntry("text/uri-list", Gtk::TARGET_SAME_APP, 1));
-
   m_tree = Gtk::make_managed<Gtk::TreeView>();
   m_tree->set_headers_visible(true);
   m_tree->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
@@ -575,18 +573,16 @@ void SearchNotesWidget::make_recent_tree()
   button_ctrl->signal_pressed().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_right_button_pressed));
   m_tree->add_controller(button_ctrl);
-  m_tree->signal_motion_notify_event().connect(
-    sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_motion_notify), false);
-  m_tree->signal_button_release_event().connect(
-    sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_button_released));
+
   m_notes_widget_key_ctrl = Gtk::EventControllerKey::create();
   m_notes_widget_key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_key_pressed), false);
   m_tree->add_controller(m_notes_widget_key_ctrl);
-  m_tree->signal_drag_data_get().connect(
-    sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_drag_data_get));
 
-  m_tree->enable_model_drag_source(m_targets,
-    Gdk::BUTTON1_MASK | Gdk::BUTTON3_MASK, Gdk::ACTION_MOVE);
+  auto drag_source = Gtk::DragSource::create();
+  auto paintable = Gtk::IconTheme::get_for_display(Gdk::Display::get_default())->lookup_icon(IconManager::NOTE, 24);
+  drag_source->set_icon(paintable, 0, 0);
+  drag_source->signal_prepare().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_drag_data_get), false);
+  m_tree->add_controller(drag_source);
 
   Gtk::CellRenderer *renderer;
 
@@ -724,55 +720,6 @@ void SearchNotesWidget::on_treeview_right_button_pressed(int n_press, double x, 
   popover->popup();
 }
 
-bool SearchNotesWidget::on_treeview_motion_notify(GdkEventMotion *ev)
-{
-  auto event = (GdkEvent*)ev;
-  GdkModifierType state;
-  gdk_event_get_state(event, &state);
-  if((state & Gdk::BUTTON1_MASK) == 0) {
-    return false;
-  }
-  else if(gdk_event_get_window(event) != m_tree->get_bin_window()->gobj()) {
-    return false;
-  }
-
-  bool retval = true;
-  gdouble x, y;
-  gdk_event_get_coords(event, &x, &y);
-  if(!m_tree->drag_check_threshold(m_clickX, m_clickY, x, y)) {
-    return retval;
-  }
-
-  Gtk::TreePath dest_path;
-  Gtk::TreeViewColumn * col = NULL; // unused
-  int cell_x, cell_y;               // unused
-  if(!m_tree->get_path_at_pos(x, y, dest_path, col, cell_x, cell_y)) {
-    return retval;
-  }
-
-  m_tree->drag_begin(Gtk::TargetList::create (m_targets), Gdk::ACTION_MOVE, 1, event, 0, 0);
-  return retval;
-}
-
-bool SearchNotesWidget::on_treeview_button_released(GdkEventButton *ev)
-{
-  gdouble x, y;
-  gdk_event_get_coords((GdkEvent*)ev, &x, &y);
-  GdkModifierType state;
-  gdk_event_get_state((GdkEvent*)ev, &state);
-  if(!m_tree->drag_check_threshold(m_clickX, m_clickY, x, y)
-     && ((state & (Gdk::CONTROL_MASK | Gdk::SHIFT_MASK)) == 0)
-     && m_tree->get_selection()->count_selected_rows () > 1) {
-    Gtk::TreePath dest_path;
-    Gtk::TreeViewColumn * col = NULL; // unused
-    int cell_x, cell_y;               // unused
-    m_tree->get_path_at_pos(x, y, dest_path, col, cell_x, cell_y);
-    m_tree->get_selection()->unselect_all();
-    m_tree->get_selection()->select(dest_path);
-  }
-  return false;
-}
-
 bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
   switch(keyval) {
@@ -801,29 +748,30 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
   return false; // Let Escape be handled by the window.
 }
 
-void SearchNotesWidget::on_treeview_drag_data_get(const Glib::RefPtr<Gdk::DragContext> &,
-                                                  Gtk::SelectionData &selection_data,
-                                                  guint, guint)
+Glib::RefPtr<Gdk::ContentProvider> SearchNotesWidget::on_treeview_drag_data_get(double, double)
 {
   Note::List selected_notes = get_selected_notes();
   if(selected_notes.empty()) {
-    return;
+    // TODO grab note under cursor
+    return Glib::RefPtr<Gdk::ContentProvider>();
   }
-
-  std::vector<Glib::ustring> uris;
-  for(Note::List::const_iterator iter = selected_notes.begin();
-      iter != selected_notes.end(); ++iter) {
-
-    uris.push_back((*iter)->uri());
-  }
-
-  selection_data.set_uris(uris);
 
   if(selected_notes.size() == 1) {
-    selection_data.set_text(selected_notes.front()->get_title());
+    Glib::Value<Glib::ustring> value;
+    value.init(Glib::Value<Glib::ustring>::value_type());
+    value.set(selected_notes.front()->uri());
+    return Gdk::ContentProvider::create(value);
   }
   else {
-    selection_data.set_text(_("Notes"));
+    std::vector<Glib::ustring> uris;
+    for(const auto & note : selected_notes) {
+      uris.emplace_back(note->uri());
+    }
+
+    Glib::Value<std::vector<Glib::ustring>> value;
+    value.init(Glib::Value<std::vector<Glib::ustring>>::value_type());
+    value.set(uris);
+    return Gdk::ContentProvider::create(value);
   }
 }
 

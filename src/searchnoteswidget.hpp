@@ -94,11 +94,8 @@ private:
   void on_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
   void on_selection_changed();
   void on_treeview_right_button_pressed(int n_press, double x, double y);
-  bool on_treeview_motion_notify(GdkEventMotion *);
-  bool on_treeview_button_released(GdkEventButton *);
   bool on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
-  void on_treeview_drag_data_get(const Glib::RefPtr<Gdk::DragContext> &,
-                                 Gtk::SelectionData &, guint, guint);
+  Glib::RefPtr<Gdk::ContentProvider> on_treeview_drag_data_get(double, double);
   void remove_matches_column();
   void no_matches_found_action();
   void add_matches_column();
@@ -169,7 +166,6 @@ private:
   IGnote & m_gnote;
   NoteManagerBase & m_manager;
   Gtk::TreeView *m_tree;
-  std::vector<Gtk::TargetEntry> m_targets;
   std::map<Glib::ustring, int> m_current_matches;
   int m_clickX, m_clickY;
   Gtk::TreeViewColumn *m_matches_column;
