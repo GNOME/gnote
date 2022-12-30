@@ -26,6 +26,7 @@
 
 #include <glibmm/i18n.h>
 #include <gtkmm/expander.h>
+#include <gtkmm/label.h>
 
 #include "ignote.hpp"
 #include "mainwindow.hpp"
@@ -125,18 +126,16 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   , m_select_all_button(_("Select All"))
   , m_select_none_button(_("Select None"))
   , m_always_show_dlg_radio(_("Always show this _window"), true)
-  , m_always_rename_radio(_("Alwa_ys rename links"),
-                          true)
-  , m_never_rename_radio(_("Never rename _links"),
-                         true)
+  , m_always_rename_radio(_("Alwa_ys rename links"), true)
+  , m_never_rename_radio(_("Never rename _links"), true)
 {
-  set_default_response(Gtk::RESPONSE_CANCEL);
-  set_border_width(10);
+  set_default_response(Gtk::ResponseType::CANCEL);
+  set_margin(10);
 
   Gtk::Box *const vbox = get_content_area();
 
-  add_action_widget(m_rename_button, Gtk::RESPONSE_YES);
-  add_action_widget(m_dont_rename_button, Gtk::RESPONSE_NO);
+  add_action_widget(m_rename_button, Gtk::ResponseType::YES);
+  add_action_widget(m_dont_rename_button, Gtk::ResponseType::NO);
 
   std::for_each(notes.begin(), notes.end(),
                 ModelFiller(m_notes_model));
@@ -152,12 +151,11 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
         "anything."),
       old_title,
       renamed_note->get_title()));
-  label->set_line_wrap(true);
-  vbox->pack_start(*label, false, true, 5);
+  label->set_wrap(true);
+  label->set_margin(5);
+  vbox->append(*label);
 
-  Gtk::TreeView * const notes_view = Gtk::manage(
-                                       new Gtk::TreeView(
-                                             m_notes_model));
+  auto notes_view = Gtk::make_managed<Gtk::TreeView>(m_notes_model);
   notes_view->set_size_request(-1, 200);
   notes_view->signal_row_activated().connect(
     sigc::bind(
@@ -167,19 +165,14 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
 
   ModelColumnRecord model_column_record;
 
-  Gtk::CellRendererToggle * const toggle_cell
-                                    = Gtk::manage(
-                                        new Gtk::CellRendererToggle);
+  auto toggle_cell = Gtk::make_managed<Gtk::CellRendererToggle>();
   toggle_cell->set_activatable(true);
   toggle_cell->signal_toggled().connect(
     sigc::mem_fun(*this,
                   &NoteRenameDialog::on_toggle_cell_toggled));
 
   {
-    Gtk::TreeViewColumn * const column = Gtk::manage(
-                                           new Gtk::TreeViewColumn(
-                                                 _("Rename Links"),
-                                                 *toggle_cell));
+    auto column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Rename Links"), *toggle_cell);
     column->add_attribute(*toggle_cell,
                           "active",
                           model_column_record.get_column_selected());
@@ -190,11 +183,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   }
 
   {
-    Gtk::TreeViewColumn * const column
-      = Gtk::manage(
-          new Gtk::TreeViewColumn(
-                _("Note Title"),
-                model_column_record.get_column_title()));
+    auto column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Note Title"), model_column_record.get_column_title());
     column->set_sort_column(model_column_record.get_column_title());
     column->set_resizable(true);
     notes_view->append_column(*column);
@@ -212,49 +201,46 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
                     &NoteRenameDialog::on_select_all_button_clicked),
       false));
 
-  Gtk::Grid * const notes_button_box = manage(new Gtk::Grid);
+  auto notes_button_box = Gtk::make_managed<Gtk::Grid>();
   notes_button_box->set_column_spacing(5);
   notes_button_box->attach(m_select_none_button, 0, 0, 1, 1);
   notes_button_box->attach(m_select_all_button, 1, 0, 1, 1);
   notes_button_box->set_hexpand(true);
 
-  Gtk::ScrolledWindow * const notes_scroll
-                                = Gtk::manage(
-                                         new Gtk::ScrolledWindow());
-  notes_scroll->add(*notes_view);
+  auto notes_scroll = Gtk::make_managed<Gtk::ScrolledWindow>();
+  notes_scroll->set_child(*notes_view);
   notes_scroll->set_hexpand(true);
   notes_scroll->set_vexpand(true);
 
   m_notes_box.attach(*notes_scroll, 0, 0, 1, 1);
   m_notes_box.attach(*notes_button_box, 0, 1, 1, 1);
 
-  Gtk::Expander * const advanced_expander
-                          = Gtk::manage(new Gtk::Expander(
-                                              _("Ad_vanced"), true));
-  Gtk::Grid * const expand_box = Gtk::manage(new Gtk::Grid);
+  auto advanced_expander = Gtk::make_managed<Gtk::Expander>(_("Ad_vanced"), true);
+  auto expand_box = Gtk::make_managed<Gtk::Grid>();
   expand_box->attach(m_notes_box, 0, 0, 1, 1);
 
-  m_always_show_dlg_radio.signal_clicked().connect(
+  m_always_show_dlg_radio.set_active(true);
+  m_always_show_dlg_radio.signal_toggled().connect(
     sigc::mem_fun(*this,
                   &NoteRenameDialog::on_always_show_dlg_clicked));
 
-  Gtk::RadioButton::Group group = m_always_show_dlg_radio.get_group();
-
-  m_never_rename_radio.set_group(group);
-  m_never_rename_radio.signal_clicked().connect(
+  m_never_rename_radio.set_group(m_always_show_dlg_radio);
+  m_never_rename_radio.signal_toggled().connect(
     sigc::mem_fun(*this,
                   &NoteRenameDialog::on_never_rename_clicked));
 
-  m_always_rename_radio.set_group(group);
-  m_always_rename_radio.signal_clicked().connect(
+  m_always_rename_radio.set_group(m_always_show_dlg_radio);
+  m_always_rename_radio.signal_toggled().connect(
     sigc::mem_fun(*this,
                   &NoteRenameDialog::on_always_rename_clicked));
 
   expand_box->attach(m_always_show_dlg_radio, 0, 1, 1, 1);
   expand_box->attach(m_never_rename_radio, 0, 2, 1, 1);
   expand_box->attach(m_always_rename_radio, 0, 3, 1, 1);
-  advanced_expander->add(*expand_box);
-  vbox->pack_start(*advanced_expander, true, true, 5);
+  advanced_expander->set_child(*expand_box);
+  advanced_expander->set_margin(5);
+  advanced_expander->set_expand(true);
+  vbox->append(*advanced_expander);
 
   advanced_expander->property_expanded().signal_changed().connect(
     sigc::bind(
@@ -263,7 +249,6 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
       advanced_expander->property_expanded().get_value()));
 
   set_focus(m_dont_rename_button);
-  vbox->show_all();
 }
 
 NoteRenameDialog::MapPtr NoteRenameDialog::get_notes() const
@@ -296,7 +281,7 @@ void NoteRenameDialog::on_advanced_expander_changed(bool expanded)
 
 void NoteRenameDialog::on_always_rename_clicked()
 {
-  m_select_all_button.clicked();
+  on_select_all_button_clicked(true);
   m_notes_box.set_sensitive(false);
   m_rename_button.set_sensitive(true);
   m_dont_rename_button.set_sensitive(false);
@@ -304,7 +289,7 @@ void NoteRenameDialog::on_always_rename_clicked()
 
 void NoteRenameDialog::on_always_show_dlg_clicked()
 {
-  m_select_all_button.clicked();
+  on_select_all_button_clicked(true);
   m_notes_box.set_sensitive(true);
   m_rename_button.set_sensitive(true);
   m_dont_rename_button.set_sensitive(true);
@@ -312,15 +297,13 @@ void NoteRenameDialog::on_always_show_dlg_clicked()
 
 void NoteRenameDialog::on_never_rename_clicked()
 {
-  m_select_none_button.clicked();
+  on_select_all_button_clicked(true);
   m_notes_box.set_sensitive(false);
   m_rename_button.set_sensitive(false);
   m_dont_rename_button.set_sensitive(true);
 }
 
-bool NoteRenameDialog::on_notes_model_foreach_iter_accumulate(
-                         const Gtk::TreeIter & iter,
-                         const MapPtr & notes) const
+bool NoteRenameDialog::on_notes_model_foreach_iter_accumulate(const Gtk::TreeIter<Gtk::TreeRow> & iter, const MapPtr & notes) const
 {
   ModelColumnRecord model_column_record;
   const Gtk::TreeModel::Row row = *iter;
@@ -331,9 +314,7 @@ bool NoteRenameDialog::on_notes_model_foreach_iter_accumulate(
   return false;
 }
 
-bool NoteRenameDialog::on_notes_model_foreach_iter_select(
-                         const Gtk::TreeIter & iter,
-                         bool select)
+bool NoteRenameDialog::on_notes_model_foreach_iter_select(const Gtk::TreeIter<Gtk::TreeRow> & iter, bool select)
 {
   ModelColumnRecord model_column_record;
   Gtk::TreeModel::Row row = *iter;

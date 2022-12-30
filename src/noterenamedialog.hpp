@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
-#include <gtkmm/radiobutton.h>
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/treeview.h>
 
 #include "note.hpp"
@@ -93,11 +93,8 @@ private:
   void on_always_rename_clicked();
   void on_always_show_dlg_clicked();
   void on_never_rename_clicked();
-  bool on_notes_model_foreach_iter_accumulate(
-         const Gtk::TreeIter & iter,
-         const MapPtr & notes) const;
-  bool on_notes_model_foreach_iter_select(const Gtk::TreeIter & iter,
-                                          bool select);
+  bool on_notes_model_foreach_iter_accumulate(const Gtk::TreeIter<Gtk::TreeRow> & iter, const MapPtr & notes) const;
+  bool on_notes_model_foreach_iter_select(const Gtk::TreeIter<Gtk::TreeRow> & iter, bool select);
   void on_notes_view_row_activated(const Gtk::TreeModel::Path & p,
                                    Gtk::TreeView::Column *,
                                    const Glib::ustring & old_title);
@@ -111,9 +108,9 @@ private:
   Gtk::Button m_rename_button;
   Gtk::Button m_select_all_button;
   Gtk::Button m_select_none_button;
-  Gtk::RadioButton m_always_show_dlg_radio;
-  Gtk::RadioButton m_always_rename_radio;
-  Gtk::RadioButton m_never_rename_radio;
+  Gtk::CheckButton m_always_show_dlg_radio;
+  Gtk::CheckButton m_always_rename_radio;
+  Gtk::CheckButton m_never_rename_radio;
   Gtk::Grid m_notes_box;
 };
 
