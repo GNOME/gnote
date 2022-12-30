@@ -22,6 +22,8 @@
 #define _SYNCHRONIZATION_SYNCDIALOG_HPP_
 
 
+#include <condition_variable>
+
 #include <gtkmm/dialog.h>
 #include <gtkmm/expander.h>
 #include <gtkmm/image.h>
@@ -65,7 +67,18 @@ namespace sync {
                                  NoteUpdate remoteNote,
                                  const std::vector<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,
-                                 SyncTitleConflictResolution resolution);
+                                 SyncTitleConflictResolution resolution,
+                                 std::mutex &wait_mutex,
+                                 std::condition_variable &wait,
+                                 bool & completed);
+    void conflict_dialog_response(
+      Gtk::Dialog *dialog,
+      const Note::Ptr & localConflictNote,
+      NoteUpdate remoteNote,
+      SyncTitleConflictResolution savedBehavior,
+      SyncTitleConflictResolution resolution,
+      bool noteSyncBitsMatch,
+      Gtk::ResponseType response);
 
     bool on_pulse_progress_bar();
     void on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn *column);

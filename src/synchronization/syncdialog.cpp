@@ -574,18 +574,26 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
   int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
+  std::mutex wait_mutex;
+  std::condition_variable wait;
+  std::unique_lock lock(wait_mutex);
+  bool completed = false;
 
   // This event handler will be called by the synchronization thread
   // so we have to use the delegate here to manipulate the GUI.
   // To be consistent, any exceptions in the delgate will be caught
   // and then rethrown in the synchronization thread.
-  utils::main_context_call(
-    [this, localConflictNote, remoteNote, noteUpdateTitles, dlgBehaviorPref]() {
+  utils::main_context_invoke(
+    [this, localConflictNote, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait_mutex, &wait, &completed]() {
       note_conflict_detected_(localConflictNote, remoteNote, noteUpdateTitles,
                               static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
-                              OVERWRITE_EXISTING
+                              OVERWRITE_EXISTING, wait_mutex, wait, completed
       );
     });
+
+  while(!completed) {
+    wait.wait(lock);
+  }
 }
 
 
@@ -594,22 +602,57 @@ void SyncDialog::note_conflict_detected_(
   NoteUpdate remoteNote,
   const std::vector<Glib::ustring> & noteUpdateTitles,
   SyncTitleConflictResolution savedBehavior,
-  SyncTitleConflictResolution resolution)
+  SyncTitleConflictResolution resolution,
+  std::mutex &wait_mutex,
+  std::condition_variable &wait,
+  bool & completed)
 {
-  SyncTitleConflictDialog conflictDlg(localConflictNote, noteUpdateTitles);
-  Gtk::ResponseType reponse = Gtk::ResponseType::OK;
-
   bool noteSyncBitsMatch = m_gnote.sync_manager().synchronized_note_xml_matches(
     localConflictNote->get_complete_note_xml(), remoteNote.m_xml_content);
 
   // If the synchronized note content is in conflict
   // and there is no saved conflict handling behavior, show the dialog
   if(!noteSyncBitsMatch && savedBehavior == 0) {
-    reponse = static_cast<Gtk::ResponseType>(conflictDlg.run());
+    auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(localConflictNote, noteUpdateTitles);
+    conflictDlg->signal_response()
+      .connect([this, conflictDlg, &localConflictNote, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait_mutex, &wait, &completed](int resp) {
+      auto response = static_cast<Gtk::ResponseType>(resp);
+      conflict_dialog_response(
+        conflictDlg,
+        localConflictNote,
+        remoteNote,
+        savedBehavior,
+        resolution,
+        noteSyncBitsMatch,
+        response
+      );
+
+      std::unique_lock lock(wait_mutex);
+      completed = true;
+      wait.notify_one();
+    });
+    conflictDlg->show();
   }
+  else {
+    std::unique_lock lock(wait_mutex);
+    completed = true;
+    wait.notify_one();
+  }
+}
 
 
-  if(reponse == Gtk::ResponseType::CANCEL) {
+void SyncDialog::conflict_dialog_response(
+  Gtk::Dialog *dialog,
+  const Note::Ptr & localConflictNote,
+  NoteUpdate remoteNote,
+  SyncTitleConflictResolution savedBehavior,
+  SyncTitleConflictResolution resolution,
+  bool noteSyncBitsMatch,
+  Gtk::ResponseType response)
+{
+  auto conflictDlg = static_cast<SyncTitleConflictDialog*>(dialog);
+
+  if(response == Gtk::ResponseType::CANCEL) {
     resolution = CANCEL;
   }
   else {
@@ -617,7 +660,7 @@ void SyncDialog::note_conflict_detected_(
       resolution = OVERWRITE_EXISTING;
     }
     else if(savedBehavior == 0) {
-      resolution = conflictDlg.resolution();
+      resolution = conflictDlg->resolution();
     }
     else {
       resolution = savedBehavior;
@@ -625,7 +668,7 @@ void SyncDialog::note_conflict_detected_(
 
     switch(resolution) {
     case OVERWRITE_EXISTING:
-      if(conflictDlg.always_perform_this_action()) {
+      if(conflictDlg->always_perform_this_action()) {
         savedBehavior = resolution;
       }
       // No need to delete if sync will overwrite
@@ -634,16 +677,16 @@ void SyncDialog::note_conflict_detected_(
       }
       break;
     case RENAME_EXISTING_AND_UPDATE:
-      if(conflictDlg.always_perform_this_action()) {
+      if(conflictDlg->always_perform_this_action()) {
         savedBehavior = resolution;
       }
-      rename_note(localConflictNote, conflictDlg.renamed_title(), true);
+      rename_note(localConflictNote, conflictDlg->renamed_title(), true);
       break;
     case RENAME_EXISTING_NO_UPDATE:
-      if(conflictDlg.always_perform_this_action()) {
+      if(conflictDlg->always_perform_this_action()) {
         savedBehavior = resolution;
       }
-      rename_note(localConflictNote, conflictDlg.renamed_title(), false);
+      rename_note(localConflictNote, conflictDlg->renamed_title(), false);
       break;
     case CANCEL:
       break;
@@ -652,7 +695,7 @@ void SyncDialog::note_conflict_detected_(
 
   m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(savedBehavior));
 
-  conflictDlg.hide();
+  conflictDlg->hide();
 
   // Let the SyncManager continue
   m_gnote.sync_manager().resolve_conflict(/*localConflictNote, */resolution);
