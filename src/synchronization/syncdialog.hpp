@@ -24,6 +24,8 @@
 
 #include <gtkmm/dialog.h>
 #include <gtkmm/expander.h>
+#include <gtkmm/image.h>
+#include <gtkmm/label.h>
 #include <gtkmm/progressbar.h>
 #include <gtkmm/treestore.h>
 #include <gtkmm/treeviewcolumn.h>
@@ -67,8 +69,8 @@ namespace sync {
 
     bool on_pulse_progress_bar();
     void on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn *column);
-    void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
-    void treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
+    void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
+    void treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
     void sync_state_changed_(SyncState state);
     void rename_note(const Note::Ptr & note, Glib::ustring && newTitle, bool updateReferencingNotes);
     void present_note(const Note::Ptr &);

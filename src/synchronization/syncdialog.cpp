@@ -22,7 +22,6 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/main.h>
-#include <gtkmm/radiobutton.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/treeview.h>
 
@@ -72,73 +71,67 @@ public:
         suggestedRename = suggestedRenameBase + " " + TO_STRING(i);
       }
 
-      Gtk::Grid *outerVBox = manage(new Gtk::Grid);
+      Gtk::Grid *outerVBox = Gtk::make_managed<Gtk::Grid>();
       outerVBox->set_row_spacing(8);
-      outerVBox->set_border_width(12);
+      outerVBox->set_margin(12);
 
-      Gtk::Grid *hbox = manage(new Gtk::Grid);
+      Gtk::Grid *hbox = Gtk::make_managed<Gtk::Grid>();
       hbox->set_column_spacing(8);
-      Gtk::Image *image = manage(new Gtk::Image);
-      image->set_from_icon_name("dialog-warning", Gtk::IconSize(Gtk::ICON_SIZE_DIALOG));
-      image->show();
+      Gtk::Image *image = Gtk::make_managed<Gtk::Image>();
+      image->set_from_icon_name("dialog-warning");
       hbox->attach(*image, 0, 0, 1, 1);
 
-      Gtk::Grid *vbox = manage(new Gtk::Grid);
+      Gtk::Grid *vbox = Gtk::make_managed<Gtk::Grid>();
       vbox->set_row_spacing(8);
 
-      m_header_label = manage(new Gtk::Label);
+      m_header_label = Gtk::make_managed<Gtk::Label>();
       m_header_label->set_use_markup(true);
       m_header_label->property_xalign() = 0;
       m_header_label->set_use_underline(false);
-      m_header_label->show();
       vbox->attach(*m_header_label, 0, 0, 1, 1);
 
-      m_message_label = manage(new Gtk::Label);
+      m_message_label = Gtk::make_managed<Gtk::Label>();
       m_message_label->property_xalign() = 0;
       m_message_label->set_use_underline(false);
-      m_message_label->set_line_wrap(true);
+      m_message_label->set_wrap(true);
       m_message_label->property_wrap() = true;
-      m_message_label->show();
       vbox->attach(*m_message_label, 0, 1, 1, 1);
 
-      vbox->show();
       vbox->set_hexpand(true);
       hbox->attach(*vbox, 1, 0, 1, 1);
 
-      hbox->show();
       outerVBox->attach(*hbox, 0, 0, 1, 1);
-      get_content_area()->pack_start(*outerVBox);
+      get_content_area()->append(*outerVBox);
 
-      Gtk::Grid *renameHBox = manage(new Gtk::Grid);
-      renameRadio = manage(new Gtk::RadioButton(m_radio_group, _("Rename local note:")));
+      Gtk::Grid *renameHBox = Gtk::make_managed<Gtk::Grid>();
+      renameRadio = Gtk::make_managed<Gtk::CheckButton>(_("Rename local note:"), true);
       renameRadio->signal_toggled().connect(sigc::mem_fun(*this, &SyncTitleConflictDialog::radio_toggled));
-      Gtk::Grid *renameOptionsVBox = manage(new Gtk::Grid);
+      Gtk::Grid *renameOptionsVBox = Gtk::make_managed<Gtk::Grid>();
 
-      renameEntry = manage(new Gtk::Entry);
+      renameEntry = Gtk::make_managed<Gtk::Entry>();
       renameEntry->set_text(suggestedRename);
       renameEntry->signal_changed().connect(sigc::mem_fun(*this, &SyncTitleConflictDialog::rename_entry_changed));
-      renameUpdateCheck = manage(new Gtk::CheckButton(_("Update links in referencing notes")));
+      renameUpdateCheck = Gtk::make_managed<Gtk::CheckButton>(_("Update links in referencing notes"), true);
       renameOptionsVBox->attach(*renameEntry, 0, 0, 1, 1);
       renameHBox->attach(*renameRadio, 0, 0, 1, 1);
       renameHBox->attach(*renameOptionsVBox, 1, 0, 1, 1);
-      get_content_area()->pack_start(*renameHBox);
+      get_content_area()->append(*renameHBox);
 
-      deleteExistingRadio = manage(new Gtk::RadioButton(m_radio_group, _("Overwrite local note")));
+      deleteExistingRadio = Gtk::make_managed<Gtk::CheckButton>(_("Overwrite local note"), true);
+      deleteExistingRadio->set_group(*renameRadio);
       deleteExistingRadio->signal_toggled().connect(sigc::mem_fun(*this, &SyncTitleConflictDialog::radio_toggled));
-      get_content_area()->pack_start(*deleteExistingRadio);
+      get_content_area()->append(*deleteExistingRadio);
 
-      alwaysDoThisCheck = manage(new Gtk::CheckButton(_("Always perform this action")));
-      get_content_area()->pack_start(*alwaysDoThisCheck);
+      alwaysDoThisCheck = Gtk::make_managed<Gtk::CheckButton>(_("Always perform this action"), true);
+      get_content_area()->append(*alwaysDoThisCheck);
 
-      continueButton = add_button(_("_Continue"), Gtk::RESPONSE_ACCEPT);
+      continueButton = add_button(_("_Continue"), Gtk::ResponseType::ACCEPT);
 
       // Set initial dialog text
       header_text(_("Note conflict detected"));
       message_text(Glib::ustring::compose(
         _("The server version of \"%1\" conflicts with your local note.  What do you want to do with your local note?"),
         existingNote->get_title()));
-
-      show_all();
     }
   void header_text(const Glib::ustring & value)
     {
@@ -203,10 +196,9 @@ private:
 
   Gtk::Entry *renameEntry;
   Gtk::CheckButton *renameUpdateCheck;
-  Gtk::RadioButton *renameRadio;
-  Gtk::RadioButton *deleteExistingRadio;
+  Gtk::CheckButton *renameRadio;
+  Gtk::CheckButton *deleteExistingRadio;
   Gtk::CheckButton *alwaysDoThisCheck;
-  Gtk::RadioButtonGroup m_radio_group;
 
   Gtk::Label *m_header_label;
   Gtk::Label *m_message_label;
@@ -231,81 +223,71 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   set_size_request(400, -1);
 
   // Outer box. Surrounds all of our content.
-  Gtk::Grid *outerVBox = manage(new Gtk::Grid);
+  Gtk::Grid *outerVBox = Gtk::make_managed<Gtk::Grid>();
   outerVBox->set_row_spacing(12);
-  outerVBox->set_border_width(6);
-  outerVBox->show();
+  outerVBox->set_margin(6);
+  outerVBox->set_expand(true);
   int outerVBoxRow = 0;
-  get_content_area()->pack_start(*outerVBox, true, true, 0);
+  get_content_area()->append(*outerVBox);
 
   // Top image and label
-  Gtk::Grid *hbox = manage(new Gtk::Grid);
+  Gtk::Grid *hbox = Gtk::make_managed<Gtk::Grid>();
   hbox->set_column_spacing(12);
-  hbox->show();
   outerVBox->attach(*hbox, 0, outerVBoxRow++, 1, 1);
 
-  m_image = manage(new Gtk::Image(g.icon_manager().get_icon(IconManager::GNOTE, 48)));
-  m_image->set_halign(Gtk::ALIGN_START);
-  m_image->set_valign(Gtk::ALIGN_START);
-  m_image->show();
+  m_image = Gtk::make_managed<Gtk::Image>();
+  m_image->set_from_icon_name(IconManager::GNOTE);
+  m_image->set_halign(Gtk::Align::START);
+  m_image->set_valign(Gtk::Align::START);
   hbox->attach(*m_image, 0, 0, 1, 1);
 
   // Label header and message
-  Gtk::Grid *vbox = manage(new Gtk::Grid);
+  Gtk::Grid *vbox = Gtk::make_managed<Gtk::Grid>();
   vbox->set_row_spacing(6);
-  vbox->show();
   vbox->set_hexpand(true);
   hbox->attach(*vbox, 1, 0, 1, 1);
 
-  m_header_label = manage(new Gtk::Label);
+  m_header_label = Gtk::make_managed<Gtk::Label>();
   m_header_label->set_use_markup(true);
-  m_header_label->set_halign(Gtk::ALIGN_START);
+  m_header_label->set_halign(Gtk::Align::START);
   m_header_label->set_use_underline(false);
-  m_header_label->set_line_wrap(true);
-  m_header_label->show();
+  m_header_label->set_wrap(true);
   vbox->attach(*m_header_label, 0, 0, 1, 1);
 
-  m_message_label = manage(new Gtk::Label);
-  m_message_label->set_halign(Gtk::ALIGN_START);
+  m_message_label = Gtk::make_managed<Gtk::Label>();
+  m_message_label->set_halign(Gtk::Align::START);
   m_message_label->set_use_underline(false);
-  m_message_label->set_line_wrap(true);
+  m_message_label->set_wrap(true);
   m_message_label->set_size_request(250, -1);
-  m_message_label->show();
   vbox->attach(*m_message_label, 0, 1, 1, 1);
 
-  m_progress_bar = manage(new Gtk::ProgressBar);
-  m_progress_bar->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+  m_progress_bar = Gtk::make_managed<Gtk::ProgressBar>();
+  m_progress_bar->set_orientation(Gtk::Orientation::HORIZONTAL);
   m_progress_bar->set_pulse_step(0.3);
-  m_progress_bar->show();
   outerVBox->attach(*m_progress_bar, 0, outerVBoxRow++, 1, 1);
 
-  m_progress_label = manage(new Gtk::Label);
+  m_progress_label = Gtk::make_managed<Gtk::Label>();
   m_progress_label->set_use_markup(true);
-  m_progress_label->set_halign(Gtk::ALIGN_START);
+  m_progress_label->set_halign(Gtk::Align::START);
   m_progress_label->set_use_underline(false);
-  m_progress_label->set_line_wrap(true);
+  m_progress_label->set_wrap(true);
   m_progress_label->property_wrap() = true;
-  m_progress_label->show();
   outerVBox->attach(*m_progress_label, 0, outerVBoxRow++, 1, 1);
 
   // Expander containing TreeView
-  m_expander = manage(new Gtk::Expander(_("Details")));
-  m_expander->set_spacing(6);
+  m_expander = Gtk::make_managed<Gtk::Expander>(_("Details"));
+  m_expander->set_margin(6);
   g_signal_connect(m_expander->gobj(), "activate", G_CALLBACK(SyncDialog::on_expander_activated), this);
-  m_expander->show();
   m_expander->set_vexpand(true);
   outerVBox->attach(*m_expander, 0, outerVBoxRow++, 1, 1);
 
   // Contents of expander
-  Gtk::Grid *expandVBox = manage(new Gtk::Grid);
-  expandVBox->show();
-  m_expander->add(*expandVBox);
+  Gtk::Grid *expandVBox = Gtk::make_managed<Gtk::Grid>();
+  m_expander->set_child(*expandVBox);
 
   // Scrolled window around TreeView
-  Gtk::ScrolledWindow *scrolledWindow = manage(new Gtk::ScrolledWindow);
-  scrolledWindow->set_shadow_type(Gtk::SHADOW_IN);
+  Gtk::ScrolledWindow *scrolledWindow = Gtk::make_managed<Gtk::ScrolledWindow>();
   scrolledWindow->set_size_request(-1, 200);
-  scrolledWindow->show();
   scrolledWindow->set_hexpand(true);
   scrolledWindow->set_vexpand(true);
   expandVBox->attach(*scrolledWindow, 0, 0, 1, 1);
@@ -316,34 +298,33 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   m_model = Gtk::TreeStore::create(tmp_model);
 
   // Create TreeView, attach model
-  Gtk::TreeView *treeView = manage(new Gtk::TreeView);
+  Gtk::TreeView *treeView = Gtk::make_managed<Gtk::TreeView>();
   treeView->set_model(m_model);
   treeView->signal_row_activated().connect(sigc::mem_fun(*this, &SyncDialog::on_row_activated));
-  treeView->show();
-  scrolledWindow->add(*treeView);
+  scrolledWindow->set_child(*treeView);
 
   // Set up TreeViewColumns
-  Gtk::CellRenderer *renderer = manage(new Gtk::CellRendererText);
-  Gtk::TreeViewColumn *column = manage(new Gtk::TreeViewColumn(_("Note Title"), *renderer));
+  Gtk::CellRenderer *renderer = Gtk::make_managed<Gtk::CellRendererText>();
+  Gtk::TreeViewColumn *column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Note Title"), *renderer);
   column->set_sort_column(0);
   column->set_resizable(true);
   column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &SyncDialog::treeview_col1_data_func));
   treeView->append_column(*column);
 
-  renderer = manage(new Gtk::CellRendererText);
-  column = manage(new Gtk::TreeViewColumn(_("Status"), *renderer));
+  renderer = Gtk::make_managed<Gtk::CellRendererText>();
+  column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Status"), *renderer);
   column->set_sort_column(1);
   column->set_resizable(true);
   treeView->append_column(*column);
   column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &SyncDialog::treeview_col2_data_func));
 
   // Button to close dialog.
-  m_close_button = add_button(_("_Close"), static_cast<int>(Gtk::RESPONSE_CLOSE));
+  m_close_button = add_button(_("_Close"), static_cast<int>(Gtk::ResponseType::CLOSE));
   m_close_button->set_sensitive(false);
 }
 
 
-void SyncDialog::treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
+void SyncDialog::treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   Glib::ustring text;
   iter->get_value(0, text);
@@ -351,7 +332,7 @@ void SyncDialog::treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk:
 }
 
 
-void SyncDialog::treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
+void SyncDialog::treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   Glib::ustring text;
   iter->get_value(1, text);
@@ -616,7 +597,7 @@ void SyncDialog::note_conflict_detected_(
   SyncTitleConflictResolution resolution)
 {
   SyncTitleConflictDialog conflictDlg(localConflictNote, noteUpdateTitles);
-  Gtk::ResponseType reponse = Gtk::RESPONSE_OK;
+  Gtk::ResponseType reponse = Gtk::ResponseType::OK;
 
   bool noteSyncBitsMatch = m_gnote.sync_manager().synchronized_note_xml_matches(
     localConflictNote->get_complete_note_xml(), remoteNote.m_xml_content);
@@ -628,7 +609,7 @@ void SyncDialog::note_conflict_detected_(
   }
 
 
-  if(reponse == Gtk::RESPONSE_CANCEL) {
+  if(reponse == Gtk::ResponseType::CANCEL) {
     resolution = CANCEL;
   }
   else {
