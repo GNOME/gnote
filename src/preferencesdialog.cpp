@@ -107,7 +107,7 @@ namespace gnote {
     notebook->append_page(*make_editing_pane(), _("General"));
     notebook->append_page(*make_links_pane(), _("Links"));
     notebook->append_page(*make_sync_pane(), _("Synchronization"));
-    notebook->append_page (*manage(make_addins_pane()), _("Plugins"));
+    notebook->append_page(*make_addins_pane(), _("Plugins"));
 
       // TODO: Figure out a way to have these be placed in a specific order
     std::vector<PreferenceTabAddin*> tabAddins = m_addin_manager.get_preference_tab_addins();
@@ -509,84 +509,66 @@ namespace gnote {
   // Extension Preferences
   Gtk::Widget *PreferencesDialog::make_addins_pane()
   {
-    Gtk::Grid *vbox = new Gtk::Grid;
+    auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(6);
-    vbox->set_border_width(6);
+    vbox->set_margin(6);
     int vbox_row = 0;
-    Gtk::Label *l = manage(new Gtk::Label (_("The following plugins are installed:"), 
-                                           true));
+    auto l = Gtk::make_managed<Gtk::Label>(_("The following plugins are installed:"), true);
     l->property_xalign() = 0;
-    l->show ();
     vbox->attach(*l, 0, vbox_row++, 1, 1);
 
-    Gtk::Grid *hbox = manage(new Gtk::Grid);
+    auto hbox = Gtk::make_managed<Gtk::Grid>();
     hbox->set_column_spacing(6);
     int hbox_col = 0;
 
     // TreeView of Add-ins
-    m_addin_tree = manage(new Gtk::TreeView ());
+    m_addin_tree = Gtk::make_managed<Gtk::TreeView>();
     m_addin_tree_model = sharp::AddinsTreeModel::create(m_addin_tree);
 
-    m_addin_tree->show ();
-
-    Gtk::ScrolledWindow *sw = manage(new Gtk::ScrolledWindow ());
-    sw->property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
-    sw->property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
-    sw->set_shadow_type(Gtk::SHADOW_IN);
-    sw->add (*m_addin_tree);
-    sw->show ();
+    auto sw = Gtk::make_managed<Gtk::ScrolledWindow>();
+    sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+    sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+    sw->set_child(*m_addin_tree);
     sw->set_hexpand(true);
     sw->set_vexpand(true);
     hbox->attach(*sw, hbox_col++, 0, 1, 1);
 
     // Action Buttons (right of TreeView)
-    Gtk::ButtonBox *button_box = manage(new Gtk::ButtonBox(Gtk::ORIENTATION_VERTICAL));
+    auto button_box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL);
     button_box->set_spacing(4);
-    button_box->set_layout(Gtk::BUTTONBOX_START);
 
-    // TODO: In a future version, add in an "Install Add-ins..." button
-
-    // TODO: In a future version, add in a "Repositories..." button
-
-    enable_addin_button = manage(new Gtk::Button (_("_Enable"), true));
+    enable_addin_button = Gtk::make_managed<Gtk::Button>(_("_Enable"), true);
     enable_addin_button->set_sensitive(false);
     enable_addin_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_enable_addin_button));
-    enable_addin_button->show ();
 
-    disable_addin_button = manage(new Gtk::Button (_("_Disable"), true));
+    disable_addin_button = Gtk::make_managed<Gtk::Button>(_("_Disable"), true);
     disable_addin_button->set_sensitive(false);
     disable_addin_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_disable_addin_button));
-    disable_addin_button->show ();
 
-    addin_prefs_button = manage(new Gtk::Button(_("_Preferences"), true));
+    addin_prefs_button = Gtk::make_managed<Gtk::Button>(_("_Preferences"), true);
     addin_prefs_button->set_sensitive(false);
     addin_prefs_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_prefs_button));
-    addin_prefs_button->show ();
 
-    addin_info_button = manage(new Gtk::Button(_("In_formation"), true));
+    addin_info_button = Gtk::make_managed<Gtk::Button>(_("In_formation"), true);
     addin_info_button->set_sensitive(false);
     addin_info_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_info_button));
-    addin_info_button->show ();
 
-    button_box->pack_start(*enable_addin_button);
-    button_box->pack_start(*disable_addin_button);
-    button_box->pack_start(*addin_prefs_button);
-    button_box->pack_start(*addin_info_button);
+    button_box->append(*enable_addin_button);
+    button_box->append(*disable_addin_button);
+    button_box->append(*addin_prefs_button);
+    button_box->append(*addin_info_button);
 
-    button_box->show ();
     hbox->attach(*button_box, hbox_col++, 0, 1, 1);
 
-    hbox->show ();
     vbox->attach(*hbox, 0, vbox_row++, 1, 1);
-    vbox->show ();
 
     m_addin_tree->get_selection()->signal_changed().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_tree_selection_changed));
-    load_addins ();
+    load_addins();
 
     return vbox;
   }
