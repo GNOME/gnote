@@ -35,9 +35,9 @@
 namespace sharp {
 
 
-  AddinsTreeModel::Ptr AddinsTreeModel::create(gnote::IconManager & icon_manager, Gtk::TreeView *treeview)
+  AddinsTreeModel::Ptr AddinsTreeModel::create(Gtk::TreeView *treeview)
   {
-    AddinsTreeModel::Ptr p(new AddinsTreeModel(icon_manager));
+    auto p = std::make_shared<AddinsTreeModel>();
     if(treeview) {
       treeview->set_model(p);
       p->set_columns(treeview);
@@ -45,9 +45,7 @@ namespace sharp {
     return p;
   }
 
-  AddinsTreeModel::AddinsTreeModel(gnote::IconManager & icon_manager)
-    : Gtk::TreeStore()
-    , m_icon_manager(icon_manager)
+  AddinsTreeModel::AddinsTreeModel()
   {
     set_column_types(m_columns);
   }
@@ -95,11 +93,11 @@ namespace sharp {
   void AddinsTreeModel::name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
   {
     Gtk::CellRendererPixbuf *icon_renderer = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
-    Glib::RefPtr<Gdk::Pixbuf> icon;
+    Glib::ustring icon;
     if(get_module_id(iter) != "") {
-      icon = m_icon_manager.get_icon(gnote::IconManager::EMBLEM_PACKAGE, 22);
+      icon = gnote::IconManager::EMBLEM_PACKAGE;
     }
-    icon_renderer->property_pixbuf() = icon;
+    icon_renderer->property_icon_name() = icon;
   }
 
   void AddinsTreeModel::set_columns(Gtk::TreeView *treeview)

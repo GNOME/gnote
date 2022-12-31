@@ -47,7 +47,8 @@ class AddinsTreeModel
 {
 public:
   typedef Glib::RefPtr<AddinsTreeModel> Ptr;
-  static Ptr create(gnote::IconManager & icon_manager, Gtk::TreeView *treeview);
+  static Ptr create(Gtk::TreeView *treeview);
+  AddinsTreeModel();
 
   Glib::ustring get_module_id(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   sharp::DynamicModule *get_module(const Gtk::TreeIter<Gtk::TreeConstRow> &);
@@ -78,13 +79,10 @@ public:
 
   static Glib::ustring get_addin_category_name(gnote::AddinCategory category);
 protected:
-  AddinsTreeModel(gnote::IconManager & icon_manager);
   void set_columns(Gtk::TreeView *v);
 private:
   void name_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
   void name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
-
-  gnote::IconManager & m_icon_manager;
 };
 
 }
