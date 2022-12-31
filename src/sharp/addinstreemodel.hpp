@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -49,11 +49,12 @@ public:
   typedef Glib::RefPtr<AddinsTreeModel> Ptr;
   static Ptr create(gnote::IconManager & icon_manager, Gtk::TreeView *treeview);
 
-  Glib::ustring get_module_id(const Gtk::TreeIter &);
-  sharp::DynamicModule * get_module(const Gtk::TreeIter &);
-  void set_module(const Gtk::TreeIter &, const sharp::DynamicModule *);
+  Glib::ustring get_module_id(const Gtk::TreeIter<Gtk::TreeConstRow> &);
+  sharp::DynamicModule *get_module(const Gtk::TreeIter<Gtk::TreeConstRow> &);
+  void set_module(const Gtk::TreeIter<Gtk::TreeRow> &, const sharp::DynamicModule *);
 
-  Gtk::TreeIter append(const gnote::AddinInfo &, const sharp::DynamicModule *);
+  Gtk::TreeIter<Gtk::TreeRow> append(const gnote::AddinInfo &, const sharp::DynamicModule *);
+
   class AddinsColumns
     : public Gtk::TreeModelColumnRecord
   {
@@ -80,8 +81,8 @@ protected:
   AddinsTreeModel(gnote::IconManager & icon_manager);
   void set_columns(Gtk::TreeView *v);
 private:
-  void name_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter & iter);
-  void name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter & iter);
+  void name_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
+  void name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
 
   gnote::IconManager & m_icon_manager;
 };
