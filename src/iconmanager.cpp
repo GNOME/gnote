@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,12 +18,7 @@
  */
 
 
-#include <glibmm/i18n.h>
-#include <gtkmm/icontheme.h>
-
-#include "debug.hpp"
 #include "iconmanager.hpp"
-
 
 
 namespace gnote {
@@ -42,28 +37,6 @@ const char *IconManager::PIN_DOWN = "pin-down";
 const char *IconManager::PIN_UP = "pin-up";
 const char *IconManager::ACTIVE_NOTES = "active-notes";
 const char *IconManager::SPECIAL_NOTES = "special-notes";
-
-
-Glib::RefPtr<Gdk::Pixbuf> IconManager::get_icon(const Glib::ustring & name, int size)
-{
-  try {
-    IconDef icon = std::make_pair(name, size);
-    IconMap::iterator iter = m_icons.find(icon);
-    if(iter != m_icons.end()) {
-      return iter->second;
-    }
-
-    Glib::RefPtr<Gdk::Pixbuf> pixbuf = Gtk::IconTheme::get_default()->load_icon(
-        name, size, (Gtk::IconLookupFlags) 0);
-    m_icons[icon] = pixbuf;
-    return pixbuf;
-  }
-  catch(const Glib::Exception & e) {
-    /* TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description */
-    ERR_OUT(_("Failed to load icon (%s, %d): %s"), name.c_str(), size, e.what().c_str());
-  }
-  return Glib::RefPtr<Gdk::Pixbuf>();
-}
 
 }
 

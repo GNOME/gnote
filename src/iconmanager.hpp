@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#include <map>
-
-#include <gdkmm/pixbuf.h>
-#include <glibmm/refptr.h>
-#include <gtkmm/iconinfo.h>
-
 
 namespace gnote {
 
@@ -44,12 +37,7 @@ public:
   static const char *ACTIVE_NOTES;
   static const char *SPECIAL_NOTES;
 
-  Glib::RefPtr<Gdk::Pixbuf> get_icon(const Glib::ustring &, int);
-private:
-  typedef std::pair<Glib::ustring, int> IconDef;
-  typedef std::map<IconDef, Glib::RefPtr<Gdk::Pixbuf> > IconMap;
-
-  IconMap m_icons;
+  IconManager() = delete;
 };
 
 }

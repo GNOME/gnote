@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016-2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017,2019,2022-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@
 namespace gnote {
 
 class IActionManager;
-class IconManager;
 class Preferences;
 namespace notebooks {
   class NotebookManager;
@@ -46,7 +45,6 @@ public:
   virtual ~IGnote();
 
   virtual IActionManager & action_manager() = 0;
-  virtual IconManager & icon_manager() = 0;
   virtual notebooks::NotebookManager & notebook_manager() = 0;
   virtual sync::ISyncManager & sync_manager() = 0;
   virtual Preferences & preferences() = 0;
