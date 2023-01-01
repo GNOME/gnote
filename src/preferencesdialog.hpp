@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,6 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/comboboxtext.h>
-#include <gtkmm/radiobutton.h>
 #include <gtkmm/spinbutton.h>
 
 #include "sharp/addinstreemodel.hpp"
@@ -91,7 +90,6 @@ private:
   bool addin_info_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
   void addin_info_dialog_response(int, Gtk::Dialog*);
   void on_sync_addin_prefs_changed();
-  void on_conflict_option_toggle();
   void combo_box_text_data_func(const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
   void update_sync_services();
   void update_timeout_pref();
@@ -137,12 +135,6 @@ private:
   Gtk::Button *disable_addin_button;
   Gtk::Button *addin_prefs_button;
   Gtk::Button *addin_info_button;
-
-  Gtk::RadioButton::Group conflictRadioGroup;
-  Gtk::RadioButton *promptOnConflictRadio;
-  Gtk::RadioButton *renameOnConflictRadio;
-  Gtk::RadioButton *overwriteOnConflictRadio;
-
 
   /// Keep track of the opened addin prefs dialogs so other windows
   /// can be interacted with (as opposed to opening these as modal

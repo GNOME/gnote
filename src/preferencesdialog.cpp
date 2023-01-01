@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -931,24 +931,35 @@ namespace gnote {
     savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlgBehaviorPref);
 
     // Create dialog
-    Gtk::Dialog *advancedDlg = new Gtk::Dialog(_("Other Synchronization Options"), *this, true);
+    Gtk::Dialog *advancedDlg = Gtk::make_managed<Gtk::Dialog>(_("Other Synchronization Options"), *this, true);
     // Populate dialog
-    Gtk::Label *label = new Gtk::Label(
+    Gtk::Label *label = Gtk::make_managed<Gtk::Label>(
       _("When a conflict is detected between a local note and a note on the configured synchronization server:"));
-    label->set_line_wrap(true);
-    //label.Xalign = 0;
+    label->set_wrap(true);
+    label->set_margin(6);
 
-    promptOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Always ask me what to do"));
-    promptOnConflictRadio->signal_toggled()
-      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
+    auto promptOnConflictRadio = Gtk::make_managed<Gtk::CheckButton>(_("Always ask me what to do"));
+    auto renameOnConflictRadio = Gtk::make_managed<Gtk::CheckButton>(_("Rename my local note"));
+    renameOnConflictRadio->set_group(*promptOnConflictRadio);
+    auto overwriteOnConflictRadio = Gtk::make_managed<Gtk::CheckButton>(_("Replace my local note with the server's update"));
+    overwriteOnConflictRadio->set_group(*promptOnConflictRadio);
 
-    renameOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Rename my local note"));
-    renameOnConflictRadio->signal_toggled()
-      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
+    auto on_toggle = [this, renameOnConflictRadio, overwriteOnConflictRadio] {
+      sync::SyncTitleConflictResolution newBehavior = sync::CANCEL;
 
-    overwriteOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Replace my local note with the server's update"));
-    overwriteOnConflictRadio->signal_toggled()
-      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
+      if(renameOnConflictRadio->get_active()) {
+        newBehavior = sync::RENAME_EXISTING_NO_UPDATE;
+      }
+      else if(overwriteOnConflictRadio->get_active()) {
+        newBehavior = sync::OVERWRITE_EXISTING;
+      }
+
+      m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(newBehavior));
+    };
+
+    promptOnConflictRadio->signal_toggled().connect(on_toggle);
+    renameOnConflictRadio->signal_toggled().connect(on_toggle);
+    overwriteOnConflictRadio->signal_toggled().connect(on_toggle);
 
     switch(savedBehavior) {
     case sync::RENAME_EXISTING_NO_UPDATE:
@@ -962,37 +973,19 @@ namespace gnote {
       break;
     }
 
-    Gtk::Grid *vbox = new Gtk::Grid;
-    vbox->set_border_width(18);
+    Gtk::Grid *vbox = Gtk::make_managed<Gtk::Grid>();
+    vbox->set_margin(18);
 
     vbox->attach(*promptOnConflictRadio, 0, 0, 1, 1);
     vbox->attach(*renameOnConflictRadio, 0, 1, 1, 1);
     vbox->attach(*overwriteOnConflictRadio, 0, 2, 1, 1);
 
-    advancedDlg->get_content_area()->pack_start(*label, false, false, 6);
-    advancedDlg->get_content_area()->pack_start(*vbox, false, false, 0);
-    advancedDlg->add_button(_("_Close"), Gtk::RESPONSE_OK);
+    advancedDlg->get_content_area()->append(*label);
+    advancedDlg->get_content_area()->append(*vbox);
+    advancedDlg->add_button(_("_Close"), Gtk::ResponseType::OK);
 
-    advancedDlg->show_all();
-
-    // Run dialog
-    advancedDlg->run();
-    delete advancedDlg;
-  }
-
-
-  void PreferencesDialog::on_conflict_option_toggle()
-  {
-    sync::SyncTitleConflictResolution newBehavior = sync::CANCEL;
-
-    if(renameOnConflictRadio->get_active()) {
-      newBehavior = sync::RENAME_EXISTING_NO_UPDATE;
-    }
-    else if(overwriteOnConflictRadio->get_active()) {
-      newBehavior = sync::OVERWRITE_EXISTING;
-    }
-
-    m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(newBehavior));
+    advancedDlg->show();
+    advancedDlg->signal_response().connect([advancedDlg](int) { advancedDlg->hide(); });
   }
 
 
