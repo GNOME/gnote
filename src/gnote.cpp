@@ -59,16 +59,12 @@ namespace gnote {
     , m_sync_manager(NULL)
     , m_is_background(false)
     , m_is_shell_search(false)
-    , m_prefsdlg(NULL)
     , m_cmd_line(*this)
   {
   }
 
   Gnote::~Gnote()
   {
-    if (m_prefsdlg) {
-      delete m_prefsdlg;
-    }
     if(m_sync_manager) {
       delete m_sync_manager;
     }
@@ -214,15 +210,15 @@ namespace gnote {
 
   void Gnote::on_preferences_response(int /*res*/)
   {
-    delete m_prefsdlg;
-    m_prefsdlg = NULL;
+    m_prefsdlg.reset();
   }
 
 
   void Gnote::on_show_preferences_action(const Glib::VariantBase&)
   {
     if(!m_prefsdlg) {
-      m_prefsdlg = new PreferencesDialog(*this, default_note_manager());
+      m_prefsdlg = std::make_unique<PreferencesDialog>(*this, default_note_manager());
+      m_prefsdlg->set_transient_for(get_main_window());
       m_prefsdlg->signal_response().connect(
         sigc::mem_fun(*this, &Gnote::on_preferences_response));
     }

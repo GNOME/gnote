@@ -185,7 +185,7 @@ private:
   bool m_is_background;
   bool m_is_shell_search;
   RemoteControlProxy m_remote_control;
-  PreferencesDialog *m_prefsdlg;
+  std::unique_ptr<PreferencesDialog> m_prefsdlg;
   GnoteCommandLine m_cmd_line;
   sync::SyncDialog::Ptr m_sync_dlg;
 };
