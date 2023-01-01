@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2013-2017,2019,2021,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
+#include <glibmm/variant.h>
 
 #include "addininfo.hpp"
 #include "debug.hpp"
@@ -66,45 +67,39 @@ AddinInfo::AddinInfo(const Glib::ustring & info_file)
 void AddinInfo::load_from_file(const Glib::ustring & info_file)
 {
   try {
-    Glib::KeyFile addin_info;
-    if(!addin_info.load_from_file(info_file)) {
+    auto addin_info = Glib::KeyFile::create();
+    if(!addin_info->load_from_file(info_file)) {
       throw std::runtime_error(_("Failed to load plugin information!"));
     }
-    m_id = addin_info.get_string(ADDIN_INFO, "Id");
-    m_name = addin_info.get_locale_string(ADDIN_INFO, "Name");
-    m_description = addin_info.get_locale_string(ADDIN_INFO, "Description");
-    m_authors = addin_info.get_locale_string(ADDIN_INFO, "Authors");
-    m_category = resolve_addin_category(addin_info.get_string(ADDIN_INFO, "Category"));
-    m_version = addin_info.get_string(ADDIN_INFO, "Version");
-    try {
-      m_copyright = addin_info.get_locale_string(ADDIN_INFO, "Copyright");
+    m_id = addin_info->get_string(ADDIN_INFO, "Id");
+    m_name = addin_info->get_locale_string(ADDIN_INFO, "Name");
+    m_description = addin_info->get_locale_string(ADDIN_INFO, "Description");
+    m_authors = addin_info->get_locale_string(ADDIN_INFO, "Authors");
+    m_category = resolve_addin_category(addin_info->get_string(ADDIN_INFO, "Category"));
+    m_version = addin_info->get_string(ADDIN_INFO, "Version");
+    if(addin_info->has_key(ADDIN_INFO, "Copyright")) {
+      m_copyright = addin_info->get_locale_string(ADDIN_INFO, "Copyright");
     }
-    catch(Glib::KeyFileError & e) {
-      DBG_OUT("Can't read copyright, using none: %s", e.what().c_str());
+    if(addin_info->has_key(ADDIN_INFO, "DefaultEnabled")) {
+      m_default_enabled = addin_info->get_boolean(ADDIN_INFO, "DefaultEnabled");
     }
-    try {
-      m_default_enabled = addin_info.get_boolean(ADDIN_INFO, "DefaultEnabled");
-    }
-    catch(Glib::KeyFileError & e) {
-      DBG_OUT("Can't read default enabled status, assuming default: %s", e.what().c_str());
-    }
-    m_addin_module = addin_info.get_string(ADDIN_INFO, "Module");
-    m_libgnote_release = addin_info.get_string(ADDIN_INFO, "LibgnoteRelease");
-    m_libgnote_version_info = addin_info.get_string(ADDIN_INFO, "LibgnoteVersionInfo");
+    m_addin_module = addin_info->get_string(ADDIN_INFO, "Module");
+    m_libgnote_release = addin_info->get_string(ADDIN_INFO, "LibgnoteRelease");
+    m_libgnote_version_info = addin_info->get_string(ADDIN_INFO, "LibgnoteVersionInfo");
 
-    if(addin_info.has_group(ADDIN_ATTS)) {
-      for(const Glib::ustring & key : addin_info.get_keys(ADDIN_ATTS)) {
-        m_attributes[key] = addin_info.get_string(ADDIN_ATTS, key);
+    if(addin_info->has_group(ADDIN_ATTS)) {
+      for(const Glib::ustring & key : addin_info->get_keys(ADDIN_ATTS)) {
+        m_attributes[key] = addin_info->get_string(ADDIN_ATTS, key);
       }
     }
-    if(addin_info.has_group(ADDIN_ACTIONS)) {
-      load_actions(addin_info, "ActionsVoid", NULL);
-      load_actions(addin_info, "ActionsBool", &Glib::Variant<bool>::variant_type());
-      load_actions(addin_info, "ActionsInt", &Glib::Variant<gint32>::variant_type());
-      load_actions(addin_info, "ActionsString", &Glib::Variant<Glib::ustring>::variant_type());
-      if(addin_info.has_key(ADDIN_ACTIONS, "NonModifyingActions")) {
+    if(addin_info->has_group(ADDIN_ACTIONS)) {
+      load_actions(*addin_info, "ActionsVoid", NULL);
+      load_actions(*addin_info, "ActionsBool", &Glib::Variant<bool>::variant_type());
+      load_actions(*addin_info, "ActionsInt", &Glib::Variant<gint32>::variant_type());
+      load_actions(*addin_info, "ActionsString", &Glib::Variant<Glib::ustring>::variant_type());
+      if(addin_info->has_key(ADDIN_ACTIONS, "NonModifyingActions")) {
         std::vector<Glib::ustring> actions;
-        sharp::string_split(actions, addin_info.get_string(ADDIN_ACTIONS, "NonModifyingActions"), ",");
+        sharp::string_split(actions, addin_info->get_string(ADDIN_ACTIONS, "NonModifyingActions"), ",");
         for(auto action : actions) {
           m_non_modifying_actions.push_back(action);
         }
