@@ -1165,13 +1165,14 @@ namespace gnote {
     , m_addin_info(addin_info)
   {
     property_destroy_with_parent() = true;
-    add_button(_("_Close"), Gtk::RESPONSE_CLOSE);
+    add_button(_("_Close"), Gtk::ResponseType::CLOSE);
     
     // TODO: Change this icon to be an addin/package icon
-    Gtk::Image *icon = manage(new Gtk::Image("dialog-information", Gtk::ICON_SIZE_DIALOG));
-    icon->set_halign(Gtk::ALIGN_START);
+    Gtk::Image *icon = Gtk::make_managed<Gtk::Image>();
+    icon->set_from_icon_name("dialog-information");
+    icon->set_halign(Gtk::Align::START);
 
-    Gtk::Label *info_label = manage(new Gtk::Label ());
+    auto info_label = Gtk::make_managed<Gtk::Label>();
     info_label->property_xalign() = 0;
     info_label->property_yalign() = 0;
     info_label->set_use_markup(true);
@@ -1180,23 +1181,22 @@ namespace gnote {
     info_label->set_hexpand(true);
     info_label->set_vexpand(true);
 
-    Gtk::Grid *hbox = manage(new Gtk::Grid);
+    auto hbox = Gtk::make_managed<Gtk::Grid>();
     hbox->set_column_spacing(6);
-    Gtk::Grid *vbox = manage(new Gtk::Grid);
+    auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(12);
-    hbox->set_border_width(12);
-    vbox->set_border_width(6);
+    hbox->set_margin(12);
+    hbox->set_expand(true);
+    vbox->set_margin(6);
 
     hbox->attach(*icon, 0, 0, 1, 1);
     hbox->attach(*vbox, 1, 0, 1, 1);
 
     vbox->attach(*info_label, 0, 0, 1, 1);
 
-    hbox->show_all ();
+    get_content_area()->append(*hbox);
 
-    get_content_area()->pack_start(*hbox, true, true, 0);
-
-    fill (*info_label);
+    fill(*info_label);
   }
 
   void AddinInfoDialog::fill(Gtk::Label & info_label)
