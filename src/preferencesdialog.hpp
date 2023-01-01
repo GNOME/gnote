@@ -87,7 +87,6 @@ private:
   bool addin_pref_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
   void addin_pref_dialog_response(int, Gtk::Dialog*);
   void on_addin_info_button();
-  bool addin_info_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
   void addin_info_dialog_response(int, Gtk::Dialog*);
   void on_sync_addin_prefs_changed();
   void combo_box_text_data_func(const Gtk::TreeIter<Gtk::TreeConstRow> & iter);

@@ -763,11 +763,7 @@ namespace gnote {
     Gtk::Dialog* dialog;
     auto iter = addin_info_dialogs.find(addin.id());
     if (iter == addin_info_dialogs.end()) {
-      dialog = new AddinInfoDialog (addin, *this);
-      dialog->signal_delete_event().connect(
-        sigc::bind(
-          sigc::mem_fun(*this, &PreferencesDialog::addin_info_dialog_deleted), 
-          dialog), false);
+      dialog = Gtk::make_managed<AddinInfoDialog>(addin, *this);
       dialog->signal_response().connect(
         sigc::bind(
           sigc::mem_fun(*this, &PreferencesDialog::addin_info_dialog_response),
@@ -787,23 +783,11 @@ namespace gnote {
     dialog->present ();
   }
 
-  bool PreferencesDialog::addin_info_dialog_deleted(GdkEventAny*, 
-                                                    Gtk::Dialog* dialog)
-  {
-    // Remove the addin from the addin_prefs_dialogs Dictionary
-    dialog->hide ();
-
-    AddinInfoDialog *addin_dialog = static_cast<AddinInfoDialog*>(dialog);
-    addin_info_dialogs.erase(addin_dialog->get_addin_id());
-    delete dialog;
-
-    return false;
-  }
-
-
   void PreferencesDialog::addin_info_dialog_response(int, Gtk::Dialog* dlg)
   {
-    addin_info_dialog_deleted(NULL, dlg);
+    dlg->hide();
+    AddinInfoDialog *addin_dialog = static_cast<AddinInfoDialog*>(dlg);
+    addin_info_dialogs.erase(addin_dialog->get_addin_id());
   }
 
 
