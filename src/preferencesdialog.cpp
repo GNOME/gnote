@@ -678,8 +678,9 @@ namespace gnote {
     auto iter = addin_prefs_dialogs.find(id);
     if (iter == addin_prefs_dialogs.end()) {
       // A preference dialog isn't open already so create a new one
-      Gtk::Image *icon = manage(new Gtk::Image("preferences-system", Gtk::ICON_SIZE_DIALOG));
-      Gtk::Label *caption = manage(new Gtk::Label());
+      auto icon = Gtk::make_managed<Gtk::Image>();
+      icon->set_from_icon_name("preferences-system");
+      auto caption = Gtk::make_managed<Gtk::Label>();
       caption->set_markup(
         Glib::ustring::compose("<span size='large' weight='bold'>%1 %2</span>", 
             addin_info.name(), addin_info.version()));
@@ -688,41 +689,35 @@ namespace gnote {
       caption->set_use_underline(false);
       caption->set_hexpand(true);
 
-      Gtk::Widget * pref_widget =
-        m_addin_manager.create_addin_preference_widget(id);
+      Gtk::Widget *pref_widget = m_addin_manager.create_addin_preference_widget(id);
 
       if (pref_widget == NULL) {
-        pref_widget = manage(new Gtk::Label (_("Not Implemented")));
+        pref_widget = Gtk::make_managed<Gtk::Label>(_("Not Implemented"));
       }
       
-      Gtk::Grid *hbox = manage(new Gtk::Grid);
+      Gtk::Grid *hbox = Gtk::make_managed<Gtk::Grid>();
       hbox->set_column_spacing(6);
-      Gtk::Grid *vbox = manage(new Gtk::Grid);
+      Gtk::Grid *vbox = Gtk::make_managed<Gtk::Grid>();
       vbox->set_row_spacing(6);
-      vbox->set_border_width(6);
+      vbox->set_margin(6);
       hbox->attach(*icon, 0, 0, 1, 1);
       hbox->attach(*caption, 1, 0, 1, 1);
       vbox->attach(*hbox, 0, 0, 1, 1);
+      vbox->set_expand(true);
 
       vbox->attach(*pref_widget, 0, 1, 1, 1);
-      vbox->show_all ();
 
-      dialog = new Gtk::Dialog(
+      dialog = Gtk::make_managed<Gtk::Dialog>(
         // TRANSLATORS: %1 is the placeholder for the addin name.
         Glib::ustring::compose(_("%1 Preferences"), addin_info.name()),
         *this, false);
       dialog->property_destroy_with_parent() = true;
-      dialog->add_button(_("_Close"), Gtk::RESPONSE_CLOSE);
+      dialog->add_button(_("_Close"), Gtk::ResponseType::CLOSE);
 
-      dialog->get_content_area()->pack_start(*vbox, true, true, 0);
-      dialog->signal_delete_event().connect(
-        sigc::bind(
-          sigc::mem_fun(*this, &PreferencesDialog::addin_pref_dialog_deleted),
-          dialog), false);
-      dialog->signal_response().connect(
-        sigc::bind(
-          sigc::mem_fun(*this, &PreferencesDialog::addin_pref_dialog_response),
-          dialog));
+      dialog->get_content_area()->append(*vbox);
+      dialog->signal_response().connect([this, dialog, id](int) {
+        addin_pref_dialog_response(id, dialog);
+      });
 
       // Store this dialog off in the dictionary so it can be
       // presented again if the user clicks on the preferences button
@@ -739,20 +734,10 @@ namespace gnote {
   }
 
 
-  bool PreferencesDialog::addin_pref_dialog_deleted(GdkEventAny*, 
-                                                    Gtk::Dialog* dialog)
+  void PreferencesDialog::addin_pref_dialog_response(const Glib::ustring & addin_id, Gtk::Dialog* dialog)
   {
-    // Remove the addin from the addin_prefs_dialogs Dictionary
-    dialog->hide ();
-
-//    addin_prefs_dialogs.erase(dialog->get_addin_id());
-
-    return false;
-  }
-
-  void PreferencesDialog::addin_pref_dialog_response(int, Gtk::Dialog* dialog)
-  {
-    addin_pref_dialog_deleted(NULL, dialog);
+    dialog->hide();
+    addin_prefs_dialogs.erase(addin_id);
   }
 
   void PreferencesDialog::on_addin_info_button()

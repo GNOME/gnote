@@ -84,8 +84,7 @@ private:
   void on_enable_addin_button();
   void on_disable_addin_button();
   void on_addin_prefs_button();
-  bool addin_pref_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
-  void addin_pref_dialog_response(int, Gtk::Dialog*);
+  void addin_pref_dialog_response(const Glib::ustring &, Gtk::Dialog*);
   void on_addin_info_button();
   void addin_info_dialog_response(int, Gtk::Dialog*);
   void on_sync_addin_prefs_changed();
