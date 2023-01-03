@@ -1000,50 +1000,59 @@ namespace gnote {
       return;
     }
 
+    auto after_dialog = [this] {
+      try {
+        m_selected_sync_addin->reset_configuration();
+      }
+      catch(std::exception & e) {
+        DBG_OUT("Error calling %s.reset_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
+      }
+
+      m_gnote.preferences().sync_selected_service_addin("");
+
+      // Reset conflict handling behavior
+      m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+
+      m_gnote.sync_manager().reset_client();
+
+      m_sync_addin_combo->set_sensitive(true);
+      m_sync_addin_combo->unset_active();
+      m_reset_sync_addin_button->set_sensitive(false);
+      m_save_sync_addin_button->set_sensitive(true);
+    };
+
+    Gtk::Dialog *dialog;
+
     // User doesn't get a choice if this is invoked by disabling the addin
     // FIXME: null sender check is lame!
     if(signal) {
       // Prompt the user about what they're about to do since
       // it's not really recommended to switch back and forth
       // between sync services.
-      utils::HIGMessageDialog *dialog = new utils::HIGMessageDialog(NULL, GTK_DIALOG_MODAL, Gtk::MESSAGE_QUESTION,
-        Gtk::BUTTONS_YES_NO, _("Are you sure?"),
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::QUESTION,
+        Gtk::ButtonsType::YES_NO, _("Are you sure?"),
         _("Clearing your synchronization settings is not recommended.  "
           "You may be forced to synchronize all of your notes again when you save new settings."));
-      int dialog_response = dialog->run();
-      delete dialog;
-      if(dialog_response != Gtk::RESPONSE_YES) {
-        return;
-      }
+      dialog->signal_response().connect([dialog, after_dialog](int dialog_response) {
+        dialog->hide();
+        if(dialog_response == Gtk::ResponseType::YES) {
+          after_dialog();
+        }
+      });
     }
     else { // FIXME: Weird place for this to go.  User should be able to cancel disabling of addin, anyway
-      utils::HIGMessageDialog *dialog = new utils::HIGMessageDialog(NULL, GTK_DIALOG_MODAL, Gtk::MESSAGE_INFO,
-        Gtk::BUTTONS_OK, _("Resetting Synchronization Settings"),
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::INFO,
+        Gtk::ButtonsType::OK, _("Resetting Synchronization Settings"),
         _("You have disabled the configured synchronization service.  "
           "Your synchronization settings will now be cleared.  "
           "You may be forced to synchronize all of your notes again when you save new settings."));
-      dialog->run();
-      delete dialog;
+      dialog->signal_response().connect([dialog, after_dialog](int) {
+        dialog->hide();
+        after_dialog();
+      });
     }
 
-    try {
-      m_selected_sync_addin->reset_configuration();
-    }
-    catch(std::exception & e) {
-      DBG_OUT("Error calling %s.reset_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
-    }
-
-    m_gnote.preferences().sync_selected_service_addin("");
-
-    // Reset conflict handling behavior
-    m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
-
-    m_gnote.sync_manager().reset_client();
-
-    m_sync_addin_combo->set_sensitive(true);
-    m_sync_addin_combo->unset_active();
-    m_reset_sync_addin_button->set_sensitive(false);
-    m_save_sync_addin_button->set_sensitive(true);
+    dialog->show();
   }
 
   void PreferencesDialog::on_save_sync_addin_button()
