@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2019,2022 Aurimas Cernius
+ * Copyright (C) 2017-2019,2022-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ void SyncAddin::post_sync_cleanup()
 {
 }
 
-Gtk::Widget *SyncAddin::create_preferences_control(EventHandler /*requiredPrefChanged*/)
+Gtk::Widget *SyncAddin::create_preferences_control(Gtk::Window&, EventHandler /*requiredPrefChanged*/)
 {
   return NULL;
 }

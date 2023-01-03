@@ -424,7 +424,7 @@ namespace gnote {
     
     if(m_selected_sync_addin) {
       m_sync_addin_prefs_widget = m_selected_sync_addin->create_preferences_control(
-        sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
+        *this, sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
     }
     if (m_sync_addin_prefs_widget == NULL) {
       auto l = make_label(_("Not configurable"));
@@ -972,7 +972,7 @@ namespace gnote {
       if(newAddin != NULL) {
         m_selected_sync_addin = newAddin;
         m_sync_addin_prefs_widget = m_selected_sync_addin->create_preferences_control(
-          sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
+          *this, sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
         if(m_sync_addin_prefs_widget == NULL) {
           auto l = Gtk::make_managed<Gtk::Label>(_("Not configurable"));
           l->set_halign(Gtk::Align::CENTER);
