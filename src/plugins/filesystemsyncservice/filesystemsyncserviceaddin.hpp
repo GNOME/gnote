@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,8 +20,6 @@
 
 #ifndef _FILESYSTEM_SYNC_SERVICE_ADDIN_
 #define _FILESYSTEM_SYNC_SERVICE_ADDIN_
-
-#include <gtkmm/filechooserbutton.h>
 
 #include "sharp/dynamicmodule.hpp"
 #include "synchronization/syncserviceaddin.hpp"
@@ -56,8 +54,8 @@ public:
 
   virtual gnote::sync::SyncServer *create_sync_server() override;
   virtual void post_sync_cleanup() override;
-  virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) override;
-  virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;
+  virtual Gtk::Widget *create_preferences_control(Gtk::Window & parent, EventHandler requiredPrefChanged) override;
+  virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) override;
   virtual void reset_configuration() override;
   virtual bool is_configured() override;
   virtual Glib::ustring name() override;
@@ -67,7 +65,7 @@ public:
 private:
   bool get_config_settings(Glib::ustring & syncPath);
 
-  Gtk::FileChooserButton *m_path_button;
+  Gtk::Button *m_path_button;
   Glib::ustring m_path;
   bool m_initialized;
   bool m_enabled;

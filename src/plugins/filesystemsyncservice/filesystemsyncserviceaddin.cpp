@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2022 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
+#include <gtkmm/filechoosernative.h>
 #include <gtkmm/label.h>
 
 #include "debug.hpp"
@@ -88,9 +89,9 @@ void FileSystemSyncServiceAddin::post_sync_cleanup()
 }
 
 
-Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler requiredPrefChanged)
+Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(Gtk::Window & parent, EventHandler requiredPrefChanged)
 {
-  auto table = new Gtk::Grid;
+  auto table = Gtk::make_managed<Gtk::Grid>();
   table->set_row_spacing(5);
   table->set_column_spacing(10);
 
@@ -100,28 +101,51 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(EventHandler
     syncPath = "";
   }
 
-  Gtk::Label *l = new Gtk::Label(_("_Folder Path:"), true);
+  auto l = Gtk::make_managed<Gtk::Label>(_("_Folder Path:"), true);
   l->property_xalign() = 1;
   table->attach(*l, 0, 0, 1, 1);
 
-  m_path_button = new Gtk::FileChooserButton(_("Select Synchronization Folder..."),
-    Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
-  m_path_button->signal_file_set().connect(requiredPrefChanged);
+  m_path_button = Gtk::make_managed<Gtk::Button>();
+  if(syncPath.empty()) {
+    m_path_button->set_label(_("Select Synchronization Folder..."));
+    m_path_button->set_use_underline(true);
+  }
+  else {
+    m_path_button->set_label(syncPath);
+    m_path_button->set_use_underline(false);
+  }
+  m_path_button->signal_clicked().connect([this, &parent, requiredPrefChanged] {
+    auto dlg = Gtk::FileChooserNative::create(_("Select Synchronization Folder..."), Gtk::FileChooser::Action::SELECT_FOLDER);
+    dlg->set_transient_for(parent);
+    Glib::ustring syncPath;
+    if(get_config_settings(syncPath)) {
+      dlg->set_file(Gio::File::create_for_path(syncPath));
+    }
+    dlg->signal_response().connect([this, dlg, requiredPrefChanged](int resp) {
+      dlg->hide();
+      if(resp != Gtk::ResponseType::ACCEPT) {
+        return;
+      }
+
+      auto selected = dlg->get_file();
+      m_path_button->set_label(selected->get_path());
+      requiredPrefChanged();
+    });
+    dlg->show(); // TODO parent
+  });
   l->set_mnemonic_widget(*m_path_button);
-  m_path_button->set_filename(syncPath);
 
   table->attach(*m_path_button, 1, 0, 1, 1);
 
   table->set_hexpand(true);
   table->set_vexpand(false);
-  table->show_all();
   return table;
 }
 
 
-bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
+bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved)
 {
-  Glib::ustring syncPath = m_path_button->get_filename();
+  Glib::ustring syncPath = m_path_button->get_label();
 
   if(syncPath == "") {
     // TODO: Figure out a way to send the error back to the client
