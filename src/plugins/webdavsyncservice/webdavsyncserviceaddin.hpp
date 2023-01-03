@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ public:
   /// not automatically be saved by a GConf Property Editor.  Preferences
   /// should be saved when SaveConfiguration () is called.
   /// </summary>
-  virtual Gtk::Widget *create_preferences_control(EventHandler requiredPrefChanged) override;
+  virtual Gtk::Widget *create_preferences_control(Gtk::Window &, EventHandler requiredPrefChanged) override;
 
   /// <summary>
   /// Returns whether the addin is configured enough to actually be used.
@@ -79,7 +79,7 @@ public:
   virtual Glib::ustring id() override;
 
   virtual gnote::sync::SyncServer *create_sync_server() override;
-  virtual bool save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved) override;
+  virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) override;
   virtual void reset_configuration() override;
 private:
   static Glib::RefPtr<Gio::MountOperation> create_mount_operation(const Glib::ustring & username, const Glib::ustring & password);

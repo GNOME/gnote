@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +21,7 @@
 #include <thread>
 
 #include <glibmm/i18n.h>
+#include <gtkmm/label.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"
@@ -91,9 +92,9 @@ WebDavSyncServiceAddin * WebDavSyncServiceAddin::create()
   return new WebDavSyncServiceAddin;
 }
 
-Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(EventHandler requiredPrefChanged)
+Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(Gtk::Window &, EventHandler requiredPrefChanged)
 {
-  auto table = new Gtk::Grid;
+  auto table = Gtk::make_managed<Gtk::Grid>();
   table->set_row_spacing(5);
   table->set_column_spacing(10);
 
@@ -101,17 +102,17 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(EventHandler req
   Glib::ustring url, username, password;
   get_config_settings(url, username, password);
 
-  m_url_entry = new Gtk::Entry();
+  m_url_entry = Gtk::make_managed<Gtk::Entry>();
   m_url_entry->set_text(url);
   m_url_entry->signal_changed().connect(requiredPrefChanged);
   add_row(table, m_url_entry, _("_URL:"), 0);
 
-  m_username_entry = new Gtk::Entry();
+  m_username_entry = Gtk::make_managed<Gtk::Entry>();
   m_username_entry->set_text(username);
   m_username_entry->signal_changed().connect(requiredPrefChanged);
   add_row(table, m_username_entry, _("User_name:"), 1);
 
-  m_password_entry = new Gtk::Entry();
+  m_password_entry = Gtk::make_managed<Gtk::Entry>();
   m_password_entry->set_text(password);
   m_password_entry->set_visibility(false);
   m_password_entry->signal_changed().connect(requiredPrefChanged);
@@ -119,7 +120,6 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(EventHandler req
 
   table->set_hexpand(true);
   table->set_vexpand(false);
-  table->show_all();
   return table;
 }
 
@@ -173,7 +173,7 @@ gnote::sync::SyncServer *WebDavSyncServiceAddin::create_sync_server()
   return server;
 }
 
-bool WebDavSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
+bool WebDavSyncServiceAddin::save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved)
 {
   Glib::ustring url, username, password;
   if(!get_pref_widget_settings(url, username, password)) {
@@ -209,19 +209,19 @@ Glib::RefPtr<Gio::MountOperation> WebDavSyncServiceAddin::create_mount_operation
   auto operation = Gio::MountOperation::create();
   operation->signal_ask_password().connect(
     [operation, username, password](const Glib::ustring & /* message */, const Glib::ustring & /* default_user */, const Glib::ustring & /* default_domain */, Gio::AskPasswordFlags flags) {
-      if(flags & Gio::ASK_PASSWORD_NEED_DOMAIN) {
-        operation->reply(Gio::MOUNT_OPERATION_ABORTED);
+      if(Gio::AskPasswordFlags::NEED_DOMAIN == (flags & Gio::AskPasswordFlags::NEED_DOMAIN)) {
+        operation->reply(Gio::MountOperationResult::ABORTED);
         return;
       }
 
-      if(flags & Gio::ASK_PASSWORD_NEED_USERNAME) {
+      if(Gio::AskPasswordFlags::NEED_USERNAME == (flags & Gio::AskPasswordFlags::NEED_USERNAME)) {
         operation->set_username(username);
       }
-      if(flags & Gio::ASK_PASSWORD_NEED_PASSWORD) {
+      if(Gio::AskPasswordFlags::NEED_PASSWORD == (flags & Gio::AskPasswordFlags::NEED_PASSWORD)) {
         operation->set_password(password);
       }
 
-      operation->reply(Gio::MOUNT_OPERATION_HANDLED);
+      operation->reply(Gio::MountOperationResult::HANDLED);
     });
   return operation;
 }
@@ -303,13 +303,10 @@ bool WebDavSyncServiceAddin::accept_ssl_cert()
 
 void WebDavSyncServiceAddin::add_row(Gtk::Grid *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row)
 {
-  Gtk::Label *l = new Gtk::Label(labelText);
-  l->set_use_underline(true);
+  auto l = Gtk::make_managed<Gtk::Label>(labelText, true);
   l->property_xalign() = 0.0f;
-  l->show();
   table->attach(*l, 0, row);
 
-  widget->show();
   table->attach(*widget, 1, row);
 
   l->set_mnemonic_widget(*widget);
