@@ -962,8 +962,6 @@ namespace gnote {
   {
     if(m_sync_addin_prefs_widget != NULL) {
       m_sync_addin_prefs_container->remove(*m_sync_addin_prefs_widget);
-      m_sync_addin_prefs_widget->hide();
-      delete m_sync_addin_prefs_widget;
       m_sync_addin_prefs_widget = NULL;
     }
 
@@ -976,13 +974,12 @@ namespace gnote {
         m_sync_addin_prefs_widget = m_selected_sync_addin->create_preferences_control(
           sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
         if(m_sync_addin_prefs_widget == NULL) {
-          Gtk::Label *l = new Gtk::Label(_("Not configurable"));
-          l->set_halign(Gtk::ALIGN_CENTER);
-          l->set_valign(Gtk::ALIGN_CENTER);
+          auto l = Gtk::make_managed<Gtk::Label>(_("Not configurable"));
+          l->set_halign(Gtk::Align::CENTER);
+          l->set_valign(Gtk::Align::CENTER);
           m_sync_addin_prefs_widget = l;
         }
 
-        m_sync_addin_prefs_widget->show();
         m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
 
         m_reset_sync_addin_button->set_sensitive(false);
@@ -1058,8 +1055,7 @@ namespace gnote {
     bool saved = false;
     Glib::ustring errorMsg;
     try {
-      get_window()->set_cursor(Gdk::Cursor::create(Gdk::WATCH));
-      get_window()->get_display()->flush();
+      set_cursor("wait");
       set_sensitive(false);
       saved = m_selected_sync_addin->save_configuration(sigc::mem_fun(*this, &PreferencesDialog::on_sync_settings_saved));
     }
@@ -1079,8 +1075,7 @@ namespace gnote {
   void PreferencesDialog::on_sync_settings_saved(bool saved, Glib::ustring errorMsg)
   {
     set_sensitive(true);
-    get_window()->set_cursor(Glib::RefPtr<Gdk::Cursor>());
-    get_window()->get_display()->flush();
+    set_cursor("");
 
     utils::HIGMessageDialog *dialog;
     if(saved) {
@@ -1096,17 +1091,18 @@ namespace gnote {
       // Give the user a visual letting them know that connecting
       // was successful.
       // TODO: Replace Yes/No with Sync/Close
-      dialog = new utils::HIGMessageDialog(this, GTK_DIALOG_MODAL, Gtk::MESSAGE_INFO, Gtk::BUTTONS_YES_NO,
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::INFO, Gtk::ButtonsType::YES_NO,
         _("Connection successful"),
         _("Gnote is ready to synchronize your notes. Would you like to synchronize them now?"));
-      int dialog_response = dialog->run();
-      delete dialog;
-
-      if(dialog_response == Gtk::RESPONSE_YES) {
-        // TODO: Put this voodoo in a method somewhere
-        auto action = m_gnote.action_manager().get_app_action("sync-notes");
-        utils::main_context_invoke([action = std::move(action)]() { action->activate(Glib::VariantBase()); });
-      }
+      dialog->show();
+      dialog->signal_response().connect([this, dialog](int dialog_response ) {
+        dialog->hide();
+        if(dialog_response == Gtk::ResponseType::YES) {
+          // TODO: Put this voodoo in a method somewhere
+          auto action = m_gnote.action_manager().get_app_action("sync-notes");
+          utils::main_context_invoke([action = std::move(action)]() { action->activate(Glib::VariantBase()); });
+        }
+      });
     }
     else {
       // TODO: Change the SyncServiceAddin API so the call to
@@ -1127,10 +1123,10 @@ namespace gnote {
         Glib::ustring logPath = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
         errorMsg = Glib::ustring::compose(errorMsg, logPath);
       }
-      dialog = new utils::HIGMessageDialog(this, GTK_DIALOG_MODAL, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE,
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::WARNING, Gtk::ButtonsType::CLOSE,
         _("Error connecting"), errorMsg);
-      dialog->run();
-      delete dialog;
+      dialog->show();
+      dialog->signal_response().connect([dialog](int) { dialog->hide(); });
     }
   }
 
