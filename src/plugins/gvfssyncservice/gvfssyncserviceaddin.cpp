@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2022 Aurimas Cernius
+ * Copyright (C) 2019-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,9 +87,9 @@ gnote::sync::SyncServer *GvfsSyncServiceAddin::create_sync_server()
 }
 
 
-Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler required_pref_changed)
+Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(Gtk::Window & parent, EventHandler required_pref_changed)
 {
-  auto table = manage(new Gtk::Grid);
+  auto table = Gtk::make_managed<Gtk::Grid>();
   table->set_row_spacing(5);
   table->set_column_spacing(10);
 
@@ -99,11 +99,11 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
     sync_path = "";
   }
 
-  auto l = manage(new Gtk::Label(_("Folder _URI:"), true));
+  auto l = Gtk::make_managed<Gtk::Label>(_("Folder _URI:"), true);
   l->property_xalign() = 1;
   table->attach(*l, 0, 0, 1, 1);
 
-  m_uri_entry = manage(new Gtk::Entry);
+  m_uri_entry = Gtk::make_managed<Gtk::Entry>();
   m_uri_entry->set_text(sync_path);
   m_uri_entry->get_buffer()->signal_inserted_text().connect([required_pref_changed](guint, const gchar*, guint) { required_pref_changed(); });
   m_uri_entry->get_buffer()->signal_deleted_text().connect([required_pref_changed](guint, guint) { required_pref_changed(); });
@@ -111,21 +111,20 @@ Gtk::Widget *GvfsSyncServiceAddin::create_preferences_control(EventHandler requi
 
   table->attach(*m_uri_entry, 1, 0, 1, 1);
 
-  auto example = manage(new Gtk::Label(_("Example: google-drive://name.surname@gmail.com/notes")));
+  auto example = Gtk::make_managed<Gtk::Label>(_("Example: google-drive://name.surname@gmail.com/notes"));
   example->property_xalign() = 0;
   table->attach(*example, 1, 1, 1, 1);
-  auto account_info = manage(new Gtk::Label(_("Please, register your account in Online Accounts")));
+  auto account_info = Gtk::make_managed<Gtk::Label>(_("Please, register your account in Online Accounts"));
   account_info->property_xalign() = 0;
   table->attach(*account_info, 1, 2, 1, 1);
 
   table->set_hexpand(true);
   table->set_vexpand(false);
-  table->show_all();
   return table;
 }
 
 
-bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
+bool GvfsSyncServiceAddin::save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved)
 {
   Glib::ustring sync_uri = m_uri_entry->get_text();
 
