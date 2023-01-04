@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -523,6 +523,19 @@ namespace gnote {
   {
     add(tag);
     m_added_tags.emplace_back(std::move(tag));
+  }
+
+  void NoteTagTable::remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag)
+  {
+    remove(tag);
+    Glib::ustring name = tag->property_name();
+    auto item = std::find_if(m_added_tags.begin(), m_added_tags.end(), [name = std::move(name)](const Glib::RefPtr<Gtk::TextTag> & tag) {
+      Glib::ustring n = tag->property_name();
+      return n == name;
+    });
+    if(item != m_added_tags.end()) {
+      m_added_tags.erase(item);
+    }
   }
 }
 

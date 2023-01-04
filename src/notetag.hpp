@@ -294,6 +294,7 @@ public:
     }
   
   void add_tag(Glib::RefPtr<Gtk::TextTag> && tag);
+  void remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag);
 protected:
   NoteTagTable()
     {
