@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2022 Aurimas Cernius
+ * Copyright (C) 2011-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -541,6 +541,7 @@ namespace gnote {
       m_text_menu->set_parent(*parent);
     }
     m_text_menu->refresh_state();
+    signal_build_text_menu(*m_text_menu);
     m_text_menu->popup();
   }
 

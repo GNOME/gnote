@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2021-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -137,6 +137,8 @@ public:
       return m_enabled;
     }
   virtual void set_initial_focus() override;
+
+  sigc::signal<void(NoteTextMenu&)> signal_build_text_menu;
 private:
   void connect_actions(EmbeddableWidgetHost *host);
   void disconnect_actions();
