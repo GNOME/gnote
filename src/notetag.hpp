@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -293,13 +293,12 @@ public:
       return m_broken_link_tag;
     }
   
+  void add_tag(Glib::RefPtr<Gtk::TextTag> && tag);
 protected:
   NoteTagTable()
     {
       _init_common_tags();
     }
-
-  void add_tag(Glib::RefPtr<Gtk::TextTag> && tag);
 
 private:
   void _init_common_tags();
