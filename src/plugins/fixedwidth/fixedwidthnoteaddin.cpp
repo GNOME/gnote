@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2006 Ryan Lortie <desrt@desrt.ca>
@@ -25,7 +25,11 @@
 // Add a 'fixed width' item to the font styles menu.
 
 
+#include "debug.hpp"
+
 #include <glibmm/i18n.h>
+#include <gtkmm/label.h>
+#include <gtkmm/togglebutton.h>
 
 #include "sharp/modulefactory.hpp"
 #include "notewindow.hpp"
@@ -43,56 +47,42 @@ namespace fixedwidth {
 
 
 
-  void FixedWidthNoteAddin::initialize ()
+  void FixedWidthNoteAddin::initialize()
   {
     // If a tag of this name already exists, don't install.
-    if (!get_note()->get_tag_table()->lookup ("monospace")) {
-      m_tag = Glib::RefPtr<Gtk::TextTag>(new FixedWidthTag ());
-				get_note()->get_tag_table()->add (m_tag);
-			}
-
-    auto button = gnote::utils::create_popover_button("win.fixedwidth-enable", "");
-    auto label = dynamic_cast<Gtk::Label*>(dynamic_cast<Gtk::Bin*>(button)->get_child());
-    Glib::ustring lbl = "<tt>";
-    lbl += _("Fixed Wid_th");
-    lbl += "</tt>";
-    label->set_markup_with_mnemonic(lbl);
-    add_text_menu_item(button);
+    auto tag_table = get_note()->get_tag_table();
+    if(!tag_table->lookup("monospace")) {
+      auto tag = std::make_shared<FixedWidthTag>();
+      m_tag = tag;
+      tag_table->add_tag(std::move(tag));
+  }
   }
 
 
-  void FixedWidthNoteAddin::shutdown ()
+  void FixedWidthNoteAddin::shutdown()
   {
-	// Remove the tag only if we installed it.
-    if (m_tag) {
-      get_note()->get_tag_table()->remove (m_tag);
+    // Remove the tag only if we installed it.
+    if(m_tag) {
+      get_note()->get_tag_table()->remove_tag(m_tag);
+      m_tag.reset();
     }
   }
 
 
-  void FixedWidthNoteAddin::on_note_opened ()
+  void FixedWidthNoteAddin::on_note_opened()
   {
-    get_window()->text_menu()->signal_show().connect(
-      sigc::mem_fun(*this, &FixedWidthNoteAddin::menu_shown));
-    dynamic_cast<gnote::NoteTextMenu*>(get_window()->text_menu())->signal_set_accels
-      .connect(sigc::mem_fun(*this, &FixedWidthNoteAddin::set_accels));
-
     gnote::NoteWindow *note_window = get_window();
     note_window->signal_foregrounded.connect(
       sigc::mem_fun(*this, &FixedWidthNoteAddin::on_note_foregrounded));
     note_window->signal_backgrounded.connect(
       sigc::mem_fun(*this, &FixedWidthNoteAddin::on_note_backgrounded));
-  }
+    note_window->signal_build_text_menu
+      .connect(sigc::mem_fun(*this, &FixedWidthNoteAddin::add_menu_item));
 
-  void FixedWidthNoteAddin::menu_shown()
-  {
-    auto host = get_window()->host();
-    if(host == NULL) {
-      return;
-    }
-
-    host->find_action("fixedwidth-enable")->set_state(
-      Glib::Variant<bool>::create(get_buffer()->is_active_tag ("monospace")));
+    auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_T, Gdk::ModifierType::CONTROL_MASK);
+    auto action = Gtk::NamedAction::create("win.fixedwidth-enable");
+    auto shortcut = Gtk::Shortcut::create(trigger, action);
+    note_window->shortcut_controller().add_shortcut(shortcut);
   }
 
 
@@ -111,21 +101,41 @@ namespace fixedwidth {
   void FixedWidthNoteAddin::on_menu_item_state_changed(const Glib::VariantBase & state)
   {
     get_window()->host()->find_action("fixedwidth-enable")->set_state(state);
-    on_accel();
-  }
-
-  void FixedWidthNoteAddin::set_accels(const gnote::utils::GlobalKeybinder & keybinder)
-  {
-    const_cast<gnote::utils::GlobalKeybinder&>(keybinder).add_accelerator(
-      sigc::mem_fun(*this, &FixedWidthNoteAddin::on_accel),
-      GDK_KEY_T, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-  }
-
-  void FixedWidthNoteAddin::on_accel()
-  {
     get_buffer()->toggle_active_tag("monospace");
   }
 
+  void FixedWidthNoteAddin::add_menu_item(gnote::NoteTextMenu & menu)
+  {
+    auto box = dynamic_cast<Gtk::Box*>(menu.get_child());
+    if(!box) {
+      ERR_OUT("Menu child is not Gtk::Box");
+      return;
+    }
 
+    auto formatting = box->get_first_child();
+    while(formatting && formatting->get_name() != "formatting") {
+      formatting = formatting->get_next_sibling();
+    }
+    if(!formatting) {
+      ERR_OUT("Item 'formatting' not found");
+      return;
+    }
+    auto fmt_box = dynamic_cast<Gtk::Box*>(formatting);
+    if(!fmt_box) {
+      ERR_OUT("Item 'formatting' is not Gtk::Box");
+      return;
+    }
+
+    auto button = Gtk::make_managed<Gtk::ToggleButton>();
+    button->set_action_name("win.fixedwidth-enable");
+    button->set_has_frame(false);
+    auto label = Gtk::make_managed<Gtk::Label>();
+    Glib::ustring lbl = "<tt>";
+    lbl += _("Fixed Wid_th");
+    lbl += "</tt>";
+    label->set_markup_with_mnemonic(lbl);
+    button->set_child(*label);
+    fmt_box->append(*button);
+  }
 }
 
