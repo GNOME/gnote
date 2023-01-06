@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2016,2019,2022 Aurimas Cernius
+ * Copyright (C) 2012-2016,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -53,15 +53,6 @@ namespace gnote {
   void NoteAddin::dispose(bool disposing)
   {
     if (disposing) {
-      for (auto & iter : m_text_menu_items) {
-        delete iter;
-      }
-        
-      for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
-               iter != m_toolbar_items.end(); ++iter) {
-        delete iter->first;
-      }
-
       shutdown ();
     }
     
@@ -76,34 +67,6 @@ namespace gnote {
 
     window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
     window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
-
-    for(auto & item : m_text_menu_items) {
-      if ((item->get_parent() == NULL) ||
-          (item->get_parent() != window->text_menu())) {
-        append_text_item(window->text_menu(), *item);
-      }
-    }
-      
-    for(ToolItemMap::const_iterator iter = m_toolbar_items.begin();
-        iter != m_toolbar_items.end(); ++iter) {
-      if ((iter->first->get_parent() == NULL) ||
-          (iter->first->get_parent() != window->embeddable_toolbar())) {
-        Gtk::Grid *grid = window->embeddable_toolbar();
-        grid->insert_column(iter->second);
-        grid->attach(*iter->first, iter->second, 0, 1, 1);
-      }
-    }
-  }
-
-  void NoteAddin::append_text_item(Gtk::Widget *text_menu, Gtk::Widget & item)
-  {
-    NoteTextMenu *txt_menu = dynamic_cast<NoteTextMenu*>(text_menu);
-    for(auto child : dynamic_cast<Gtk::Container*>(txt_menu->get_children().front())->get_children()) {
-      if(child->get_name() == "formatting") {
-        Gtk::Box *box = dynamic_cast<Gtk::Box*>(child);
-        box->add(item);
-      }
-    }
   }
 
   void NoteAddin::on_note_foregrounded()
@@ -130,32 +93,6 @@ namespace gnote {
       cid.disconnect();
     }
     m_action_callbacks_cids.clear();
-  }
-
-  void NoteAddin::add_tool_item (Gtk::ToolItem *item, int position)
-  {
-    if (is_disposing())
-      throw sharp::Exception(_("Plugin is disposing already"));
-        
-    m_toolbar_items [item] = position;
-      
-    if (m_note->is_opened()) {
-      Gtk::Grid *grid = get_window()->embeddable_toolbar();
-      grid->insert_column(position);
-      grid->attach(*item, position, 0, 1, 1);
-    }
-  }
-
-  void NoteAddin::add_text_menu_item(Gtk::Widget *item)
-  {
-    if (is_disposing())
-      throw sharp::Exception(_("Plugin is disposing already"));
-
-    m_text_menu_items.push_back(item);
-
-    if (m_note->is_opened()) {
-      append_text_item(get_window()->text_menu(), *item);
-    }
   }
 
   Gtk::Window *NoteAddin::get_host_window() const
