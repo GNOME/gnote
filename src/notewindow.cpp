@@ -536,13 +536,11 @@ namespace gnote {
 
   void NoteWindow::on_text_button_clicked(Gtk::Widget *parent)
   {
-    if(!m_text_menu) {
-      m_text_menu = Gtk::manage(new NoteTextMenu(*this, m_note.get_buffer()));
-      m_text_menu->set_parent(*parent);
-    }
-    m_text_menu->refresh_state();
-    signal_build_text_menu(*m_text_menu);
-    m_text_menu->popup();
+    auto text_menu = Gtk::make_managed<NoteTextMenu>(*this, m_note.get_buffer());
+    text_menu->set_parent(*parent);
+    utils::unparent_popover_on_close(text_menu);
+    signal_build_text_menu(*text_menu);
+    text_menu->popup();
   }
 
   void NoteWindow::enabled(bool enable)
