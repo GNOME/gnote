@@ -30,6 +30,7 @@
 #include <gtkmm/popover.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/shortcutcontroller.h>
 
 #include "mainwindowembeds.hpp"
 #include "note.hpp"
@@ -137,6 +138,10 @@ public:
       return m_enabled;
     }
   virtual void set_initial_focus() override;
+  Gtk::ShortcutController & shortcut_controller()
+    {
+      return *m_shortcut_controller;
+    }
 
   sigc::signal<void(NoteTextMenu&)> signal_build_text_menu;
 private:
@@ -187,6 +192,7 @@ private:
   Gtk::Grid                    *m_template_widget;
   Gtk::CheckButton             *m_save_selection_check_button;
   Gtk::CheckButton             *m_save_title_check_button;
+  Glib::RefPtr<Gtk::ShortcutController> m_shortcut_controller;
 
   std::vector<sigc::connection> m_signal_cids;
   bool                         m_enabled;

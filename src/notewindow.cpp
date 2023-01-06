@@ -27,7 +27,6 @@
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/separator.h>
-#include <gtkmm/shortcutcontroller.h>
 #include <gtkmm/togglebutton.h>
 
 #include "debug.hpp"
@@ -207,6 +206,7 @@ namespace gnote {
     auto controller = Gtk::ShortcutController::create();
     controller->set_scope(Gtk::ShortcutScope::LOCAL);
     add_controller(controller);
+    m_shortcut_controller = controller;
 
     // Open Help (F1)
     {
