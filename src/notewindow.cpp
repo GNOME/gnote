@@ -54,7 +54,6 @@ namespace gnote {
     , m_name(note.get_title())
     , m_height(450)
     , m_width(600)
-    , m_text_menu(nullptr)
     , m_find_handler(note)
     , m_enabled(true)
   {
@@ -123,7 +122,6 @@ namespace gnote {
   void NoteWindow::background()
   {
     EmbeddableWidget::background();
-    m_text_menu = nullptr;
     Gtk::Window *parent = dynamic_cast<Gtk::Window*>(host());
     if(!parent) {
       return;

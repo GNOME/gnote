@@ -124,10 +124,6 @@ public:
     {
       return m_editor;
     }
-  Gtk::Popover *text_menu() const
-    {
-      return m_text_menu;
-    }
   NoteFindHandler & get_find_handler()
     {
       return m_find_handler;
@@ -185,7 +181,6 @@ private:
   Glib::ustring                 m_name;
   int                           m_height;
   int                           m_width;
-  NoteTextMenu                 *m_text_menu;
   Gtk::TextView                *m_editor;
   Gtk::ScrolledWindow          *m_editor_window;
   NoteFindHandler              m_find_handler;
