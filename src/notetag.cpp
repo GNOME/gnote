@@ -292,30 +292,30 @@ namespace gnote {
 
     tag = NoteTag::create("centered", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_justification() = Gtk::Justification::CENTER;
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("bold", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_weight() = PANGO_WEIGHT_BOLD;
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("italic", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_style() = Pango::Style::ITALIC;
-    add_tag(tag);
+    add(tag);
     
     tag = NoteTag::create("strikethrough", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_strikethrough() = true;
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "yellow";
     tag->property_background_set() = true;
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "green";
     tag->set_can_serialize(false);
     tag->set_save_type(META);
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("note-title", 0);
     tag->property_foreground_rgba().set_value(active_link_color);
@@ -324,14 +324,14 @@ namespace gnote {
     // FiXME: Hack around extra rewrite on open
     tag->set_can_serialize(false);
     tag->set_save_type(META);
-    add_tag(tag);
+    add(tag);
       
     tag = NoteTag::create("related-to", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_left_margin() = 40;
     tag->property_editable() = false;
     tag->set_save_type(META);
-    add_tag(tag);
+    add(tag);
 
     // Used when inserting dropped URLs/text to Start Here
     tag = NoteTag::create("datetime", 0);
@@ -340,25 +340,25 @@ namespace gnote {
     tag->property_foreground_rgba().set_value(visited_link_color);
     tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add_tag(tag);
+    add(tag);
 
     // Font sizes
 
     tag = NoteTag::create("size:huge", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_XX_LARGE;
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("size:large", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_X_LARGE;
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("size:normal", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_MEDIUM;
-    add_tag(tag);
+    add(tag);
 
     tag = NoteTag::create("size:small", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_SMALL;
-    add_tag(tag);
+    add(tag);
 
     // Links
 
@@ -367,7 +367,7 @@ namespace gnote {
     tag->property_foreground_rgba().set_value(visited_link_color);
     tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add_tag(tag);
+    add(tag);
     m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
@@ -375,7 +375,7 @@ namespace gnote {
     tag->property_foreground_rgba().set_value(active_link_color);
     tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add_tag(tag);
+    add(tag);
     m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
@@ -383,7 +383,7 @@ namespace gnote {
     tag->property_foreground_rgba().set_value(active_link_color);
     tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add_tag(tag);
+    add(tag);
     m_url_tag = tag;
   }
 
@@ -489,7 +489,7 @@ namespace gnote {
       tag->property_left_margin().set_value((depth+1) * 25);
       tag->property_pixels_below_lines().set_value(4);
       tag->property_scale().set_value(Pango::SCALE_MEDIUM);
-      add_tag(tag);
+      add(tag);
     }
 
     return tag;
@@ -517,25 +517,6 @@ namespace gnote {
   bool NoteTagTable::is_dynamic_tag_registered(const Glib::ustring & tag_name)
   {
     return m_tag_types.find(tag_name) != m_tag_types.end();
-  }
-
-  void NoteTagTable::add_tag(Glib::RefPtr<Gtk::TextTag> && tag)
-  {
-    add(tag);
-    m_added_tags.emplace_back(std::move(tag));
-  }
-
-  void NoteTagTable::remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag)
-  {
-    remove(tag);
-    Glib::ustring name = tag->property_name();
-    auto item = std::find_if(m_added_tags.begin(), m_added_tags.end(), [name = std::move(name)](const Glib::RefPtr<Gtk::TextTag> & tag) {
-      Glib::ustring n = tag->property_name();
-      return n == name;
-    });
-    if(item != m_added_tags.end()) {
-      m_added_tags.erase(item);
-    }
   }
 }
 

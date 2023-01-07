@@ -71,7 +71,7 @@ public:
 
   static Ptr create(Glib::ustring && tag_name, int flags)
     {
-      return Ptr(new NoteTag(std::move(tag_name), flags));
+      return Glib::make_refptr_for_instance(new NoteTag(std::move(tag_name), flags));
     }
   const Glib::ustring & get_element_name() const
     { 
@@ -292,9 +292,6 @@ public:
     {
       return m_broken_link_tag;
     }
-  
-  void add_tag(Glib::RefPtr<Gtk::TextTag> && tag);
-  void remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag);
 protected:
   NoteTagTable()
     {
@@ -306,7 +303,6 @@ private:
 
   static NoteTagTable::Ptr           s_instance;
   std::map<Glib::ustring, Factory>   m_tag_types;
-  std::vector<Glib::RefPtr<Gtk::TextTag>> m_added_tags;
 
   NoteTag::Ptr m_url_tag;
   NoteTag::Ptr m_link_tag;
