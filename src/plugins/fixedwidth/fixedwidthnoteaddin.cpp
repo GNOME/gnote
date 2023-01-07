@@ -54,7 +54,7 @@ namespace fixedwidth {
     if(!tag_table->lookup("monospace")) {
       auto tag = std::make_shared<FixedWidthTag>();
       m_tag = tag;
-      tag_table->add_tag(std::move(tag));
+      tag_table->add(std::move(tag));
   }
   }
 
@@ -63,7 +63,7 @@ namespace fixedwidth {
   {
     // Remove the tag only if we installed it.
     if(m_tag) {
-      get_note()->get_tag_table()->remove_tag(m_tag);
+      get_note()->get_tag_table()->remove(m_tag);
       m_tag.reset();
     }
   }
