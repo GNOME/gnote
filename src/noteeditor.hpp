@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2016-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2011,2013,2016-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 #define __NOTE_EDITOR_HPP_
 
 #include <glibmm/refptr.h>
+#include <gtkmm/droptarget.h>
 #include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/textview.h>
 
@@ -53,13 +54,10 @@ public:
     {
       return *m_key_controller;
     }
-
-protected:
-  virtual void on_drag_data_received(const Glib::RefPtr<Gdk::DragContext> & context,
-                                     int x, int y,
-                                     const Gtk::SelectionData & selection_data,
-                                     guint info,  guint time) override;
-
+  Gtk::DropTarget & drop_target()
+    {
+      return *m_drop_target;
+    }
 private:
   static void paste_started(GtkTextView*, NoteEditor *_this);
   static void paste_ended(GtkTextView*, NoteEditor *_this);
@@ -69,9 +67,11 @@ private:
   bool key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_paste_start();
   void on_paste_end();
+  bool on_drag_data_received(const Glib::ValueBase & value, double x, double y);
 
   Preferences & m_preferences;
   Glib::RefPtr<Gtk::EventControllerKey> m_key_controller;
+  Glib::RefPtr<Gtk::DropTarget> m_drop_target;
 };
 
 

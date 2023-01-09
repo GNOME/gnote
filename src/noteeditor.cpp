@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@
 #include "utils.hpp"
 #include "debug.hpp"
 #include "sharp/string.hpp"
+#include "sharp/uri.hpp"
 
 namespace gnote {
 
@@ -53,13 +54,13 @@ namespace gnote {
       modify_font_from_string(font_string);
     }
 
-    // Set extra editor drag targets supported (in addition
-    // to the default TextView's various text formats)...
-    Glib::RefPtr<Gtk::TargetList> list = drag_dest_get_target_list();
-
-    
-    list->add ("text/uri-list", (Gtk::TargetFlags)0, 1);
-    list->add ("_NETSCAPE_URL", (Gtk::TargetFlags)0, 1);
+    m_drop_target = Gtk::DropTarget::create(G_TYPE_INVALID, Gdk::DragAction::COPY);
+    std::vector<GType> drop_types;
+    drop_types.push_back(Glib::Value<Glib::ustring>::value_type());
+    drop_types.push_back(Glib::Value<std::vector<Glib::ustring>>::value_type());
+    m_drop_target->set_gtypes(drop_types);
+    m_drop_target->signal_drop().connect(sigc::mem_fun(*this, &NoteEditor::on_drag_data_received), false);
+    add_controller(m_drop_target);
 
     m_key_controller = Gtk::EventControllerKey::create();
     m_key_controller->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteEditor::key_pressed), false);
@@ -95,78 +96,77 @@ namespace gnote {
     //
     // DND Drop handling
     //
-  void NoteEditor::on_drag_data_received(const Glib::RefPtr<Gdk::DragContext> & context,
-                                         int x, int y,
-                                         const Gtk::SelectionData & selection_data,
-                                         guint info,  guint time)
+  bool NoteEditor::on_drag_data_received(const Glib::ValueBase & value, double x, double y)
   {
-    bool has_url = false;
-
-    auto targets = context->list_targets();
-    for(auto target : targets) {
-      if (target == "text/uri-list" ||
-          target == "_NETSCAPE_URL") {
-        has_url = true;
-        break;
-      }
+    std::vector<Glib::ustring> values;
+    if(G_VALUE_HOLDS_STRING(value.gobj())) {
+      Glib::ustring val = static_cast<const Glib::Value<Glib::ustring>&>(value).get();
+      values.emplace_back(std::move(val));
     }
-
-    if (has_url) {
-      utils::UriList uri_list(selection_data);
-      bool more_than_one = false;
-
-      // Place the cursor in the position where the uri was
-      // dropped, adjusting x,y by the TextView's VisibleRect.
-      Gdk::Rectangle rect;
-      get_visible_rect(rect);
-      int adjustedX = x + rect.get_x();
-      int adjustedY = y + rect.get_y();
-      Gtk::TextIter cursor;
-      get_iter_at_location (cursor, adjustedX, adjustedY);
-      get_buffer()->place_cursor (cursor);
-
-      Glib::RefPtr<Gtk::TextTag> link_tag = get_buffer()->get_tag_table()->lookup ("link:url");
-
-      for(utils::UriList::const_iterator iter = uri_list.begin();
-          iter != uri_list.end(); ++iter) {
-        const sharp::Uri & uri(*iter);
-        DBG_OUT("Got Dropped URI: %s", uri.to_string().c_str());
-        Glib::ustring insert;
-        if (uri.is_file()) {
-          // URL-escape the path in case
-          // there are spaces (bug #303902)
-          insert = sharp::Uri::escape_uri_string(uri.local_path());
-        } 
-        else {
-          insert = uri.to_string ();
-        }
-
-        if (insert.empty() || sharp::string_trim(insert).empty())
-          continue;
-
-        if (more_than_one) {
-          cursor = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
-
-          // FIXME: The space here is a hack
-          // around a bug in the URL Regex which
-          // matches across newlines.
-          if (cursor.get_line_offset() == 0) {
-            get_buffer()->insert (cursor, " \n");
-          }
-          else {
-            get_buffer()->insert (cursor, ", ");
-          }
-        }
-
-        get_buffer()->insert_with_tag(cursor, insert, link_tag);
-        more_than_one = true;
-      }
-
-      context->drag_finish(more_than_one, false, time);
-    } 
+    else if(G_VALUE_HOLDS(value.gobj(), Glib::Value<std::vector<Glib::ustring>>::value_type())) {
+      values = static_cast<const Glib::Value<std::vector<Glib::ustring>>&>(value).get();
+    }
     else {
-      Gtk::TextView::on_drag_data_received (context, x, y, selection_data, info, time);
+      return false;
     }
+
+    auto drop_fmt = m_drop_target->get_current_drop()->get_formats();
+    bool has_url = false;
+    if(drop_fmt->contain_mime_type("_NETSCAPE_URL")) {
+      has_url = true;
+    }
+
+    // Place the cursor in the position where the uri was
+    // dropped, adjusting x,y by the TextView's VisibleRect.
+    Gdk::Rectangle rect;
+    get_visible_rect(rect);
+    int adjustedX = x + rect.get_x();
+    int adjustedY = y + rect.get_y();
+    Gtk::TextIter cursor;
+    get_iter_at_location(cursor, adjustedX, adjustedY);
+    get_buffer()->place_cursor(cursor);
+
+    bool more_than_one = false;
+    for(const auto & str : values) {
+      sharp::Uri uri{Glib::ustring(str)};
+
+      Glib::ustring insert;
+      if(uri.is_file()) {
+        // URL-escape the path in case
+        // there are spaces (bug #303902)
+        insert = sharp::Uri::escape_uri_string(uri.local_path());
+      }
+      else {
+        insert = str;
+      }
+
+      if(insert.empty() || sharp::string_trim(insert).empty()) {
+        continue;
+      }
+
+      if(more_than_one) {
+        // FIXME: The space here is a hack
+        // around a bug in the URL Regex which
+        // matches across newlines.
+        if(cursor.get_line_offset() == 0) {
+          cursor = get_buffer()->insert(cursor, " \n");
+        }
+        else {
+          cursor = get_buffer()->insert(cursor, ", ");
+        }
+      }
+
+      if(has_url) {
+        Glib::RefPtr<Gtk::TextTag> link_tag = get_buffer()->get_tag_table()->lookup("link:url");
+        cursor = get_buffer()->insert_with_tag(cursor, insert, link_tag);
+      }
+      else {
+        cursor = get_buffer()->insert(cursor, insert);
+      }
+      more_than_one = true;
+    }
+
+    return true;
   }
 
   bool NoteEditor::key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
