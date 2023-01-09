@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -318,83 +318,6 @@ namespace gnote {
 
       m_extra_widget = value;
       m_extra_widget_vbox->attach(*m_extra_widget, 0, 0, 1, 1);
-    }
-
-
-#if 0
-    UriList::UriList(const NoteList & notes)
-    {
-      foreach(const Note::Ptr & note, notes) {
-        push_back(sharp::Uri(note->uri()));
-      }
-    }
-#endif
-
-    void UriList::load_from_string(const Glib::ustring & data)
-    {
-      std::vector<Glib::ustring> items;
-      sharp::string_split(items, data, "\n");
-      load_from_string_list(items);
-    }
-
-    void UriList::load_from_string_list(const std::vector<Glib::ustring> & items)
-    {
-      for(const Glib::ustring & i : items) {
-        if(Glib::str_has_prefix(i, "#")) {
-          continue;
-        }
-
-        Glib::ustring s = i;
-        if(Glib::str_has_suffix(i, "\r")) {
-          s.resize(s.size() - 1);
-        }
-
-        // Handle evo's broken file urls
-        if(Glib::str_has_prefix(s, "file:////")) {
-          s = sharp::string_replace_first(s, "file:////", "file:///");
-        }
-        DBG_OUT("uri = %s", s.c_str());
-        push_back(sharp::Uri(std::move(s)));
-      }
-    }
-
-    UriList::UriList(const Glib::ustring & data)
-    {
-      load_from_string(data);
-    }
-
-    
-    UriList::UriList(const Gtk::SelectionData & selection)
-    {
-      if(selection.get_length() > 0) {
-        load_from_string_list(selection.get_uris());
-      }
-    }
-
-
-    Glib::ustring UriList::to_string() const
-    {
-      Glib::ustring s;
-      for(const_iterator iter = begin(); iter != end(); ++iter) {
-        s += iter->to_string() + "\r\n";
-      }
-      return s;
-    }
-
-
-    std::vector<Glib::ustring> UriList::get_local_paths() const
-    {
-      std::vector<Glib::ustring> paths;
-      for(const_iterator iter = begin(); iter != end(); ++iter) {
-
-        const sharp::Uri & uri(*iter);
-
-        if(uri.is_file()) {
-          paths.push_back(uri.local_path());
-        }
-      }
-
-      return paths;
     }
 
 

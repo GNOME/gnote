@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -88,21 +88,6 @@ class Preferences;
       Gtk::Widget *m_extra_widget;
     };
 
-
-    class UriList
-      : public std::vector<sharp::Uri>
-    {
-    public:
-//      UriList(const NoteList & notes);
-      UriList(const Glib::ustring & data);
-      UriList(const Gtk::SelectionData & selection);
-      Glib::ustring to_string() const;
-      std::vector<Glib::ustring> get_local_paths() const;
-      
-    private:
-      void load_from_string(const Glib::ustring & data);
-      void load_from_string_list(const std::vector<Glib::ustring> & items);
-    };
 
     class XmlEncoder
     {
