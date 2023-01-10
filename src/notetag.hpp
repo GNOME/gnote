@@ -110,7 +110,7 @@ public:
       return (m_flags & CAN_ACTIVATE) != 0;
     }
   void set_can_activate(bool value);
-  bool activate(const NoteEditor & , const Gtk::TextIter &);
+  virtual bool activate(const NoteEditor & , const Gtk::TextIter &);
   bool can_split() const
     {
       return (m_flags & CAN_SPLIT) != 0;
