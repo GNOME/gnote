@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2012,2017,2019,2022,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,6 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+#include <gtkmm/image.h>
 
 #include "sharp/uri.hpp"
 #include "debug.hpp"
@@ -41,7 +43,7 @@ namespace bugzilla {
   {
     gnote::DynamicNoteTag::initialize(std::move(element_name));
 
-    property_underline() = Pango::UNDERLINE_SINGLE;
+    property_underline() = Pango::Underline::SINGLE;
     property_foreground() = "blue";
     set_can_activate(true);
     set_can_grow(true);
@@ -76,20 +78,20 @@ namespace bugzilla {
 
     Glib::ustring imageDir = BugzillaNoteAddin::images_dir();
     Glib::ustring imagePath = imageDir + host + ".png";
-    Glib::RefPtr<Gdk::Pixbuf> image;
     try {
-      image = Gdk::Pixbuf::create_from_file(imagePath);
+      Glib::RefPtr<Gdk::Pixbuf> pixbuf = Gdk::Pixbuf::create_from_file(imagePath);
+      auto image = new Gtk::Image(pixbuf);
+      set_widget(image);
     }
     catch(...) {
-      image = m_gnote.icon_manager().get_icon(gnote::IconManager::BUG, 16);
+      auto image = new Gtk::Image;
+      image->set_from_icon_name(gnote::IconManager::BUG);
+      set_widget(image);
     }
-    set_image(image);
   }
 
 
-  bool BugzillaLink::on_activate(const gnote::NoteEditor & , 
-                                 const Gtk::TextIter & , 
-                                 const Gtk::TextIter & )
+  bool BugzillaLink::activate(const gnote::NoteEditor &, const Gtk::TextIter &)
   {
     if(!get_bug_url().empty()) {
       DBG_OUT("Opening url '%s'...", get_bug_url().c_str());

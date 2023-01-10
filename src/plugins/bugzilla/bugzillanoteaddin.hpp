@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017,2019,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,13 +56,8 @@ private:
 
   static const char * TAG_NAME;
 
-  void on_drag_data_received(const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData &,
-                             guint, guint);
-  void drop_uri_list(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, 
-                     const Gtk::SelectionData & selection_data, guint time);
-
+  bool drop_string(const Glib::ustring & line, int x, int y);
   bool insert_bug (int x, int y, const Glib::ustring & uri, int id);
-
 };
 
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,15 +41,14 @@ public:
   typedef Glib::RefPtr<BugzillaLink> Ptr;
   static gnote::DynamicNoteTag::Ptr create(gnote::IGnote & ignote)
     {
-      return gnote::DynamicNoteTag::Ptr(new BugzillaLink(ignote));
+      return Glib::make_refptr_for_instance(new BugzillaLink(ignote));
     }
   BugzillaLink(gnote::IGnote & ignote);
   Glib::ustring get_bug_url() const;
   void set_bug_url(const Glib::ustring & );
+  bool activate(const gnote::NoteEditor & , const Gtk::TextIter &) override;
 protected:
   void initialize(Glib::ustring && element_name) override;
-  virtual bool on_activate(const gnote::NoteEditor & , const Gtk::TextIter &, 
-                           const Gtk::TextIter &) override;
   virtual void on_attribute_read(const Glib::ustring &) override;
 private:
   void make_image();

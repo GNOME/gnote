@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -24,7 +24,7 @@
 #include <glib.h>
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
-#include <gtkmm/buttonbox.h>
+#include <gtkmm/entry.h>
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/label.h>
 #include <gtkmm/scrolledwindow.h>
@@ -61,25 +61,25 @@ namespace bugzilla {
     set_row_spacing(12);
     int row = 0;
 
-    Gtk::Label *l = manage(new Gtk::Label (_("You can use any bugzilla just by dragging links "
-                                   "into notes.  If you want a special icon for "
-                                              "certain hosts, add them here.")));
+    auto l = Gtk::make_managed<Gtk::Label>(_("You can use any bugzilla just by dragging links "
+      "into notes.  If you want a special icon for "
+      "certain hosts, add them here."));
     l->property_wrap() = true;
     l->property_xalign() = 0;
 
     attach(*l, 0, row++, 1, 1);
 
     icon_store = Gtk::ListStore::create(m_columns);
-    icon_store->set_sort_column(m_columns.host, Gtk::SORT_ASCENDING);
+    icon_store->set_sort_column(m_columns.host, Gtk::SortType::ASCENDING);
 
-    icon_tree = manage(new Gtk::TreeView (icon_store));
+    icon_tree = Gtk::make_managed<Gtk::TreeView>(icon_store);
     icon_tree->set_headers_visible(true);
-    icon_tree->get_selection()->set_mode(Gtk::SELECTION_SINGLE);
+    icon_tree->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
     icon_tree->get_selection()->signal_changed().connect(
       sigc::mem_fun(*this, &BugzillaPreferences::selection_changed));
 
-    Gtk::TreeViewColumn *host_col = manage(new Gtk::TreeViewColumn(_("Host Name"), m_columns.host));
-    host_col->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
+    auto host_col = Gtk::make_managed<Gtk::TreeViewColumn>(_("Host Name"), m_columns.host);
+    host_col->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
     host_col->set_resizable(true);
     host_col->set_expand(true);
     host_col->set_min_width(200);
@@ -87,47 +87,43 @@ namespace bugzilla {
     host_col->set_sort_column(m_columns.host);
     host_col->set_sort_indicator(false);
     host_col->set_reorderable(false);
-    host_col->set_sort_order(Gtk::SORT_ASCENDING);
+    host_col->set_sort_order(Gtk::SortType::ASCENDING);
 
     icon_tree->append_column (*host_col);
 
-    Gtk::TreeViewColumn *icon_col = manage(new Gtk::TreeViewColumn(_("Icon"), m_columns.icon));
-    icon_col->set_sizing(Gtk::TREE_VIEW_COLUMN_FIXED);
+    auto icon_col = Gtk::make_managed<Gtk::TreeViewColumn>(_("Icon"), m_columns.icon);
+    icon_col->set_sizing(Gtk::TreeViewColumn::Sizing::FIXED);
     icon_col->set_max_width(50);
     icon_col->set_min_width(50);
     icon_col->set_resizable(false);
 
-    icon_tree->append_column (*icon_col);
+    icon_tree->append_column(*icon_col);
 
-    Gtk::ScrolledWindow *sw = manage(new Gtk::ScrolledWindow ());
-    sw->set_shadow_type(Gtk::SHADOW_IN);
+    Gtk::ScrolledWindow *sw = Gtk::make_managed<Gtk::ScrolledWindow>();
     sw->property_height_request() = 200;
     sw->property_width_request() = 300;
-    sw->set_policy (Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
-    sw->add (*icon_tree);
+    sw->set_policy(Gtk::PolicyType::AUTOMATIC, Gtk::PolicyType::AUTOMATIC);
+    sw->set_child(*icon_tree);
     sw->set_hexpand(true);
     sw->set_vexpand(true);
 
     attach(*sw, 0, row++, 1, 1);
 
-    add_button = manage(new Gtk::Button(_("_Add"), true));
+    add_button = Gtk::make_managed<Gtk::Button>(_("_Add"), true);
     add_button->signal_clicked().connect(
       sigc::mem_fun(*this, &BugzillaPreferences::add_clicked));
 
-    remove_button = manage(new Gtk::Button(_("_Remove"), true));
+    remove_button = Gtk::make_managed<Gtk::Button>(_("_Remove"), true);
     remove_button->set_sensitive(false);
     remove_button->signal_clicked().connect(
       sigc::mem_fun(*this,  &BugzillaPreferences::remove_clicked));
 
-    Gtk::ButtonBox *hbutton_box = manage(new Gtk::ButtonBox);
-    hbutton_box->set_layout(Gtk::BUTTONBOX_START);
+    auto hbutton_box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::HORIZONTAL);
     hbutton_box->set_spacing(6);
 
-    hbutton_box->pack_start(*add_button);
-    hbutton_box->pack_start(*remove_button);
+    hbutton_box->append(*add_button);
+    hbutton_box->append(*remove_button);
     attach(*hbutton_box, 0, row++, 1, 1);
-
-    show_all ();
   }
 
 
@@ -147,8 +143,8 @@ namespace bugzilla {
       try {
         pixbuf = Gdk::Pixbuf::create_from_file(icon_file);
       } 
-      catch (const Glib::Error & e) {
-        DBG_OUT("Error loading Bugzilla Icon %s: %s", icon_file.c_str(), e.what().c_str());
+      catch (const std::exception & e) {
+        DBG_OUT("Error loading Bugzilla Icon %s: %s", icon_file.c_str(), e.what());
       }
 
       if (!pixbuf) {
@@ -222,82 +218,80 @@ namespace bugzilla {
 
   void BugzillaPreferences::add_clicked()
   {
-    Gtk::FileChooserDialog dialog(_("Select an icon..."),
-                                  Gtk::FILE_CHOOSER_ACTION_OPEN);
-    dialog.add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
-    dialog.add_button(_("_Open"), Gtk::RESPONSE_OK);
+    auto dialog = Gtk::make_managed<Gtk::FileChooserDialog>(_("Select an icon..."), Gtk::FileChooser::Action::OPEN);
+    dialog->add_button(_("_Cancel"), Gtk::ResponseType::CANCEL);
+    dialog->add_button(_("_Open"), Gtk::ResponseType::OK);
 
-    dialog.set_default_response(Gtk::RESPONSE_OK);
-    dialog.set_local_only(true);
-    dialog.set_current_folder (last_opened_dir);
+    dialog->set_default_response(Gtk::ResponseType::OK);
+    dialog->set_current_folder(Gio::File::create_for_path(last_opened_dir));
 
     Glib::RefPtr<Gtk::FileFilter> filter = Gtk::FileFilter::create();
-    filter->add_pixbuf_formats ();
+    filter->add_pixbuf_formats();
 
-    dialog.add_filter(filter);
+    dialog->add_filter(filter);
 
     // Extra Widget
-    Gtk::Label *l = manage(new Gtk::Label (_("_Host name:"), true));
-    Gtk::Entry *host_entry = manage(new Gtk::Entry ());
+    Gtk::Label *l = Gtk::make_managed<Gtk::Label>(_("_Host name:"), true);
+    l->set_margin_start(6);
+    Gtk::Entry *host_entry = Gtk::make_managed<Gtk::Entry>();
     host_entry->set_hexpand(true);
+    host_entry->set_margin_end(6);
     l->set_mnemonic_widget(*host_entry);
-    Gtk::Grid *hbox = manage(new Gtk::Grid);
+    Gtk::Grid *hbox = Gtk::make_managed<Gtk::Grid>();
     hbox->set_column_spacing(6);
     hbox->attach(*l, 0, 0, 1, 1);
     hbox->attach(*host_entry, 1, 0, 1, 1);
-    hbox->show_all ();
 
-    dialog.set_extra_widget(*hbox);
-
-    int response;
-    Glib::ustring icon_file;
-    Glib::ustring host;
-
-    while(1) {
-      response = dialog.run ();
-      icon_file = dialog.get_filename();
-      host = sharp::string_trim(host_entry->get_text());
-
-
-      if (response == (int) Gtk::RESPONSE_OK) {
+    dialog->get_content_area()->append(*hbox);
+    dialog->show();
+    dialog->signal_response().connect([this, dialog, host_entry](int response) {
+      if(response == (int) Gtk::ResponseType::OK) {
+        Glib::ustring icon_file = dialog->get_file()->get_path();
+        Glib::ustring host = sharp::string_trim(host_entry->get_text());
 
         bool valid = sanitize_hostname(host);
       
         if(valid && !host.empty()) {
-          break;
-        }
-        // Let the user know that they
-        // have to specify a host name.
-        gnote::utils::HIGMessageDialog warn(
-          NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
-          Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK,
-          _("Host name invalid"),
-          _("You must specify a valid Bugzilla "
-            "host name to use with this icon."));
-        warn.run ();
+          // Keep track of the last directory the user had open
+          last_opened_dir = dialog->get_current_folder()->get_path();
 
-        host_entry->grab_focus ();
+          // Copy the file to the BugzillaIcons directory
+          Glib::ustring err_msg;
+          if(!copy_to_bugzilla_icons_dir(icon_file, host, err_msg)) {
+            auto err = Gtk::make_managed<gnote::utils::HIGMessageDialog>((Gtk::Window*)dialog->get_parent(),
+              GTK_DIALOG_DESTROY_WITH_PARENT,
+              Gtk::MessageType::ERROR, Gtk::ButtonsType::OK,
+              _("Error saving icon"),
+              Glib::ustring(_("Could not save the icon file.")) + "  " + err_msg);
+            err->show();
+            err->signal_response().connect([err](int) { err->hide(); });
+          }
+          else {
+            dialog->hide();
+            update_icon_store();
+          }
+        }
+        else {
+          // Let the user know that they
+          // have to specify a host name.
+          auto warn = Gtk::make_managed<gnote::utils::HIGMessageDialog>(
+            dialog, GTK_DIALOG_DESTROY_WITH_PARENT,
+            Gtk::MessageType::WARNING, Gtk::ButtonsType::OK,
+            _("Host name invalid"),
+            _("You must specify a valid Bugzilla "
+              "host name to use with this icon."));
+          warn->show();
+          warn->signal_response().connect([warn, host_entry](int) {
+            warn->hide();
+            host_entry->grab_focus();
+          });
+        }
       } 
-      else if (response != (int) Gtk::RESPONSE_OK) {
+      else {
+        dialog->hide();
         return;
       }
-    }
-
-    // Keep track of the last directory the user had open
-    last_opened_dir = dialog.get_current_folder();
-
-    // Copy the file to the BugzillaIcons directory
-    Glib::ustring err_msg;
-    if (!copy_to_bugzilla_icons_dir (icon_file, host, err_msg)) {
-      gnote::utils::HIGMessageDialog err(NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
-                                         Gtk::MESSAGE_ERROR, Gtk::BUTTONS_OK,
-                                         _("Error saving icon"),
-                                         Glib::ustring(_("Could not save the icon file.")) +
-                                         "  " + err_msg);
-      err.run();
-    }
-
-    update_icon_store();
+    });
   }
 
   bool BugzillaPreferences::copy_to_bugzilla_icons_dir(const Glib::ustring & file_path,
@@ -340,8 +334,7 @@ namespace bugzilla {
       double ratio = dim / (double)orig_dim;
       width = (int)(ratio * orig_w);
       height = (int)(ratio * orig_h);
-      newpix = pix->scale_simple(width, height, 
-                                 Gdk::INTERP_BILINEAR);
+      newpix = pix->scale_simple(width, height, Gdk::InterpType::BILINEAR);
       newpix->save(p, "png");
     }
     catch(...) {
@@ -353,7 +346,7 @@ namespace bugzilla {
   void BugzillaPreferences::remove_clicked()
   {
     // Remove the icon file and call UpdateIconStore ().
-    Gtk::TreeIter iter;
+    Gtk::TreeIter<Gtk::TreeRow> iter;
     iter = icon_tree->get_selection()->get_selected();
     if (!iter) {
       return;
@@ -361,33 +354,32 @@ namespace bugzilla {
 
     Glib::ustring icon_path = (*iter)[m_columns.file_path];
 
-    gnote::utils::HIGMessageDialog dialog(NULL, 
+    auto dialog = Gtk::make_managed<gnote::utils::HIGMessageDialog>(nullptr, 
                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                          Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_NONE,
+                                          Gtk::MessageType::QUESTION, Gtk::ButtonsType::NONE,
                                           _("Really remove this icon?"),
                                           _("If you remove an icon it is permanently lost."));
 
-    Gtk::Button *button = manage(new Gtk::Button(_("_Cancel"), true));
-    button->property_can_default() = true;
-    button->show ();
-    dialog.add_action_widget (*button, Gtk::RESPONSE_CANCEL);
-    dialog.set_default_response(Gtk::RESPONSE_CANCEL);
+    auto button = Gtk::make_managed<Gtk::Button>(_("_Cancel"), true);
+    dialog->add_action_widget(*button, Gtk::ResponseType::CANCEL);
+    dialog->set_default_response(Gtk::ResponseType::CANCEL);
 
-    button = manage(new Gtk::Button(_("_Delete"), true));
-    button->property_can_default() = true;
-    button->show ();
-    dialog.add_action_widget (*button, 666);
+    button = Gtk::make_managed<Gtk::Button>(_("_Delete"), true);
+    dialog->add_action_widget(*button, 666);
 
-    int result = dialog.run ();
-    if (result == 666) {
-      try {
-        sharp::file_delete (icon_path);
-        update_icon_store ();
-      } 
-      catch (const sharp::Exception & e) {
-        ERR_OUT(_("Error removing icon %s: %s"), icon_path.c_str(), e.what());
+    dialog->show();
+    dialog->signal_response().connect([this, dialog, icon_path](int result) {
+      dialog->hide();
+      if(result == 666) {
+        try {
+          sharp::file_delete(icon_path);
+          update_icon_store();
+        }
+        catch(const sharp::Exception & e) {
+          ERR_OUT(_("Error removing icon %s: %s"), icon_path.c_str(), e.what());
+        }
       }
-    }
+    });
   }
 
 

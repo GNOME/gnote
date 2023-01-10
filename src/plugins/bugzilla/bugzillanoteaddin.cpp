@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -95,9 +95,8 @@ namespace bugzilla {
     try {
       sharp::directory_copy(src, dest);
     }
-    catch (const Gio::Error & e) {
-      DBG_OUT("BugzillaNoteAddin: migrating images: %s",
-              e.what().c_str());
+    catch (const std::exception & e) {
+      DBG_OUT("BugzillaNoteAddin: migrating images: %s", e.what());
     }
   }
 
@@ -109,56 +108,42 @@ namespace bugzilla {
 
   void BugzillaNoteAddin::on_note_opened()
   {
-    get_window()->editor()->signal_drag_data_received().connect(
-      sigc::mem_fun(*this, &BugzillaNoteAddin::on_drag_data_received), false);
+    dynamic_cast<gnote::NoteEditor*>(get_window()->editor())->signal_drop_string
+      .connect(sigc::mem_fun(*this, &BugzillaNoteAddin::drop_string));
   }
 
 
-  void BugzillaNoteAddin::on_drag_data_received(const Glib::RefPtr<Gdk::DragContext>& context, 
-                                                int x, int y, 
-                                                const Gtk::SelectionData & selection_data, 
-                                                guint, guint time)
+  bool BugzillaNoteAddin::drop_string(const Glib::ustring & uriString, int x, int y)
   {
-    DBG_OUT("Bugzilla.OnDragDataReceived");
-    drop_uri_list(context, x, y, selection_data, time);
-    return;
-  }
-
-
-  void BugzillaNoteAddin::drop_uri_list(const Glib::RefPtr<Gdk::DragContext>& context, int x, int y, 
-                                        const Gtk::SelectionData & selection_data, guint time)
-  {
-    Glib::ustring uriString = selection_data.get_text();
     if(uriString.empty()) {
-      return;
+      return false;
     }
 
     const char * regexString = "\\bhttps?://.*/show_bug\\.cgi\\?(\\S+\\&){0,1}id=(\\d{1,})";
 
-    Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regexString, Glib::REGEX_CASELESS);
+    Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regexString, Glib::Regex::CompileFlags::CASELESS);
     Glib::MatchInfo match_info;
 
     if(re->match(uriString, match_info) && match_info.get_match_count() >= 3) {
       try {
         int bugId = STRING_TO_INT(match_info.fetch(2));
-
-        if (insert_bug (x, y, uriString, bugId)) {
-          context->drag_finish(true, false, time);
-          g_signal_stop_emission_by_name(get_window()->editor()->gobj(),
-                                         "drag_data_received");
-        }
+        insert_bug (x, y, uriString, bugId);
+        return true;
       }
       catch(std::bad_cast&)
-      {}
+      {
+      }
     }
+
+    return false;
   }
 
 
   bool BugzillaNoteAddin::insert_bug(int x, int y, const Glib::ustring & uri, int id)
   {
     try {
-      BugzillaLink::Ptr link_tag = 
-        BugzillaLink::Ptr::cast_dynamic(get_note()->get_tag_table()->create_dynamic_tag(TAG_NAME));
+      BugzillaLink::Ptr link_tag = std::dynamic_pointer_cast<BugzillaLink>(
+        get_note()->get_tag_table()->create_dynamic_tag(TAG_NAME));
       link_tag->set_bug_url(uri);
 
       // Place the cursor in the position where the uri was
@@ -186,7 +171,7 @@ namespace bugzilla {
     } 
     catch (...)
     {
-		}
+    }
     return false;
   }
 
