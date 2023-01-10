@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2012,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011-2012,2017,2019-2021,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -36,19 +36,18 @@ const char * EXPORTHTML_EXPORT_LINKED_ALL = "export-linked-all";
 
 
 ExportToHtmlDialog::ExportToHtmlDialog(gnote::IGnote & ignote, const Glib::ustring & default_file)
-  : Gtk::FileChooserDialog(_("Destination for HTML Export"),
-                           Gtk::FILE_CHOOSER_ACTION_SAVE)
+  : Gtk::FileChooserDialog(_("Destination for HTML Export"), Gtk::FileChooser::Action::SAVE)
   , m_gnote(ignote)
   , m_export_linked(_("Export linked notes"))
   , m_export_linked_all(_("Include all other linked notes"))
   , m_settings(Gio::Settings::create(SCHEMA_EXPORTHTML))
 {
-  add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
-  add_button(_("_Save"), Gtk::RESPONSE_OK);
+  add_button(_("_Cancel"), Gtk::ResponseType::CANCEL);
+  add_button(_("_Save"), Gtk::ResponseType::OK);
 
-  set_default_response(Gtk::RESPONSE_OK);
+  set_default_response(Gtk::ResponseType::OK);
 
-  auto table = manage(new Gtk::Grid);
+  auto table = Gtk::make_managed<Gtk::Grid>();
 
   m_export_linked.signal_toggled().connect(
     sigc::mem_fun(*this, &ExportToHtmlDialog::on_export_linked_toggled));
@@ -56,13 +55,9 @@ ExportToHtmlDialog::ExportToHtmlDialog(gnote::IGnote & ignote, const Glib::ustri
   table->attach(m_export_linked, 0, 0, 2, 1);
   table->attach(m_export_linked_all, 0, 1, 2, 1);
 
-  set_extra_widget(*table);
+  get_content_area()->append(*table);
 
-  set_do_overwrite_confirmation(true);
-  set_local_only(true);
-
-  show_all ();
-  load_preferences (default_file);
+  load_preferences(default_file);
 }
 
 
@@ -92,7 +87,7 @@ void ExportToHtmlDialog::set_export_linked_all(bool value)
 
 void ExportToHtmlDialog::save_preferences()
 {
-  Glib::ustring dir = sharp::file_dirname(get_filename());
+  Glib::ustring dir = sharp::file_dirname(get_file()->get_path());
   m_settings->set_string(EXPORTHTML_LAST_DIRECTORY, dir);
   m_settings->set_boolean(EXPORTHTML_EXPORT_LINKED, get_export_linked());
   m_settings->set_boolean(EXPORTHTML_EXPORT_LINKED_ALL, get_export_linked_all());
@@ -105,7 +100,7 @@ void ExportToHtmlDialog::load_preferences(const Glib::ustring & default_file)
   if (last_dir.empty()) {
     last_dir = Glib::get_home_dir();
   }
-  set_current_folder (last_dir);
+  set_current_folder(Gio::File::create_for_path(last_dir));
   set_current_name(default_file);
 
   set_export_linked(m_settings->get_boolean(EXPORTHTML_EXPORT_LINKED));

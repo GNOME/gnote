@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016,2019 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016,2019,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -29,6 +29,7 @@
 #include "sharp/dynamicmodule.hpp"
 #include "sharp/streamwriter.hpp"
 #include "sharp/xsltransform.hpp"
+#include "exporttohtmldialog.hpp"
 #include "note.hpp"
 #include "noteaddin.hpp"
 
@@ -60,6 +61,7 @@ public:
 private:
   sharp::XslTransform & get_note_xsl();
   void export_button_clicked(const Glib::VariantBase&);
+  void export_dialog_response(ExportToHtmlDialog & dialog);
   void write_html_for_note (sharp::StreamWriter &, const gnote::Note::Ptr &, bool, bool);
 
   static sharp::XslTransform *s_xsl;

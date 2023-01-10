@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -40,7 +40,6 @@
 #include "utils.hpp"
 
 #include "exporttohtmlnoteaddin.hpp"
-#include "exporttohtmldialog.hpp"
 #include "notenameresolver.hpp"
 
 #define STYLESHEET_NAME "exporttohtml.xsl"
@@ -80,22 +79,30 @@ void ExportToHtmlNoteAddin::on_note_opened()
 std::vector<gnote::PopoverWidget> ExportToHtmlNoteAddin::get_actions_popover_widgets() const
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
-  auto button = gnote::utils::create_popover_button("win.exporttohtml-export", _("Export to HTML…"));
-  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::EXPORT_TO_HTML_ORDER, button));
+  auto item = Gio::MenuItem::create(_("Export to HTML…"), "win.exporttohtml-export");
+  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::EXPORT_TO_HTML_ORDER, item));
   return widgets;
 }
 
 
 void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
 {
-  ExportToHtmlDialog dialog(ignote(), get_note()->get_title() + ".html");
-  int response = dialog.run();
-  Glib::ustring output_path = dialog.get_filename();
+  auto dialog = Gtk::make_managed<ExportToHtmlDialog>(ignote(), get_note()->get_title() + ".html");
+  dialog->show();
+  dialog->signal_response().connect([this, dialog](int response) {
+    dialog->hide();
+    if(response != Gtk::ResponseType::OK) {
+      return;
+    }
 
-  if (response != Gtk::RESPONSE_OK) {
-    return;
-  }
+    export_dialog_response(*dialog);
+  });
+}
 
+
+void ExportToHtmlNoteAddin::export_dialog_response(ExportToHtmlDialog & dialog)
+{
+  Glib::ustring output_path = dialog.get_file()->get_path();
   DBG_OUT("Exporting Note '%s' to '%s'...", get_note()->get_title().c_str(), 
           output_path.c_str());
 
@@ -118,9 +125,8 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
       sharp::Uri output_uri{Glib::ustring(output_path)};
       gnote::utils::open_url(*get_host_window(), "file://" + output_uri.get_absolute_uri());
     } 
-    catch (const Glib::Exception & ex) {
-      ERR_OUT(_("Could not open exported note in a web browser: %s"),
-               ex.what().c_str());
+    catch (const std::exception & ex) {
+      ERR_OUT(_("Could not open exported note in a web browser: %s"), ex.what());
 
       Glib::ustring detail = Glib::ustring::compose(
                                  // TRANSLATORS: %1%: boost format placeholder for the path
@@ -129,13 +135,14 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
 
       // Let the user know the note was saved successfully
       // even though showing the note in a web browser failed.
-      gnote::utils::HIGMessageDialog msg_dialog(
+      auto msg_dialog = Gtk::make_managed<gnote::utils::HIGMessageDialog>(
         get_host_window(),
         GTK_DIALOG_DESTROY_WITH_PARENT,
-        Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK,
+        Gtk::MessageType::INFO, Gtk::ButtonsType::OK,
         _("Note exported successfully"),
         detail);
-      msg_dialog.run();
+      msg_dialog->show();
+      msg_dialog->signal_response().connect([msg_dialog](int) { msg_dialog->hide(); });
     }
   } 
 #if 0
@@ -161,12 +168,13 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
                             _("Could not save the file \"%1\""),
                             output_path.c_str());
 
-    gnote::utils::HIGMessageDialog msg_dialog(&dialog, 
+    auto msg_dialog = Gtk::make_managed<gnote::utils::HIGMessageDialog>(get_host_window(),
                                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                                              Gtk::MESSAGE_ERROR, 
-                                              Gtk::BUTTONS_OK,
+                                              Gtk::MessageType::ERROR,
+                                              Gtk::ButtonsType::OK,
                                               msg, error_message);
-    msg_dialog.run();
+    msg_dialog->show();
+    msg_dialog->signal_response().connect([msg_dialog](int) { msg_dialog->hide(); });
   }
 }
 
