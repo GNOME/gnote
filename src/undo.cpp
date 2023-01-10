@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2016-2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2010,2016-2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -123,7 +123,7 @@ namespace gnote {
     int offset = 0;
     for(auto & iter : m_splitTags) {
       NoteTag::Ptr noteTag = std::dynamic_pointer_cast<NoteTag>(iter.tag);
-      if (noteTag->get_image()) {
+      if(noteTag->get_widget()) {
         offset++;
       }
     }
