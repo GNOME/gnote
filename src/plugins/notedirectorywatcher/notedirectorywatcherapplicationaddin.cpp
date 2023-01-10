@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2021-2022 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2021-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -89,13 +89,13 @@ void NoteDirectoryWatcherApplicationAddin::handle_note_saved(const gnote::NoteBa
 }
 
 void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
-  const Glib::RefPtr<Gio::File> & file, const Glib::RefPtr<Gio::File> &, Gio::FileMonitorEvent event_type)
+  const Glib::RefPtr<Gio::File> & file, const Glib::RefPtr<Gio::File> &, Gio::FileMonitor::Event event_type)
 {
   switch(event_type) {
-  case Gio::FILE_MONITOR_EVENT_CHANGED:
-  case Gio::FILE_MONITOR_EVENT_DELETED:
-  case Gio::FILE_MONITOR_EVENT_CREATED:
-  case Gio::FILE_MONITOR_EVENT_MOVED:
+  case Gio::FileMonitor::Event::CHANGED:
+  case Gio::FileMonitor::Event::DELETED:
+  case Gio::FileMonitor::Event::CREATED:
+  case Gio::FileMonitor::Event::MOVED:
     break;
   default:
     return;
@@ -115,19 +115,19 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
       record = m_file_change_records.find(note_id);
     }
 
-    if(event_type == Gio::FILE_MONITOR_EVENT_CHANGED) {
+    if(event_type == Gio::FileMonitor::Event::CHANGED) {
       record->second.changed = true;
       record->second.deleted = false;
     }
-    else if(event_type == Gio::FILE_MONITOR_EVENT_CREATED) {
+    else if(event_type == Gio::FileMonitor::Event::CREATED) {
       record->second.changed = true;
       record->second.deleted = false;
     }
-    else if(event_type == Gio::FILE_MONITOR_EVENT_MOVED) {
+    else if(event_type == Gio::FileMonitor::Event::MOVED) {
       record->second.changed = true;
       record->second.deleted = false;
     }
-    else if(event_type == Gio::FILE_MONITOR_EVENT_DELETED) {
+    else if(event_type == Gio::FileMonitor::Event::DELETED) {
       if(!record->second.changed) {
 	record->second.deleted = true;
       }
@@ -244,7 +244,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
     DBG_OUT("NoteDirectoryWatcher: Adding %s because file changed.", note_id.c_str());
 
     Glib::ustring title;
-    Glib::RefPtr<Glib::Regex> regex = Glib::Regex::create("<title>([^<]+)</title>", Glib::REGEX_MULTILINE);
+    Glib::RefPtr<Glib::Regex> regex = Glib::Regex::create("<title>([^<]+)</title>", Glib::Regex::CompileFlags::MULTILINE);
     Glib::MatchInfo match_info;
     if(regex->match(noteXml, match_info)) {
       title = match_info.fetch(1);
