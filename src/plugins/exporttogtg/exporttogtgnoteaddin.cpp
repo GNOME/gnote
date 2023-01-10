@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016-2017,2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -75,8 +75,8 @@ void ExportToGTGNoteAddin::on_note_opened()
 std::vector<gnote::PopoverWidget> ExportToGTGNoteAddin::get_actions_popover_widgets() const
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
-  auto button = gnote::utils::create_popover_button("win.exporttogtg-export", _("Export to Getting Things GNOME"));
-  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::EXPORT_TO_GTG_ORDER, button));
+  auto item = Gio::MenuItem::create(_("Export to Getting Things GNOME"), "win.exporttogtg-export");
+  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::EXPORT_TO_GTG_ORDER, item));
   return widgets;
 }
 
@@ -94,13 +94,13 @@ void ExportToGTGNoteAddin::export_button_clicked(const Glib::VariantBase&)
     }
   }
   catch(Glib::Error & e) {
-    ERR_OUT(_("Failed to create GTG interface from XML: %s"), e.what().c_str());
+    ERR_OUT(_("Failed to create GTG interface from XML: %s"), e.what());
     return;
   }
 
   try {
     Glib::RefPtr<Gio::DBus::Proxy> proxy = Gio::DBus::Proxy::create_for_bus_sync(
-        Gio::DBus::BUS_TYPE_SESSION, "org.gnome.GTG", "/org/gnome/GTG", "org.gnome.GTG", s_gtg_interface);
+        Gio::DBus::BusType::SESSION, "org.gnome.GTG", "/org/gnome/GTG", "org.gnome.GTG", s_gtg_interface);
     if(!proxy) {
       ERR_OUT(_("Failed to create D-Bus proxy for GTG"));
       return;
@@ -118,7 +118,7 @@ void ExportToGTGNoteAddin::export_button_clicked(const Glib::VariantBase&)
     proxy->call_sync("OpenNewTask", params);
   }
   catch(Glib::Error & e) {
-    ERR_OUT(_("Failed to call GTG: %s"), e.what().c_str());
+    ERR_OUT(_("Failed to call GTG: %s"), e.what());
   }
 }
 
