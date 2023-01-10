@@ -101,6 +101,9 @@ namespace gnote {
     std::vector<Glib::ustring> values;
     if(G_VALUE_HOLDS_STRING(value.gobj())) {
       Glib::ustring val = static_cast<const Glib::Value<Glib::ustring>&>(value).get();
+      if(signal_drop_string(val, x, y)) {
+        return true;
+      }
       values.emplace_back(std::move(val));
     }
     else if(G_VALUE_HOLDS(value.gobj(), Glib::Value<std::vector<Glib::ustring>>::value_type())) {

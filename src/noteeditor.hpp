@@ -58,6 +58,7 @@ public:
     {
       return *m_drop_target;
     }
+  sigc::signal<bool(const Glib::ustring&, double x, double y)> signal_drop_string;
 private:
   static void paste_started(GtkTextView*, NoteEditor *_this);
   static void paste_ended(GtkTextView*, NoteEditor *_this);
