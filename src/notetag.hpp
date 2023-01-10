@@ -121,8 +121,6 @@ public:
                    Gtk::TextIter & end);
   virtual void write(sharp::XmlWriter &, bool) const;
   virtual void read(sharp::XmlReader &, bool);
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_image() const;
-  virtual void set_image(const Glib::RefPtr<Gdk::Pixbuf> &);
   virtual Gtk::Widget * get_widget() const
     {
       return m_widget;

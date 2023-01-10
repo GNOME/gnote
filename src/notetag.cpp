@@ -173,26 +173,6 @@ namespace gnote {
   }
 
 
-  Glib::RefPtr<Gdk::Pixbuf> NoteTag::get_image() const
-  {
-    Gtk::Image * image = dynamic_cast<Gtk::Image*>(m_widget);
-    if(!image) {
-      return Glib::RefPtr<Gdk::Pixbuf>();
-    }
-    return image->get_pixbuf();
-  }
-
-
-  void NoteTag::set_image(const Glib::RefPtr<Gdk::Pixbuf> & value)
-  {
-    if(!value) {
-      set_widget(NULL);
-      return;
-    }
-    set_widget(new Gtk::Image(value));
-  }
-
-
   void NoteTag::set_widget(Gtk::Widget * value)
   {
     if ((value == NULL) && m_widget) {
