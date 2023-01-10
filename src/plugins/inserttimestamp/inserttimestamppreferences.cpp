@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2013,2017,2019-2020,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -73,15 +73,13 @@ namespace inserttimestamp {
     auto now = Glib::DateTime::create_now_local();
 
     // Label
-    Gtk::Label *label = manage(new Gtk::Label (_("Choose one of the predefined formats "
-                                                 "or use your own.")));
+    auto label = Gtk::make_managed<Gtk::Label>(_("Choose one of the predefined formats or use your own."));
     label->property_wrap() = true;
     label->property_xalign() = 0;
     attach(*label, 0, row++, 1, 1);
 
     // Use Selected Format
-    Gtk::RadioButtonGroup group;
-    selected_radio = manage(new Gtk::RadioButton (group, _("Use _Selected Format"), true));
+    selected_radio = Gtk::make_managed<Gtk::CheckButton>(_("Use _Selected Format"), true);
     attach(*selected_radio, 0, row++, 1, 1);
 
     // 1st column (visible): formatted date
@@ -94,27 +92,27 @@ namespace inserttimestamp {
       treeiter->set_value(1, format);
     }
 
-    scroll = manage(new Gtk::ScrolledWindow());
-    scroll->set_shadow_type(Gtk::SHADOW_IN);
+    scroll = Gtk::make_managed<Gtk::ScrolledWindow>();
     scroll->set_hexpand(true);
     scroll->set_vexpand(true);
     attach(*scroll, 0, row++, 1, 1);
 
-    tv = manage(new Gtk::TreeView (store));
+    tv = Gtk::make_managed<Gtk::TreeView>(store);
     tv->set_headers_visible(false);
     tv->append_column ("Format", m_columns.formatted);
 
-    scroll->add (*tv);
+    scroll->set_child(*tv);
 
     // Use Custom Format
-    Gtk::Grid *customBox = manage(new Gtk::Grid);
+    auto customBox = Gtk::make_managed<Gtk::Grid>();
     customBox->set_column_spacing(12);
     attach(*customBox, 0, row++, 1, 1);
 
-    custom_radio = manage(new Gtk::RadioButton (group, _("_Use Custom Format"), true));
+    custom_radio = Gtk::make_managed<Gtk::CheckButton>(_("_Use Custom Format"), true);
+    custom_radio->set_group(*selected_radio);
     customBox->attach(*custom_radio, 0, 0, 1, 1);
 
-    custom_entry = manage(new Gtk::Entry());
+    custom_entry = Gtk::make_managed<Gtk::Entry>();
     customBox->attach(*custom_entry, 1, 0, 1, 1);
 
     sharp::PropertyEditor *entryEditor = new sharp::PropertyEditor(
@@ -125,11 +123,11 @@ namespace inserttimestamp {
 
     // Activate/deactivate widgets
     bool useCustom = true;
-    Gtk::TreeIter iter;
+    Gtk::TreeIter<Gtk::TreeConstRow> iter;
     for(iter = store->children().begin();
         iter != store->children().end(); ++iter) {
 
-      const Gtk::TreeRow & tree_row(*iter);
+      const Gtk::TreeConstRow & tree_row(*iter);
       Glib::ustring value = tree_row[m_columns.format];
       if (dateFormat == value) {
         // Found format in list
@@ -157,7 +155,6 @@ namespace inserttimestamp {
     tv->get_selection()->signal_changed().connect(
       sigc::mem_fun(*this, 
                     &InsertTimestampPreferences::on_selection_changed));
-    show_all ();
   }
 
 
@@ -169,8 +166,7 @@ namespace inserttimestamp {
       scroll->set_sensitive(true);
       custom_entry->set_sensitive(false);
       // select 1st row
-      Gtk::TreeIter iter;
-      iter = store->children().begin();
+      auto iter = store->children().begin();
       tv->get_selection()->select(iter);
       Gtk::TreePath treepath = store->get_path(iter);				
       tv->scroll_to_row(treepath);
@@ -186,9 +182,7 @@ namespace inserttimestamp {
   /// Set the GConf key to selected format.
   void InsertTimestampPreferences::on_selection_changed ()
   {
-    Gtk::TreeIter iter;
-
-    iter = tv->get_selection()->get_selected();
+    auto iter = tv->get_selection()->get_selected();
     if (iter) {
       Glib::ustring format;
       iter->get_value(1, format);

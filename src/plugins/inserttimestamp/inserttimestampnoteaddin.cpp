@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2021,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -73,8 +73,8 @@ namespace inserttimestamp {
   std::vector<gnote::PopoverWidget> InsertTimestampNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
-    auto button = gnote::utils::create_popover_button("win.inserttimestamp-insert", _("Insert Timestamp"));
-    widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::INSERT_TIMESTAMP_ORDER, button));
+    auto item = Gio::MenuItem::create(_("Insert Timestamp"), "win.inserttimestamp-insert");
+    widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::INSERT_TIMESTAMP_ORDER, item));
     return widgets;
   }
 
@@ -87,23 +87,22 @@ namespace inserttimestamp {
       return;
     }
 
-    m_accelerator = window->keybinder().add_accelerator(
-      sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_insert_activated), GDK_KEY_D, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
+    auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_D, Gdk::ModifierType::CONTROL_MASK);
+    auto action = Gtk::NamedAction::create("win.inserttimestamp-insert");
+    m_shortcut = Gtk::Shortcut::create(trigger, action);
+    get_note()->get_window()->shortcut_controller().add_shortcut(m_shortcut);
   }
 
 
   void InsertTimestampNoteAddin::on_note_backgrounded()
   {
-    if(m_accelerator) {
-      auto window = dynamic_cast<gnote::MainWindow*>(get_window()->host());
+    if(m_shortcut) {
+      auto window = get_note()->get_window();
       if(window) {
-        window->keybinder().remove_accelerator(m_accelerator);
-      }
-      else {
-        ERR_OUT("No host on just backgrounded note window");
+        window->shortcut_controller().remove_shortcut(m_shortcut);
       }
 
-      m_accelerator = nullptr;
+      m_shortcut.reset();
     }
   }
 

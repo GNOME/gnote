@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016-2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016-2017,2019,2021,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,8 @@
 
 #ifndef __INSERTIMESTAMP_NOTEADDIN_HPP_
 #define __INSERTIMESTAMP_NOTEADDIN_HPP_
+
+#include <gtkmm/shortcut.h>
 
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
@@ -49,7 +51,7 @@ public:
     {
       return new InsertTimestampNoteAddin;
     }
-  InsertTimestampNoteAddin() : m_accelerator(nullptr) {}
+  InsertTimestampNoteAddin() {}
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
@@ -65,7 +67,7 @@ private:
   void on_menu_item_activated(const Glib::VariantBase&);
   void on_insert_activated();
 
-  void *m_accelerator;
+  Glib::RefPtr<Gtk::Shortcut> m_shortcut;
 };
 
 }
