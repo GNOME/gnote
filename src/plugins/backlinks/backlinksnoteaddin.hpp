@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016-2017,2019,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +20,8 @@
 
 #ifndef __BACKLINKS_NOTEADDIN_HPP_
 #define __BACKLINKS_NOTEADDIN_HPP_
+
+#include <giomm/menu.h>
 
 #include "sharp/dynamicmodule.hpp"
 #include "noteaddin.hpp"
@@ -53,8 +55,8 @@ public:
   virtual std::vector<gnote::PopoverWidget> get_actions_popover_widgets() const override;
 private:
   void on_open_note(const Glib::VariantBase & param);
-  void update_menu(Gtk::Box *menu) const;
-  std::vector<Gtk::Widget*> get_backlink_menu_items() const;
+  void update_menu(Gio::Menu & menu) const;
+  std::vector<Glib::RefPtr<Gio::MenuItem>> get_backlink_menu_items() const;
   bool check_note_has_match(const gnote::Note::Ptr &, const Glib::ustring &);
 };
 
