@@ -3,7 +3,7 @@
  *  It lists note's table of contents in a menu.
  *
  * Copyright (C) 2013 Luc Pionchon <pionchon.luc@gmail.com>
- * Copyright (C) 2013,2015-2017,2019-2022 Aurimas Cernius <aurisc4@gmail.com>
+ * Copyright (C) 2013,2015-2017,2019-2023 Aurimas Cernius <aurisc4@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,7 @@
 
 #include <glibmm/i18n.h>
 
-#include <gtkmm/modelbutton.h>
-#include <gtkmm/separator.h>
-#include <gtkmm/separatormenuitem.h>
+#include <gtkmm/popovermenu.h>
 
 #include "sharp/string.hpp"
 
@@ -34,11 +32,11 @@
 #include "notemanager.hpp"
 #include "notewindow.hpp"
 #include "notebuffer.hpp"
+#include "popoverwidgets.hpp"
 #include "utils.hpp"
 
 #include "tableofcontents.hpp"
 #include "tableofcontentsnoteaddin.hpp"
-#include "tableofcontentsmenuitem.hpp"
 #include "tableofcontentsutils.hpp"
 
 namespace tableofcontents {
@@ -50,8 +48,6 @@ TableofcontentsModule::TableofcontentsModule()
 
 
 TableofcontentsNoteAddin::TableofcontentsNoteAddin()
-  : m_toc_menu       (NULL)
-  , m_toc_menu_built (false)
 {
 }
 
@@ -59,31 +55,8 @@ void TableofcontentsNoteAddin::initialize () {}
 void TableofcontentsNoteAddin::shutdown   () {}
 
 
-Gtk::MenuItem *new_toc_menu_item ()
-//create a menu item like: "[]_Table_of_Contents______Ctrl-Alt-1__>"
+void TableofcontentsNoteAddin::on_note_opened()
 {
-  Gtk::MenuItem * menu_item = manage(new Gtk::MenuItem);
-
-  Gtk::AccelLabel *acclabel = manage(new Gtk::AccelLabel(_("Table of Contents")));
-  acclabel->set_halign(Gtk::ALIGN_START);
-  acclabel->set_valign(Gtk::ALIGN_START);
-  /* I don't have gtkmm-3.6, but I have gtk-3.6 */
-  /* TO UNCOMMENT *///acclabel->set_accel (GDK_KEY_1, Gdk::CONTROL_MASK | Gdk::MOD1_MASK);
-  /* TO DELETE    */gtk_accel_label_set_accel (acclabel->gobj (),GDK_KEY_1, GdkModifierType (GDK_CONTROL_MASK | GDK_MOD1_MASK));
-  acclabel->show ();
-
-  menu_item->add (*acclabel);
-
-  return menu_item;
-}
-
-
-void TableofcontentsNoteAddin::on_note_opened ()
-{
-  m_toc_menu = manage(new Gtk::Menu);
-  m_toc_menu->signal_hide().connect(
-    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_menu_hidden));
-
   register_main_window_action_callback("tableofcontents-heading1",
     sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_action));
   register_main_window_action_callback("tableofcontents-heading2",
@@ -101,13 +74,22 @@ void TableofcontentsNoteAddin::on_note_opened ()
     buffer->signal_changed().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_note_changed));
   }
 
-  // Reacts to key press events
-  win->signal_key_press_event().connect(
-    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_key_pressed));
+  {
+    auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_1, Gdk::ModifierType::CONTROL_MASK);
+    auto action = Gtk::NamedAction::create("win.tableofcontents-heading1");
+    auto shortcut = Gtk::Shortcut::create(trigger, action);
+    win->shortcut_controller().add_shortcut(shortcut);
 
-  // TOC can show up also in the contextual menu
-  win->editor()->signal_populate_popup().connect(
-    sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_populate_popup));
+    trigger = Gtk::KeyvalTrigger::create(GDK_KEY_2, Gdk::ModifierType::CONTROL_MASK);
+    action = Gtk::NamedAction::create("win.tableofcontents-heading2");
+    shortcut = Gtk::Shortcut::create(trigger, action);
+    win->shortcut_controller().add_shortcut(shortcut);
+
+    trigger = Gtk::KeyvalTrigger::create(GDK_KEY_1, Gdk::ModifierType::CONTROL_MASK | Gdk::ModifierType::ALT_MASK);
+    auto cback_action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_toc_popup_activated));
+    shortcut = Gtk::Shortcut::create(trigger, cback_action);
+    win->shortcut_controller().add_shortcut(shortcut);
+  }
 
   // Heading tags
   m_tag_bold  = get_note()->get_tag_table()->lookup ("bold");
@@ -126,120 +108,42 @@ void TableofcontentsNoteAddin::on_foregrounded()
 
 std::vector<gnote::PopoverWidget> TableofcontentsNoteAddin::get_actions_popover_widgets() const
 {
+  auto toc_menu = get_toc_menu();
   auto widgets = NoteAddin::get_actions_popover_widgets();
-  auto toc_item = gnote::utils::create_popover_submenu_button("tableofcontents-menu", _("Table of Contents"));
+  auto toc_item = Gio::MenuItem::create(_("Table of Contents"), toc_menu);
   widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::TABLE_OF_CONTENTS_ORDER, toc_item));
-  auto toc_menu = gnote::utils::create_popover_submenu("tableofcontents-menu");
-  widgets.push_back(gnote::PopoverWidget::create_custom_section(toc_menu));
-
-  std::vector<Gtk::Widget*> toc_items;
-  get_toc_popover_items(toc_items);
-  if(toc_items.size()) {
-    for(auto & toc_button : toc_items) {
-      toc_menu->add(*toc_button);
-    }
-
-    toc_menu->add(*manage(new Gtk::Separator));
-  }
-
-  auto item = manage(gnote::utils::create_popover_button("win.tableofcontents-heading1", _("Heading 1")));
-  item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-  toc_menu->add(*item);
-
-  item = manage(gnote::utils::create_popover_button("win.tableofcontents-heading2", _("Heading 2")));
-  item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-  toc_menu->add(*item);
-
-  item = manage(gnote::utils::create_popover_button("win.tableofcontents-help", _("Table of Contents Help")));
-  toc_menu->add(*item);
-  toc_menu->add(*manage(new Gtk::Separator));
-
-  auto back_item = gnote::utils::create_popover_submenu_button("main", _("_Back"));
-  dynamic_cast<Gtk::ModelButton*>(back_item)->property_inverted() = true;
-  toc_menu->add(*back_item);
-
   return widgets;
 }
 
 
-void TableofcontentsNoteAddin::on_menu_hidden()
+Glib::RefPtr<Gio::Menu> TableofcontentsNoteAddin::get_toc_menu() const
 {
-  m_toc_menu_built = false; //force the submenu to rebuild next time it's supposed to show
-}
+  auto toc_menu = Gio::Menu::create();
+  auto fixed_section = toc_menu;
 
-
-void TableofcontentsNoteAddin::populate_toc_menu (Gtk::Menu *toc_menu, bool has_action_entries)
-//populate a menu with Note's table of contents
-{
-  // Clear out the old list
-  std::vector<Gtk::Widget*> menu_items = toc_menu->get_children();
-  for(std::vector<Gtk::Widget*>::reverse_iterator iter = menu_items.rbegin();
-      iter != menu_items.rend(); ++iter) {
-    toc_menu->remove(**iter);
-  }
-
-  // Build a new list
-  auto items = get_tableofcontents_menu_items();
-
-  for(auto item : items) {
-    item->show_all();
-    toc_menu->append(*item);
-  }
-
-  // Action menu items, or nothing
-  if (has_action_entries == false) {
-    if (toc_menu->get_children().size() == 0) { // no toc items, and no action entries = empty menu
-      Gtk::MenuItem *item = manage(new Gtk::MenuItem(_("(empty table of contents)")));
-      item->set_sensitive(false);
-      item->show();
-      toc_menu->append(*item);
-    }
-  }
-  else {
-    Gtk::MenuItem *item;
-
-    if (toc_menu->get_children().size() != 0) { //there are toc items, we add a separator
-      item = manage(new Gtk::SeparatorMenuItem ());
-      item->show ();
-      toc_menu->append(*item);
+  std::vector<Glib::RefPtr<Gio::MenuItem>> toc_items;
+  get_toc_popover_items(toc_items);
+  if(toc_items.size()) {
+    auto items = Gio::Menu::create();
+    for(auto & toc_button : toc_items) {
+      items->append_item(toc_button);
     }
 
-    item = manage(new Gtk::MenuItem (_("Heading 1")));
-    item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_1, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_1_activated));
-    item->show ();
-    toc_menu->append(*item);
-
-    item = manage(new Gtk::MenuItem (_("Heading 2")));
-    item->add_accelerator("activate", get_window()->get_accel_group(), GDK_KEY_2, Gdk::CONTROL_MASK, Gtk::ACCEL_VISIBLE);
-    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_level_2_activated));
-    item->show ();
-    toc_menu->append(*item);
-
-    item = manage(new Gtk::MenuItem (_("Table of Contents Help")));
-    item->signal_activate().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_toc_help_activated));
-    item->show ();
-    toc_menu->append(*item);
+    toc_menu->append_section(items);
+    fixed_section = Gio::Menu::create();
+    toc_menu->append_section(fixed_section);
   }
 
-}
+  auto item = Gio::MenuItem::create(_("Heading 1"), "win.tableofcontents-heading1");
+  fixed_section->append_item(item);
 
+  item = Gio::MenuItem::create(_("Heading 2"), "win.tableofcontents-heading2");
+  fixed_section->append_item(item);
 
-void TableofcontentsNoteAddin::on_populate_popup (Gtk::Menu* popup_menu)
-//prepened a toc submenu in the contextual menu
-{
-  Gtk::Menu *toc_menu = manage(new Gtk::Menu());
-  populate_toc_menu (toc_menu);
+  item = Gio::MenuItem::create(_("Table of Contents Help"), "win.tableofcontents-help");
+  fixed_section->append_item(item);
 
-  Gtk::SeparatorMenuItem *separator = manage(new Gtk::SeparatorMenuItem ());
-  separator->show ();
-  popup_menu->prepend (*separator);
-
-  Gtk::MenuItem *menu_item = new_toc_menu_item();
-  menu_item->set_submenu (*toc_menu);
-  menu_item->show ();
-
-  popup_menu->prepend (*menu_item);
+  return toc_menu;
 }
 
 
@@ -303,44 +207,14 @@ void TableofcontentsNoteAddin::get_toc_items(std::vector<TocItem> & items) const
 }
 
 
-std::vector<TableofcontentsMenuItem*> TableofcontentsNoteAddin::get_tableofcontents_menu_items()
-//go through the note text, and list all lines tagged as heading,
-//and for each heading, create a new TableofcontentsMenuItem.
-{
-  std::vector<TableofcontentsMenuItem*> items;
-  TableofcontentsMenuItem *item = NULL;
-  std::vector<TocItem> toc_items;
-
-  get_toc_items(toc_items);
-  if(toc_items.size()) {
-    //If we have at least one heading
-    //we also insert an entry linked to the Note's title:
-    item = manage(new TableofcontentsMenuItem(get_note(), get_note()->get_title(), Heading::Title, 0));
-    items.push_back(item);
-  }
-
-  for(auto & toc_item : toc_items) {
-    item = manage(new TableofcontentsMenuItem(get_note(), toc_item.heading, toc_item.heading_level, toc_item.heading_position));
-    items.push_back(item);
-  }
-
-  return items;
-}
-
-
-void TableofcontentsNoteAddin::get_toc_popover_items(std::vector<Gtk::Widget*> & items) const
+void TableofcontentsNoteAddin::get_toc_popover_items(std::vector<Glib::RefPtr<Gio::MenuItem>> & items) const
 {
   std::vector<TocItem> toc_items;
 
   get_toc_items(toc_items);
   if(toc_items.size()) {
-    auto item = dynamic_cast<Gtk::ModelButton*>(gnote::utils::create_popover_button("win.tableofcontents-goto-heading", ""));
-    Gtk::Label *label = (Gtk::Label*)item->get_child();
-    label->set_markup("<b>" + get_note()->get_title() + "</b>");
-    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_int32(0));
-    item->property_role() = Gtk::BUTTON_ROLE_NORMAL;
-    item->property_inverted() = true;
-    item->property_centered() = false;
+    auto item = Gio::MenuItem::create(get_note()->get_title(), "");
+    item->set_action_and_target("win.tableofcontents-goto-heading", Glib::Variant<int>::create(0));
     items.push_back(item);
   }
 
@@ -348,11 +222,8 @@ void TableofcontentsNoteAddin::get_toc_popover_items(std::vector<Gtk::Widget*> &
     if(toc_item.heading_level == Heading::Level_2) {
       toc_item.heading = "→  " + toc_item.heading;
     }
-    auto item = dynamic_cast<Gtk::ModelButton*>(gnote::utils::create_popover_button("win.tableofcontents-goto-heading", Glib::ustring(toc_item.heading)));
-    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_int32(toc_item.heading_position));
-    item->property_role() = Gtk::BUTTON_ROLE_NORMAL;
-    item->property_inverted() = true;
-    item->property_centered() = false;
+    auto item = Gio::MenuItem::create(Glib::ustring(toc_item.heading), "");
+    item->set_action_and_target("win.tableofcontents-goto-heading", Glib::Variant<int>::create(toc_item.heading_position));
     items.push_back(item);
   }
 }
@@ -362,18 +233,29 @@ void TableofcontentsNoteAddin::on_level_1_activated()
 {
   headification_switch (Heading::Level_1);
 }
+
 void TableofcontentsNoteAddin::on_level_2_activated()
 {
   headification_switch (Heading::Level_2);
 }
-void TableofcontentsNoteAddin::on_toc_popup_activated()
+
+bool TableofcontentsNoteAddin::on_toc_popup_activated(Gtk::Widget & parent, const Glib::VariantBase&)
 {
-  if(m_toc_menu_built == false) {
-    populate_toc_menu(m_toc_menu, false);
-    m_toc_menu_built = true;
-  }
-  m_toc_menu->popup_at_pointer(nullptr);
+  auto editor = static_cast<gnote::NoteWindow&>(parent).editor();
+  Gdk::Rectangle strong, weak;
+  editor->get_cursor_locations(strong, weak);
+  int x, y;
+  editor->buffer_to_window_coords(Gtk::TextWindowType::TEXT, strong.get_x(), strong.get_y(), x, y);
+  strong.set_x(x);
+  strong.set_y(y);
+
+  auto toc_menu = get_toc_menu();
+  auto popover = gnote::utils::make_popover<Gtk::PopoverMenu>(*editor, toc_menu);
+  popover->set_pointing_to(strong);
+  popover->popup();
+  return true;
 }
+
 void TableofcontentsNoteAddin::on_toc_help_activated()
 {
   gnote::NoteWindow* window = get_window();
@@ -397,42 +279,6 @@ void TableofcontentsNoteAddin::on_level_2_action(const Glib::VariantBase&)
 void TableofcontentsNoteAddin::on_toc_help_action(const Glib::VariantBase&)
 {
   on_toc_help_activated();
-}
-
-
-bool TableofcontentsNoteAddin::on_key_pressed(GdkEventKey *ev)
-//return true if signal handled, false otherwise
-//NOTE: if a menu item has an accelerator,
-//      its entry is needed until the toc menu is built a first time,
-//      then the menu item accelerator takes the signals.
-{
-  guint keyval;
-  GdkModifierType state;
-  GdkEvent *event = (GdkEvent*)ev;
-  if(!gdk_event_get_keyval(event, &keyval) || !gdk_event_get_state(event, &state)) {
-    return false;
-  }
-  switch(keyval) {
-
-  case GDK_KEY_1:
-    if(state & Gdk::CONTROL_MASK && state & Gdk::MOD1_MASK) {// Ctrl-Alt-1
-      on_toc_popup_activated();
-      return true;
-    }
-    else if(state & Gdk::CONTROL_MASK) { // Ctrl-1
-      on_level_1_activated();
-      return true;
-    }
-    break;
-  case GDK_KEY_2:
-    if(state & Gdk::CONTROL_MASK) { // Ctrl-2
-      on_level_2_activated();
-      return true;
-    }
-    break;
-  }
-
-  return false;
 }
 
 
