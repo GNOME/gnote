@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2020,2021 Aurimas Cernius
+ * Copyright (C) 2017,2020-2021,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,12 +57,21 @@ SUITE(DateTime)
 
   TEST(date_time_from_iso8601)
   {
+    int hour_offset;
+    {
+      // use same time as the test bellow
+      auto dt = Glib::DateTime::create_local(1991, 07, 07, 15, 40, 34);
+      auto offset = std::div(dt.get_utc_offset(), 3600000000);
+      CHECK_EQUAL(0, offset.rem);  // test time-zone should be strictly full hours away from UTC
+      hour_offset = offset.quot;
+    }
+
     Glib::DateTime d = sharp::date_time_from_iso8601("1991-07-07T15:40:34.067890Z");
     CHECK(bool(d));
     CHECK_EQUAL(1991, d.get_year());
     CHECK_EQUAL(7, d.get_month());
     CHECK_EQUAL(7, d.get_day_of_month());
-    CHECK_EQUAL(16, d.get_hour());  // time-zone corrected
+    CHECK_EQUAL(15 + hour_offset, d.get_hour());  // time-zone corrected
     CHECK_EQUAL(40, d.get_minute());
     CHECK_EQUAL(34, d.get_second());
     CHECK_EQUAL(67890, d.get_microsecond());
