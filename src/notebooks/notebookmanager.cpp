@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -365,7 +365,7 @@ namespace gnote {
       button->property_can_default().set_value(true);
       button->get_style_context()->add_class("destructive-action");
       button->show();
-      dialog.add_action_widget(*button, 666);
+      dialog.add_action_widget(*button, Gtk::RESPONSE_YES);
 
       int response = dialog.run();
       if(response != Gtk::RESPONSE_YES) {
