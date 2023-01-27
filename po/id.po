@@ -2,21 +2,21 @@
 # Copyright (C) 2009 Gnome Foundation
 # This file is distributed under the same license as the gnote package.
 # Andika Triwidada <andika@gmail.com>, 2009-2012, 2014, 2017-2022.
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2021.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote gnome-42\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-06-06 20:01+0000\n"
-"PO-Revision-Date: 2022-07-03 11:57+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2023-01-25 20:04+0000\n"
+"PO-Revision-Date: 2023-01-27 09:52+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Bookmarks: -1,10,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -840,7 +840,8 @@ msgstr "Pilih sebuah ikon..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/notebooks/createnotebookdialog.cpp:65
+#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
 #: src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_Batal"
@@ -881,7 +882,8 @@ msgstr "Yakin menghapus ikon ini?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Bila Anda menghapus sebuah ikon dia akan hilang selamanya."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "_Hapus"
@@ -1145,7 +1147,7 @@ msgstr "Hari Ini: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "NoteOfTheDay tak bisa membuat %s: %s"
@@ -1461,16 +1463,16 @@ msgstr "dan para pengarang asli Tomboy."
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2009-2012, 2014, 2017-2022.\n"
-"Kukuh Syafat <kukuhsyafaat@gnome.org>, 2017-2021."
+"Kukuh Syafat <kukuhsyafaat@gnome.org>, 2017-2023."
 
 #: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Hak Cipta © 2010-2022 Aurimas Cernius\n"
+"Hak Cipta © 2010-2023 Aurimas Cernius\n"
 "Hak Cipta © 2009-2011 Debarshi Ray\n"
 "Hak Cipta © 2009 Hubert Figuiere\n"
 "Hak Cipta © 2004-2009 penulis asli Tomboy."
@@ -1563,7 +1565,7 @@ msgid "Window is not embedded"
 msgstr "Jendela tak tertanam"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:357
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Eksepsi ketika menyimpan catatan: %s"
@@ -1610,7 +1612,7 @@ msgstr "_Buku Catatan Baru..."
 msgid "%1 Notebook Template"
 msgstr "Templat Buku Catatan %1"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Catatan Baru"
 
@@ -1682,11 +1684,11 @@ msgstr[0] "Benar-benar menghapus %1 catatan?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Jika anda menghapus catatan, isinya akan hilang."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Galat menyimpan data catatan."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1696,12 +1698,12 @@ msgstr ""
 "memiliki cukup ruang disk, dan Anda memiliki hak yang sesuai pada ~/.local/"
 "share/gnote. Rincian galat dapat ditemukan di ~/.gnote.log."
 
-#: src/note.cpp:445
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Galat saat menyimpan: %s"
 
-#: src/note.cpp:672
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr "Menata isi teks bagi catatan yang tertutup tak didukung"
 
@@ -1710,7 +1712,7 @@ msgstr "Menata isi teks bagi catatan yang tertutup tak didukung"
 msgid "New Note Template"
 msgstr "Templat Catatan Baru"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Uraikan catatan baru Anda di sini."
 
@@ -1785,58 +1787,58 @@ msgstr ""
 "akan ditautkan secara otomatis untuk Anda.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Mulai Di Sini"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Memakai Tautan di Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Galat saat membuat catatan awal: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Galat saat mengurai XML catatan, melewati \"%s\": %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "Ubah Nama Tautan Catatan?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "_Jangan Ubah Nama Tautan"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "Ubah Nama _Taut"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Pilih Semua"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Tiada Pilihan"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "Selalu tampilkan _jendela ini"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "Selalu _ubah nama tautan"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "Jangan pernah ubah _nama tautan"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1848,15 +1850,15 @@ msgstr ""
 "\n"
 "Bila Anda tidak mengubah nama tautan, mereka tak akan merujuk kemanapun lagi."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Ubah Nama Taut"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Judul Catatan"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "Tingk_at lanjut"
 
@@ -2224,35 +2226,35 @@ msgstr "Hak Cipta:"
 msgid "Close"
 msgstr "Tutup"
 
-#: src/recentchanges.cpp:259
+#: src/recentchanges.cpp:257
 msgid "Create New Note"
 msgstr "Buat Catatan Baru"
 
-#: src/recentchanges.cpp:286
+#: src/recentchanges.cpp:284
 msgid "Search"
 msgstr "Cari"
 
-#: src/recentchanges.cpp:357
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Induk kotak semat bukan gtk::Grid, silakan laporkan kutu!"
 
-#: src/recentchanges.cpp:399
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Induk entri pencarian bukan Gtk::Grid, silakan laporkan kutu!"
 
-#: src/recentchanges.cpp:714
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Mencoba mengedepankan widget, yang tidak disematkan di jendela"
 
-#: src/recentchanges.cpp:721
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Mencoba mengedepankan widget, yang bukan Gtk::Widget"
 
-#: src/recentchanges.cpp:991
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Widget yang diharapkan menjadi sub-menu!"
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Tidak ada tindakan yang dikonfigurasi"
 
@@ -2800,10 +2802,10 @@ msgstr "Judul catatan telah terpakai"
 msgid "Check spelling"
 msgstr "Periksa ejaan"
 
-#: src/watchers.cpp:705
+#: src/watchers.cpp:708
 msgid "_Copy Link Address"
 msgstr "_Salin Alamat Taut"
 
-#: src/watchers.cpp:711
+#: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Buka Taut"
