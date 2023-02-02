@@ -1,17 +1,17 @@
 # Turkish translation for gnote.
-# Copyright (C) 2011-2022 gnote's COPYRIGHT HOLDER
+# Copyright (C) 2011-2023 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 #
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
 # Muhammet Kara <muhammetk@gmail.com>, 2011-2021.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017, 2018, 2019, 2020, 2021, 2022.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2017-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-07-27 18:30+0000\n"
-"PO-Revision-Date: 2022-09-02 12:57+0300\n"
+"POT-Creation-Date: 2023-01-25 20:04+0000\n"
+"PO-Revision-Date: 2023-01-27 23:57+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnometurk@gnome.org>\n"
 "Language: tr\n"
@@ -325,7 +325,7 @@ msgstr "Artık kullanılmıyor, etkisi yok."
 
 #: data/org.gnome.gnote.gschema.xml:127
 msgid "This setting is deprecated and its value is ignored"
-msgstr "Bu ayar terk edildi ve değeri yok sayılıyor."
+msgstr "Bu ayar terk edildi ve değeri yok sayılıyor"
 
 #: data/org.gnome.gnote.gschema.xml:136
 msgid "Use client side window decorations"
@@ -829,8 +829,8 @@ msgstr "Simge seç..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
-#: src/utils.cpp:375
+#: src/notebooks/createnotebookdialog.cpp:65 src/notebooks/notebookmanager.cpp:358
+#: src/note.cpp:71 src/utils.cpp:368 src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_İptal Et"
 
@@ -867,7 +867,8 @@ msgstr "Bu simgeyi silmek istediğinizden emin misiniz?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Eğer simgeyi silerseniz kalıcı olarak kaybolacaktır."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "_Sil"
@@ -1171,8 +1172,8 @@ msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize the "
 "text that new Today notes have."
 msgstr ""
-"Yeni Bugün notlarındaki metinleri özelleştirmek için <span weight=\"bold"
-"\">Bugün: Şablon</span> notunu değiştir."
+"Yeni Bugün notlarındaki metinleri özelleştirmek için <span "
+"weight=\"bold\">Bugün: Şablon</span> notunu değiştir."
 
 #: src/plugins/printnotes/printnotes.desktop.in.in:4
 msgid "Printing Support"
@@ -1426,109 +1427,109 @@ msgstr "Gnote Notlarını WebDAV adresine eşitle."
 msgid "Exception thrown when creating note: %s"
 msgstr "Not oluşturulurken olağandışı durum oluştu: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:209
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Kullanılabilir D-Bus bağlantısı yok. Kabuk araması ve uzaktan denetim "
 "çalışmayacaktır."
 
-#: src/gnote.cpp:244
+#: src/gnote.cpp:242
 msgid "Failed to get shortcuts window!"
 msgstr "Kısayollar penceresi alınamıyor!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:256
 msgid "and Tomboy original authors."
 msgstr "ve Tomboy'un özgün yazarları."
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:262
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:271
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Telif Hakkı © 2010-2022 Aurimas Cernius\n"
+"Telif Hakkı © 2010-2023 Aurimas Cernius\n"
 "Telif Hakkı © 2009-2011 Debarshi Ray\n"
 "Telif Hakkı © 2009 Hubert Figuiere\n"
 "Telif Hakkı © 2004-2009 Tomboy özgün yazarları."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:275
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Basit ve kullanışlı not alma uygulaması."
 
-#: src/gnote.cpp:288
+#: src/gnote.cpp:286
 msgid "Homepage"
 msgstr "Web Sitesi"
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:481
 msgid "Run Gnote in background."
 msgstr "Gnote uygulamasını arkaplanda çalıştır."
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:482
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "GNOME Kabuk arama sağlayıcısı olarak Gnote çalıştırın."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "Specify the path of the directory containing the notes."
 msgstr "Notları içeren dizin yolunu belirtin."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "path"
 msgstr "yol"
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:484
 msgid "Open the search all notes window with the search text."
 msgstr "Arama metni ile tüm notları ara penceresini aç."
 
-#: src/gnote.cpp:486 src/gnote.cpp:491
+#: src/gnote.cpp:484 src/gnote.cpp:489
 msgid "text"
 msgstr "metin"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:485
 msgid "Print version information."
 msgstr "Sürüm bilgisini yazdır."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "Create and display a new note, with a optional title."
 msgstr "İsteğe bağlı başlıkla yeni not oluştur ve görüntüle."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "title"
 msgstr "başlık"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "Display the existing note matching title."
 msgstr "Başlık ile eşleşen notu göster."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "title/url"
 msgstr "başlık/url"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:488
 msgid "Display the 'Start Here' note."
 msgstr "'Buradan Başla' notunu görüntüle."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:489
 msgid "Search and highlight text in the opened note."
 msgstr "Açılan not içindeki metni ara ve vurgula."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "A note taking application"
 msgstr "Not alma uygulaması"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "Gnote options at launch"
 msgstr "Başlangıçtaki Gnote seçenekleri"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:679
+#: src/gnote.cpp:677
 msgid "Version %1"
 msgstr "Sürüm %1"
 
@@ -1547,7 +1548,7 @@ msgid "Window is not embedded"
 msgstr "Pencere gömülü değil"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:354
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Not kaydedilirken aykırılık: %s"
@@ -1640,11 +1641,11 @@ msgstr "Önemli"
 msgid "Active"
 msgstr "Etkin"
 
-#: src/notebuffer.cpp:1429
+#: src/notebuffer.cpp:1403
 msgid "</list> tag mismatch"
 msgstr "</list> etiket uyumsuzluğu"
 
-#: src/notebuffer.cpp:1513
+#: src/notebuffer.cpp:1487
 #, c-format
 msgid "Exception: %s"
 msgstr "Aykırılık: %s"
@@ -1664,11 +1665,11 @@ msgstr[0] "%1 adet not gerçekten silinsin mi?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Eğer notu silerseniz kalıcı olarak kaybolacaktır."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Not bilgisi kaydedilirken hata."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/share/"
@@ -1678,12 +1679,12 @@ msgstr ""
 "ve ~/.local/share/gnote üzerinde uygun haklara sahip olduğunuzdan emin olun. "
 "Hata ayrıntıları ~/.gnote.log dosyasında bulunabilir."
 
-#: src/note.cpp:442
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Kaydedilirken hata: %s"
 
-#: src/note.cpp:667
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr "Kapanmış notlar için metin içeriği ayarlama desteklenmez"
 
@@ -1704,8 +1705,8 @@ msgid ""
 "\n"
 "Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
 "\n"
-"You can create new notes to hold your ideas by selecting the \"Create New Note"
-"\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
+"You can create new notes to hold your ideas by selecting the \"Create New "
+"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
 "automatically.\n"
 "\n"
 "Then organize the notes you create by linking related notes and ideas "
@@ -1783,39 +1784,39 @@ msgstr "Not başlangıcı oluşturulurken hata: %s"
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "XML not ayrıştırma hatası, \"%s\" dosyası geçiliyor: %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "Not Bağlantıları Yeniden Adlandırılsın Mı?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "Bağlantıları _Yeniden Adlandırma"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "_Bağlantıları Yeniden Adlandır"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Hiçbirini Seçme"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "Bu _pencereyi her zaman göster"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "Bağlantıları her _zaman yeniden adlandır"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "_Bağlantıları hiçbir zaman yeniden adlandırma"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1827,15 +1828,15 @@ msgstr ""
 "\n"
 "Eğer bağlantı değiştirilemezse, bundan sonra herhangi bir yeri göstermeyecekler."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Bağlantıları Yeniden Adlandır"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Not Başlığı"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "_Gelişmiş"
 
@@ -2208,27 +2209,27 @@ msgstr "Yeni Not Oluştur"
 msgid "Search"
 msgstr "Ara"
 
-#: src/recentchanges.cpp:355
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Gömü kutusunun ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:397
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Arama girdisinin ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Pencereye gömülü olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Gtk::Widget olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:989
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Beklenen parçacık alt menü olmalı!"
 
-#: src/recentchanges.cpp:994
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
@@ -2772,10 +2773,10 @@ msgstr "Not başlığı alındı"
 msgid "Check spelling"
 msgstr "Yazım denetimi"
 
-#: src/watchers.cpp:705
+#: src/watchers.cpp:708
 msgid "_Copy Link Address"
 msgstr "Bağlantı Adresini _Kopyala"
 
-#: src/watchers.cpp:711
+#: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Bağlantıyı Aç"
