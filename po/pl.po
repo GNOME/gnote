@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-05-08 18:53+0000\n"
+"POT-Creation-Date: 2023-01-25 20:04+0000\n"
 "PO-Revision-Date: 2022-05-15 14:28+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -854,7 +854,8 @@ msgstr "Wybór ikony…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/notebooks/createnotebookdialog.cpp:65
+#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
 #: src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_Anuluj"
@@ -894,7 +895,8 @@ msgstr "Na pewno usunąć tę ikonę?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Usunięcie spowoduje bezpowrotną utratę ikony."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "_Usuń"
@@ -1162,7 +1164,7 @@ msgstr "Dzisiaj: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "NoteOfTheDay nie może utworzyć %s: %s"
@@ -1489,12 +1491,12 @@ msgstr ""
 
 #: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 oryginalni autorzy programu Tomboy."
@@ -1587,7 +1589,7 @@ msgid "Window is not embedded"
 msgstr "Okno nie jest osadzone"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:354
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Wyjątek podczas zapisywania notatki: %s"
@@ -1634,7 +1636,7 @@ msgstr "Nowy _notatnik…"
 msgid "%1 Notebook Template"
 msgstr "Szablon notatki „%1”"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Nowa notatka"
 
@@ -1707,11 +1709,11 @@ msgstr[2] "Ne pewno usunąć %1 notatek?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Usunięcie spowoduję bezpowrotną utratę notatki."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Wystąpił błąd podczas zapisywania danych notatki."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1722,12 +1724,12 @@ msgstr ""
 "uprawnienia do katalogu ~/.local/share/gnote. Informacje o błędzie można "
 "znaleźć w pliku ~/.gnote.log."
 
-#: src/note.cpp:442
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Błąd podczas zapisywania: %s"
 
-#: src/note.cpp:667
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr "Ustawianie treści tekstu dla zamkniętych notatek nie jest obsługiwane"
 
@@ -1736,7 +1738,7 @@ msgstr "Ustawianie treści tekstu dla zamkniętych notatek nie jest obsługiwane
 msgid "New Note Template"
 msgstr "Szablon nowej notatki"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Treść nowej notatki…"
 
@@ -1811,58 +1813,58 @@ msgstr ""
 "content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Start"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Używanie odnośników w programie Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Błąd podczas tworzenia notatek „Start”: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Błąd podczas przetwarzania kodu XML notatki, pomijanie „%s”: %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "Zmienić nazwy odnośników?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "_Nie zmieniaj nazw odnośników"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "_Zmień nazwę odnośników"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Zaznacz wszystko"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Pusty wybór"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "Stałe wyświetlanie tego _okna"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "_Zmienianie nazw odnośników"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "_Bez zmieniania nazw odnośników"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1874,15 +1876,15 @@ msgstr ""
 "\n"
 "Jeśli nie zostaną zmienione, to nie będą już do niczego prowadziły."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Zmień nazwy odnośników"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Tytuł notatki"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "Zaa_wansowane"
 
@@ -2257,32 +2259,32 @@ msgstr "Tworzy nową notatkę"
 msgid "Search"
 msgstr "Wyszukuje"
 
-#: src/recentchanges.cpp:355
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Gtk::Grid nie jest elementem nadrzędnym osadzonego pudełka, proszę to "
 "zgłosić jako błąd."
 
-#: src/recentchanges.cpp:397
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Gtk::Grid nie jest elementem nadrzędnym pola wyszukiwania, proszę to zgłosić "
 "jako błąd."
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Próba umieszczenia na wierzchu widżetu, który nie jest osadzony w oknie"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Próba umieszczenia na wierzchu widżetu, który nie jest Gtk::Widget"
 
-#: src/recentchanges.cpp:989
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Oczekiwano, że widżet będzie podmenu."
 
-#: src/recentchanges.cpp:994
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Brak skonfigurowanych działań"
 
@@ -2840,10 +2842,10 @@ msgstr "Zapisano tytuł notatki"
 msgid "Check spelling"
 msgstr "Sprawdzanie pisowni"
 
-#: src/watchers.cpp:705
+#: src/watchers.cpp:708
 msgid "_Copy Link Address"
 msgstr "Skopiuj _adres odnośnika"
 
-#: src/watchers.cpp:711
+#: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Otwórz odnośnik"
