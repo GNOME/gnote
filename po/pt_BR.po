@@ -1,29 +1,29 @@
 # Brazilian Portuguese translation for gnote.
-# Copyright (C) 2022 gnote's COPYRIGHT HOLDER
+# Copyright (C) 2023 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009.
 # Taylon Silmer <taylonsilva@gmail.com>, 2009.
 # Djavan Fagundes <djavan@comum.org>, 2010, 2011, 2012.
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020.
-# Enrico Nicoletto <liverig@gmail.com>, 2013-2014, 2020-2021.
 # Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013-2022.
+# Enrico Nicoletto <hiko@duck.com>, 2013-2014, 2020-2021, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-06-06 20:01+0000\n"
-"PO-Revision-Date: 2022-06-15 05:23-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2023-01-25 20:04+0000\n"
+"PO-Revision-Date: 2023-02-08 22:02-0300\n"
+"Last-Translator: Enrico Nicoletto <hiko@duck.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 40.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -543,7 +543,6 @@ msgid "Show help"
 msgstr "Mostra a ajuda"
 
 #: data/shortcuts-gnote.ui:25
-#| msgid "_Shortcuts"
 msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "Atalhos"
@@ -570,8 +569,6 @@ msgid "Go to next tab"
 msgstr "Vai para a próxima aba"
 
 #: data/shortcuts-gnote.ui:60
-#| msgctxt "shortcut window"
-#| msgid "Select previous match"
 msgctxt "shortcut window"
 msgid "Go to previous tab"
 msgstr "Vai para a aba anterior"
@@ -859,7 +856,8 @@ msgstr "Selecione um ícone…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/notebooks/createnotebookdialog.cpp:65
+#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
 #: src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_Cancelar"
@@ -900,7 +898,8 @@ msgstr "Remover mesmo este ícone?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Se você remover um ícone ele estará permanentemente perdido."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "E_xcluir"
@@ -1166,7 +1165,7 @@ msgstr "Hoje: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Nota do dia não pôde criar %s: %s"
@@ -1488,17 +1487,17 @@ msgstr ""
 "Djavan Fagundes <djavan@comum.org>, 2010-2012\n"
 "Júnior Pires <juniorpiresupe@gmail.com>, 2013.\n"
 "Rafael Fontenelle <rafaelff@gnome.org>, 2013-2018.\n"
-"Enrico Nicoletto <liverig@gmail.com>, 2013-2014, 2020-2021.\n"
+"Enrico Nicoletto <hiko@duck.com>, 2013-2014, 2020-2021.\n"
 "Matheus Barbosa <mdpb.matheus@gmail.com>, 2022."
 
 #: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
@@ -1591,7 +1590,7 @@ msgid "Window is not embedded"
 msgstr "A janela não está embutida"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:357
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Exceção ao salvar a nota: %s"
@@ -1638,7 +1637,7 @@ msgstr "Novo ca_tálogo de notas…"
 msgid "%1 Notebook Template"
 msgstr "Modelo do catálogo de notas %1"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Nova nota"
 
@@ -1710,11 +1709,11 @@ msgstr[1] "Deseja realmente excluir %1 notas?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Se você excluir uma nota ela estará permanentemente perdida."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Erro ao salvar os dados da nota."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1724,12 +1723,12 @@ msgstr ""
 "espaço em disco suficiente e que tenha permissões sobre ~/.local/share/"
 "gnote. Detalhes do erro podem ser localizados em ~/.gnote.log."
 
-#: src/note.cpp:445
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Erro ao salvar: %s"
 
-#: src/note.cpp:672
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
@@ -1738,7 +1737,7 @@ msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 msgid "New Note Template"
 msgstr "Novo modelo de nota"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Descreva sua nova nota aqui."
 
@@ -1811,58 +1810,58 @@ msgstr ""
 "será automaticamente estabelecido para você.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Comece aqui"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Utilizando links no Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Erro ao criar as notas iniciais: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Erro na análise do XML da nota, ignorando “%s”: %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "﻿Renomear links de nota?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "_Não renomear links"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "_Renomear links"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Selecionar todas"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Desmarcar"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "Sempre exibir esta _janela"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "﻿Semp_re renomear os links"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "﻿Nunca renomear os _links"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1874,15 +1873,15 @@ msgstr ""
 "\n"
 "Se você não renomear os links, eles apontarão para nada."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Renomear links"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Título da nota"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "Ava_nçado"
 
@@ -2249,39 +2248,39 @@ msgstr "Copyright:"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/recentchanges.cpp:259
+#: src/recentchanges.cpp:257
 msgid "Create New Note"
 msgstr "Criar nova nota"
 
-#: src/recentchanges.cpp:286
+#: src/recentchanges.cpp:284
 msgid "Search"
 msgstr "Pesquisar"
 
-#: src/recentchanges.cpp:357
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "O pai da caixa embutida não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:399
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:714
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não está incorporado "
 "na janela"
 
-#: src/recentchanges.cpp:721
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não é Gtk::Widget"
 
-#: src/recentchanges.cpp:991
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Era esperado que widget fosse um submenu!"
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2835,11 +2834,11 @@ msgstr "Este título de nota já existe"
 msgid "Check spelling"
 msgstr "Verificar ortografia"
 
-#: src/watchers.cpp:705
+#: src/watchers.cpp:708
 msgid "_Copy Link Address"
 msgstr "_Copiar o endereço do link"
 
-#: src/watchers.cpp:711
+#: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "Abrir _link"
 
