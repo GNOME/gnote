@@ -715,7 +715,7 @@ namespace gnote {
       return;
     }
     if(n_pages > 1 && page_to_remove == m_embed_book.get_current_page()) {
-      int new_page = (page_to_remove == n_pages - 1) ? page_to_remove - 1 : page_to_remove + 1;
+      int new_page = page_to_remove - 1;
       m_embed_book.set_current_page(new_page);
     }
 
