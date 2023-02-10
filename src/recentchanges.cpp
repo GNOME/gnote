@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2022 Aurimas Cernius
+ * Copyright (C) 2010-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -150,7 +150,7 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed));
     g.signal_quit
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
-    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
+    m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_current_tab),
                                 GDK_KEY_W, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
     m_keybinder.add_accelerator(sigc::mem_fun(*this, &NoteRecentChanges::close_window),
                                 GDK_KEY_Q, Gdk::CONTROL_MASK, (Gtk::AccelFlags)0);
@@ -646,6 +646,18 @@ namespace gnote {
     }
 
     m_embed_book.set_current_page(prev_page);
+  }
+
+  void NoteRecentChanges::close_current_tab()
+  {
+    int page_idx = m_embed_book.get_current_page();
+    if(page_idx == 0) {
+      return;
+    }
+
+    if(auto widget = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(page_idx))) {
+      unembed_widget(*widget);
+    }
   }
 
   void NoteRecentChanges::on_show()

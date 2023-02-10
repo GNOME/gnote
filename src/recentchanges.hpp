@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -108,6 +108,7 @@ private:
   void unregister_callbacks();
   void next_tab();
   void previous_tab();
+  void close_current_tab();
 
   IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;
