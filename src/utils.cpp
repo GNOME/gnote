@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -551,6 +551,7 @@ namespace gnote {
         switch (xml.get_node_type()) {
         case XML_READER_TYPE_TEXT:
         case XML_READER_TYPE_WHITESPACE:
+        case XML_READER_TYPE_SIGNIFICANT_WHITESPACE:
           builder += xml.get_value();
           break;
         default:
