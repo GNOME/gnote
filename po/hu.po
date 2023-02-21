@@ -1,5 +1,5 @@
 # Hungarian translation for gnote.
-# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnote package.
 #
 # Gabor Torok <gabo at linuxportal dot hu>, 2004.
@@ -8,21 +8,21 @@
 # Balint Laza <laza at szentkoronaradio dot com>, 2008.
 # István Nyitrai <sianis at gmail dot com>, 2009.
 # Lukács Bence <lukacs.bence1 at gmail dot com>, 2012.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-07-31 19:42+0000\n"
-"PO-Revision-Date: 2022-08-30 01:18+0200\n"
+"POT-Creation-Date: 2023-01-25 20:04+0000\n"
+"PO-Revision-Date: 2023-02-21 01:51+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 22.08.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -540,7 +540,6 @@ msgid "Show help"
 msgstr "Súgó megjelenítése"
 
 #: data/shortcuts-gnote.ui:25
-#| msgid "_Shortcuts"
 msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
@@ -567,8 +566,6 @@ msgid "Go to next tab"
 msgstr "Ugrás a következő lapra"
 
 #: data/shortcuts-gnote.ui:60
-#| msgctxt "shortcut window"
-#| msgid "Select previous match"
 msgctxt "shortcut window"
 msgid "Go to previous tab"
 msgstr "Ugrás az előző lapra"
@@ -856,7 +853,8 @@ msgstr "Válasszon ikont…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/notebooks/createnotebookdialog.cpp:65
+#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
 #: src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_Mégse"
@@ -895,7 +893,8 @@ msgstr "Biztosan törli ezt az ikont?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Ha töröl egy ikont, akkor az véglegesen elvész."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "_Törlés"
@@ -1161,7 +1160,7 @@ msgstr "Ma: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "A NoteOfTheDay nem tudja létrehozni ezt: %s: %s"
@@ -1487,13 +1486,18 @@ msgstr ""
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
 #: src/gnote.cpp:273
+#| msgid ""
+#| "Copyright © 2010-2022 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 a Tomboy eredeti szerzői."
@@ -1586,7 +1590,7 @@ msgid "Window is not embedded"
 msgstr "Az ablak nincs beágyazva"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:357
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Kivétel a jegyzet mentésekor: %s"
@@ -1633,7 +1637,7 @@ msgstr "Új jeg_yzettömb…"
 msgid "%1 Notebook Template"
 msgstr "%1 jegyzet sablon"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Új jegyzet"
 
@@ -1706,11 +1710,11 @@ msgstr[1] "Biztosan törli ezt a(z) %1 jegyzetet?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Ha töröl egy jegyzetet, akkor az véglegesen elvész."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Hiba a jegyzet adatainak mentésekor."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1720,12 +1724,12 @@ msgstr ""
 "lemezterület és rendelkezik jogosultságokkal a ~/.local/share/gnote könyvtár "
 "írásához. A hiba részletei a ~/.gnote.log fájlban találhatók."
 
-#: src/note.cpp:445
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Hiba a mentéskor: %s"
 
-#: src/note.cpp:672
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 
@@ -1734,7 +1738,7 @@ msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 msgid "New Note Template"
 msgstr "Új jegyzet sablon"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Ide írhatja a jegyzet tartalmát."
 
@@ -1809,58 +1813,58 @@ msgstr ""
 "automatikusan hivatkozássá alakul.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Kezdje itt"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Hivatkozások használata a Gnoteban"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Hiba a kezdő jegyzetek létrehozásakor: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Hiba a jegyzet XML feldolgozásakor, „%s” kihagyása: %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "Átnevezi a jegyzet hivatkozásait?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "_Nem nevezem át"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "_Hivatkozások átnevezése"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Összes kijelölése"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Kijelölés megszüntetése"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "Min_dig jelenjen meg ez az ablak"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "_Mindig átnevezem"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "S_oha nem nevezem át"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1873,15 +1877,15 @@ msgstr ""
 "Ha nem nevezi át a hivatkozásokat, akkor azok nem fognak semmire sem "
 "hivatkozni."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Hivatkozások átnevezése"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Jegyzet neve"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "Spe_ciális"
 
@@ -2247,38 +2251,38 @@ msgstr "Copyright:"
 msgid "Close"
 msgstr "Bezárás"
 
-#: src/recentchanges.cpp:259
+#: src/recentchanges.cpp:257
 msgid "Create New Note"
 msgstr "Új jegyzet létrehozása"
 
-#: src/recentchanges.cpp:286
+#: src/recentchanges.cpp:284
 msgid "Search"
 msgstr "Keresés"
 
-#: src/recentchanges.cpp:357
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "A beágyazott doboz szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:399
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "A keresés beviteli mezőjének szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:714
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nincs beágyazva az "
 "ablakba"
 
-#: src/recentchanges.cpp:721
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nem Gtk::Widget"
 
-#: src/recentchanges.cpp:991
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "A várt felületi elem egy almenü."
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Nincsenek beállított műveletek"
 
@@ -2831,10 +2835,10 @@ msgstr "A jegyzet neve foglalt"
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
 
-#: src/watchers.cpp:705
+#: src/watchers.cpp:708
 msgid "_Copy Link Address"
 msgstr "Hivatkozás cí_mének másolása"
 
-#: src/watchers.cpp:711
+#: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Hivatkozás megnyitása"
