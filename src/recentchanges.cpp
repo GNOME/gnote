@@ -489,7 +489,13 @@ namespace gnote {
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
   {
-    if(note && note->has_window()) {
+    if(!note) {
+      return;
+    }
+    if(present_active(note)) {
+      return;
+    }
+    if(note->has_window()) {
       auto win = note->get_window();
       if(win->host()) {
         win->host()->unembed_widget(*win);
@@ -520,9 +526,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note(const Note::Ptr & note)
   {
-    if(!present_active(note)) {
-      present_note(note);
-    }
+    present_note(note);
   }
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
