@@ -72,7 +72,6 @@ protected:
   virtual void on_show() override;
   virtual bool on_map_event(GdkEventAny *evt) override;
 private:
-  void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);
   void on_delete_note();
   bool on_delete(GdkEventAny *);

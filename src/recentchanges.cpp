@@ -119,7 +119,7 @@ namespace gnote {
 
     m_search_notes_widget = new SearchNotesWidget(g, m);
     m_search_notes_widget->signal_open_note
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::present_note));
     m_search_notes_widget->signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
     m_search_notes_widget->notes_widget().signal_key_press_event()
@@ -523,11 +523,6 @@ namespace gnote {
     }
   }
 
-
-  void NoteRecentChanges::on_open_note(const Note::Ptr & note)
-  {
-    present_note(note);
-  }
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
