@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-01-25 20:04+0000\n"
-"PO-Revision-Date: 2023-01-27 23:57+0300\n"
+"POT-Creation-Date: 2023-02-10 20:30+0000\n"
+"PO-Revision-Date: 2023-02-21 00:29+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnometurk@gnome.org>\n"
 "Language: tr\n"
@@ -596,85 +596,90 @@ msgstr "Seçilen notu sil"
 
 #: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Not Penceresi"
+msgid "Note View"
+msgstr "Not Görünümü"
 
 #: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Not eylemleri menüsünü aç"
 
-#: data/shortcuts-gnote.ui:184
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Close current tab"
+msgstr "Geçerli sekmeyi kapat"
+
+#: data/shortcuts-gnote.ui:191
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Düzenleme"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Son düzenlemeyi geri al"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Son düzenlemeyi yinele"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Seçilen metinde nota bağlantı oluştur"
 
-#: data/shortcuts-gnote.ui:211
+#: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Biçimlendirme"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Kalınlığı aç/kapat"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Eğikliği aç/kapat"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Üstünü çizmeyi aç/kapat"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Vurgulamayı aç/kapat"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Sabit genişliği aç/kapat"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Altını çizmeyi aç/kapat"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Yazı tipi boyutunu büyüt"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Yazı tipi boyutunu küçült"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Seçimin olduğu satır için işaretleri etkinleştir/girintiyi artır"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:286
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Geçerli satır için girintiyi azalt/işaretleri devre dışı bırak"
@@ -1172,8 +1177,8 @@ msgid ""
 "Change the <span weight=\"bold\">Today: Template</span> note to customize the "
 "text that new Today notes have."
 msgstr ""
-"Yeni Bugün notlarındaki metinleri özelleştirmek için <span "
-"weight=\"bold\">Bugün: Şablon</span> notunu değiştir."
+"Yeni Bugün notlarındaki metinleri özelleştirmek için <span weight=\"bold"
+"\">Bugün: Şablon</span> notunu değiştir."
 
 #: src/plugins/printnotes/printnotes.desktop.in.in:4
 msgid "Printing Support"
@@ -1436,7 +1441,7 @@ msgstr ""
 
 #: src/gnote.cpp:242
 msgid "Failed to get shortcuts window!"
-msgstr "Kısayollar penceresi alınamıyor!"
+msgstr "Kısayollar penceresi alınamadı!"
 
 #: src/gnote.cpp:256
 msgid "and Tomboy original authors."
@@ -1705,8 +1710,8 @@ msgid ""
 "\n"
 "Use this \"Start Here\" note to begin organizing your ideas and thoughts.\n"
 "\n"
-"You can create new notes to hold your ideas by selecting the \"Create New "
-"Note\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
+"You can create new notes to hold your ideas by selecting the \"Create New Note"
+"\" item from the Gnote menu in your GNOME Panel. Your note will be saved "
 "automatically.\n"
 "\n"
 "Then organize the notes you create by linking related notes and ideas "
@@ -2217,19 +2222,19 @@ msgstr "Gömü kutusunun ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Arama girdisinin ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:731
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Pencereye gömülü olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Gtk::Widget olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1008
 msgid "Expected widget to be a sub-menu!"
 msgstr "Beklenen parçacık alt menü olmalı!"
 
-#: src/recentchanges.cpp:1001
+#: src/recentchanges.cpp:1013
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
@@ -2433,15 +2438,15 @@ msgstr "%s dosyasında ayrıştırılamayan last-sync-rev ögesi"
 
 #: src/synchronization/gvfssyncservice.cpp:98
 msgid "Failure writing test file"
-msgstr "Sınama dosyası yazımı başarısız"
+msgstr "Sınama dosyası yazılamadı"
 
 #: src/synchronization/gvfssyncservice.cpp:103
 msgid "Failure when checking test file contents"
-msgstr "Sınama dosyası içeriğini denetleme başarısız"
+msgstr "Sınama dosyası içeriğini denetlenemedi"
 
 #: src/synchronization/gvfssyncservice.cpp:109
 msgid "Failure when trying to remove test file"
-msgstr "Sınama dosyası kaldırılırken hata"
+msgstr "Sınama dosyası kaldırılamadı"
 
 #: src/synchronization/gvfssyncservice.cpp:125
 msgid "Unknown error"
@@ -2564,7 +2569,7 @@ msgstr "Eşitleme Başarısız Oldu"
 
 #: src/synchronization/syncdialog.cpp:526
 msgid "Failed to synchronize"
-msgstr "Eşitleme başarısız oldu"
+msgstr "Eşitlenemedi"
 
 #: src/synchronization/syncdialog.cpp:527
 msgid "Could not synchronize notes.  Check the details below and try again."
@@ -2780,3 +2785,7 @@ msgstr "Bağlantı Adresini _Kopyala"
 #: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Bağlantıyı Aç"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Note Window"
+#~ msgstr "Not Penceresi"
