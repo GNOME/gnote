@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-01-25 20:04+0000\n"
-"PO-Revision-Date: 2023-02-03 18:08+0100\n"
+"POT-Creation-Date: 2023-02-26 20:19+0000\n"
+"PO-Revision-Date: 2023-03-07 20:42+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -329,10 +329,10 @@ msgstr ""
 "spezifisches Verfahren zu durchlaufen, statt das Problem dem Benutzer zu "
 "melden. Die Werte sind einer internen Aufzählung zugeordnet. 0 legt fest, "
 "dass beim Auftreten eines Konfliktes dieser an den Benutzer gemeldet werden "
-"soll, so dass von Fall zu Fall entschieden werden kann, wie mit der "
+"soll, sodass von Fall zu Fall entschieden werden kann, wie mit der "
 "Konfliktsituation umgegangen werden soll. 1 bedeutet, dass Verknüpfungen "
 "automatisch entfernt werden sollen. 2 bedeutet, dass die Verknüpfung auf den "
-"neuen Namen der Notiz umbenannt werden soll, so dass die korrekte "
+"neuen Namen der Notiz umbenannt werden soll, sodass die korrekte "
 "Verknüpfung zur umbenannten Notiz erhalten bleibt."
 
 #: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
@@ -467,7 +467,7 @@ msgstr ""
 "Konfliktes immer ein spezifisches Verhalten durchzulaufen statt das Problem "
 "dem Benutzer zu melden. Die Werte sind einer internen Aufzählung zugeordnet. "
 "0 legt fest, dass beim Auftreten eines Konfliktes dieser an den Benutzer "
-"gemeldet werden soll, so dass von Fall zu Fall entschieden werden kann, wie "
+"gemeldet werden soll, sodass von Fall zu Fall entschieden werden kann, wie "
 "mit der Konfliktsituation umgegangen werden soll."
 
 #: data/org.gnome.gnote.gschema.xml:185
@@ -639,86 +639,91 @@ msgstr "Ausgewählte Notiz löschen"
 
 #: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Notizfenster"
+msgid "Note View"
+msgstr "Notizansicht"
 
 #: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Aktionen-Menü öffnen"
 
-#: data/shortcuts-gnote.ui:184
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Close current tab"
+msgstr "Aktuellen Reiter schließen"
+
+#: data/shortcuts-gnote.ui:191
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Bearbeiten"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Letzte Bearbeitung rückgängig machen"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Letzte Bearbeitung wiederholen"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Verweis zur Notiz mit dem ausgewählten Text erstellen"
 
-#: data/shortcuts-gnote.ui:211
+#: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatierung"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Fettschrift aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Kursivschrift aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Durchgestrichene Schrift aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Hervorhebung aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Feste Breite aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Unterstreichung aktivieren/deaktivieren"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Schrift vergrößern"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Schrift verkleinern"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr ""
 "Aufzählungszeichen/Einzugserhöhung für die Zeile mit der Auswahl aktivieren"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:286
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr ""
@@ -1492,22 +1497,22 @@ msgstr "Gnote-Notizen mit einer WebDAV-Adresse abgleichen."
 msgid "Exception thrown when creating note: %s"
 msgstr "Ausnahme trat beim Erstellen der Notiz auf: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:209
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Es ist keine D-Bus-Verbindung verfügbar. Die Shell-Suche und der Fernzugriff "
 "werden nicht funktionieren."
 
-#: src/gnote.cpp:244
+#: src/gnote.cpp:242
 msgid "Failed to get shortcuts window!"
 msgstr "Tastenkombinationen-Fenster konnte nicht erzeugt werden!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:256
 msgid "and Tomboy original authors."
 msgstr "und die Originalautoren von Tomboy."
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:262
 msgid "translator-credits"
 msgstr ""
 "Philipp Meier <meier@fnogol.de>\n"
@@ -1521,7 +1526,7 @@ msgstr ""
 "Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Jürgen Benvenuti <gastornis@posteo.org>"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:271
 msgid ""
 "Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1533,76 +1538,76 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Originalautoren von Tomboy."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:275
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Eine einfache und leicht zu bedienende Anwendung für Notizen."
 
-#: src/gnote.cpp:288
+#: src/gnote.cpp:286
 msgid "Homepage"
 msgstr "Homepage"
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:481
 msgid "Run Gnote in background."
 msgstr "Gnote im Hintergrund ausführen."
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:482
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Gnote als Suchanbieter in der GNOME-Shell ausführen."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "Specify the path of the directory containing the notes."
 msgstr "Pfad zum Ordner angeben, der die Notizen enthält."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "path"
 msgstr "path"
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:484
 msgid "Open the search all notes window with the search text."
 msgstr "Fenster zum Durchsuchen aller Notizen öffnen."
 
-#: src/gnote.cpp:486 src/gnote.cpp:491
+#: src/gnote.cpp:484 src/gnote.cpp:489
 msgid "text"
 msgstr "text"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:485
 msgid "Print version information."
 msgstr "Versionsinformationen anzeigen."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "Create and display a new note, with a optional title."
 msgstr "Eine neue Notiz anlegen und anzeigen, mit einem optionalen Titel."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "title"
 msgstr "title"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "Display the existing note matching title."
 msgstr "Eine vorhandene Notiz dieses Titels anzeigen."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "title/url"
 msgstr "title/url"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:488
 msgid "Display the 'Start Here' note."
 msgstr "Zeigt die »Hier starten«-Notiz an."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:489
 msgid "Search and highlight text in the opened note."
 msgstr "Text in einer geöffneten Notiz suchen und hervorheben."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "A note taking application"
 msgstr "Eine Notizzettel-Anwendung"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "Gnote options at launch"
 msgstr "Optionen beim Start von Gnote"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:679
+#: src/gnote.cpp:677
 msgid "Version %1"
 msgstr "Version %1"
 
@@ -1716,11 +1721,11 @@ msgstr "Wichtig"
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/notebuffer.cpp:1429
+#: src/notebuffer.cpp:1403
 msgid "</list> tag mismatch"
 msgstr "Tag </list> stimmt nicht überein"
 
-#: src/notebuffer.cpp:1513
+#: src/notebuffer.cpp:1487
 #, c-format
 msgid "Exception: %s"
 msgstr "Ausnahme: %s"
@@ -2313,23 +2318,23 @@ msgstr ""
 "Das übergeordnete Element des Suchfelds ist kein Gtk::Grid. Bitte melden Sie "
 "den Fehler!"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:731
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Versuchen, ein Widget in den Vordergrund zu bringen, das nicht im Fenster "
 "eingebettet ist"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Versuchen, ein Widget in den Vordergrund zu bringen, das nicht Gtk::Widget "
 "ist"
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1008
 msgid "Expected widget to be a sub-menu!"
 msgstr "Ein Untermenü wurde als Widget erwartet!"
 
-#: src/recentchanges.cpp:1001
+#: src/recentchanges.cpp:1013
 msgid "No configured actions"
 msgstr "Keine Aktionen konfiguriert"
 
@@ -2891,6 +2896,10 @@ msgstr "Verknüpfungsadresse _kopieren"
 #: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "Verknüpfung ö_ffnen"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Note Window"
+#~ msgstr "Notizfenster"
 
 #~ msgid "Enable closing notes with escape"
 #~ msgstr "Schließen von Notizen mit Escape aktivieren"
