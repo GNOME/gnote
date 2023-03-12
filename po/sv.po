@@ -4,14 +4,14 @@
 # Christian Rose <menthos@menthos.com>, 2004, 2005.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011, 2012.
 # Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
-# Luna Jernberg <droidbittin@gmail.com>, 2020, 2022.
+# Luna Jernberg <droidbittin@gmail.com>, 2020, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-01-25 20:04+0000\n"
-"PO-Revision-Date: 2023-01-25 23:01+0100\n"
+"POT-Creation-Date: 2023-02-11 16:50+0000\n"
+"PO-Revision-Date: 2023-03-12 15:50+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: data/org.gnome.gnote.gschema.xml:46
 msgid "Start Here Note"
-msgstr "\"Börja här\"-anteckning"
+msgstr "”Börja här”-anteckning"
 
 #: data/org.gnome.gnote.gschema.xml:47
 msgid ""
@@ -169,7 +169,7 @@ msgid ""
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
-"Antecknings-uri:n för anteckningen som ska anses vara \"Börja här\"-"
+"Antecknings-uri:n för anteckningen som ska anses vara ”Börja här”-"
 "anteckningen, vilken alltid placeras i nederkant av Gnote-anteckningsmenyn "
 "och även är åtkomlig med en snabbtangent."
 
@@ -302,11 +302,11 @@ msgid ""
 msgstr ""
 "Heltalsvärde som indikerar om det finns en inställning för att alltid "
 "genomföra ett specifikt beteende för länkuppdateringar när en anteckning "
-"byter namn, istället för att fråga användaren. Värdena mappas till en intern "
-"numrering. 0 indikerar att användaren önskar att bli tillfrågad när en "
-"anteckning byter namn som kan påverka länkar som finns i andra anteckningar "
-"så att det nya anteckningsnamnet fortsätter att länka till anteckningen med "
-"nytt namn."
+"byter namn, i stället för att fråga användaren. Värdena mappas till en "
+"intern numrering. 0 indikerar att användaren önskar att bli tillfrågad när "
+"en anteckning byter namn som kan påverka länkar som finns i andra "
+"anteckningar så att det nya anteckningsnamnet fortsätter att länka till "
+"anteckningen med nytt namn."
 
 #: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
 #: data/org.gnome.gnote.gschema.xml:131
@@ -355,7 +355,7 @@ msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Senaste katalogen som en anteckning exporterades till med insticksmodulen "
-"\"Exportera till HTML\"."
+"”Exportera till HTML”."
 
 #: data/org.gnome.gnote.gschema.xml:153
 msgid "HTML Export Linked Notes"
@@ -366,8 +366,8 @@ msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
-"Senaste inställningen för kryssrutan \"Exportera länkade anteckningar\" i "
-"insticksmodulen \"Exportera till HTML\"."
+"Senaste inställningen för kryssrutan ”Exportera länkade anteckningar” i "
+"insticksmodulen ”Exportera till HTML”."
 
 #: data/org.gnome.gnote.gschema.xml:158
 msgid "HTML Export All Linked Notes"
@@ -380,11 +380,11 @@ msgid ""
 "Export Linked Notes' setting and is used to specify whether all notes (found "
 "recursively) should be included during an export to HTML."
 msgstr ""
-"Den senaste inställningen för kryssrutan \"Inkludera alla andra länkade "
-"anteckningar\" i insticksmodulen \"Exportera till HTML\". Den här "
-"inställningen används i kombination med inställningen för \"HTML-exportera "
-"länkade anteckningar\" och används för att ange huruvida alla anteckningar "
-"(rekursivt hittade) ska inkluderas vid en HTML-exportering."
+"Den senaste inställningen för kryssrutan ”Inkludera alla andra länkade "
+"anteckningar” i insticksmodulen ”Exportera till HTML”. Den här inställningen "
+"används i kombination med inställningen för ”HTML-exportera länkade "
+"anteckningar” och används för att ange huruvida alla anteckningar (rekursivt "
+"hittade) ska inkluderas vid en HTML-exportering."
 
 #: data/org.gnome.gnote.gschema.xml:165
 msgid "Synchronization Client ID"
@@ -435,10 +435,10 @@ msgid ""
 "conflict situation on a case-by-case basis."
 msgstr ""
 "Heltalsvärde som indikerar om det finns en inställning för att alltid "
-"genomföra ett specifikt beteende när en konflikt har upptäckts, istället för "
-"att fråga användaren. Värdena mappas till en intern numrering. 0 indikerar "
-"att användaren önskar att bli tillfrågad när en konflikt uppstår, så att "
-"användaren kan hantera konflikten från fall till fall."
+"genomföra ett specifikt beteende när en konflikt har upptäckts, i stället "
+"för att fråga användaren. Värdena mappas till en intern numrering. 0 "
+"indikerar att användaren önskar att bli tillfrågad när en konflikt uppstår, "
+"så att användaren kan hantera konflikten från fall till fall."
 
 #: data/org.gnome.gnote.gschema.xml:185
 msgid "Automatic Background Synchronization Timeout"
@@ -474,7 +474,7 @@ msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr ""
-"Använd wdfs-flaggan \"-ac\" för att acceptera SSL-certifikat utan att "
+"Använd wdfs-flaggan ”-ac” för att acceptera SSL-certifikat utan att "
 "tillfråga användaren."
 
 #: data/org.gnome.gnote.gschema.xml:205
@@ -609,85 +609,90 @@ msgstr "Ta bort vald anteckning"
 
 #: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Anteckningsfönster"
+msgid "Note View"
+msgstr "Anteckningsvy"
 
 #: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Öppna åtgärdsmeny för anteckning"
 
-#: data/shortcuts-gnote.ui:184
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Close current tab"
+msgstr "Stäng aktuell flik"
+
+#: data/shortcuts-gnote.ui:191
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Redigering"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Ångra senaste redigering"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Gör om senaste redigering"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Skapa länk till anteckning från markerad text"
 
-#: data/shortcuts-gnote.ui:211
+#: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatering"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Växla fetstil"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Växla kursiv stil"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Växla genomstrykning"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Växla färgmarkering"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Växla fast bredd"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Växla understrykning"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Öka typsnittsstorlek"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Minska typsnittsstorlek"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Aktivera punkter/öka indentering för rad med markering"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:286
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Minska indentering/inaktivera punkter för aktuell rad"
@@ -1308,7 +1313,7 @@ msgstr "Importen från Klisterlappar är färdig"
 #. here %1 is the number of notes imported, %2 the total number of notes.
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
 msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
-msgstr "<b>%1</b> av <b>%2</b> klisterlappar blev importerade."
+msgstr "<b>%1</b> av <b>%2</b> klisterlappar importerades."
 
 #: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
 msgid "Untitled"
@@ -1768,7 +1773,7 @@ msgstr ""
 "anteckningar och idéer till varandra!\n"
 "\n"
 "Vi har skapat en anteckning kallad <link:internal>Användning av länkar i "
-"Gnote</link:internal>.  Observera att varje gång vi skriver <link:"
+"Gnote</link:internal>.  Ser du att varje gång vi skriver <link:"
 "internal>Användning av länkar i Gnote</link:internal> så blir den "
 "automatiskt understruken?  Klicka på länken för att öppna anteckningen.</"
 "note-content>"
@@ -2260,20 +2265,20 @@ msgstr "Överordnad till inbäddningsruta är inte Gtk::Grid, rapportera ett fel
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Överordnad till sökfält är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:731
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Försök att ta en komponent till förgrunden, som inte är inbäddad i fönstret"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Försök att ta en komponent till förgrunden, som inte är Gtk::Widget"
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1008
 msgid "Expected widget to be a sub-menu!"
 msgstr "Förväntade att komponent skulle vara en undermeny!"
 
-#: src/recentchanges.cpp:1001
+#: src/recentchanges.cpp:1013
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
@@ -2832,6 +2837,10 @@ msgstr "_Kopiera länkadress"
 #: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Öppna länk"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Note Window"
+#~ msgstr "Anteckningsfönster"
 
 #~ msgid "This key is depracated and it's value is ignored."
 #~ msgstr "Denna nyckel är föråldrad och dess värde ignoreras."
