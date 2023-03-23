@@ -12,18 +12,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-05-08 18:53+0000\n"
-"PO-Revision-Date: 2022-05-09 22:43+1000\n"
-"Last-Translator: Ser82-png <sw@atrus.ru>\n"
+"POT-Creation-Date: 2023-02-10 20:30+0000\n"
+"PO-Revision-Date: 2023-02-14 23:54+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:88 src/recentchanges.cpp:116
@@ -32,7 +32,7 @@ msgstr "Gnote"
 
 #: data/org.gnome.Gnote.appdata.xml.in:8
 msgid "A simple note-taking application"
-msgstr "Простая программа для ведения заметок"
+msgstr "Простое приложение для ведения заметок"
 
 #: data/org.gnome.Gnote.appdata.xml.in:10
 msgid ""
@@ -160,8 +160,8 @@ msgid ""
 "If enable-custom-font is true, the font name set here will be used as the "
 "font when displaying notes."
 msgstr ""
-"Если установлен параметр enable-custom-font, то указанное здесь имя шрифта "
-"будет использовано для отображения заметок."
+"Если для параметра enable-custom-font установлено значение «true», то для "
+"отображения заметок будет использовано указанное здесь название шрифта."
 
 #: data/org.gnome.gnote.gschema.xml:46
 msgid "Start Here Note"
@@ -312,7 +312,7 @@ msgstr ""
 "что пользователь хочет, чтобы его спрашивали при переименовании заметки, "
 "которая содержит ссылки, которые могут находиться в других заметках. 1 "
 "означает то, что ссылки будут автоматически удалены. 2 означает, что текст "
-"ссылки будет переименован в новое имя заметки, таким образом сохранится "
+"ссылки будет преобразован в новое название заметки, таким образом сохранится "
 "ссылка на переименованную заметку."
 
 #: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
@@ -613,85 +613,90 @@ msgstr "Удалить выделенную заметку"
 
 #: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Окно заметок"
+msgid "Note View"
+msgstr "Просмотр заметки"
 
 #: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Открыть меню действий с заметками"
 
-#: data/shortcuts-gnote.ui:184
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Close current tab"
+msgstr "Закрыть текущую вкладку"
+
+#: data/shortcuts-gnote.ui:191
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Правка"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Отменить последнее изменение"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Повторить последнее изменение"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Создать ссылку на выделенный текст"
 
-#: data/shortcuts-gnote.ui:211
+#: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Форматирование"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Переключить на жирный шрифт"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Переключить на накланенный шрифт"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Переключить на зачёркнутый шрифт"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Переключить подсветку текста"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Переключить фиксированную ширину"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Переключить подчёркнутый шрифт"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Увеличить размер шрифта"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Уменьшить размер шрифта"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Включить маркеры/увеличить отступ для строки с выделением"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:286
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Уменьшить отступ/отключить маркеры для текущей строки"
@@ -718,7 +723,7 @@ msgstr "_Справка"
 
 #: src/actionmanager.cpp:132
 msgid "_About Gnote"
-msgstr "_О программе"
+msgstr "_О приложении"
 
 #: src/addininfo.cpp:71
 msgid "Failed to load plugin information!"
@@ -848,7 +853,8 @@ msgstr "Выбрать значок..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/notebooks/createnotebookdialog.cpp:65
+#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
 #: src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_Отменить"
@@ -889,7 +895,8 @@ msgstr "Действительно удалить этот значок?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Если удалить значок, он будет утерян навсегда."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "У_далить"
@@ -1154,7 +1161,7 @@ msgstr "Сегодня: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Не удалось создать заметку дня %s: %s"
@@ -1451,22 +1458,22 @@ msgstr "Синхронизации заметок Gnote по URL адресу We
 msgid "Exception thrown when creating note: %s"
 msgstr "Выдано исключение при создании заметки: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:209
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Соединение D-Bus отсутствует, поиск оболочки и удаленное управление не "
 "работают."
 
-#: src/gnote.cpp:244
+#: src/gnote.cpp:242
 msgid "Failed to get shortcuts window!"
 msgstr "Не удалось открыть окно комбинаций клавиш!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:256
 msgid "and Tomboy original authors."
 msgstr "и авторы Tomboy."
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:262
 msgid "translator-credits"
 msgstr ""
 "Дмитрий Костенко <bis0n@mail.ru>\n"
@@ -1477,88 +1484,88 @@ msgstr ""
 "Yuri Myasoedov <omerta13@yandex.ru>, 2012\n"
 "Артемий Судаков <finziyr@yandex.ru>, 2020"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:271
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Авторские права © 2010-2022 Aurimas Cernius\n"
+"Авторские права © 2010-2023 Aurimas Cernius\n"
 "Авторские права © 2009-2011 Debarshi Ray\n"
 "Авторские права © 2009 Hubert Figuiere\n"
 "Авторские права © 2004-2009 авторы Tomboy."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:275
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Простое, лёгкое в использовании приложение для ведения заметок."
 
-#: src/gnote.cpp:288
+#: src/gnote.cpp:286
 msgid "Homepage"
 msgstr "Домашняя страница"
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:481
 msgid "Run Gnote in background."
 msgstr "Запустить Gnote в фоне."
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:482
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запустить Gnote как провайдер поиска оболочки GNOME."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "Specify the path of the directory containing the notes."
 msgstr "Указать путь к каталогу с заметками."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "path"
 msgstr "путь"
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:484
 msgid "Open the search all notes window with the search text."
 msgstr "Открыть окно поиска по всем заметкам с помощью текста поиска."
 
-#: src/gnote.cpp:486 src/gnote.cpp:491
+#: src/gnote.cpp:484 src/gnote.cpp:489
 msgid "text"
 msgstr "текст"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:485
 msgid "Print version information."
 msgstr "Вывести информацию о версии."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "Create and display a new note, with a optional title."
 msgstr "Создать и показать новую заметку с произвольным заголовком."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "title"
 msgstr "заголовок"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "Display the existing note matching title."
 msgstr "Показать существующую заметку с соответствующим заголовком."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "title/url"
 msgstr "заголовок/ссылка"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:488
 msgid "Display the 'Start Here' note."
 msgstr "Показывать самую первую заметку."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:489
 msgid "Search and highlight text in the opened note."
 msgstr "Искать и выделить текст в открытой заметке."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "A note taking application"
 msgstr "Программа для ведения заметок"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "Gnote options at launch"
 msgstr "Параметры Gnote при запуске"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:679
+#: src/gnote.cpp:677
 msgid "Version %1"
 msgstr "Версия %1"
 
@@ -1577,7 +1584,7 @@ msgid "Window is not embedded"
 msgstr "Окно не встроено"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:354
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Исключение во время сохранения заметки: %s"
@@ -1624,7 +1631,7 @@ msgstr "_Создать блокнот..."
 msgid "%1 Notebook Template"
 msgstr "Шаблон для блокнота %1"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Создать заметку"
 
@@ -1671,11 +1678,11 @@ msgstr "Важное"
 msgid "Active"
 msgstr "Активно"
 
-#: src/notebuffer.cpp:1429
+#: src/notebuffer.cpp:1403
 msgid "</list> tag mismatch"
 msgstr "</list> тег не найден"
 
-#: src/notebuffer.cpp:1513
+#: src/notebuffer.cpp:1487
 #, c-format
 msgid "Exception: %s"
 msgstr "Исключение: %s"
@@ -1697,11 +1704,11 @@ msgstr[2] "Действительно удалить %1% заметок?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Если вы удалите заметку, она будет утеряна навсегда."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Ошибка при сохранении данных заметки."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1711,12 +1718,12 @@ msgstr ""
 "свободного места на диске, а также верны ли права доступа к каталогу ~/."
 "local/share/gnote. Подробности об ошибке находятся в файле ~/.gnote.log."
 
-#: src/note.cpp:442
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Ошибка при сохранении: %s"
 
-#: src/note.cpp:667
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr "Настройка содержимого тектста для закрытых заметок не поддерживается"
 
@@ -1725,7 +1732,7 @@ msgstr "Настройка содержимого тектста для закр
 msgid "New Note Template"
 msgstr "Шаблон новой заметки"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Опишите здесь новую заметку."
 
@@ -1796,62 +1803,62 @@ msgstr ""
 "обновлены. Это предотвращает возникновение «разорванных» ссылок при "
 "переименовании заметок.\n"
 "\n"
-"Кроме того, если вы наберёте в тексте заметки имя какой-либо другой заметки, "
-"автоматически возникнет ссылка на неё.</note-content>"
+"Кроме того, если вы наберёте в тексте заметки название какой-либо другой "
+"заметки, то автоматически возникнет ссылка на неё.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Первая заметка"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Использование ссылок в Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Ошибка в начале создания заметки: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Ошибка сравнения XML заметки, пропуск «%s»: %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "Переименовать ссылки?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "_Не переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "_Переименовать ссылки"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Выбрать все"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Снять выделение"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "_Всегда показывать это окно"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "_Всегда переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "_Никогда не переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1863,15 +1870,15 @@ msgstr ""
 "\n"
 "Если не переименовать ссылки, они больше не будут ссылаться на что-либо."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Переименовать ссылки"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Заголовок заметки"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "_Дополнительно"
 
@@ -2246,31 +2253,31 @@ msgstr "Создать новую заметку"
 msgid "Search"
 msgstr "Искать"
 
-#: src/recentchanges.cpp:355
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент встроенного поля не Gtk::Grid. Пожалуйста, сообщите об "
 "ошибке!"
 
-#: src/recentchanges.cpp:397
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент поиска не Gtk::Grid. Пожалуйста, сообщите об ошибке!"
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:731
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Попытка вывести на передний план виджет, не встроенный в окно"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Попытка вывести на передний план виджет, который не является Gtk::Widget"
 
-#: src/recentchanges.cpp:989
+#: src/recentchanges.cpp:1008
 msgid "Expected widget to be a sub-menu!"
 msgstr "Ожидаемый виджет будет в виде подменю!"
 
-#: src/recentchanges.cpp:994
+#: src/recentchanges.cpp:1013
 msgid "No configured actions"
 msgstr "Нет изменяемых параметров"
 
@@ -2814,8 +2821,8 @@ msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
-"Заметка с названием <b>%1</b> уже существует. Выберите другое имя для этой "
-"заметки перед тем, как продолжить."
+"Заметка с названием <b>%1</b> уже существует. Выберите другое название для "
+"этой заметки перед тем, как продолжить."
 
 #: src/watchers.cpp:245
 msgid "Note title taken"
@@ -2825,13 +2832,17 @@ msgstr "Название уже используется"
 msgid "Check spelling"
 msgstr "Проверка офрографии"
 
-#: src/watchers.cpp:705
+#: src/watchers.cpp:708
 msgid "_Copy Link Address"
-msgstr "_Скопировать адрес ссылки"
+msgstr "_Копировать адрес ссылки"
 
-#: src/watchers.cpp:711
+#: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Открыть ссылку"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Note Window"
+#~ msgstr "Окно заметок"
 
 #~ msgid "Enable global keybindings"
 #~ msgstr "Включить глобальные комбинации клавиш"

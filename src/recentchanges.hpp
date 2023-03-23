@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -67,7 +67,6 @@ protected:
   virtual void on_show() override;
   virtual void on_map() override;
 private:
-  void on_open_note(const Note::Ptr &);
   void on_open_note_new_window(const Note::Ptr &);
   bool on_close();
   bool on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
@@ -100,6 +99,9 @@ private:
   void callbacks_changed();
   void register_callbacks();
   void unregister_callbacks();
+  void next_tab();
+  void previous_tab();
+  void close_current_tab();
 
   IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;

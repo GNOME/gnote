@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2022 Aurimas Cernius
+ * Copyright (C) 2010-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -109,7 +109,7 @@ namespace gnote {
 
     m_search_notes_widget = new SearchNotesWidget(g, m);
     m_search_notes_widget->signal_open_note
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note));
+      .connect(sigc::mem_fun(*this, &NoteRecentChanges::present_note));
     m_search_notes_widget->signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
     m_search_notes_widget->notes_widget_key_ctrl()->signal_key_pressed()
@@ -472,7 +472,13 @@ namespace gnote {
 
   void NoteRecentChanges::present_note(const Note::Ptr & note)
   {
-    if(note && note->has_window()) {
+    if(!note) {
+      return;
+    }
+    if(present_active(note)) {
+      return;
+    }
+    if(note->has_window()) {
       auto win = note->get_window();
       if(win->host()) {
         win->host()->unembed_widget(*win);
@@ -500,13 +506,6 @@ namespace gnote {
     }
   }
 
-
-  void NoteRecentChanges::on_open_note(const Note::Ptr & note)
-  {
-    if(!present_active(note)) {
-      present_note(note);
-    }
-  }
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
@@ -601,6 +600,18 @@ namespace gnote {
     return false;
   }
 
+  void NoteRecentChanges::close_current_tab()
+  {
+    int page_idx = m_embed_book.get_current_page();
+    if(page_idx == 0) {
+      return;
+    }
+
+    if(auto widget = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(page_idx))) {
+      unembed_widget(*widget);
+    }
+  }
+
   void NoteRecentChanges::on_show()
   {
     // Select "All Notes" in the notebooks list
@@ -636,7 +647,8 @@ namespace gnote {
     if (allow_close) {
       tab_label->signal_close.connect(sigc::mem_fun(*this, &NoteRecentChanges::unembed_widget));
     }
-    int idx = m_embed_book.append_page(*win, *tab_label);
+    int idx = m_embed_book.get_current_page() + 1;
+    m_embed_book.insert_page(*win, *tab_label, idx);
     m_embed_book.set_current_page(idx);
   }
 
@@ -655,7 +667,7 @@ namespace gnote {
       return;
     }
     if(n_pages > 1 && page_to_remove == m_embed_book.get_current_page()) {
-      int new_page = (page_to_remove == n_pages - 1) ? page_to_remove - 1 : page_to_remove + 1;
+      int new_page = page_to_remove - 1;
       m_embed_book.set_current_page(new_page);
     }
 

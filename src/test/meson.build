@@ -19,6 +19,7 @@ test_sources = [
   'unit/trieutests.cpp',
   'unit/uriutests.cpp',
   'unit/utiltests.cpp',
+  'unit/xmldecodertests.cpp',
   'unit/xmlreaderutests.cpp',
 ]
 

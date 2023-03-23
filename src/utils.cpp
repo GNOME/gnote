@@ -351,6 +351,7 @@ namespace gnote {
         switch (xml.get_node_type()) {
         case XML_READER_TYPE_TEXT:
         case XML_READER_TYPE_WHITESPACE:
+        case XML_READER_TYPE_SIGNIFICANT_WHITESPACE:
           builder += xml.get_value();
           break;
         default:

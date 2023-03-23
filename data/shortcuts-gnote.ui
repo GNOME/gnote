@@ -129,7 +129,7 @@
       <object class="GtkShortcutsSection">
         <property name="visible">1</property>
         <property name="section-name">note-window</property>
-        <property name="title" translatable="yes" context="shortcut window">Note Window</property>
+        <property name="title" translatable="yes" context="shortcut window">Note View</property>
         <child>
 	  <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
@@ -174,6 +174,13 @@
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;Ctrl&gt;Q</property>
                 <property name="title" translatable="yes" context="shortcut window">Close window</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;Ctrl&gt;W</property>
+                <property name="title" translatable="yes" context="shortcut window">Close current tab</property>
               </object>
             </child>
           </object>

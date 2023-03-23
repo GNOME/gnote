@@ -25,6 +25,18 @@
  <update_contact>aurisc4_at_gmail.com</update_contact>
  <content_rating type="oars-1.1"/>
  <releases>
+  <release version="44.0" date="2023-03-19">
+    <ul>
+      <li>Open notes in tab next to current and move to previous on close</li>
+      <li>Fix meson a deprecation warning</li>
+      <li>Fix notebook deletion (#141)</li>
+      <li>Determine timezone offset dynamically, so the server misconfig does not matter (#139)</li>
+      <li>Fix crash when opening link (#45)</li>
+      <li>Make Ctrl+W close current tab (#146)</li>
+      <li>Fix noteoftheday not deleting unmodified notes</li>
+      <li>Updated German (de) manual</li>
+    </ul>
+  </release>
   <release version="43.0" date="2022-10-05">
     <ul>
       <li>Make delete button visually destructive in confirmation dialog (#120)</li>

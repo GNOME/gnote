@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -594,6 +594,9 @@ namespace gnote {
     catch (Glib::Error & e) {
       utils::show_opening_location_error (get_host_window(), url, e.what());
     }
+    catch(const std::exception & e) {
+      ERR_OUT("Failed to open URL: %s", e.what());
+    }
 
     // Kill the middle button paste...
     return true;
@@ -653,7 +656,6 @@ namespace gnote {
       get_buffer()->remove_tag(m_url_tag, start, end);
     }
   }
-
 
   ////////////////////////////////////////////////////////////////////////
 
