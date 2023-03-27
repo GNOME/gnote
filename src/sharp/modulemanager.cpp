@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -56,7 +56,7 @@ namespace sharp {
       return dmod;
     }
 
-    Glib::Module module(mod, Glib::MODULE_BIND_LOCAL);
+    Glib::Module module(mod, Glib::Module::Flags::LOCAL);
     DBG_OUT("load module %s", file_basename(mod).c_str());
     if(!module) {
       ERR_OUT(_("Error loading %s"), Glib::Module::get_last_error().c_str());

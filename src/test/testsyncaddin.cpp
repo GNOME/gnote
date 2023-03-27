@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2019 Aurimas Cernius
+ * Copyright (C) 2017-2019,2022-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+#include <giomm/file.h>
 
 #include "testsyncaddin.hpp"
 #include "synchronization/filesystemsyncserver.hpp"
@@ -38,12 +40,12 @@ void SyncAddin::post_sync_cleanup()
 {
 }
 
-Gtk::Widget *SyncAddin::create_preferences_control(EventHandler /*requiredPrefChanged*/)
+Gtk::Widget *SyncAddin::create_preferences_control(Gtk::Window&, EventHandler /*requiredPrefChanged*/)
 {
   return NULL;
 }
 
-bool SyncAddin::save_configuration(const sigc::slot<void, bool, Glib::ustring> & on_saved)
+bool SyncAddin::save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved)
 {
   on_saved(true, "");
   return true;

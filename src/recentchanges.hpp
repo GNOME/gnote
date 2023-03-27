@@ -27,12 +27,12 @@
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/notebook.h>
-#include <gtkmm/popovermenu.h>
+#include <gtkmm/popover.h>
+#include <gtkmm/togglebutton.h>
 
 #include "mainwindowaction.hpp"
 #include "note.hpp"
 #include "searchnoteswidget.hpp"
-#include "utils.hpp"
 
 namespace gnote {
   class IGnote;
@@ -50,11 +50,6 @@ public:
   virtual void present_search() override;
   virtual void close_window() override;
   virtual bool is_search() override;
-  virtual utils::GlobalKeybinder & keybinder() override
-    {
-      return m_keybinder;
-    }
-
   virtual void embed_widget(EmbeddableWidget &) override;
   virtual void unembed_widget(EmbeddableWidget &) override;
   virtual void foreground_embedded(EmbeddableWidget &) override;
@@ -70,22 +65,22 @@ public:
 protected:
   virtual void present_note(const Note::Ptr & note) override;
   virtual void on_show() override;
-  virtual bool on_map_event(GdkEventAny *evt) override;
+  virtual void on_map() override;
 private:
   void on_open_note_new_window(const Note::Ptr &);
-  void on_delete_note();
-  bool on_delete(GdkEventAny *);
-  bool on_key_pressed(GdkEventKey *);
+  bool on_close();
+  bool on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   EmbeddableWidget *currently_foreground();
   void on_current_page_changed(Gtk::Widget *new_page, guint page_number);
   void on_foreground_embedded(EmbeddableWidget & widget);
+  void add_shortcut(Gtk::Widget & widget, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
+  void add_shortcut(Gtk::ShortcutController & controller, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
   void make_header_bar();
   void make_search_box();
   void make_find_next_prev();
-  bool on_entry_key_pressed(GdkEventKey *);
-  void on_entry_changed();
-  void on_entry_activated();
-  void entry_changed_timeout();
+  bool on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
+  void on_search_changed();
+  void on_search_stopped();
   Glib::ustring get_search_text();
   void update_toolbar(EmbeddableWidget & widget);
   void update_search_bar(EmbeddableWidget & widget, bool perform_search);
@@ -94,12 +89,11 @@ private:
   void on_search_button_toggled();
   void on_find_next_button_clicked();
   void on_find_prev_button_clicked();
-  Gtk::PopoverMenu *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
+  Gtk::Popover *make_window_menu(Gtk::Button *button, std::vector<PopoverWidget> && items);
   void on_window_menu_closed();
-  bool on_notes_widget_key_press(GdkEventKey*);
+  bool on_notes_widget_key_press(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_close_window(const Glib::VariantBase&);
   void add_action(const MainWindowAction::Ptr & action);
-  void on_popover_widgets_changed();
   bool present_active(const Note::Ptr & note);
   void register_actions();
   void callbacks_changed();
@@ -127,12 +121,6 @@ private:
   Gtk::Button        *m_window_actions_button;
   Gtk::Button        *m_current_embed_actions_button;
   bool                m_mapped;
-  sigc::connection    m_signal_popover_widgets_changed_cid;
-  utils::InterruptableTimeout *m_entry_changed_timeout;
-  Gtk::PopoverMenu     *m_window_menu_embedded;
-  Gtk::PopoverMenu     *m_window_menu_default;
-  Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
-  utils::GlobalKeybinder m_keybinder;
   std::map<Glib::ustring, MainWindowAction::Ptr> m_actions;
   std::vector<sigc::connection> m_action_cids;
 };

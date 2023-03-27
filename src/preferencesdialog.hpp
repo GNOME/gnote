@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,6 @@
 #include <gtkmm/liststore.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/comboboxtext.h>
-#include <gtkmm/radiobutton.h>
 #include <gtkmm/spinbutton.h>
 
 #include "sharp/addinstreemodel.hpp"
@@ -85,14 +84,11 @@ private:
   void on_enable_addin_button();
   void on_disable_addin_button();
   void on_addin_prefs_button();
-  bool addin_pref_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
-  void addin_pref_dialog_response(int, Gtk::Dialog*);
+  void addin_pref_dialog_response(const Glib::ustring &, Gtk::Dialog*);
   void on_addin_info_button();
-  bool addin_info_dialog_deleted(GdkEventAny*, Gtk::Dialog*);
   void addin_info_dialog_response(int, Gtk::Dialog*);
   void on_sync_addin_prefs_changed();
-  void on_conflict_option_toggle();
-  void combo_box_text_data_func(const Gtk::TreeIter & iter);
+  void combo_box_text_data_func(const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
   void update_sync_services();
   void update_timeout_pref();
   void on_autosync_check_toggled();
@@ -112,7 +108,7 @@ private:
 
   SyncStoreModel m_sync_addin_store_record;
   Glib::RefPtr<Gtk::ListStore> m_sync_addin_store;
-  std::map<Glib::ustring, Gtk::TreeIter> m_sync_addin_iters;
+  std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_sync_addin_iters;
   Gtk::ComboBox *m_sync_addin_combo;
   sync::SyncServiceAddin *m_selected_sync_addin;
   Gtk::Grid   *m_sync_addin_prefs_container;
@@ -137,12 +133,6 @@ private:
   Gtk::Button *disable_addin_button;
   Gtk::Button *addin_prefs_button;
   Gtk::Button *addin_info_button;
-
-  Gtk::RadioButton::Group conflictRadioGroup;
-  Gtk::RadioButton *promptOnConflictRadio;
-  Gtk::RadioButton *renameOnConflictRadio;
-  Gtk::RadioButton *overwriteOnConflictRadio;
-
 
   /// Keep track of the opened addin prefs dialogs so other windows
   /// can be interacted with (as opposed to opening these as modal

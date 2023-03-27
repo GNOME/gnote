@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -69,7 +69,7 @@ namespace gnote {
   private:
     Gtk::TextIter get_title_end() const;
     Gtk::TextIter get_title_start() const;
-    bool on_editor_focus_out(GdkEventFocus *);
+    void on_editor_focus_out();
     void on_mark_set(const Gtk::TextIter &, const Glib::RefPtr<Gtk::TextMark>&);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
@@ -165,14 +165,8 @@ namespace gnote {
                       const Gtk::TextIter & start, const Gtk::TextIter &end);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
-    bool on_button_press(GdkEventButton *);
-    void on_populate_popup(Gtk::Menu *);
-    bool on_popup_menu();
-    void copy_link_activate();
-    void open_link_activate();
 
     NoteTag::Ptr                m_url_tag;
-    Glib::RefPtr<Gtk::TextMark> m_click_mark;
     Glib::RefPtr<Glib::Regex>   m_regex;
     static const char * URL_REGEX;
     static bool  s_text_event_connected;
@@ -278,9 +272,9 @@ namespace gnote {
       }
   private:
     void _init_static();
-    bool on_editor_key_press(GdkEventKey*);
-    bool on_editor_key_release(GdkEventKey*);
-    bool on_editor_motion(GdkEventMotion *);
+    bool on_editor_key_press(guint, guint, Gdk::ModifierType);
+    void on_editor_motion(double, double);
+    void on_button_release(double, double, Gdk::ModifierType);
     bool m_hovering_on_link;
     static bool s_static_inited;
     static Glib::RefPtr<Gdk::Cursor> s_normal_cursor;

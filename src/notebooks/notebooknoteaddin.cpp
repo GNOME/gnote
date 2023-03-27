@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016,2019 Aurimas Cernius
+ * Copyright (C) 2010-2016,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 
 
 #include <glibmm/i18n.h>
-#include <gtkmm/modelbutton.h>
 #include <gtkmm/separator.h>
 
 #include "notebooks/notebooknoteaddin.hpp"
@@ -108,12 +107,8 @@ namespace notebooks {
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
     if(!get_note()->contains_tag(get_template_tag())) {
-      Gtk::Widget *notebook_button = utils::create_popover_submenu_button("notebooks-submenu", _("Notebook"));
+      auto notebook_button = Gio::MenuItem::create(_("Notebook"), make_menu());
       widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
-
-      auto submenu = utils::create_popover_submenu("notebooks-submenu");
-      update_menu(submenu);
-      widgets.push_back(gnote::PopoverWidget::create_custom_section(submenu));
     }
 
     return widgets;
@@ -122,9 +117,9 @@ namespace notebooks {
 
   void NotebookNoteAddin::on_new_notebook_menu_item(const Glib::VariantBase&) const
   {
-    Note::List noteList;
-    noteList.push_back(get_note());
-    NotebookManager::prompt_create_new_notebook(ignote(), dynamic_cast<Gtk::Window*>(get_window()->host()), noteList);
+    Note::List note_list;
+    note_list.emplace_back(get_note());
+    NotebookManager::prompt_create_new_notebook(ignote(), *dynamic_cast<Gtk::Window*>(get_window()->host()), std::move(note_list));
     get_window()->signal_popover_widgets_changed();
   }
 
@@ -141,49 +136,35 @@ namespace notebooks {
   }
 
 
-  void NotebookNoteAddin::update_menu(Gtk::Box *menu) const
+  Glib::RefPtr<Gio::MenuModel> NotebookNoteAddin::make_menu() const
   {
+    auto menu = Gio::Menu::create();
+
     // Add new notebook item
-    Gtk::Widget *new_notebook_item = manage(utils::create_popover_button("win.new-notebook", _("_New notebook...")));
-    menu->add(*new_notebook_item);
-    menu->add(*manage(new Gtk::Separator));
+    auto new_notebook_item = Gio::MenuItem::create(_("_New notebook..."), "win.new-notebook");
+    menu->append_item(new_notebook_item);
 
     // Add the "(no notebook)" item at the top of the list
-    Gtk::ModelButton *no_notebook_item = dynamic_cast<Gtk::ModelButton*>(manage(
-      utils::create_popover_button("win.move-to-notebook", _("No notebook"))));
-    gtk_actionable_set_action_target_value(GTK_ACTIONABLE(no_notebook_item->gobj()), g_variant_new_string(""));
-    menu->add(*no_notebook_item);
+    auto no_notebook_item = Gio::MenuItem::create(_("No notebook"), "");
+    no_notebook_item->set_action_and_target("win.move-to-notebook", Glib::Variant<Glib::ustring>::create(""));
+    menu->append_item(no_notebook_item);
 
     // Add in all the real notebooks
-    auto notebook_menu_items = get_notebook_menu_items();
-    if(!notebook_menu_items.empty()) {
-      for(Gtk::ModelButton *item : notebook_menu_items) {
-        menu->add(*item);
-      }
-
-    }
-
-    menu->add(*manage(new Gtk::Separator));
-    Gtk::Widget *back_button = utils::create_popover_submenu_button("main", _("_Back"));
-    dynamic_cast<Gtk::ModelButton*>(back_button)->property_inverted() = true;
-    menu->add(*back_button);
+    menu->append_section(get_notebook_menu_items());
+    return menu;
   }
   
 
-  std::vector<Gtk::ModelButton*> NotebookNoteAddin::get_notebook_menu_items() const
+  Glib::RefPtr<Gio::MenuModel> NotebookNoteAddin::get_notebook_menu_items() const
   {
-    std::vector<Gtk::ModelButton*> items;
+    auto items = Gio::Menu::create();
     Glib::RefPtr<Gtk::TreeModel> model = ignote().notebook_manager().get_notebooks();
-    Gtk::TreeIter iter;
-
-    iter = model->children().begin();
-    for(iter = model->children().begin(); iter != model->children().end(); ++iter) {
+    for(const auto& row : model->children()) {
       Notebook::Ptr notebook;
-      iter->get_value(0, notebook);
-      Gtk::ModelButton *item = dynamic_cast<Gtk::ModelButton*>(manage(
-        utils::create_popover_button("win.move-to-notebook", notebook->get_name())));
-      gtk_actionable_set_action_target_value(GTK_ACTIONABLE(item->gobj()), g_variant_new_string(notebook->get_name().c_str()));
-      items.push_back(item);
+      row.get_value(0, notebook);
+      auto item = Gio::MenuItem::create(notebook->get_name(), "");
+      item->set_action_and_target("win.move-to-notebook", Glib::Variant<Glib::ustring>::create(notebook->get_name()));
+      items->append_item(item);
     }
 
     return items;

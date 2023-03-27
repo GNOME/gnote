@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016,2019 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016,2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+#include "config.h"
 
 #include <giomm/dbusconnection.h>
 #include <giomm/dbuserror.h>
@@ -69,10 +71,6 @@ void SearchProvider::on_method_call(const Glib::RefPtr<Gio::DBus::Connection> &,
     try {
       stub_func func = iter->second;
       invocation->return_value((this->*func)(parameters));
-    }
-    catch(Glib::Exception & e) {
-      invocation->return_error(Gio::DBus::Error(Gio::DBus::Error::UNKNOWN_METHOD,
-                               "Exception in method " + method_name + ": " + e.what()));
     }
     catch(std::exception & e) {
       invocation->return_error(Gio::DBus::Error(Gio::DBus::Error::UNKNOWN_METHOD,
@@ -231,14 +229,9 @@ Glib::VariantContainerBase SearchProvider::LaunchSearch_stub(const Glib::Variant
   return Glib::VariantContainerBase();
 }
 
-gchar *SearchProvider::get_icon()
+const gchar *SearchProvider::get_icon() const
 {
-  if(!m_note_icon) {
-    Gtk::IconInfo info = m_gnote.icon_manager().lookup_icon(gnote::IconManager::NOTE, 48);
-    m_note_icon = Gio::Icon::create(info.get_filename());
-  }
-
-  return g_icon_to_string(m_note_icon->gobj());
+  return DATADIR"/gnote/icons/hicolor/24x24/places/note.png";
 }
 
 

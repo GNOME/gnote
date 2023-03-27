@@ -19,7 +19,6 @@ shared_library(
   'tableofcontents',
   [
     'tableofcontentsnoteaddin.cpp',
-    'tableofcontentsmenuitem.cpp',
     'tableofcontentsutils.cpp',
   ],
   dependencies: dependencies,

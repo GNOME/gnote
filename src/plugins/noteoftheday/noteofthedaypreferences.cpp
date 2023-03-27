@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2019,2022 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ NoteOfTheDayPreferences::NoteOfTheDayPreferences(gnote::IGnote & ignote, gnote::
   , m_note_manager(manager)
 {
   set_row_spacing(12);
-  m_label.set_line_wrap(true);
+  m_label.set_wrap(true);
   m_label.set_use_markup(true);
   m_label.set_vexpand(true);
   attach(m_label, 0, 0, 1, 1);
@@ -48,8 +48,6 @@ NoteOfTheDayPreferences::NoteOfTheDayPreferences(gnote::IGnote & ignote, gnote::
       sigc::mem_fun(*this,
                     &NoteOfTheDayPreferences::open_template_button_clicked));
   attach(m_open_template_button, 0, 1, 1, 1);
-
-  show_all();
 }
 
 NoteOfTheDayPreferences::~NoteOfTheDayPreferences()

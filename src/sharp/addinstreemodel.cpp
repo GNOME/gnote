@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -35,9 +35,9 @@
 namespace sharp {
 
 
-  AddinsTreeModel::Ptr AddinsTreeModel::create(gnote::IconManager & icon_manager, Gtk::TreeView *treeview)
+  AddinsTreeModel::Ptr AddinsTreeModel::create(Gtk::TreeView *treeview)
   {
-    AddinsTreeModel::Ptr p(new AddinsTreeModel(icon_manager));
+    auto p = std::make_shared<AddinsTreeModel>();
     if(treeview) {
       treeview->set_model(p);
       p->set_columns(treeview);
@@ -45,14 +45,12 @@ namespace sharp {
     return p;
   }
 
-  AddinsTreeModel::AddinsTreeModel(gnote::IconManager & icon_manager)
-    : Gtk::TreeStore()
-    , m_icon_manager(icon_manager)
+  AddinsTreeModel::AddinsTreeModel()
   {
     set_column_types(m_columns);
   }
 
-  Glib::ustring AddinsTreeModel::get_module_id(const Gtk::TreeIter & iter)
+  Glib::ustring AddinsTreeModel::get_module_id(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
   {
     Glib::ustring id;
     if(iter) {
@@ -61,7 +59,7 @@ namespace sharp {
     return id;
   }
 
-  sharp::DynamicModule * AddinsTreeModel::get_module(const Gtk::TreeIter & iter)
+  sharp::DynamicModule *AddinsTreeModel::get_module(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
   {
     sharp::DynamicModule * module = NULL;
     if(iter) {
@@ -70,15 +68,14 @@ namespace sharp {
     return module;
   }
 
-  void AddinsTreeModel::set_module(const Gtk::TreeIter & iter, const sharp::DynamicModule * dmod)
+  void AddinsTreeModel::set_module(const Gtk::TreeIter<Gtk::TreeRow> & iter, const sharp::DynamicModule * dmod)
   {
     if(iter) {
       iter->set_value(2, dmod);
     }
   }
 
-  void AddinsTreeModel::name_cell_data_func(Gtk::CellRenderer * renderer,
-                                            const Gtk::TreeIter & iter)
+  void AddinsTreeModel::name_cell_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
   {
     Gtk::CellRendererText *text_renderer = dynamic_cast<Gtk::CellRendererText*>(renderer);
     Glib::ustring value;
@@ -93,38 +90,34 @@ namespace sharp {
     }
   }
 
-  void AddinsTreeModel::name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer,
-                                                   const Gtk::TreeIter & iter)
+  void AddinsTreeModel::name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
   {
     Gtk::CellRendererPixbuf *icon_renderer = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
-    Glib::RefPtr<Gdk::Pixbuf> icon;
+    Glib::ustring icon;
     if(get_module_id(iter) != "") {
-      icon = m_icon_manager.get_icon(gnote::IconManager::EMBLEM_PACKAGE, 22);
+      icon = gnote::IconManager::EMBLEM_PACKAGE;
     }
-    icon_renderer->property_pixbuf() = icon;
+    icon_renderer->property_icon_name() = icon;
   }
 
   void AddinsTreeModel::set_columns(Gtk::TreeView *treeview)
   {
-    Gtk::TreeViewColumn *column = manage(new Gtk::TreeViewColumn);
+    auto column = Gtk::make_managed<Gtk::TreeViewColumn>();
     column->set_title(_("Name"));
-    column->set_sizing(Gtk::TREE_VIEW_COLUMN_AUTOSIZE);
+    column->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
     column->set_resizable(false);
-    Gtk::CellRendererPixbuf *icon_renderer = manage(new Gtk::CellRendererPixbuf);
+    auto icon_renderer = Gtk::make_managed<Gtk::CellRendererPixbuf>();
     column->pack_start(*icon_renderer, false);
-    column->set_cell_data_func(*icon_renderer,
-                               sigc::mem_fun(*this, &AddinsTreeModel::name_pixbuf_cell_data_func));
-    Gtk::CellRenderer *renderer = manage(new Gtk::CellRendererText);
+    column->set_cell_data_func(*icon_renderer, sigc::mem_fun(*this, &AddinsTreeModel::name_pixbuf_cell_data_func));
+    auto renderer = Gtk::make_managed<Gtk::CellRendererText>();
     column->pack_start(*renderer, true);
-    column->set_cell_data_func(*renderer,
-                               sigc::mem_fun(*this, &AddinsTreeModel::name_cell_data_func));
+    column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &AddinsTreeModel::name_cell_data_func));
     treeview->append_column(*column);
     treeview->append_column(_("Version"), m_columns.version);
   }
 
 
-  Gtk::TreeIter AddinsTreeModel::append(const gnote::AddinInfo & module_info,
-                                        const sharp::DynamicModule *module)
+  Gtk::TreeIter<Gtk::TreeRow> AddinsTreeModel::append(const gnote::AddinInfo & module_info, const sharp::DynamicModule *module)
   {
     gnote::AddinCategory category = module_info.category();
     Gtk::TreeIter iter = children().begin();

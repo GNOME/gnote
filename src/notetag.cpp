@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,6 @@ namespace gnote {
     : Gtk::TextTag(tag_name)
     , m_element_name(std::move(tag_name))
     , m_widget(NULL)
-    , m_allow_middle_activate(false)
     , m_flags(flags | CAN_SERIALIZE | CAN_SPLIT)
   {
     if(m_element_name.empty()) {
@@ -52,7 +51,6 @@ namespace gnote {
   NoteTag::NoteTag()
     : Gtk::TextTag()
     , m_widget(NULL)
-    , m_allow_middle_activate(false)
     , m_flags(0)
   {
   }
@@ -160,125 +158,18 @@ namespace gnote {
     }
   }
 
-  bool NoteTag::on_event(const Glib::RefPtr<Glib::Object> & sender, GdkEvent *ev, const Gtk::TextIter & iter)
-  {
-    auto editor = dynamic_cast<NoteEditor*>(sender.get());
-    Gtk::TextIter start, end;
-
-    if (!can_activate())
-      return false;
-
-    switch (ev->type) {
-    case GDK_BUTTON_PRESS:
-    {
-      guint button;
-      gdk_event_get_button(ev, &button);
-
-      // Do not insert selected text when activating links with
-      // middle mouse button
-      if(button == 2) {
-        m_allow_middle_activate = true;
-        return true;
-      }
-
-      return false;
-    }
-    case GDK_BUTTON_RELEASE:
-    {
-      guint button;
-      gdk_event_get_button(ev, &button);
-      if((button != 1) && (button != 2))
-        return false;
-
-      GdkModifierType state;
-      gdk_event_get_state(ev, &state);
-      /* Don't activate if Shift or Control is pressed */
-      if((state & (Gdk::SHIFT_MASK | Gdk::CONTROL_MASK)) != 0)
-        return false;
-
-      // Prevent activation when selecting links with the mouse
-      if(editor && editor->get_buffer()->get_has_selection()) {
-        return false;
-      }
-
-      // Don't activate if the link has just been pasted with the
-      // middle mouse button (no preceding ButtonPress event)
-      if(button == 2 && !m_allow_middle_activate) {
-        return false;
-      }
-      else {
-        m_allow_middle_activate = false;
-      }
-
-      get_extents (iter, start, end);
-      if(editor) {
-        on_activate(*editor, start, end);
-      }
-      return false;
-    }
-    case GDK_KEY_PRESS:
-    {
-      GdkModifierType state;
-      gdk_event_get_state(ev, &state);
-
-      // Control-Enter activates the link at point...
-      if((state & Gdk::CONTROL_MASK) == 0)
-        return false;
-
-      guint keyval;
-      gdk_event_get_keyval(ev, &keyval);
-      if(keyval != GDK_KEY_Return && keyval != GDK_KEY_KP_Enter)
-        return false;
-
-      get_extents (iter, start, end);
-      if(editor) {
-        return on_activate(*editor, start, end);
-      }
-    }
-    default:
-      break;
-    }
-
-    return false;
-  }
-
-
-  bool NoteTag::on_activate(const NoteEditor & editor , const Gtk::TextIter & start, 
-                            const Gtk::TextIter & end)
+  bool NoteTag::activate(const NoteEditor & editor, const Gtk::TextIter & pos)
   {
     bool retval = false;
-
-#if 0
-    if (Activated != null) {
-      foreach (Delegate d in Activated.GetInvocationList()) {
-        TagActivatedHandler handler = (TagActivatedHandler) d;
-        retval |= handler (*this, editor, start, end);
-      }
+    if(!can_activate()) {
+      return retval;
     }
-#endif
+
+    Gtk::TextIter start, end;
+    get_extents(pos, start, end);
     retval = m_signal_activate(editor, start, end);
 
     return retval;
-  }
-
-
-  Glib::RefPtr<Gdk::Pixbuf> NoteTag::get_image() const
-  {
-    Gtk::Image * image = dynamic_cast<Gtk::Image*>(m_widget);
-    if(!image) {
-      return Glib::RefPtr<Gdk::Pixbuf>();
-    }
-    return image->get_pixbuf();
-  }
-
-
-  void NoteTag::set_image(const Glib::RefPtr<Gdk::Pixbuf> & value)
-  {
-    if(!value) {
-      set_widget(NULL);
-      return;
-    }
-    set_widget(new Gtk::Image(value));
   }
 
 
@@ -332,8 +223,7 @@ namespace gnote {
   }
   
   DepthNoteTag::DepthNoteTag(int depth)
-    : NoteTag("depth:" + TO_STRING(depth) 
-              + ":" + TO_STRING((int)Pango::DIRECTION_LTR))
+    : NoteTag("depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::Direction::LTR))
     , m_depth(depth)
   {
   }
@@ -348,7 +238,7 @@ namespace gnote {
 
         // Write the list items writing direction
         xml.write_start_attribute ("dir");
-        if (get_direction() == Pango::DIRECTION_RTL) {
+        if (get_direction() == Pango::Direction::RTL) {
           xml.write_string ("rtl");
         }
         else {
@@ -371,107 +261,116 @@ namespace gnote {
     Gdk::RGBA active_link_color, visited_link_color;
     {
       Gtk::LinkButton link;
-      active_link_color = link.get_style_context()->get_color(Gtk::STATE_FLAG_LINK);
-      visited_link_color = link.get_style_context()->get_color(Gtk::STATE_FLAG_VISITED);
+      auto style_ctx = link.get_style_context();
+      style_ctx->set_state(Gtk::StateFlags::LINK);
+      active_link_color = style_ctx->get_color();
+      style_ctx->set_state(Gtk::StateFlags::VISITED);
+      visited_link_color = style_ctx->get_color();
     }
 
     // Font stylings
 
     tag = NoteTag::create("centered", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-    tag->property_justification() = Gtk::JUSTIFY_CENTER;
-    add (tag);
+    tag->property_justification() = Gtk::Justification::CENTER;
+    add(tag);
 
     tag = NoteTag::create("bold", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_weight() = PANGO_WEIGHT_BOLD;
-    add (tag);
+    add(tag);
 
     tag = NoteTag::create("italic", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-    tag->property_style() = Pango::STYLE_ITALIC;
-    add (tag);
+    tag->property_style() = Pango::Style::ITALIC;
+    add(tag);
     
     tag = NoteTag::create("strikethrough", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_strikethrough() = true;
-    add (tag);
+    add(tag);
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "yellow";
-    add (tag);
+    tag->property_background_set() = true;
+    add(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = "green";
     tag->set_can_serialize(false);
     tag->set_save_type(META);
-    add (tag);
+    add(tag);
 
     tag = NoteTag::create("note-title", 0);
     tag->property_foreground_rgba().set_value(active_link_color);
+    tag->property_foreground_set() = true;
     tag->property_scale() = Pango::SCALE_XX_LARGE;
     // FiXME: Hack around extra rewrite on open
     tag->set_can_serialize(false);
     tag->set_save_type(META);
-    add (tag);
+    add(tag);
       
     tag = NoteTag::create("related-to", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_left_margin() = 40;
     tag->property_editable() = false;
     tag->set_save_type(META);
-    add (tag);
+    add(tag);
 
     // Used when inserting dropped URLs/text to Start Here
     tag = NoteTag::create("datetime", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
-    tag->property_style() = Pango::STYLE_ITALIC;
+    tag->property_style() = Pango::Style::ITALIC;
     tag->property_foreground_rgba().set_value(visited_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add (tag);
+    add(tag);
 
     // Font sizes
 
     tag = NoteTag::create("size:huge", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_XX_LARGE;
-    add (tag);
+    add(tag);
 
     tag = NoteTag::create("size:large", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_X_LARGE;
-    add (tag);
+    add(tag);
 
     tag = NoteTag::create("size:normal", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_MEDIUM;
-    add (tag);
+    add(tag);
 
     tag = NoteTag::create("size:small", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_scale() = Pango::SCALE_SMALL;
-    add (tag);
+    add(tag);
 
     // Links
 
     tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
-    tag->property_underline() = Pango::UNDERLINE_SINGLE;
+    tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(visited_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add (tag);
+    add(tag);
     m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
-    tag->property_underline() = Pango::UNDERLINE_SINGLE;
+    tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add (tag);
+    add(tag);
     m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
-    tag->property_underline() = Pango::UNDERLINE_SINGLE;
+    tag->property_underline() = Pango::Underline::SINGLE;
     tag->property_foreground_rgba().set_value(active_link_color);
+    tag->property_foreground_set() = true;
     tag->set_save_type(META);
-    add (tag);
+    add(tag);
     m_url_tag = tag;
   }
 
 
   bool NoteTagTable::tag_is_serializable(const Glib::RefPtr<const Gtk::TextTag> & tag)
   {
-    NoteTag::ConstPtr note_tag = NoteTag::ConstPtr::cast_dynamic(tag);
+    NoteTag::ConstPtr note_tag = std::dynamic_pointer_cast<const NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_serialize();
     }
@@ -480,7 +379,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_growable(const Glib::RefPtr<Gtk::TextTag> & tag)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_grow();
     }
@@ -489,7 +388,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_undoable(const Glib::RefPtr<Gtk::TextTag> & tag)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_undo();
     }
@@ -499,7 +398,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_spell_checkable(const Glib::RefPtr<const Gtk::TextTag> & tag)
   {
-    NoteTag::ConstPtr note_tag = NoteTag::ConstPtr::cast_dynamic(tag);
+    NoteTag::ConstPtr note_tag = std::dynamic_pointer_cast<const NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_spell_check();
     }
@@ -509,7 +408,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_is_activatable(const Glib::RefPtr<Gtk::TextTag> & tag)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       return note_tag->can_activate();
     }
@@ -519,7 +418,7 @@ namespace gnote {
 
   bool NoteTagTable::tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag)
   {
-    return (bool)DepthNoteTag::Ptr::cast_dynamic(tag);
+    return (bool)std::dynamic_pointer_cast<DepthNoteTag>(tag);
   }
 
 
@@ -538,7 +437,7 @@ namespace gnote {
     change = OTHER_DATA_CHANGED;
 
     // Use SaveType for NoteTags
-    Glib::RefPtr<NoteTag> note_tag = Glib::RefPtr<NoteTag>::cast_dynamic(tag);
+    Glib::RefPtr<NoteTag> note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag) {
       switch(note_tag->save_type()) {
         case META:
@@ -560,17 +459,17 @@ namespace gnote {
 
   DepthNoteTag::Ptr NoteTagTable::get_depth_tag(int depth)
   {
-    Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::DIRECTION_LTR);
+    Glib::ustring name = "depth:" + TO_STRING(depth) + ":" + TO_STRING((int)Pango::Direction::LTR);
 
-    DepthNoteTag::Ptr tag = DepthNoteTag::Ptr::cast_dynamic(lookup(name));
+    DepthNoteTag::Ptr tag = std::dynamic_pointer_cast<DepthNoteTag>(lookup(name));
 
-    if (!tag) {
-      tag = DepthNoteTag::Ptr(new DepthNoteTag(depth));
+    if(!tag) {
+      tag = std::make_shared<DepthNoteTag>(depth);
       tag->property_indent().set_value(-14);
       tag->property_left_margin().set_value((depth+1) * 25);
       tag->property_pixels_below_lines().set_value(4);
       tag->property_scale().set_value(Pango::SCALE_MEDIUM);
-      add (tag);
+      add(tag);
     }
 
     return tag;
@@ -599,36 +498,5 @@ namespace gnote {
   {
     return m_tag_types.find(tag_name) != m_tag_types.end();
   }
-
-  void NoteTagTable::on_tag_added(const Glib::RefPtr<Gtk::TextTag> & tag)
-  {
-    m_added_tags.push_back(tag);
-
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
-    if (note_tag) {
-//      note_tag->signal_changed().connect(sigc::mem_fun(*this, &NoteTagTable::on_notetag_changed));
-    }
-  }
-
-  
-  void NoteTagTable::on_tag_removed(const Glib::RefPtr<Gtk::TextTag> & tag)
-  {
-    utils::remove_swap_back(m_added_tags, tag);
-
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
-    if (note_tag) {
-// TODO disconnect the signal
-//      note_tag.Changed -= OnTagChanged;
-    }
-  }
-
-
-#if 0
-  void NoteTagTable::on_notetag_changed(Glib::RefPtr<Gtk::TextTag>& tag, bool size_changed)
-  {
-    m_signal_changed(tag, size_changed);
-  }
-#endif
-
 }
 

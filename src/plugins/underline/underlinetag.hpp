@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2017 Aurimas Cernius
+ * Copyright (C) 2010,2017,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -38,7 +38,7 @@ public:
   UnderlineTag()
     : gnote::NoteTag("underline", CAN_GROW | CAN_UNDO | CAN_SPELL_CHECK)
     {
-      property_underline() = Pango::UNDERLINE_SINGLE;
+      property_underline() = Pango::Underline::SINGLE;
     }
 };
 

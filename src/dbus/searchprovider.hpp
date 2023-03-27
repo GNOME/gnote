@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2019 Aurimas Cernius
+ * Copyright (C) 2013,2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,14 +59,13 @@ private:
   Glib::VariantContainerBase GetResultMetas_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase ActivateResult_stub(const Glib::VariantContainerBase &);
   Glib::VariantContainerBase LaunchSearch_stub(const Glib::VariantContainerBase &);
-  gchar *get_icon();
+  const gchar *get_icon() const;
 
   typedef Glib::VariantContainerBase (SearchProvider::*stub_func)(const Glib::VariantContainerBase &);
   std::map<Glib::ustring, stub_func> m_stubs;
 
   gnote::IGnote & m_gnote;
   gnote::NoteManagerBase & m_manager;
-  Glib::RefPtr<Gio::Icon> m_note_icon;
 };
 
 }

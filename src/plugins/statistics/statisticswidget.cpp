@@ -37,7 +37,7 @@ public:
   typedef Glib::RefPtr<StatisticsModel> Ptr;
   static Ptr create(gnote::IGnote & g, gnote::NoteManager & nm)
     {
-      return Ptr(new StatisticsModel(g, nm));
+      return Glib::make_refptr_for_instance(new StatisticsModel(g, nm));
     }
 
   void update()
@@ -153,7 +153,7 @@ StatisticsWidget::StatisticsWidget(gnote::IGnote & g, gnote::NoteManager & nm)
 {
   set_hexpand(true);
   set_vexpand(true);
-  StatisticsModel::Ptr model = StatisticsModel::Ptr::cast_dynamic(get_model());
+  StatisticsModel::Ptr model = std::dynamic_pointer_cast<StatisticsModel>(get_model());
   set_model(model);
   set_headers_visible(false);
 
@@ -176,7 +176,7 @@ Glib::ustring StatisticsWidget::get_name() const
 void StatisticsWidget::foreground()
 {
   gnote::EmbeddableWidget::foreground();
-  StatisticsModel::Ptr model = StatisticsModel::Ptr::cast_static(get_model());
+  StatisticsModel::Ptr model = std::static_pointer_cast<StatisticsModel>(get_model());
   model->active(true);
   model->update();
   expand_all();
@@ -185,17 +185,17 @@ void StatisticsWidget::foreground()
 void StatisticsWidget::background()
 {
   gnote::EmbeddableWidget::background();
-  StatisticsModel::Ptr::cast_static(get_model())->active(false);
+  std::static_pointer_cast<StatisticsModel>(get_model())->active(false);
 }
 
-void StatisticsWidget::col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
+void StatisticsWidget::col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   Glib::ustring val;
   iter->get_value(0, val);
   static_cast<Gtk::CellRendererText*>(renderer)->property_markup() = "<b>" + val + "</b>";
 }
 
-void StatisticsWidget::col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter)
+void StatisticsWidget::col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
 {
   Glib::ustring val;
   iter->get_value(1, val);

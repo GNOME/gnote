@@ -48,9 +48,9 @@ public:
   std::map<Glib::ustring, const Glib::VariantType*> get_main_window_actions() const override;
   bool is_modifying_main_window_action(const Glib::ustring & action) const override;
 
-  void register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action, sigc::slot<void, const Glib::VariantBase&> callback) override;
+  void register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action, const ActionCallback & callback) override;
   void unregister_main_window_search_callback(const Glib::ustring & id) override;
-  std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> get_main_window_search_callbacks() override;
+  std::map<Glib::ustring, ActionCallback> get_main_window_search_callbacks() override;
 private:
   void make_app_actions();
   void make_app_menu_items();
@@ -83,7 +83,7 @@ private:
   AppMenuItemMultiMap m_app_menu_items;
   std::map<Glib::ustring, const Glib::VariantType*> m_main_window_actions;
   std::vector<Glib::ustring> m_non_modifying_actions;
-  std::map<Glib::ustring, std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>>> m_main_window_search_actions;
+  std::map<Glib::ustring, std::pair<Glib::ustring, ActionCallback>> m_main_window_search_actions;
 };
 
 

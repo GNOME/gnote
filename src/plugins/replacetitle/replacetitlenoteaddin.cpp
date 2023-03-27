@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2016-2017,2019 Aurimas Cernius
+ * Copyright (C) 2011-2013,2016-2017,2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  */
 
 #include <glibmm/i18n.h>
-#include <gtkmm/clipboard.h>
 
 #include "iactionmanager.hpp"
 #include "notewindow.hpp"
@@ -50,32 +49,34 @@ void ReplaceTitleNoteAddin::on_note_opened()
 std::vector<gnote::PopoverWidget> ReplaceTitleNoteAddin::get_actions_popover_widgets() const
 {
   auto widgets = NoteAddin::get_actions_popover_widgets();
-  auto button = gnote::utils::create_popover_button("win.replacetitle-replace", _("Replace title"));
-  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::REPLACE_TITLE_ORDER, button));
+  auto item = Gio::MenuItem::create(_("Replace title"), "win.replacetitle-replace");
+  widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::REPLACE_TITLE_ORDER, item));
   return widgets;
 }
 
 void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&)
 {
   // unix primary clipboard
-  Glib::RefPtr<Gtk::Clipboard> refClipboard = Gtk::Clipboard::get(GDK_SELECTION_PRIMARY);
-  const Glib::ustring newTitle = refClipboard->wait_for_text();
-  Glib::RefPtr<Gtk::TextBuffer> buffer = get_note()->get_buffer();
+  auto refClipboard = Gdk::Display::get_default()->get_primary_clipboard();
+  refClipboard->read_text_async([this, refClipboard](const Glib::RefPtr<Gio::AsyncResult> & result) {
+    const Glib::ustring newTitle = refClipboard->read_text_finish(result);
+    Glib::RefPtr<Gtk::TextBuffer> buffer = get_note()->get_buffer();
 
-  // replace note content
-  if(!newTitle.empty()) {
-    Gtk::TextIter title_start = buffer->get_iter_at_offset(0);
-    Gtk::TextIter title_end = title_start;
-    title_end.forward_to_line_end();
-    buffer->erase(title_start, title_end);
-    buffer->insert(buffer->get_iter_at_offset(0), newTitle);
-    title_end = title_start = buffer->get_iter_at_offset(0);
-    title_end.forward_to_line_end();
-    Glib::RefPtr<Gtk::TextTag> title_tag = buffer->get_tag_table()->lookup("note-title");
-    buffer->apply_tag(title_tag, title_start, title_end);
-    // in case the text was multile, new title is only the first line
-    get_note()->set_title(title_start.get_text(title_end));
-  }
+    // replace note content
+    if(!newTitle.empty()) {
+      Gtk::TextIter title_start = buffer->get_iter_at_offset(0);
+      Gtk::TextIter title_end = title_start;
+      title_end.forward_to_line_end();
+      buffer->erase(title_start, title_end);
+      buffer->insert(buffer->get_iter_at_offset(0), newTitle);
+      title_end = title_start = buffer->get_iter_at_offset(0);
+      title_end.forward_to_line_end();
+      Glib::RefPtr<Gtk::TextTag> title_tag = buffer->get_tag_table()->lookup("note-title");
+      buffer->apply_tag(title_tag, title_start, title_end);
+      // in case the text was multile, new title is only the first line
+      get_note()->set_title(title_start.get_text(title_end));
+    }
+  });
 }
 
 }

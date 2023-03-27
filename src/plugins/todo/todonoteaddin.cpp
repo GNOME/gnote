@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2023 Aurimas Cernius
  * Copyright (c) 2009 Romain Tartière <romain@blogreen.org>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@
  */
 
 
+#include "notetag.hpp"
 #include "todonoteaddin.hpp"
 
 
@@ -43,10 +44,10 @@ void Todo::initialize()
 {
   for(auto s : s_todo_patterns) {
     if(!get_note()->get_tag_table()->lookup(s)) {
-      Glib::RefPtr<Gtk::TextTag> tag = Gtk::TextTag::create(s);
+      Glib::RefPtr<Gtk::TextTag> tag = gnote::NoteTag::create(Glib::ustring(s), gnote::NoteTag::NO_FLAG);
       tag->property_foreground() = "#0080f0";
       tag->property_weight() = PANGO_WEIGHT_BOLD;
-      tag->property_underline() = Pango::UNDERLINE_SINGLE;
+      tag->property_underline() = Pango::Underline::SINGLE;
       get_note()->get_tag_table()->add(tag);
     }
   }
@@ -100,7 +101,7 @@ void Todo::highlight_region(const Glib::ustring & pattern, Gtk::TextIter start, 
 {
   get_buffer()->remove_tag_by_name(pattern, start, end);
   Gtk::TextIter region_start = start;
-  while(start.forward_search(pattern + ":", Gtk::TEXT_SEARCH_TEXT_ONLY, region_start, start, end)) {
+  while(start.forward_search(pattern + ":", Gtk::TextSearchFlags::TEXT_ONLY, region_start, start, end)) {
     Gtk::TextIter region_end = start;
     get_buffer()->apply_tag_by_name(pattern, region_start, region_end);
   }

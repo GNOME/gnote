@@ -54,21 +54,17 @@
 namespace gnote {
 
   Gnote::Gnote()
-    : Gtk::Application("org.gnome.Gnote", Gio::APPLICATION_HANDLES_COMMAND_LINE)
+    : Gtk::Application("org.gnome.Gnote", Gio::Application::Flags::HANDLES_COMMAND_LINE)
     , m_manager(NULL)
     , m_sync_manager(NULL)
     , m_is_background(false)
     , m_is_shell_search(false)
-    , m_prefsdlg(NULL)
     , m_cmd_line(*this)
   {
   }
 
   Gnote::~Gnote()
   {
-    if (m_prefsdlg) {
-      delete m_prefsdlg;
-    }
     if(m_sync_manager) {
       delete m_sync_manager;
     }
@@ -102,9 +98,10 @@ namespace gnote {
   void Gnote::on_startup()
   {
     Gtk::Application::on_startup();
-    m_icon_theme = Gtk::IconTheme::get_default();
-    m_icon_theme->append_search_path(DATADIR"/icons");
-    m_icon_theme->append_search_path(DATADIR"/gnote/icons");
+    auto display = Gdk::Display::get_default();
+    m_icon_theme = Gtk::IconTheme::get_for_display(display);
+    m_icon_theme->add_search_path(DATADIR"/icons");
+    m_icon_theme->add_search_path(DATADIR"/gnote/icons");
   }
 
 
@@ -213,15 +210,15 @@ namespace gnote {
 
   void Gnote::on_preferences_response(int /*res*/)
   {
-    delete m_prefsdlg;
-    m_prefsdlg = NULL;
+    m_prefsdlg.reset();
   }
 
 
   void Gnote::on_show_preferences_action(const Glib::VariantBase&)
   {
     if(!m_prefsdlg) {
-      m_prefsdlg = new PreferencesDialog(*this, default_note_manager());
+      m_prefsdlg = std::make_unique<PreferencesDialog>(*this, default_note_manager());
+      m_prefsdlg->set_transient_for(get_main_window());
       m_prefsdlg->signal_response().connect(
         sigc::mem_fun(*this, &Gnote::on_preferences_response));
     }
@@ -236,14 +233,13 @@ namespace gnote {
   void Gnote::on_show_help_shortcust_action(const Glib::VariantBase&)
   {
     Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file(DATADIR"/gnote/shortcuts-gnote.ui");
-    Gtk::ShortcutsWindow *win = nullptr;
-    builder->get_widget("shortcuts-gnote", win);
+    auto win = builder->get_widget<Gtk::ShortcutsWindow >("shortcuts-gnote");
     if(win == nullptr) {
       ERR_OUT(_("Failed to get shortcuts window!"));
       return;
     }
 
-    win->show();
+    manage(win)->show();
   }
 
   void Gnote::on_show_about_action(const Glib::VariantBase&)
@@ -263,37 +259,27 @@ namespace gnote {
     if (translators == "translator-credits")
       translators = "";
 
-    Gtk::AboutDialog about;
-    about.set_name("Gnote");
-    about.set_program_name("Gnote");
-    about.set_version(VERSION);
-    about.set_logo(m_icon_manager.get_icon(IconManager::GNOTE, 48));
-    about.set_copyright(_("Copyright \xc2\xa9 2010-2023 Aurimas Cernius\n"
-                          "Copyright \xc2\xa9 2009-2011 Debarshi Ray\n"
-                          "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
-                          "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
-    about.set_comments(_("A simple and easy to use desktop "
-                         "note-taking application."));
-// I don't think we need a hook.
-//      Gtk.AboutDialog.SetUrlHook (delegate (Gtk.AboutDialog dialog, string link) {
-//        try {
-//          Services.NativeApplication.OpenUrl (link);
-//        } catch (Exception e) {
-//          GuiUtils.ShowOpeningLocationError (dialog, link, e.Message);
-//        }
-//      }); 
-    about.set_website("http://live.gnome.org/Gnote");
-    about.set_website_label(_("Homepage"));
-    about.set_authors(authors);
-    about.set_documenters(documenters);
-    about.set_translator_credits(translators);
-//      about.set_icon_name("gnote");
+    auto about = Gtk::make_managed<Gtk::AboutDialog>();
+    about->set_name("Gnote");
+    about->set_program_name("Gnote");
+    about->set_version(VERSION);
+    about->set_logo_icon_name(IconManager::GNOTE);
+    about->set_copyright(_("Copyright \xc2\xa9 2010-2023 Aurimas Cernius\n"
+                           "Copyright \xc2\xa9 2009-2011 Debarshi Ray\n"
+                           "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
+                           "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
+    about->set_comments(_("A simple and easy to use desktop note-taking application."));
+    about->set_website("http://live.gnome.org/Gnote");
+    about->set_website_label(_("Homepage"));
+    about->set_authors(authors);
+    about->set_documenters(documenters);
+    about->set_translator_credits(translators);
     MainWindow & recent_changes = get_main_window();
     if(recent_changes.get_visible()) {
-      about.set_transient_for(recent_changes);
+      about->set_transient_for(recent_changes);
       recent_changes.present();
     }
-    about.run();
+    about->show();
   }
 
   MainWindow & Gnote::new_main_window()

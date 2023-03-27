@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2015,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2010,2012-2015,2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -122,7 +122,7 @@ private:
   IdImportAddinMap                         m_import_addins;
   typedef std::map<Glib::ustring, AddinPreferenceFactoryBase*> IdAddinPrefsMap;
   IdAddinPrefsMap                          m_addin_prefs;
-  sigc::signal<void>         m_application_addin_list_changed;
+  sigc::signal<void()> m_application_addin_list_changed;
 };
 
 }

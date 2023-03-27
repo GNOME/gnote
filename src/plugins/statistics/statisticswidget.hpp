@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,8 +39,8 @@ public:
   virtual void foreground() override;
   virtual void background() override;
 private:
-  void col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
-  void col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter & iter);
+  void col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
+  void col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
 };
 
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2021,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 
 #include <map>
 
-#include <glibmm/threads.h>
 #include <giomm/filemonitor.h>
 #include <giomm/settings.h>
 
@@ -71,7 +70,7 @@ private:
   void handle_note_saved(const gnote::NoteBase::Ptr &);
   void handle_file_system_change_event(const Glib::RefPtr<Gio::File> & file,
                                        const Glib::RefPtr<Gio::File> & other_file,
-                                       Gio::FileMonitorEvent event_type);
+                                       Gio::FileMonitor::Event event_type);
   bool handle_timeout();
   void delete_note(const Glib::ustring & note_id);
   void add_or_update_note(const Glib::ustring & note_id);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -32,12 +32,12 @@ namespace gnote {
   namespace notebooks {
 
     CreateNotebookDialog::CreateNotebookDialog(Gtk::Window *parent, GtkDialogFlags f, IGnote & g)
-      : utils::HIGMessageDialog(parent, f, Gtk::MESSAGE_OTHER, Gtk::BUTTONS_NONE)
+      : utils::HIGMessageDialog(parent, f, Gtk::MessageType::OTHER, Gtk::ButtonsType::NONE)
       , m_gnote(g)
     {
       set_title(_("Create Notebook"));
       Gtk::Grid *table = manage(new Gtk::Grid);
-      table->set_orientation(Gtk::ORIENTATION_HORIZONTAL);
+      table->set_orientation(Gtk::Orientation::HORIZONTAL);
       table->set_column_spacing(6);
       
       Gtk::Label *label = manage(new Gtk::Label (_("N_otebook name:"), true));
@@ -62,16 +62,15 @@ namespace gnote {
       
       set_extra_widget(table);
       
-      add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL, false);
+      add_button(_("_Cancel"), Gtk::ResponseType::CANCEL, false);
       // Translation note: This is the Create button in the Create
       // New Note Dialog.
-      add_button(_("C_reate"), Gtk::RESPONSE_OK, true);
+      add_button(_("C_reate"), Gtk::ResponseType::OK, true);
       
       // Only let the Ok response be sensitive when
       // there's something in nameEntry
-      set_response_sensitive (Gtk::RESPONSE_OK, false);
-      m_errorLabel.hide ();
-
+      set_response_sensitive(Gtk::ResponseType::OK, false);
+      m_errorLabel.hide();
     }
 
 
@@ -98,9 +97,7 @@ namespace gnote {
         m_errorLabel.hide ();
       }
       
-      set_response_sensitive (Gtk::RESPONSE_OK,
-        (get_notebook_name().empty() || nameTaken) ? false : true);
-
+      set_response_sensitive(Gtk::ResponseType::OK, (get_notebook_name().empty() || nameTaken) ? false : true);
     }
 
   }

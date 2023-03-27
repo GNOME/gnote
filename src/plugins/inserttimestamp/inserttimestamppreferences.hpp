@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019-2020,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,10 +23,10 @@
 #define __INSERTTIMESTAMP_PREFERENCES_HPP_
 
 
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
-#include <gtkmm/radiobutton.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/treeview.h>
 
@@ -70,8 +70,8 @@ private:
   static Glib::RefPtr<Gio::Settings> s_settings;
 
   FormatColumns     m_columns;
-  Gtk::RadioButton *selected_radio;
-  Gtk::RadioButton *custom_radio;
+  Gtk::CheckButton *selected_radio;
+  Gtk::CheckButton *custom_radio;
 
   Gtk::ScrolledWindow         *scroll;
   Gtk::TreeView               *tv;

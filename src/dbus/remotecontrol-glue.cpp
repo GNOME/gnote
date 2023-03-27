@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017,2020 Aurimas Cernius
+ * Copyright (C) 2011,2017,2020,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -102,10 +102,6 @@ void RemoteControl_adaptor::on_method_call(const Glib::RefPtr<Gio::DBus::Connect
     try {
       stub_func func = iter->second;
       invocation->return_value((this->*func)(parameters));
-    }
-    catch(Glib::Exception & e) {
-      invocation->return_error(Gio::DBus::Error(Gio::DBus::Error::UNKNOWN_METHOD,
-                               "Exception in method " + method_name + ": " + e.what()));
     }
     catch(std::exception & e) {
       invocation->return_error(Gio::DBus::Error(Gio::DBus::Error::UNKNOWN_METHOD,

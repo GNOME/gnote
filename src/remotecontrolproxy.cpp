@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017,2019,2021-2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ namespace {
       interface = node->lookup_interface(interface_name);
     }
     catch(Glib::Error & e) {
-      ERR_OUT(_("Failed to load D-Bus interface %s: %s"), interface_name, e.what().c_str());
+      ERR_OUT(_("Failed to load D-Bus interface %s: %s"), interface_name, e.what());
     }
     catch(sharp::Exception & e) {
       ERR_OUT(_("Failed to load D-Bus interface %s: %s"), interface_name, e.what());

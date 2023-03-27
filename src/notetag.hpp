@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -57,8 +57,7 @@ class NoteTag
 public:
   typedef Glib::RefPtr<NoteTag> Ptr;
   typedef Glib::RefPtr<const NoteTag> ConstPtr;
-  typedef sigc::signal<bool, const NoteEditor &,
-                       const Gtk::TextIter &, const Gtk::TextIter &> TagActivatedHandler;
+  typedef sigc::signal<bool(const NoteEditor &, const Gtk::TextIter &, const Gtk::TextIter &)> TagActivatedHandler;
 
   enum TagFlags {
     NO_FLAG       = 0,
@@ -72,7 +71,7 @@ public:
 
   static Ptr create(Glib::ustring && tag_name, int flags)
     {
-      return Ptr(new NoteTag(std::move(tag_name), flags));
+      return Glib::make_refptr_for_instance(new NoteTag(std::move(tag_name), flags));
     }
   const Glib::ustring & get_element_name() const
     { 
@@ -111,6 +110,7 @@ public:
       return (m_flags & CAN_ACTIVATE) != 0;
     }
   void set_can_activate(bool value);
+  virtual bool activate(const NoteEditor & , const Gtk::TextIter &);
   bool can_split() const
     {
       return (m_flags & CAN_SPLIT) != 0;
@@ -121,8 +121,6 @@ public:
                    Gtk::TextIter & end);
   virtual void write(sharp::XmlWriter &, bool) const;
   virtual void read(sharp::XmlReader &, bool);
-  virtual Glib::RefPtr<Gdk::Pixbuf> get_image() const;
-  virtual void set_image(const Glib::RefPtr<Gdk::Pixbuf> &);
   virtual Gtk::Widget * get_widget() const
     {
       return m_widget;
@@ -141,7 +139,7 @@ public:
     { 
       return m_signal_activate;
     }
-  sigc::signal<void,const Gtk::TextTag&,bool> & signal_changed()
+  sigc::signal<void(const Gtk::TextTag&, bool)> & signal_changed()
     { 
       return m_signal_changed;
     }
@@ -151,17 +149,13 @@ protected:
   virtual void initialize(Glib::ustring && element_name);
 
   friend class NoteTagTable;
-
-  virtual bool on_event(const Glib::RefPtr<Glib::Object> &, GdkEvent *, const Gtk::TextIter & ) override;
-  virtual bool on_activate(const NoteEditor & , const Gtk::TextIter &, const Gtk::TextIter &);
 private:
   Glib::ustring       m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;
   Gtk::Widget       * m_widget;
-  bool                m_allow_middle_activate;
   int                 m_flags;
   TagActivatedHandler m_signal_activate;
-  sigc::signal<void,const Gtk::TextTag&,bool> m_signal_changed;
+  sigc::signal<void(const Gtk::TextTag&, bool)> m_signal_changed;
   TagSaveType         m_save_type;
 };
 
@@ -215,7 +209,7 @@ public:
     }
   Pango::Direction get_direction() const
     {
-      return Pango::DIRECTION_LTR;
+      return Pango::Direction::LTR;
     }
   virtual void write(sharp::XmlWriter &, bool) const override;
 private:
@@ -254,7 +248,7 @@ class NoteTagTable
 {
 public:
   typedef Glib::RefPtr<NoteTagTable> Ptr;
-  typedef sigc::slot<DynamicNoteTag::Ptr> Factory;
+  typedef sigc::slot<DynamicNoteTag::Ptr()> Factory;
 
   static const NoteTagTable::Ptr & instance() 
     {
@@ -296,23 +290,17 @@ public:
     {
       return m_broken_link_tag;
     }
-  
 protected:
   NoteTagTable()
     {
       _init_common_tags();
     }
 
-  virtual void on_tag_added(const Glib::RefPtr<Gtk::TextTag> &) override;
-  virtual void on_tag_removed(const Glib::RefPtr<Gtk::TextTag> &) override;
-//  virtual void on_notetag_changed(Glib::RefPtr<Gtk::TextTag>& tag, bool size_changed);
-
 private:
   void _init_common_tags();
 
   static NoteTagTable::Ptr           s_instance;
   std::map<Glib::ustring, Factory>   m_tag_types;
-  std::vector<Glib::RefPtr<Gtk::TextTag> > m_added_tags;
 
   NoteTag::Ptr m_url_tag;
   NoteTag::Ptr m_link_tag;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014,2016-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2016-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,6 @@
  */
 
 #include <glibmm/i18n.h>
-#include <gtkmm/modelbutton.h>
 #include <gtkmm/separator.h>
 
 #include "sharp/string.hpp"
@@ -71,56 +70,48 @@ void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
 
 std::vector<gnote::PopoverWidget> BacklinksNoteAddin::get_actions_popover_widgets() const
 {
-  auto widgets = NoteAddin::get_actions_popover_widgets();
-  auto menu_button = gnote::utils::create_popover_submenu_button("backlinks-menu", _("What links here?"));
-  widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::BACKLINKS_ORDER, menu_button));
+  auto submenu = Gio::Menu::create();
+  update_menu(*submenu);
 
-  auto submenu = gnote::utils::create_popover_submenu("backlinks-menu");
-  update_menu(submenu);
-  widgets.push_back(gnote::PopoverWidget::create_custom_section(submenu));
+  auto widgets = NoteAddin::get_actions_popover_widgets();
+  auto menu_button = Gio::MenuItem::create(_("What links here?"), submenu);
+  widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::BACKLINKS_ORDER, menu_button));
 
   return widgets;
 }
 
-void BacklinksNoteAddin::update_menu(Gtk::Box *menu) const
+void BacklinksNoteAddin::update_menu(Gio::Menu & menu) const
 {
   auto items = get_backlink_menu_items();
-  bool have_items = false;
   for(auto item : items) {
-    dynamic_cast<Gtk::ModelButton*>(item)->property_inverted() = true;
-    menu->add(*item);
+    menu.append_item(item);
   }
 
   // If nothing was found, add in a "dummy" item
-  if(!have_items) {
-    Gtk::Widget *blank_item = manage(gnote::utils::create_popover_button("win.backlinks-nonexistent", _("(none)")));
-    menu->add(*blank_item);
+  if(items.size() == 0) {
+    auto blank_item = Gio::MenuItem::create(_("(none)"), "win.backlinks-nonexistent");
+    menu.append_item(blank_item);
   }
-  menu->add(*manage(new Gtk::Separator));
-
-  auto back = gnote::utils::create_popover_submenu_button("main", _("_Back"));
-  dynamic_cast<Gtk::ModelButton*>(back)->property_inverted() = true;
-  menu->add(*back);
 }
 
 
-std::vector<Gtk::Widget*> BacklinksNoteAddin::get_backlink_menu_items() const
+std::vector<Glib::RefPtr<Gio::MenuItem>> BacklinksNoteAddin::get_backlink_menu_items() const
 {
-  std::vector<Gtk::Widget*> items;
   gnote::NoteBase::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
+  std::sort(notes.begin(), notes.end(), [](const gnote::NoteBase::Ptr & x, const gnote::NoteBase::Ptr & y)
+    {
+      return x->get_title() < y->get_title();
+    });
+
+  std::vector<Glib::RefPtr<Gio::MenuItem>> items;
   for(const gnote::NoteBase::Ptr & note : notes) {
     if(note != get_note()) { // don't match ourself
-      auto button = manage(gnote::utils::create_popover_button("win.backlinks-open-note", Glib::ustring(note->get_title())));
-      gtk_actionable_set_action_target_value(GTK_ACTIONABLE(button->gobj()),
-        Glib::Variant<Glib::ustring>::create(note->uri()).gobj());
-      items.push_back(button);
+      auto item = Gio::MenuItem::create(note->get_title(), "");
+      item->set_action_and_target("win.backlinks-open-note", Glib::Variant<Glib::ustring>::create(note->uri()));
+      items.push_back(std::move(item));
     }
   }
 
-  std::sort(items.begin(), items.end(), [](Gtk::Widget *x, Gtk::Widget *y)
-    {
-      return dynamic_cast<Gtk::ModelButton*>(x)->get_label() < dynamic_cast<Gtk::ModelButton*>(y)->get_label();
-    });
 
   return items;
 }

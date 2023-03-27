@@ -1,7 +1,7 @@
 project('gnote', 'cpp',
   version: '45.alpha',
   meson_version: '>=0.59.0',
-  default_options: 'cpp_std=c++14',
+  default_options: ['cpp_std=c++17'],
 )
 
 gnome = import('gnome')
@@ -10,24 +10,25 @@ i18n = import('i18n')
 gnote_release = meson.project_version().split('.')[0]
 libgnote_version_info = '0.0.0'
 
-glib_version = '>=2.62'
+glib_version = '>=2.74'
 gio_dep = dependency('gio-2.0', version: glib_version)
 
 dependencies = [
-  dependency('glibmm-2.4', version: glib_version),
-  dependency('giomm-2.4', version: glib_version),
-  dependency('gtkmm-3.0', version: '>=3.22.20'),
+  dependency('glibmm-2.68', version: glib_version),
+  dependency('giomm-2.68', version: glib_version),
+  dependency('gtkmm-4.0', version: '>=4.0.0'),
   dependency('libsecret-1', version: '>=0.8'),
   dependency('libxml-2.0'),
   dependency('libxslt'),
   dependency('uuid'),
 ]
 
-gspell = dependency('gspell-1', version: '>=1.6.0', required: false)
-if gspell.found()
-  dependencies = [dependencies, gspell]
-  add_project_arguments('-DENABLE_GSPELL=1', language: 'cpp')
-endif
+# Need updated version that support GTK 4
+#gspell = dependency('gspell-1', version: '>=1.6.0', required: false)
+#if gspell.found()
+#  dependencies = [dependencies, gspell]
+#  add_project_arguments('-DENABLE_GSPELL=1', language: 'cpp')
+#endif
 
 unit_test_pp = dependency('UnitTest++', version: '>=1.5.1', required: false)
 

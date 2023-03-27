@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015,2019 Aurimas Cernius
+ * Copyright (C) 2013,2015,2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,6 @@
 
 #ifndef _STATISTICS_APPLICATION_ADDIN_
 #define _STATISTICS_APPLICATION_ADDIN_
-
-#include <gtkmm/action.h>
 
 #include "applicationaddin.hpp"
 #include "statisticswidget.hpp"

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2016,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2012-2016,2019,2021-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,9 +27,6 @@
 #include <map>
 
 #include <sigc++/connection.h>
-
-#include <gtkmm/menuitem.h>
-#include <gtkmm/toolitem.h>
 
 #include "sharp/exception.hpp"
 #include "abstractaddin.hpp"
@@ -72,7 +69,7 @@ public:
   virtual void on_note_opened () = 0;
 
   virtual std::vector<PopoverWidget> get_actions_popover_widgets() const;
-  void register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void, const Glib::VariantBase&> && callback);
+  void register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void(const Glib::VariantBase&)> && callback);
 
   const Note::Ptr & get_note() const
     {
@@ -102,19 +99,13 @@ public:
       return m_note->manager();
     }
   void on_note_opened_event(Note & );
-  void add_tool_item (Gtk::ToolItem *item, int position);
-  void add_text_menu_item(Gtk::Widget *item);
 private:
   void on_note_foregrounded();
   void on_note_backgrounded();
-  void append_text_item(Gtk::Widget *text_menu, Gtk::Widget & item);
 
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
-  std::vector<Gtk::Widget*>     m_text_menu_items;
-  typedef std::map<Gtk::ToolItem*, int> ToolItemMap;
-  ToolItemMap                   m_toolbar_items;
-  typedef std::pair<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> ActionCallback;
+  typedef std::pair<Glib::ustring, sigc::slot<void(const Glib::VariantBase&)>> ActionCallback;
   std::vector<ActionCallback>   m_action_callbacks;
   std::vector<sigc::connection> m_action_callbacks_cids;
 };

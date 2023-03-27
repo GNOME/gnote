@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017,2020 Aurimas Cernius
+ * Copyright (C) 2011,2017,2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -72,7 +72,7 @@ namespace sharp {
   }
 
 
-  PropertyEditorBool::PropertyEditorBool(BoolPropertyGetterT && getter, BoolPropertySetterT && setter, Gtk::ToggleButton &button)
+  PropertyEditorBool::PropertyEditorBool(BoolPropertyGetterT getter, BoolPropertySetterT setter, Gtk::CheckButton &button)
     : PropertyEditorBase(std::move(getter), std::move(setter), button)
   {
     m_connection = button.property_active().signal_changed().connect(
@@ -91,13 +91,13 @@ namespace sharp {
   void PropertyEditorBool::setup()
   {
     m_connection.block();
-    static_cast<Gtk::ToggleButton &>(m_widget).set_active(m_getter());
+    static_cast<Gtk::CheckButton &>(m_widget).set_active(m_getter());
     m_connection.unblock();        
   }
 
   void PropertyEditorBool::on_changed()
   {
-    bool active = static_cast<Gtk::ToggleButton &>(m_widget).get_active();
+    bool active = static_cast<Gtk::CheckButton &>(m_widget).get_active();
     m_setter(active);
     guard(active);
   }

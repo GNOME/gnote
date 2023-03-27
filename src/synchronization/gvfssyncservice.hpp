@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2021 Aurimas Cernius
+ * Copyright (C) 2019-2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 
 #include <functional>
+#include <giomm/mount.h>
 #include "synchronization/syncserviceaddin.hpp"
 
 

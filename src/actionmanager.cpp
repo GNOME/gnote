@@ -67,11 +67,17 @@ namespace gnote {
     make_app_menu_items();
 
     register_main_window_action("close-window", NULL, false);
+    register_main_window_action("open-note", NULL, false);
+    register_main_window_action("open-note-new-window", NULL, false);
     register_main_window_action("delete-note", NULL, false);
+    register_main_window_action("delete-selected-notes", NULL, false);
     register_main_window_action("important-note", &Glib::Variant<bool>::variant_type(), false);
     register_main_window_action("enable-spell-check", &Glib::Variant<bool>::variant_type());
     register_main_window_action("new-notebook", NULL, false);
+    register_main_window_action("rename-notebook", NULL, false);
+    register_main_window_action("delete-notebook", NULL, false);
     register_main_window_action("move-to-notebook", &Glib::Variant<Glib::ustring>::variant_type(), false);
+    register_main_window_action("open-template-note", NULL, false);
     register_main_window_action("undo", NULL, true);
     register_main_window_action("redo", NULL, true);
     register_main_window_action("link", NULL, true);
@@ -80,7 +86,6 @@ namespace gnote {
     register_main_window_action("change-font-strikeout", &Glib::Variant<bool>::variant_type(), true);
     register_main_window_action("change-font-highlight", &Glib::Variant<bool>::variant_type(), true);
     register_main_window_action("change-font-size", &Glib::Variant<Glib::ustring>::variant_type(), true);
-    register_main_window_action("enable-bullets", &Glib::Variant<bool>::variant_type(), true);
     register_main_window_action("increase-indent", NULL, true);
     register_main_window_action("decrease-indent", NULL, true);
 
@@ -157,8 +162,7 @@ namespace gnote {
     return std::find(m_non_modifying_actions.begin(), m_non_modifying_actions.end(), action) == m_non_modifying_actions.end();
   }
 
-  void ActionManager::register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action,
-                                                    sigc::slot<void, const Glib::VariantBase&> callback)
+  void ActionManager::register_main_window_search_callback(Glib::ustring && id, Glib::ustring && action, const IActionManager::ActionCallback & callback)
   {
     DBG_ASSERT(m_main_window_search_actions.find(id) == m_main_window_search_actions.end(), "Duplicate callback for main window search");
 
@@ -172,9 +176,9 @@ namespace gnote {
     signal_main_window_search_actions_changed();
   }
 
-  std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> ActionManager::get_main_window_search_callbacks()
+  std::map<Glib::ustring, IActionManager::ActionCallback> ActionManager::get_main_window_search_callbacks()
   {
-    std::map<Glib::ustring, sigc::slot<void, const Glib::VariantBase&>> cbacks;
+    std::map<Glib::ustring, ActionCallback> cbacks;
     for(auto & iter : m_main_window_search_actions) {
       cbacks.insert(iter.second);
     }
@@ -184,7 +188,8 @@ namespace gnote {
   void ActionManager::add_app_menu_items(std::vector<PopoverWidget> & widgets)
   {
     for(auto& iter : m_app_menu_items) {
-      widgets.push_back(PopoverWidget(iter.first, iter.second.order, utils::create_popover_button(iter.second.action_def, Glib::ustring(iter.second.label))));
+      auto item = Gio::MenuItem::create(iter.second.label, iter.second.action_def);
+      widgets.push_back(PopoverWidget(iter.first, iter.second.order, item));
     }
   }
 

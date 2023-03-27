@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2019 Aurimas Cernius
+ * Copyright (C) 2017-2019,2022 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +18,9 @@
  */
 
 
+#include <thread>
 #include <glibmm/init.h>
 #include <glibmm/main.h>
-#include <glibmm/thread.h>
 #include <giomm/init.h>
 
 #include <UnitTest++/UnitTest++.h>
@@ -29,17 +29,19 @@ int main(int /*argc*/, char ** /*argv*/)
 {
   // force certain timezone so that time tests work
   setenv("TZ", "Europe/London", 1);
+  // also force the locale for formatting tests
+  setenv("LC_ALL", "en_US", 1);
   Glib::init();
   Gio::init();
 
   auto main_loop = Glib::MainLoop::create();
   int ret = 0;
-  auto thread = Glib::Thread::create([&main_loop, &ret]() {
+  std::thread thread([&main_loop, &ret]() {
     ret = UnitTest::RunAllTests();
     main_loop->quit();
   });
   main_loop->run();
-  thread->join();
+  thread.join();
   return ret;
 }
 

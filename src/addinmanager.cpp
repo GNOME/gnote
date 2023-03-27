@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -246,17 +246,17 @@ namespace {
   {
     std::vector<Glib::ustring> addins;
     bool global_addins_prefs_loaded = true;
-    Glib::KeyFile global_addins_prefs;
+    auto global_addins_prefs = Glib::KeyFile::create();
     try {
-      global_addins_prefs.load_from_file(m_addins_prefs_file);
+      global_addins_prefs->load_from_file(m_addins_prefs_file);
     }
     catch(Glib::Error & not_loaded) {
       global_addins_prefs_loaded = false;
     }
 
     for(AddinInfoMap::const_iterator iter = m_addin_infos.begin(); iter != m_addin_infos.end(); ++iter) {
-      if(global_addins_prefs_loaded && global_addins_prefs.has_key("Enabled", iter->first)) {
-        if(global_addins_prefs.get_boolean("Enabled", iter->first)) {
+      if(global_addins_prefs_loaded && global_addins_prefs->has_key("Enabled", iter->first)) {
+        if(global_addins_prefs->get_boolean("Enabled", iter->first)) {
           addins.push_back(iter->second.addin_module());
         }
       }
@@ -500,9 +500,9 @@ namespace {
 
   void AddinManager::save_addins_prefs() const
   {
-    Glib::KeyFile global_addins_prefs;
+    auto global_addins_prefs = Glib::KeyFile::create();
     try {
-      global_addins_prefs.load_from_file(m_addins_prefs_file);
+      global_addins_prefs->load_from_file(m_addins_prefs_file);
     }
     catch (Glib::Error & not_loaded_ignored) {
     }
@@ -513,15 +513,10 @@ namespace {
       const Glib::ustring & mod_id = iter->first;
       sharp::ModuleMap::const_iterator mod_iter = modules.find(iter->second.addin_module());
       bool enabled = mod_iter != modules.end() && mod_iter->second->is_enabled();
-      global_addins_prefs.set_boolean("Enabled", mod_id, enabled);
+      global_addins_prefs->set_boolean("Enabled", mod_id, enabled);
     }
 
-    Glib::RefPtr<Gio::File> prefs_file = Gio::File::create_for_path(
-                                           m_addins_prefs_file);
-    Glib::RefPtr<Gio::FileOutputStream> prefs_file_stream
-                                          = prefs_file->append_to();
-    prefs_file_stream->truncate(0);
-    prefs_file_stream->write(global_addins_prefs.to_data());
+    global_addins_prefs->save_to_file(m_addins_prefs_file);
   }
 
   AddinInfo AddinManager::get_addin_info(const Glib::ustring & id) const

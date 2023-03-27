@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2015-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2010-2013,2015-2017,2019-2021,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 
 
 
+#include <gdkmm/monitor.h>
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 #include <gtkmm/image.h>
@@ -59,8 +60,8 @@ namespace printnotes {
   std::vector<gnote::PopoverWidget> PrintNotesNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
-    auto button = gnote::utils::create_popover_button("win.printnotes-print", _("Print…"));
-    widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::PRINT_ORDER, button));
+    auto item = Gio::MenuItem::create(_("Print…"), "win.printnotes-print");
+    widgets.push_back(gnote::PopoverWidget::create_for_note(gnote::PRINT_ORDER, item));
     return widgets;
   }
 
@@ -73,7 +74,7 @@ namespace printnotes {
 
       Glib::RefPtr<Gtk::PrintSettings> settings = Gtk::PrintSettings::create();
 
-      Glib::ustring dir = Glib::get_user_special_dir(Glib::USER_DIRECTORY_DOCUMENTS);
+      Glib::ustring dir = Glib::get_user_special_dir(Glib::UserDirectory::DOCUMENTS);
       if (dir.empty()) {
         dir = Glib::get_home_dir();
       }
@@ -97,19 +98,20 @@ namespace printnotes {
       m_print_op->signal_end_print().connect(
         sigc::mem_fun(*this, &PrintNotesNoteAddin::on_end_print));
 
-      m_print_op->run(Gtk::PRINT_OPERATION_ACTION_PRINT_DIALOG, *get_host_window());
+      m_print_op->run(Gtk::PrintOperation::Action::PRINT_DIALOG, *get_host_window());
     } 
     catch (const sharp::Exception & e) 
     {
       DBG_OUT("Exception while printing %s: %s", get_note()->get_title().c_str(),
               e.what());
-      gnote::utils::HIGMessageDialog dlg(get_host_window(),
+      auto dlg = Gtk::make_managed<gnote::utils::HIGMessageDialog>(get_host_window(),
                                          GTK_DIALOG_MODAL,
-                                         Gtk::MESSAGE_ERROR,
-                                         Gtk::BUTTONS_OK,
+                                         Gtk::MessageType::ERROR,
+                                         Gtk::ButtonsType::OK,
                                          _("Error printing note"),
                                          e.what());
-      dlg.run ();
+      dlg->show();
+      dlg->signal_response().connect([dlg](int) { dlg->hide(); });
     }
     m_print_op.reset();
   }
@@ -124,20 +126,25 @@ namespace printnotes {
     std::vector<Pango::Attribute> attributes;
     indentation = 0;
 
-    Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tags = position.get_tags();
+    auto tags = position.get_tags();
     position.forward_to_tag_toggle(Glib::RefPtr<Gtk::TextTag>(NULL));
     if (position.compare (limit) > 0) {
       position = limit;
     }
 
-    Glib::RefPtr<Gdk::Screen> screen = get_window()->get_screen();
-    double screen_dpiX = screen->get_width_mm() * 254 / screen->get_width();
+    double screen_dpiX;
+    {
+      auto window = dynamic_cast<Gtk::Window*>(get_window()->host());
+      if(!window) {
+        return attributes;
+      }
+      auto monitor = window->get_display()->get_monitor_at_surface(window->get_surface());
+      Gdk::Rectangle rect;
+      monitor->get_geometry(rect);
+      screen_dpiX = monitor->get_width_mm() * 254.0 / rect.get_width();
+    }
 
-    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator iter = tags.begin();
-        iter != tags.end(); ++iter) {
-      
-      Glib::RefPtr<Gtk::TextTag> tag(*iter);
-
+    for(auto tag : tags) {
       if (tag->property_paragraph_background_set()) {
         Gdk::RGBA color = tag->property_paragraph_background_rgba();
         attributes.push_back(Pango::Attribute::create_attr_background(
@@ -176,7 +183,7 @@ namespace printnotes {
                                tag->property_style()));
       }
       if (tag->property_underline_set() 
-          && tag->property_underline() != Pango::UNDERLINE_ERROR) {
+          && tag->property_underline() != Pango::Underline::ERROR) {
         attributes.push_back(
           Pango::Attribute::create_attr_underline (
             tag->property_underline()));
@@ -252,7 +259,7 @@ namespace printnotes {
     }
     layout->set_width(pango_units_from_double((int)context->get_width() -
                                               m_margin_left - m_margin_right - indentation));
-    layout->set_wrap (Pango::WRAP_WORD_CHAR);
+    layout->set_wrap(Pango::WrapMode::WORD_CHAR);
     layout->set_text (get_buffer()->get_slice (p_start, p_end, false));
     return layout;
   }
@@ -264,15 +271,15 @@ namespace printnotes {
   {
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout();
     Pango::FontDescription font_desc = get_window()->editor()->get_pango_context()->get_font_description();
-    font_desc.set_style(Pango::STYLE_NORMAL);
-    font_desc.set_weight(Pango::WEIGHT_LIGHT);
+    font_desc.set_style(Pango::Style::NORMAL);
+    font_desc.set_weight(Pango::Weight::LIGHT);
     layout->set_font_description(font_desc);
     layout->set_width(pango_units_from_double((int)context->get_width()));
 
     // %1 is the page number, %2 is the total number of pages
     Glib::ustring footer_left = Glib::ustring::compose(_("Page %1 of %2"),
                                   page_number, total_pages);
-    layout->set_alignment(Pango::ALIGN_LEFT);
+    layout->set_alignment(Pango::Alignment::LEFT);
     layout->set_text (footer_left);
 
     return layout;
@@ -286,12 +293,12 @@ namespace printnotes {
 
     Glib::RefPtr<Pango::Layout> layout = context->create_pango_layout ();
     Pango::FontDescription font_desc = get_window()->editor()->get_pango_context()->get_font_description();
-    font_desc.set_style(Pango::STYLE_NORMAL);
-    font_desc.set_weight(Pango::WEIGHT_LIGHT);
+    font_desc.set_style(Pango::Style::NORMAL);
+    font_desc.set_weight(Pango::Weight::LIGHT);
     layout->set_font_description(font_desc);
     layout->set_width(pango_units_from_double((int) context->get_width()));
 
-    layout->set_alignment(Pango::ALIGN_RIGHT);
+    layout->set_alignment(Pango::Alignment::RIGHT);
     layout->set_text (timestamp);
 
     return layout;

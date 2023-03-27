@@ -18,40 +18,11 @@
  */
 
 #include <gtkmm/label.h>
-#include <gtkmm/modelbutton.h>
 
 #include "iactionmanager.hpp"
 #include "popoverwidgets.hpp"
 
 namespace gnote {
-  namespace {
-    class PopoverSubmenuBox
-      : public Gtk::Box
-      , public PopoverSubmenu
-    {
-    public:
-      PopoverSubmenuBox(Glib::ustring && submenu)
-        : Gtk::Box(Gtk::ORIENTATION_VERTICAL)
-        , PopoverSubmenu(std::move(submenu))
-      {
-        utils::set_common_popover_widget_props(*this);
-      }
-    };
-
-
-    void set_common_popover_button_props(Gtk::ModelButton & button)
-    {
-      button.set_use_underline(true);
-      button.property_margin_top() = 3;
-      button.property_margin_bottom() = 3;
-      auto lbl = dynamic_cast<Gtk::Label*>(button.get_child());
-      if(lbl) {
-        lbl->set_xalign(0.0f);
-      }
-      utils::set_common_popover_widget_props(button);
-    }
-  }
-
 
 const int APP_SECTION_NEW = 1;
 const int APP_SECTION_MANAGE = 2;
@@ -64,61 +35,37 @@ const int NOTE_SECTION_CUSTOM_SECTIONS = 10;
 const int NOTE_SECTION_FLAGS = 20;
 const int NOTE_SECTION_ACTIONS = 30;
 
-PopoverWidget PopoverWidget::create_for_app(int ord, Gtk::Widget *w)
+PopoverWidget PopoverWidget::create_for_app(int ord, const Glib::RefPtr<Gio::MenuItem> w)
 {
   return PopoverWidget(APP_SECTION_MANAGE, ord, w);
 }
 
-PopoverWidget PopoverWidget::create_for_note(int ord, Gtk::Widget *w)
+PopoverWidget PopoverWidget::create_for_note(int ord, const Glib::RefPtr<Gio::MenuItem> w)
 {
   return PopoverWidget(NOTE_SECTION_ACTIONS, ord, w);
 }
 
-PopoverWidget PopoverWidget::create_custom_section(Gtk::Widget *w)
+PopoverWidget PopoverWidget::create_custom_section(const Glib::RefPtr<Gio::MenuItem> w)
 {
   return PopoverWidget(APP_CUSTOM_SECTION, 0, w);
 }
 
+
 namespace utils {
 
-  Gtk::Widget *create_popover_button(const Glib::ustring & action, Glib::ustring && label)
+  void unparent_popover_on_close(Gtk::Popover *popover)
   {
-    Gtk::ModelButton *item = new Gtk::ModelButton;
-    gtk_actionable_set_action_name(GTK_ACTIONABLE(item->gobj()), action.c_str());
-    item->set_label(std::move(label));
-    set_common_popover_button_props(*item);
-    return item;
-  }
-
-
-  Gtk::Widget *create_popover_submenu_button(const Glib::ustring & submenu, Glib::ustring && label)
-  {
-    Gtk::ModelButton *button = new Gtk::ModelButton;
-    button->property_menu_name() = submenu;
-    button->set_label(std::move(label));
-    set_common_popover_button_props(*button);
-    return button;
-  }
-
-
-  Gtk::Box *create_popover_submenu(Glib::ustring && name)
-  {
-    return new PopoverSubmenuBox(std::move(name));
-  }
-
-
-  void set_common_popover_widget_props(Gtk::Widget & widget)
-  {
-    widget.property_hexpand() = true;
-  }
-
-  void set_common_popover_widget_props(Gtk::Box & widget)
-  {
-    widget.property_margin_top() = 9;
-    widget.property_margin_bottom() = 9;
-    widget.property_margin_start() = 12;
-    widget.property_margin_end() = 12;
-    set_common_popover_widget_props(static_cast<Gtk::Widget&>(widget));
+    auto unparent_fn = [](gpointer data)
+    {
+      static_cast<Gtk::Popover*>(data)->unparent();
+    };
+    auto callback = [popover, unparent_fn]
+    {
+      // unparenting at once breaks popover menu - actions not invoked
+      // unparent with small delay
+      g_timeout_add_once(1, unparent_fn, popover);
+    };
+    popover->signal_closed().connect(callback);
   }
 
 }

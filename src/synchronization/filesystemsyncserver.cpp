@@ -121,8 +121,8 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
           return;
         }
       }
-      catch (Glib::Exception & e) {
-        ERR_OUT(_("Failed to upload note: %s"), e.what().c_str());
+      catch (std::exception & e) {
+        ERR_OUT(_("Failed to upload note: %s"), e.what());
       }
 
       std::unique_lock<std::mutex> lock(notes_lock);
@@ -233,8 +233,8 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
                   return; // all done, error handling below
                 }
               }
-              catch(Glib::Exception & e) {
-                ERR_OUT(_("Exception when finishing note copy: %s"), e.what().c_str());
+              catch(std::exception & e) {
+                ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
               }
               catch(...) {
                 ERR_OUT(_("Exception when finishing note copy"));
@@ -426,10 +426,6 @@ bool FileSystemSyncServer::commit_sync_transaction()
     catch(std::exception & e) {
       ERR_OUT(_("Exception during server cleanup while committing. Server integrity is OK, but "
                 "there may be some excess files floating around.  Here's the error: %s\n"), e.what());
-    }
-    catch(Glib::Exception & e) {
-      ERR_OUT(_("Exception during server cleanup while committing. Server integrity is OK, but "
-                "there may be some excess files floating around.  Here's the error: %s\n"), e.what().c_str());
     }
     // * * * End Cleanup Code * * *
   }
@@ -634,7 +630,7 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
   }
   catch(Glib::Error & e) {
     xml.close();
-    ERR_OUT(_("Error updating lock: %s"), e.what().c_str());
+    ERR_OUT(_("Error updating lock: %s"), e.what());
     throw;
   }
   catch(...) {

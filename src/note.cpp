@@ -26,7 +26,6 @@
 
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
-#include <gtkmm/stock.h>
 
 #include "ignote.hpp"
 #include "mainwindow.hpp"
@@ -47,7 +46,7 @@ namespace gnote {
 
   namespace noteutils {
 
-    void show_deletion_dialog(const Note::List & notes, Gtk::Window * parent)
+    void show_deletion_dialog(const Note::List & notes, Gtk::Window *parent)
     {
       Glib::ustring message;
 
@@ -60,52 +59,46 @@ namespace gnote {
         message = Glib::ustring::compose(ngettext("Really delete %1 note?", "Really delete %1 notes?", notes.size()), notes.size());
       }
 
-      utils::HIGMessageDialog dialog(parent, GTK_DIALOG_DESTROY_WITH_PARENT,
-                                     Gtk::MESSAGE_QUESTION,
-                                     Gtk::BUTTONS_NONE,
-                                     message,
-                                     _("If you delete a note it is permanently lost."));
+      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(parent, GTK_DIALOG_DESTROY_WITH_PARENT, Gtk::MessageType::QUESTION,
+                                               Gtk::ButtonsType::NONE, message, _("If you delete a note it is permanently lost."));
 
-      Gtk::Button *button;
+      Gtk::Button *button = Gtk::make_managed<Gtk::Button>(_("_Cancel"), true);
+      dialog->add_action_widget(*button, Gtk::ResponseType::CANCEL);
+      dialog->set_default_response(Gtk::ResponseType::CANCEL);
 
-      button = manage(new Gtk::Button(_("_Cancel"), true));
-      button->property_can_default().set_value(true);
-      button->show ();
-      dialog.add_action_widget(*button, Gtk::RESPONSE_CANCEL);
-      dialog.set_default_response(Gtk::RESPONSE_CANCEL);
-
-      button = manage(new Gtk::Button(_("_Delete"), true));
-      button->property_can_default().set_value(true);
+      button = Gtk::make_managed<Gtk::Button>(_("_Delete"), true);
       button->get_style_context()->add_class("destructive-action");
-      button->show ();
-      dialog.add_action_widget(*button, 666);
+      dialog->add_action_widget(*button, 666);
 
-      int result = dialog.run();
-      if (result == 666) {
-        for(auto & note : notes) {
-          note->manager().delete_note(note);
+      dialog->signal_response().connect([dialog, notes](int result) {
+        if (result == 666) {
+          for(auto & note : notes) {
+            note->manager().delete_note(note);
+          }
         }
-      }
-    }
+        dialog->hide();
+      });
 
+      dialog->show();
+    }
   }
 
   namespace {
     
     void show_io_error_dialog (Gtk::Window * parent)
     {
-      utils::HIGMessageDialog dialog(
+      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(
                               parent,
                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                              Gtk::MESSAGE_ERROR,
-                              Gtk::BUTTONS_OK,
+                              Gtk::MessageType::ERROR,
+                              Gtk::ButtonsType::OK,
                               _("Error saving note data."),
                               _("An error occurred while saving your notes. "
                                 "Please check that you have sufficient disk "
                                 "space, and that you have appropriate rights "
                                 "on ~/.local/share/gnote. Error details can be found in "
                                 "~/.gnote.log."));
-      dialog.run();
+      dialog->show();
     }
 
     void place_cursor_and_selection(const NoteData & data, const Glib::RefPtr<NoteBuffer> & buffer)
@@ -134,7 +127,7 @@ namespace gnote {
   }
 
 
-  const int  NoteData::s_noPosition = -1;
+  const int NoteData::s_noPosition = -1;
 
   NoteData::NoteData(Glib::ustring && _uri)
     : m_uri(std::move(_uri))
@@ -415,10 +408,9 @@ namespace gnote {
     queue_save(NO_CHANGE);
   }
 
-  bool Note::on_window_destroyed(GdkEventAny * /*ev*/)
+  void Note::on_window_destroyed()
   {
     m_window = NULL;
-    return false;
   }
 
   void Note::queue_save (ChangeType changeType)
@@ -537,13 +529,13 @@ namespace gnote {
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
           iter->remove_links(old_title, self);
-          process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
         }
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
           iter->rename_links(old_title, self);
-          process_rename_link_update_end(Gtk::RESPONSE_NO, NULL, old_title, self);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
         }
       }
     }
@@ -559,7 +551,7 @@ namespace gnote {
     if(dialog) {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
       const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
-      if(Gtk::RESPONSE_CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
+      if(Gtk::ResponseType::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
         m_gnote.preferences().note_rename_behavior(selected_behavior);
       }
 
@@ -568,7 +560,7 @@ namespace gnote {
       for(std::map<NoteBase::Ptr, bool>::const_iterator iter = notes->begin();
           notes->end() != iter; iter++) {
         const std::pair<NoteBase::Ptr, bool> p = *iter;
-        if(p.second && response == Gtk::RESPONSE_YES) { // Rename
+        if(p.second && response == Gtk::ResponseType::YES) { // Rename
           p.first->rename_links(old_title, self);
         }
         else {
@@ -704,8 +696,7 @@ namespace gnote {
   {
     if(!m_window) {
       m_window = new NoteWindow(*this, m_gnote);
-      m_window->signal_delete_event().connect(
-        sigc::mem_fun(*this, &Note::on_window_destroyed));
+      m_window->signal_destroy().connect(sigc::mem_fun(*this, &Note::on_window_destroyed));
 
       m_window->editor()->set_sensitive(enabled());
       if(m_data.data().has_extent()) {

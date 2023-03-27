@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017-2019 Aurimas Cernius
+ * Copyright (C) 2011,2017-2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -39,14 +39,14 @@ namespace sharp {
 
   bool file_exists(const Glib::ustring & file)
   {
-    return Glib::file_test(file, Glib::FILE_TEST_EXISTS)
-           && Glib::file_test(file, Glib::FILE_TEST_IS_REGULAR);
+    return Glib::file_test(file, Glib::FileTest::EXISTS)
+           && Glib::file_test(file, Glib::FileTest::IS_REGULAR);
   }
 
 
   Glib::ustring file_basename(const Glib::ustring & p)
   {
-    const Glib::ustring filename = Glib::path_get_basename(p);
+    const Glib::ustring filename = Glib::path_get_basename(p.c_str());
     const Glib::ustring::size_type pos = filename.find_last_of('.');
 
     return Glib::ustring(filename, 0, pos);
@@ -54,13 +54,13 @@ namespace sharp {
 
   Glib::ustring file_dirname(const Glib::ustring & p)
   {
-    return Glib::path_get_dirname(p);
+    return Glib::path_get_dirname(p.c_str());
   }
 
 
   Glib::ustring file_filename(const Glib::ustring & p)
   {
-    return Glib::path_get_basename(p);
+    return Glib::path_get_basename(p.c_str());
   }
 
   Glib::ustring file_filename(const Glib::RefPtr<Gio::File> & p)
@@ -78,7 +78,7 @@ namespace sharp {
 
   void file_copy(const Glib::ustring & source, const Glib::ustring & dest)
   {
-    Gio::File::create_for_path(source)->copy(Gio::File::create_for_path(dest), Gio::FILE_COPY_OVERWRITE);
+    Gio::File::create_for_path(source)->copy(Gio::File::create_for_path(dest), Gio::File::CopyFlags::OVERWRITE);
   }
 
   void file_move(const Glib::ustring & from, const Glib::ustring & to)

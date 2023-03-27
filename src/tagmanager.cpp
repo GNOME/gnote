@@ -32,8 +32,7 @@
 namespace gnote {
 
   namespace {
-    int compare_tags_sort_func (const Gtk::TreeIter & a, 
-                                const Gtk::TreeIter & b)
+    int compare_tags_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
     {
       Tag::Ptr tag_a;
       a->get_value(0, tag_a);
@@ -53,7 +52,7 @@ namespace gnote {
     ,  m_sorted_tags(Gtk::TreeModelSort::create(m_tags))
   {
     m_sorted_tags->set_sort_func (0, sigc::ptr_fun(&compare_tags_sort_func));
-    m_sorted_tags->set_sort_column(0, Gtk::SORT_ASCENDING);
+    m_sorted_tags->set_sort_column(0, Gtk::SortType::ASCENDING);
     
   }
 
@@ -116,8 +115,7 @@ namespace gnote {
         return t;
       }
     }
-    Gtk::TreeIter iter;
-    bool tag_added = false;
+    Gtk::TreeIter<Gtk::TreeRow> iter;
     Tag::Ptr tag = get_tag (normalized_tag_name);
     if (!tag) {
       std::lock_guard<std::mutex> lock(m_locker);
@@ -128,13 +126,7 @@ namespace gnote {
         iter = m_tags->append ();
         (*iter)[m_columns.m_tag] = tag;
         m_tag_map [tag->normalized_name()] = iter;
-
-        tag_added = true;
       }
-    }
-
-    if (tag_added) {
-      m_signal_tag_added(tag, iter);
     }
 
     return tag;
@@ -185,7 +177,6 @@ namespace gnote {
 
       m_internal_tags.erase(tag->normalized_name());
     }
-    bool tag_removed = false;
     auto map_iter = m_tag_map.find(tag->normalized_name());
     if (map_iter != m_tag_map.end()) {
       std::lock_guard<std::mutex> lock(m_locker);
@@ -203,17 +194,12 @@ namespace gnote {
 
         m_tag_map.erase(map_iter);
         DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
-        tag_removed = true;
 
         auto notes = tag->get_notes();
         for(NoteBase *note_iter : notes) {
           note_iter->remove_tag(tag);
         }
       }
-    }
-
-    if (tag_removed) {
-      m_signal_tag_removed(tag->normalized_name());
     }
   }
   

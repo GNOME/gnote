@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,12 +25,8 @@
 
 #include <sigc++/signal.h>
 
-#include <gdkmm/pixbuf.h>
-#include <gtkmm/applicationwindow.h>
-#include <gtkmm/dialog.h>
+#include <glibmm/datetime.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/image.h>
-#include <gtkmm/menu.h>
 #include <gtkmm/messagedialog.h>
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/textiter.h>
@@ -47,8 +43,6 @@ class Preferences;
 
   namespace utils {
 
-    void popup_menu(Gtk::Menu &menu, const GdkEventButton *);
-
     void show_help(const Glib::ustring & filename, const Glib::ustring & link_id, Gtk::Window & parent);
     void open_url(Gtk::Window & parent, const Glib::ustring & url);
     void show_opening_location_error(Gtk::Window * parent,
@@ -57,8 +51,8 @@ class Preferences;
     Glib::ustring get_pretty_print_date(const Glib::DateTime &, bool show_time, Preferences & preferences);
     Glib::ustring get_pretty_print_date(const Glib::DateTime &, bool show_time, bool use_12h);
 
-    void main_context_invoke(const sigc::slot<void> & slot);
-    void main_context_call(const sigc::slot<void> & slot);
+    void main_context_invoke(const sigc::slot<void()> & slot);
+    void main_context_call(const sigc::slot<void()> & slot);
 
     template <typename T>
     bool remove_swap_back(std::vector<T> & v, const T & e)
@@ -74,28 +68,6 @@ class Preferences;
       return false;
     }
 
-    class GlobalKeybinder
-    {
-    public:
-      
-      GlobalKeybinder(const Glib::RefPtr<Gtk::AccelGroup> & accel_group)
-        : m_accel_group(accel_group)
-        {
-          m_fake_menu.set_accel_group(accel_group);
-        }
-
-      void *add_accelerator(const sigc::slot<void> & , guint, Gdk::ModifierType, Gtk::AccelFlags);
-      void remove_accelerator(void*);
-      void enabled(bool enable);
-      bool enabled() const
-        {
-          return m_fake_menu.get_sensitive();
-        }
-    private:
-      Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
-      Gtk::Menu m_fake_menu;
-    };
-
 
     class HIGMessageDialog
       : public Gtk::Dialog 
@@ -105,9 +77,6 @@ class Preferences;
                        Gtk::ButtonsType btn_type, const Glib::ustring & header = Glib::ustring(),
                        const Glib::ustring & msg = Glib::ustring());
       void add_button(const Glib::ustring & label, Gtk::ResponseType response, bool is_default);
-      void add_button(const Glib::RefPtr<Gdk::Pixbuf> & pixbuf, 
-                      const Glib::ustring & label_text, 
-                      Gtk::ResponseType response, bool is_default);
       void add_button(Gtk::Button *button, Gtk::ResponseType response, bool is_default);
       Gtk::Widget * get_extra_widget() const
         {
@@ -115,28 +84,10 @@ class Preferences;
         }
       void set_extra_widget(Gtk::Widget *);
     private:
-      Glib::RefPtr<Gtk::AccelGroup> m_accel_group;
       Gtk::Grid *m_extra_widget_vbox;
       Gtk::Widget *m_extra_widget;
-      Gtk::Image *m_image;
-
     };
 
-
-    class UriList
-      : public std::vector<sharp::Uri>
-    {
-    public:
-//      UriList(const NoteList & notes);
-      UriList(const Glib::ustring & data);
-      UriList(const Gtk::SelectionData & selection);
-      Glib::ustring to_string() const;
-      std::vector<Glib::ustring> get_local_paths() const;
-      
-    private:
-      void load_from_string(const Glib::ustring & data);
-      void load_from_string_list(const std::vector<Glib::ustring> & items);
-    };
 
     class XmlEncoder
     {
@@ -215,7 +166,7 @@ class Preferences;
       ~InterruptableTimeout();
       void reset(guint timeout_millis);
       void cancel();
-      sigc::signal<void> signal_timeout;
+      sigc::signal<void()> signal_timeout;
     private:
       static int callback(InterruptableTimeout*);
       bool timeout_expired();

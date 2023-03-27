@@ -26,7 +26,6 @@
 
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
-#include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/specialnotebooks.hpp"
 #include "debug.hpp"
@@ -49,24 +48,21 @@ namespace gnote {
       m_notebooks = Gtk::ListStore::create(m_column_types);
 
       m_sortedNotebooks = Gtk::TreeModelSort::create (m_notebooks);
-      m_sortedNotebooks->set_sort_func (
-        0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
-      m_sortedNotebooks->set_sort_column (0, Gtk::SORT_ASCENDING);
+      m_sortedNotebooks->set_sort_func(0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
+      m_sortedNotebooks->set_sort_column (0, Gtk::SortType::ASCENDING);
 
       m_notebooks_to_display = Gtk::TreeModelFilter::create(m_sortedNotebooks);
-      m_notebooks_to_display->set_visible_func(
-        sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
+      m_notebooks_to_display->set_visible_func(sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
 
       m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
-      m_filteredNotebooks->set_visible_func(
-        sigc::ptr_fun(&NotebookManager::filter_notebooks));
+      m_filteredNotebooks->set_visible_func(sigc::ptr_fun(&NotebookManager::filter_notebooks));
 
       Notebook::Ptr allNotesNotebook(std::make_shared<AllNotesNotebook>(m_note_manager));
-      Gtk::TreeIter iter = m_notebooks->append ();
+      auto iter = m_notebooks->append();
       iter->set_value(0, Notebook::Ptr(allNotesNotebook));
 
       Notebook::Ptr unfiledNotesNotebook(std::make_shared<UnfiledNotesNotebook>(m_note_manager));
-      iter = m_notebooks->append ();
+      iter = m_notebooks->append();
       iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
 
       Notebook::Ptr pinned_notes_notebook(std::make_shared<PinnedNotesNotebook>(m_note_manager));
@@ -78,7 +74,7 @@ namespace gnote {
       std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
         .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
 
-      load_notebooks ();
+      load_notebooks();
     }
 
 
@@ -119,7 +115,7 @@ namespace gnote {
         return notebook;
       }
       
-      Gtk::TreeIter iter;
+      Gtk::TreeIter<Gtk::TreeRow> iter;
 //      lock (locker) {
         notebook = get_notebook (notebookName);
         if (notebook)
@@ -218,8 +214,7 @@ namespace gnote {
     /// A <see cref="System.Boolean"/>.  True if the specified notebook
     /// was found, false otherwise.
     /// </returns>
-    bool NotebookManager::get_notebook_iter(const Notebook::Ptr & notebook, 
-                                            Gtk::TreeIter & iter)
+    bool NotebookManager::get_notebook_iter(const Notebook::Ptr & notebook, Gtk::TreeIter<Gtk::TreeRow> & iter)
     {
       Gtk::TreeNodeChildren notebooks = m_notebooks_to_display->children();
       for (Gtk::TreeIter notebooks_iter = notebooks.begin();
@@ -232,7 +227,7 @@ namespace gnote {
         }
       }
       
-      iter = Gtk::TreeIter();
+      iter = Gtk::TreeIter<Gtk::TreeRow>();
       return false;
     }
 
@@ -305,22 +300,29 @@ namespace gnote {
     }
 
 
-    Notebook::Ptr NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window *parent)
+    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, sigc::slot<void(const Notebook::Ptr&)> on_complete)
     {
-      return prompt_create_new_notebook(g, parent, Note::List());
+      return prompt_create_new_notebook(g, parent, Note::List(), on_complete);
     }
 
 
-    Notebook::Ptr NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window *parent, const Note::List & notesToAdd)
+    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, Note::List && notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
     {
       // Prompt the user for the name of a new notebook
-      CreateNotebookDialog dialog(parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), g);
-      
-      
-      int response = dialog.run ();
+      auto dialog = Gtk::make_managed<CreateNotebookDialog>(&parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), g);
+      dialog->signal_response().connect([&g, dialog, notes=std::move(notes_to_add), on_complete](int response) { on_create_notebook_response(g, *dialog, response, notes, on_complete); });
+      dialog->show();
+    }
+
+
+    void NotebookManager::on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int response, const Note::List & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
+    {
       Glib::ustring notebookName = dialog.get_notebook_name();
-      if (response != Gtk::RESPONSE_OK)
-        return Notebook::Ptr();
+      dialog.hide();
+      if(response != Gtk::ResponseType::OK) {
+        on_complete(Notebook::Ptr());
+        return;
+      }
       
       Notebook::Ptr notebook = g.notebook_manager().get_or_create_notebook (notebookName);
       if (!notebook) {
@@ -330,57 +332,55 @@ namespace gnote {
         DBG_OUT ("Created the notebook: %s (%s)", notebook->get_name().c_str(),
                  notebook->get_normalized_name().c_str());
         
-        if (!notesToAdd.empty()) {
+        if(!notes_to_add.empty()) {
           // Move all the specified notesToAdd into the new notebook
-          for(Note::List::const_iterator iter = notesToAdd.begin();
-              iter != notesToAdd.end(); ++iter) {
-            g.notebook_manager().move_note_to_notebook (*iter, notebook);
+          for(const auto & note : notes_to_add) {
+            g.notebook_manager().move_note_to_notebook(note, notebook);
           }
         }
       }
-      
-      return notebook;
+
+      on_complete(notebook);
     }
     
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, const Notebook::Ptr & notebook)
     {
       // Confirmation Dialog
-      utils::HIGMessageDialog dialog(parent,
+      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(parent,
                                      GTK_DIALOG_MODAL,
-                                     Gtk::MESSAGE_QUESTION,
-                                     Gtk::BUTTONS_NONE,
+                                     Gtk::MessageType::QUESTION,
+                                     Gtk::ButtonsType::NONE,
                                      _("Really delete this notebook?"),
                                      _("The notes that belong to this notebook will not be "
                                        "deleted, but they will no longer be associated with "
                                        "this notebook.  This action cannot be undone."));
 
       Gtk::Button *button;
-      button = manage(new Gtk::Button(_("_Cancel"), true));
-      button->property_can_default().set_value(true);
-      button->show();
-      dialog.add_action_widget(*button, Gtk::RESPONSE_CANCEL);
-      dialog.set_default_response(Gtk::RESPONSE_CANCEL);
+      button = Gtk::make_managed<Gtk::Button>(_("_Cancel"), true);
+      dialog->add_action_widget(*button, Gtk::ResponseType::CANCEL);
+      dialog->set_default_response(Gtk::ResponseType::CANCEL);
 
-      button = manage(new Gtk::Button(_("_Delete"), true));
-      button->property_can_default().set_value(true);
+      button = Gtk::make_managed<Gtk::Button>(_("_Delete"), true);
       button->get_style_context()->add_class("destructive-action");
-      button->show();
-      dialog.add_action_widget(*button, Gtk::RESPONSE_YES);
+      dialog->add_action_widget(*button, Gtk::ResponseType::YES);
 
-      int response = dialog.run();
-      if(response != Gtk::RESPONSE_YES) {
-        return;
-      }
+      dialog->signal_response().connect([&g, notebook, dialog](int response) {
+        if(response != Gtk::ResponseType::YES) {
+          return;
+        }
 
-      // Grab the template note before removing all the notebook tags
-      Note::Ptr templateNote = notebook->get_template_note ();
-      
-      g.notebook_manager().delete_notebook(notebook);
+        // Grab the template note before removing all the notebook tags
+        Note::Ptr templateNote = notebook->get_template_note ();
 
-      // Delete the template note
-      if (templateNote) {
-        g.notebook_manager().note_manager().delete_note(templateNote);
-      }
+        g.notebook_manager().delete_notebook(notebook);
+
+        // Delete the template note
+        if(templateNote) {
+          g.notebook_manager().note_manager().delete_note(templateNote);
+        }
+        dialog->hide();
+      });
+      dialog->show();
     }
 
 
@@ -429,8 +429,7 @@ namespace gnote {
     }
 
 
-    int NotebookManager::compare_notebooks_sort_func(const Gtk::TreeIter &a, 
-                                                     const Gtk::TreeIter &b)
+    int NotebookManager::compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &a, const Gtk::TreeIter<Gtk::TreeConstRow> &b)
     {
       Notebook::Ptr notebook_a;
       a->get_value (0, notebook_a);
@@ -464,7 +463,7 @@ namespace gnote {
     /// </summary>
     void NotebookManager::load_notebooks()
     {
-      Gtk::TreeIter iter;
+      Gtk::TreeIter<Gtk::TreeRow> iter;
       auto tags = m_note_manager.tag_manager().all_tags();
       for(const auto & tag : tags) {
         // Skip over tags that aren't notebooks
@@ -484,7 +483,7 @@ namespace gnote {
     /// <summary>
     /// Filter out SpecialNotebooks from the model
     /// </summary>
-    bool NotebookManager::filter_notebooks(const Gtk::TreeIter & iter)
+    bool NotebookManager::filter_notebooks(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
     {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
@@ -494,7 +493,7 @@ namespace gnote {
       return true;
     }
 
-    bool NotebookManager::filter_notebooks_to_display(const Gtk::TreeIter & iter)
+    bool NotebookManager::filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
     {
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015,2017,2019 Aurimas Cernius
+ * Copyright (C) 2012-2015,2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@
 #include <gtkmm/treemodelsort.h>
 #include <gtkmm/treemodelfilter.h>
 
+#include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebook.hpp"
 #include "note.hpp"
 #include "tag.hpp"
@@ -45,7 +46,7 @@ namespace notebooks {
 class NotebookManager
 {
 public:
-  typedef sigc::signal<void, const Note &, const Notebook::Ptr &> NotebookEventHandler;
+  typedef sigc::signal<void(const Note &, const Notebook::Ptr &)> NotebookEventHandler;
 
   NotebookManager(NoteManagerBase &);
   void init();
@@ -80,12 +81,14 @@ public:
   Notebook::Ptr get_or_create_notebook(const Glib::ustring &);
   bool add_notebook(const Notebook::Ptr &);
   void delete_notebook(const Notebook::Ptr &);
-  bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter & );
+  bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter<Gtk::TreeRow> & );
   Notebook::Ptr get_notebook_from_note(const NoteBase::Ptr &);
   Notebook::Ptr get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
-  static Notebook::Ptr prompt_create_new_notebook(IGnote &, Gtk::Window *);
-  static Notebook::Ptr prompt_create_new_notebook(IGnote &, Gtk::Window *, const Note::List & notesToAdd);
+  static void prompt_create_new_notebook(IGnote &, Gtk::Window &,
+    sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
+  static void prompt_create_new_notebook(IGnote &, Gtk::Window &, Note::List && notes_to_add,
+    sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
   static void prompt_delete_notebook(IGnote &, Gtk::Window *, const Notebook::Ptr &);
   bool move_note_to_notebook (const Note::Ptr &, const Notebook::Ptr &);
 
@@ -100,14 +103,15 @@ public:
       return m_active_notes;
     }
 
-  sigc::signal<void> signal_notebook_list_changed;
-  sigc::signal<void, const Note &, bool> signal_note_pin_status_changed;
+  sigc::signal<void()> signal_notebook_list_changed;
+  sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
 private:
-  static int compare_notebooks_sort_func(const Gtk::TreeIter &, const Gtk::TreeIter &);
+  static int compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
+  static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const Note::List & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete);
   void load_notebooks();
-  bool filter_notebooks_to_display(const Gtk::TreeIter &);
+  bool filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_active_notes_size_changed();
-  static bool filter_notebooks(const Gtk::TreeIter &);
+  static bool filter_notebooks(const Gtk::TreeIter<Gtk::TreeConstRow> &);
 
   class ColumnRecord
     : public Gtk::TreeModelColumnRecord
@@ -126,7 +130,7 @@ private:
   // <summary>
   // The key for this dictionary is Notebook.Name.ToLower ().
   // </summary>
-  std::map<Glib::ustring, Gtk::TreeIter> m_notebookMap;
+  std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_notebookMap;
   //object locker = new object ();    
   bool                                 m_adding_notebook;
   NotebookEventHandler                 m_note_added_to_notebook;

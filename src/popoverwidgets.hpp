@@ -20,7 +20,10 @@
 #ifndef _POPOVERWIDGETS_HPP_
 #define _POPOVERWIDGETS_HPP_
 
+#include <giomm/menuitem.h>
 #include <gtkmm/box.h>
+#include <gtkmm/button.h>
+#include <gtkmm/popover.h>
 
 namespace gnote {
 
@@ -55,16 +58,16 @@ enum NoteActionOrder {
 
 struct PopoverWidget
 {
-  Gtk::Widget *widget;
+  Glib::RefPtr<Gio::MenuItem> widget;
   int section;
   int order;
   int secondary_order;
 
-  static PopoverWidget create_for_app(int ord, Gtk::Widget *w);
-  static PopoverWidget create_for_note(int ord, Gtk::Widget *w);
-  static PopoverWidget create_custom_section(Gtk::Widget *w);
+  static PopoverWidget create_for_app(int ord, const Glib::RefPtr<Gio::MenuItem> w);
+  static PopoverWidget create_for_note(int ord, const Glib::RefPtr<Gio::MenuItem> w);
+  static PopoverWidget create_custom_section(const Glib::RefPtr<Gio::MenuItem> w);
 
-  PopoverWidget(int sec, int ord, Gtk::Widget *w)
+  PopoverWidget(int sec, int ord, const Glib::RefPtr<Gio::MenuItem> w)
     : widget(w)
     , section(sec)
     , order(ord)
@@ -80,28 +83,27 @@ struct PopoverWidget
     }
 };
 
-class PopoverSubmenu
-{
-public:
-  PopoverSubmenu(Glib::ustring && name)
-    : m_name(std::move(name))
-  {}
-
-  const Glib::ustring & name() const
-    {
-      return m_name;
-    }
-private:
-  const Glib::ustring m_name;
-};
-
 
 namespace utils {
-  Gtk::Widget *create_popover_button(const Glib::ustring & action, Glib::ustring && label);
-  Gtk::Widget *create_popover_submenu_button(const Glib::ustring & submenu, Glib::ustring && label);
-  Gtk::Box *create_popover_submenu(Glib::ustring && name);
-  void set_common_popover_widget_props(Gtk::Widget & widget);
-  void set_common_popover_widget_props(Gtk::Box & widget);
+  void unparent_popover_on_close(Gtk::Popover *popover);
+
+  template <typename T, typename... Args>
+  T *make_popover(Gtk::Widget & parent, Args... args)
+  {
+    auto popover = Gtk::make_managed<T>(args...);
+    popover->set_parent(parent);
+    unparent_popover_on_close(popover);
+    return popover;
+  }
+
+  template <typename T, typename... Args>
+  std::shared_ptr<T> make_owned_popover(Gtk::Widget & parent, Args... args)
+  {
+    auto popover = std::make_shared<T>(args...);
+    popover->set_parent(parent);
+    unparent_popover_on_close(popover.get());
+    return popover;
+  }
 }
 
 }

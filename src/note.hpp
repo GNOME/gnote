@@ -145,7 +145,7 @@ public:
   using NoteBase::enabled;
   virtual void enabled(bool is_enabled) override;
 
-  sigc::signal<void,Note&> & signal_opened()
+  sigc::signal<void(Note&)> & signal_opened()
     { return m_signal_opened; }
 protected:
   virtual const NoteDataBufferSynchronizerBase & data_synchronizer() const override
@@ -169,7 +169,7 @@ private:
                              const Gtk::TextBuffer::iterator &);
   void on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
                           const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert);
-  bool on_window_destroyed(GdkEventAny *ev);
+  void on_window_destroyed();
   void on_save_timeout();
   void process_child_widget_queue();
   void process_rename_link_update(const Glib::ustring & old_title);
@@ -203,7 +203,7 @@ private:
   utils::InterruptableTimeout *m_save_timeout;
   std::queue<ChildWidgetData> m_child_widget_queue;
 
-  sigc::signal<void,Note&> m_signal_opened;
+  sigc::signal<void(Note&)> m_signal_opened;
 
   sigc::connection m_mark_set_conn;
   sigc::connection m_mark_deleted_conn;

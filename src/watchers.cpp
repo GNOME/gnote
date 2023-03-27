@@ -26,7 +26,9 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
-#include <gtkmm/separatormenuitem.h>
+#include <gtkmm/eventcontrollerfocus.h>
+#include <gtkmm/eventcontrollermotion.h>
+#include <gtkmm/gestureclick.h>
 
 #include "sharp/string.hpp"
 #include "debug.hpp"
@@ -88,15 +90,11 @@ namespace gnote {
     buffer->signal_erase().connect(
       sigc::mem_fun(*this, &NoteRenameWatcher::on_delete_range));
 
-    get_window()->editor()->signal_focus_out_event().connect(
-      sigc::mem_fun(*this, &NoteRenameWatcher::on_editor_focus_out));
+    auto focus_controller = Gtk::EventControllerFocus::create();
+    focus_controller->signal_leave().connect(sigc::mem_fun(*this, &NoteRenameWatcher::on_editor_focus_out));
+    get_window()->editor()->add_controller(focus_controller);
     get_window()->signal_backgrounded.connect(
       sigc::mem_fun(*this, &NoteRenameWatcher::on_window_backgrounded));
-
-    // FIXME: Needed because we hide on delete event, and
-    // just hide on accelerator key, so we can't use delete
-    // event.  This means the window will flash if closed
-    // with a name clash.
 
     // Clean up title line
     buffer->remove_all_tags (get_title_start(), get_title_end());
@@ -104,15 +102,13 @@ namespace gnote {
   }
 
 
-  bool NoteRenameWatcher::on_editor_focus_out(GdkEventFocus *)
+  void NoteRenameWatcher::on_editor_focus_out()
   {
-    // TODO: Duplicated from Update(); refactor instead
-    if (m_editing_title) {
-      changed ();
+    if(m_editing_title) {
+      changed();
       update_note_title(false);
       m_editing_title = false;
     }
-    return false;
   }
 
 
@@ -240,8 +236,8 @@ namespace gnote {
       m_title_taken_dialog =
         new utils::HIGMessageDialog (parent,
                                      GTK_DIALOG_DESTROY_WITH_PARENT,
-                                     Gtk::MESSAGE_WARNING,
-                                     Gtk::BUTTONS_OK,
+                                     Gtk::MessageType::WARNING,
+                                     Gtk::ButtonsType::OK,
                                      _("Note title taken"),
                                      message);
       m_title_taken_dialog->signal_response().connect(
@@ -329,7 +325,7 @@ namespace gnote {
     if (!get_note()->get_tag_table()->lookup ("gtkspell-misspelled")) {
       NoteTag::Ptr tag = NoteTag::create ("gtkspell-misspelled", NoteTag::CAN_SPELL_CHECK);
       tag->set_can_serialize(false);
-      tag->property_underline() = Pango::UNDERLINE_ERROR;
+      tag->property_underline() = Pango::Underline::ERROR;
       get_note()->get_tag_table()->add (tag);
     }
 
@@ -398,12 +394,8 @@ namespace gnote {
 
     if (tag->property_name() == "gtkspell-misspelled") {
         // Remove misspelled tag for links & title
-      Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> > tag_list = start_char.get_tags();
-      for(Glib::SListHandle<Glib::RefPtr<const Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-          tag_iter != tag_list.end(); ++tag_iter) {
-        const Glib::RefPtr<const Gtk::TextTag>& atag(*tag_iter);
-        if ((tag != atag) &&
-            !NoteTagTable::tag_is_spell_checkable (atag)) {
+      for(const auto & atag : start_char.get_tags()) {
+        if(tag != atag && !NoteTagTable::tag_is_spell_checkable(atag)) {
           // cancel attempt to add misspelled tag on non-spell-check place
           get_buffer()->signal_apply_tag().emission_stop();
           break;
@@ -512,7 +504,7 @@ namespace gnote {
   
 
   NoteUrlWatcher::NoteUrlWatcher()
-    : m_regex(Glib::Regex::create(URL_REGEX, Glib::REGEX_CASELESS))
+    : m_regex(Glib::Regex::create(URL_REGEX, Glib::Regex::CompileFlags::CASELESS))
   {
   }
 
@@ -549,22 +541,12 @@ namespace gnote {
       s_text_event_connected = true;
     }
 
-    m_click_mark = get_buffer()->create_mark(get_buffer()->begin(), true);
-
     get_buffer()->signal_insert().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_insert_text));
     get_buffer()->signal_apply_tag().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_apply_tag));
     get_buffer()->signal_erase().connect(
       sigc::mem_fun(*this, &NoteUrlWatcher::on_delete_range));
-
-    Gtk::TextView * editor(get_window()->editor());
-    editor->signal_button_press_event().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_button_press), false);
-    editor->signal_populate_popup().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_populate_popup));
-    editor->signal_popup_menu().connect(
-      sigc::mem_fun(*this, &NoteUrlWatcher::on_popup_menu), false);
   }
 
   Glib::ustring NoteUrlWatcher::get_url(const Gtk::TextIter & start, const Gtk::TextIter & end)
@@ -674,89 +656,6 @@ namespace gnote {
       get_buffer()->remove_tag(m_url_tag, start, end);
     }
   }
-
-
-
-  bool NoteUrlWatcher::on_button_press(GdkEventButton *ev)
-  {
-    int x, y;
-    gdouble ev_x, ev_y;
-    gdk_event_get_coords((GdkEvent*)ev, &ev_x, &ev_y);
-
-    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_TEXT, ev_x, ev_y, x, y);
-    Gtk::TextIter click_iter;
-    get_window()->editor()->get_iter_at_location (click_iter, x, y);
-
-    // Move click_mark to click location
-    get_buffer()->move_mark (m_click_mark, click_iter);
-
-    // Continue event processing
-    return false;
-  }
-
-
-  void NoteUrlWatcher::on_populate_popup(Gtk::Menu *menu)
-  {
-    Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (m_click_mark);
-    if (click_iter.has_tag (m_url_tag) || click_iter.ends_tag (m_url_tag)) {
-      Gtk::MenuItem *item;
-
-      item = manage(new Gtk::SeparatorMenuItem ());
-      item->show ();
-      menu->prepend (*item);
-
-      item = manage(new Gtk::MenuItem (_("_Copy Link Address"), true));
-      item->signal_activate().connect(
-        sigc::mem_fun(*this, &NoteUrlWatcher::copy_link_activate));
-      item->show ();
-      menu->prepend (*item);
-
-      item = manage(new Gtk::MenuItem (_("_Open Link"), true));
-      item->signal_activate().connect(
-        sigc::mem_fun(*this, &NoteUrlWatcher::open_link_activate));
-      item->show ();
-      menu->prepend (*item);
-    }
-  }
-
-
-  bool NoteUrlWatcher::on_popup_menu()
-  {
-    Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
-    get_buffer()->move_mark (m_click_mark, click_iter);
-    return false;
-  }
-
-  void NoteUrlWatcher::open_link_activate()
-  {
-    try {
-      Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (m_click_mark);
-
-      Gtk::TextIter start, end;
-      m_url_tag->get_extents (click_iter, start, end);
-
-      on_url_tag_activated(*(NoteEditor*)get_window()->editor(), start, end);
-    }
-    catch(const std::exception & e) {
-      ERR_OUT("Failed to open link: %s", e.what());
-    }
-  }
-
-
-  void NoteUrlWatcher::copy_link_activate()
-  {
-    Gtk::TextIter click_iter = get_buffer()->get_iter_at_mark (m_click_mark);
-
-    Gtk::TextIter start, end;
-    m_url_tag->get_extents (click_iter, start, end);
-
-    Glib::ustring url = get_url(start, end);
-
-    Glib::RefPtr<Gtk::Clipboard> clip 
-      = get_window()->editor()->get_clipboard ("CLIPBOARD");
-    clip->set_text(url);
-  }
-
 
   ////////////////////////////////////////////////////////////////////////
 
@@ -949,7 +848,7 @@ namespace gnote {
 
   void AppLinkWatcher::remove_link_tag(const Note::Ptr & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    NoteTag::Ptr note_tag = NoteTag::Ptr::cast_dynamic(tag);
+    auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag && note_tag->can_activate()) {
       note->get_buffer()->remove_tag(note_tag, start, end);
     }
@@ -1055,9 +954,11 @@ namespace gnote {
   void NoteLinkWatcher::on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
                                      const Gtk::TextIter & start, const Gtk::TextIter &end)
   {
-    if (tag->property_name() != get_note()->get_tag_table()->get_link_tag()->property_name())
+    Glib::ustring tag_name = tag->property_name();
+    Glib::ustring link_tag_name = get_note()->get_tag_table()->get_link_tag()->property_name();
+    if(tag_name != link_tag_name)
       return;
-    Glib::ustring link_name = start.get_text (end);
+    Glib::ustring link_name = start.get_text(end);
     NoteBase::Ptr link = manager().find(link_name);
     if(!link)
         unhighlight_in_block(start, end);
@@ -1204,8 +1105,8 @@ namespace gnote {
   void MouseHandWatcher::_init_static()
   {
     if(!s_static_inited) {
-      s_normal_cursor = Gdk::Cursor::create(Gdk::XTERM);
-      s_hand_cursor = Gdk::Cursor::create(Gdk::HAND2);
+      s_normal_cursor = Gdk::Cursor::create("text");
+      s_hand_cursor = Gdk::Cursor::create("pointer");
       s_static_inited = true;
     }
   }
@@ -1230,54 +1131,46 @@ namespace gnote {
   }
   
 
-  void MouseHandWatcher::on_note_opened ()
+  void MouseHandWatcher::on_note_opened()
   {
     Gtk::TextView *editor = get_window()->editor();
-    editor->signal_motion_notify_event()
+    auto motion_ctrl = Gtk::EventControllerMotion::create();
+    motion_ctrl->signal_motion()
       .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_motion), false);
-    editor->signal_key_press_event()
+    editor->add_controller(motion_ctrl);
+    auto & key_ctrl = dynamic_cast<NoteEditor*>(editor)->key_controller();
+    key_ctrl.signal_key_pressed()
       .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_press), false);
-    editor->signal_key_release_event()
-      .connect(sigc::mem_fun(*this, &MouseHandWatcher::on_editor_key_release), false);
+    auto click_ctrl = Gtk::GestureClick::create();
+    click_ctrl->set_button(1);
+    click_ctrl->signal_released()
+      .connect([this, click_ctrl](int, double x, double y) {
+        on_button_release(x, y, click_ctrl->get_current_event_state());
+      }, false);
+    editor->add_controller(click_ctrl);
   }
 
-  bool MouseHandWatcher::on_editor_key_press(GdkEventKey* ev)
+  bool MouseHandWatcher::on_editor_key_press(guint keyval, guint, Gdk::ModifierType modifier)
   {
     bool retval = false;
-    auto event = (GdkEvent*)ev;
-    guint keyval;
-    gdk_event_get_keyval(event, &keyval);
 
     switch(keyval) {
-    case GDK_KEY_Shift_L:
-    case GDK_KEY_Shift_R:
-    case GDK_KEY_Control_L:
-    case GDK_KEY_Control_R:
-    {
-      // Control or Shift when hovering over a link
-      // swiches to a bar cursor...
-
-      if (!m_hovering_on_link)
-        break;
-
-      Glib::RefPtr<Gdk::Window> win = get_window()->editor()->get_window (Gtk::TEXT_WINDOW_TEXT);
-      win->set_cursor(s_normal_cursor);
-      break;
-    }
     case GDK_KEY_Return:
     case GDK_KEY_KP_Enter:
     {
-      Gtk::TextIter iter = get_buffer()->get_iter_at_mark (get_buffer()->get_insert());
+      if(Gdk::ModifierType::CONTROL_MASK == (modifier & Gdk::ModifierType::CONTROL_MASK)) {
+        break;
+      }
 
-      Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
-      for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-          tag_iter != tag_list.end(); ++tag_iter) {
-        const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
+      Gtk::TextIter iter = get_buffer()->get_iter_at_mark(get_buffer()->get_insert());
 
-        if (NoteTagTable::tag_is_activatable (tag)) {
-          retval = gtk_text_tag_event(tag->gobj(), G_OBJECT(get_window()->editor()->gobj()), event, iter.gobj());
-          if (retval) {
-            break;
+      for(const auto & tag : iter.get_tags()) {
+        if(NoteTagTable::tag_is_activatable(tag)) {
+          if(auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag)) {
+            retval = note_tag->activate(*dynamic_cast<NoteEditor*>(get_window()->editor()), iter);
+            if(retval) {
+              break;
+            }
           }
         }
       }
@@ -1290,83 +1183,65 @@ namespace gnote {
   }
 
 
-  bool MouseHandWatcher::on_editor_key_release(GdkEventKey* ev)
+  void MouseHandWatcher::on_editor_motion(double x, double y)
   {
-    bool retval = false;
-    guint keyval;
-    gdk_event_get_keyval((GdkEvent*)ev, &keyval);
-    switch(keyval) {
-    case GDK_KEY_Shift_L:
-    case GDK_KEY_Shift_R:
-    case GDK_KEY_Control_L:
-    case GDK_KEY_Control_R:
-    {
-      if (!m_hovering_on_link)
-        break;
-
-      Glib::RefPtr<Gdk::Window> win = get_window()->editor()->get_window (Gtk::TEXT_WINDOW_TEXT);
-      win->set_cursor(s_hand_cursor);
-      break;
-    }
-    default:
-      break;
-    }
-    return retval;
-  }
-
-
-  bool MouseHandWatcher::on_editor_motion(GdkEventMotion *)
-  {
-    bool retval = false;
-
-    int pointer_x, pointer_y;
-    Gdk::ModifierType pointer_mask;
-
-    get_window()->editor()->Gtk::Widget::get_window()->get_pointer (pointer_x,
-                                                                  pointer_y,
-                                                                  pointer_mask);
-
     bool hovering = false;
+    auto editor = get_window()->editor();
 
     // Figure out if we're on a link by getting the text
     // iter at the mouse point, and checking for tags that
     // start with "link:"...
 
     int buffer_x, buffer_y;
-    get_window()->editor()->window_to_buffer_coords (Gtk::TEXT_WINDOW_WIDGET,
-                                        pointer_x, pointer_y,
-                                                      buffer_x, buffer_y);
+    editor->window_to_buffer_coords(Gtk::TextWindowType::WIDGET, x, y, buffer_x, buffer_y);
 
     Gtk::TextIter iter;
-    get_window()->editor()->get_iter_at_location (iter, buffer_x, buffer_y);
+    editor->get_iter_at_location(iter, buffer_x, buffer_y);
 
-    Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> > tag_list = iter.get_tags();
-    for(Glib::SListHandle<Glib::RefPtr<Gtk::TextTag> >::const_iterator tag_iter = tag_list.begin();
-        tag_iter != tag_list.end(); ++tag_iter) {
-      const Glib::RefPtr<Gtk::TextTag>& tag(*tag_iter);
-
-      if (NoteTagTable::tag_is_activatable (tag)) {
+    for(const auto & tag : iter.get_tags()) {
+      if(NoteTagTable::tag_is_activatable(tag)) {
         hovering = true;
         break;
       }
     }
 
-    // Don't show hand if Shift or Control is pressed
-    bool avoid_hand = (pointer_mask & (Gdk::SHIFT_MASK |
-                                       Gdk::CONTROL_MASK)) != 0;
-
-    if (hovering != m_hovering_on_link) {
+    if(hovering != m_hovering_on_link) {
       m_hovering_on_link = hovering;
 
-      Glib::RefPtr<Gdk::Window> win = get_window()->editor()->get_window(Gtk::TEXT_WINDOW_TEXT);
-      if (hovering && !avoid_hand) {
-        win->set_cursor(s_hand_cursor);
+      if(hovering) {
+        editor->set_cursor(s_hand_cursor);
       }
       else {
-        win->set_cursor(s_normal_cursor);
+        editor->set_cursor(s_normal_cursor);
       }
     }
-    return retval;
+  }
+
+
+  void MouseHandWatcher::on_button_release(double x, double y, Gdk::ModifierType state)
+  {
+    if(Gdk::ModifierType::CONTROL_MASK == (state & Gdk::ModifierType::CONTROL_MASK)) {
+      return;
+    }
+    if(Gdk::ModifierType::SHIFT_MASK == (state & Gdk::ModifierType::SHIFT_MASK)) {
+      return;
+    }
+
+    auto editor = get_window()->editor();
+    int buffer_x, buffer_y;
+    editor->window_to_buffer_coords(Gtk::TextWindowType::WIDGET, x, y, buffer_x, buffer_y);
+    Gtk::TextIter iter;
+    editor->get_iter_at_location(iter, buffer_x, buffer_y);
+
+    for(const auto & tag : iter.get_tags()) {
+      if(NoteTagTable::tag_is_activatable(tag)) {
+        if(auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag)) {
+          if(note_tag->activate(*dynamic_cast<NoteEditor*>(get_window()->editor()), iter)) {
+            break;
+          }
+        }
+      }
+    }
   }
 
   ////////////////////////////////////////////////////////////////////////

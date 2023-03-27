@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2014,2017 Aurimas Cernius
+ * Copyright (C) 2012,2014,2017,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -88,12 +88,12 @@ namespace sharp {
                                      const Glib::ustring & with)
   {
     Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex);
-    return re->replace(source, 0, with, static_cast<Glib::RegexMatchFlags>(0));
+    return re->replace(source, 0, with, static_cast<Glib::Regex::MatchFlags>(0));
   }
   
   bool string_match_iregex(const Glib::ustring & source, const Glib::ustring & regex)
   {
-    Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex, Glib::REGEX_CASELESS);
+    Glib::RefPtr<Glib::Regex> re = Glib::Regex::create(regex, Glib::Regex::CompileFlags::CASELESS);
     Glib::MatchInfo match_info;
     if(re->match(source, match_info)) {
       return match_info.fetch(0) == source;

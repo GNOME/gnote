@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019 Aurimas Cernius
+ * Copyright (C) 2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,11 +29,6 @@ Gnote::Gnote()
 }
 
 gnote::IActionManager & Gnote::action_manager()
-{
-  throw std::logic_error(std::string("Not implemented ") + __FUNCTION__);
-}
-
-gnote::IconManager & Gnote::icon_manager()
 {
   throw std::logic_error(std::string("Not implemented ") + __FUNCTION__);
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2019 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 
 
 
-#include <gtkmm/targetentry.h>
+#include <gtkmm/droptarget.h>
 
 #include "debug.hpp"
 #include "notebooks/notebook.hpp"
@@ -36,94 +36,61 @@ namespace gnote {
       : Gtk::TreeView(model)
       , m_note_manager(manager)
     {
-      // Set up the notebooksTree as a drag target so that notes
-      // can be dragged into the notebook.
-      std::vector<Gtk::TargetEntry> targets;
-      targets.push_back(Gtk::TargetEntry ("text/uri-list",
-                                          Gtk::TARGET_SAME_APP,
-                                          1));
-      drag_dest_set(targets, Gtk::DEST_DEFAULT_ALL, Gdk::ACTION_MOVE);
-
+      auto drop_target = Gtk::DropTarget::create(G_TYPE_INVALID, Gdk::DragAction::COPY);
+      std::vector<GType> types;
+      types.push_back(Glib::Value<Glib::ustring>::value_type());
+      types.push_back(Glib::Value<std::vector<Glib::ustring>>::value_type());
+      drop_target->set_gtypes(types);
+      drop_target->signal_drop().connect(sigc::mem_fun(*this, &NotebooksTreeView::on_drag_data_received), false);
+      add_controller(drop_target);
+      // TODO: add some visual when hovering over target notebook
     }
 
-    void NotebooksTreeView::on_drag_data_received( const Glib::RefPtr<Gdk::DragContext> & context,
-                                                   int x, int y,
-                                                   const Gtk::SelectionData & selectionData,
-                                                   guint , guint time_)
+    bool NotebooksTreeView::on_drag_data_received(const Glib::ValueBase & value, double x, double y)
     {
-      utils::UriList uriList(selectionData);
-      if (uriList.size() == 0) {
-        context->drag_finish (false, false, time_);
-        return;
-      }
-      
       Gtk::TreePath treepath;
-      Gtk::TreeViewDropPosition pos;
-      if (get_dest_row_at_pos (x, y, treepath, pos) == false) {
-        context->drag_finish (false, false, time_);
-        return;
+      Gtk::TreeView::DropPosition pos;
+      if(get_dest_row_at_pos(x, y, treepath, pos) == false) {
+        return false;
       }
       
       Gtk::TreeIter iter = get_model()->get_iter(treepath);
-      if (!iter) {
-        context->drag_finish (false, false, time_);
-        return;
+      if(!iter) {
+        return false;
       }
       
       Notebook::Ptr destNotebook;
       iter->get_value(0, destNotebook);
       if(std::dynamic_pointer_cast<AllNotesNotebook>(destNotebook)) {
-        context->drag_finish (false, false, time_);
-        return;
+        return false;
       }
 
-      for(utils::UriList::const_iterator uri_iter = uriList.begin();
-          uri_iter != uriList.end(); ++uri_iter) {
-        const sharp::Uri & uri(*uri_iter);
-        NoteBase::Ptr note = m_note_manager.find_by_uri(uri.to_string());
-        if (!note)
-          continue;
+      auto drop = [this, &destNotebook](const Glib::ustring & uri) {
+        NoteBase::Ptr note = m_note_manager.find_by_uri(uri);
+        if(!note) {
+          return false;
+        }
 
         DBG_OUT ("Dropped into notebook: %s", note->get_title().c_str());
-
         destNotebook->add_note(std::static_pointer_cast<Note>(note));
-      }
-
-      context->drag_finish (true, false, time_);
-    }
-
-    bool NotebooksTreeView::on_drag_motion(const Glib::RefPtr<Gdk::DragContext> &,
-                                int x, int y, guint )
-    {
-      Gtk::TreePath treepath;
-      Gtk::TreeViewDropPosition pos;
-      if (get_dest_row_at_pos (x, y, treepath,pos) == false) {
-        gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
-        return false;
-      }
-      
-      Gtk::TreeIter iter = get_model()->get_iter (treepath);
-      if (!iter) {
-        gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
-        return false;
-      }
-      
-      Notebook::Ptr destNotebook;
-      iter->get_value(0, destNotebook);
-      if(std::dynamic_pointer_cast<AllNotesNotebook>(destNotebook)) {
-        gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
         return true;
+      };
+
+      if(G_VALUE_HOLDS_STRING(value.gobj())) {
+        Glib::ustring val = static_cast<const Glib::Value<Glib::ustring>&>(value).get();
+        return drop(val);
       }
-      
-      set_drag_dest_row (treepath , Gtk::TREE_VIEW_DROP_INTO_OR_AFTER);
-      
-      return true;
-    }
+      else if(G_VALUE_HOLDS(value.gobj(), Glib::Value<std::vector<Glib::ustring>>::value_type())) {
+        auto uris = static_cast<const Glib::Value<std::vector<Glib::ustring>>&>(value).get();
+        bool ret = false;
+        for(const auto & uri : uris) {
+          ret = drop(uri) || ret;
+        }
 
-    void NotebooksTreeView::on_drag_leave(const Glib::RefPtr<Gdk::DragContext> & , guint )
-    {
-      gtk_tree_view_set_drag_dest_row (gobj(), NULL, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
-    }
+        return ret;
+      }
 
+      return false;
+    }
   }
 }

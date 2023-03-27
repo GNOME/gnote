@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,9 +66,9 @@ bool AllNotesNotebook::add_note(const Note::Ptr &)
   return false;
 }
 
-Glib::RefPtr<Gdk::Pixbuf> AllNotesNotebook::get_icon(IconManager & m)
+Glib::ustring AllNotesNotebook::get_icon_name() const
 {
-  return m.get_icon(IconManager::FILTER_NOTE_ALL, 22);
+  return IconManager::FILTER_NOTE_ALL;
 }
 
 
@@ -97,9 +97,9 @@ bool UnfiledNotesNotebook::add_note(const Note::Ptr & note)
   return true;
 }
 
-Glib::RefPtr<Gdk::Pixbuf> UnfiledNotesNotebook::get_icon(IconManager & m)
+Glib::ustring UnfiledNotesNotebook::get_icon_name() const
 {
-  return m.get_icon(IconManager::FILTER_NOTE_UNFILED, 22);
+  return IconManager::FILTER_NOTE_UNFILED;
 }
 
 
@@ -124,9 +124,9 @@ bool PinnedNotesNotebook::add_note(const Note::Ptr & note)
   return true;
 }
 
-Glib::RefPtr<Gdk::Pixbuf> PinnedNotesNotebook::get_icon(IconManager & m)
+Glib::ustring PinnedNotesNotebook::get_icon_name() const
 {
-  return m.get_icon(IconManager::PIN_DOWN, 22);
+  return IconManager::PIN_DOWN;
 }
 
 
@@ -160,9 +160,9 @@ bool ActiveNotesNotebook::add_note(const Note::Ptr & note)
   return true;
 }
 
-Glib::RefPtr<Gdk::Pixbuf> ActiveNotesNotebook::get_icon(IconManager & m)
+Glib::ustring ActiveNotesNotebook::get_icon_name() const
 {
-  return m.get_icon(IconManager::ACTIVE_NOTES, 22);
+  return IconManager::ACTIVE_NOTES;
 }
 
 void ActiveNotesNotebook::on_note_deleted(const NoteBase::Ptr & note)

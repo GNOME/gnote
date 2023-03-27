@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -27,14 +27,11 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
-#include <gtkmm/accelgroup.h>
-#include <gtkmm/alignment.h>
 #include <gtkmm/button.h>
 #include <gtkmm/fontchooserdialog.h>
 #include <gtkmm/linkbutton.h>
 #include <gtkmm/notebook.h>
 #include <gtkmm/separator.h>
-#include <gtkmm/table.h>
 
 #include "sharp/addinstreemodel.hpp"
 #include "sharp/modulemanager.hpp"
@@ -98,33 +95,19 @@ namespace gnote {
     , m_addin_manager(note_manager.get_addin_manager())
     , m_note_manager(note_manager)
   {
-//    set_icon(utils::get_icon("gnote"));
-    set_border_width(5);
+    set_margin(5);
     set_resizable(true);
     set_title(_("Gnote Preferences"));
 
     get_content_area()->set_spacing(5);
 
-//      addin_prefs_dialogs =
-//              new Dictionary<string, Gtk::Dialog> ();
-//      addin_info_dialogs =
-//              new Dictionary<string, Gtk::Dialog> ();
-
-      // Notebook Tabs (Editing, Hotkeys)...
-
-    Gtk::Notebook *notebook = manage(new Gtk::Notebook());
-    notebook->set_tab_pos(Gtk::POS_TOP);
-    notebook->set_border_width(5);
-    notebook->show();
+    Gtk::Notebook *notebook = Gtk::make_managed<Gtk::Notebook>();
+    notebook->set_margin(5);
     
-    notebook->append_page (*manage(make_editing_pane()),
-                           _("General"));
-    notebook->append_page(*manage(make_links_pane()), _("Links"));
-//      }
-    notebook->append_page(*manage(make_sync_pane()),
-                          _("Synchronization"));
-    notebook->append_page (*manage(make_addins_pane()),
-                           _("Plugins"));
+    notebook->append_page(*make_editing_pane(), _("General"));
+    notebook->append_page(*make_links_pane(), _("Links"));
+    notebook->append_page(*make_sync_pane(), _("Synchronization"));
+    notebook->append_page(*make_addins_pane(), _("Plugins"));
 
       // TODO: Figure out a way to have these be placed in a specific order
     std::vector<PreferenceTabAddin*> tabAddins = m_addin_manager.get_preference_tab_addins();
@@ -145,25 +128,11 @@ namespace gnote {
         }
       }
 
-      get_content_area()->pack_start(*notebook, true, true, 0);
+    get_content_area()->append(*notebook);
 
-      // Ok button...
-
-      Gtk::Button *button = manage(new Gtk::Button(_("_Close"), true));
-      button->property_can_default().set_value(true);
-      button->show ();
-
-      Glib::RefPtr<Gtk::AccelGroup> accel_group(Gtk::AccelGroup::create());
-      add_accel_group (accel_group);
-
-      button->add_accelerator ("activate",
-                               accel_group,
-                               GDK_KEY_Escape,
-                               (Gdk::ModifierType)0,
-                               (Gtk::AccelFlags)0);
-
-      add_action_widget (*button, Gtk::RESPONSE_CLOSE);
-      set_default_response(Gtk::RESPONSE_CLOSE);
+    Gtk::Button *button = Gtk::make_managed<Gtk::Button>(_("_Close"), true);
+    add_action_widget(*button, Gtk::ResponseType::CLOSE);
+    set_default_response(Gtk::ResponseType::CLOSE);
 
     m_gnote.preferences().signal_note_rename_behavior_changed.connect(
         sigc::mem_fun(*this, &PreferencesDialog::on_note_rename_behavior_changed));
@@ -237,12 +206,11 @@ namespace gnote {
   {
       Gtk::Label *label;
       Gtk::CheckButton *check;
-      sharp::PropertyEditorBool *peditor, *font_peditor,* bullet_peditor;
+      sharp::PropertyEditorBool *font_peditor,* bullet_peditor;
 
-      Gtk::Grid *options_list = manage(new Gtk::Grid);
+      Gtk::Grid *options_list = Gtk::make_managed<Gtk::Grid>();
       options_list->set_row_spacing(12);
-      options_list->set_border_width(12);
-      options_list->show();
+      options_list->set_margin(12);
       int options_list_row = 0;
 
       // Spell checking...
@@ -263,7 +231,7 @@ namespace gnote {
 
 
       // Auto bulleted list
-      check = manage(make_check_button (_("Enable auto-_bulleted lists")));
+      check = make_check_button(_("Enable auto-_bulleted lists"));
       set_widget_tooltip(*check, _("Start new bulleted list by starting new line with character \"-\"."));
       options_list->attach(*check, 0, options_list_row++, 1, 1);
       bullet_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_bulleted_lists, *check);
@@ -271,8 +239,8 @@ namespace gnote {
 
       // Custom font...
 
-      Gtk::Grid * const font_box = manage(new Gtk::Grid);
-      check = manage(make_check_button (_("Use custom _font")));
+      auto font_box = Gtk::make_managed<Gtk::Grid>();
+      check = make_check_button(_("Use custom _font"));
       check->set_hexpand(true);
       font_box->attach(*check, 0, 0, 1, 1);
       font_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_custom_font, *check);
@@ -282,17 +250,16 @@ namespace gnote {
       font_button->set_sensitive(check->get_active());
       font_button->set_hexpand(true);
       font_box->attach(*font_button, 1, 0, 1, 1);
-      font_box->show_all();
       options_list->attach(*font_box, 0, options_list_row++, 1, 1);
 
-      font_peditor->add_guard (font_button);
-      
+      font_peditor->add_guard(font_button);
+
       // Note renaming behavior
-      Gtk::Grid * const rename_behavior_box = manage(new Gtk::Grid);
-      label = manage(make_label(_("When renaming a linked note: ")));
+      auto rename_behavior_box = Gtk::make_managed<Gtk::Grid>();
+      label = make_label(_("When renaming a linked note: "));
       label->set_hexpand(true);
       rename_behavior_box->attach(*label, 0, 0, 1, 1);
-      m_rename_behavior_combo = manage(new Gtk::ComboBoxText());
+      m_rename_behavior_combo = Gtk::make_managed<Gtk::ComboBoxText>();
       m_rename_behavior_combo->append(_("Ask me what to do"));
       m_rename_behavior_combo->append(_("Never rename links"));
       m_rename_behavior_combo->append(_("Always rename links"));
@@ -302,60 +269,50 @@ namespace gnote {
         m_gnote.preferences().note_rename_behavior(rename_behavior);
       }
       m_rename_behavior_combo->set_active(rename_behavior);
-      m_rename_behavior_combo->signal_changed().connect(
-        sigc::mem_fun(
-          *this,
-          &PreferencesDialog::on_rename_behavior_changed));
+      m_rename_behavior_combo->signal_changed()
+        .connect(sigc::mem_fun(*this, &PreferencesDialog::on_rename_behavior_changed));
       m_rename_behavior_combo->set_hexpand(true);
       rename_behavior_box->attach(*m_rename_behavior_combo, 1, 0, 1, 1);
-      rename_behavior_box->show_all();
       options_list->attach(*rename_behavior_box, 0, options_list_row++, 1, 1);
 
       // New Note Template
-      Gtk::Grid *template_note_grid = manage(new Gtk::Grid);
+      auto template_note_grid = Gtk::make_managed<Gtk::Grid>();
       // TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-      label = manage(make_label (_("New Note Template")));
+      label = make_label(_("New Note Template"));
       set_widget_tooltip(*label, _("Use the new note template to specify the text "
                                    "that should be used when creating a new note."));
       label->set_hexpand(true);
       template_note_grid->attach(*label, 0, 0, 1, 1);
       
-      Gtk::Button *open_template_button = manage(new Gtk::Button (_("Open New Note Template")));
+      Gtk::Button *open_template_button = Gtk::make_managed<Gtk::Button>(_("Open New Note Template"));
       open_template_button->signal_clicked().connect(
         sigc::mem_fun(*this, &PreferencesDialog::open_template_button_clicked));
-      open_template_button->show ();
       template_note_grid->attach(*open_template_button, 1, 0, 1, 1);
-      template_note_grid->show();
       options_list->attach(*template_note_grid, 0, options_list_row++, 1, 1);
 
       return options_list;
     }
 
-  Gtk::Button *PreferencesDialog::make_font_button ()
+  Gtk::Button *PreferencesDialog::make_font_button()
   {
-    Gtk::Grid *font_box = manage(new Gtk::Grid);
-    font_box->show ();
+    Gtk::Grid *font_box = Gtk::make_managed<Gtk::Grid>();
 
-    font_face = manage(new Gtk::Label ());
+    font_face = Gtk::make_managed<Gtk::Label>();
     font_face->set_use_markup(true);
-    font_face->show ();
     font_face->set_hexpand(true);
     font_box->attach(*font_face, 0, 0, 1, 1);
 
-    Gtk::Separator *sep = manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
-    sep->show ();
+    Gtk::Separator *sep = Gtk::make_managed<Gtk::Separator>(Gtk::Orientation::VERTICAL);
     font_box->attach(*sep, 1, 0, 1, 1);
 
-    font_size = manage(new Gtk::Label());
+    font_size = Gtk::make_managed<Gtk::Label>();
     font_size->set_margin_start(4);
     font_size->set_margin_end(4);
-    font_size->show ();
     font_box->attach(*font_size, 2, 0, 1, 1);
 
-    Gtk::Button *button = new Gtk::Button ();
+    Gtk::Button *button = Gtk::make_managed<Gtk::Button>();
     button->signal_clicked().connect(sigc::mem_fun(*this, &PreferencesDialog::on_font_button_clicked));
-    button->add (*font_box);
-    button->show ();
+    button->set_child(*font_box);
 
     update_font_button(m_gnote.preferences().custom_font_face());
 
@@ -364,24 +321,23 @@ namespace gnote {
 
   Gtk::Widget *PreferencesDialog::make_links_pane()
   {
-    Gtk::Grid *vbox = manage(new Gtk::Grid);
+    auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(12);
-    vbox->set_border_width(12);
-    vbox->show();
+    vbox->set_margin(12);
 
     Gtk::CheckButton *check;
     sharp::PropertyEditorBool *peditor;
     int vbox_row = 0;
 
     // internal links
-    check = manage(make_check_button(_("_Automatically link to notes")));
+    check = make_check_button(_("_Automatically link to notes"));
     set_widget_tooltip(*check, _("Enable this option to create a link when text matches note title."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
     peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_links, *check);
     peditor->setup();
 
     // URLs
-    check = manage(make_check_button(_("Create links for _URLs")));
+    check = make_check_button(_("Create links for _URLs"));
     set_widget_tooltip(*check, _("Enable this option to create links for URLs. "
                                  "Clicking will open URL with appropriate program."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
@@ -389,7 +345,7 @@ namespace gnote {
     peditor->setup();
 
     // WikiWords...
-    check = manage(make_check_button(_("Highlight _WikiWords")));
+    check = make_check_button(_("Highlight _WikiWords"));
     set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
                                  "Clicking the word will create a note with that name."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
@@ -400,7 +356,7 @@ namespace gnote {
   }
 
 
-  void PreferencesDialog::combo_box_text_data_func(const Gtk::TreeIter & iter)
+  void PreferencesDialog::combo_box_text_data_func(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
   {
     sync::SyncServiceAddin *addin = NULL;
     iter->get_value(0, addin);
@@ -413,18 +369,16 @@ namespace gnote {
 
   Gtk::Widget *PreferencesDialog::make_sync_pane()
   {
-    Gtk::Grid *vbox = new Gtk::Grid;
+    auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(4);
-    vbox->set_border_width(8);
+    vbox->set_margin(8);
     int vbox_row = 0;
 
-    Gtk::Grid *hbox = manage(new Gtk::Grid);
+    auto hbox = Gtk::make_managed<Gtk::Grid>();
     hbox->set_column_spacing(6);
     int hbox_col = 0;
 
-    Gtk::Label *label = manage(new Gtk::Label(_("Ser_vice:"), true));
-    label->property_xalign().set_value(0);
-    label->show ();
+    auto label = make_label(_("Ser_vice:"));
     hbox->attach(*label, hbox_col++, 0, 1, 1);
 
     // Populate the store with all the available SyncServiceAddins
@@ -433,15 +387,15 @@ namespace gnote {
     std::sort(addins.begin(), addins.end(), CompareSyncAddinsByName());
     for(auto addin : addins) {
       if(addin->initialized()) {
-	Gtk::TreeIter iter = m_sync_addin_store->append();
+	auto iter = m_sync_addin_store->append();
 	iter->set_value(0, addin);
 	m_sync_addin_iters[addin->id()] = iter;
       }
     }
 
-    m_sync_addin_combo = manage(new Gtk::ComboBox (Glib::RefPtr<Gtk::TreeModel>::cast_static(m_sync_addin_store)));
+    m_sync_addin_combo = Gtk::make_managed<Gtk::ComboBox>(std::static_pointer_cast<Gtk::TreeModel>(m_sync_addin_store));
     label->set_mnemonic_widget(*m_sync_addin_combo);
-    Gtk::CellRendererText *crt = manage(new Gtk::CellRendererText());
+    Gtk::CellRendererText *crt = Gtk::make_managed<Gtk::CellRendererText>();
     m_sync_addin_combo->pack_start(*crt, true);
     m_sync_addin_combo->set_cell_data_func(*crt, sigc::mem_fun(*this, &PreferencesDialog::combo_box_text_data_func));
 
@@ -449,20 +403,17 @@ namespace gnote {
     // by default.  Otherwise, just select the first one in the list.
     Glib::ustring addin_id = m_gnote.preferences().sync_selected_service_addin();
 
-    Gtk::TreeIter active_iter;
+    Gtk::TreeIter<Gtk::TreeRow> active_iter;
     if (!addin_id.empty() && m_sync_addin_iters.find(addin_id) != m_sync_addin_iters.end()) {
       active_iter = m_sync_addin_iters [addin_id];
       m_sync_addin_combo->set_active(active_iter);
     }
 
-    m_sync_addin_combo->signal_changed().connect(
-      sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_combo_changed));
+    m_sync_addin_combo->signal_changed().connect(sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_combo_changed));
 
-    m_sync_addin_combo->show();
     m_sync_addin_combo->set_hexpand(true);
     hbox->attach(*m_sync_addin_combo, hbox_col++, 0, 1, 1);
 
-    hbox->show();
     vbox->attach(*hbox, 0, vbox_row++, 1, 1);
 
     // Get the preferences GUI for the Sync Addin
@@ -473,22 +424,19 @@ namespace gnote {
     
     if(m_selected_sync_addin) {
       m_sync_addin_prefs_widget = m_selected_sync_addin->create_preferences_control(
-        sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
+        *this, sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
     }
     if (m_sync_addin_prefs_widget == NULL) {
-      Gtk::Label *l = manage(new Gtk::Label (_("Not configurable")));
-      l->property_yalign().set_value(0.5f);
+      auto l = make_label(_("Not configurable"));
       m_sync_addin_prefs_widget = l;
     }
     if (m_sync_addin_prefs_widget && !addin_id.empty() &&
         m_sync_addin_iters.find(addin_id) != m_sync_addin_iters.end() && m_selected_sync_addin->is_configured()) {
       m_sync_addin_prefs_widget->set_sensitive(false);
     }
-    
-    m_sync_addin_prefs_widget->show ();
-    m_sync_addin_prefs_container = manage(new Gtk::Grid);
+
+    m_sync_addin_prefs_container = Gtk::make_managed<Gtk::Grid>();
     m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
-    m_sync_addin_prefs_container->show();
     m_sync_addin_prefs_container->set_hexpand(true);
     m_sync_addin_prefs_container->set_vexpand(true);
     vbox->attach(*m_sync_addin_prefs_container, 0, vbox_row++, 1, 1);
@@ -499,11 +447,10 @@ namespace gnote {
       timeout = 5;
       m_gnote.preferences().sync_autosync_timeout(5);
     }
-    Gtk::Grid *autosyncBox = manage(new Gtk::Grid);
+    auto autosyncBox = Gtk::make_managed<Gtk::Grid>();
     autosyncBox->set_column_spacing(5);
-    m_autosync_check = manage(new Gtk::CheckButton(_("Automatic background s_ync interval (minutes)"), true));
-    m_autosync_check->set_hexpand(true);
-    m_autosync_spinner = manage(new Gtk::SpinButton(1));
+    m_autosync_check = make_check_button(_("Automatic background s_ync interval (minutes)"));
+    m_autosync_spinner = Gtk::make_managed<Gtk::SpinButton>(1);
     m_autosync_spinner->set_range(5, 1000);
     m_autosync_spinner->set_value(timeout >= 5 ? timeout : 10);
     m_autosync_spinner->set_increments(1, 5);
@@ -520,47 +467,40 @@ namespace gnote {
     autosyncBox->set_hexpand(true);
     vbox->attach(*autosyncBox, 0, vbox_row++, 1, 1);
 
-    Gtk::ButtonBox *bbox = manage(new Gtk::ButtonBox(Gtk::ORIENTATION_HORIZONTAL));
+    auto bbox = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::HORIZONTAL);
     bbox->set_spacing(4);
-    bbox->property_layout_style().set_value(Gtk::BUTTONBOX_END);
 
     // "Advanced..." button to bring up extra sync config dialog
-    Gtk::Button *advancedConfigButton = manage(new Gtk::Button(_("_Advanced..."), true));
+    auto advancedConfigButton = Gtk::make_managed<Gtk::Button>(_("_Advanced..."), true);
     advancedConfigButton->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_advanced_sync_config_button));
-    advancedConfigButton->show ();
-    bbox->pack_start(*advancedConfigButton, false, false, 0);
-    bbox->set_child_secondary(*advancedConfigButton, true);
+    bbox->append(*advancedConfigButton);
 
-    m_reset_sync_addin_button = manage(new Gtk::Button(_("Clear")));
+    m_reset_sync_addin_button = Gtk::make_managed<Gtk::Button>(_("Clear"));
     m_reset_sync_addin_button->signal_clicked().connect([this]() {
       on_reset_sync_addin_button(true);
     });
     m_reset_sync_addin_button->set_sensitive(m_selected_sync_addin &&
                                         addin_id == m_selected_sync_addin->id() &&
                                         m_selected_sync_addin->is_configured());
-    m_reset_sync_addin_button->show ();
-    bbox->pack_start(*m_reset_sync_addin_button, false, false, 0);
+    bbox->append(*m_reset_sync_addin_button);
 
     // TODO: Tabbing should go directly from sync prefs widget to here
     // TODO: Consider connecting to "Enter" pressed in sync prefs widget
-    m_save_sync_addin_button = manage(new Gtk::Button(_("_Save"), true));
+    m_save_sync_addin_button = Gtk::make_managed<Gtk::Button>(_("_Save"), true);
     m_save_sync_addin_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_save_sync_addin_button));
     m_save_sync_addin_button->set_sensitive(m_selected_sync_addin != NULL &&
                                           (addin_id != m_selected_sync_addin->id()
                                            || !m_selected_sync_addin->is_configured()));
-    m_save_sync_addin_button->show();
-    bbox->pack_start(*m_save_sync_addin_button, false, false, 0);
+    bbox->append(*m_save_sync_addin_button);
 
     m_sync_addin_combo->set_sensitive(!m_selected_sync_addin ||
                                   addin_id != m_selected_sync_addin->id() ||
                                   !m_selected_sync_addin->is_configured());
 
-    bbox->show();
     vbox->attach(*bbox, 0, vbox_row++, 1, 1);
 
-    vbox->show_all();
     return vbox;
   }
 
@@ -569,84 +509,66 @@ namespace gnote {
   // Extension Preferences
   Gtk::Widget *PreferencesDialog::make_addins_pane()
   {
-    Gtk::Grid *vbox = new Gtk::Grid;
+    auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(6);
-    vbox->set_border_width(6);
+    vbox->set_margin(6);
     int vbox_row = 0;
-    Gtk::Label *l = manage(new Gtk::Label (_("The following plugins are installed:"), 
-                                           true));
+    auto l = Gtk::make_managed<Gtk::Label>(_("The following plugins are installed:"), true);
     l->property_xalign() = 0;
-    l->show ();
     vbox->attach(*l, 0, vbox_row++, 1, 1);
 
-    Gtk::Grid *hbox = manage(new Gtk::Grid);
+    auto hbox = Gtk::make_managed<Gtk::Grid>();
     hbox->set_column_spacing(6);
     int hbox_col = 0;
 
     // TreeView of Add-ins
-    m_addin_tree = manage(new Gtk::TreeView ());
-    m_addin_tree_model = sharp::AddinsTreeModel::create(m_gnote.icon_manager(), m_addin_tree);
+    m_addin_tree = Gtk::make_managed<Gtk::TreeView>();
+    m_addin_tree_model = sharp::AddinsTreeModel::create(m_addin_tree);
 
-    m_addin_tree->show ();
-
-    Gtk::ScrolledWindow *sw = manage(new Gtk::ScrolledWindow ());
-    sw->property_hscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
-    sw->property_vscrollbar_policy() = Gtk::POLICY_AUTOMATIC;
-    sw->set_shadow_type(Gtk::SHADOW_IN);
-    sw->add (*m_addin_tree);
-    sw->show ();
+    auto sw = Gtk::make_managed<Gtk::ScrolledWindow>();
+    sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+    sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+    sw->set_child(*m_addin_tree);
     sw->set_hexpand(true);
     sw->set_vexpand(true);
     hbox->attach(*sw, hbox_col++, 0, 1, 1);
 
     // Action Buttons (right of TreeView)
-    Gtk::ButtonBox *button_box = manage(new Gtk::ButtonBox(Gtk::ORIENTATION_VERTICAL));
+    auto button_box = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL);
     button_box->set_spacing(4);
-    button_box->set_layout(Gtk::BUTTONBOX_START);
 
-    // TODO: In a future version, add in an "Install Add-ins..." button
-
-    // TODO: In a future version, add in a "Repositories..." button
-
-    enable_addin_button = manage(new Gtk::Button (_("_Enable"), true));
+    enable_addin_button = Gtk::make_managed<Gtk::Button>(_("_Enable"), true);
     enable_addin_button->set_sensitive(false);
     enable_addin_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_enable_addin_button));
-    enable_addin_button->show ();
 
-    disable_addin_button = manage(new Gtk::Button (_("_Disable"), true));
+    disable_addin_button = Gtk::make_managed<Gtk::Button>(_("_Disable"), true);
     disable_addin_button->set_sensitive(false);
     disable_addin_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_disable_addin_button));
-    disable_addin_button->show ();
 
-    addin_prefs_button = manage(new Gtk::Button(_("_Preferences"), true));
+    addin_prefs_button = Gtk::make_managed<Gtk::Button>(_("_Preferences"), true);
     addin_prefs_button->set_sensitive(false);
     addin_prefs_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_prefs_button));
-    addin_prefs_button->show ();
 
-    addin_info_button = manage(new Gtk::Button(_("In_formation"), true));
+    addin_info_button = Gtk::make_managed<Gtk::Button>(_("In_formation"), true);
     addin_info_button->set_sensitive(false);
     addin_info_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_info_button));
-    addin_info_button->show ();
 
-    button_box->pack_start(*enable_addin_button);
-    button_box->pack_start(*disable_addin_button);
-    button_box->pack_start(*addin_prefs_button);
-    button_box->pack_start(*addin_info_button);
+    button_box->append(*enable_addin_button);
+    button_box->append(*disable_addin_button);
+    button_box->append(*addin_prefs_button);
+    button_box->append(*addin_info_button);
 
-    button_box->show ();
     hbox->attach(*button_box, hbox_col++, 0, 1, 1);
 
-    hbox->show ();
     vbox->attach(*hbox, 0, vbox_row++, 1, 1);
-    vbox->show ();
 
     m_addin_tree->get_selection()->signal_changed().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_addin_tree_selection_changed));
-    load_addins ();
+    load_addins();
 
     return vbox;
   }
@@ -756,8 +678,9 @@ namespace gnote {
     auto iter = addin_prefs_dialogs.find(id);
     if (iter == addin_prefs_dialogs.end()) {
       // A preference dialog isn't open already so create a new one
-      Gtk::Image *icon = manage(new Gtk::Image("preferences-system", Gtk::ICON_SIZE_DIALOG));
-      Gtk::Label *caption = manage(new Gtk::Label());
+      auto icon = Gtk::make_managed<Gtk::Image>();
+      icon->set_from_icon_name("preferences-system");
+      auto caption = Gtk::make_managed<Gtk::Label>();
       caption->set_markup(
         Glib::ustring::compose("<span size='large' weight='bold'>%1 %2</span>", 
             addin_info.name(), addin_info.version()));
@@ -766,41 +689,35 @@ namespace gnote {
       caption->set_use_underline(false);
       caption->set_hexpand(true);
 
-      Gtk::Widget * pref_widget =
-        m_addin_manager.create_addin_preference_widget(id);
+      Gtk::Widget *pref_widget = m_addin_manager.create_addin_preference_widget(id);
 
       if (pref_widget == NULL) {
-        pref_widget = manage(new Gtk::Label (_("Not Implemented")));
+        pref_widget = Gtk::make_managed<Gtk::Label>(_("Not Implemented"));
       }
       
-      Gtk::Grid *hbox = manage(new Gtk::Grid);
+      Gtk::Grid *hbox = Gtk::make_managed<Gtk::Grid>();
       hbox->set_column_spacing(6);
-      Gtk::Grid *vbox = manage(new Gtk::Grid);
+      Gtk::Grid *vbox = Gtk::make_managed<Gtk::Grid>();
       vbox->set_row_spacing(6);
-      vbox->set_border_width(6);
+      vbox->set_margin(6);
       hbox->attach(*icon, 0, 0, 1, 1);
       hbox->attach(*caption, 1, 0, 1, 1);
       vbox->attach(*hbox, 0, 0, 1, 1);
+      vbox->set_expand(true);
 
       vbox->attach(*pref_widget, 0, 1, 1, 1);
-      vbox->show_all ();
 
-      dialog = new Gtk::Dialog(
+      dialog = Gtk::make_managed<Gtk::Dialog>(
         // TRANSLATORS: %1 is the placeholder for the addin name.
         Glib::ustring::compose(_("%1 Preferences"), addin_info.name()),
         *this, false);
       dialog->property_destroy_with_parent() = true;
-      dialog->add_button(_("_Close"), Gtk::RESPONSE_CLOSE);
+      dialog->add_button(_("_Close"), Gtk::ResponseType::CLOSE);
 
-      dialog->get_content_area()->pack_start(*vbox, true, true, 0);
-      dialog->signal_delete_event().connect(
-        sigc::bind(
-          sigc::mem_fun(*this, &PreferencesDialog::addin_pref_dialog_deleted),
-          dialog), false);
-      dialog->signal_response().connect(
-        sigc::bind(
-          sigc::mem_fun(*this, &PreferencesDialog::addin_pref_dialog_response),
-          dialog));
+      dialog->get_content_area()->append(*vbox);
+      dialog->signal_response().connect([this, dialog, id](int) {
+        addin_pref_dialog_response(id, dialog);
+      });
 
       // Store this dialog off in the dictionary so it can be
       // presented again if the user clicks on the preferences button
@@ -817,20 +734,10 @@ namespace gnote {
   }
 
 
-  bool PreferencesDialog::addin_pref_dialog_deleted(GdkEventAny*, 
-                                                    Gtk::Dialog* dialog)
+  void PreferencesDialog::addin_pref_dialog_response(const Glib::ustring & addin_id, Gtk::Dialog* dialog)
   {
-    // Remove the addin from the addin_prefs_dialogs Dictionary
-    dialog->hide ();
-
-//    addin_prefs_dialogs.erase(dialog->get_addin_id());
-
-    return false;
-  }
-
-  void PreferencesDialog::addin_pref_dialog_response(int, Gtk::Dialog* dialog)
-  {
-    addin_pref_dialog_deleted(NULL, dialog);
+    dialog->hide();
+    addin_prefs_dialogs.erase(addin_id);
   }
 
   void PreferencesDialog::on_addin_info_button()
@@ -841,11 +748,7 @@ namespace gnote {
     Gtk::Dialog* dialog;
     auto iter = addin_info_dialogs.find(addin.id());
     if (iter == addin_info_dialogs.end()) {
-      dialog = new AddinInfoDialog (addin, *this);
-      dialog->signal_delete_event().connect(
-        sigc::bind(
-          sigc::mem_fun(*this, &PreferencesDialog::addin_info_dialog_deleted), 
-          dialog), false);
+      dialog = Gtk::make_managed<AddinInfoDialog>(addin, *this);
       dialog->signal_response().connect(
         sigc::bind(
           sigc::mem_fun(*this, &PreferencesDialog::addin_info_dialog_response),
@@ -865,23 +768,11 @@ namespace gnote {
     dialog->present ();
   }
 
-  bool PreferencesDialog::addin_info_dialog_deleted(GdkEventAny*, 
-                                                    Gtk::Dialog* dialog)
-  {
-    // Remove the addin from the addin_prefs_dialogs Dictionary
-    dialog->hide ();
-
-    AddinInfoDialog *addin_dialog = static_cast<AddinInfoDialog*>(dialog);
-    addin_info_dialogs.erase(addin_dialog->get_addin_id());
-    delete dialog;
-
-    return false;
-  }
-
-
   void PreferencesDialog::addin_info_dialog_response(int, Gtk::Dialog* dlg)
   {
-    addin_info_dialog_deleted(NULL, dlg);
+    dlg->hide();
+    AddinInfoDialog *addin_dialog = static_cast<AddinInfoDialog*>(dlg);
+    addin_info_dialogs.erase(addin_dialog->get_addin_id());
   }
 
 
@@ -891,24 +782,18 @@ namespace gnote {
 //    if (args.Length > 0)
 //      label_text = String.Format (label_text, args);
 
-    Gtk::Label *label = new Gtk::Label (label_text, true);
+    auto label = Gtk::make_managed<Gtk::Label>(label_text, true);
 
     label->set_use_markup(true);
-    label->set_justify(Gtk::JUSTIFY_LEFT);
-    label->set_valign(Gtk::ALIGN_CENTER);
-    label->show();
+    label->set_justify(Gtk::Justification::LEFT);
+    label->set_valign(Gtk::Align::CENTER);
 
     return label;
   }
 
   Gtk::CheckButton *PreferencesDialog::make_check_button(const Glib::ustring & label_text)
   {
-    Gtk::Label *label = manage(make_label(label_text));
-    
-    Gtk::CheckButton *check = new Gtk::CheckButton();
-    check->add(*label);
-    check->show();
-    
+    Gtk::CheckButton *check = Gtk::make_managed<Gtk::CheckButton>(label_text, true);
     return check;
   }
 
@@ -920,20 +805,22 @@ namespace gnote {
 
   void PreferencesDialog::on_font_button_clicked()
   {
-    auto font_dialog = new Gtk::FontChooserDialog(_("Choose Note Font"));
+    auto font_dialog = Gtk::make_managed<Gtk::FontChooserDialog>(_("Choose Note Font"));
 
     auto font_name = m_gnote.preferences().custom_font_face();
     font_dialog->set_font(font_name);
 
-    if (Gtk::RESPONSE_OK == font_dialog->run()) {
-      auto new_font = font_dialog->get_font();
-      if(new_font != font_name) {
-        m_gnote.preferences().custom_font_face(new_font);
-        update_font_button(new_font);
+    font_dialog->signal_response().connect([this, font_name, font_dialog](int response) {
+      if(Gtk::ResponseType::OK == response) {
+        auto new_font = font_dialog->get_font();
+        if(new_font != font_name) {
+          m_gnote.preferences().custom_font_face(new_font);
+          update_font_button(new_font);
+        }
       }
-    }
-
-    delete font_dialog;
+      font_dialog->hide();
+    });
+    font_dialog->show();
   }
 
   void PreferencesDialog::update_font_button(const Glib::ustring & font_desc)
@@ -1013,24 +900,35 @@ namespace gnote {
     savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlgBehaviorPref);
 
     // Create dialog
-    Gtk::Dialog *advancedDlg = new Gtk::Dialog(_("Other Synchronization Options"), *this, true);
+    Gtk::Dialog *advancedDlg = Gtk::make_managed<Gtk::Dialog>(_("Other Synchronization Options"), *this, true);
     // Populate dialog
-    Gtk::Label *label = new Gtk::Label(
+    Gtk::Label *label = Gtk::make_managed<Gtk::Label>(
       _("When a conflict is detected between a local note and a note on the configured synchronization server:"));
-    label->set_line_wrap(true);
-    //label.Xalign = 0;
+    label->set_wrap(true);
+    label->set_margin(6);
 
-    promptOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Always ask me what to do"));
-    promptOnConflictRadio->signal_toggled()
-      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
+    auto promptOnConflictRadio = Gtk::make_managed<Gtk::CheckButton>(_("Always ask me what to do"));
+    auto renameOnConflictRadio = Gtk::make_managed<Gtk::CheckButton>(_("Rename my local note"));
+    renameOnConflictRadio->set_group(*promptOnConflictRadio);
+    auto overwriteOnConflictRadio = Gtk::make_managed<Gtk::CheckButton>(_("Replace my local note with the server's update"));
+    overwriteOnConflictRadio->set_group(*promptOnConflictRadio);
 
-    renameOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Rename my local note"));
-    renameOnConflictRadio->signal_toggled()
-      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
+    auto on_toggle = [this, renameOnConflictRadio, overwriteOnConflictRadio] {
+      sync::SyncTitleConflictResolution newBehavior = sync::CANCEL;
 
-    overwriteOnConflictRadio = new Gtk::RadioButton(conflictRadioGroup, _("Replace my local note with the server's update"));
-    overwriteOnConflictRadio->signal_toggled()
-      .connect(sigc::mem_fun(*this, &PreferencesDialog::on_conflict_option_toggle));
+      if(renameOnConflictRadio->get_active()) {
+        newBehavior = sync::RENAME_EXISTING_NO_UPDATE;
+      }
+      else if(overwriteOnConflictRadio->get_active()) {
+        newBehavior = sync::OVERWRITE_EXISTING;
+      }
+
+      m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(newBehavior));
+    };
+
+    promptOnConflictRadio->signal_toggled().connect(on_toggle);
+    renameOnConflictRadio->signal_toggled().connect(on_toggle);
+    overwriteOnConflictRadio->signal_toggled().connect(on_toggle);
 
     switch(savedBehavior) {
     case sync::RENAME_EXISTING_NO_UPDATE:
@@ -1044,37 +942,19 @@ namespace gnote {
       break;
     }
 
-    Gtk::Grid *vbox = new Gtk::Grid;
-    vbox->set_border_width(18);
+    Gtk::Grid *vbox = Gtk::make_managed<Gtk::Grid>();
+    vbox->set_margin(18);
 
     vbox->attach(*promptOnConflictRadio, 0, 0, 1, 1);
     vbox->attach(*renameOnConflictRadio, 0, 1, 1, 1);
     vbox->attach(*overwriteOnConflictRadio, 0, 2, 1, 1);
 
-    advancedDlg->get_content_area()->pack_start(*label, false, false, 6);
-    advancedDlg->get_content_area()->pack_start(*vbox, false, false, 0);
-    advancedDlg->add_button(_("_Close"), Gtk::RESPONSE_OK);
+    advancedDlg->get_content_area()->append(*label);
+    advancedDlg->get_content_area()->append(*vbox);
+    advancedDlg->add_button(_("_Close"), Gtk::ResponseType::OK);
 
-    advancedDlg->show_all();
-
-    // Run dialog
-    advancedDlg->run();
-    delete advancedDlg;
-  }
-
-
-  void PreferencesDialog::on_conflict_option_toggle()
-  {
-    sync::SyncTitleConflictResolution newBehavior = sync::CANCEL;
-
-    if(renameOnConflictRadio->get_active()) {
-      newBehavior = sync::RENAME_EXISTING_NO_UPDATE;
-    }
-    else if(overwriteOnConflictRadio->get_active()) {
-      newBehavior = sync::OVERWRITE_EXISTING;
-    }
-
-    m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(newBehavior));
+    advancedDlg->show();
+    advancedDlg->signal_response().connect([advancedDlg](int) { advancedDlg->hide(); });
   }
 
 
@@ -1082,8 +962,6 @@ namespace gnote {
   {
     if(m_sync_addin_prefs_widget != NULL) {
       m_sync_addin_prefs_container->remove(*m_sync_addin_prefs_widget);
-      m_sync_addin_prefs_widget->hide();
-      delete m_sync_addin_prefs_widget;
       m_sync_addin_prefs_widget = NULL;
     }
 
@@ -1094,15 +972,14 @@ namespace gnote {
       if(newAddin != NULL) {
         m_selected_sync_addin = newAddin;
         m_sync_addin_prefs_widget = m_selected_sync_addin->create_preferences_control(
-          sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
+          *this, sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
         if(m_sync_addin_prefs_widget == NULL) {
-          Gtk::Label *l = new Gtk::Label(_("Not configurable"));
-          l->set_halign(Gtk::ALIGN_CENTER);
-          l->set_valign(Gtk::ALIGN_CENTER);
+          auto l = Gtk::make_managed<Gtk::Label>(_("Not configurable"));
+          l->set_halign(Gtk::Align::CENTER);
+          l->set_valign(Gtk::Align::CENTER);
           m_sync_addin_prefs_widget = l;
         }
 
-        m_sync_addin_prefs_widget->show();
         m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
 
         m_reset_sync_addin_button->set_sensitive(false);
@@ -1123,50 +1000,59 @@ namespace gnote {
       return;
     }
 
+    auto after_dialog = [this] {
+      try {
+        m_selected_sync_addin->reset_configuration();
+      }
+      catch(std::exception & e) {
+        DBG_OUT("Error calling %s.reset_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
+      }
+
+      m_gnote.preferences().sync_selected_service_addin("");
+
+      // Reset conflict handling behavior
+      m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+
+      m_gnote.sync_manager().reset_client();
+
+      m_sync_addin_combo->set_sensitive(true);
+      m_sync_addin_combo->unset_active();
+      m_reset_sync_addin_button->set_sensitive(false);
+      m_save_sync_addin_button->set_sensitive(true);
+    };
+
+    Gtk::Dialog *dialog;
+
     // User doesn't get a choice if this is invoked by disabling the addin
     // FIXME: null sender check is lame!
     if(signal) {
       // Prompt the user about what they're about to do since
       // it's not really recommended to switch back and forth
       // between sync services.
-      utils::HIGMessageDialog *dialog = new utils::HIGMessageDialog(NULL, GTK_DIALOG_MODAL, Gtk::MESSAGE_QUESTION,
-        Gtk::BUTTONS_YES_NO, _("Are you sure?"),
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::QUESTION,
+        Gtk::ButtonsType::YES_NO, _("Are you sure?"),
         _("Clearing your synchronization settings is not recommended.  "
           "You may be forced to synchronize all of your notes again when you save new settings."));
-      int dialog_response = dialog->run();
-      delete dialog;
-      if(dialog_response != Gtk::RESPONSE_YES) {
-        return;
-      }
+      dialog->signal_response().connect([dialog, after_dialog](int dialog_response) {
+        dialog->hide();
+        if(dialog_response == Gtk::ResponseType::YES) {
+          after_dialog();
+        }
+      });
     }
     else { // FIXME: Weird place for this to go.  User should be able to cancel disabling of addin, anyway
-      utils::HIGMessageDialog *dialog = new utils::HIGMessageDialog(NULL, GTK_DIALOG_MODAL, Gtk::MESSAGE_INFO,
-        Gtk::BUTTONS_OK, _("Resetting Synchronization Settings"),
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::INFO,
+        Gtk::ButtonsType::OK, _("Resetting Synchronization Settings"),
         _("You have disabled the configured synchronization service.  "
           "Your synchronization settings will now be cleared.  "
           "You may be forced to synchronize all of your notes again when you save new settings."));
-      dialog->run();
-      delete dialog;
+      dialog->signal_response().connect([dialog, after_dialog](int) {
+        dialog->hide();
+        after_dialog();
+      });
     }
 
-    try {
-      m_selected_sync_addin->reset_configuration();
-    }
-    catch(std::exception & e) {
-      DBG_OUT("Error calling %s.reset_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
-    }
-
-    m_gnote.preferences().sync_selected_service_addin("");
-
-    // Reset conflict handling behavior
-    m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
-
-    m_gnote.sync_manager().reset_client();
-
-    m_sync_addin_combo->set_sensitive(true);
-    m_sync_addin_combo->unset_active();
-    m_reset_sync_addin_button->set_sensitive(false);
-    m_save_sync_addin_button->set_sensitive(true);
+    dialog->show();
   }
 
   void PreferencesDialog::on_save_sync_addin_button()
@@ -1178,8 +1064,7 @@ namespace gnote {
     bool saved = false;
     Glib::ustring errorMsg;
     try {
-      get_window()->set_cursor(Gdk::Cursor::create(Gdk::WATCH));
-      get_window()->get_display()->flush();
+      set_cursor("wait");
       set_sensitive(false);
       saved = m_selected_sync_addin->save_configuration(sigc::mem_fun(*this, &PreferencesDialog::on_sync_settings_saved));
     }
@@ -1199,8 +1084,7 @@ namespace gnote {
   void PreferencesDialog::on_sync_settings_saved(bool saved, Glib::ustring errorMsg)
   {
     set_sensitive(true);
-    get_window()->set_cursor(Glib::RefPtr<Gdk::Cursor>());
-    get_window()->get_display()->flush();
+    set_cursor("");
 
     utils::HIGMessageDialog *dialog;
     if(saved) {
@@ -1216,17 +1100,18 @@ namespace gnote {
       // Give the user a visual letting them know that connecting
       // was successful.
       // TODO: Replace Yes/No with Sync/Close
-      dialog = new utils::HIGMessageDialog(this, GTK_DIALOG_MODAL, Gtk::MESSAGE_INFO, Gtk::BUTTONS_YES_NO,
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::INFO, Gtk::ButtonsType::YES_NO,
         _("Connection successful"),
         _("Gnote is ready to synchronize your notes. Would you like to synchronize them now?"));
-      int dialog_response = dialog->run();
-      delete dialog;
-
-      if(dialog_response == Gtk::RESPONSE_YES) {
-        // TODO: Put this voodoo in a method somewhere
-        auto action = m_gnote.action_manager().get_app_action("sync-notes");
-        utils::main_context_invoke([action = std::move(action)]() { action->activate(Glib::VariantBase()); });
-      }
+      dialog->show();
+      dialog->signal_response().connect([this, dialog](int dialog_response ) {
+        dialog->hide();
+        if(dialog_response == Gtk::ResponseType::YES) {
+          // TODO: Put this voodoo in a method somewhere
+          auto action = m_gnote.action_manager().get_app_action("sync-notes");
+          utils::main_context_invoke([action = std::move(action)]() { action->activate(Glib::VariantBase()); });
+        }
+      });
     }
     else {
       // TODO: Change the SyncServiceAddin API so the call to
@@ -1247,10 +1132,10 @@ namespace gnote {
         Glib::ustring logPath = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
         errorMsg = Glib::ustring::compose(errorMsg, logPath);
       }
-      dialog = new utils::HIGMessageDialog(this, GTK_DIALOG_MODAL, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_CLOSE,
+      dialog = Gtk::make_managed<utils::HIGMessageDialog>(this, GTK_DIALOG_MODAL, Gtk::MessageType::WARNING, Gtk::ButtonsType::CLOSE,
         _("Error connecting"), errorMsg);
-      dialog->run();
-      delete dialog;
+      dialog->show();
+      dialog->signal_response().connect([dialog](int) { dialog->hide(); });
     }
   }
 
@@ -1270,13 +1155,14 @@ namespace gnote {
     , m_addin_info(addin_info)
   {
     property_destroy_with_parent() = true;
-    add_button(_("_Close"), Gtk::RESPONSE_CLOSE);
+    add_button(_("_Close"), Gtk::ResponseType::CLOSE);
     
     // TODO: Change this icon to be an addin/package icon
-    Gtk::Image *icon = manage(new Gtk::Image("dialog-information", Gtk::ICON_SIZE_DIALOG));
-    icon->set_halign(Gtk::ALIGN_START);
+    Gtk::Image *icon = Gtk::make_managed<Gtk::Image>();
+    icon->set_from_icon_name("dialog-information");
+    icon->set_halign(Gtk::Align::START);
 
-    Gtk::Label *info_label = manage(new Gtk::Label ());
+    auto info_label = Gtk::make_managed<Gtk::Label>();
     info_label->property_xalign() = 0;
     info_label->property_yalign() = 0;
     info_label->set_use_markup(true);
@@ -1285,23 +1171,22 @@ namespace gnote {
     info_label->set_hexpand(true);
     info_label->set_vexpand(true);
 
-    Gtk::Grid *hbox = manage(new Gtk::Grid);
+    auto hbox = Gtk::make_managed<Gtk::Grid>();
     hbox->set_column_spacing(6);
-    Gtk::Grid *vbox = manage(new Gtk::Grid);
+    auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(12);
-    hbox->set_border_width(12);
-    vbox->set_border_width(6);
+    hbox->set_margin(12);
+    hbox->set_expand(true);
+    vbox->set_margin(6);
 
     hbox->attach(*icon, 0, 0, 1, 1);
     hbox->attach(*vbox, 1, 0, 1, 1);
 
     vbox->attach(*info_label, 0, 0, 1, 1);
 
-    hbox->show_all ();
+    get_content_area()->append(*hbox);
 
-    get_content_area()->pack_start(*hbox, true, true, 0);
-
-    fill (*info_label);
+    fill(*info_label);
   }
 
   void AddinInfoDialog::fill(Gtk::Label & info_label)
