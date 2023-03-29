@@ -218,12 +218,11 @@ namespace gnote {
                                        GtkDialogFlags flags, Gtk::MessageType msg_type, 
                                        Gtk::ButtonsType btn_type, const Glib::ustring & header,
                                        const Glib::ustring & msg)
-      : Gtk::Dialog()
+      : Gtk::Dialog("", false, true)
       , m_extra_widget(NULL)
     {
       set_margin(5);
       set_resizable(false);
-      set_title("");
 
       get_content_area()->set_spacing(12);
 
