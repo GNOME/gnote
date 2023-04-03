@@ -12,18 +12,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-05-08 18:53+0000\n"
-"PO-Revision-Date: 2022-05-09 22:43+1000\n"
-"Last-Translator: Ser82-png <sw@atrus.ru>\n"
+"POT-Creation-Date: 2023-03-12 20:55+0000\n"
+"PO-Revision-Date: 2023-03-17 20:48+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:88 src/recentchanges.cpp:116
@@ -718,7 +718,7 @@ msgstr "_Справка"
 
 #: src/actionmanager.cpp:132
 msgid "_About Gnote"
-msgstr "_О программе"
+msgstr "_О приложении"
 
 #: src/addininfo.cpp:71
 msgid "Failed to load plugin information!"
@@ -848,7 +848,8 @@ msgstr "Выбрать значок..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:227
 #: src/plugins/bugzilla/bugzillapreferences.cpp:370
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/notebooks/createnotebookdialog.cpp:65 src/note.cpp:71 src/utils.cpp:368
+#: src/notebooks/createnotebookdialog.cpp:65
+#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
 #: src/utils.cpp:375
 msgid "_Cancel"
 msgstr "_Отменить"
@@ -889,7 +890,8 @@ msgstr "Действительно удалить этот значок?"
 msgid "If you remove an icon it is permanently lost."
 msgstr "Если удалить значок, он будет утерян навсегда."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376 src/note.cpp:77
+#: src/plugins/bugzilla/bugzillapreferences.cpp:376
+#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
 #: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
 msgid "_Delete"
 msgstr "У_далить"
@@ -1154,7 +1156,7 @@ msgstr "Сегодня: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:73
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Не удалось создать заметку дня %s: %s"
@@ -1479,12 +1481,12 @@ msgstr ""
 
 #: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Авторские права © 2010-2022 Aurimas Cernius\n"
+"Авторские права © 2010-2023 Aurimas Cernius\n"
 "Авторские права © 2009-2011 Debarshi Ray\n"
 "Авторские права © 2009 Hubert Figuiere\n"
 "Авторские права © 2004-2009 авторы Tomboy."
@@ -1577,7 +1579,7 @@ msgid "Window is not embedded"
 msgstr "Окно не встроено"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:354
+#: src/notebase.cpp:225 src/note.cpp:355
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Исключение во время сохранения заметки: %s"
@@ -1624,7 +1626,7 @@ msgstr "_Создать блокнот..."
 msgid "%1 Notebook Template"
 msgstr "Шаблон для блокнота %1"
 
-#: src/notebooks/notebook.cpp:168 src/notemanagerbase.cpp:296
+#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
 msgid "New Note"
 msgstr "Создать заметку"
 
@@ -1697,11 +1699,11 @@ msgstr[2] "Действительно удалить %1% заметок?"
 msgid "If you delete a note it is permanently lost."
 msgstr "Если вы удалите заметку, она будет утеряна навсегда."
 
-#: src/note.cpp:101
+#: src/note.cpp:102
 msgid "Error saving note data."
 msgstr "Ошибка при сохранении данных заметки."
 
-#: src/note.cpp:102
+#: src/note.cpp:103
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1711,12 +1713,12 @@ msgstr ""
 "свободного места на диске, а также верны ли права доступа к каталогу ~/."
 "local/share/gnote. Подробности об ошибке находятся в файле ~/.gnote.log."
 
-#: src/note.cpp:442
+#: src/note.cpp:443
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Ошибка при сохранении: %s"
 
-#: src/note.cpp:667
+#: src/note.cpp:668
 msgid "Setting text content for closed notes not supported"
 msgstr "Настройка содержимого тектста для закрытых заметок не поддерживается"
 
@@ -1725,7 +1727,7 @@ msgstr "Настройка содержимого тектста для закр
 msgid "New Note Template"
 msgstr "Шаблон новой заметки"
 
-#: src/notemanagerbase.cpp:350
+#: src/notemanagerbase.cpp:346
 msgid "Describe your new note here."
 msgstr "Опишите здесь новую заметку."
 
@@ -1800,58 +1802,58 @@ msgstr ""
 "автоматически возникнет ссылка на неё.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:185
+#: src/notemanager.cpp:148 src/notemanager.cpp:183
 msgid "Start Here"
 msgstr "Первая заметка"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:152
 msgid "Using Links in Gnote"
 msgstr "Использование ссылок в Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:156
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Ошибка в начале создания заметки: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:171
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Ошибка сравнения XML заметки, пропуск «%s»: %s"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:118
 msgid "Rename Note Links?"
 msgstr "Переименовать ссылки?"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:123
 msgid "_Don't Rename Links"
 msgstr "_Не переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:131
+#: src/noterenamedialog.cpp:124
 msgid "_Rename Links"
 msgstr "_Переименовать ссылки"
 
-#: src/noterenamedialog.cpp:132
+#: src/noterenamedialog.cpp:125
 msgid "Select All"
 msgstr "Выбрать все"
 
-#: src/noterenamedialog.cpp:133
+#: src/noterenamedialog.cpp:126
 msgid "Select None"
 msgstr "Снять выделение"
 
-#: src/noterenamedialog.cpp:134
+#: src/noterenamedialog.cpp:127
 msgid "Always show this _window"
 msgstr "_Всегда показывать это окно"
 
-#: src/noterenamedialog.cpp:135
+#: src/noterenamedialog.cpp:128
 msgid "Alwa_ys rename links"
 msgstr "_Всегда переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:137
+#: src/noterenamedialog.cpp:130
 msgid "Never rename _links"
 msgstr "_Никогда не переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:155
+#: src/noterenamedialog.cpp:148
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1863,15 +1865,15 @@ msgstr ""
 "\n"
 "Если не переименовать ссылки, они больше не будут ссылаться на что-либо."
 
-#: src/noterenamedialog.cpp:188
+#: src/noterenamedialog.cpp:181
 msgid "Rename Links"
 msgstr "Переименовать ссылки"
 
-#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
 msgid "Note Title"
 msgstr "Заголовок заметки"
 
-#: src/noterenamedialog.cpp:240
+#: src/noterenamedialog.cpp:233
 msgid "Ad_vanced"
 msgstr "_Дополнительно"
 
@@ -2246,31 +2248,31 @@ msgstr "Создать новую заметку"
 msgid "Search"
 msgstr "Искать"
 
-#: src/recentchanges.cpp:355
+#: src/recentchanges.cpp:362
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент встроенного поля не Gtk::Grid. Пожалуйста, сообщите об "
 "ошибке!"
 
-#: src/recentchanges.cpp:397
+#: src/recentchanges.cpp:404
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент поиска не Gtk::Grid. Пожалуйста, сообщите об ошибке!"
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:719
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Попытка вывести на передний план виджет, не встроенный в окно"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Попытка вывести на передний план виджет, который не является Gtk::Widget"
 
-#: src/recentchanges.cpp:989
+#: src/recentchanges.cpp:996
 msgid "Expected widget to be a sub-menu!"
 msgstr "Ожидаемый виджет будет в виде подменю!"
 
-#: src/recentchanges.cpp:994
+#: src/recentchanges.cpp:1001
 msgid "No configured actions"
 msgstr "Нет изменяемых параметров"
 
@@ -2825,11 +2827,11 @@ msgstr "Название уже используется"
 msgid "Check spelling"
 msgstr "Проверка офрографии"
 
-#: src/watchers.cpp:705
+#: src/watchers.cpp:708
 msgid "_Copy Link Address"
 msgstr "_Скопировать адрес ссылки"
 
-#: src/watchers.cpp:711
+#: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Открыть ссылку"
 
