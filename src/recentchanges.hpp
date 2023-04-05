@@ -101,7 +101,7 @@ private:
   void unregister_callbacks();
   void next_tab();
   void previous_tab();
-  void close_current_tab();
+  void close_current_tab(const Glib::VariantBase&);
 
   IGnote             &m_gnote;
   NoteManagerBase    &m_note_manager;

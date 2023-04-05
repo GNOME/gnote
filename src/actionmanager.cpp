@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2019,2022 Aurimas Cernius
+ * Copyright (C) 2011-2019,2022,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,6 +66,7 @@ namespace gnote {
     make_app_actions();
     make_app_menu_items();
 
+    register_main_window_action("close-tab", NULL, false);
     register_main_window_action("close-window", NULL, false);
     register_main_window_action("open-note", NULL, false);
     register_main_window_action("open-note-new-window", NULL, false);

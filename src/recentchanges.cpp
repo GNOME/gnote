@@ -144,9 +144,10 @@ namespace gnote {
     {
       auto shortcuts = Gtk::ShortcutController::create();
       auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_W, Gdk::ModifierType::CONTROL_MASK);
-      auto action = Gtk::NamedAction::create("win.close-window");
+      auto action = Gtk::NamedAction::create("win.close-tab");
       auto shortcut = Gtk::Shortcut::create(trigger, action);
       shortcuts->add_shortcut(shortcut);
+      action = Gtk::NamedAction::create("win.close-window");
       trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Q, Gdk::ModifierType::CONTROL_MASK);
       shortcut = Gtk::Shortcut::create(trigger, action);
       shortcuts->add_shortcut(shortcut);
@@ -197,6 +198,9 @@ namespace gnote {
       if(action) {
         action->is_modifying(am.is_modifying_main_window_action(action_def.first));
       }
+    }
+    if(auto action = find_action("close-tab")) {
+      action->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::close_current_tab));
     }
     find_action("close-window")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
@@ -601,7 +605,7 @@ namespace gnote {
     return false;
   }
 
-  void NoteRecentChanges::close_current_tab()
+  void NoteRecentChanges::close_current_tab(const Glib::VariantBase&)
   {
     int page_idx = m_embed_book.get_current_page();
     if(page_idx == 0) {
