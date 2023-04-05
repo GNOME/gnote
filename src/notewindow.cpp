@@ -260,11 +260,15 @@ namespace gnote {
       auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_plus, Gdk::ModifierType::CONTROL_MASK);
       auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::increase_font_clicked));
       controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_KP_Add, Gdk::ModifierType::CONTROL_MASK);
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
     }
 
     {
       auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_minus, Gdk::ModifierType::CONTROL_MASK);
       auto action = Gtk::CallbackAction::create(sigc::mem_fun(*this, &NoteWindow::decrease_font_clicked));
+      controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_KP_Subtract, Gdk::ModifierType::CONTROL_MASK);
       controller->add_shortcut(Gtk::Shortcut::create(trigger, action));
     }
 
