@@ -91,6 +91,7 @@ namespace gnote {
     , m_mapped(false)
   {
     set_resizable(true);
+    set_handle_menubar_accel(false);
     if(g.preferences().main_window_maximized()) {
       maximize();
     }
