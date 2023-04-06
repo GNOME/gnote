@@ -9,8 +9,8 @@
 msgid ""
 msgstr "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-01-25 20:04+0000\n"
-"PO-Revision-Date: 2023-02-27 10:00+0100\n"
+"POT-Creation-Date: 2023-03-29 15:08+0000\n"
+"PO-Revision-Date: 2023-04-06 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -530,85 +530,90 @@ msgstr "Ezabatu hautatutako oharra"
 
 #: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Oharren leihoa"
+msgid "Note View"
+msgstr "Oharren ikuspegia"
 
 #: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Ireki ohar-ekintzen menua"
 
-#: data/shortcuts-gnote.ui:184
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Close current tab"
+msgstr "Itxi uneko fitxa"
+
+#: data/shortcuts-gnote.ui:191
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Edizioa"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Desegin azken edizioa"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Berregin azken edizioa"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Sortu oharrerako esteka hautatutako testuan"
 
-#: data/shortcuts-gnote.ui:211
+#: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formateatzea"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Txandakatu lodia"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Txandakatu etzana"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Txandakatu marratua"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Txandakatu nabarmendua"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Txandakatu zabalera finkoa"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Txandakatu azpimarra"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Handiagotu letra-tamaina"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Txikiagotu letra-tamaina"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Gaitu buleta/handitu kosta hautapeneko lerroan"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:286
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Txikitu koska/desgaitu buleta uneko lerroan"
@@ -1354,24 +1359,24 @@ msgstr "Sinkronizatu Gnote-ren oharrak WebDAV URLarekin."
 msgid "Exception thrown when creating note: %s"
 msgstr "Salbuespena gertatu da oharra sortzean: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:209
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr "Ez dago D-Bus konexiorik erabilgarri, shell-bilaketak eta urruneko kontrolak ez du funtzionatuko."
 
-#: src/gnote.cpp:244
+#: src/gnote.cpp:242
 msgid "Failed to get shortcuts window!"
 msgstr "Huts egin du lasterbideen leihoa eskuratzeak!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:256
 msgid "and Tomboy original authors."
 msgstr "eta Tomboy aplikazioaren jatorrizko egileak."
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:262
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:271
 msgid ""
 "Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1382,76 +1387,76 @@ msgstr "Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Tomboy aplikazioaren jatorrizko egileak."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:275
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Oharrak hartzeko mahaigaineko aplikazio sinple eta erraza."
 
-#: src/gnote.cpp:288
+#: src/gnote.cpp:286
 msgid "Homepage"
 msgstr "Webgune nagusia"
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:481
 msgid "Run Gnote in background."
 msgstr "Exekutatu Gnote atzeko planoan."
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:482
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Exekutatu Gnote GNOMEren shell-eko bilaketa-hornitzaile gisa."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "Specify the path of the directory containing the notes."
 msgstr "Zehaztu oharrak dituen direktorioaren bide-izena."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "path"
 msgstr "bide-izena"
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:484
 msgid "Open the search all notes window with the search text."
 msgstr "'Bilatu ohar guztietan' leihoa irekitzen du bilatzeko testuarekin."
 
-#: src/gnote.cpp:486 src/gnote.cpp:491
+#: src/gnote.cpp:484 src/gnote.cpp:489
 msgid "text"
 msgstr "testua"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:485
 msgid "Print version information."
 msgstr "Erakutsi bertsioaren informazioa."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "Create and display a new note, with a optional title."
 msgstr "Sortu eta bistaratu ohar berria, aukerako izenburuarekin."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "title"
 msgstr "izenburua"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "Display the existing note matching title."
 msgstr "Bistaratu izenburuarekin bat datorren eta existitzen den oharra."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "title/url"
 msgstr "izenburua/urla"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:488
 msgid "Display the 'Start Here' note."
 msgstr "Bistaratu 'Hasi hemen' oharra."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:489
 msgid "Search and highlight text in the opened note."
 msgstr "Bilatu eta nabarmendu testua irekitako oharrean."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "A note taking application"
 msgstr "Oharrak hartzeko aplikazioa"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "Gnote options at launch"
 msgstr "Gnote-ren abioko aukerak"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:679
+#: src/gnote.cpp:677
 msgid "Version %1"
 msgstr "%1 bertsioa"
 
@@ -1562,11 +1567,11 @@ msgstr "Garrantzitsua"
 msgid "Active"
 msgstr "Aktibo"
 
-#: src/notebuffer.cpp:1429
+#: src/notebuffer.cpp:1403
 msgid "</list> tag mismatch"
 msgstr "</list> etiketa falta da"
 
-#: src/notebuffer.cpp:1513
+#: src/notebuffer.cpp:1487
 #, c-format
 msgid "Exception: %s"
 msgstr "Salbuespena: %s"
@@ -2099,19 +2104,19 @@ msgstr "Kapsulatutako kutxaren gurasoa ez da Gtk::Grid, jakinarazi akats hori!"
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Bilaketa-sarreraren gurasoa ez da Gtk::Grid, jakinarazi akats hori!"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:731
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Leihoan kapsulatuta ez dagoen trepeta bat aurreko planora ekartzeko saialdia"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Gtk::Widget ez den trepeta bat aurreko planora ekartzeko saialdia"
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1008
 msgid "Expected widget to be a sub-menu!"
 msgstr "Espero zen trepeta azpimenu bat izatea!"
 
-#: src/recentchanges.cpp:1001
+#: src/recentchanges.cpp:1013
 msgid "No configured actions"
 msgstr "Ez dago konfiguratutako ekintzarik"
 
@@ -2657,6 +2662,10 @@ msgstr "_Kopiatu estekaren helbidea"
 #: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Ireki esteka"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Note Window"
+#~ msgstr "Oharren leihoa"
 
 #~ msgid "Enable closing notes with escape"
 #~ msgstr "Gaitu oharrak Ihes teklarekin ixtea"
