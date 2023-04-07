@@ -151,7 +151,7 @@ namespace gnote {
       trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Q, Gdk::ModifierType::CONTROL_MASK);
       shortcut = Gtk::Shortcut::create(trigger, action);
       shortcuts->add_shortcut(shortcut);
-      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_question, Gdk::ModifierType::CONTROL_MASK);
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_question, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
       action = Gtk::NamedAction::create("app.help-shortcuts");
       shortcut = Gtk::Shortcut::create(trigger, action);
       shortcuts->add_shortcut(shortcut);
