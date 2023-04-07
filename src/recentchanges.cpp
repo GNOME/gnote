@@ -156,6 +156,10 @@ namespace gnote {
       shortcut = Gtk::Shortcut::create(trigger, action);
       shortcuts->add_shortcut(shortcut);
       add_controller(shortcuts);
+      action = Gtk::NamedAction::create("app.new-note");
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_N, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
+      shortcut = Gtk::Shortcut::create(trigger, action);
+      shortcuts->add_shortcut(shortcut);
     }
   }
 
@@ -261,7 +265,6 @@ namespace gnote {
     new_note_button->set_image_from_icon_name("list-add-symbolic");
     new_note_button->set_tooltip_text(_("Create New Note"));
     new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
-    add_shortcut(*new_note_button, GDK_KEY_N, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
     left_box->attach(*new_note_button, 0, 0, 1, 1);
 
     m_embedded_toolbar.set_margin_start(6);
