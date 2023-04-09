@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the gnote package.
 # Милош Поповић <gpopac@gmail.com>, 2011.
 # Марко М. Костић <marko.m.kostic@gmail.com>
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012–2023.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-01-25 20:04+0000\n"
-"PO-Revision-Date: 2023-02-24 20:01+0100\n"
+"POT-Creation-Date: 2023-03-29 15:08+0000\n"
+"PO-Revision-Date: 2023-04-09 11:33+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -20,7 +20,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Gtranslator 41.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:88 src/recentchanges.cpp:116
@@ -612,86 +611,92 @@ msgid "Delete selected note"
 msgstr "Брише изабрану белешку"
 
 #: data/shortcuts-gnote.ui:132
+#| msgid "Note Title"
 msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Прозор белешке"
+msgid "Note View"
+msgstr "Преглед белешке"
 
 #: data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Отвара изборник радњи белешке"
 
-#: data/shortcuts-gnote.ui:184
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Close current tab"
+msgstr "Затвара тренутни језичак"
+
+#: data/shortcuts-gnote.ui:191
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Уређивање"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Опозива последње уређивање"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Враћа последње уређивање"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Прави везу до белешке на изабраном тексту"
 
-#: data/shortcuts-gnote.ui:211
+#: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Форматирање"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Измењивач подебљаности"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Измењивач искошености"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Измењивач прецртаности"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Измењивач истицања"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Измењивач утврђене ширине"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Измењивач подвучености"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Повећава величину слова"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Смањује величину слова"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Укључује тачкирање/повећава увлачење за ред са избором"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:286
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Смањује увлачење/искључује тачкирање за текући ред"
@@ -1458,22 +1463,22 @@ msgstr "Ускладите белешке Гномовог бележника с
 msgid "Exception thrown when creating note: %s"
 msgstr "Дошло је до изузетка при стварању белешке: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:209
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Нема доступне везе Д-сабирнице, претрага шкољке и удаљено управљање неће "
 "радити."
 
-#: src/gnote.cpp:244
+#: src/gnote.cpp:242
 msgid "Failed to get shortcuts window!"
 msgstr "Нисам успео да добавим прозор са пречицама!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:256
 msgid "and Tomboy original authors."
 msgstr "и изворни аутори Томичиних белешки."
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:262
 msgid "translator-credits"
 msgstr ""
 "Милош Поповић <gpopac@gmail.com>\n"
@@ -1481,12 +1486,7 @@ msgstr ""
 "\n"
 "http://prevod.org — превод на српски језик."
 
-#: src/gnote.cpp:273
-#| msgid ""
-#| "Copyright © 2010-2022 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: src/gnote.cpp:271
 msgid ""
 "Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1498,76 +1498,76 @@ msgstr ""
 "Ауторска права © 2009 Ибер Фигјер (Hubert Figuiere)\n"
 "Ауторска права © 2004-2009 првобитни аутори Томичиних белешки."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:275
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Једноставан и згодан програмчић за хватање белешки."
 
-#: src/gnote.cpp:288
+#: src/gnote.cpp:286
 msgid "Homepage"
 msgstr "Веб страница"
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:481
 msgid "Run Gnote in background."
 msgstr "Покреће Гномовог бележника у позадини."
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:482
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Покреће Гномовог бележника као доставника претраге Гномове шкољке."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "Specify the path of the directory containing the notes."
 msgstr "Наводи путању директоријума који садржи белешке."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:483
 msgid "path"
 msgstr "путања"
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:484
 msgid "Open the search all notes window with the search text."
 msgstr "Отвара прозор за претраживање свих белешки уз текст претраге."
 
-#: src/gnote.cpp:486 src/gnote.cpp:491
+#: src/gnote.cpp:484 src/gnote.cpp:489
 msgid "text"
 msgstr "текст"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:485
 msgid "Print version information."
 msgstr "Исписује податке о издању."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "Create and display a new note, with a optional title."
 msgstr "Прави и приказује нову белешку, са опционалним насловом."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:486
 msgid "title"
 msgstr "наслов"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "Display the existing note matching title."
 msgstr "Приказује постојећу белешку која одговара наслову."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:487
 msgid "title/url"
 msgstr "наслов/адреса"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:488
 msgid "Display the 'Start Here' note."
 msgstr "Приказује белешку „Полазна станица“."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:489
 msgid "Search and highlight text in the opened note."
 msgstr "Тражи и истиче текст у отвореној белешки."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "A note taking application"
 msgstr "Програм за белешке"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:493
 msgid "Gnote options at launch"
 msgstr "Опције Гномовог бележника при покретању"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:679
+#: src/gnote.cpp:677
 msgid "Version %1"
 msgstr "Издање %1"
 
@@ -1680,11 +1680,11 @@ msgstr "Важне"
 msgid "Active"
 msgstr "Радне"
 
-#: src/notebuffer.cpp:1429
+#: src/notebuffer.cpp:1403
 msgid "</list> tag mismatch"
 msgstr "</list> ознака не одговара"
 
-#: src/notebuffer.cpp:1513
+#: src/notebuffer.cpp:1487
 #, c-format
 msgid "Exception: %s"
 msgstr "Изузетак: %s"
@@ -2260,19 +2260,19 @@ msgstr "Родитељ угнеждене кутије није „Gtk::Grid“,
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Родитељ уноса није „Gtk::Grid“, пријавите грешку!"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:731
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Покушава да стави елемент у први план, то није уграђено у прозору"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Покушава да стави елемент у први план, то није „Gtk::Widget“"
 
-#: src/recentchanges.cpp:996
+#: src/recentchanges.cpp:1008
 msgid "Expected widget to be a sub-menu!"
 msgstr "Очекивано је да виџет буде подизборник!"
 
-#: src/recentchanges.cpp:1001
+#: src/recentchanges.cpp:1013
 msgid "No configured actions"
 msgstr "Нема подешених радњи"
 
@@ -2840,6 +2840,10 @@ msgstr "_Умножи адресу везе"
 #: src/watchers.cpp:714
 msgid "_Open Link"
 msgstr "_Отвори везу"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Note Window"
+#~ msgstr "Прозор белешке"
 
 #~ msgid "Enable closing notes with escape"
 #~ msgstr "Омогућава затварање белешке тастером „Esc“"
