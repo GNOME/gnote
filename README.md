@@ -14,9 +14,8 @@ Gnote uses GNU Autotool for its build system, so compiling it is a standard:
 ./configure && make && make install
 
 Dependencies:
-- Glibmm 2.62
-- Gtkmm 3.18
-- Gtk+ 3.20
+- Glibmm 2.74
+- Gtkmm 4.0
 - libxml2
 - libxslt
 - libuuid
