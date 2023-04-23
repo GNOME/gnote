@@ -10,8 +10,8 @@ https://wiki.gnome.org/Apps/Gnote
 
 ## Compiling
 
-Gnote uses GNU Autotool for its build system, so compiling it is a standard:
-./configure && make && make install
+Gnote uses Meson for its build system, so compiling it is a standard:
+meson <dirname> && cd <dirname> && meson compile && ninja install
 
 Dependencies:
 - Glibmm 2.74
