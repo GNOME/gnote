@@ -53,11 +53,13 @@ namespace gnote {
     public:
       TabLabel(const Glib::ustring & label, EmbeddableWidget & widget, bool show_button)
         : m_embed(widget)
-        , m_label(label)
       {
+        on_embedded_name_changed(label);
+        m_label.set_max_width_chars(50);
+        m_label.set_ellipsize(Pango::ELLIPSIZE_END);
         m_label.show();
-
         pack_start(m_label);
+
         if (show_button) {
           m_close_button.set_image_from_icon_name("window-close-symbolic");
           m_close_button.set_relief(Gtk::RELIEF_NONE);
@@ -76,6 +78,17 @@ namespace gnote {
       void on_embedded_name_changed(const Glib::ustring & name)
       {
         m_label.set_text(name);
+        m_label.set_tooltip_text(name);
+        update_label_width(name.size());
+      }
+
+      void update_label_width(int text_width)
+      {
+        int width = 20;
+        if(text_width < width) {
+          width = text_width;
+        }
+        m_label.set_width_chars(width);
       }
 
       EmbeddableWidget & m_embed;
@@ -138,6 +151,7 @@ namespace gnote {
     content->attach(m_embed_book, 0, content_y_attach++, 1, 1);
     m_embed_book.set_hexpand(true);
     m_embed_book.set_vexpand(true);
+    m_embed_book.set_scrollable(true);
     m_embed_book.show();
     content->show();
     m_embed_book.signal_switch_page().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_current_page_changed), false);
