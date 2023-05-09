@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.28\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-03-29 15:10+0000\n"
-"PO-Revision-Date: 2023-04-23 13:07+0100\n"
+"POT-Creation-Date: 2023-04-23 19:58+0000\n"
+"PO-Revision-Date: 2023-05-09 14:08+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -22,13 +22,13 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:84 src/recentchanges.cpp:106
+#: src/recentchanges.cpp:84 src/recentchanges.cpp:107
 msgid "Gnote"
 msgstr "Gnote"
 
 #: data/org.gnome.Gnote.appdata.xml.in:8
 msgid "A simple note-taking application"
-msgstr "Um aplicativo simples para tomar notas"
+msgstr "Uma aplicação simples para tomar notas"
 
 #: data/org.gnome.Gnote.appdata.xml.in:10
 msgid ""
@@ -557,12 +557,12 @@ msgstr "Fechar a janela"
 #: data/shortcuts-gnote.ui:53
 msgctxt "shortcut window"
 msgid "Go to next tab"
-msgstr "Vai para a próxima aba"
+msgstr "Ir para o separador seguinte"
 
 #: data/shortcuts-gnote.ui:60
 msgctxt "shortcut window"
 msgid "Go to previous tab"
-msgstr "Vai para a aba anterior"
+msgstr "Ir para o separador anterior"
 
 #: data/shortcuts-gnote.ui:68
 msgctxt "shortcut window"
@@ -607,7 +607,7 @@ msgstr "Abre a nota selecionada em uma nova janela"
 #: data/shortcuts-gnote.ui:121
 msgctxt "shortcut window"
 msgid "Delete selected note"
-msgstr "Exclui a nota selecionada"
+msgstr "Elimina a nota selecionada"
 
 #: data/shortcuts-gnote.ui:132
 msgctxt "shortcut window"
@@ -642,7 +642,7 @@ msgstr "Refaz a última edição"
 #: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
-msgstr "Cria um link para a nota no texto selecionado"
+msgstr "Cria uma ligação para a nota no texto selecionado"
 
 #: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
@@ -662,7 +662,7 @@ msgstr "Ativa o itálico"
 #: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
-msgstr "Ativa o tachado"
+msgstr "Ativa o rasurado"
 
 #: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
@@ -692,36 +692,36 @@ msgstr "Diminui o tamanho da fonte"
 #: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
-msgstr "Habilita marcadores/aumenta o recuo para linha com seleção"
+msgstr "Ativa marcadores/aumenta o recuo para linha com seleção"
 
 #: data/shortcuts-gnote.ui:286
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
-msgstr "Diminui o recuo/desabilita marcadores para a linha atual"
+msgstr "Diminui o recuo/desativa marcadores para a linha atual"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:133
 msgid "_New Note"
 msgstr "_Nova nota"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:134
 msgid "New _Window"
-msgstr "Nova _Janela"
+msgstr "Nova _janela"
 
-#: src/actionmanager.cpp:134 src/preferencesdialog.cpp:550
+#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:550
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: src/actionmanager.cpp:135
-msgid "_Shortcuts"
-msgstr "_Atalhos"
-
 #: src/actionmanager.cpp:136
-msgid "_Help"
-msgstr "A_Juda"
+msgid "_Shortcuts"
+msgstr "Atalho_s"
 
 #: src/actionmanager.cpp:137
+msgid "_Help"
+msgstr "A_juda"
+
+#: src/actionmanager.cpp:138
 msgid "_About Gnote"
-msgstr "_Sobre o Gnote"
+msgstr "_Acerca do Gnote"
 
 #: src/addininfo.cpp:72
 msgid "Failed to load plugin information!"
@@ -846,8 +846,8 @@ msgstr "Selecione um ícone..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:363
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:359 src/note.cpp:65 src/utils.cpp:275
-#: src/utils.cpp:282
+#: src/notebooks/notebookmanager.cpp:359 src/note.cpp:65 src/utils.cpp:274
+#: src/utils.cpp:281
 msgid "_Cancel"
 msgstr "Cancelar"
 
@@ -971,7 +971,7 @@ msgstr "Impossível abrir a nota exportada num navegador web: %s"
 #. TRANSLATORS: %1%: boost format placeholder for the path
 #: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:133
 msgid "Your note was exported to \"%1\"."
-msgstr "Sua nota foi exportada para “%1”."
+msgstr "A sua nota foi exportada para “%1”."
 
 #: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:142
 msgid "Note exported successfully"
@@ -1059,7 +1059,7 @@ msgstr "Exemplo: google-drive://nome.sobrenome@gmail.com/notes"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
 msgid "Please, register your account in Online Accounts"
-msgstr "Por favor, registre sua conta no Contas On-line"
+msgstr "Registe a sua conta no Contas Online"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
 msgid "The URI is empty"
@@ -1627,14 +1627,14 @@ msgstr "Exceção: %s"
 #. TRANSLATORS: %1 will be replaced by note title
 #: src/note.cpp:55
 msgid "Really delete \"%1\"?"
-msgstr "Deseja realmente excluir “%1”?"
+msgstr "Eliminar “%1”?"
 
 #. TRANSLATORS: %1 is number of notes
 #: src/note.cpp:59
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
-msgstr[0] "Deseja realmente excluir %1 nota?"
-msgstr[1] "Deseja realmente excluir %1 notas?"
+msgstr[0] "Eliminar %1 nota?"
+msgstr[1] "Eliminar %1 notas?"
 
 #: src/note.cpp:63
 msgid "If you delete a note it is permanently lost."
@@ -1815,32 +1815,32 @@ msgstr "Título da nota"
 msgid "Ad_vanced"
 msgstr "_Avançado"
 
-#: src/notewindow.cpp:315
+#: src/notewindow.cpp:319
 msgid "_Undo"
 msgstr "_Desfazer"
 
-#: src/notewindow.cpp:317
+#: src/notewindow.cpp:321
 msgid "_Redo"
 msgstr "_Refazer"
 
-#: src/notewindow.cpp:319 src/notewindow.cpp:351
+#: src/notewindow.cpp:323 src/notewindow.cpp:355
 msgid "_Link to New Note"
 msgstr "_Ligar a nova nota"
 
-#: src/notewindow.cpp:321
+#: src/notewindow.cpp:325
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Importante"
 
-#: src/notewindow.cpp:331
+#: src/notewindow.cpp:335
 msgid "_Delete…"
 msgstr "_Eliminar…"
 
-#: src/notewindow.cpp:371
+#: src/notewindow.cpp:375
 msgid "Set properties of text"
 msgstr "Definir as propriedades do texto"
 
-#: src/notewindow.cpp:383
+#: src/notewindow.cpp:387
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1848,39 +1848,39 @@ msgstr ""
 "Esta nota é um modelo. Determina o conteúdo predefinido de notas normais e "
 "não aparece no meu Nota ou na janela de procura."
 
-#: src/notewindow.cpp:386
+#: src/notewindow.cpp:390
 msgid "Convert to regular note"
 msgstr "Converter em nota normal"
 
-#: src/notewindow.cpp:389
+#: src/notewindow.cpp:393
 msgid "Save Se_lection"
 msgstr "Gravar _Seleção"
 
-#: src/notewindow.cpp:393
+#: src/notewindow.cpp:397
 msgid "Save _Title"
 msgstr "Gravar _Título"
 
-#: src/notewindow.cpp:483 src/notewindow.cpp:593
+#: src/notewindow.cpp:487 src/notewindow.cpp:597
 msgid "Cannot create note"
 msgstr "Impossível criar nota"
 
-#: src/notewindow.cpp:953
+#: src/notewindow.cpp:957
 msgid "_Highlight"
 msgstr "_Realçar"
 
-#: src/notewindow.cpp:957
+#: src/notewindow.cpp:961
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:958
+#: src/notewindow.cpp:962
 msgid "S_mall"
 msgstr "_Pequena"
 
-#: src/notewindow.cpp:959
+#: src/notewindow.cpp:963
 msgid "_Large"
 msgstr "_Grande"
 
-#: src/notewindow.cpp:960
+#: src/notewindow.cpp:964
 msgid "Hu_ge"
 msgstr "_Enorme"
 
@@ -1908,7 +1908,7 @@ msgstr "Extensões"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:133 src/preferencesdialog.cpp:715
 #: src/preferencesdialog.cpp:954 src/preferencesdialog.cpp:1158
-#: src/synchronization/syncdialog.cpp:322 src/utils.cpp:272
+#: src/synchronization/syncdialog.cpp:322 src/utils.cpp:271
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -2126,8 +2126,8 @@ msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr ""
-"Por favor, verifique suas informações e tente novamente. O ficheiro de log "
-"%1 pode conter mais informações sobre o erro."
+"Verifique as suas informações e tente novamente. O ficheiro de registo %1 "
+"pode conter mais informações sobre o erro."
 
 #: src/preferencesdialog.cpp:1136
 msgid "Error connecting"
@@ -2149,35 +2149,35 @@ msgstr "Copyright:"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/recentchanges.cpp:257
+#: src/recentchanges.cpp:266
 msgid "Create New Note"
 msgstr "Criar nova nota"
 
-#: src/recentchanges.cpp:281
+#: src/recentchanges.cpp:289
 msgid "Search"
 msgstr "Procurar"
 
-#: src/recentchanges.cpp:357
+#: src/recentchanges.cpp:365
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "O pai da caixa embutida não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:387
+#: src/recentchanges.cpp:395
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:683
+#: src/recentchanges.cpp:691
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não está incorporado "
 "na janela"
 
-#: src/recentchanges.cpp:690
+#: src/recentchanges.cpp:698
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não é Gtk::Widget"
 
-#: src/recentchanges.cpp:895
+#: src/recentchanges.cpp:903
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2343,8 +2343,8 @@ msgstr "Exceção ao finalizar a cópia da nota"
 #: src/synchronization/filesystemsyncserver.cpp:263
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
-msgstr[0] "Falha ao baixar %1 atualização de nota"
-msgstr[1] "Falha ao baixar %1 atualizações de notas"
+msgstr[0] "Falha ao transferir %1 atualização de nota"
+msgstr[1] "Falha ao transferir %1 atualizações de notas"
 
 #: src/synchronization/filesystemsyncserver.cpp:427
 #, c-format
@@ -2433,8 +2433,8 @@ msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
-"A versão do servidor de “%1” está em conflito com sua nota local. O que quer "
-"fazer com sua nota local?"
+"A versão do servidor de “%1” está em conflito com a sua nota local. O que "
+"quer fazer com sua nota local?"
 
 #. Expander containing TreeView
 #: src/synchronization/syncdialog.cpp:278
@@ -2685,15 +2685,15 @@ msgstr "%1, %2"
 msgid "%b %d %Y"
 msgstr "%d de %b de %Y"
 
-#: src/utils.cpp:269 src/utils.cpp:283
+#: src/utils.cpp:268 src/utils.cpp:282
 msgid "_OK"
 msgstr "_Aceitar"
 
-#: src/utils.cpp:278
+#: src/utils.cpp:277
 msgid "_No"
 msgstr "_Não"
 
-#: src/utils.cpp:279
+#: src/utils.cpp:278
 msgid "_Yes"
 msgstr "_Sim"
 
