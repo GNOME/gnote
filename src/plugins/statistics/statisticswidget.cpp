@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,10 @@
  */
 
 
+#include <giomm/liststore.h>
 #include <glibmm/i18n.h>
-#include <gtkmm/treestore.h>
+#include <gtkmm/signallistitemfactory.h>
+#include <gtkmm/singleselection.h>
 
 #include "debug.hpp"
 #include "ignote.hpp"
@@ -30,8 +32,29 @@
 
 namespace statistics {
 
+class StatisticsRecord
+  : public Glib::Object
+{
+public:
+  static Glib::RefPtr<StatisticsRecord> create(const Glib::ustring & stat, const Glib::ustring & value)
+    {
+      return Glib::make_refptr_for_instance(new StatisticsRecord(stat, value));
+    }
+
+  const Glib::ustring statistic;
+  const Glib::ustring value;
+private:
+  StatisticsRecord(const Glib::ustring & stat, const Glib::ustring & value)
+    : statistic(stat)
+    , value(value)
+    {
+    }
+
+};
+
+
 class StatisticsModel
-  : public Gtk::TreeStore
+  : public Gtk::SingleSelection
 {
 public:
   typedef Glib::RefPtr<StatisticsModel> Ptr;
@@ -52,28 +75,13 @@ public:
       m_active = is_active;
     }
 private:
-  class StatisticsRecord
-    : public Gtk::TreeModelColumnRecord
-  {
-  public:
-    StatisticsRecord()
-      {
-        add(m_stat);
-        add(m_value);
-      }
-  private:
-    Gtk::TreeModelColumn<Glib::ustring> m_stat;
-    Gtk::TreeModelColumn<Glib::ustring> m_value;
-  };
-  StatisticsRecord m_columns;
-
   StatisticsModel(gnote::IGnote & g, gnote::NoteManager & nm)
     : m_gnote(g)
     , m_note_manager(nm)
+    , m_model(Gio::ListStore<StatisticsRecord>::create())
     , m_active(false)
     {
-      set_column_types(m_columns);
-      build_stats();
+      set_model(m_model);
       nm.signal_note_added.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
       nm.signal_note_deleted.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
       g.notebook_manager().signal_note_added_to_notebook()
@@ -84,19 +92,13 @@ private:
 
   void build_stats()
     {
-      clear();
+      m_model->remove_all();
       gnote::NoteBase::List notes = m_note_manager.get_notes();
 
-      Gtk::TreeIter iter = append();
-      Glib::ustring stat = _("Total Notes:");
-      iter->set_value(0, stat);
-      iter->set_value(1, TO_STRING(notes.size()));
+      m_model->append(StatisticsRecord::create(_("Total Notes"), TO_STRING(notes.size())));
 
-      Glib::RefPtr<Gtk::TreeModel> notebooks = m_gnote.notebook_manager().get_notebooks();
-      iter = append();
-      stat = _("Total Notebooks:");
-      iter->set_value(0, stat);
-      iter->set_value(1, TO_STRING(notebooks->children().size()));
+      auto notebooks = m_gnote.notebook_manager().get_notebooks();
+      m_model->append(StatisticsRecord::create(_("Total Notebooks"), TO_STRING(notebooks->children().size())));
 
       Gtk::TreeIter notebook = notebooks->children().begin();
       std::map<gnote::notebooks::Notebook::Ptr, int> notebook_notes;
@@ -122,11 +124,9 @@ private:
         notebook_stats[nb->first->get_name()] = nb->second;
       }
       for(auto nb : notebook_stats) {
-        Gtk::TreeIter nb_stat = append(iter->children());
-        nb_stat->set_value(0, nb.first);
         // TRANSLATORS: %1 is the format placeholder for the number of notes.
         char *fmt = ngettext("%1 note", "%1 notes", nb.second);
-        nb_stat->set_value(1, Glib::ustring::compose(fmt, nb.second));
+        m_model->append(StatisticsRecord::create("\t" + nb.first, Glib::ustring::compose(fmt, nb.second)));
       }
 
       DBG_OUT("Statistics updated");
@@ -144,28 +144,51 @@ private:
 
   gnote::IGnote & m_gnote;
   gnote::NoteManager & m_note_manager;
+  Glib::RefPtr<Gio::ListStore<StatisticsRecord>> m_model;
   bool m_active;
 };
 
 
+class StatisticsListItemFactory
+  : public Gtk::SignalListItemFactory
+{
+public:
+  static Glib::RefPtr<StatisticsListItemFactory> create()
+    {
+      return Glib::make_refptr_for_instance(new StatisticsListItemFactory);
+    }
+private:
+  StatisticsListItemFactory()
+    {
+      signal_setup().connect(sigc::mem_fun(*this, &StatisticsListItemFactory::setup));
+      signal_bind().connect(sigc::mem_fun(*this, &StatisticsListItemFactory::bind));
+    }
+
+  void setup(const Glib::RefPtr<Gtk::ListItem> & item)
+    {
+      auto label = Gtk::make_managed<Gtk::Label>();
+      label->set_halign(Gtk::Align::START);
+      item->set_child(*label);
+    }
+
+  void bind(const Glib::RefPtr<Gtk::ListItem> & item)
+    {
+      auto record = std::dynamic_pointer_cast<StatisticsRecord>(item->get_item());
+      auto label = dynamic_cast<Gtk::Label*>(item->get_child());
+      label->set_markup(Glib::ustring::compose("<b>%1:</b>\t%2", record->statistic, record->value));
+    }
+};
+
+
 StatisticsWidget::StatisticsWidget(gnote::IGnote & g, gnote::NoteManager & nm)
-  : Gtk::TreeView(StatisticsModel::create(g, nm))
+  : Gtk::ListView(StatisticsModel::create(g, nm))
 {
   set_hexpand(true);
   set_vexpand(true);
   StatisticsModel::Ptr model = std::dynamic_pointer_cast<StatisticsModel>(get_model());
   set_model(model);
-  set_headers_visible(false);
-
-  Gtk::CellRendererText *renderer = manage(new Gtk::CellRendererText);
-  Gtk::TreeViewColumn *column = manage(new Gtk::TreeViewColumn("", *renderer));
-  column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &StatisticsWidget::col1_data_func));
-  append_column(*column);
-
-  renderer = manage(new Gtk::CellRendererText);
-  column = manage(new Gtk::TreeViewColumn("", *renderer));
-  column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &StatisticsWidget::col2_data_func));
-  append_column(*column);
+  set_factory(StatisticsListItemFactory::create());
+  model->update();
 }
 
 Glib::ustring StatisticsWidget::get_name() const
@@ -179,27 +202,12 @@ void StatisticsWidget::foreground()
   StatisticsModel::Ptr model = std::static_pointer_cast<StatisticsModel>(get_model());
   model->active(true);
   model->update();
-  expand_all();
 }
 
 void StatisticsWidget::background()
 {
   gnote::EmbeddableWidget::background();
   std::static_pointer_cast<StatisticsModel>(get_model())->active(false);
-}
-
-void StatisticsWidget::col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-{
-  Glib::ustring val;
-  iter->get_value(0, val);
-  static_cast<Gtk::CellRendererText*>(renderer)->property_markup() = "<b>" + val + "</b>";
-}
-
-void StatisticsWidget::col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-{
-  Glib::ustring val;
-  iter->get_value(1, val);
-  static_cast<Gtk::CellRendererText*>(renderer)->property_text() = val;
 }
 
 }

@@ -21,7 +21,7 @@
 #ifndef _STATISTICS_WIDGET_HPP_
 #define _STATISTICS_WIDGET_HPP_
 
-#include <gtkmm/treeview.h>
+#include <gtkmm/listview.h>
 
 #include "mainwindowembeds.hpp"
 #include "notemanager.hpp"
@@ -30,7 +30,7 @@
 namespace statistics {
 
 class StatisticsWidget
-  : public Gtk::TreeView
+  : public Gtk::ListView
   , public gnote::EmbeddableWidget
 {
 public:
@@ -38,9 +38,6 @@ public:
   virtual Glib::ustring get_name() const override;
   virtual void foreground() override;
   virtual void background() override;
-private:
-  void col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
-  void col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
 };
 
 }
