@@ -27,7 +27,9 @@
 
 #include <glibmm/datetime.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/label.h>
 #include <gtkmm/messagedialog.h>
+#include <gtkmm/signallistitemfactory.h>
 #include <gtkmm/textbuffer.h>
 #include <gtkmm/textiter.h>
 #include <gtkmm/textmark.h>
@@ -86,6 +88,38 @@ class Preferences;
     private:
       Gtk::Grid *m_extra_widget_vbox;
       Gtk::Widget *m_extra_widget;
+    };
+
+
+    template <typename T>
+    class ModelRecord
+      : public Glib::Object
+    {
+    public:
+      static Glib::RefPtr<ModelRecord> create(const T & value)
+        {
+          return Glib::make_refptr_for_instance(new ModelRecord(value));
+        }
+
+      const T value;
+    private:
+      explicit ModelRecord(const T & value)
+        : value(value)
+      {}
+    };
+
+
+    class LabelFactory
+      : public Gtk::SignalListItemFactory
+    {
+    public:
+      LabelFactory();
+    protected:
+      virtual Glib::ustring get_text(Gtk::ListItem & item) = 0;
+      virtual void set_text(Gtk::Label & label, const Glib::ustring & text) = 0;
+    private:
+      void on_setup(const Glib::RefPtr<Gtk::ListItem> & item);
+      void on_bind(const Glib::RefPtr<Gtk::ListItem> & item);
     };
 
 

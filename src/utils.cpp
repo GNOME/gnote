@@ -320,6 +320,26 @@ namespace gnote {
     }
 
 
+    LabelFactory::LabelFactory()
+    {
+      signal_setup().connect(sigc::mem_fun(*this, &LabelFactory::on_setup));
+      signal_bind().connect(sigc::mem_fun(*this, &LabelFactory::on_bind));
+    }
+
+    void LabelFactory::on_setup(const Glib::RefPtr<Gtk::ListItem> & item)
+    {
+      auto label = Gtk::make_managed<Gtk::Label>();
+      label->set_halign(Gtk::Align::START);
+      item->set_child(*label);
+    }
+
+    void LabelFactory::on_bind(const Glib::RefPtr<Gtk::ListItem> & item)
+    {
+      auto label = static_cast<Gtk::Label*>(item->get_child());
+      set_text(*label, get_text(*item));
+    }
+
+
     Glib::ustring XmlEncoder::encode(const Glib::ustring & source)
     {
       sharp::XmlWriter xml;
