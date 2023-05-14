@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016,2017,2019-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,8 +22,10 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/main.h>
+#include <gtkmm/columnview.h>
 #include <gtkmm/scrolledwindow.h>
-#include <gtkmm/treeview.h>
+#include <gtkmm/singleselection.h>
+#include <gtkmm/signallistitemfactory.h>
 
 #include "ignote.hpp"
 #include "iconmanager.hpp"
@@ -39,18 +41,51 @@ namespace sync {
 
 namespace {
 
-class TreeViewModel
-  : public Gtk::TreeModelColumnRecord
+struct ListRow
 {
-public:
-  TreeViewModel()
-    {
-      add(m_col1);
-      add(m_col2);
-    }
+  Glib::ustring title;
+  Glib::ustring status;
+};
 
-    Gtk::TreeModelColumn<Glib::ustring> m_col1;
-    Gtk::TreeModelColumn<Glib::ustring> m_col2;
+typedef utils::ModelRecord<ListRow> ListRecord;
+
+
+class ColFactory
+  : public utils::LabelFactory
+{
+protected:
+  Glib::ustring get_text(Gtk::ListItem & item) override
+  {
+    auto record = std::dynamic_pointer_cast<ListRecord>(item.get_item());
+    return get_text(*record);
+  }
+  virtual Glib::ustring get_text(ListRecord & record) = 0;
+  void set_text(Gtk::Label & label, const Glib::ustring & text) override
+  {
+    label.set_text(text);
+  }
+};
+
+
+class Col1Factory
+  : public ColFactory
+{
+protected:
+  Glib::ustring get_text(ListRecord & record) override
+  {
+    return record.value.title;
+  }
+};
+
+
+class Col2Factory
+  : public ColFactory
+{
+protected:
+  Glib::ustring get_text(ListRecord & record) override
+  {
+    return record.value.status;
+  }
 };
 
 
@@ -292,51 +327,25 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   scrolledWindow->set_vexpand(true);
   expandVBox->attach(*scrolledWindow, 0, 0, 1, 1);
 
-  // Create model for TreeView
-  // Work-around for GCC versions < 4.3 (http://gcc.gnu.org/bugs/#cxx_rvalbind)
-  TreeViewModel tmp_model;
-  m_model = Gtk::TreeStore::create(tmp_model);
+  m_model = Gio::ListStore<ListRecord>::create();
+  auto model = Gtk::SingleSelection::create(m_model);
 
-  // Create TreeView, attach model
-  Gtk::TreeView *treeView = Gtk::make_managed<Gtk::TreeView>();
-  treeView->set_model(m_model);
-  treeView->signal_row_activated().connect(sigc::mem_fun(*this, &SyncDialog::on_row_activated));
-  scrolledWindow->set_child(*treeView);
+  auto view = Gtk::make_managed<Gtk::ColumnView>(model);
+  view->signal_activate().connect(sigc::mem_fun(*this, &SyncDialog::on_row_activated));
+  scrolledWindow->set_child(*view);
 
-  // Set up TreeViewColumns
-  Gtk::CellRenderer *renderer = Gtk::make_managed<Gtk::CellRendererText>();
-  Gtk::TreeViewColumn *column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Note Title"), *renderer);
-  column->set_sort_column(0);
+  // Set up columns
+  auto column = Gtk::ColumnViewColumn::create(_("Note Title"), Glib::make_refptr_for_instance(new Col1Factory));
   column->set_resizable(true);
-  column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &SyncDialog::treeview_col1_data_func));
-  treeView->append_column(*column);
+  view->append_column(column);
 
-  renderer = Gtk::make_managed<Gtk::CellRendererText>();
-  column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Status"), *renderer);
-  column->set_sort_column(1);
+  column = Gtk::ColumnViewColumn::create(_("Status"), Glib::make_refptr_for_instance(new Col2Factory));
   column->set_resizable(true);
-  treeView->append_column(*column);
-  column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &SyncDialog::treeview_col2_data_func));
+  view->append_column(column);
 
   // Button to close dialog.
   m_close_button = add_button(_("_Close"), static_cast<int>(Gtk::ResponseType::CLOSE));
   m_close_button->set_sensitive(false);
-}
-
-
-void SyncDialog::treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-{
-  Glib::ustring text;
-  iter->get_value(0, text);
-  static_cast<Gtk::CellRendererText*>(renderer)->property_text() = text;
-}
-
-
-void SyncDialog::treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-{
-  Glib::ustring text;
-  iter->get_value(1, text);
-  static_cast<Gtk::CellRendererText*>(renderer)->property_text() = text;
 }
 
 
@@ -387,16 +396,15 @@ void SyncDialog::on_expander_activated(GtkExpander*, gpointer data)
 }
 
 
-void SyncDialog::on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn*)
+void SyncDialog::on_row_activated(guint idx)
 {
   // TODO: Store GUID hidden in model; use instead of title
-  Gtk::TreeIter iter = m_model->get_iter(path);
-  if(!iter) {
+  auto item = std::static_pointer_cast<Gio::ListStore<ListRecord>>(m_model)->get_item(idx);
+  if(!item) {
     return;
   }
 
-  Glib::ustring noteTitle;
-  iter->get_value(0, noteTitle);
+  Glib::ustring noteTitle = item->value.title;
 
   NoteBase::Ptr note = m_manager.find(noteTitle);
   if(note != 0) {
@@ -438,9 +446,8 @@ void SyncDialog::progress_text(const Glib::ustring & value)
 
 void SyncDialog::add_update_item(const Glib::ustring & title, Glib::ustring & status)
 {
-  Gtk::TreeIter iter = m_model->append();
-  iter->set_value(0, title);
-  iter->set_value(1 , status);
+  auto record = ListRecord::create({title, status});
+  m_model->append(record);
 }
 
 
@@ -465,7 +472,7 @@ void SyncDialog::sync_state_changed_(SyncState state)
     set_title(_("Synchronizing Notes"));
     header_text(_("Synchronizing your notes..."));
     message_text(_("This may take a while, kick back and enjoy!"));
-    m_model->clear();
+    m_model->remove_all();
     progress_text(_("Connecting to the server..."));
     m_progress_bar->set_fraction(0);
     m_progress_bar->show();
@@ -510,7 +517,7 @@ void SyncDialog::sync_state_changed_(SyncState state)
     break;
   case SUCCEEDED:
     {
-      int count = m_model->children().size();
+      int count = m_model->get_n_items();
       set_title(_("Synchronization Complete"));
       header_text(_("Synchronization is complete"));
       Glib::ustring numNotesUpdated = ngettext("%1 note updated.", "%1 notes updated.", count);

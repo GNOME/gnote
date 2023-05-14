@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020,2022-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,13 +24,12 @@
 
 #include <condition_variable>
 
+#include <giomm/liststore.h>
 #include <gtkmm/dialog.h>
 #include <gtkmm/expander.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/progressbar.h>
-#include <gtkmm/treestore.h>
-#include <gtkmm/treeviewcolumn.h>
 
 #include "syncui.hpp"
 
@@ -81,9 +80,7 @@ namespace sync {
       Gtk::ResponseType response);
 
     bool on_pulse_progress_bar();
-    void on_row_activated(const Gtk::TreeModel::Path & path, Gtk::TreeViewColumn *column);
-    void treeview_col1_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
-    void treeview_col2_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
+    void on_row_activated(guint idx);
     void sync_state_changed_(SyncState state);
     void rename_note(const Note::Ptr & note, Glib::ustring && newTitle, bool updateReferencingNotes);
     void present_note(const Note::Ptr &);
@@ -98,7 +95,7 @@ namespace sync {
     Gtk::Button *m_close_button;
     unsigned m_progress_bar_timeout_id;
 
-    Glib::RefPtr<Gtk::TreeStore> m_model;
+    Glib::RefPtr<Gio::ListStoreBase> m_model;
   };
 
 }
