@@ -27,30 +27,19 @@
 #include "ignote.hpp"
 #include "itagmanager.hpp"
 #include "statisticswidget.hpp"
+#include "utils.hpp"
 #include "notebooks/notebookmanager.hpp"
 
 
 namespace statistics {
 
-class StatisticsRecord
-  : public Glib::Object
+struct StatisticsRow
 {
-public:
-  static Glib::RefPtr<StatisticsRecord> create(const Glib::ustring & stat, const Glib::ustring & value)
-    {
-      return Glib::make_refptr_for_instance(new StatisticsRecord(stat, value));
-    }
-
-  const Glib::ustring statistic;
-  const Glib::ustring value;
-private:
-  StatisticsRecord(const Glib::ustring & stat, const Glib::ustring & value)
-    : statistic(stat)
-    , value(value)
-    {
-    }
-
+  Glib::ustring statistic;
+  Glib::ustring value;
 };
+
+typedef gnote::utils::ModelRecord<StatisticsRow> StatisticsRecord;
 
 
 class StatisticsModel
@@ -95,10 +84,10 @@ private:
       m_model->remove_all();
       gnote::NoteBase::List notes = m_note_manager.get_notes();
 
-      m_model->append(StatisticsRecord::create(_("Total Notes"), TO_STRING(notes.size())));
+      m_model->append(StatisticsRecord::create({_("Total Notes"), TO_STRING(notes.size())}));
 
       auto notebooks = m_gnote.notebook_manager().get_notebooks();
-      m_model->append(StatisticsRecord::create(_("Total Notebooks"), TO_STRING(notebooks->children().size())));
+      m_model->append(StatisticsRecord::create({_("Total Notebooks"), TO_STRING(notebooks->children().size())}));
 
       Gtk::TreeIter notebook = notebooks->children().begin();
       std::map<gnote::notebooks::Notebook::Ptr, int> notebook_notes;
@@ -126,7 +115,7 @@ private:
       for(auto nb : notebook_stats) {
         // TRANSLATORS: %1 is the format placeholder for the number of notes.
         char *fmt = ngettext("%1 note", "%1 notes", nb.second);
-        m_model->append(StatisticsRecord::create("\t" + nb.first, Glib::ustring::compose(fmt, nb.second)));
+        m_model->append(StatisticsRecord::create({"\t" + nb.first, Glib::ustring::compose(fmt, nb.second)}));
       }
 
       DBG_OUT("Statistics updated");
@@ -150,33 +139,24 @@ private:
 
 
 class StatisticsListItemFactory
-  : public Gtk::SignalListItemFactory
+  : public gnote::utils::LabelFactory
 {
 public:
   static Glib::RefPtr<StatisticsListItemFactory> create()
     {
       return Glib::make_refptr_for_instance(new StatisticsListItemFactory);
     }
-private:
-  StatisticsListItemFactory()
-    {
-      signal_setup().connect(sigc::mem_fun(*this, &StatisticsListItemFactory::setup));
-      signal_bind().connect(sigc::mem_fun(*this, &StatisticsListItemFactory::bind));
-    }
+protected:
+  Glib::ustring get_text(Gtk::ListItem & item) override
+  {
+    auto record = std::dynamic_pointer_cast<StatisticsRecord>(item.get_item());
+    return Glib::ustring::compose("<b>%1:</b>\t%2", record->value.statistic, record->value.value);
+  }
 
-  void setup(const Glib::RefPtr<Gtk::ListItem> & item)
-    {
-      auto label = Gtk::make_managed<Gtk::Label>();
-      label->set_halign(Gtk::Align::START);
-      item->set_child(*label);
-    }
-
-  void bind(const Glib::RefPtr<Gtk::ListItem> & item)
-    {
-      auto record = std::dynamic_pointer_cast<StatisticsRecord>(item->get_item());
-      auto label = dynamic_cast<Gtk::Label*>(item->get_child());
-      label->set_markup(Glib::ustring::compose("<b>%1:</b>\t%2", record->statistic, record->value));
-    }
+  void set_text(Gtk::Label & label, const Glib::ustring & text) override
+  {
+    label.set_markup(text);
+  }
 };
 
 
