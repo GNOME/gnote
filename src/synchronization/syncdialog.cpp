@@ -309,7 +309,7 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   m_progress_label->property_wrap() = true;
   outerVBox->attach(*m_progress_label, 0, outerVBoxRow++, 1, 1);
 
-  // Expander containing TreeView
+  // Expander containing table
   m_expander = Gtk::make_managed<Gtk::Expander>(_("Details"));
   m_expander->set_margin(6);
   g_signal_connect(m_expander->gobj(), "activate", G_CALLBACK(SyncDialog::on_expander_activated), this);
@@ -320,7 +320,7 @@ SyncDialog::SyncDialog(IGnote & g, NoteManagerBase & manager)
   Gtk::Grid *expandVBox = Gtk::make_managed<Gtk::Grid>();
   m_expander->set_child(*expandVBox);
 
-  // Scrolled window around TreeView
+  // Scrolled window around table
   Gtk::ScrolledWindow *scrolledWindow = Gtk::make_managed<Gtk::ScrolledWindow>();
   scrolledWindow->set_size_request(-1, 200);
   scrolledWindow->set_hexpand(true);
