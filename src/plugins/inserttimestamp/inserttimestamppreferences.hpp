@@ -23,12 +23,12 @@
 #define __INSERTTIMESTAMP_PREFERENCES_HPP_
 
 
+#include <giomm/liststore.h>
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/liststore.h>
 #include <gtkmm/scrolledwindow.h>
-#include <gtkmm/treeview.h>
+#include <gtkmm/listview.h>
 
 #include "notemanager.hpp"
 
@@ -47,35 +47,32 @@ class InsertTimestampPreferences
   : public Gtk::Grid
 {
 public:
+  struct Columns
+  {
+    Glib::ustring formatted;
+    Glib::ustring format;
+  };
+  typedef gnote::utils::ModelRecord<Columns> FormatColumns;
+
   static Glib::RefPtr<Gio::Settings> & settings();
 
   InsertTimestampPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &);
 private:
   static void _init_static();
-  class FormatColumns
-    : public Gtk::TreeModelColumnRecord
-  {
-  public:
-    FormatColumns()
-      { add(formatted); add(format); }
 
-    Gtk::TreeModelColumn<Glib::ustring> formatted;
-    Gtk::TreeModelColumn<Glib::ustring> format;
-  };
   void on_selected_radio_toggled();
-  void on_selection_changed();
+  void on_selection_changed(guint position, guint n_items);
 
   static bool       s_static_inited;
   static std::vector<Glib::ustring> s_formats;
   static Glib::RefPtr<Gio::Settings> s_settings;
 
-  FormatColumns     m_columns;
   Gtk::CheckButton *selected_radio;
   Gtk::CheckButton *custom_radio;
 
   Gtk::ScrolledWindow         *scroll;
-  Gtk::TreeView               *tv;
-  Glib::RefPtr<Gtk::ListStore> store;
+  Gtk::ListView               *m_list;
+  Glib::RefPtr<Gio::ListStore<FormatColumns>> m_store;
   Gtk::Entry                  *custom_entry;
 };
 

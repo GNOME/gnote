@@ -20,6 +20,7 @@
 
 
 #include <glibmm/i18n.h>
+#include <gtkmm/singleselection.h>
 
 #include "sharp/datetime.hpp"
 #include "sharp/propertyeditor.hpp"
@@ -31,6 +32,25 @@ namespace inserttimestamp {
 
   const char * SCHEMA_INSERT_TIMESTAMP = "org.gnome.gnote.insert-timestamp";
   const char * INSERT_TIMESTAMP_FORMAT = "format";
+
+  namespace {
+
+    class FormatFactory
+      : public gnote::utils::LabelFactory
+    {
+    protected:
+      Glib::ustring get_text(Gtk::ListItem & item) override
+      {
+        return std::dynamic_pointer_cast<InsertTimestampPreferences::FormatColumns>(item.get_item())->value.formatted;
+      }
+
+      void set_text(Gtk::Label & label, const Glib::ustring & text) override
+      {
+        label.set_text(text);
+      }
+    };
+
+  }
 
   bool InsertTimestampPreferences::s_static_inited = false;
   std::vector<Glib::ustring> InsertTimestampPreferences::s_formats;
@@ -84,12 +104,10 @@ namespace inserttimestamp {
 
     // 1st column (visible): formatted date
     // 2nd column (not visible): date format
-    store = Gtk::ListStore::create(m_columns);
+    m_store = Gio::ListStore<FormatColumns>::create();
 
     for(auto format : s_formats) {
-      Gtk::TreeIter treeiter = store->append();
-      treeiter->set_value(0, sharp::date_time_to_string(now, format));
-      treeiter->set_value(1, format);
+      m_store->append(FormatColumns::create({sharp::date_time_to_string(now, format), format}));
     }
 
     scroll = Gtk::make_managed<Gtk::ScrolledWindow>();
@@ -97,11 +115,9 @@ namespace inserttimestamp {
     scroll->set_vexpand(true);
     attach(*scroll, 0, row++, 1, 1);
 
-    tv = Gtk::make_managed<Gtk::TreeView>(store);
-    tv->set_headers_visible(false);
-    tv->append_column ("Format", m_columns.formatted);
+    m_list = Gtk::make_managed<Gtk::ListView>(Gtk::SingleSelection::create(m_store), Glib::make_refptr_for_instance(new FormatFactory));
 
-    scroll->set_child(*tv);
+    scroll->set_child(*m_list);
 
     // Use Custom Format
     auto customBox = Gtk::make_managed<Gtk::Grid>();
@@ -123,15 +139,12 @@ namespace inserttimestamp {
 
     // Activate/deactivate widgets
     bool useCustom = true;
-    Gtk::TreeIter<Gtk::TreeConstRow> iter;
-    for(iter = store->children().begin();
-        iter != store->children().end(); ++iter) {
-
-      const Gtk::TreeConstRow & tree_row(*iter);
-      Glib::ustring value = tree_row[m_columns.format];
-      if (dateFormat == value) {
+    guint selected_item = 0;
+    for(guint i = 0; i < m_store->get_n_items(); ++i) {
+      if (dateFormat == m_store->get_item(i)->value.format) {
         // Found format in list
         useCustom = false;
+        selected_item = i;
         break;
       }
     }
@@ -143,16 +156,14 @@ namespace inserttimestamp {
     else {
       selected_radio->set_active(true);
       custom_entry->set_sensitive(false);
-      tv->get_selection()->select(iter);
-      Gtk::TreePath treepath = store->get_path (iter);				
-      tv->scroll_to_row(treepath);
+      m_list->get_model()->select_item(selected_item, true);
     }
 
     // Register Toggled event for one radio button only
     selected_radio->signal_toggled().connect(
       sigc::mem_fun(*this, 
                     &InsertTimestampPreferences::on_selected_radio_toggled));
-    tv->get_selection()->signal_changed().connect(
+    m_list->get_model()->signal_selection_changed().connect(
       sigc::mem_fun(*this, 
                     &InsertTimestampPreferences::on_selection_changed));
   }
@@ -166,26 +177,22 @@ namespace inserttimestamp {
       scroll->set_sensitive(true);
       custom_entry->set_sensitive(false);
       // select 1st row
-      auto iter = store->children().begin();
-      tv->get_selection()->select(iter);
-      Gtk::TreePath treepath = store->get_path(iter);				
-      tv->scroll_to_row(treepath);
+      m_list->get_model()->select_item(0, true);
     } 
     else {
       scroll->set_sensitive(false);
       custom_entry->set_sensitive(true);
-      tv->get_selection()->unselect_all ();
+      m_list->get_model()->unselect_all();
     }
   }
 
   /// Called when a different format is selected in the TreeView.
-  /// Set the GConf key to selected format.
-  void InsertTimestampPreferences::on_selection_changed ()
+  /// Set the settings key to selected format.
+  void InsertTimestampPreferences::on_selection_changed(guint position, guint n_items)
   {
-    auto iter = tv->get_selection()->get_selected();
-    if (iter) {
-      Glib::ustring format;
-      iter->get_value(1, format);
+    auto item = std::dynamic_pointer_cast<Gtk::SingleSelection>(m_list->get_model())->get_selected_item();
+    if(item) {
+      Glib::ustring format = std::dynamic_pointer_cast<FormatColumns>(item)->value.format;
       settings()->set_string(INSERT_TIMESTAMP_FORMAT, format);
     }
   }
