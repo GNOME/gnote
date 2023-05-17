@@ -2,14 +2,14 @@
 # Copyright (C) 2009 Gnome Foundation
 # This file is distributed under the same license as the gnote package.
 # Andika Triwidada <andika@gmail.com>, 2009-2012, 2014, 2017-2023.
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2021.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote gnome-42\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-03-12 20:55+0000\n"
-"PO-Revision-Date: 2023-03-20 14:21+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2023-05-10 16:02+0000\n"
+"PO-Revision-Date: 2023-05-17 11:41+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-Bookmarks: -1,10,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:88 src/recentchanges.cpp:116
+#: src/recentchanges.cpp:97 src/recentchanges.cpp:120
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -693,35 +693,35 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Turunkan indentasi/nonaktifkan bulatan bagi baris saat ini"
 
-#: src/actionmanager.cpp:127
+#: src/actionmanager.cpp:133
 msgid "_New Note"
 msgstr "Catata_n Baru"
 
-#: src/actionmanager.cpp:128
+#: src/actionmanager.cpp:134
 msgid "New _Window"
 msgstr "_Jendela Baru"
 
-#: src/actionmanager.cpp:129 src/preferencesdialog.cpp:623
+#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:550
 msgid "_Preferences"
 msgstr "_Preferensi"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:136
 msgid "_Shortcuts"
 msgstr "Pinta_san"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:137
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:138
 msgid "_About Gnote"
 msgstr "Tent_ang Gnote"
 
-#: src/addininfo.cpp:71
+#: src/addininfo.cpp:72
 msgid "Failed to load plugin information!"
 msgstr "Gagal memuat informasi pengaya!"
 
-#: src/addininfo.cpp:145
+#: src/addininfo.cpp:140
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Pengaya tak kompatibel %s: berharap %s, mendapat %s"
@@ -778,19 +778,13 @@ msgstr "Lihat catatan mana yang menaut ke yang sedang Anda tilik."
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere dan Projek Tomboy"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:75
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:77
 msgid "What links here?"
 msgstr "Apa yang menaut ke sini?"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:96
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:92
 msgid "(none)"
 msgstr "(tidak ada)"
-
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:101
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
-#: src/notebooks/notebooknoteaddin.cpp:167
-msgid "_Back"
-msgstr "_Mundur"
 
 #: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid "Bugzilla Links"
@@ -810,7 +804,6 @@ msgstr ""
 #: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
 #: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
 #: src/plugins/printnotes/printnotes.desktop.in.in:6
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:6
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere dan Projek Tomboy"
 
@@ -830,70 +823,70 @@ msgstr "Nama Host"
 msgid "Icon"
 msgstr "Ikon"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+#: src/plugins/bugzilla/bugzillapreferences.cpp:112
 msgid "_Add"
 msgstr "T_ambah"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+#: src/plugins/bugzilla/bugzillapreferences.cpp:116
 msgid "_Remove"
 msgstr "_Hapus"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:225
+#: src/plugins/bugzilla/bugzillapreferences.cpp:221
 msgid "Select an icon..."
 msgstr "Pilih sebuah ikon..."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:227
-#: src/plugins/bugzilla/bugzillapreferences.cpp:370
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/plugins/bugzilla/bugzillapreferences.cpp:222
+#: src/plugins/bugzilla/bugzillapreferences.cpp:363
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
-#: src/utils.cpp:375
+#: src/notebooks/notebookmanager.cpp:359 src/note.cpp:65 src/utils.cpp:274
+#: src/utils.cpp:281
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:228
-#: src/searchnoteswidget.cpp:1302
+#: src/plugins/bugzilla/bugzillapreferences.cpp:223
+#: src/searchnoteswidget.cpp:1058
 msgid "_Open"
 msgstr "B_uka"
 
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:240
+#: src/plugins/bugzilla/bugzillapreferences.cpp:234
 msgid "_Host name:"
 msgstr "Nama _host:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:274
+#: src/plugins/bugzilla/bugzillapreferences.cpp:264
+msgid "Error saving icon"
+msgstr "Galat menyimpan ikon"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:265
+msgid "Could not save the icon file."
+msgstr "Tak dapat menyimpan berkas ikon."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:280
 msgid "Host name invalid"
 msgstr "Nama host tak valid"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:275
+#: src/plugins/bugzilla/bugzillapreferences.cpp:281
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Anda mesti menyatakan nama host Bugzilla yang valid untuk dipakai dengan "
 "ikon ini."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:294
-msgid "Error saving icon"
-msgstr "Galat menyimpan ikon"
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:295
-msgid "Could not save the icon file."
-msgstr "Tak dapat menyimpan berkas ikon."
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/plugins/bugzilla/bugzillapreferences.cpp:360
 msgid "Really remove this icon?"
 msgstr "Yakin menghapus ikon ini?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:368
+#: src/plugins/bugzilla/bugzillapreferences.cpp:361
 msgid "If you remove an icon it is permanently lost."
 msgstr "Bila Anda menghapus sebuah ikon dia akan hilang selamanya."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376
-#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
-#: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
+#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/notebooks/notebookmanager.cpp:363 src/note.cpp:69
+#: src/searchnoteswidget.cpp:1060 src/searchnoteswidget.cpp:1095
 msgid "_Delete"
 msgstr "_Hapus"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:388
+#: src/plugins/bugzilla/bugzillapreferences.cpp:379
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Galat saat menghapus ikon %s: %s"
@@ -944,68 +937,69 @@ msgstr "Ekspor catatan terpisah ke HTML."
 msgid "Destination for HTML Export"
 msgstr "Tujuan bagi Ekspor HTML"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Export linked notes"
 msgstr "Ekspor catatan tertaut"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:43
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Include all other linked notes"
 msgstr "Sertakan semua catatan tertaut lain"
 
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
-#: src/preferencesdialog.cpp:547
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/preferencesdialog.cpp:490
 msgid "_Save"
 msgstr "_Simpan"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:82
 msgid "Export to HTML…"
 msgstr "Ekspor ke HTML…"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:122
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:129
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Tak bisa membuka catatan yang diekspor dalam suatu peramban web: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:133
 msgid "Your note was exported to \"%1\"."
 msgstr "Catatan Anda diekspor ke \"%1\"."
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:136
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:142
 msgid "Note exported successfully"
 msgstr "Catatan sukses diekspor"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:150
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:158
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:157
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:165
 #, c-format
 msgid "Could not export: %s"
 msgstr "Tak bisa mengekspor: %s"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:161
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:168
 msgid "Could not save the file \"%1\""
 msgstr "Tak bisa menyimpan berkas \"%1\""
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
 msgid "_Folder Path:"
 msgstr "Path _Folder:"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:107
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:118
 msgid "Select Synchronization Folder..."
 msgstr "Pilih Folder Penyelarasan..."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:129
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:153
 msgid "Folder path field is empty."
 msgstr "Ruas path folder kosong."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:160
 #: src/synchronization/gvfssyncservice.cpp:76
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Path folder yang diberikan tak ada, dan Gnote tak bisa membuatnya."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:200
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:224
 msgid "Local Folder"
 msgstr "Folder Lokal"
 
@@ -1030,7 +1024,7 @@ msgstr "Lebar Tetap"
 msgid "Adds fixed-width font style."
 msgstr "Menambahkan gaya fonta lebar-tetap."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:57
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
 msgid "Fixed Wid_th"
 msgstr "Lebar _Tetap"
 
@@ -1059,15 +1053,15 @@ msgstr "Contoh: google-drive://nama.lengkap@gmail.com/catatan"
 msgid "Please, register your account in Online Accounts"
 msgstr "Silakan, daftarkan akun Anda di Akun Daring"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
 msgid "The URI is empty"
 msgstr "URI kosong"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "URI field is empty."
 msgstr "Ruas URI kosong."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Folder Daring"
 
@@ -1085,11 +1079,12 @@ msgstr "Masukkan tanggal dan jam pada posisi kursor."
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Pilih satu dari bentuk telah dipradefinisi atau gunakan milikmu."
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:84
+#. Use Selected Format
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:82
 msgid "Use _Selected Format"
 msgstr "_Gunakan Format Yang Dipilih"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:114
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:111
 msgid "_Use Custom Format"
 msgstr "G_unakan Format Gubahan"
 
@@ -1152,7 +1147,7 @@ msgstr "Hari Ini: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:68
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "NoteOfTheDay tak bisa membuat %s: %s"
@@ -1205,16 +1200,16 @@ msgstr "Dukungan Pencetakan"
 msgid "Allows you to print a note."
 msgstr "Memungkinkan Anda mencetak catatan."
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:62
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
 msgid "Print…"
 msgstr "Cetak…"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:110
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
 msgstr "Galat mencetak catatan"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:273
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
 msgid "Page %1 of %2"
 msgstr "Halaman %1 dari %2"
 
@@ -1232,7 +1227,7 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray, dan Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
 msgid "Replace title"
 msgstr "Gantikan judul"
 
@@ -1258,7 +1253,7 @@ msgid "Show Statistics"
 msgstr "Tampilkan Statistik"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:173
+#: src/plugins/statistics/statisticswidget.cpp:196
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -1266,13 +1261,13 @@ msgstr "Statistik"
 msgid "Show various statistics about notes."
 msgstr "Tampilkan berbagai statistik tentang catatan."
 
-#: src/plugins/statistics/statisticswidget.cpp:91
-msgid "Total Notes:"
-msgstr "Total Catatan:"
+#: src/plugins/statistics/statisticswidget.cpp:98
+msgid "Total Notes"
+msgstr "Total Catatan"
 
-#: src/plugins/statistics/statisticswidget.cpp:97
-msgid "Total Notebooks:"
-msgstr "Total Buku Catatan:"
+#: src/plugins/statistics/statisticswidget.cpp:101
+msgid "Total Notebooks"
+msgstr "Total Buku Catatan"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
 #: src/plugins/statistics/statisticswidget.cpp:128
@@ -1280,47 +1275,8 @@ msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 catatan"
 
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:4
-msgid "Sticky Notes Importer"
-msgstr "Tampilkan catatan"
-
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:5
-msgid "Import your notes from the Sticky Notes applet."
-msgstr "Impor catatan Anda dari aplet Catatan Lengket."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:84
-msgid "Import from Sticky Notes"
-msgstr "Impor dari Catatan Lengket"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:206
-msgid "No Sticky Notes found"
-msgstr "Tak ditemukan Catatan Lengket"
-
-#. %1 is a the file name
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
-msgid "No suitable Sticky Notes file was found at \"%1\"."
-msgstr "Tak ada berkas Catatan Lengket yang cocok ditemukan di \"%1\"."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
-msgid "Sticky Notes import completed"
-msgstr "Impor Catatan Lengket telah lengkap"
-
-#. here %1 is the number of notes imported, %2 the total number of notes.
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
-msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
-msgstr "<b>%1</b> dari <b>%2</b> Catatan Lengket telah sukses diimpor."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
-msgid "Untitled"
-msgstr "Tak berjudul"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:275
-msgid "Sticky Note: "
-msgstr "Catatan Lengket: "
-
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:67
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:130
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:113
 msgid "Table of Contents"
 msgstr "Daftar Isi"
 
@@ -1340,25 +1296,17 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:145
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:207
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:137
 msgid "Heading 1"
 msgstr "Tajuk 1"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:149
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:213
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:140
 msgid "Heading 2"
 msgstr "Tajuk 2"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:153
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:219
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:143
 msgid "Table of Contents Help"
 msgstr "Bantuan Daftar Isi"
-
-#. no toc items, and no action entries = empty menu
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:192
-msgid "(empty table of contents)"
-msgstr "(daftar isi kosong)"
 
 #: src/plugins/todo/todo.desktop.in.in:4
 msgid "TODO"
@@ -1396,19 +1344,15 @@ msgstr "Tambahkan kemampuan menggaris-bawahi teks."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière dan Projek Tomboy"
 
-#: src/plugins/underline/underlinenoteaddin.cpp:56
-msgid "_Underline"
-msgstr "_Garis bawah"
-
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:107
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:112
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "User_name:"
 msgstr "_Nama pengguna:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
 msgid "_Password:"
 msgstr "_Sandi:"
 
@@ -1449,28 +1393,28 @@ msgstr "Selaraskan Catatan Gnote ke URL WebDAV."
 msgid "Exception thrown when creating note: %s"
 msgstr "Eksepsi muncul ketika membuat catatan: %s"
 
-#: src/gnote.cpp:209
+#: src/gnote.cpp:206
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Tidak ada sambungan D-Bus yang tersedia, pencarian shell, dan remote control "
 "tidak akan berfungsi."
 
-#: src/gnote.cpp:242
+#: src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Gagal mendapatkan jendela pintasan!"
 
-#: src/gnote.cpp:256
+#: src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "dan para pengarang asli Tomboy."
 
-#: src/gnote.cpp:262
+#: src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2009-2012, 2014, 2017-2023.\n"
-"Kukuh Syafat <kukuhsyafaat@gnome.org>, 2017-2021."
+"Kukuh Syafat <kukuhsyafaat@gnome.org>, 2017-2021, 2023."
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1482,95 +1426,89 @@ msgstr ""
 "Hak Cipta © 2009 Hubert Figuiere\n"
 "Hak Cipta © 2004-2009 para penulis asli Tomboy."
 
-#: src/gnote.cpp:275
+#: src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Aplikasi penyimpan catatan desktop yang sederhana dan mudah dipakai."
 
-#: src/gnote.cpp:286
+#: src/gnote.cpp:273
 msgid "Homepage"
 msgstr "Homepage"
 
-#: src/gnote.cpp:481
+#: src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "Jalankan Gnote di latar belakang."
 
-#: src/gnote.cpp:482
+#: src/gnote.cpp:468
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Jalankan Gnote sebagai penyedia pencarian GNOME Shell."
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:469
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nyatakan path direktori yang memuat catatan-catatan."
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:469
 msgid "path"
 msgstr "path"
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:470
 msgid "Open the search all notes window with the search text."
 msgstr "Buka jendela cari di semua catatan dengan teks pencarian."
 
-#: src/gnote.cpp:484 src/gnote.cpp:489
+#: src/gnote.cpp:470 src/gnote.cpp:475
 msgid "text"
 msgstr "teks"
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:471
 msgid "Print version information."
 msgstr "Cetak informasi versi."
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:472
 msgid "Create and display a new note, with a optional title."
 msgstr "Buat dan tampilkan sebuah catatan baru, dengan judul opsional."
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:472
 msgid "title"
 msgstr "judul"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:473
 msgid "Display the existing note matching title."
 msgstr "Tampilkan judul yang cocok dengan catatan yang telah ada."
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:473
 msgid "title/url"
 msgstr "judul/url"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:474
 msgid "Display the 'Start Here' note."
 msgstr "Tampilkan catatan 'Mulai Di Sini'."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:475
 msgid "Search and highlight text in the opened note."
 msgstr "Cari dan tandai teks pada catatan terbuka."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:479
 msgid "A note taking application"
 msgstr "Aplikasi perekam catatan"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:479
 msgid "Gnote options at launch"
 msgstr "Opsi Gnote saat peluncuran"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:677
+#: src/gnote.cpp:663
 msgid "Version %1"
 msgstr "Versi %1"
 
-#. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: src/iconmanager.cpp:63
-#, c-format
-msgid "Failed to load icon (%s, %d): %s"
-msgstr "Gagal memuat ikon (%s, %d): %s"
-
-#: src/noteaddin.cpp:138 src/noteaddin.cpp:152 src/noteaddin.cpp:164
+#: src/noteaddin.cpp:101
 msgid "Plugin is disposing already"
 msgstr "Pengaya telah dibuang"
 
-#: src/noteaddin.cpp:168
+#: src/noteaddin.cpp:105
 msgid "Window is not embedded"
 msgstr "Jendela tak tertanam"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:355
+#: src/notebase.cpp:225 src/note.cpp:348
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Eksepsi ketika menyimpan catatan: %s"
@@ -1604,7 +1542,7 @@ msgstr "Nama sudah ada"
 msgid "C_reate"
 msgstr "_Buat"
 
-#: src/notebooks/notebookapplicationaddin.cpp:78
+#: src/notebooks/notebookapplicationaddin.cpp:75
 msgid "New Note_book..."
 msgstr "_Buku Catatan Baru..."
 
@@ -1621,11 +1559,11 @@ msgstr "Templat Buku Catatan %1"
 msgid "New Note"
 msgstr "Catatan Baru"
 
-#: src/notebooks/notebookmanager.cpp:352
+#: src/notebooks/notebookmanager.cpp:353
 msgid "Really delete this notebook?"
 msgstr "Yakin menghapus buku catatan ini?"
 
-#: src/notebooks/notebookmanager.cpp:353
+#: src/notebooks/notebookmanager.cpp:354
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1634,19 +1572,19 @@ msgstr ""
 "tidak akan dihubungkan lagi dengan buku catatan ini. Aksi ini tak dapat "
 "dibatalkan."
 
-#: src/notebooks/notebookmenuitem.cpp:34
-#: src/notebooks/notebooknoteaddin.cpp:153
-msgid "No notebook"
-msgstr "Tak ada buku catatan"
-
-#: src/notebooks/notebooknoteaddin.cpp:111
+#: src/notebooks/notebooknoteaddin.cpp:110
 msgid "Notebook"
 msgstr "Buku Catatan"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:147
+#: src/notebooks/notebooknoteaddin.cpp:144
 msgid "_New notebook..."
 msgstr "Buku catata_n baru..."
+
+#. Add the "(no notebook)" item at the top of the list
+#: src/notebooks/notebooknoteaddin.cpp:148
+msgid "No notebook"
+msgstr "Tak ada buku catatan"
 
 #: src/notebooks/specialnotebooks.cpp:47
 msgid "All"
@@ -1665,35 +1603,35 @@ msgstr "Penting"
 msgid "Active"
 msgstr "Aktif"
 
-#: src/notebuffer.cpp:1403
+#: src/notebuffer.cpp:1397
 msgid "</list> tag mismatch"
 msgstr "tag </list> tak cocok"
 
-#: src/notebuffer.cpp:1487
+#: src/notebuffer.cpp:1481
 #, c-format
 msgid "Exception: %s"
 msgstr "Eksepsi: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: src/note.cpp:56
+#: src/note.cpp:55
 msgid "Really delete \"%1\"?"
 msgstr "Benar-benar menghapus \"%1\"?"
 
 #. TRANSLATORS: %1 is number of notes
-#: src/note.cpp:60
+#: src/note.cpp:59
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
 msgstr[0] "Benar-benar menghapus %1 catatan?"
 
-#: src/note.cpp:67
+#: src/note.cpp:63
 msgid "If you delete a note it is permanently lost."
 msgstr "Jika anda menghapus catatan, isinya akan hilang."
 
-#: src/note.cpp:102
+#: src/note.cpp:95
 msgid "Error saving note data."
 msgstr "Galat menyimpan data catatan."
 
-#: src/note.cpp:103
+#: src/note.cpp:96
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1703,17 +1641,17 @@ msgstr ""
 "memiliki cukup ruang disk, dan Anda memiliki hak yang sesuai pada ~/.local/"
 "share/gnote. Rincian galat dapat ditemukan di ~/.gnote.log."
 
-#: src/note.cpp:443
+#: src/note.cpp:435
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Galat saat menyimpan: %s"
 
-#: src/note.cpp:668
+#: src/note.cpp:660
 msgid "Setting text content for closed notes not supported"
 msgstr "Menata isi teks bagi catatan yang tertutup tak didukung"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:317
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:281
 msgid "New Note Template"
 msgstr "Templat Catatan Baru"
 
@@ -1811,31 +1749,31 @@ msgstr "Galat saat membuat catatan awal: %s"
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Galat saat mengurai XML catatan, melewati \"%s\": %s"
 
-#: src/noterenamedialog.cpp:118
+#: src/noterenamedialog.cpp:119
 msgid "Rename Note Links?"
 msgstr "Ubah Nama Tautan Catatan?"
 
-#: src/noterenamedialog.cpp:123
+#: src/noterenamedialog.cpp:124
 msgid "_Don't Rename Links"
 msgstr "_Jangan Ubah Nama Tautan"
 
-#: src/noterenamedialog.cpp:124
+#: src/noterenamedialog.cpp:125
 msgid "_Rename Links"
 msgstr "Ubah Nama _Taut"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:126
 msgid "Select All"
 msgstr "Pilih Semua"
 
-#: src/noterenamedialog.cpp:126
+#: src/noterenamedialog.cpp:127
 msgid "Select None"
 msgstr "Tiada Pilihan"
 
-#: src/noterenamedialog.cpp:127
+#: src/noterenamedialog.cpp:128
 msgid "Always show this _window"
 msgstr "Selalu tampilkan _jendela ini"
 
-#: src/noterenamedialog.cpp:128
+#: src/noterenamedialog.cpp:129
 msgid "Alwa_ys rename links"
 msgstr "Selalu _ubah nama tautan"
 
@@ -1843,7 +1781,7 @@ msgstr "Selalu _ubah nama tautan"
 msgid "Never rename _links"
 msgstr "Jangan pernah ubah _nama tautan"
 
-#: src/noterenamedialog.cpp:148
+#: src/noterenamedialog.cpp:147
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1856,44 +1794,44 @@ msgstr ""
 "\n"
 "Bila Anda tidak mengubah nama tautan, mereka tak akan merujuk kemanapun lagi."
 
-#: src/noterenamedialog.cpp:181
+#: src/noterenamedialog.cpp:175
 msgid "Rename Links"
 msgstr "Ubah Nama Taut"
 
-#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:186 src/synchronization/syncdialog.cpp:308
 msgid "Note Title"
 msgstr "Judul Catatan"
 
-#: src/noterenamedialog.cpp:233
+#: src/noterenamedialog.cpp:218
 msgid "Ad_vanced"
 msgstr "Tingk_at lanjut"
 
-#: src/notewindow.cpp:274
+#: src/notewindow.cpp:319
 msgid "_Undo"
 msgstr "_Tak Jadi"
 
-#: src/notewindow.cpp:276
+#: src/notewindow.cpp:321
 msgid "_Redo"
 msgstr "_Jadi Lagi"
 
-#: src/notewindow.cpp:278 src/notewindow.cpp:342
+#: src/notewindow.cpp:323 src/notewindow.cpp:355
 msgid "_Link to New Note"
 msgstr "_Taut ke Catatan Baru"
 
-#: src/notewindow.cpp:280
+#: src/notewindow.cpp:325
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "Pent_ing"
 
-#: src/notewindow.cpp:290
+#: src/notewindow.cpp:335
 msgid "_Delete…"
 msgstr "_Hapus…"
 
-#: src/notewindow.cpp:377
+#: src/notewindow.cpp:375
 msgid "Set properties of text"
 msgstr "Tata properti teks"
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:387
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1901,105 +1839,80 @@ msgstr ""
 "Catatan ini adalah catatan templat. Ini menentukan isi baku dari catatan "
 "biasa, dan tak akan muncul di menu catatan atau jendela pencarian."
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:390
 msgid "Convert to regular note"
 msgstr "Konversi ke catatan biasa"
 
-#: src/notewindow.cpp:397
+#: src/notewindow.cpp:393
 msgid "Save Se_lection"
 msgstr "Simpan Pi_lihan"
 
-#: src/notewindow.cpp:401
+#: src/notewindow.cpp:397
 msgid "Save _Title"
 msgstr "Simpan _Judul"
 
-#: src/notewindow.cpp:491 src/notewindow.cpp:997
+#: src/notewindow.cpp:487 src/notewindow.cpp:597
 msgid "Cannot create note"
 msgstr "Tak dapat membuat catatan"
 
-#: src/notewindow.cpp:767
-msgid "_Bold"
-msgstr "Te_bal"
-
-#: src/notewindow.cpp:768
-msgid "_Italic"
-msgstr "M_iring"
-
-#: src/notewindow.cpp:769
-msgid "_Strikeout"
-msgstr "_Dicoret"
-
-#: src/notewindow.cpp:773
+#: src/notewindow.cpp:957
 msgid "_Highlight"
 msgstr "_Penandaan"
 
-#: src/notewindow.cpp:776
+#: src/notewindow.cpp:961
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:777
+#: src/notewindow.cpp:962
 msgid "S_mall"
 msgstr "_Kecil"
 
-#: src/notewindow.cpp:778
+#: src/notewindow.cpp:963
 msgid "_Large"
 msgstr "_Besar"
 
-#: src/notewindow.cpp:779
+#: src/notewindow.cpp:964
 msgid "Hu_ge"
 msgstr "Rak_sasa"
 
-#: src/notewindow.cpp:801
-msgid "⦁ Bullets"
-msgstr "⦁ Bulet"
-
-#: src/notewindow.cpp:803
-msgid "→ Increase indent"
-msgstr "→ Naikkan indentasi"
-
-#: src/notewindow.cpp:805
-msgid "← Decrease indent"
-msgstr "← Turunkan indentasi"
-
-#: src/preferencesdialog.cpp:104
+#: src/preferencesdialog.cpp:100
 msgid "Gnote Preferences"
 msgstr "Preferensi Gnote"
 
-#: src/preferencesdialog.cpp:121
+#: src/preferencesdialog.cpp:107
 msgid "General"
 msgstr "Umum"
 
-#: src/preferencesdialog.cpp:122
+#: src/preferencesdialog.cpp:108
 msgid "Links"
 msgstr "Taut"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:125 src/sharp/addinstreemodel.cpp:165
+#: src/preferencesdialog.cpp:109 src/sharp/addinstreemodel.cpp:158
 msgid "Synchronization"
 msgstr "Penyelarasan"
 
-#: src/preferencesdialog.cpp:127
+#: src/preferencesdialog.cpp:110
 msgid "Plugins"
 msgstr "Pengaya"
 
-#. Ok button...
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:793
-#: src/preferencesdialog.cpp:1056 src/preferencesdialog.cpp:1273
-#: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
+#: src/preferencesdialog.cpp:133 src/preferencesdialog.cpp:715
+#: src/preferencesdialog.cpp:954 src/preferencesdialog.cpp:1158
+#: src/synchronization/syncdialog.cpp:322 src/utils.cpp:271
 msgid "_Close"
 msgstr "_Tutup"
 
-#: src/preferencesdialog.cpp:202
+#: src/preferencesdialog.cpp:171
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Pengaya %s absen"
 
-#: src/preferencesdialog.cpp:255
+#: src/preferencesdialog.cpp:223
 msgid "_Spell check while typing"
 msgstr "Periksa ejaan _saat mengetik"
 
-#: src/preferencesdialog.cpp:256
+#: src/preferencesdialog.cpp:224
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2008,36 +1921,36 @@ msgstr ""
 "ditampilkan di menu konteks."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:266
+#: src/preferencesdialog.cpp:234
 msgid "Enable auto-_bulleted lists"
 msgstr "Aktifkan daftar di_bulet otomatis"
 
-#: src/preferencesdialog.cpp:267
+#: src/preferencesdialog.cpp:235
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Mulailah daftar bulet baru dengan mengawali baris baru dengan karakter \"-\"."
 
-#: src/preferencesdialog.cpp:275
+#: src/preferencesdialog.cpp:243
 msgid "Use custom _font"
 msgstr "Gunakan _fonta pilihan sendiri"
 
-#: src/preferencesdialog.cpp:292
+#: src/preferencesdialog.cpp:259
 msgid "When renaming a linked note: "
 msgstr "Ketika mengubah nama catatan tertaut: "
 
-#: src/preferencesdialog.cpp:296
+#: src/preferencesdialog.cpp:263
 msgid "Ask me what to do"
 msgstr "Tanyakan padaku apa yang akan dilakukan"
 
-#: src/preferencesdialog.cpp:297
+#: src/preferencesdialog.cpp:264
 msgid "Never rename links"
 msgstr "Tak pernah mengubah nama tautan"
 
-#: src/preferencesdialog.cpp:298
+#: src/preferencesdialog.cpp:265
 msgid "Always rename links"
 msgstr "Selalu ubah nama tautan"
 
-#: src/preferencesdialog.cpp:318
+#: src/preferencesdialog.cpp:282
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2045,27 +1958,27 @@ msgstr ""
 "Gunakan templat catatan baru untuk menyatakan teks yang mesti dipakai ketika "
 "membuat suatu catatan baru."
 
-#: src/preferencesdialog.cpp:323
+#: src/preferencesdialog.cpp:287
 msgid "Open New Note Template"
 msgstr "Buka Templat Catatan Baru"
 
 #. internal links
-#: src/preferencesdialog.cpp:377
+#: src/preferencesdialog.cpp:333
 msgid "_Automatically link to notes"
 msgstr "Secara otom_atis tautkan ke catatan"
 
-#: src/preferencesdialog.cpp:378
+#: src/preferencesdialog.cpp:334
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Fungsikan opsi ini untuk membuat suatu taut ketika teks cocok dengan judul "
 "catatan."
 
 #. URLs
-#: src/preferencesdialog.cpp:384
+#: src/preferencesdialog.cpp:340
 msgid "Create links for _URLs"
 msgstr "Buat taut untuk _URL"
 
-#: src/preferencesdialog.cpp:385
+#: src/preferencesdialog.cpp:341
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2074,11 +1987,11 @@ msgstr ""
 "dengan program yang sesuai."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:392
+#: src/preferencesdialog.cpp:348
 msgid "Highlight _WikiWords"
 msgstr "Tandai Kata_Wiki"
 
-#: src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:349
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2086,64 +1999,62 @@ msgstr ""
 "Fungsikan opsi ini untuk menandai kata <b>BerpenampilanSepertiIni</b>. "
 "Mengklik kata tersebut akan membuat satu catatan dengan nama tersebut."
 
-#: src/preferencesdialog.cpp:425
+#: src/preferencesdialog.cpp:381
 msgid "Ser_vice:"
 msgstr "La_yanan:"
 
-#: src/preferencesdialog.cpp:479 src/preferencesdialog.cpp:1099
+#: src/preferencesdialog.cpp:430 src/preferencesdialog.cpp:977
 msgid "Not configurable"
 msgstr "Tak dapat ditata"
 
-#: src/preferencesdialog.cpp:504
+#: src/preferencesdialog.cpp:452
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Selang waktu pen_yelarasan latar belakang otomatis (menit)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:474
 msgid "_Advanced..."
 msgstr "Tingk_at lanjut..."
 
-#: src/preferencesdialog.cpp:535
+#: src/preferencesdialog.cpp:479
 msgid "Clear"
 msgstr "Bersihkan"
 
-#: src/preferencesdialog.cpp:576
+#: src/preferencesdialog.cpp:516
 msgid "The following plugins are installed:"
 msgstr "Pengaya berikut terpasang:"
 
-#. TODO: In a future version, add in an "Install Add-ins..." button
-#. TODO: In a future version, add in a "Repositories..." button
-#: src/preferencesdialog.cpp:611
+#: src/preferencesdialog.cpp:540
 msgid "_Enable"
 msgstr "_Aktifkan"
 
-#: src/preferencesdialog.cpp:617
+#: src/preferencesdialog.cpp:545
 msgid "_Disable"
 msgstr "_Matikan"
 
-#: src/preferencesdialog.cpp:629
+#: src/preferencesdialog.cpp:555
 msgid "In_formation"
 msgstr "In_formasi"
 
-#: src/preferencesdialog.cpp:773
+#: src/preferencesdialog.cpp:695
 msgid "Not Implemented"
 msgstr "Tak Diimplementasikan"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:790
+#: src/preferencesdialog.cpp:712
 msgid "%1 Preferences"
 msgstr "Pengaturan %1"
 
-#: src/preferencesdialog.cpp:923
+#: src/preferencesdialog.cpp:808
 msgid "Choose Note Font"
 msgstr "Pilih Fonta Catatan"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:1016
+#: src/preferencesdialog.cpp:903
 msgid "Other Synchronization Options"
 msgstr "Opsi Penyelarasan Lain"
 
-#: src/preferencesdialog.cpp:1019
+#: src/preferencesdialog.cpp:906
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2151,24 +2062,23 @@ msgstr ""
 "Ketika konflik terdeteksi antara suatu catatan lokal dan catatan pada server "
 "penyelarasan yang terkonfigurasi:"
 
-#. label.Xalign = 0;
-#: src/preferencesdialog.cpp:1023
+#: src/preferencesdialog.cpp:910
 msgid "Always ask me what to do"
 msgstr "Selalu tanyakan padaku apa yang akan dilakukan"
 
-#: src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:911
 msgid "Rename my local note"
 msgstr "Ubah nama catatan lokalku"
 
-#: src/preferencesdialog.cpp:1031
+#: src/preferencesdialog.cpp:913
 msgid "Replace my local note with the server's update"
 msgstr "Timpa catatan lokalku dengan pemutakhiran dari server"
 
-#: src/preferencesdialog.cpp:1133
+#: src/preferencesdialog.cpp:1033
 msgid "Are you sure?"
 msgstr "Anda yakin?"
 
-#: src/preferencesdialog.cpp:1134
+#: src/preferencesdialog.cpp:1034
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2177,11 +2087,11 @@ msgstr ""
 "dipaksa untuk menyelaraskan semua catatan Anda lagi ketika Anda menyimpan "
 "pengaturan baru."
 
-#: src/preferencesdialog.cpp:1144
+#: src/preferencesdialog.cpp:1045
 msgid "Resetting Synchronization Settings"
 msgstr "Mereset Pengaturan Penyelarasan"
 
-#: src/preferencesdialog.cpp:1145
+#: src/preferencesdialog.cpp:1046
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2191,11 +2101,11 @@ msgstr ""
 "penyelarasan Anda kini akan dibersihkan. Anda mungkin dipaksa untuk "
 "menyelaraskan semua catatan Anda lagi ketika Anda menyimpan pengaturan baru."
 
-#: src/preferencesdialog.cpp:1220
+#: src/preferencesdialog.cpp:1104
 msgid "Connection successful"
 msgstr "Sambungan sukses"
 
-#: src/preferencesdialog.cpp:1221
+#: src/preferencesdialog.cpp:1105
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2204,7 +2114,7 @@ msgstr ""
 "sekarang?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1246
+#: src/preferencesdialog.cpp:1131
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2212,55 +2122,51 @@ msgstr ""
 "Silakan periksa informasi Anda dan coba lagi. Berkas log %1 mungkin memuat "
 "lebih banyak informasi tentang galat."
 
-#: src/preferencesdialog.cpp:1251
+#: src/preferencesdialog.cpp:1136
 msgid "Error connecting"
 msgstr "Galat menyambung"
 
-#: src/preferencesdialog.cpp:1313
+#: src/preferencesdialog.cpp:1198
 msgid "Version:"
 msgstr "Versi:"
 
-#: src/preferencesdialog.cpp:1316
+#: src/preferencesdialog.cpp:1201
 msgid "Author:"
 msgstr "Pembuat:"
 
-#: src/preferencesdialog.cpp:1320
+#: src/preferencesdialog.cpp:1205
 msgid "Copyright:"
 msgstr "Hak Cipta:"
 
-#: src/recentchanges.cpp:65
+#: src/recentchanges.cpp:64
 msgid "Close"
 msgstr "Tutup"
 
-#: src/recentchanges.cpp:257
+#: src/recentchanges.cpp:280
 msgid "Create New Note"
 msgstr "Buat Catatan Baru"
 
-#: src/recentchanges.cpp:284
+#: src/recentchanges.cpp:303
 msgid "Search"
 msgstr "Cari"
 
-#: src/recentchanges.cpp:362
+#: src/recentchanges.cpp:379
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Induk kotak semat bukan gtk::Grid, silakan laporkan kutu!"
 
-#: src/recentchanges.cpp:404
+#: src/recentchanges.cpp:409
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Induk entri pencarian bukan Gtk::Grid, silakan laporkan kutu!"
 
-#: src/recentchanges.cpp:731
+#: src/recentchanges.cpp:705
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Mencoba mengedepankan widget, yang tidak disematkan di jendela"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:712
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Mencoba mengedepankan widget, yang bukan Gtk::Widget"
 
-#: src/recentchanges.cpp:1008
-msgid "Expected widget to be a sub-menu!"
-msgstr "Widget yang diharapkan menjadi sub-menu!"
-
-#: src/recentchanges.cpp:1013
+#: src/recentchanges.cpp:917
 msgid "No configured actions"
 msgstr "Tidak ada tindakan yang dikonfigurasi"
 
@@ -2269,23 +2175,19 @@ msgstr "Tidak ada tindakan yang dikonfigurasi"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Gagal memuat antar muka D-Bus %s: %s"
 
-#: src/searchnoteswidget.cpp:210
+#: src/searchnoteswidget.cpp:190
 msgid "Notebooks"
 msgstr "Buku Catatan"
 
-#: src/searchnoteswidget.cpp:682
+#: src/searchnoteswidget.cpp:590
 msgid "Note"
 msgstr "Catatan"
 
-#: src/searchnoteswidget.cpp:704
+#: src/searchnoteswidget.cpp:614
 msgid "Modified"
 msgstr "Diubah"
 
-#: src/searchnoteswidget.cpp:1015
-msgid "Notes"
-msgstr "Catatan"
-
-#: src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:792
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2293,89 +2195,89 @@ msgstr ""
 "Tak ditemukan hasil pada buku catatan yang dipilih.\n"
 "Klik disini untuk mencari dari semua catatan."
 
-#: src/searchnoteswidget.cpp:1038
+#: src/searchnoteswidget.cpp:796
 msgid "Click here to search across all notebooks"
 msgstr "Klik disini untuk mencari dari semua buku catatan"
 
-#: src/searchnoteswidget.cpp:1056
+#: src/searchnoteswidget.cpp:814
 msgid "Matches"
 msgstr "Cocok"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:1107
+#: src/searchnoteswidget.cpp:864
 msgid "Title match"
 msgstr "Cocok judul"
 
-#: src/searchnoteswidget.cpp:1111
+#: src/searchnoteswidget.cpp:868
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 cocok"
 
-#: src/searchnoteswidget.cpp:1306
-msgid "Open In New _Window"
-msgstr "Buka Di _Jendela Baru"
-
-#: src/searchnoteswidget.cpp:1316
+#: src/searchnoteswidget.cpp:1057
 msgid "_New"
 msgstr "_Baru"
 
-#: src/searchnoteswidget.cpp:1345
-msgid "_Open Template Note"
-msgstr "_Buka Templat Catatan"
+#: src/searchnoteswidget.cpp:1059
+msgid "Open In New _Window"
+msgstr "Buka Di _Jendela Baru"
 
-#: src/searchnoteswidget.cpp:1349
-msgid "Re_name..."
-msgstr "Ubah _Nama..."
-
-#: src/searchnoteswidget.cpp:1356
+#: src/searchnoteswidget.cpp:1092
 msgid "_New..."
 msgstr "_Baru..."
 
-#: src/searchnoteswidget.cpp:1473 src/searchnoteswidget.cpp:1486
-#: src/searchnoteswidget.cpp:1497
+#: src/searchnoteswidget.cpp:1093
+msgid "_Open Template Note"
+msgstr "_Buka Templat Catatan"
+
+#: src/searchnoteswidget.cpp:1094
+msgid "Re_name..."
+msgstr "Ubah _Nama..."
+
+#: src/searchnoteswidget.cpp:1221 src/searchnoteswidget.cpp:1234
+#: src/searchnoteswidget.cpp:1245
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Gagal mengurai pengaturan pengurutan pencarian (Nilai: %s):"
 
-#: src/searchnoteswidget.cpp:1474
+#: src/searchnoteswidget.cpp:1222
 msgid "Expected format 'column:order'"
 msgstr "Format yang diharapkan 'kolom:urutan'"
 
-#: src/searchnoteswidget.cpp:1487
+#: src/searchnoteswidget.cpp:1235
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Kolom tak dikenal %s"
 
-#: src/searchnoteswidget.cpp:1498
+#: src/searchnoteswidget.cpp:1246
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Urutan tak dikenal %s"
 
-#: src/sharp/addinstreemodel.cpp:110
+#: src/sharp/addinstreemodel.cpp:106
 msgid "Name"
 msgstr "Nama"
 
-#: src/sharp/addinstreemodel.cpp:122
+#: src/sharp/addinstreemodel.cpp:116
 msgid "Version"
 msgstr "Versi"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:156
+#: src/sharp/addinstreemodel.cpp:149
 msgid "Formatting"
 msgstr "Memformat"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:159
+#: src/sharp/addinstreemodel.cpp:152
 msgid "Desktop integration"
 msgstr "Integrasi desktop"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:162
+#: src/sharp/addinstreemodel.cpp:155
 msgid "Tools"
 msgstr "Perkakas"
 
 #. TRANSLATORS: Addin category is unknown.
-#: src/sharp/addinstreemodel.cpp:169
+#: src/sharp/addinstreemodel.cpp:162
 msgid "Unknown"
 msgstr "Tak dikenal"
 
@@ -2431,7 +2333,6 @@ msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Gagal mengunduh pemutakhiran catatan %1"
 
 #: src/synchronization/filesystemsyncserver.cpp:427
-#: src/synchronization/filesystemsyncserver.cpp:431
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2440,12 +2341,12 @@ msgstr ""
 "Eksepsi ketika pembersihan server ketika mengkomit. Integritas server OK, "
 "tapi mungkin ada beberapa berkas sisa terserak.  Inilah galatnya: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:637
+#: src/synchronization/filesystemsyncserver.cpp:633
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Galat saat memperbarui kunci: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:676
+#: src/synchronization/filesystemsyncserver.cpp:672
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Galat saat menghapus kunci penyelarasan lama \"%s\": %s"
@@ -2474,45 +2375,45 @@ msgstr "Kegagaln saat memeriksa isi berkas uji"
 msgid "Failure when trying to remove test file"
 msgstr "Kegagalan saat mencoba menghapus berkas uji"
 
-#: src/synchronization/gvfssyncservice.cpp:125
+#: src/synchronization/gvfssyncservice.cpp:121
 msgid "Unknown error"
 msgstr "Galat tak dikenal"
 
-#: src/synchronization/syncdialog.cpp:63
+#: src/synchronization/syncdialog.cpp:62
 msgid "Note Conflict"
 msgstr "Konflik Catatan"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: src/synchronization/syncdialog.cpp:68
+#: src/synchronization/syncdialog.cpp:67
 msgid " (old)"
 msgstr " (lama)"
 
-#: src/synchronization/syncdialog.cpp:113
+#: src/synchronization/syncdialog.cpp:107
 msgid "Rename local note:"
 msgstr "Ubah nama catatan lokal:"
 
-#: src/synchronization/syncdialog.cpp:120
+#: src/synchronization/syncdialog.cpp:114
 msgid "Update links in referencing notes"
 msgstr "Mutakhirkan taut di catatan yang mengacu"
 
-#: src/synchronization/syncdialog.cpp:126
+#: src/synchronization/syncdialog.cpp:120
 msgid "Overwrite local note"
 msgstr "Timpa catatan lokal"
 
-#: src/synchronization/syncdialog.cpp:130
+#: src/synchronization/syncdialog.cpp:125
 msgid "Always perform this action"
 msgstr "Selalu lakukan aksi ini"
 
-#: src/synchronization/syncdialog.cpp:133
+#: src/synchronization/syncdialog.cpp:128
 msgid "_Continue"
 msgstr "_Lanjutkan"
 
 #. Set initial dialog text
-#: src/synchronization/syncdialog.cpp:136
+#: src/synchronization/syncdialog.cpp:131
 msgid "Note conflict detected"
 msgstr "Konflik catatan terdeteksi"
 
-#: src/synchronization/syncdialog.cpp:138
+#: src/synchronization/syncdialog.cpp:133
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2521,55 +2422,55 @@ msgstr ""
 "lakukan terhadap catatan lokal Anda?"
 
 #. Expander containing TreeView
-#: src/synchronization/syncdialog.cpp:292
+#: src/synchronization/syncdialog.cpp:278
 msgid "Details"
 msgstr "Rincian"
 
-#: src/synchronization/syncdialog.cpp:334
+#: src/synchronization/syncdialog.cpp:315
 msgid "Status"
 msgstr "Status"
 
-#: src/synchronization/syncdialog.cpp:478
+#: src/synchronization/syncdialog.cpp:459
 msgid "Acquiring sync lock..."
 msgstr "Mengambil kuncian penyelarasan..."
 
-#: src/synchronization/syncdialog.cpp:481
+#: src/synchronization/syncdialog.cpp:462
 msgid "Committing changes..."
 msgstr "Meng-komit perubahan..."
 
-#: src/synchronization/syncdialog.cpp:484
+#: src/synchronization/syncdialog.cpp:465
 msgid "Synchronizing Notes"
 msgstr "Menyelaraskan Catatan"
 
-#: src/synchronization/syncdialog.cpp:485
+#: src/synchronization/syncdialog.cpp:466
 msgid "Synchronizing your notes..."
 msgstr "Menyelaraskan catatan Anda..."
 
-#: src/synchronization/syncdialog.cpp:486
+#: src/synchronization/syncdialog.cpp:467
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Ini mungkin makan waktu, mohon tunggu dan nikmati!"
 
-#: src/synchronization/syncdialog.cpp:488
+#: src/synchronization/syncdialog.cpp:469
 msgid "Connecting to the server..."
 msgstr "Menyambung ke server..."
 
-#: src/synchronization/syncdialog.cpp:494
+#: src/synchronization/syncdialog.cpp:475
 msgid "Deleting notes off of the server..."
 msgstr "Menghapus catatan dari server..."
 
-#: src/synchronization/syncdialog.cpp:498
+#: src/synchronization/syncdialog.cpp:479
 msgid "Downloading new/updated notes..."
 msgstr "Mengunduh catatan baru/termutakhirkan..."
 
-#: src/synchronization/syncdialog.cpp:510
+#: src/synchronization/syncdialog.cpp:491
 msgid "Server Locked"
 msgstr "Server Terkunci"
 
-#: src/synchronization/syncdialog.cpp:511
+#: src/synchronization/syncdialog.cpp:492
 msgid "Server is locked"
 msgstr "Server terkunci"
 
-#: src/synchronization/syncdialog.cpp:512
+#: src/synchronization/syncdialog.cpp:493
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2577,142 +2478,137 @@ msgstr ""
 "Satu dari komputer lain Anda kini sedang menyelaraskan. Silakan tunggu 2 "
 "menit dan coba lagi."
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:497
 msgid "Preparing to download updates from server..."
 msgstr "Bersiap mengunduh pemutakhiran dari server..."
 
-#: src/synchronization/syncdialog.cpp:519
+#: src/synchronization/syncdialog.cpp:500
 msgid "Preparing to upload updates to server..."
 msgstr "Bersiap mengunggah pemutakhiran ke server..."
 
-#: src/synchronization/syncdialog.cpp:522
+#: src/synchronization/syncdialog.cpp:503
 msgid "Uploading notes to server..."
 msgstr "Mengunggah catatan ke server..."
 
-#: src/synchronization/syncdialog.cpp:525
+#: src/synchronization/syncdialog.cpp:506
 msgid "Synchronization Failed"
 msgstr "Penyelarasan Gagal"
 
-#: src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:507
 msgid "Failed to synchronize"
 msgstr "Gagal menyelaraskan"
 
-#: src/synchronization/syncdialog.cpp:527
+#: src/synchronization/syncdialog.cpp:508
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Tak bisa menyelaraskan catatan. Periksa rincian di bawah dan coba lagi."
 
-#: src/synchronization/syncdialog.cpp:533
+#: src/synchronization/syncdialog.cpp:514
 msgid "Synchronization Complete"
 msgstr "Penyelarasan Komplit"
 
-#: src/synchronization/syncdialog.cpp:534
+#: src/synchronization/syncdialog.cpp:515
 msgid "Synchronization is complete"
 msgstr "Penyelarasan komplit"
 
-#: src/synchronization/syncdialog.cpp:535
+#: src/synchronization/syncdialog.cpp:516
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "%1 catatan dimutakhirkan."
 
-#: src/synchronization/syncdialog.cpp:536
+#: src/synchronization/syncdialog.cpp:517
 msgid "Your notes are now up to date."
 msgstr "Catatan Anda kini mutakhir."
 
-#: src/synchronization/syncdialog.cpp:541
+#: src/synchronization/syncdialog.cpp:522
 msgid "Synchronization Canceled"
 msgstr "Penyelarasan Dibatalkan"
 
-#: src/synchronization/syncdialog.cpp:542
+#: src/synchronization/syncdialog.cpp:523
 msgid "Synchronization was canceled"
 msgstr "Penyelarasan dibatalkan"
 
-#: src/synchronization/syncdialog.cpp:543
+#: src/synchronization/syncdialog.cpp:524
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr ""
 "Anda membatalkan penyelarasan. Anda boleh menutup jendela ini sekarang."
 
-#: src/synchronization/syncdialog.cpp:547
+#: src/synchronization/syncdialog.cpp:528
 msgid "Synchronization Not Configured"
 msgstr "Penyelarasan Tak Ditata"
 
-#: src/synchronization/syncdialog.cpp:548
+#: src/synchronization/syncdialog.cpp:529
 msgid "Synchronization is not configured"
 msgstr "Penyelarasan tak ditata"
 
-#: src/synchronization/syncdialog.cpp:549
+#: src/synchronization/syncdialog.cpp:530
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Silakan tata penyelarasan di dialog preferensi."
 
-#: src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:534
 msgid "Synchronization Service Error"
 msgstr "Galat Layanan Penyelarasan"
 
-#: src/synchronization/syncdialog.cpp:554
+#: src/synchronization/syncdialog.cpp:535
 msgid "Service error"
 msgstr "Galat layanan"
 
-#: src/synchronization/syncdialog.cpp:555
+#: src/synchronization/syncdialog.cpp:536
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Galat saat menyambung ke layanan penyelarasan. Silakan coba lagi."
 
-#: src/synchronization/syncdialog.cpp:569
+#: src/synchronization/syncdialog.cpp:550
 msgid "Deleted locally"
 msgstr "Dihapus secara lokal"
 
-#: src/synchronization/syncdialog.cpp:572
+#: src/synchronization/syncdialog.cpp:553
 msgid "Deleted from server"
 msgstr "Dihapus dari server"
 
-#: src/synchronization/syncdialog.cpp:575
+#: src/synchronization/syncdialog.cpp:556
 msgid "Updated"
 msgstr "Dimutakhirkan"
 
-#: src/synchronization/syncdialog.cpp:578
+#: src/synchronization/syncdialog.cpp:559
 msgid "Added"
 msgstr "Ditambahkan"
 
-#: src/synchronization/syncdialog.cpp:581
+#: src/synchronization/syncdialog.cpp:562
 msgid "Uploaded changes to server"
 msgstr "Telah mengunggah perubahan ke server"
 
-#: src/synchronization/syncdialog.cpp:584
+#: src/synchronization/syncdialog.cpp:565
 msgid "Uploaded new note to server"
 msgstr "Telah mengunggah catatan baru ke server"
 
-#: src/synchronization/syncmanager.cpp:59
+#: src/synchronization/syncmanager.cpp:58
 msgid "Synchronize Notes"
 msgstr "Selaraskan Catatan"
 
-#: src/synchronization/syncmanager.cpp:78
-#: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:557
+#: src/synchronization/syncmanager.cpp:77
+#: src/synchronization/syncmanager.cpp:94
+#: src/synchronization/syncmanager.cpp:552
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Laporkan kutu. Cast gagal: %s"
 
-#: src/synchronization/syncmanager.cpp:143
+#: src/synchronization/syncmanager.cpp:142
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Galat saat membersihkan addin setelah penyelarasan: %s"
 
-#: src/synchronization/syncmanager.cpp:168
+#: src/synchronization/syncmanager.cpp:167
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Eksepsi ketika membuat SyncServer: %s"
 
-#: src/synchronization/syncmanager.cpp:368
-#, c-format
-msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "Penyelarasan gagal dengan eksepsi Glib berikut: %s"
-
 #. top-level try
-#: src/synchronization/syncmanager.cpp:372
+#: src/synchronization/syncmanager.cpp:367
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Penyelarasan gagal dengan eksepsi berikut: %s"
 
-#: src/utils.cpp:98
+#: src/utils.cpp:77
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2720,79 +2616,79 @@ msgstr ""
 "\"Manual Gnote\" tak ditemukan. Silahkan periksa bahwa instalasi Anda telah "
 "lengkap dan sukses."
 
-#: src/utils.cpp:106
+#: src/utils.cpp:85
 msgid "Help not found"
 msgstr "Bantuan tak ditemukan"
 
-#: src/utils.cpp:138
+#: src/utils.cpp:111
 msgid "Cannot open location"
 msgstr "Tak bisa membuka lokasi"
 
-#: src/utils.cpp:155
+#: src/utils.cpp:129
 msgid "No Date"
 msgstr "Tanpa Tanggal"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:170
+#: src/utils.cpp:144
 msgid "Today, %1"
 msgstr "Hari ini, %1"
 
-#: src/utils.cpp:171
+#: src/utils.cpp:145
 msgid "Today"
 msgstr "Hari ini"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:177
+#: src/utils.cpp:151
 msgid "Yesterday, %1"
 msgstr "Kemarin, %1"
 
-#: src/utils.cpp:178
+#: src/utils.cpp:152
 msgid "Yesterday"
 msgstr "Kemarin"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:184
+#: src/utils.cpp:158
 msgid "Tomorrow, %1"
 msgstr "Besok, %1"
 
-#: src/utils.cpp:185
+#: src/utils.cpp:159
 msgid "Tomorrow"
 msgstr "Besok"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:189
+#: src/utils.cpp:163
 msgid "%b %d"
 msgstr "%d %b"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:192 src/utils.cpp:201
+#: src/utils.cpp:166 src/utils.cpp:175
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:172
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
-#: src/utils.cpp:362 src/utils.cpp:376
+#: src/utils.cpp:268 src/utils.cpp:282
 msgid "_OK"
 msgstr "_OK"
 
-#: src/utils.cpp:371
+#: src/utils.cpp:277
 msgid "_No"
 msgstr "_Tidak"
 
-#: src/utils.cpp:372
+#: src/utils.cpp:278
 msgid "_Yes"
 msgstr "_Ya"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: src/watchers.cpp:198
+#: src/watchers.cpp:194
 msgid "(Untitled %1)"
 msgstr "(Tanpa judul %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:230
+#: src/watchers.cpp:226
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2800,18 +2696,84 @@ msgstr ""
 "Catatan dengan judul <b>%1</b> telah ada. Silakan pilih nama lain bagi "
 "catatan ini sebelum melanjutkan."
 
-#: src/watchers.cpp:245
+#: src/watchers.cpp:241
 msgid "Note title taken"
 msgstr "Judul catatan telah terpakai"
 
-#: src/watchers.cpp:312
+#: src/watchers.cpp:308
 msgid "Check spelling"
 msgstr "Periksa ejaan"
 
-#: src/watchers.cpp:708
-msgid "_Copy Link Address"
-msgstr "_Salin Alamat Taut"
+#~ msgid "_Back"
+#~ msgstr "_Mundur"
 
-#: src/watchers.cpp:714
-msgid "_Open Link"
-msgstr "_Buka Taut"
+#~ msgid "Sticky Notes Importer"
+#~ msgstr "Tampilkan catatan"
+
+#~ msgid "Import your notes from the Sticky Notes applet."
+#~ msgstr "Impor catatan Anda dari aplet Catatan Lengket."
+
+#~ msgid "Import from Sticky Notes"
+#~ msgstr "Impor dari Catatan Lengket"
+
+#~ msgid "No Sticky Notes found"
+#~ msgstr "Tak ditemukan Catatan Lengket"
+
+#~ msgid "No suitable Sticky Notes file was found at \"%1\"."
+#~ msgstr "Tak ada berkas Catatan Lengket yang cocok ditemukan di \"%1\"."
+
+#~ msgid "Sticky Notes import completed"
+#~ msgstr "Impor Catatan Lengket telah lengkap"
+
+#~ msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
+#~ msgstr "<b>%1</b> dari <b>%2</b> Catatan Lengket telah sukses diimpor."
+
+#~ msgid "Untitled"
+#~ msgstr "Tak berjudul"
+
+#~ msgid "Sticky Note: "
+#~ msgstr "Catatan Lengket: "
+
+#~ msgid "(empty table of contents)"
+#~ msgstr "(daftar isi kosong)"
+
+#~ msgid "_Underline"
+#~ msgstr "_Garis bawah"
+
+#, c-format
+#~ msgid "Failed to load icon (%s, %d): %s"
+#~ msgstr "Gagal memuat ikon (%s, %d): %s"
+
+#~ msgid "_Bold"
+#~ msgstr "Te_bal"
+
+#~ msgid "_Italic"
+#~ msgstr "M_iring"
+
+#~ msgid "_Strikeout"
+#~ msgstr "_Dicoret"
+
+#~ msgid "⦁ Bullets"
+#~ msgstr "⦁ Bulet"
+
+#~ msgid "→ Increase indent"
+#~ msgstr "→ Naikkan indentasi"
+
+#~ msgid "← Decrease indent"
+#~ msgstr "← Turunkan indentasi"
+
+#~ msgid "Expected widget to be a sub-menu!"
+#~ msgstr "Widget yang diharapkan menjadi sub-menu!"
+
+#~ msgid "Notes"
+#~ msgstr "Catatan"
+
+#, c-format
+#~ msgid "Synchronization failed with the following Glib exception: %s"
+#~ msgstr "Penyelarasan gagal dengan eksepsi Glib berikut: %s"
+
+#~ msgid "_Copy Link Address"
+#~ msgstr "_Salin Alamat Taut"
+
+#~ msgid "_Open Link"
+#~ msgstr "_Buka Taut"
