@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-02-10 20:30+0000\n"
-"PO-Revision-Date: 2023-02-14 23:54+1000\n"
+"POT-Creation-Date: 2023-05-10 16:02+0000\n"
+"PO-Revision-Date: 2023-05-12 20:42+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:88 src/recentchanges.cpp:116
+#: src/recentchanges.cpp:97 src/recentchanges.cpp:120
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -701,35 +701,35 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Уменьшить отступ/отключить маркеры для текущей строки"
 
-#: src/actionmanager.cpp:127
+#: src/actionmanager.cpp:133
 msgid "_New Note"
 msgstr "Со_здать заметку"
 
-#: src/actionmanager.cpp:128
+#: src/actionmanager.cpp:134
 msgid "New _Window"
 msgstr "Создать _окно"
 
-#: src/actionmanager.cpp:129 src/preferencesdialog.cpp:623
+#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:550
 msgid "_Preferences"
 msgstr "_Параметры"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:136
 msgid "_Shortcuts"
 msgstr "_Комбинации клавиш"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:137
 msgid "_Help"
 msgstr "_Справка"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:138
 msgid "_About Gnote"
 msgstr "_О приложении"
 
-#: src/addininfo.cpp:71
+#: src/addininfo.cpp:72
 msgid "Failed to load plugin information!"
 msgstr "Не удалось загрузить информацию о модуле!"
 
-#: src/addininfo.cpp:145
+#: src/addininfo.cpp:140
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Несовместимый модуль %s: ожидалось %s, но получилось %s"
@@ -786,19 +786,13 @@ msgstr "Список заметок, ссылающихся на просмат�
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Юбер Фигьер (Hubert Figuiere) и проект Tomboy"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:75
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:77
 msgid "What links here?"
 msgstr "Какие здесь ссылки?"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:96
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:92
 msgid "(none)"
 msgstr "(нет)"
-
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:101
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
-#: src/notebooks/notebooknoteaddin.cpp:167
-msgid "_Back"
-msgstr "_Назад"
 
 #: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid "Bugzilla Links"
@@ -818,7 +812,6 @@ msgstr ""
 #: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
 #: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
 #: src/plugins/printnotes/printnotes.desktop.in.in:6
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:6
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Юбер Фигьер (Hubert Figuiere) и проект Tomboy"
 
@@ -838,70 +831,70 @@ msgstr "Имя узла"
 msgid "Icon"
 msgstr "Значок"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+#: src/plugins/bugzilla/bugzillapreferences.cpp:112
 msgid "_Add"
 msgstr "_Добавить"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+#: src/plugins/bugzilla/bugzillapreferences.cpp:116
 msgid "_Remove"
 msgstr "_Удалить"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:225
+#: src/plugins/bugzilla/bugzillapreferences.cpp:221
 msgid "Select an icon..."
 msgstr "Выбрать значок..."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:227
-#: src/plugins/bugzilla/bugzillapreferences.cpp:370
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/plugins/bugzilla/bugzillapreferences.cpp:222
+#: src/plugins/bugzilla/bugzillapreferences.cpp:363
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
-#: src/utils.cpp:375
+#: src/notebooks/notebookmanager.cpp:359 src/note.cpp:65 src/utils.cpp:274
+#: src/utils.cpp:281
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:228
-#: src/searchnoteswidget.cpp:1302
+#: src/plugins/bugzilla/bugzillapreferences.cpp:223
+#: src/searchnoteswidget.cpp:1058
 msgid "_Open"
 msgstr "_Открыть"
 
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:240
+#: src/plugins/bugzilla/bugzillapreferences.cpp:234
 msgid "_Host name:"
 msgstr "_Имя узла:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:274
+#: src/plugins/bugzilla/bugzillapreferences.cpp:264
+msgid "Error saving icon"
+msgstr "Ошибка при сохранении значка"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:265
+msgid "Could not save the icon file."
+msgstr "Не удалось сохранить файл значка."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:280
 msgid "Host name invalid"
 msgstr "Некорректное имя узла"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:275
+#: src/plugins/bugzilla/bugzillapreferences.cpp:281
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Необходимо указать имя действующего узла Bugzilla, чтобы использовать этот "
 "значок."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:294
-msgid "Error saving icon"
-msgstr "Ошибка при сохранении значка"
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:295
-msgid "Could not save the icon file."
-msgstr "Не удалось сохранить файл значка."
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/plugins/bugzilla/bugzillapreferences.cpp:360
 msgid "Really remove this icon?"
 msgstr "Действительно удалить этот значок?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:368
+#: src/plugins/bugzilla/bugzillapreferences.cpp:361
 msgid "If you remove an icon it is permanently lost."
 msgstr "Если удалить значок, он будет утерян навсегда."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376
-#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
-#: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
+#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/notebooks/notebookmanager.cpp:363 src/note.cpp:69
+#: src/searchnoteswidget.cpp:1060 src/searchnoteswidget.cpp:1095
 msgid "_Delete"
 msgstr "У_далить"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:388
+#: src/plugins/bugzilla/bugzillapreferences.cpp:379
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Ошибка при сохранении значка %s: %s"
@@ -952,69 +945,70 @@ msgstr "Экспортирует отдельные заметки в HTML."
 msgid "Destination for HTML Export"
 msgstr "Папка для экспорта в HTML"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Export linked notes"
 msgstr "Экспортировать связанные заметки"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:43
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Include all other linked notes"
 msgstr "Включить все прочие связанные заметки"
 
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
-#: src/preferencesdialog.cpp:547
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/preferencesdialog.cpp:490
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:82
 msgid "Export to HTML…"
 msgstr "Экспортировать в HTML…"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:122
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:129
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Не удаётся открыть экспортированную заметку в веб-браузере: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:133
 msgid "Your note was exported to \"%1\"."
 msgstr "Заметка экспортирована в «%1»."
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:136
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:142
 msgid "Note exported successfully"
 msgstr "Заметка успешно экспортирована"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:150
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:158
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:157
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:165
 #, c-format
 msgid "Could not export: %s"
 msgstr "Не удалось экспортировать: %s"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:161
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:168
 msgid "Could not save the file \"%1\""
 msgstr "Не удалось сохранить файл «%1»"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
 msgid "_Folder Path:"
 msgstr "_Путь к папке:"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:107
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:118
 msgid "Select Synchronization Folder..."
 msgstr "Выбрать папку синхронизации..."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:129
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:153
 msgid "Folder path field is empty."
 msgstr "Поле пути к папке пусто."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:160
 #: src/synchronization/gvfssyncservice.cpp:76
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
 "Указанный путь к папке не существует, Gnote не удалось создать этот путь."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:200
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:224
 msgid "Local Folder"
 msgstr "Локальная папка"
 
@@ -1039,7 +1033,7 @@ msgstr "Фиксированная ширина"
 msgid "Adds fixed-width font style."
 msgstr "Добавляет моноширинный стиль текста."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:57
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
 msgid "Fixed Wid_th"
 msgstr "_Фиксированная ширина"
 
@@ -1069,15 +1063,15 @@ msgid "Please, register your account in Online Accounts"
 msgstr ""
 "Пожалуйста, зарегистрируйте вашу учётную запись в \"Сетевых учётных записях\""
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
 msgid "The URI is empty"
 msgstr "URI пуст"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "URI field is empty."
 msgstr "Поле URI пусто."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Сетевая папка"
 
@@ -1095,11 +1089,12 @@ msgstr "Вставляет текущую дату и время в позици
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Выберите один из готовых форматов или укажите собственный."
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:84
+#. Use Selected Format
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:82
 msgid "Use _Selected Format"
 msgstr "Использовать _выбранный формат"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:114
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:111
 msgid "_Use Custom Format"
 msgstr "Использовать _собственный формат"
 
@@ -1161,7 +1156,7 @@ msgstr "Сегодня: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:68
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "Не удалось создать заметку дня %s: %s"
@@ -1212,16 +1207,16 @@ msgstr "Поддержка печати"
 msgid "Allows you to print a note."
 msgstr "Позволяет выводить заметки на печать."
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:62
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
 msgid "Print…"
 msgstr "Печать…"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:110
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
 msgstr "Ошибка печати заметки"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:273
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
 msgid "Page %1 of %2"
 msgstr "Страница %1 из %2"
 
@@ -1239,7 +1234,7 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
 msgid "Replace title"
 msgstr "Замена названий"
 
@@ -1265,7 +1260,7 @@ msgid "Show Statistics"
 msgstr "Показать статистику"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:173
+#: src/plugins/statistics/statisticswidget.cpp:196
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -1273,13 +1268,13 @@ msgstr "Статистика"
 msgid "Show various statistics about notes."
 msgstr "Показать различную статистику о заметках."
 
-#: src/plugins/statistics/statisticswidget.cpp:91
-msgid "Total Notes:"
-msgstr "Всего заметок:"
+#: src/plugins/statistics/statisticswidget.cpp:98
+msgid "Total Notes"
+msgstr "Всего заметок"
 
-#: src/plugins/statistics/statisticswidget.cpp:97
-msgid "Total Notebooks:"
-msgstr "Всего блокнотов с заметками:"
+#: src/plugins/statistics/statisticswidget.cpp:101
+msgid "Total Notebooks"
+msgstr "Всего блокнотов с заметками"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
 #: src/plugins/statistics/statisticswidget.cpp:128
@@ -1289,47 +1284,8 @@ msgstr[0] "%1 заметка"
 msgstr[1] "Gnote"
 msgstr[2] "Gnote"
 
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:4
-msgid "Sticky Notes Importer"
-msgstr "Импорт из «Липких записок»"
-
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:5
-msgid "Import your notes from the Sticky Notes applet."
-msgstr "Импорт заметок из апплета «Липкие записки»."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:84
-msgid "Import from Sticky Notes"
-msgstr "Импортировать из апплета «Липкие записки»"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:206
-msgid "No Sticky Notes found"
-msgstr "Липкие записки не найдены"
-
-#. %1 is a the file name
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
-msgid "No suitable Sticky Notes file was found at \"%1\"."
-msgstr "Подходящий файл апплета «Липкие записки» «%1» не найден."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
-msgid "Sticky Notes import completed"
-msgstr "Импорт из апплета «Липкие записки» завершён"
-
-#. here %1 is the number of notes imported, %2 the total number of notes.
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
-msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
-msgstr "Успешно импортировано <b>%1</b> из <b>%2</b> \"липких записок\"."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
-msgid "Untitled"
-msgstr "Без названия"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:275
-msgid "Sticky Note: "
-msgstr "Липкая записка: "
-
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:67
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:130
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:113
 msgid "Table of Contents"
 msgstr "Оглавление"
 
@@ -1349,25 +1305,17 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:145
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:207
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:137
 msgid "Heading 1"
 msgstr "Заголовок 1"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:149
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:213
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:140
 msgid "Heading 2"
 msgstr "Заголовок 2"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:153
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:219
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:143
 msgid "Table of Contents Help"
 msgstr "Справка об оглавлении"
-
-#. no toc items, and no action entries = empty menu
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:192
-msgid "(empty table of contents)"
-msgstr "(пустая информация)"
 
 #: src/plugins/todo/todo.desktop.in.in:4
 msgid "TODO"
@@ -1405,19 +1353,15 @@ msgstr "Добавляет функцию подчёркивания текст�
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Юбер Фигьер (Hubert Figuière) и проект Tomboy"
 
-#: src/plugins/underline/underlinenoteaddin.cpp:56
-msgid "_Underline"
-msgstr "Под_чёркнутый"
-
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:107
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:112
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "User_name:"
 msgstr "_Имя пользователя:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
 msgid "_Password:"
 msgstr "_Пароль:"
 
@@ -1458,22 +1402,22 @@ msgstr "Синхронизации заметок Gnote по URL адресу We
 msgid "Exception thrown when creating note: %s"
 msgstr "Выдано исключение при создании заметки: %s"
 
-#: src/gnote.cpp:209
+#: src/gnote.cpp:206
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Соединение D-Bus отсутствует, поиск оболочки и удаленное управление не "
 "работают."
 
-#: src/gnote.cpp:242
+#: src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Не удалось открыть окно комбинаций клавиш!"
 
-#: src/gnote.cpp:256
+#: src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "и авторы Tomboy."
 
-#: src/gnote.cpp:262
+#: src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Дмитрий Костенко <bis0n@mail.ru>\n"
@@ -1484,7 +1428,7 @@ msgstr ""
 "Yuri Myasoedov <omerta13@yandex.ru>, 2012\n"
 "Артемий Судаков <finziyr@yandex.ru>, 2020"
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1496,95 +1440,89 @@ msgstr ""
 "Авторские права © 2009 Hubert Figuiere\n"
 "Авторские права © 2004-2009 авторы Tomboy."
 
-#: src/gnote.cpp:275
+#: src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Простое, лёгкое в использовании приложение для ведения заметок."
 
-#: src/gnote.cpp:286
+#: src/gnote.cpp:273
 msgid "Homepage"
 msgstr "Домашняя страница"
 
-#: src/gnote.cpp:481
+#: src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "Запустить Gnote в фоне."
 
-#: src/gnote.cpp:482
+#: src/gnote.cpp:468
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запустить Gnote как провайдер поиска оболочки GNOME."
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:469
 msgid "Specify the path of the directory containing the notes."
 msgstr "Указать путь к каталогу с заметками."
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:469
 msgid "path"
 msgstr "путь"
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:470
 msgid "Open the search all notes window with the search text."
 msgstr "Открыть окно поиска по всем заметкам с помощью текста поиска."
 
-#: src/gnote.cpp:484 src/gnote.cpp:489
+#: src/gnote.cpp:470 src/gnote.cpp:475
 msgid "text"
 msgstr "текст"
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:471
 msgid "Print version information."
 msgstr "Вывести информацию о версии."
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:472
 msgid "Create and display a new note, with a optional title."
 msgstr "Создать и показать новую заметку с произвольным заголовком."
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:472
 msgid "title"
 msgstr "заголовок"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:473
 msgid "Display the existing note matching title."
 msgstr "Показать существующую заметку с соответствующим заголовком."
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:473
 msgid "title/url"
 msgstr "заголовок/ссылка"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:474
 msgid "Display the 'Start Here' note."
 msgstr "Показывать самую первую заметку."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:475
 msgid "Search and highlight text in the opened note."
 msgstr "Искать и выделить текст в открытой заметке."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:479
 msgid "A note taking application"
 msgstr "Программа для ведения заметок"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:479
 msgid "Gnote options at launch"
 msgstr "Параметры Gnote при запуске"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:677
+#: src/gnote.cpp:663
 msgid "Version %1"
 msgstr "Версия %1"
 
-#. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: src/iconmanager.cpp:63
-#, c-format
-msgid "Failed to load icon (%s, %d): %s"
-msgstr "Не удалось загрузить иконку (%s, %d): %s"
-
-#: src/noteaddin.cpp:138 src/noteaddin.cpp:152 src/noteaddin.cpp:164
+#: src/noteaddin.cpp:101
 msgid "Plugin is disposing already"
 msgstr "Модуль уже удаляется"
 
-#: src/noteaddin.cpp:168
+#: src/noteaddin.cpp:105
 msgid "Window is not embedded"
 msgstr "Окно не встроено"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:355
+#: src/notebase.cpp:225 src/note.cpp:348
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Исключение во время сохранения заметки: %s"
@@ -1618,7 +1556,7 @@ msgstr "Это имя уже используется"
 msgid "C_reate"
 msgstr "Со_здать"
 
-#: src/notebooks/notebookapplicationaddin.cpp:78
+#: src/notebooks/notebookapplicationaddin.cpp:75
 msgid "New Note_book..."
 msgstr "_Создать блокнот..."
 
@@ -1635,11 +1573,11 @@ msgstr "Шаблон для блокнота %1"
 msgid "New Note"
 msgstr "Создать заметку"
 
-#: src/notebooks/notebookmanager.cpp:352
+#: src/notebooks/notebookmanager.cpp:353
 msgid "Really delete this notebook?"
 msgstr "Действительно удалить этот блокнот?"
 
-#: src/notebooks/notebookmanager.cpp:353
+#: src/notebooks/notebookmanager.cpp:354
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1647,19 +1585,19 @@ msgstr ""
 "Заметки, принадлежащие к этому блокноту, не будут удалены, но они больше не "
 "будут связаны с этим блокнотом. Это действие нельзя отменить."
 
-#: src/notebooks/notebookmenuitem.cpp:34
-#: src/notebooks/notebooknoteaddin.cpp:153
-msgid "No notebook"
-msgstr "Нет блокнотов"
-
-#: src/notebooks/notebooknoteaddin.cpp:111
+#: src/notebooks/notebooknoteaddin.cpp:110
 msgid "Notebook"
 msgstr "Блокнот"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:147
+#: src/notebooks/notebooknoteaddin.cpp:144
 msgid "_New notebook..."
 msgstr "_Создать блокнот..."
+
+#. Add the "(no notebook)" item at the top of the list
+#: src/notebooks/notebooknoteaddin.cpp:148
+msgid "No notebook"
+msgstr "Нет блокнотов"
 
 #: src/notebooks/specialnotebooks.cpp:47
 msgid "All"
@@ -1678,37 +1616,37 @@ msgstr "Важное"
 msgid "Active"
 msgstr "Активно"
 
-#: src/notebuffer.cpp:1403
+#: src/notebuffer.cpp:1397
 msgid "</list> tag mismatch"
 msgstr "</list> тег не найден"
 
-#: src/notebuffer.cpp:1487
+#: src/notebuffer.cpp:1481
 #, c-format
 msgid "Exception: %s"
 msgstr "Исключение: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: src/note.cpp:56
+#: src/note.cpp:55
 msgid "Really delete \"%1\"?"
 msgstr "Действительно удалить заметку «%1»?"
 
 #. TRANSLATORS: %1 is number of notes
-#: src/note.cpp:60
+#: src/note.cpp:59
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
 msgstr[0] "Действительно удалить %1 заметку?"
 msgstr[1] "Действительно удалить %1% заметки?"
 msgstr[2] "Действительно удалить %1% заметок?"
 
-#: src/note.cpp:67
+#: src/note.cpp:63
 msgid "If you delete a note it is permanently lost."
 msgstr "Если вы удалите заметку, она будет утеряна навсегда."
 
-#: src/note.cpp:102
+#: src/note.cpp:95
 msgid "Error saving note data."
 msgstr "Ошибка при сохранении данных заметки."
 
-#: src/note.cpp:103
+#: src/note.cpp:96
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1718,17 +1656,17 @@ msgstr ""
 "свободного места на диске, а также верны ли права доступа к каталогу ~/."
 "local/share/gnote. Подробности об ошибке находятся в файле ~/.gnote.log."
 
-#: src/note.cpp:443
+#: src/note.cpp:435
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Ошибка при сохранении: %s"
 
-#: src/note.cpp:668
+#: src/note.cpp:660
 msgid "Setting text content for closed notes not supported"
 msgstr "Настройка содержимого тектста для закрытых заметок не поддерживается"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:317
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:281
 msgid "New Note Template"
 msgstr "Шаблон новой заметки"
 
@@ -1826,31 +1764,31 @@ msgstr "Ошибка в начале создания заметки: %s"
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Ошибка сравнения XML заметки, пропуск «%s»: %s"
 
-#: src/noterenamedialog.cpp:118
+#: src/noterenamedialog.cpp:119
 msgid "Rename Note Links?"
 msgstr "Переименовать ссылки?"
 
-#: src/noterenamedialog.cpp:123
+#: src/noterenamedialog.cpp:124
 msgid "_Don't Rename Links"
 msgstr "_Не переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:124
+#: src/noterenamedialog.cpp:125
 msgid "_Rename Links"
 msgstr "_Переименовать ссылки"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:126
 msgid "Select All"
 msgstr "Выбрать все"
 
-#: src/noterenamedialog.cpp:126
+#: src/noterenamedialog.cpp:127
 msgid "Select None"
 msgstr "Снять выделение"
 
-#: src/noterenamedialog.cpp:127
+#: src/noterenamedialog.cpp:128
 msgid "Always show this _window"
 msgstr "_Всегда показывать это окно"
 
-#: src/noterenamedialog.cpp:128
+#: src/noterenamedialog.cpp:129
 msgid "Alwa_ys rename links"
 msgstr "_Всегда переименовывать ссылки"
 
@@ -1858,7 +1796,7 @@ msgstr "_Всегда переименовывать ссылки"
 msgid "Never rename _links"
 msgstr "_Никогда не переименовывать ссылки"
 
-#: src/noterenamedialog.cpp:148
+#: src/noterenamedialog.cpp:147
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1870,44 +1808,44 @@ msgstr ""
 "\n"
 "Если не переименовать ссылки, они больше не будут ссылаться на что-либо."
 
-#: src/noterenamedialog.cpp:181
+#: src/noterenamedialog.cpp:175
 msgid "Rename Links"
 msgstr "Переименовать ссылки"
 
-#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
+#: src/noterenamedialog.cpp:186 src/synchronization/syncdialog.cpp:308
 msgid "Note Title"
 msgstr "Заголовок заметки"
 
-#: src/noterenamedialog.cpp:233
+#: src/noterenamedialog.cpp:218
 msgid "Ad_vanced"
 msgstr "_Дополнительно"
 
-#: src/notewindow.cpp:274
+#: src/notewindow.cpp:319
 msgid "_Undo"
 msgstr "_Отменить"
 
-#: src/notewindow.cpp:276
+#: src/notewindow.cpp:321
 msgid "_Redo"
 msgstr "_Повторить"
 
-#: src/notewindow.cpp:278 src/notewindow.cpp:342
+#: src/notewindow.cpp:323 src/notewindow.cpp:355
 msgid "_Link to New Note"
 msgstr "_Связать с новой заметкой"
 
-#: src/notewindow.cpp:280
+#: src/notewindow.cpp:325
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Важное"
 
-#: src/notewindow.cpp:290
+#: src/notewindow.cpp:335
 msgid "_Delete…"
 msgstr "У_далить…"
 
-#: src/notewindow.cpp:377
+#: src/notewindow.cpp:375
 msgid "Set properties of text"
 msgstr "Установить свойства текста"
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:387
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1916,105 +1854,80 @@ msgstr ""
 "для обычных заметок, эта заметка не будет показываться в меню заметок или "
 "окне поиска."
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:390
 msgid "Convert to regular note"
 msgstr "Преобразовать в обычную заметку"
 
-#: src/notewindow.cpp:397
+#: src/notewindow.cpp:393
 msgid "Save Se_lection"
 msgstr "Сохранить вы_деление"
 
-#: src/notewindow.cpp:401
+#: src/notewindow.cpp:397
 msgid "Save _Title"
 msgstr "Сохранить _заголовок"
 
-#: src/notewindow.cpp:491 src/notewindow.cpp:997
+#: src/notewindow.cpp:487 src/notewindow.cpp:597
 msgid "Cannot create note"
 msgstr "Не удалось создать заметку"
 
-#: src/notewindow.cpp:767
-msgid "_Bold"
-msgstr "_Жирный"
-
-#: src/notewindow.cpp:768
-msgid "_Italic"
-msgstr "_Курсив"
-
-#: src/notewindow.cpp:769
-msgid "_Strikeout"
-msgstr "_Зачёркнутый"
-
-#: src/notewindow.cpp:773
+#: src/notewindow.cpp:957
 msgid "_Highlight"
 msgstr "_Выделенный"
 
-#: src/notewindow.cpp:776
+#: src/notewindow.cpp:961
 msgid "_Normal"
 msgstr "_Нормальный"
 
-#: src/notewindow.cpp:777
+#: src/notewindow.cpp:962
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: src/notewindow.cpp:778
+#: src/notewindow.cpp:963
 msgid "_Large"
 msgstr "_Большой"
 
-#: src/notewindow.cpp:779
+#: src/notewindow.cpp:964
 msgid "Hu_ge"
 msgstr "_Огромный"
 
-#: src/notewindow.cpp:801
-msgid "⦁ Bullets"
-msgstr "⦁ Маркеры"
-
-#: src/notewindow.cpp:803
-msgid "→ Increase indent"
-msgstr "→ Увеличить отступ"
-
-#: src/notewindow.cpp:805
-msgid "← Decrease indent"
-msgstr "← Уменьшить отступ"
-
-#: src/preferencesdialog.cpp:104
+#: src/preferencesdialog.cpp:100
 msgid "Gnote Preferences"
 msgstr "Параметры Gnote"
 
-#: src/preferencesdialog.cpp:121
+#: src/preferencesdialog.cpp:107
 msgid "General"
 msgstr "Общие"
 
-#: src/preferencesdialog.cpp:122
+#: src/preferencesdialog.cpp:108
 msgid "Links"
 msgstr "Ссылки"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:125 src/sharp/addinstreemodel.cpp:165
+#: src/preferencesdialog.cpp:109 src/sharp/addinstreemodel.cpp:158
 msgid "Synchronization"
 msgstr "Синхронизация"
 
-#: src/preferencesdialog.cpp:127
+#: src/preferencesdialog.cpp:110
 msgid "Plugins"
 msgstr "Модули"
 
-#. Ok button...
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:793
-#: src/preferencesdialog.cpp:1056 src/preferencesdialog.cpp:1273
-#: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
+#: src/preferencesdialog.cpp:133 src/preferencesdialog.cpp:715
+#: src/preferencesdialog.cpp:954 src/preferencesdialog.cpp:1158
+#: src/synchronization/syncdialog.cpp:322 src/utils.cpp:271
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: src/preferencesdialog.cpp:202
+#: src/preferencesdialog.cpp:171
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Модуль %s устарел"
 
-#: src/preferencesdialog.cpp:255
+#: src/preferencesdialog.cpp:223
 msgid "_Spell check while typing"
 msgstr "_Проверять орфографию при наборе"
 
-#: src/preferencesdialog.cpp:256
+#: src/preferencesdialog.cpp:224
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2023,36 +1936,36 @@ msgstr ""
 "предлагаться в контекстном меню."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:266
+#: src/preferencesdialog.cpp:234
 msgid "Enable auto-_bulleted lists"
 msgstr "Включить автоматические _маркированные списки"
 
-#: src/preferencesdialog.cpp:267
+#: src/preferencesdialog.cpp:235
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Начните новый маркированный список, начав новую строку с символа \"-\"."
 
-#: src/preferencesdialog.cpp:275
+#: src/preferencesdialog.cpp:243
 msgid "Use custom _font"
 msgstr "Использовать другой _шрифт"
 
-#: src/preferencesdialog.cpp:292
+#: src/preferencesdialog.cpp:259
 msgid "When renaming a linked note: "
 msgstr "При переименовании заметки, на которую есть ссылка: "
 
-#: src/preferencesdialog.cpp:296
+#: src/preferencesdialog.cpp:263
 msgid "Ask me what to do"
 msgstr "Спрашивать меня, что делать"
 
-#: src/preferencesdialog.cpp:297
+#: src/preferencesdialog.cpp:264
 msgid "Never rename links"
 msgstr "Никогда не переименовывать ссылки"
 
-#: src/preferencesdialog.cpp:298
+#: src/preferencesdialog.cpp:265
 msgid "Always rename links"
 msgstr "Всегда переименовывать ссылки"
 
-#: src/preferencesdialog.cpp:318
+#: src/preferencesdialog.cpp:282
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2060,27 +1973,27 @@ msgstr ""
 "Чтобы указать текст, используемый при создании новых заметок, воспользуйтесь "
 "шаблоном новой заметки."
 
-#: src/preferencesdialog.cpp:323
+#: src/preferencesdialog.cpp:287
 msgid "Open New Note Template"
 msgstr "Открыть шаблон новой заметки"
 
 #. internal links
-#: src/preferencesdialog.cpp:377
+#: src/preferencesdialog.cpp:333
 msgid "_Automatically link to notes"
 msgstr "_Автоматическая ссылка на заметку"
 
-#: src/preferencesdialog.cpp:378
+#: src/preferencesdialog.cpp:334
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Включите эту опцию, чтобы создать ссылку, когда текст соответствует "
 "заголовку заметки."
 
 #. URLs
-#: src/preferencesdialog.cpp:384
+#: src/preferencesdialog.cpp:340
 msgid "Create links for _URLs"
 msgstr "Создавать ссылки на _URL адреса"
 
-#: src/preferencesdialog.cpp:385
+#: src/preferencesdialog.cpp:341
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2089,11 +2002,11 @@ msgstr ""
 "соответствующей программой."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:392
+#: src/preferencesdialog.cpp:348
 msgid "Highlight _WikiWords"
 msgstr "_Выделять ВикиСлова"
 
-#: src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:349
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2102,64 +2015,62 @@ msgstr ""
 "<b>КоторыеВыглядятВотТак</b>. Если щёлкнуть на таком слове, будет создана "
 "заметка с таким именем."
 
-#: src/preferencesdialog.cpp:425
+#: src/preferencesdialog.cpp:381
 msgid "Ser_vice:"
 msgstr "Слу_жба:"
 
-#: src/preferencesdialog.cpp:479 src/preferencesdialog.cpp:1099
+#: src/preferencesdialog.cpp:430 src/preferencesdialog.cpp:977
 msgid "Not configurable"
 msgstr "Нет изменяемых параметров"
 
-#: src/preferencesdialog.cpp:504
+#: src/preferencesdialog.cpp:452
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Таймаут автоматической фоновой _синхронизации (в минутах)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:474
 msgid "_Advanced..."
 msgstr "Про_чие параметры..."
 
-#: src/preferencesdialog.cpp:535
+#: src/preferencesdialog.cpp:479
 msgid "Clear"
 msgstr "Очищать"
 
-#: src/preferencesdialog.cpp:576
+#: src/preferencesdialog.cpp:516
 msgid "The following plugins are installed:"
 msgstr "Установлены следующие модули:"
 
-#. TODO: In a future version, add in an "Install Add-ins..." button
-#. TODO: In a future version, add in a "Repositories..." button
-#: src/preferencesdialog.cpp:611
+#: src/preferencesdialog.cpp:540
 msgid "_Enable"
 msgstr "_Включить"
 
-#: src/preferencesdialog.cpp:617
+#: src/preferencesdialog.cpp:545
 msgid "_Disable"
 msgstr "От_ключить"
 
-#: src/preferencesdialog.cpp:629
+#: src/preferencesdialog.cpp:555
 msgid "In_formation"
 msgstr "_Информация"
 
-#: src/preferencesdialog.cpp:773
+#: src/preferencesdialog.cpp:695
 msgid "Not Implemented"
 msgstr "Не реализовано"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:790
+#: src/preferencesdialog.cpp:712
 msgid "%1 Preferences"
 msgstr "Параметры %1"
 
-#: src/preferencesdialog.cpp:923
+#: src/preferencesdialog.cpp:808
 msgid "Choose Note Font"
 msgstr "Выбрать шрифт заметки"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:1016
+#: src/preferencesdialog.cpp:903
 msgid "Other Synchronization Options"
 msgstr "Другие параметры синхронизации"
 
-#: src/preferencesdialog.cpp:1019
+#: src/preferencesdialog.cpp:906
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2167,24 +2078,23 @@ msgstr ""
 "При возникновении конфликтов между локальной заметкой и заметкой на сервере "
 "синхронизации:"
 
-#. label.Xalign = 0;
-#: src/preferencesdialog.cpp:1023
+#: src/preferencesdialog.cpp:910
 msgid "Always ask me what to do"
 msgstr "Всегда спрашивать меня, что делать"
 
-#: src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:911
 msgid "Rename my local note"
 msgstr "Переименовывать локальную заметку"
 
-#: src/preferencesdialog.cpp:1031
+#: src/preferencesdialog.cpp:913
 msgid "Replace my local note with the server's update"
 msgstr "Заменять локальную заметку заметкой с сервера"
 
-#: src/preferencesdialog.cpp:1133
+#: src/preferencesdialog.cpp:1033
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-#: src/preferencesdialog.cpp:1134
+#: src/preferencesdialog.cpp:1034
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2192,11 +2102,11 @@ msgstr ""
 "Не рекомендуется очищать параметры синхронизации. Возможно, вам потребуется "
 "снова синхронизировать все заметки, когда вы сохраните новые параметры."
 
-#: src/preferencesdialog.cpp:1144
+#: src/preferencesdialog.cpp:1045
 msgid "Resetting Synchronization Settings"
 msgstr "Установка новых параметров синхронизации"
 
-#: src/preferencesdialog.cpp:1145
+#: src/preferencesdialog.cpp:1046
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2206,18 +2116,18 @@ msgstr ""
 "будут очищены.  Возможно, вам снова придется синхронизировать все свои "
 "заметки при сохранении новых настроек."
 
-#: src/preferencesdialog.cpp:1220
+#: src/preferencesdialog.cpp:1104
 msgid "Connection successful"
 msgstr "Подключение установлено"
 
-#: src/preferencesdialog.cpp:1221
+#: src/preferencesdialog.cpp:1105
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote готов к синхронизации заметок. Выполнить синхронизацию сейчас?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1246
+#: src/preferencesdialog.cpp:1131
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2225,59 +2135,55 @@ msgstr ""
 "Проверьте информацию и попробуйте ещё раз.  Файл журнала %1 может содержить "
 "дополнительную информацию об ошибке."
 
-#: src/preferencesdialog.cpp:1251
+#: src/preferencesdialog.cpp:1136
 msgid "Error connecting"
 msgstr "Ошибка подключения"
 
-#: src/preferencesdialog.cpp:1313
+#: src/preferencesdialog.cpp:1198
 msgid "Version:"
 msgstr "Версия:"
 
-#: src/preferencesdialog.cpp:1316
+#: src/preferencesdialog.cpp:1201
 msgid "Author:"
 msgstr "Автор:"
 
-#: src/preferencesdialog.cpp:1320
+#: src/preferencesdialog.cpp:1205
 msgid "Copyright:"
 msgstr "Авторские права:"
 
-#: src/recentchanges.cpp:65
+#: src/recentchanges.cpp:64
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/recentchanges.cpp:257
+#: src/recentchanges.cpp:280
 msgid "Create New Note"
 msgstr "Создать новую заметку"
 
-#: src/recentchanges.cpp:284
+#: src/recentchanges.cpp:303
 msgid "Search"
 msgstr "Искать"
 
-#: src/recentchanges.cpp:362
+#: src/recentchanges.cpp:379
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент встроенного поля не Gtk::Grid. Пожалуйста, сообщите об "
 "ошибке!"
 
-#: src/recentchanges.cpp:404
+#: src/recentchanges.cpp:409
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент поиска не Gtk::Grid. Пожалуйста, сообщите об ошибке!"
 
-#: src/recentchanges.cpp:731
+#: src/recentchanges.cpp:705
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Попытка вывести на передний план виджет, не встроенный в окно"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:712
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Попытка вывести на передний план виджет, который не является Gtk::Widget"
 
-#: src/recentchanges.cpp:1008
-msgid "Expected widget to be a sub-menu!"
-msgstr "Ожидаемый виджет будет в виде подменю!"
-
-#: src/recentchanges.cpp:1013
+#: src/recentchanges.cpp:917
 msgid "No configured actions"
 msgstr "Нет изменяемых параметров"
 
@@ -2286,23 +2192,19 @@ msgstr "Нет изменяемых параметров"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Не удалось загрузить интерфейс D-Bus %s: %s"
 
-#: src/searchnoteswidget.cpp:210
+#: src/searchnoteswidget.cpp:190
 msgid "Notebooks"
 msgstr "Блокноты"
 
-#: src/searchnoteswidget.cpp:682
+#: src/searchnoteswidget.cpp:590
 msgid "Note"
 msgstr "Заметка"
 
-#: src/searchnoteswidget.cpp:704
+#: src/searchnoteswidget.cpp:614
 msgid "Modified"
 msgstr "Изменено"
 
-#: src/searchnoteswidget.cpp:1015
-msgid "Notes"
-msgstr "Заметки"
-
-#: src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:792
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2310,92 +2212,92 @@ msgstr ""
 "Нет совпадений в текущем блокноте.\n"
 "Щёлкните здесь для поиска во всех блокнотах."
 
-#: src/searchnoteswidget.cpp:1038
+#: src/searchnoteswidget.cpp:796
 msgid "Click here to search across all notebooks"
 msgstr "Щёлкните для поиска во всех блокнотах"
 
-#: src/searchnoteswidget.cpp:1056
+#: src/searchnoteswidget.cpp:814
 msgid "Matches"
 msgstr "Совпадения"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:1107
+#: src/searchnoteswidget.cpp:864
 msgid "Title match"
 msgstr "Совпадение названия"
 
-#: src/searchnoteswidget.cpp:1111
+#: src/searchnoteswidget.cpp:868
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 совпадение"
 msgstr[1] "%1% совпадения"
 msgstr[2] "%1% совпадений"
 
-#: src/searchnoteswidget.cpp:1306
-msgid "Open In New _Window"
-msgstr "Открыть в _новом окне"
-
-#: src/searchnoteswidget.cpp:1316
+#: src/searchnoteswidget.cpp:1057
 msgid "_New"
 msgstr "_Новая"
 
-#: src/searchnoteswidget.cpp:1345
-msgid "_Open Template Note"
-msgstr "_Открыть шаблон заметки"
+#: src/searchnoteswidget.cpp:1059
+msgid "Open In New _Window"
+msgstr "Открыть в _новом окне"
 
-#: src/searchnoteswidget.cpp:1349
-msgid "Re_name..."
-msgstr "Пере_именовать..."
-
-#: src/searchnoteswidget.cpp:1356
+#: src/searchnoteswidget.cpp:1092
 msgid "_New..."
 msgstr "_Создать блокнот..."
 
-#: src/searchnoteswidget.cpp:1473 src/searchnoteswidget.cpp:1486
-#: src/searchnoteswidget.cpp:1497
+#: src/searchnoteswidget.cpp:1093
+msgid "_Open Template Note"
+msgstr "_Открыть шаблон заметки"
+
+#: src/searchnoteswidget.cpp:1094
+msgid "Re_name..."
+msgstr "Пере_именовать..."
+
+#: src/searchnoteswidget.cpp:1221 src/searchnoteswidget.cpp:1234
+#: src/searchnoteswidget.cpp:1245
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr ""
 "Не удалось проанализировать настройку поиска-сортировки (значение: %s):"
 
-#: src/searchnoteswidget.cpp:1474
+#: src/searchnoteswidget.cpp:1222
 msgid "Expected format 'column:order'"
 msgstr "Ожидаемый формат 'колонна:позиция'"
 
-#: src/searchnoteswidget.cpp:1487
+#: src/searchnoteswidget.cpp:1235
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нераспознанная колонна %s"
 
-#: src/searchnoteswidget.cpp:1498
+#: src/searchnoteswidget.cpp:1246
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нераспознаваемая позиция %s"
 
-#: src/sharp/addinstreemodel.cpp:110
+#: src/sharp/addinstreemodel.cpp:106
 msgid "Name"
 msgstr "Название"
 
-#: src/sharp/addinstreemodel.cpp:122
+#: src/sharp/addinstreemodel.cpp:116
 msgid "Version"
 msgstr "Версия"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:156
+#: src/sharp/addinstreemodel.cpp:149
 msgid "Formatting"
 msgstr "Форматирование"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:159
+#: src/sharp/addinstreemodel.cpp:152
 msgid "Desktop integration"
 msgstr "Интеграция с рабочим столом"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:162
+#: src/sharp/addinstreemodel.cpp:155
 msgid "Tools"
 msgstr "Инструменты"
 
 #. TRANSLATORS: Addin category is unknown.
-#: src/sharp/addinstreemodel.cpp:169
+#: src/sharp/addinstreemodel.cpp:162
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -2455,7 +2357,6 @@ msgstr[1] "Не удалось загрузить обновление %1 зам
 msgstr[2] "Не удалось загрузить обновление %1 заметок"
 
 #: src/synchronization/filesystemsyncserver.cpp:427
-#: src/synchronization/filesystemsyncserver.cpp:431
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2464,12 +2365,12 @@ msgstr ""
 "Исключение во время очистки сервера при внесении данных. Целостность сервера "
 "в порядке, но могут быть некоторые лишние файлы.  Ошибка: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:637
+#: src/synchronization/filesystemsyncserver.cpp:633
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Ошибка при обновлении блокировки: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:676
+#: src/synchronization/filesystemsyncserver.cpp:672
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Ошибка удаления старого замка синхронизации \"%s\": %s"
@@ -2498,45 +2399,45 @@ msgstr "Во время проверки тестового содержания
 msgid "Failure when trying to remove test file"
 msgstr "Во время попытки удалить тестовый файл произошла ошибка"
 
-#: src/synchronization/gvfssyncservice.cpp:125
+#: src/synchronization/gvfssyncservice.cpp:121
 msgid "Unknown error"
 msgstr "Неизвестная ошибка"
 
-#: src/synchronization/syncdialog.cpp:63
+#: src/synchronization/syncdialog.cpp:62
 msgid "Note Conflict"
 msgstr "Конфликт заметок"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: src/synchronization/syncdialog.cpp:68
+#: src/synchronization/syncdialog.cpp:67
 msgid " (old)"
 msgstr " (старая)"
 
-#: src/synchronization/syncdialog.cpp:113
+#: src/synchronization/syncdialog.cpp:107
 msgid "Rename local note:"
 msgstr "Переименовать локальную заметку:"
 
-#: src/synchronization/syncdialog.cpp:120
+#: src/synchronization/syncdialog.cpp:114
 msgid "Update links in referencing notes"
 msgstr "Обновить ссылки в соответствующих заметках"
 
-#: src/synchronization/syncdialog.cpp:126
+#: src/synchronization/syncdialog.cpp:120
 msgid "Overwrite local note"
 msgstr "Перезаписать локальную заметку"
 
-#: src/synchronization/syncdialog.cpp:130
+#: src/synchronization/syncdialog.cpp:125
 msgid "Always perform this action"
 msgstr "Всегда выполнять это действие"
 
-#: src/synchronization/syncdialog.cpp:133
+#: src/synchronization/syncdialog.cpp:128
 msgid "_Continue"
 msgstr "_Продолжить"
 
 #. Set initial dialog text
-#: src/synchronization/syncdialog.cpp:136
+#: src/synchronization/syncdialog.cpp:131
 msgid "Note conflict detected"
 msgstr "Обнаружен конфликт заметок"
 
-#: src/synchronization/syncdialog.cpp:138
+#: src/synchronization/syncdialog.cpp:133
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2545,55 +2446,55 @@ msgstr ""
 "локальной заметкой?"
 
 #. Expander containing TreeView
-#: src/synchronization/syncdialog.cpp:292
+#: src/synchronization/syncdialog.cpp:278
 msgid "Details"
 msgstr "Подробности"
 
-#: src/synchronization/syncdialog.cpp:334
+#: src/synchronization/syncdialog.cpp:315
 msgid "Status"
 msgstr "Состояние"
 
-#: src/synchronization/syncdialog.cpp:478
+#: src/synchronization/syncdialog.cpp:459
 msgid "Acquiring sync lock..."
 msgstr "Получение блокировки синхронизации..."
 
-#: src/synchronization/syncdialog.cpp:481
+#: src/synchronization/syncdialog.cpp:462
 msgid "Committing changes..."
 msgstr "Фиксация изменений..."
 
-#: src/synchronization/syncdialog.cpp:484
+#: src/synchronization/syncdialog.cpp:465
 msgid "Synchronizing Notes"
 msgstr "Синхронизация заметок"
 
-#: src/synchronization/syncdialog.cpp:485
+#: src/synchronization/syncdialog.cpp:466
 msgid "Synchronizing your notes..."
 msgstr "Синхронизация заметок..."
 
-#: src/synchronization/syncdialog.cpp:486
+#: src/synchronization/syncdialog.cpp:467
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Это может занять время, откиньтесь назад и наслаждайтесь!"
 
-#: src/synchronization/syncdialog.cpp:488
+#: src/synchronization/syncdialog.cpp:469
 msgid "Connecting to the server..."
 msgstr "Подключение к серверу..."
 
-#: src/synchronization/syncdialog.cpp:494
+#: src/synchronization/syncdialog.cpp:475
 msgid "Deleting notes off of the server..."
 msgstr "Удаление заметок с сервера..."
 
-#: src/synchronization/syncdialog.cpp:498
+#: src/synchronization/syncdialog.cpp:479
 msgid "Downloading new/updated notes..."
 msgstr "Получение новых или обновлённых заметок..."
 
-#: src/synchronization/syncdialog.cpp:510
+#: src/synchronization/syncdialog.cpp:491
 msgid "Server Locked"
 msgstr "Сервер заблокирован"
 
-#: src/synchronization/syncdialog.cpp:511
+#: src/synchronization/syncdialog.cpp:492
 msgid "Server is locked"
 msgstr "Сервер заблокирован"
 
-#: src/synchronization/syncdialog.cpp:512
+#: src/synchronization/syncdialog.cpp:493
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2601,142 +2502,137 @@ msgstr ""
 "Один из ваших компьютеров в настоящий момент синхронизируется. Подождите "
 "пару минут и повторите попытку."
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:497
 msgid "Preparing to download updates from server..."
 msgstr "Подготовка с получению обновлений с сервера..."
 
-#: src/synchronization/syncdialog.cpp:519
+#: src/synchronization/syncdialog.cpp:500
 msgid "Preparing to upload updates to server..."
 msgstr "Подготовка к загрузке обновлений на сервер..."
 
-#: src/synchronization/syncdialog.cpp:522
+#: src/synchronization/syncdialog.cpp:503
 msgid "Uploading notes to server..."
 msgstr "Загрузка обновлений на сервер..."
 
-#: src/synchronization/syncdialog.cpp:525
+#: src/synchronization/syncdialog.cpp:506
 msgid "Synchronization Failed"
 msgstr "Сбой синхронизации"
 
-#: src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:507
 msgid "Failed to synchronize"
 msgstr "Не удалось выполнить синхронизацию"
 
-#: src/synchronization/syncdialog.cpp:527
+#: src/synchronization/syncdialog.cpp:508
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr "Не удалось синхронизировать заметки. Попробуйте ещё раз."
 
-#: src/synchronization/syncdialog.cpp:533
+#: src/synchronization/syncdialog.cpp:514
 msgid "Synchronization Complete"
 msgstr "Синхронизация завершена"
 
-#: src/synchronization/syncdialog.cpp:534
+#: src/synchronization/syncdialog.cpp:515
 msgid "Synchronization is complete"
 msgstr "Синхронизация завершена"
 
-#: src/synchronization/syncdialog.cpp:535
+#: src/synchronization/syncdialog.cpp:516
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "%1 заметка обновлена."
 msgstr[1] "%1% заметки обновлены."
 msgstr[2] "%1% заметок обновлено."
 
-#: src/synchronization/syncdialog.cpp:536
+#: src/synchronization/syncdialog.cpp:517
 msgid "Your notes are now up to date."
 msgstr "Заметки обновлены."
 
-#: src/synchronization/syncdialog.cpp:541
+#: src/synchronization/syncdialog.cpp:522
 msgid "Synchronization Canceled"
 msgstr "Синхронизация отменена"
 
-#: src/synchronization/syncdialog.cpp:542
+#: src/synchronization/syncdialog.cpp:523
 msgid "Synchronization was canceled"
 msgstr "Синхронизация отменена"
 
-#: src/synchronization/syncdialog.cpp:543
+#: src/synchronization/syncdialog.cpp:524
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Синхронизация отменена. Теперь окно можно закрыть."
 
-#: src/synchronization/syncdialog.cpp:547
+#: src/synchronization/syncdialog.cpp:528
 msgid "Synchronization Not Configured"
 msgstr "Синхронизация не настроена"
 
-#: src/synchronization/syncdialog.cpp:548
+#: src/synchronization/syncdialog.cpp:529
 msgid "Synchronization is not configured"
 msgstr "Синхронизация не настроена"
 
-#: src/synchronization/syncdialog.cpp:549
+#: src/synchronization/syncdialog.cpp:530
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Настройте синхронизацию в диалоговом окне параметров."
 
-#: src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:534
 msgid "Synchronization Service Error"
 msgstr "Ошибка службы синхронизации"
 
-#: src/synchronization/syncdialog.cpp:554
+#: src/synchronization/syncdialog.cpp:535
 msgid "Service error"
 msgstr "Ошибка службы"
 
-#: src/synchronization/syncdialog.cpp:555
+#: src/synchronization/syncdialog.cpp:536
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Ошибка подключения к службе синхронизации. Повторите попытку."
 
-#: src/synchronization/syncdialog.cpp:569
+#: src/synchronization/syncdialog.cpp:550
 msgid "Deleted locally"
 msgstr "Удалено локально"
 
-#: src/synchronization/syncdialog.cpp:572
+#: src/synchronization/syncdialog.cpp:553
 msgid "Deleted from server"
 msgstr "Удалено на сервере"
 
-#: src/synchronization/syncdialog.cpp:575
+#: src/synchronization/syncdialog.cpp:556
 msgid "Updated"
 msgstr "Обновлено"
 
-#: src/synchronization/syncdialog.cpp:578
+#: src/synchronization/syncdialog.cpp:559
 msgid "Added"
 msgstr "Добавлено"
 
-#: src/synchronization/syncdialog.cpp:581
+#: src/synchronization/syncdialog.cpp:562
 msgid "Uploaded changes to server"
 msgstr "Изменения загружены на сервер"
 
-#: src/synchronization/syncdialog.cpp:584
+#: src/synchronization/syncdialog.cpp:565
 msgid "Uploaded new note to server"
 msgstr "Новая заметка загружена на сервер"
 
-#: src/synchronization/syncmanager.cpp:59
+#: src/synchronization/syncmanager.cpp:58
 msgid "Synchronize Notes"
 msgstr "Синхронизировать заметки"
 
-#: src/synchronization/syncmanager.cpp:78
-#: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:557
+#: src/synchronization/syncmanager.cpp:77
+#: src/synchronization/syncmanager.cpp:94
+#: src/synchronization/syncmanager.cpp:552
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Сообщить об ошибке. Ошибка при вызове: %s"
 
-#: src/synchronization/syncmanager.cpp:143
+#: src/synchronization/syncmanager.cpp:142
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Ошибка чистки после синхронизации дополнения: %s"
 
-#: src/synchronization/syncmanager.cpp:168
+#: src/synchronization/syncmanager.cpp:167
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Исключение при создании сервера синхронизации: %s"
 
-#: src/synchronization/syncmanager.cpp:368
-#, c-format
-msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "Ошибка синхронизации со следующим исключением Glib: %s"
-
 #. top-level try
-#: src/synchronization/syncmanager.cpp:372
+#: src/synchronization/syncmanager.cpp:367
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Сбой со следующими исключениями: %s"
 
-#: src/utils.cpp:98
+#: src/utils.cpp:77
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2744,79 +2640,79 @@ msgstr ""
 "Руководство по Gnote не найдено. Убедитесь, что установка была выполнена "
 "успешно."
 
-#: src/utils.cpp:106
+#: src/utils.cpp:85
 msgid "Help not found"
 msgstr "Справка не найдена"
 
-#: src/utils.cpp:138
+#: src/utils.cpp:111
 msgid "Cannot open location"
 msgstr "Не удалось открыть местоположение"
 
-#: src/utils.cpp:155
+#: src/utils.cpp:129
 msgid "No Date"
 msgstr "Без даты"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:170
+#: src/utils.cpp:144
 msgid "Today, %1"
 msgstr "Сегодня, %1"
 
-#: src/utils.cpp:171
+#: src/utils.cpp:145
 msgid "Today"
 msgstr "Сегодня"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:177
+#: src/utils.cpp:151
 msgid "Yesterday, %1"
 msgstr "Вчера, %1"
 
-#: src/utils.cpp:178
+#: src/utils.cpp:152
 msgid "Yesterday"
 msgstr "Вчера"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:184
+#: src/utils.cpp:158
 msgid "Tomorrow, %1"
 msgstr "Завтра, %1"
 
-#: src/utils.cpp:185
+#: src/utils.cpp:159
 msgid "Tomorrow"
 msgstr "Завтра"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:189
+#: src/utils.cpp:163
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:192 src/utils.cpp:201
+#: src/utils.cpp:166 src/utils.cpp:175
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:172
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/utils.cpp:362 src/utils.cpp:376
+#: src/utils.cpp:268 src/utils.cpp:282
 msgid "_OK"
 msgstr "_ОК"
 
-#: src/utils.cpp:371
+#: src/utils.cpp:277
 msgid "_No"
 msgstr "_Нет"
 
-#: src/utils.cpp:372
+#: src/utils.cpp:278
 msgid "_Yes"
 msgstr "_Да"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: src/watchers.cpp:198
+#: src/watchers.cpp:194
 msgid "(Untitled %1)"
 msgstr "(Без названия %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:230
+#: src/watchers.cpp:226
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2824,21 +2720,87 @@ msgstr ""
 "Заметка с названием <b>%1</b> уже существует. Выберите другое название для "
 "этой заметки перед тем, как продолжить."
 
-#: src/watchers.cpp:245
+#: src/watchers.cpp:241
 msgid "Note title taken"
 msgstr "Название уже используется"
 
-#: src/watchers.cpp:312
+#: src/watchers.cpp:308
 msgid "Check spelling"
 msgstr "Проверка офрографии"
 
-#: src/watchers.cpp:708
-msgid "_Copy Link Address"
-msgstr "_Копировать адрес ссылки"
+#~ msgid "_Back"
+#~ msgstr "_Назад"
 
-#: src/watchers.cpp:714
-msgid "_Open Link"
-msgstr "_Открыть ссылку"
+#~ msgid "Sticky Notes Importer"
+#~ msgstr "Импорт из «Липких записок»"
+
+#~ msgid "Import your notes from the Sticky Notes applet."
+#~ msgstr "Импорт заметок из апплета «Липкие записки»."
+
+#~ msgid "Import from Sticky Notes"
+#~ msgstr "Импортировать из апплета «Липкие записки»"
+
+#~ msgid "No Sticky Notes found"
+#~ msgstr "Липкие записки не найдены"
+
+#~ msgid "No suitable Sticky Notes file was found at \"%1\"."
+#~ msgstr "Подходящий файл апплета «Липкие записки» «%1» не найден."
+
+#~ msgid "Sticky Notes import completed"
+#~ msgstr "Импорт из апплета «Липкие записки» завершён"
+
+#~ msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
+#~ msgstr "Успешно импортировано <b>%1</b> из <b>%2</b> \"липких записок\"."
+
+#~ msgid "Untitled"
+#~ msgstr "Без названия"
+
+#~ msgid "Sticky Note: "
+#~ msgstr "Липкая записка: "
+
+#~ msgid "(empty table of contents)"
+#~ msgstr "(пустая информация)"
+
+#~ msgid "_Underline"
+#~ msgstr "Под_чёркнутый"
+
+#, c-format
+#~ msgid "Failed to load icon (%s, %d): %s"
+#~ msgstr "Не удалось загрузить иконку (%s, %d): %s"
+
+#~ msgid "_Bold"
+#~ msgstr "_Жирный"
+
+#~ msgid "_Italic"
+#~ msgstr "_Курсив"
+
+#~ msgid "_Strikeout"
+#~ msgstr "_Зачёркнутый"
+
+#~ msgid "⦁ Bullets"
+#~ msgstr "⦁ Маркеры"
+
+#~ msgid "→ Increase indent"
+#~ msgstr "→ Увеличить отступ"
+
+#~ msgid "← Decrease indent"
+#~ msgstr "← Уменьшить отступ"
+
+#~ msgid "Expected widget to be a sub-menu!"
+#~ msgstr "Ожидаемый виджет будет в виде подменю!"
+
+#~ msgid "Notes"
+#~ msgstr "Заметки"
+
+#, c-format
+#~ msgid "Synchronization failed with the following Glib exception: %s"
+#~ msgstr "Ошибка синхронизации со следующим исключением Glib: %s"
+
+#~ msgid "_Copy Link Address"
+#~ msgstr "_Копировать адрес ссылки"
+
+#~ msgid "_Open Link"
+#~ msgstr "_Открыть ссылку"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Note Window"
