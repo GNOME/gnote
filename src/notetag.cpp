@@ -253,6 +253,7 @@ namespace gnote {
   }
 
 
+  const char *NoteTagTable::HIGHLIGHT_COLOR = "#808080";
   NoteTagTable::Ptr NoteTagTable::s_instance;
 
   void NoteTagTable::_init_common_tags()
@@ -287,7 +288,7 @@ namespace gnote {
     add(tag);
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-    tag->property_background() = "yellow";
+    tag->property_background() = HIGHLIGHT_COLOR;
     tag->property_background_set() = true;
     add(tag);
 

@@ -250,6 +250,8 @@ public:
   typedef Glib::RefPtr<NoteTagTable> Ptr;
   typedef sigc::slot<DynamicNoteTag::Ptr()> Factory;
 
+  static const char *HIGHLIGHT_COLOR;
+
   static const NoteTagTable::Ptr & instance() 
     {
       if(!s_instance) {
