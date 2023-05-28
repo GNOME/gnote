@@ -69,13 +69,13 @@ namespace bugzilla {
 
     attach(*l, 0, row++, 1, 1);
 
-    icon_store = Gtk::ListStore::create(m_columns);
-    icon_store->set_sort_column(m_columns.host, Gtk::SortType::ASCENDING);
+    m_icon_store = Gtk::ListStore::create(m_columns);
+    m_icon_store->set_sort_column(m_columns.host, Gtk::SortType::ASCENDING);
 
-    icon_tree = Gtk::make_managed<Gtk::TreeView>(icon_store);
-    icon_tree->set_headers_visible(true);
-    icon_tree->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
-    icon_tree->get_selection()->signal_changed().connect(
+    m_icon_list = Gtk::make_managed<Gtk::TreeView>(m_icon_store);
+    m_icon_list->set_headers_visible(true);
+    m_icon_list->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
+    m_icon_list->get_selection()->signal_changed().connect(
       sigc::mem_fun(*this, &BugzillaPreferences::selection_changed));
 
     auto host_col = Gtk::make_managed<Gtk::TreeViewColumn>(_("Host Name"), m_columns.host);
@@ -89,7 +89,7 @@ namespace bugzilla {
     host_col->set_reorderable(false);
     host_col->set_sort_order(Gtk::SortType::ASCENDING);
 
-    icon_tree->append_column (*host_col);
+    m_icon_list->append_column (*host_col);
 
     auto icon_col = Gtk::make_managed<Gtk::TreeViewColumn>(_("Icon"), m_columns.icon);
     icon_col->set_sizing(Gtk::TreeViewColumn::Sizing::FIXED);
@@ -97,13 +97,13 @@ namespace bugzilla {
     icon_col->set_min_width(50);
     icon_col->set_resizable(false);
 
-    icon_tree->append_column(*icon_col);
+    m_icon_list->append_column(*icon_col);
 
     Gtk::ScrolledWindow *sw = Gtk::make_managed<Gtk::ScrolledWindow>();
     sw->property_height_request() = 200;
     sw->property_width_request() = 300;
     sw->set_policy(Gtk::PolicyType::AUTOMATIC, Gtk::PolicyType::AUTOMATIC);
-    sw->set_child(*icon_tree);
+    sw->set_child(*m_icon_list);
     sw->set_hexpand(true);
     sw->set_vexpand(true);
 
@@ -133,7 +133,7 @@ namespace bugzilla {
       return;
     }
 
-    icon_store->clear(); // clear out the old entries
+    m_icon_store->clear(); // clear out the old entries
 
     std::vector<Glib::ustring> icon_files = sharp::directory_get_files (s_image_dir);
     for(auto icon_file : icon_files) {
@@ -153,7 +153,7 @@ namespace bugzilla {
 
       Glib::ustring host = parse_host(file_info);
       if (!host.empty()) {
-        Gtk::TreeIter treeiter = icon_store->append ();
+        Gtk::TreeIter treeiter = m_icon_store->append();
         
         (*treeiter)[m_columns.icon] = pixbuf;
         (*treeiter)[m_columns.host] = host;
@@ -195,7 +195,7 @@ namespace bugzilla {
 
   void BugzillaPreferences::selection_changed()
   {
-    remove_button->set_sensitive(icon_tree->get_selection()->count_selected_rows() > 0);
+    remove_button->set_sensitive(m_icon_list->get_selection()->count_selected_rows() > 0);
   }
   
   namespace {
@@ -347,7 +347,7 @@ namespace bugzilla {
   {
     // Remove the icon file and call UpdateIconStore ().
     Gtk::TreeIter<Gtk::TreeRow> iter;
-    iter = icon_tree->get_selection()->get_selected();
+    iter = m_icon_list->get_selection()->get_selected();
     if (!iter) {
       return;
     }

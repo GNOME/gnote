@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -76,8 +76,8 @@ private:
   };
 
   Columns        m_columns;
-  Gtk::TreeView *icon_tree;
-  Glib::RefPtr<Gtk::ListStore> icon_store;
+  Gtk::TreeView *m_icon_list;
+  Glib::RefPtr<Gtk::ListStore> m_icon_store;
 
   Gtk::Button *add_button;
   Gtk::Button *remove_button;
