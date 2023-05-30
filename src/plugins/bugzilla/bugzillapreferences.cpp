@@ -28,6 +28,9 @@
 #include <gtkmm/filechooserdialog.h>
 #include <gtkmm/label.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/singleselection.h>
+#include <gtkmm/sortlistmodel.h>
+#include <gtkmm/stringsorter.h>
 
 #include "sharp/directory.hpp"
 #include "sharp/fileinfo.hpp"
@@ -41,6 +44,60 @@
 
 
 namespace bugzilla {
+
+  namespace {
+
+    class HostNameFactory
+      : public gnote::utils::LabelFactory
+    {
+    public:
+      static Glib::RefPtr<HostNameFactory> create()
+        {
+          return Glib::make_refptr_for_instance(new HostNameFactory);
+        }
+    protected:
+      Glib::ustring get_text(Gtk::ListItem & item) override
+        {
+          return std::dynamic_pointer_cast<IconRecord>(item.get_item())->host;
+        }
+      void set_text(Gtk::Label & label, const Glib::ustring & text) override
+        {
+          label.set_text(text);
+        }
+    private:
+      HostNameFactory() {}
+    };
+
+    class IconFactory
+      : public Gtk::SignalListItemFactory
+    {
+    public:
+      static Glib::RefPtr<IconFactory> create()
+        {
+          return Glib::make_refptr_for_instance(new IconFactory);
+        }
+    private:
+      IconFactory()
+        {
+          signal_setup().connect(sigc::mem_fun(*this, &IconFactory::on_setup));
+          signal_bind().connect(sigc::mem_fun(*this, &IconFactory::on_bind));
+        }
+
+      void on_setup(const Glib::RefPtr<Gtk::ListItem> & item)
+        {
+          auto image = Gtk::make_managed<Gtk::Image>();
+          item->set_child(*image);
+        }
+
+      void on_bind(const Glib::RefPtr<Gtk::ListItem> & item)
+        {
+          auto record = std::dynamic_pointer_cast<IconRecord>(item->get_item());
+          auto image = dynamic_cast<Gtk::Image*>(item->get_child());
+          image->set(record->icon);
+        }
+    };
+
+  }
 
   bool BugzillaPreferences::s_static_inited = false;;
   Glib::ustring BugzillaPreferences::s_image_dir;
@@ -69,35 +126,38 @@ namespace bugzilla {
 
     attach(*l, 0, row++, 1, 1);
 
-    m_icon_store = Gtk::ListStore::create(m_columns);
-    m_icon_store->set_sort_column(m_columns.host, Gtk::SortType::ASCENDING);
+    m_icon_store = Gio::ListStore<IconRecord>::create();
+    auto sorting_expr = Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase> & obj) {
+      if(auto record = std::dynamic_pointer_cast<IconRecord>(obj)) {
+        return record->host;
+      }
 
-    m_icon_list = Gtk::make_managed<Gtk::TreeView>(m_icon_store);
-    m_icon_list->set_headers_visible(true);
-    m_icon_list->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
-    m_icon_list->get_selection()->signal_changed().connect(
-      sigc::mem_fun(*this, &BugzillaPreferences::selection_changed));
+      ERR_OUT("Object is not IconRecord");
+      return Glib::ustring();
+    });
+    auto sorter = Gtk::StringSorter::create(sorting_expr);
+    sorter->set_ignore_case(true);
+    sorter->set_collation(Gtk::Collation::FILENAME);
+    auto sort_model = Gtk::SortListModel::create(m_icon_store, sorter);
+    auto selection = Gtk::SingleSelection::create(sort_model);
+    selection->set_autoselect(false);
+    selection->set_can_unselect(true);
+    selection->signal_selection_changed().connect(sigc::mem_fun(*this, &BugzillaPreferences::selection_changed));
 
-    auto host_col = Gtk::make_managed<Gtk::TreeViewColumn>(_("Host Name"), m_columns.host);
-    host_col->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
+    m_icon_list = Gtk::make_managed<Gtk::ColumnView>(selection);
+    m_icon_list->set_reorderable(false);
+
+    auto host_col = Gtk::ColumnViewColumn::create(_("Host Name"), HostNameFactory::create());
     host_col->set_resizable(true);
     host_col->set_expand(true);
-    host_col->set_min_width(200);
 
-    host_col->set_sort_column(m_columns.host);
-    host_col->set_sort_indicator(false);
-    host_col->set_reorderable(false);
-    host_col->set_sort_order(Gtk::SortType::ASCENDING);
+    m_icon_list->append_column(host_col);
 
-    m_icon_list->append_column (*host_col);
-
-    auto icon_col = Gtk::make_managed<Gtk::TreeViewColumn>(_("Icon"), m_columns.icon);
-    icon_col->set_sizing(Gtk::TreeViewColumn::Sizing::FIXED);
-    icon_col->set_max_width(50);
-    icon_col->set_min_width(50);
+    auto icon_col = Gtk::ColumnViewColumn::create(_("Icon"), IconFactory::create());
+    icon_col->set_fixed_width(50);
     icon_col->set_resizable(false);
 
-    m_icon_list->append_column(*icon_col);
+    m_icon_list->append_column(icon_col);
 
     Gtk::ScrolledWindow *sw = Gtk::make_managed<Gtk::ScrolledWindow>();
     sw->property_height_request() = 200;
@@ -133,7 +193,7 @@ namespace bugzilla {
       return;
     }
 
-    m_icon_store->clear(); // clear out the old entries
+    m_icon_store->remove_all(); // clear out the old entries
 
     std::vector<Glib::ustring> icon_files = sharp::directory_get_files (s_image_dir);
     for(auto icon_file : icon_files) {
@@ -153,11 +213,8 @@ namespace bugzilla {
 
       Glib::ustring host = parse_host(file_info);
       if (!host.empty()) {
-        Gtk::TreeIter treeiter = m_icon_store->append();
-        
-        (*treeiter)[m_columns.icon] = pixbuf;
-        (*treeiter)[m_columns.host] = host;
-        (*treeiter)[m_columns.file_path] = icon_file;
+        auto record = IconRecord::create(host, icon_file, pixbuf);
+        m_icon_store->append(record);
       }
     }
   }
@@ -193,9 +250,9 @@ namespace bugzilla {
   }
 
 
-  void BugzillaPreferences::selection_changed()
+  void BugzillaPreferences::selection_changed(guint, guint)
   {
-    remove_button->set_sensitive(m_icon_list->get_selection()->count_selected_rows() > 0);
+    remove_button->set_sensitive(std::dynamic_pointer_cast<Gtk::SingleSelection>(m_icon_list->get_model())->get_selected() != GTK_INVALID_LIST_POSITION);
   }
   
   namespace {
@@ -345,14 +402,13 @@ namespace bugzilla {
 
   void BugzillaPreferences::remove_clicked()
   {
-    // Remove the icon file and call UpdateIconStore ().
-    Gtk::TreeIter<Gtk::TreeRow> iter;
-    iter = m_icon_list->get_selection()->get_selected();
-    if (!iter) {
+    auto item = std::dynamic_pointer_cast<Gtk::SingleSelection>(m_icon_list->get_model())->get_selected_item();
+    if(!item) {
       return;
     }
 
-    Glib::ustring icon_path = (*iter)[m_columns.file_path];
+    auto record = std::dynamic_pointer_cast<IconRecord>(item);
+    Glib::ustring icon_path = record->file_path;
 
     auto dialog = Gtk::make_managed<gnote::utils::HIGMessageDialog>(nullptr, 
                                           GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -365,15 +421,17 @@ namespace bugzilla {
     dialog->set_default_response(Gtk::ResponseType::CANCEL);
 
     button = Gtk::make_managed<Gtk::Button>(_("_Delete"), true);
+    button->get_style_context()->add_class("destructive-action");
     dialog->add_action_widget(*button, 666);
 
-    dialog->show();
+    dialog->present();
     dialog->signal_response().connect([this, dialog, icon_path](int result) {
       dialog->hide();
       if(result == 666) {
         try {
           sharp::file_delete(icon_path);
           update_icon_store();
+          selection_changed(0, 0);
         }
         catch(const sharp::Exception & e) {
           ERR_OUT(_("Error removing icon %s: %s"), icon_path.c_str(), e.what());

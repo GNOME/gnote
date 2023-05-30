@@ -24,11 +24,10 @@
 #define __BUGZILLA_PREFERENCES_HPP_
 
 #include <gdkmm/pixbuf.h>
+#include <giomm/liststore.h>
 #include <gtkmm/button.h>
+#include <gtkmm/columnview.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/liststore.h>
-#include <gtkmm/treemodelcolumn.h>
-#include <gtkmm/treeview.h>
 
 namespace sharp {
 
@@ -43,6 +42,26 @@ namespace gnote {
 
 namespace bugzilla {
 
+class IconRecord
+  : public Glib::Object
+{
+public:
+  static Glib::RefPtr<IconRecord> create(const Glib::ustring & host, const Glib::ustring & file_path, const Glib::RefPtr<Gdk::Pixbuf> & icon)
+    {
+      return Glib::make_refptr_for_instance(new IconRecord(host, file_path, icon));
+    }
+
+  const Glib::RefPtr<Gdk::Pixbuf> icon;
+  const Glib::ustring host;
+  const Glib::ustring file_path;
+private:
+  IconRecord(const Glib::ustring & host, const Glib::ustring & file_path, const Glib::RefPtr<Gdk::Pixbuf> & icon)
+    : icon(icon)
+    , host(host)
+    , file_path(file_path)
+  {}
+};
+
 
 class BugzillaPreferences
   : public Gtk::Grid
@@ -56,7 +75,7 @@ protected:
 private:
   void update_icon_store();
   Glib::ustring parse_host(const sharp::FileInfo &);
-  void selection_changed();
+  void selection_changed(guint, guint);
   void add_clicked();
   bool copy_to_bugzilla_icons_dir(const Glib::ustring & file_path,
                                   const Glib::ustring & host,
@@ -64,20 +83,8 @@ private:
   void resize_if_needed(const Glib::ustring & path);
   void remove_clicked();
 
-  class Columns
-    : public Gtk::TreeModelColumnRecord
-  {
-  public:
-    Columns()
-      { add(icon); add(host); add(file_path); }
-    Gtk::TreeModelColumn<Glib::RefPtr<Gdk::Pixbuf> > icon;
-    Gtk::TreeModelColumn<Glib::ustring>              host;
-    Gtk::TreeModelColumn<Glib::ustring>              file_path;
-  };
-
-  Columns        m_columns;
-  Gtk::TreeView *m_icon_list;
-  Glib::RefPtr<Gtk::ListStore> m_icon_store;
+  Gtk::ColumnView *m_icon_list;
+  Glib::RefPtr<Gio::ListStore<IconRecord>> m_icon_store;
 
   Gtk::Button *add_button;
   Gtk::Button *remove_button;
