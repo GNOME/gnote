@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,10 +23,9 @@
 
 #include <map>
 
+#include <giomm/liststore.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/liststore.h>
 #include <gtkmm/checkbutton.h>
-#include <gtkmm/treeview.h>
 
 #include "note.hpp"
 
@@ -42,35 +41,30 @@ enum NoteRenameBehavior {
   NOTE_RENAME_ALWAYS_RENAME_LINKS = 2
 };
 
-class ModelColumnRecord
-  : public Gtk::TreeModelColumnRecord
+class NoteRenameRecord
+  : public Glib::Object
 {
 public:
+  static Glib::RefPtr<NoteRenameRecord> create(const NoteBase::Ptr & note, bool selected);
+  virtual ~NoteRenameRecord();
 
-  ModelColumnRecord();
-  virtual ~ModelColumnRecord();
+  bool selected() const
+    {
+      return m_selected;
+    }
+  void selected(bool select);
+  void set_check_button(Gtk::CheckButton *button)
+    {
+      m_check_button = button;
+    }
 
-  const Gtk::TreeModelColumn<bool> & get_column_selected() const;
-  gint get_column_selected_num() const;
-
-  const Gtk::TreeModelColumn<Glib::ustring> & get_column_title() const;
-  gint get_column_title_num() const;
-
-  const Gtk::TreeModelColumn<NoteBase::Ptr> & get_column_note() const;
-  gint get_column_note_num() const;
-
+  const NoteBase::Ptr note;
+  sigc::connection signal_cid;
 private:
+  NoteRenameRecord(const NoteBase::Ptr & note, bool selected);
 
-  enum {
-    COLUMN_BOOL = 0,
-    COLUMN_TITLE,
-    COLUMN_NOTE,
-    COLUMN_COUNT
-  };
-
-  Gtk::TreeModelColumn<bool> m_column_selected;
-  Gtk::TreeModelColumn<Glib::ustring> m_column_title;
-  Gtk::TreeModelColumn<NoteBase::Ptr> m_column_note;
+  Gtk::CheckButton *m_check_button;
+  bool m_selected;
 };
 
 class NoteRenameDialog
@@ -93,17 +87,11 @@ private:
   void on_always_rename_clicked();
   void on_always_show_dlg_clicked();
   void on_never_rename_clicked();
-  bool on_notes_model_foreach_iter_accumulate(const Gtk::TreeIter<Gtk::TreeRow> & iter, const MapPtr & notes) const;
-  bool on_notes_model_foreach_iter_select(const Gtk::TreeIter<Gtk::TreeRow> & iter, bool select);
-  void on_notes_view_row_activated(const Gtk::TreeModel::Path & p,
-                                   Gtk::TreeView::Column *,
-                                   const Glib::ustring & old_title);
+  void on_notes_view_row_activated(guint pos, const Glib::ustring & old_title);
   void on_select_all_button_clicked(bool select);
-  void on_toggle_cell_toggled(const Glib::ustring & p);
 
   IGnote & m_gnote;
-  ModelColumnRecord m_model_column_record;
-  Glib::RefPtr<Gtk::ListStore> m_notes_model;
+  Glib::RefPtr<Gio::ListStore<NoteRenameRecord>> m_notes_model;
   Gtk::Button m_dont_rename_button;
   Gtk::Button m_rename_button;
   Gtk::Button m_select_all_button;

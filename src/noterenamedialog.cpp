@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019,2021-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,11 +22,15 @@
 #include <config.h>
 #endif
 
-#include <algorithm>
-
 #include <glibmm/i18n.h>
+#include <gtkmm/expression.h>
+#include <gtkmm/columnview.h>
 #include <gtkmm/expander.h>
 #include <gtkmm/label.h>
+#include <gtkmm/numericsorter.h>
+#include <gtkmm/singleselection.h>
+#include <gtkmm/sortlistmodel.h>
+#include <gtkmm/stringsorter.h>
 
 #include "ignote.hpp"
 #include "mainwindow.hpp"
@@ -35,81 +39,100 @@
 
 namespace gnote {
 
-ModelColumnRecord::ModelColumnRecord()
-  : Gtk::TreeModelColumnRecord()
-  , m_column_selected()
-  , m_column_title()
-  , m_column_note()
-{
-    add(m_column_selected);
-    add(m_column_title);
-    add(m_column_note);
-}
+namespace {
 
-ModelColumnRecord::~ModelColumnRecord()
-{
-}
-
-const Gtk::TreeModelColumn<bool> & ModelColumnRecord::get_column_selected()
-                                     const
-{
-    return m_column_selected;
-}
-
-gint ModelColumnRecord::get_column_selected_num() const
-{
-    return COLUMN_BOOL;
-}
-
-const Gtk::TreeModelColumn<Glib::ustring> & ModelColumnRecord::get_column_title()
-                                            const
-{
-    return m_column_title;
-}
-
-gint ModelColumnRecord::get_column_title_num() const
-{
-    return COLUMN_TITLE;
-}
-
-const Gtk::TreeModelColumn<NoteBase::Ptr> & ModelColumnRecord::get_column_note()
-                                          const
-{
-    return m_column_note;
-}
-
-gint ModelColumnRecord::get_column_note_num() const
-{
-    return COLUMN_NOTE;
-}
-
-class ModelFiller
+class ToggleFactory
+  : public Gtk::SignalListItemFactory
 {
 public:
-  explicit ModelFiller(const Glib::RefPtr<Gtk::ListStore> & list_store);
-  void operator()(const NoteBase::Ptr & note);
+  static Glib::RefPtr<ToggleFactory> create()
+    {
+      return Glib::make_refptr_for_instance(new ToggleFactory);
+    }
 private:
-  Glib::RefPtr<Gtk::ListStore> m_list_store;
+  ToggleFactory()
+    {
+      signal_setup().connect(sigc::mem_fun(*this, &ToggleFactory::on_setup));
+      signal_bind().connect(sigc::mem_fun(*this, &ToggleFactory::on_bind));
+      signal_unbind().connect(sigc::mem_fun(*this, &ToggleFactory::on_unbind));
+    }
+
+  void on_setup(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      list_item->set_child(*Gtk::make_managed<Gtk::CheckButton>());
+    }
+
+  void on_bind(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      auto record = get_record(list_item);
+      auto check_button = get_check_button(list_item);
+      check_button->set_active(record->selected());
+      record->set_check_button(check_button);
+      record->signal_cid = check_button->signal_toggled().connect([record, check_button] {
+        record->selected(check_button->get_active());
+      });
+    }
+
+  void on_unbind(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      auto record = get_record(list_item);
+      record->signal_cid.disconnect();
+      record->set_check_button(nullptr);
+    }
+
+  Glib::RefPtr<NoteRenameRecord> get_record(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      return std::dynamic_pointer_cast<NoteRenameRecord>(list_item->get_item());
+    }
+
+  Gtk::CheckButton *get_check_button(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      return dynamic_cast<Gtk::CheckButton*>(list_item->get_child());
+    }
 };
 
-ModelFiller::ModelFiller(
-               const Glib::RefPtr<Gtk::ListStore> & list_store)
-  : m_list_store(list_store)
+class NoteTitleFactory
+  : public utils::LabelFactory
+{
+public:
+  static Glib::RefPtr<NoteTitleFactory> create()
+    {
+      return Glib::make_refptr_for_instance(new NoteTitleFactory);
+    }
+protected:
+  Glib::ustring get_text(Gtk::ListItem & item) override
+    {
+      return std::dynamic_pointer_cast<NoteRenameRecord>(item.get_item())->note->get_title();
+    }
+  void set_text(Gtk::Label & label, const Glib::ustring & text) override
+    {
+      label.set_text(text);
+    }
+};
+
+}
+
+Glib::RefPtr<NoteRenameRecord> NoteRenameRecord::create(const NoteBase::Ptr & note, bool selected)
+{
+  return Glib::make_refptr_for_instance(new NoteRenameRecord(note, selected));
+}
+
+NoteRenameRecord::NoteRenameRecord(const NoteBase::Ptr & note, bool selected)
+  : note(note)
+  , m_selected(selected)
 {
 }
 
-void ModelFiller::operator()(const NoteBase::Ptr & note)
+NoteRenameRecord::~NoteRenameRecord()
 {
-  if (!note)
-    return;
+}
 
-  ModelColumnRecord model_column_record;
-  const Gtk::TreeModel::iterator iter = m_list_store->append();
-  Gtk::TreeModel::Row row = *iter;
-
-  row[model_column_record.get_column_selected()] = true;
-  row[model_column_record.get_column_title()] = note->get_title();
-  row[model_column_record.get_column_note()] = note;
+void NoteRenameRecord::selected(bool select)
+{
+  m_selected = select;
+  if(m_check_button) {
+    m_check_button->set_active(select);
+  }
 }
 
 NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
@@ -120,7 +143,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
                 *dynamic_cast<Gtk::Window*>(std::static_pointer_cast<Note>(renamed_note)->get_window()->host()),
                 false)
   , m_gnote(g)
-  , m_notes_model(Gtk::ListStore::create(m_model_column_record))
+  , m_notes_model(Gio::ListStore<NoteRenameRecord>::create())
   , m_dont_rename_button(_("_Don't Rename Links"), true)
   , m_rename_button(_("_Rename Links"), true)
   , m_select_all_button(_("Select All"))
@@ -137,8 +160,9 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   add_action_widget(m_rename_button, Gtk::ResponseType::YES);
   add_action_widget(m_dont_rename_button, Gtk::ResponseType::NO);
 
-  std::for_each(notes.begin(), notes.end(),
-                ModelFiller(m_notes_model));
+  for(const auto & note : notes) {
+    m_notes_model->append(NoteRenameRecord::create(note, true));
+  };
 
   Gtk::Label * const label = Gtk::manage(new Gtk::Label());
   label->set_use_markup(true);
@@ -155,51 +179,42 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   label->set_margin(5);
   vbox->append(*label);
 
-  auto notes_view = Gtk::make_managed<Gtk::TreeView>(m_notes_model);
-  notes_view->set_size_request(-1, 200);
-  notes_view->signal_row_activated().connect(
-    sigc::bind(
-      sigc::mem_fun(*this,
-                    &NoteRenameDialog::on_notes_view_row_activated),
-      old_title));
-
-  ModelColumnRecord model_column_record;
-
-  auto toggle_cell = Gtk::make_managed<Gtk::CellRendererToggle>();
-  toggle_cell->set_activatable(true);
-  toggle_cell->signal_toggled().connect(
-    sigc::mem_fun(*this,
-                  &NoteRenameDialog::on_toggle_cell_toggled));
+  auto notes_view = Gtk::make_managed<Gtk::ColumnView>();
+  notes_view->signal_activate().connect([this, old_title](guint pos) { on_notes_view_row_activated(pos, old_title); });
 
   {
-    auto column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Rename Links"), *toggle_cell);
-    column->add_attribute(*toggle_cell,
-                          "active",
-                          model_column_record.get_column_selected());
-    column->set_sort_column(
-              model_column_record.get_column_selected());
+    auto column = Gtk::ColumnViewColumn::create(_("Rename Links"), ToggleFactory::create());
+    auto expr = Gtk::ClosureExpression<bool>::create([](const Glib::RefPtr<Glib::ObjectBase> & item) {
+      return std::dynamic_pointer_cast<NoteRenameRecord>(item)->selected();
+    });
+    column->set_sorter(Gtk::NumericSorter<bool>::create(expr));
     column->set_resizable(true);
-    notes_view->append_column(*column);
+    notes_view->append_column(column);
   }
 
   {
-    auto column = Gtk::make_managed<Gtk::TreeViewColumn>(_("Note Title"), model_column_record.get_column_title());
-    column->set_sort_column(model_column_record.get_column_title());
+    auto column = Gtk::ColumnViewColumn::create(_("Note Title"), NoteTitleFactory::create());
+    auto expr = Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase> & item) {
+      return std::dynamic_pointer_cast<NoteRenameRecord>(item)->note->get_title();
+    });
+    column->set_sorter(Gtk::StringSorter::create(expr));
     column->set_resizable(true);
-    notes_view->append_column(*column);
+    notes_view->append_column(column);
   }
 
-  m_select_all_button.signal_clicked().connect(
-    sigc::bind(
-      sigc::mem_fun(*this,
-                    &NoteRenameDialog::on_select_all_button_clicked),
-      true));
+  {
+    auto sort_model = Gtk::SortListModel::create(m_notes_model, notes_view->get_sorter());
+    auto selection = Gtk::SingleSelection::create(sort_model);
+    notes_view->set_model(selection);
+  }
 
-  m_select_none_button.signal_clicked().connect(
-    sigc::bind(
-      sigc::mem_fun(*this,
-                    &NoteRenameDialog::on_select_all_button_clicked),
-      false));
+  m_select_all_button.signal_clicked().connect([this] {
+    on_select_all_button_clicked(true);
+  });
+
+  m_select_none_button.signal_clicked().connect([this] {
+    on_select_all_button_clicked(false);
+  });
 
   auto notes_button_box = Gtk::make_managed<Gtk::Grid>();
   notes_button_box->set_column_spacing(5);
@@ -211,6 +226,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   notes_scroll->set_child(*notes_view);
   notes_scroll->set_hexpand(true);
   notes_scroll->set_vexpand(true);
+  notes_scroll->set_size_request(-1, 200);
 
   m_notes_box.attach(*notes_scroll, 0, 0, 1, 1);
   m_notes_box.attach(*notes_button_box, 0, 1, 1, 1);
@@ -254,13 +270,11 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
 NoteRenameDialog::MapPtr NoteRenameDialog::get_notes() const
 {
   const MapPtr notes(std::make_shared<std::map<NoteBase::Ptr, bool>>());
-
-  m_notes_model->foreach_iter(
-    sigc::bind(
-      sigc::mem_fun(
-        *this,
-        &NoteRenameDialog::on_notes_model_foreach_iter_accumulate),
-      notes));
+  auto count = m_notes_model->get_n_items();
+  for(guint i = 0; i < count; ++i) {
+    auto record = m_notes_model->get_item(i);
+    notes->insert(std::make_pair(record->note, record->selected()));
+  }
   return notes;
 }
 
@@ -303,42 +317,14 @@ void NoteRenameDialog::on_never_rename_clicked()
   m_dont_rename_button.set_sensitive(true);
 }
 
-bool NoteRenameDialog::on_notes_model_foreach_iter_accumulate(const Gtk::TreeIter<Gtk::TreeRow> & iter, const MapPtr & notes) const
+void NoteRenameDialog::on_notes_view_row_activated(guint pos, const Glib::ustring & old_title)
 {
-  ModelColumnRecord model_column_record;
-  const Gtk::TreeModel::Row row = *iter;
-
-  notes->insert(std::make_pair(
-                  row[model_column_record.get_column_note()],
-                  row[model_column_record.get_column_selected()]));
-  return false;
-}
-
-bool NoteRenameDialog::on_notes_model_foreach_iter_select(const Gtk::TreeIter<Gtk::TreeRow> & iter, bool select)
-{
-  ModelColumnRecord model_column_record;
-  Gtk::TreeModel::Row row = *iter;
-  row[model_column_record.get_column_selected()] = select;
-
-  return false;
-}
-
-void NoteRenameDialog::on_notes_view_row_activated(
-                         const Gtk::TreePath & p,
-                         Gtk::TreeView::Column *,
-                         const Glib::ustring & old_title)
-{
-  const Gtk::TreeModel::iterator iter = m_notes_model->get_iter(p);
-  if (!iter)
+  auto item = m_notes_model->get_item(pos);
+  if(!item) {
     return;
+  }
 
-  ModelColumnRecord model_column_record;
-  Gtk::TreeModel::Row row = *iter;
-  const NoteBase::Ptr note = row[model_column_record.get_column_note()];
-  if (!note)
-    return;
-
-  MainWindow *window = MainWindow::present_default(m_gnote, std::static_pointer_cast<Note>(note));
+  MainWindow *window = MainWindow::present_default(m_gnote, std::static_pointer_cast<Note>(item->note));
   if(window) {
     window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
     window->show_search_bar();
@@ -347,24 +333,11 @@ void NoteRenameDialog::on_notes_view_row_activated(
 
 void NoteRenameDialog::on_select_all_button_clicked(bool select)
 {
-  m_notes_model->foreach_iter(
-    sigc::bind(
-      sigc::mem_fun(
-        *this,
-        &NoteRenameDialog::on_notes_model_foreach_iter_select),
-      select));
-}
-
-void NoteRenameDialog::on_toggle_cell_toggled(const Glib::ustring & p)
-{
-  const Gtk::TreeModel::iterator iter = m_notes_model->get_iter(p);
-  if (!iter)
-    return;
-
-  ModelColumnRecord model_column_record;
-  Gtk::TreeModel::Row row = *iter;
-  row[model_column_record.get_column_selected()]
-    = !row[model_column_record.get_column_selected()];
+  auto count = m_notes_model->get_n_items();
+  for(guint i = 0; i < count; ++i) {
+    auto item = m_notes_model->get_item(i);
+    item->selected(select);
+  }
 }
 
 }
