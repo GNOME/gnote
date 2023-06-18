@@ -33,7 +33,6 @@
 #include <gtkmm/notebook.h>
 #include <gtkmm/separator.h>
 
-#include "sharp/addinstreemodel.hpp"
 #include "sharp/modulemanager.hpp"
 #include "sharp/propertyeditor.hpp"
 #include "synchronization/syncserviceaddin.hpp"

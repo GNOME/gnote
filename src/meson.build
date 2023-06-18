@@ -66,7 +66,7 @@ libgnote_sources = [
 ]
 
 gnote_sources = [
-  'sharp/addinstreemodel.cpp',
+  'sharp/pluginsmodel.cpp',
   'actionmanager.cpp',
   'gnote.cpp',
   'preferencesdialog.cpp',

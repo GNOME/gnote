@@ -33,7 +33,7 @@
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/spinbutton.h>
 
-#include "sharp/addinstreemodel.hpp"
+#include "sharp/pluginsmodel.hpp"
 
 namespace gnote {
 

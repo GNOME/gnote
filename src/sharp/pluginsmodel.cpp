@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -27,7 +27,7 @@
 
 #include <glibmm/i18n.h>
 
-#include "sharp/addinstreemodel.hpp"
+#include "sharp/pluginsmodel.hpp"
 #include "abstractaddin.hpp"
 #include "iconmanager.hpp"
 
