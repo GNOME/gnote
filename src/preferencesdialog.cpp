@@ -522,13 +522,13 @@ namespace gnote {
     int hbox_col = 0;
 
     // TreeView of Add-ins
-    m_addin_tree = Gtk::make_managed<Gtk::TreeView>();
-    m_addin_tree_model = sharp::AddinsTreeModel::create(m_addin_tree);
+    m_plugin_view = Gtk::make_managed<Gtk::TreeView>();
+    m_plugin_model = sharp::AddinsTreeModel::create(m_plugin_view);
 
     auto sw = Gtk::make_managed<Gtk::ScrolledWindow>();
     sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
     sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
-    sw->set_child(*m_addin_tree);
+    sw->set_child(*m_plugin_view);
     sw->set_hexpand(true);
     sw->set_vexpand(true);
     hbox->attach(*sw, hbox_col++, 0, 1, 1);
@@ -566,8 +566,8 @@ namespace gnote {
 
     vbox->attach(*hbox, 0, vbox_row++, 1, 1);
 
-    m_addin_tree->get_selection()->signal_changed().connect(
-      sigc::mem_fun(*this, &PreferencesDialog::on_addin_tree_selection_changed));
+    m_plugin_view->get_selection()->signal_changed().connect(
+      sigc::mem_fun(*this, &PreferencesDialog::on_plugin_view_selection_changed));
     load_addins();
 
     return vbox;
@@ -577,11 +577,11 @@ namespace gnote {
   Glib::ustring PreferencesDialog::get_selected_addin()
   {
     /// TODO really set
-    Glib::RefPtr<Gtk::TreeSelection> select = m_addin_tree->get_selection();
+    Glib::RefPtr<Gtk::TreeSelection> select = m_plugin_view->get_selection();
     Gtk::TreeIter iter = select->get_selected();
     Glib::ustring module_id;
     if(iter) {
-      module_id = m_addin_tree_model->get_module_id(iter);
+      module_id = m_plugin_model->get_module_id(iter);
     }
     return module_id;
   }
@@ -589,15 +589,15 @@ namespace gnote {
 
   void PreferencesDialog::set_module_for_selected_addin(sharp::DynamicModule * module)
   {
-    Glib::RefPtr<Gtk::TreeSelection> select = m_addin_tree->get_selection();
+    Glib::RefPtr<Gtk::TreeSelection> select = m_plugin_view->get_selection();
     Gtk::TreeIter iter = select->get_selected();
     if(iter) {
-      m_addin_tree_model->set_module(iter, module);
+      m_plugin_model->set_module(iter, module);
     }
   }
 
 
-  void PreferencesDialog::on_addin_tree_selection_changed()
+  void PreferencesDialog::on_plugin_view_selection_changed()
   {
     update_addin_buttons();
   }
@@ -642,7 +642,7 @@ namespace gnote {
       if(m_addin_manager.is_module_loaded(iter->first)) {
         module = m_addin_manager.get_module(iter->first);
       }
-      m_addin_tree_model->append(iter->second, module);
+      m_plugin_model->append(iter->second, module);
     }
 
     update_addin_buttons();

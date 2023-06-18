@@ -78,7 +78,7 @@ private:
 
   Glib::ustring get_selected_addin();
   void set_module_for_selected_addin(sharp::DynamicModule * module);
-  void on_addin_tree_selection_changed();
+  void on_plugin_view_selection_changed();
   void update_addin_buttons();
   void load_addins();
   void on_enable_addin_button();
@@ -126,8 +126,8 @@ private:
   Gtk::Label  *font_face;
   Gtk::Label  *font_size;
 
-  Gtk::TreeView              *m_addin_tree;
-  sharp::AddinsTreeModel::Ptr m_addin_tree_model;
+  Gtk::TreeView *m_plugin_view;
+  sharp::AddinsTreeModel::Ptr m_plugin_model;
   
   Gtk::Button *enable_addin_button;
   Gtk::Button *disable_addin_button;
