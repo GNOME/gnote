@@ -521,8 +521,8 @@ namespace gnote {
     int hbox_col = 0;
 
     // TreeView of Add-ins
-    m_plugin_view = Gtk::make_managed<Gtk::TreeView>();
-    m_plugin_model = sharp::AddinsTreeModel::create(m_plugin_view);
+    m_plugin_view = Gtk::make_managed<Gtk::ColumnView>();
+    m_plugin_model = sharp::AddinsModel::create(m_plugin_view);
 
     auto sw = Gtk::make_managed<Gtk::ScrolledWindow>();
     sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
@@ -565,7 +565,7 @@ namespace gnote {
 
     vbox->attach(*hbox, 0, vbox_row++, 1, 1);
 
-    m_plugin_view->get_selection()->signal_changed().connect(
+    m_plugin_model->signal_selection_changed.connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_plugin_view_selection_changed));
     load_addins();
 
@@ -575,38 +575,39 @@ namespace gnote {
 
   Glib::ustring PreferencesDialog::get_selected_addin()
   {
-    /// TODO really set
-    Glib::RefPtr<Gtk::TreeSelection> select = m_plugin_view->get_selection();
-    Gtk::TreeIter iter = select->get_selected();
-    Glib::ustring module_id;
-    if(iter) {
-      module_id = m_plugin_model->get_module_id(iter);
+    auto item = m_plugin_model->get_selected_plugin();
+    if(item) {
+      return item->info.id();
     }
-    return module_id;
+    return "";
   }
 
 
   void PreferencesDialog::set_module_for_selected_addin(sharp::DynamicModule * module)
   {
-    Glib::RefPtr<Gtk::TreeSelection> select = m_plugin_view->get_selection();
-    Gtk::TreeIter iter = select->get_selected();
-    if(iter) {
-      m_plugin_model->set_module(iter, module);
+    auto plugin = m_plugin_model->get_selected_plugin();
+    if(plugin) {
+      plugin->set_module(module);
     }
   }
 
 
-  void PreferencesDialog::on_plugin_view_selection_changed()
+  void PreferencesDialog::on_plugin_view_selection_changed(const Glib::RefPtr<sharp::Plugin> & plugin)
   {
-    update_addin_buttons();
+    update_addin_buttons(plugin);
   }
 
 
   /// Set the sensitivity of the buttons based on what is selected
   void PreferencesDialog::update_addin_buttons()
   {
-    Glib::ustring id = get_selected_addin();
-    if(id != "") {
+    update_addin_buttons(m_plugin_model->get_selected_plugin());
+  }
+
+  void PreferencesDialog::update_addin_buttons(const Glib::RefPtr<sharp::Plugin> & plugin)
+  {
+    if(plugin) {
+      auto id = plugin->info.id();
       bool loaded = m_addin_manager.is_module_loaded(id);
       bool enabled = false;
       if(loaded) {

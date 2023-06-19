@@ -27,7 +27,6 @@
 #include <map>
 
 #include <gtkmm/dialog.h>
-#include <gtkmm/treeiter.h>
 #include <gtkmm/liststore.h>
 #include <gtkmm/combobox.h>
 #include <gtkmm/comboboxtext.h>
@@ -78,8 +77,9 @@ private:
 
   Glib::ustring get_selected_addin();
   void set_module_for_selected_addin(sharp::DynamicModule * module);
-  void on_plugin_view_selection_changed();
+  void on_plugin_view_selection_changed(const Glib::RefPtr<sharp::Plugin> & plugin);
   void update_addin_buttons();
+  void update_addin_buttons(const Glib::RefPtr<sharp::Plugin> & plugin);
   void load_addins();
   void on_enable_addin_button();
   void on_disable_addin_button();
@@ -126,8 +126,8 @@ private:
   Gtk::Label  *font_face;
   Gtk::Label  *font_size;
 
-  Gtk::TreeView *m_plugin_view;
-  sharp::AddinsTreeModel::Ptr m_plugin_model;
+  Gtk::ColumnView *m_plugin_view;
+  sharp::AddinsModel::Ptr m_plugin_model;
   
   Gtk::Button *enable_addin_button;
   Gtk::Button *disable_addin_button;

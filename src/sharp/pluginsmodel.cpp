@@ -26,122 +26,179 @@
 
 
 #include <glibmm/i18n.h>
+#include <gtkmm/expression.h>
+#include <gtkmm/grid.h>
+#include <gtkmm/image.h>
+#include <gtkmm/label.h>
+#include <gtkmm/signallistitemfactory.h>
+#include <gtkmm/singleselection.h>
+#include <gtkmm/sortlistmodel.h>
+#include <gtkmm/stringsorter.h>
 
 #include "sharp/pluginsmodel.hpp"
 #include "abstractaddin.hpp"
-#include "iconmanager.hpp"
+#include "utils.hpp"
+
+
+namespace {
+
+class PluginNameFactory
+  : public Gtk::SignalListItemFactory
+{
+public:
+  static Glib::RefPtr<PluginNameFactory> create()
+  {
+    return Glib::make_refptr_for_instance(new PluginNameFactory);
+  }
+private:
+  PluginNameFactory()
+  {
+    signal_setup().connect(sigc::mem_fun(*this, &PluginNameFactory::on_setup));
+    signal_bind().connect(sigc::mem_fun(*this, &PluginNameFactory::on_bind));
+  }
+
+  void on_setup(const Glib::RefPtr<Gtk::ListItem> & list_item)
+  {
+    auto child = Gtk::make_managed<Gtk::Grid>();
+    auto image = Gtk::make_managed<Gtk::Image>();
+    image->property_icon_name() = "application-x-addon-symbolic";
+    image->set_margin_end(5);
+    child->attach(*image, 0, 0);
+    auto label = Gtk::make_managed<Gtk::Label>();
+    child->attach(*label, 1, 0);
+    list_item->set_child(*child);
+  }
+
+  void on_bind(const Glib::RefPtr<Gtk::ListItem> & list_item)
+  {
+    auto child = dynamic_cast<Gtk::Grid*>(list_item->get_child());
+    auto item = std::dynamic_pointer_cast<sharp::Plugin>(list_item->get_item());
+    auto label = dynamic_cast<Gtk::Label*>(child->get_child_at(1, 0));
+    auto module = item->module();
+    auto color = (module && module->is_enabled()) ? "black" : "grey";
+    label->set_markup(Glib::ustring::compose("<span foreground=\"%2\">%1</span>", item->info.name(), color));
+  }
+};
+
+class PluginVersionFactory
+  : public gnote::utils::LabelFactory
+{
+public:
+  static Glib::RefPtr<PluginVersionFactory> create()
+  {
+    return Glib::make_refptr_for_instance(new PluginVersionFactory);
+  }
+protected:
+  Glib::ustring get_text(Gtk::ListItem & item) override
+  {
+    auto plugin = std::dynamic_pointer_cast<sharp::Plugin>(item.get_item());
+    return plugin->info.version();
+  }
+
+  void set_text(Gtk::Label & label, const Glib::ustring & text) override
+  {
+    label.set_text(text);
+  }
+};
+
+class PluginCategoryFactory
+  : public gnote::utils::LabelFactory
+{
+public:
+  static Glib::RefPtr<PluginCategoryFactory> create()
+  {
+    return Glib::make_refptr_for_instance(new PluginCategoryFactory);
+  }
+protected:
+  Glib::ustring get_text(Gtk::ListItem & item) override
+  {
+    auto plugin = std::dynamic_pointer_cast<sharp::Plugin>(item.get_item());
+    auto category = plugin->info.category();
+    return sharp::AddinsModel::get_addin_category_name(category);
+  }
+
+  void set_text(Gtk::Label & label, const Glib::ustring & text) override
+  {
+    label.set_text(text);
+  }
+};
+
+}
 
 
 namespace sharp {
 
-
-  AddinsTreeModel::Ptr AddinsTreeModel::create(Gtk::TreeView *treeview)
+  Glib::RefPtr<Plugin> Plugin::create(const gnote::AddinInfo & info, const sharp::DynamicModule *module)
   {
-    auto p = std::make_shared<AddinsTreeModel>();
-    if(treeview) {
-      treeview->set_model(p);
-      p->set_columns(treeview);
+    return Glib::make_refptr_for_instance(new Plugin(info, module));
+  }
+
+  Plugin::Plugin(const gnote::AddinInfo & info, const sharp::DynamicModule *module)
+    : info(info)
+    , m_module(module)
+  {
+  }
+
+  void Plugin::set_module(DynamicModule *mod)
+  {
+    m_module = mod;
+  }
+
+
+  AddinsModel::Ptr AddinsModel::create(Gtk::ColumnView *view)
+  {
+    auto self = new AddinsModel;
+    auto p = Glib::make_refptr_for_instance(self);
+    if(view) {
+      auto expr = Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase> & obj) {
+        return get_addin_category_name(std::dynamic_pointer_cast<Plugin>(obj)->info.category());
+      });
+      auto sorter = Gtk::StringSorter::create(expr);
+      self->m_selection = Gtk::SingleSelection::create(Gtk::SortListModel::create(p, sorter));
+      view->set_model(self->m_selection);
+      p->set_columns(view);
+      self->m_selection->signal_selection_changed().connect(sigc::mem_fun(*self, &AddinsModel::on_selection_changed));
     }
     return p;
   }
 
-  AddinsTreeModel::AddinsTreeModel()
+  AddinsModel::AddinsModel()
   {
-    set_column_types(m_columns);
   }
 
-  Glib::ustring AddinsTreeModel::get_module_id(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
+  Glib::RefPtr<Plugin> AddinsModel::get_selected_plugin()
   {
-    Glib::ustring id;
-    if(iter) {
-      iter->get_value(4, id);
+    auto selection = std::dynamic_pointer_cast<Gtk::SingleSelection>(m_selection);
+    if(selection) {
+      return std::dynamic_pointer_cast<Plugin>(selection->get_selected_item());
     }
-    return id;
+
+    return Glib::RefPtr<Plugin>();
   }
 
-  sharp::DynamicModule *AddinsTreeModel::get_module(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
+  void AddinsModel::on_selection_changed(guint, guint)
   {
-    sharp::DynamicModule * module = NULL;
-    if(iter) {
-      iter->get_value(2, module);
-    }
-    return module;
+    signal_selection_changed(get_selected_plugin());
   }
 
-  void AddinsTreeModel::set_module(const Gtk::TreeIter<Gtk::TreeRow> & iter, const sharp::DynamicModule * dmod)
+  void AddinsModel::set_columns(Gtk::ColumnView *view)
   {
-    if(iter) {
-      iter->set_value(2, dmod);
-    }
-  }
-
-  void AddinsTreeModel::name_cell_data_func(Gtk::CellRenderer *renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-  {
-    Gtk::CellRendererText *text_renderer = dynamic_cast<Gtk::CellRendererText*>(renderer);
-    Glib::ustring value;
-    iter->get_value(0, value);
-    text_renderer->property_text() = value;
-    const sharp::DynamicModule *module = get_module(iter);
-    if(get_module_id(iter) == "" || (module && module->is_enabled())) {
-      text_renderer->property_foreground() = "black";
-    }
-    else {
-      text_renderer->property_foreground() = "grey";
-    }
-  }
-
-  void AddinsTreeModel::name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-  {
-    Gtk::CellRendererPixbuf *icon_renderer = dynamic_cast<Gtk::CellRendererPixbuf*>(renderer);
-    Glib::ustring icon;
-    if(get_module_id(iter) != "") {
-      icon = gnote::IconManager::EMBLEM_PACKAGE;
-    }
-    icon_renderer->property_icon_name() = icon;
-  }
-
-  void AddinsTreeModel::set_columns(Gtk::TreeView *treeview)
-  {
-    auto column = Gtk::make_managed<Gtk::TreeViewColumn>();
-    column->set_title(_("Name"));
-    column->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
-    column->set_resizable(false);
-    auto icon_renderer = Gtk::make_managed<Gtk::CellRendererPixbuf>();
-    column->pack_start(*icon_renderer, false);
-    column->set_cell_data_func(*icon_renderer, sigc::mem_fun(*this, &AddinsTreeModel::name_pixbuf_cell_data_func));
-    auto renderer = Gtk::make_managed<Gtk::CellRendererText>();
-    column->pack_start(*renderer, true);
-    column->set_cell_data_func(*renderer, sigc::mem_fun(*this, &AddinsTreeModel::name_cell_data_func));
-    treeview->append_column(*column);
-    treeview->append_column(_("Version"), m_columns.version);
+    auto column = Gtk::ColumnViewColumn::create(_("Name"), PluginNameFactory::create());
+    column->set_resizable(true);
+    view->append_column(column);
+    column = Gtk::ColumnViewColumn::create(_("Version"), PluginVersionFactory::create());
+    view->append_column(column);
+    column = Gtk::ColumnViewColumn::create(_("Category"), PluginCategoryFactory::create());
+    view->append_column(column);
   }
 
 
-  Gtk::TreeIter<Gtk::TreeRow> AddinsTreeModel::append(const gnote::AddinInfo & module_info, const sharp::DynamicModule *module)
+  void AddinsModel::append(const gnote::AddinInfo & module_info, const sharp::DynamicModule *module)
   {
-    gnote::AddinCategory category = module_info.category();
-    Gtk::TreeIter iter = children().begin();
-    while(iter != children().end()) {
-      gnote::AddinCategory row_value;
-      iter->get_value(3, row_value);
-      if(row_value == category)
-        break;
-      else ++iter;
-    }
-    if(iter == children().end()) {
-      iter = Gtk::TreeStore::append();
-      iter->set_value(0, get_addin_category_name(category));
-      iter->set_value(3, category);
-    }
-    iter = Gtk::TreeStore::append(iter->children());
-    iter->set_value(0, module_info.name());
-    iter->set_value(1, module_info.version());
-    iter->set_value(2, module);
-    iter->set_value(4, module_info.id());
-    return iter;
+    Gio::ListStore<Plugin>::append(Plugin::create(module_info, module));
   }
 
-  Glib::ustring AddinsTreeModel::get_addin_category_name(gnote::AddinCategory category)
+  Glib::ustring AddinsModel::get_addin_category_name(gnote::AddinCategory category)
   {
     switch(category) {
       case gnote::ADDIN_CATEGORY_FORMATTING:

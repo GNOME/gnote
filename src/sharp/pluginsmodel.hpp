@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -29,60 +29,53 @@
 #ifndef __SHARP_ADDINSTREEMODEL_HPP_
 #define __SHARP_ADDINSTREEMODEL_HPP_
 
-#include <gtkmm/treestore.h>
-#include <gtkmm/treeview.h>
+#include <giomm/liststore.h>
+#include <gtkmm/columnview.h>
 
 #include "addininfo.hpp"
 #include "sharp/dynamicmodule.hpp"
 
-namespace gnote {
-  class IconManager;
-}
-
-
 namespace sharp {
 
-class AddinsTreeModel
-  : public Gtk::TreeStore
+class Plugin
+  : public Glib::Object
 {
 public:
-  typedef Glib::RefPtr<AddinsTreeModel> Ptr;
-  static Ptr create(Gtk::TreeView *treeview);
-  AddinsTreeModel();
+  static Glib::RefPtr<Plugin> create(const gnote::AddinInfo &, const sharp::DynamicModule *);
 
-  Glib::ustring get_module_id(const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  sharp::DynamicModule *get_module(const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  void set_module(const Gtk::TreeIter<Gtk::TreeRow> &, const sharp::DynamicModule *);
+  const gnote::AddinInfo info;
+  const DynamicModule* module() const
+    {
+      return m_module;
+    }
+  void set_module(DynamicModule *mod);
+private:
+  Plugin(const gnote::AddinInfo &, const sharp::DynamicModule *);
 
-  Gtk::TreeIter<Gtk::TreeRow> append(const gnote::AddinInfo &, const sharp::DynamicModule *);
+  const DynamicModule* m_module;
+};
 
-  class AddinsColumns
-    : public Gtk::TreeModelColumnRecord
-  {
-  public:
-    AddinsColumns()
-      {
-        add(name);
-        add(version);
-        add(addin);
-        add(category);
-        add(id);
-      }
+class AddinsModel
+  : public Gio::ListStore<Plugin>
+{
+public:
+  typedef Glib::RefPtr<AddinsModel> Ptr;
+  static Ptr create(Gtk::ColumnView *view);
 
-    Gtk::TreeModelColumn<Glib::ustring>          name;
-    Gtk::TreeModelColumn<Glib::ustring>          version;
-    Gtk::TreeModelColumn<const sharp::DynamicModule *> addin;
-    Gtk::TreeModelColumn<gnote::AddinCategory> category;
-    Gtk::TreeModelColumn<Glib::ustring>          id;
-  };
-  AddinsColumns m_columns;
+  Glib::RefPtr<Plugin> get_selected_plugin();
+
+  void append(const gnote::AddinInfo &, const sharp::DynamicModule *);
+
+  sigc::signal<void(const Glib::RefPtr<Plugin>&)> signal_selection_changed;
 
   static Glib::ustring get_addin_category_name(gnote::AddinCategory category);
 protected:
-  void set_columns(Gtk::TreeView *v);
+  void set_columns(Gtk::ColumnView *v);
 private:
-  void name_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
-  void name_pixbuf_cell_data_func(Gtk::CellRenderer * renderer, const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
+  AddinsModel();
+  void on_selection_changed(guint, guint);
+
+  Glib::RefPtr<Gtk::SelectionModel> m_selection;
 };
 
 }
