@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-05-10 16:02+0000\n"
-"PO-Revision-Date: 2023-05-14 15:25+0200\n"
+"POT-Creation-Date: 2023-06-19 15:43+0000\n"
+"PO-Revision-Date: 2023-06-25 13:35+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -713,7 +713,7 @@ msgstr "N_owa notatka"
 msgid "New _Window"
 msgstr "Nowe o_kno"
 
-#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:550
+#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:549
 msgid "_Preferences"
 msgstr "_Preferencje"
 
@@ -820,7 +820,7 @@ msgstr ""
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuière i Projekt Tomboy"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:64
+#: src/plugins/bugzilla/bugzillapreferences.cpp:121
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -828,28 +828,28 @@ msgstr ""
 "Do korzystania z Bugzilli wystarczy przeciągnąć odnośniki do notatek. Tutaj "
 "można także przypisać ikony dla poszczególnych komputerów."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:81
+#: src/plugins/bugzilla/bugzillapreferences.cpp:150
 msgid "Host Name"
 msgstr "Nazwa komputera"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:94
+#: src/plugins/bugzilla/bugzillapreferences.cpp:156
 msgid "Icon"
 msgstr "Ikona"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:112
+#: src/plugins/bugzilla/bugzillapreferences.cpp:172
 msgid "_Add"
 msgstr "_Dodaj"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:116
+#: src/plugins/bugzilla/bugzillapreferences.cpp:176
 msgid "_Remove"
 msgstr "_Usuń"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:221
+#: src/plugins/bugzilla/bugzillapreferences.cpp:278
 msgid "Select an icon..."
 msgstr "Wybór ikony…"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:222
-#: src/plugins/bugzilla/bugzillapreferences.cpp:363
+#: src/plugins/bugzilla/bugzillapreferences.cpp:279
+#: src/plugins/bugzilla/bugzillapreferences.cpp:419
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
 #: src/notebooks/notebookmanager.cpp:359 src/note.cpp:65 src/utils.cpp:274
@@ -857,48 +857,48 @@ msgstr "Wybór ikony…"
 msgid "_Cancel"
 msgstr "_Anuluj"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:223
+#: src/plugins/bugzilla/bugzillapreferences.cpp:280
 #: src/searchnoteswidget.cpp:1058
 msgid "_Open"
 msgstr "_Otwórz"
 
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:234
+#: src/plugins/bugzilla/bugzillapreferences.cpp:291
 msgid "_Host name:"
 msgstr "Nazwa _komputera:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:264
+#: src/plugins/bugzilla/bugzillapreferences.cpp:321
 msgid "Error saving icon"
 msgstr "Wystąpił błąd podczas zapisywania ikony"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:265
+#: src/plugins/bugzilla/bugzillapreferences.cpp:322
 msgid "Could not save the icon file."
 msgstr "Nie można zapisać pliku ikony."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:280
+#: src/plugins/bugzilla/bugzillapreferences.cpp:337
 msgid "Host name invalid"
 msgstr "Nieprawidłowa nazwa komputera"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:281
+#: src/plugins/bugzilla/bugzillapreferences.cpp:338
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Do użycia tej ikony należy określić nazwę komputera obsługującego Bugzillę."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:360
+#: src/plugins/bugzilla/bugzillapreferences.cpp:416
 msgid "Really remove this icon?"
 msgstr "Na pewno usunąć tę ikonę?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:361
+#: src/plugins/bugzilla/bugzillapreferences.cpp:417
 msgid "If you remove an icon it is permanently lost."
 msgstr "Usunięcie spowoduje bezpowrotną utratę ikony."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/plugins/bugzilla/bugzillapreferences.cpp:423
 #: src/notebooks/notebookmanager.cpp:363 src/note.cpp:69
 #: src/searchnoteswidget.cpp:1060 src/searchnoteswidget.cpp:1095
 msgid "_Delete"
 msgstr "_Usuń"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:379
+#: src/plugins/bugzilla/bugzillapreferences.cpp:437
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Błąd podczas usuwania ikony %s: %s"
@@ -961,7 +961,7 @@ msgstr "Dołącz wszystkie inne powiązane notatki"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:490
+#: src/preferencesdialog.cpp:489
 msgid "_Save"
 msgstr "_Zapisz"
 
@@ -1088,17 +1088,17 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Wstawia bieżącą datę i czas w pozycji kursora."
 
 #. Label
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:76
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:96
 msgid "Choose one of the predefined formats or use your own."
 msgstr ""
 "Proszę wybrać jeden z zaproponowanych formatów lub użyć niestandardowego."
 
 #. Use Selected Format
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:82
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:102
 msgid "Use _Selected Format"
 msgstr "Użycie _zaznaczonego formatu"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:111
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:127
 msgid "_Use Custom Format"
 msgstr "Niestandardowy forma_t"
 
@@ -1268,7 +1268,7 @@ msgid "Show Statistics"
 msgstr "Wyświetl statystyki"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:196
+#: src/plugins/statistics/statisticswidget.cpp:176
 msgid "Statistics"
 msgstr "Statystyki"
 
@@ -1276,16 +1276,16 @@ msgstr "Statystyki"
 msgid "Show various statistics about notes."
 msgstr "Wyświetlanie różnych statystyk o notatkach."
 
-#: src/plugins/statistics/statisticswidget.cpp:98
+#: src/plugins/statistics/statisticswidget.cpp:87
 msgid "Total Notes"
 msgstr "Razem notatek"
 
-#: src/plugins/statistics/statisticswidget.cpp:101
+#: src/plugins/statistics/statisticswidget.cpp:90
 msgid "Total Notebooks"
 msgstr "Razem notatników"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: src/plugins/statistics/statisticswidget.cpp:128
+#: src/plugins/statistics/statisticswidget.cpp:117
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 notatka"
@@ -1676,7 +1676,7 @@ msgid "Setting text content for closed notes not supported"
 msgstr "Ustawianie treści tekstu dla zamkniętych notatek nie jest obsługiwane"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:281
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:280
 msgid "New Note Template"
 msgstr "Szablon nowej notatki"
 
@@ -1774,39 +1774,39 @@ msgstr "Błąd podczas tworzenia notatek „Start”: %s"
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Błąd podczas przetwarzania kodu XML notatki, pomijanie „%s”: %s"
 
-#: src/noterenamedialog.cpp:119
+#: src/noterenamedialog.cpp:142
 msgid "Rename Note Links?"
 msgstr "Zmienić nazwy odnośników?"
 
-#: src/noterenamedialog.cpp:124
+#: src/noterenamedialog.cpp:147
 msgid "_Don't Rename Links"
 msgstr "_Nie zmieniaj nazw odnośników"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:148
 msgid "_Rename Links"
 msgstr "_Zmień nazwę odnośników"
 
-#: src/noterenamedialog.cpp:126
+#: src/noterenamedialog.cpp:149
 msgid "Select All"
 msgstr "Zaznacz wszystko"
 
-#: src/noterenamedialog.cpp:127
+#: src/noterenamedialog.cpp:150
 msgid "Select None"
 msgstr "Pusty wybór"
 
-#: src/noterenamedialog.cpp:128
+#: src/noterenamedialog.cpp:151
 msgid "Always show this _window"
 msgstr "Stałe wyświetlanie tego _okna"
 
-#: src/noterenamedialog.cpp:129
+#: src/noterenamedialog.cpp:152
 msgid "Alwa_ys rename links"
 msgstr "_Zmienianie nazw odnośników"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:153
 msgid "Never rename _links"
 msgstr "_Bez zmieniania nazw odnośników"
 
-#: src/noterenamedialog.cpp:147
+#: src/noterenamedialog.cpp:171
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1818,15 +1818,16 @@ msgstr ""
 "\n"
 "Jeśli nie zostaną zmienione, to nie będą już do niczego prowadziły."
 
-#: src/noterenamedialog.cpp:175
+#: src/noterenamedialog.cpp:186
 msgid "Rename Links"
 msgstr "Zmień nazwy odnośników"
 
-#: src/noterenamedialog.cpp:186 src/synchronization/syncdialog.cpp:308
+#. Set up columns
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:338
 msgid "Note Title"
 msgstr "Tytuł notatki"
 
-#: src/noterenamedialog.cpp:218
+#: src/noterenamedialog.cpp:234
 msgid "Ad_vanced"
 msgstr "Zaa_wansowane"
 
@@ -1899,44 +1900,44 @@ msgstr "_Duży"
 msgid "Hu_ge"
 msgstr "_Ogromny"
 
-#: src/preferencesdialog.cpp:100
+#: src/preferencesdialog.cpp:99
 msgid "Gnote Preferences"
 msgstr "Preferencje programu Gnote"
 
-#: src/preferencesdialog.cpp:107
+#: src/preferencesdialog.cpp:106
 msgid "General"
 msgstr "Ogólne"
 
-#: src/preferencesdialog.cpp:108
+#: src/preferencesdialog.cpp:107
 msgid "Links"
 msgstr "Odnośniki"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:109 src/sharp/addinstreemodel.cpp:158
+#: src/preferencesdialog.cpp:108 src/sharp/pluginsmodel.cpp:215
 msgid "Synchronization"
 msgstr "Synchronizacja"
 
-#: src/preferencesdialog.cpp:110
+#: src/preferencesdialog.cpp:109
 msgid "Plugins"
 msgstr "Wtyczki"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:133 src/preferencesdialog.cpp:715
+#: src/preferencesdialog.cpp:132 src/preferencesdialog.cpp:715
 #: src/preferencesdialog.cpp:954 src/preferencesdialog.cpp:1158
-#: src/synchronization/syncdialog.cpp:322 src/utils.cpp:271
+#: src/synchronization/syncdialog.cpp:347 src/utils.cpp:271
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: src/preferencesdialog.cpp:171
+#: src/preferencesdialog.cpp:170
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Wtyczka %s jest nieobecna"
 
-#: src/preferencesdialog.cpp:223
+#: src/preferencesdialog.cpp:222
 msgid "_Spell check while typing"
 msgstr "_Sprawdzanie pisowni podczas pisania"
 
-#: src/preferencesdialog.cpp:224
+#: src/preferencesdialog.cpp:223
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1945,36 +1946,36 @@ msgstr ""
 "prawidłowej pisowni będą dostępne w menu pod prawym przyciskiem myszy."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:234
+#: src/preferencesdialog.cpp:233
 msgid "Enable auto-_bulleted lists"
 msgstr "A_utomatyczne wypunktowanie list"
 
-#: src/preferencesdialog.cpp:235
+#: src/preferencesdialog.cpp:234
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Rozpoczyna nową listę wypunktowaną po rozpoczęciu nowego wiersza znakiem „-”."
 
-#: src/preferencesdialog.cpp:243
+#: src/preferencesdialog.cpp:242
 msgid "Use custom _font"
 msgstr "Niestandardowa _czcionka"
 
-#: src/preferencesdialog.cpp:259
+#: src/preferencesdialog.cpp:258
 msgid "When renaming a linked note: "
 msgstr "Podczas zmieniania nazwy notatki, do której prowadzą odnośniki: "
 
-#: src/preferencesdialog.cpp:263
+#: src/preferencesdialog.cpp:262
 msgid "Ask me what to do"
 msgstr "Pytanie, co robić"
 
-#: src/preferencesdialog.cpp:264
+#: src/preferencesdialog.cpp:263
 msgid "Never rename links"
 msgstr "Bez zmieniania nazw odnośników"
 
-#: src/preferencesdialog.cpp:265
+#: src/preferencesdialog.cpp:264
 msgid "Always rename links"
 msgstr "Zmienianie nazw odnośników"
 
-#: src/preferencesdialog.cpp:282
+#: src/preferencesdialog.cpp:281
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -1982,27 +1983,27 @@ msgstr ""
 "Szablon nowej notatki pozwala określić domyślną treść dla nowo utworzonych "
 "notatek."
 
-#: src/preferencesdialog.cpp:287
+#: src/preferencesdialog.cpp:286
 msgid "Open New Note Template"
 msgstr "Otwórz szablon nowej notatki"
 
 #. internal links
-#: src/preferencesdialog.cpp:333
+#: src/preferencesdialog.cpp:332
 msgid "_Automatically link to notes"
 msgstr "_Automatyczne odnośniki do notatek"
 
-#: src/preferencesdialog.cpp:334
+#: src/preferencesdialog.cpp:333
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Włączenie tej opcji spowoduje tworzenie odnośników, kiedy tekst pasuje do "
 "tytułu notatki."
 
 #. URLs
-#: src/preferencesdialog.cpp:340
+#: src/preferencesdialog.cpp:339
 msgid "Create links for _URLs"
 msgstr "Tworzenie odnośników dla adresów _URL"
 
-#: src/preferencesdialog.cpp:341
+#: src/preferencesdialog.cpp:340
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2011,11 +2012,11 @@ msgstr ""
 "Kliknięcie otworzy dany adres za pomocą odpowiedniego programu."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:348
+#: src/preferencesdialog.cpp:347
 msgid "Highlight _WikiWords"
 msgstr "_Wyróżnianie WikiSłów"
 
-#: src/preferencesdialog.cpp:349
+#: src/preferencesdialog.cpp:348
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2023,40 +2024,40 @@ msgstr ""
 "Uaktywnienie tej opcji spowoduje wyróżnianie słów <b>KtóreWyglądająTakJakTo</"
 "b>. Kliknięcie takiego słowa utworzy notatkę o takiej właśnie nazwie."
 
-#: src/preferencesdialog.cpp:381
+#: src/preferencesdialog.cpp:380
 msgid "Ser_vice:"
 msgstr "_Usługa:"
 
-#: src/preferencesdialog.cpp:430 src/preferencesdialog.cpp:977
+#: src/preferencesdialog.cpp:429 src/preferencesdialog.cpp:977
 msgid "Not configurable"
 msgstr "Nie do konfiguracji"
 
-#: src/preferencesdialog.cpp:452
+#: src/preferencesdialog.cpp:451
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Czas między automatycznym _synchronizowaniem w tle (minuty)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:474
+#: src/preferencesdialog.cpp:473
 msgid "_Advanced..."
 msgstr "Zaa_wansowane…"
 
-#: src/preferencesdialog.cpp:479
+#: src/preferencesdialog.cpp:478
 msgid "Clear"
 msgstr "Wyczyść"
 
-#: src/preferencesdialog.cpp:516
+#: src/preferencesdialog.cpp:515
 msgid "The following plugins are installed:"
 msgstr "Zainstalowano poniższe wtyczki:"
 
-#: src/preferencesdialog.cpp:540
+#: src/preferencesdialog.cpp:539
 msgid "_Enable"
 msgstr "_Włącz"
 
-#: src/preferencesdialog.cpp:545
+#: src/preferencesdialog.cpp:544
 msgid "_Disable"
 msgstr "Wyłą_cz"
 
-#: src/preferencesdialog.cpp:555
+#: src/preferencesdialog.cpp:554
 msgid "In_formation"
 msgstr "_Informacje"
 
@@ -2284,34 +2285,6 @@ msgstr "Nierozpoznana kolumna %s"
 msgid "Unrecognized order %s"
 msgstr "Nierozpoznana kolejność %s"
 
-#: src/sharp/addinstreemodel.cpp:106
-msgid "Name"
-msgstr "Nazwa"
-
-#: src/sharp/addinstreemodel.cpp:116
-msgid "Version"
-msgstr "Wersja"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:149
-msgid "Formatting"
-msgstr "Formatowanie"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:152
-msgid "Desktop integration"
-msgstr "Integracja z pulpitem"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:155
-msgid "Tools"
-msgstr "Narzędzia"
-
-#. TRANSLATORS: Addin category is unknown.
-#: src/sharp/addinstreemodel.cpp:162
-msgid "Unknown"
-msgstr "Nieznana"
-
 #: src/sharp/modulemanager.cpp:62
 #, c-format
 msgid "Error loading %s"
@@ -2321,6 +2294,38 @@ msgstr "Błąd podczas wczytywania %s"
 #, c-format
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Błąd podczas uzyskiwania symbolu „dynamic_module_instanciate”: %s"
+
+#: src/sharp/pluginsmodel.cpp:186
+msgid "Name"
+msgstr "Nazwa"
+
+#: src/sharp/pluginsmodel.cpp:189
+msgid "Version"
+msgstr "Wersja"
+
+#: src/sharp/pluginsmodel.cpp:191
+msgid "Category"
+msgstr "Kategoria"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:206
+msgid "Formatting"
+msgstr "Formatowanie"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:209
+msgid "Desktop integration"
+msgstr "Integracja z pulpitem"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:212
+msgid "Tools"
+msgstr "Narzędzia"
+
+#. TRANSLATORS: Addin category is unknown.
+#: src/sharp/pluginsmodel.cpp:219
+msgid "Unknown"
+msgstr "Nieznana"
 
 #: src/sharp/xmlreader.cpp:219
 #, c-format
@@ -2414,41 +2419,41 @@ msgstr "Niepowodzenie podczas usuwania pliku testowego"
 msgid "Unknown error"
 msgstr "Nieznany błąd"
 
-#: src/synchronization/syncdialog.cpp:62
+#: src/synchronization/syncdialog.cpp:97
 msgid "Note Conflict"
 msgstr "Konflikt notatki"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: src/synchronization/syncdialog.cpp:67
+#: src/synchronization/syncdialog.cpp:102
 msgid " (old)"
 msgstr " (poprzednia)"
 
-#: src/synchronization/syncdialog.cpp:107
+#: src/synchronization/syncdialog.cpp:142
 msgid "Rename local note:"
 msgstr "Zmiana nazwy lokalnej notatki:"
 
-#: src/synchronization/syncdialog.cpp:114
+#: src/synchronization/syncdialog.cpp:149
 msgid "Update links in referencing notes"
 msgstr "Aktualizacja odnośników w notatkach powiązanych"
 
-#: src/synchronization/syncdialog.cpp:120
+#: src/synchronization/syncdialog.cpp:155
 msgid "Overwrite local note"
 msgstr "Zastąpienie lokalnej notatki"
 
-#: src/synchronization/syncdialog.cpp:125
+#: src/synchronization/syncdialog.cpp:160
 msgid "Always perform this action"
 msgstr "Wykonywanie tego działania za każdym razem"
 
-#: src/synchronization/syncdialog.cpp:128
+#: src/synchronization/syncdialog.cpp:163
 msgid "_Continue"
 msgstr "_Kontynuuj"
 
 #. Set initial dialog text
-#: src/synchronization/syncdialog.cpp:131
+#: src/synchronization/syncdialog.cpp:166
 msgid "Note conflict detected"
 msgstr "Wykryto konflikt notatek"
 
-#: src/synchronization/syncdialog.cpp:133
+#: src/synchronization/syncdialog.cpp:168
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2456,56 +2461,56 @@ msgstr ""
 "Wersja z serwera notatki „%1” koliduje z lokalną notatką. Co zrobić "
 "z notatką lokalną?"
 
-#. Expander containing TreeView
-#: src/synchronization/syncdialog.cpp:278
+#. Expander containing table
+#: src/synchronization/syncdialog.cpp:313
 msgid "Details"
 msgstr "Szczegóły"
 
-#: src/synchronization/syncdialog.cpp:315
+#: src/synchronization/syncdialog.cpp:342
 msgid "Status"
 msgstr "Stan"
 
-#: src/synchronization/syncdialog.cpp:459
+#: src/synchronization/syncdialog.cpp:466
 msgid "Acquiring sync lock..."
 msgstr "Ustanawianie blokady…"
 
-#: src/synchronization/syncdialog.cpp:462
+#: src/synchronization/syncdialog.cpp:469
 msgid "Committing changes..."
 msgstr "Wysyłanie zmian…"
 
-#: src/synchronization/syncdialog.cpp:465
+#: src/synchronization/syncdialog.cpp:472
 msgid "Synchronizing Notes"
 msgstr "Synchronizowanie notatek"
 
-#: src/synchronization/syncdialog.cpp:466
+#: src/synchronization/syncdialog.cpp:473
 msgid "Synchronizing your notes..."
 msgstr "Synchronizowanie notatek…"
 
-#: src/synchronization/syncdialog.cpp:467
+#: src/synchronization/syncdialog.cpp:474
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Proszę czekać — to może zająć trochę czasu."
 
-#: src/synchronization/syncdialog.cpp:469
+#: src/synchronization/syncdialog.cpp:476
 msgid "Connecting to the server..."
 msgstr "Łączenie z serwerem…"
 
-#: src/synchronization/syncdialog.cpp:475
+#: src/synchronization/syncdialog.cpp:482
 msgid "Deleting notes off of the server..."
 msgstr "Usuwanie notatek z serwera…"
 
-#: src/synchronization/syncdialog.cpp:479
+#: src/synchronization/syncdialog.cpp:486
 msgid "Downloading new/updated notes..."
 msgstr "Pobieranie nowych i zaktualizowanych notatek…"
 
-#: src/synchronization/syncdialog.cpp:491
+#: src/synchronization/syncdialog.cpp:498
 msgid "Server Locked"
 msgstr "Serwer zablokowany"
 
-#: src/synchronization/syncdialog.cpp:492
+#: src/synchronization/syncdialog.cpp:499
 msgid "Server is locked"
 msgstr "Serwer jest zablokowany"
 
-#: src/synchronization/syncdialog.cpp:493
+#: src/synchronization/syncdialog.cpp:500
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2513,109 +2518,109 @@ msgstr ""
 "Jeden z komputerów dokonuje teraz synchronizacji. Proszę spróbować ponownie "
 "za dwie minuty."
 
-#: src/synchronization/syncdialog.cpp:497
+#: src/synchronization/syncdialog.cpp:504
 msgid "Preparing to download updates from server..."
 msgstr "Przygotowywanie pobierania aktualizacji z serwera…"
 
-#: src/synchronization/syncdialog.cpp:500
+#: src/synchronization/syncdialog.cpp:507
 msgid "Preparing to upload updates to server..."
 msgstr "Przygotowanie do wysłania aktualizacji na serwer…"
 
-#: src/synchronization/syncdialog.cpp:503
+#: src/synchronization/syncdialog.cpp:510
 msgid "Uploading notes to server..."
 msgstr "Wysyłanie notatek na serwer…"
 
-#: src/synchronization/syncdialog.cpp:506
+#: src/synchronization/syncdialog.cpp:513
 msgid "Synchronization Failed"
 msgstr "Synchronizacja się nie powiodła"
 
-#: src/synchronization/syncdialog.cpp:507
+#: src/synchronization/syncdialog.cpp:514
 msgid "Failed to synchronize"
 msgstr "Synchronizacja się nie powiodła"
 
-#: src/synchronization/syncdialog.cpp:508
+#: src/synchronization/syncdialog.cpp:515
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Nie można zsynchronizować notatek. Proszę sprawdzić informacje poniżej "
 "i spróbować ponownie."
 
-#: src/synchronization/syncdialog.cpp:514
+#: src/synchronization/syncdialog.cpp:521
 msgid "Synchronization Complete"
 msgstr "Ukończono synchronizację"
 
-#: src/synchronization/syncdialog.cpp:515
+#: src/synchronization/syncdialog.cpp:522
 msgid "Synchronization is complete"
 msgstr "Ukończono synchronizację"
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:523
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "Zaktualizowano %1 notatkę."
 msgstr[1] "Zaktualizowano %1 notatki."
 msgstr[2] "Zaktualizowano %1 notatek."
 
-#: src/synchronization/syncdialog.cpp:517
+#: src/synchronization/syncdialog.cpp:524
 msgid "Your notes are now up to date."
 msgstr "Notatki zostały zaktualizowane."
 
-#: src/synchronization/syncdialog.cpp:522
+#: src/synchronization/syncdialog.cpp:529
 msgid "Synchronization Canceled"
 msgstr "Anulowano synchronizację"
 
-#: src/synchronization/syncdialog.cpp:523
+#: src/synchronization/syncdialog.cpp:530
 msgid "Synchronization was canceled"
 msgstr "Anulowano synchronizację"
 
-#: src/synchronization/syncdialog.cpp:524
+#: src/synchronization/syncdialog.cpp:531
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Anulowano synchronizację. Można teraz zamknąć okno."
 
-#: src/synchronization/syncdialog.cpp:528
+#: src/synchronization/syncdialog.cpp:535
 msgid "Synchronization Not Configured"
 msgstr "Synchronizacja nie została skonfigurowana"
 
-#: src/synchronization/syncdialog.cpp:529
+#: src/synchronization/syncdialog.cpp:536
 msgid "Synchronization is not configured"
 msgstr "Synchronizacja nie została skonfigurowana"
 
-#: src/synchronization/syncdialog.cpp:530
+#: src/synchronization/syncdialog.cpp:537
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Proszę skonfigurować synchronizację w oknie preferencji."
 
-#: src/synchronization/syncdialog.cpp:534
+#: src/synchronization/syncdialog.cpp:541
 msgid "Synchronization Service Error"
 msgstr "Błąd usługi synchronizacji"
 
-#: src/synchronization/syncdialog.cpp:535
+#: src/synchronization/syncdialog.cpp:542
 msgid "Service error"
 msgstr "Błąd usługi"
 
-#: src/synchronization/syncdialog.cpp:536
+#: src/synchronization/syncdialog.cpp:543
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "Błąd podczas łączenia z usługą synchronizacji. Proszę spróbować ponownie."
 
-#: src/synchronization/syncdialog.cpp:550
+#: src/synchronization/syncdialog.cpp:557
 msgid "Deleted locally"
 msgstr "Usunięte lokalnie"
 
-#: src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:560
 msgid "Deleted from server"
 msgstr "Usunięte z serwera"
 
-#: src/synchronization/syncdialog.cpp:556
+#: src/synchronization/syncdialog.cpp:563
 msgid "Updated"
 msgstr "Zaktualizowane"
 
-#: src/synchronization/syncdialog.cpp:559
+#: src/synchronization/syncdialog.cpp:566
 msgid "Added"
 msgstr "Dodane"
 
-#: src/synchronization/syncdialog.cpp:562
+#: src/synchronization/syncdialog.cpp:569
 msgid "Uploaded changes to server"
 msgstr "Wysłano zmiany na serwer"
 
-#: src/synchronization/syncdialog.cpp:565
+#: src/synchronization/syncdialog.cpp:572
 msgid "Uploaded new note to server"
 msgstr "Wysłano nową notatkę na serwer"
 
