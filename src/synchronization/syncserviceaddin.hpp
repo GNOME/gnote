@@ -59,14 +59,14 @@ namespace sync {
     virtual Gtk::Widget *create_preferences_control(Gtk::Window & parent, EventHandler requiredPrefChanged) = 0;
     virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) = 0;
     virtual void reset_configuration() = 0;
-    virtual bool is_configured() = 0;
-    virtual bool are_settings_valid()
+    virtual bool is_configured() const = 0;
+    virtual bool are_settings_valid() const
       {
         return true;
       }
-    virtual Glib::ustring name() = 0;
-    virtual Glib::ustring id() = 0;
-    virtual bool is_supported() = 0;
+    virtual Glib::ustring name() const = 0;
+    virtual Glib::ustring id() const = 0;
+    virtual bool is_supported() const = 0;
     virtual void shutdown () = 0;
     virtual bool initialized () = 0;
   protected:

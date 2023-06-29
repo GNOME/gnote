@@ -213,26 +213,26 @@ void FileSystemSyncServiceAddin::reset_configuration()
 }
 
 
-bool FileSystemSyncServiceAddin::is_configured()
+bool FileSystemSyncServiceAddin::is_configured() const
 {
   return ignote().preferences().sync_local_path() != "";
 }
 
 
-Glib::ustring FileSystemSyncServiceAddin::name()
+Glib::ustring FileSystemSyncServiceAddin::name() const
 {
   char *res = _("Local Folder");
   return res ? res : "";
 }
 
 
-Glib::ustring FileSystemSyncServiceAddin::id()
+Glib::ustring FileSystemSyncServiceAddin::id() const
 {
   return "local";
 }
 
 
-bool FileSystemSyncServiceAddin::is_supported()
+bool FileSystemSyncServiceAddin::is_supported() const
 {
   return true;
 }

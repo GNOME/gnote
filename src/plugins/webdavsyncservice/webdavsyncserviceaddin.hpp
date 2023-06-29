@@ -60,32 +60,32 @@ public:
   /// <summary>
   /// Returns whether the addin is configured enough to actually be used.
   /// </summary>
-  virtual bool is_configured() override;
+  virtual bool is_configured() const override;
 
   /// <summary>
   /// Returns true if required settings are non-empty in the preferences widget
   /// </summary>
-  virtual bool are_settings_valid() override;
+  virtual bool are_settings_valid() const override;
 
   /// The name that will be shown in the preferences to distinguish
   /// between this and other SyncServiceAddins.
   /// </summary>
-  virtual Glib::ustring name() override;
+  virtual Glib::ustring name() const override;
 
   /// <summary>
   /// Specifies a unique identifier for this addin.  This will be used to
   /// set the service in preferences.
   /// </summary>
-  virtual Glib::ustring id() override;
+  virtual Glib::ustring id() const override;
 
   virtual gnote::sync::SyncServer *create_sync_server() override;
   virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) override;
   virtual void reset_configuration() override;
 private:
   static Glib::RefPtr<Gio::MountOperation> create_mount_operation(const Glib::ustring & username, const Glib::ustring & password);
-  bool get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password);
+  bool get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const;
   void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);
-  bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password);
+  bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const;
   bool accept_ssl_cert();
   void add_row(Gtk::Grid *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row);
 

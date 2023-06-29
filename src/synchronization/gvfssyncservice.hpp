@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2022 Aurimas Cernius
+ * Copyright (C) 2019-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ public:
   virtual void shutdown() override;
 
   virtual void post_sync_cleanup() override;
-  virtual bool is_supported() override;
+  virtual bool is_supported() const override;
   virtual bool initialized() override;
 protected:
   static bool test_sync_directory(const Glib::RefPtr<Gio::File> & path, const Glib::ustring & sync_uri, Glib::ustring & error);

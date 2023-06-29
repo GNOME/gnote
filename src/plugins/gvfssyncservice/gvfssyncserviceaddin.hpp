@@ -57,9 +57,9 @@ public:
   virtual Gtk::Widget *create_preferences_control(Gtk::Window & parent, EventHandler requiredPrefChanged) override;
   virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) override;
   virtual void reset_configuration() override;
-  virtual bool is_configured() override;
-  virtual Glib::ustring name() override;
-  virtual Glib::ustring id() override;
+  virtual bool is_configured() const override;
+  virtual Glib::ustring name() const override;
+  virtual Glib::ustring id() const override;
 private:
   static Glib::RefPtr<Gio::File> get_root_dir(const Glib::RefPtr<Gio::File> &);
   bool get_config_settings(Glib::ustring & sync_path);

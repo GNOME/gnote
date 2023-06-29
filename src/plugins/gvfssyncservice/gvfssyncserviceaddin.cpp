@@ -164,20 +164,20 @@ void GvfsSyncServiceAddin::reset_configuration()
 }
 
 
-bool GvfsSyncServiceAddin::is_configured()
+bool GvfsSyncServiceAddin::is_configured() const
 {
   return m_gvfs_settings->get_string(SYNC_GVFS_URI) != "";
 }
 
 
-Glib::ustring GvfsSyncServiceAddin::name()
+Glib::ustring GvfsSyncServiceAddin::name() const
 {
   char *res = _("Online Folder");
   return res ? res : "";
 }
 
 
-Glib::ustring GvfsSyncServiceAddin::id()
+Glib::ustring GvfsSyncServiceAddin::id() const
 {
   return "gvfs";
 }

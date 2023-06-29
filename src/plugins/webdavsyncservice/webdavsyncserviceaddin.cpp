@@ -123,28 +123,28 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(Gtk::Window &, E
   return table;
 }
 
-bool WebDavSyncServiceAddin::is_configured()
+bool WebDavSyncServiceAddin::is_configured() const
 {
   Glib::ustring url, username, password;
   return get_config_settings(url, username, password);
 }
 
 
-bool WebDavSyncServiceAddin::are_settings_valid()
+bool WebDavSyncServiceAddin::are_settings_valid() const
 {
   Glib::ustring url, username, password;
   return get_pref_widget_settings(url, username, password);
 }
 
 
-Glib::ustring WebDavSyncServiceAddin::name()
+Glib::ustring WebDavSyncServiceAddin::name() const
 {
   const char *res = _("WebDAV");
   return res;
 }
 
 
-Glib::ustring WebDavSyncServiceAddin::id()
+Glib::ustring WebDavSyncServiceAddin::id() const
 {
   return "wdfs";
 }
@@ -231,7 +231,7 @@ void WebDavSyncServiceAddin::reset_configuration()
   save_config_settings("", "", "");
 }
 
-bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password)
+bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const
 {
   // Retrieve configuration from the GNOME Keyring and GSettings
   url = "";
@@ -282,7 +282,7 @@ void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, con
   }
 }
 
-bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password)
+bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const
 {
   url = sharp::string_trim(m_url_entry->get_text());
   username = sharp::string_trim(m_username_entry->get_text());

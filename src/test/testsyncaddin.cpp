@@ -55,22 +55,22 @@ void SyncAddin::reset_configuration()
 {
 }
 
-bool SyncAddin::is_configured()
+bool SyncAddin::is_configured() const
 {
   return true;
 }
 
-Glib::ustring SyncAddin::name()
+Glib::ustring SyncAddin::name() const
 {
   return "test";
 }
 
-Glib::ustring SyncAddin::id()
+Glib::ustring SyncAddin::id() const
 {
   return "test";
 }
 
-bool SyncAddin::is_supported()
+bool SyncAddin::is_supported() const
 {
   return true;
 }
