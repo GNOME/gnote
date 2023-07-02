@@ -28,7 +28,6 @@
 
 #include <gtkmm/dialog.h>
 #include <gtkmm/dropdown.h>
-#include <gtkmm/comboboxtext.h>
 #include <gtkmm/spinbutton.h>
 
 #include "sharp/pluginsmodel.hpp"
@@ -100,7 +99,7 @@ private:
   Gtk::Button *m_save_sync_addin_button;
   Gtk::CheckButton *m_autosync_check;
   Gtk::SpinButton *m_autosync_spinner;
-  Gtk::ComboBoxText *m_rename_behavior_combo;
+  Gtk::DropDown *m_rename_behavior_combo;
   IGnote & m_gnote;
   AddinManager &m_addin_manager;
   NoteManager & m_note_manager;

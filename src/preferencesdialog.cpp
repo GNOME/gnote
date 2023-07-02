@@ -282,18 +282,27 @@ namespace {
       label = make_label(_("When renaming a linked note: "));
       label->set_hexpand(true);
       rename_behavior_box->attach(*label, 0, 0, 1, 1);
-      m_rename_behavior_combo = Gtk::make_managed<Gtk::ComboBoxText>();
-      m_rename_behavior_combo->append(_("Ask me what to do"));
-      m_rename_behavior_combo->append(_("Never rename links"));
-      m_rename_behavior_combo->append(_("Always rename links"));
-      int rename_behavior = m_gnote.preferences().note_rename_behavior();
+      std::vector<Glib::ustring> rename_opts;
+      rename_opts.emplace_back(_("Ask me what to do"));
+      rename_opts.emplace_back(_("Never rename links"));
+      rename_opts.emplace_back(_("Always rename links"));
+      m_rename_behavior_combo = Gtk::make_managed<Gtk::DropDown>(rename_opts);
+      guint rename_behavior = m_gnote.preferences().note_rename_behavior();
       if (0 > rename_behavior || 2 < rename_behavior) {
         rename_behavior = 0;
         m_gnote.preferences().note_rename_behavior(rename_behavior);
       }
-      m_rename_behavior_combo->set_active(rename_behavior);
-      m_rename_behavior_combo->signal_changed()
-        .connect(sigc::mem_fun(*this, &PreferencesDialog::on_rename_behavior_changed));
+      m_rename_behavior_combo->set_selected(rename_behavior);
+      m_rename_behavior_combo->signal_state_flags_changed().connect([this](Gtk::StateFlags prev_flags) {
+        auto was_active = (Gtk::StateFlags::ACTIVE == (prev_flags & Gtk::StateFlags::ACTIVE));
+        auto now_active = (Gtk::StateFlags::ACTIVE == (m_rename_behavior_combo->get_state_flags() & Gtk::StateFlags::ACTIVE));
+        if(!now_active && was_active) {
+          auto on_deactivate = [](gpointer data) {
+            static_cast<PreferencesDialog*>(data)->on_rename_behavior_changed();
+          };
+          g_timeout_add_once(1, on_deactivate, this);
+        }
+      });
       m_rename_behavior_combo->set_hexpand(true);
       rename_behavior_box->attach(*m_rename_behavior_combo, 1, 0, 1, 1);
       options_list->attach(*rename_behavior_box, 0, options_list_row++, 1, 1);
@@ -879,13 +888,13 @@ namespace {
 
   void  PreferencesDialog::on_note_rename_behavior_changed()
   {
-    int rename_behavior = m_gnote.preferences().note_rename_behavior();
+    guint rename_behavior = m_gnote.preferences().note_rename_behavior();
     if(0 > rename_behavior || 2 < rename_behavior) {
       rename_behavior = 0;
       m_gnote.preferences().note_rename_behavior(rename_behavior);
     }
-    if(m_rename_behavior_combo->get_active_row_number() != rename_behavior) {
-      m_rename_behavior_combo->set_active(rename_behavior);
+    if(m_rename_behavior_combo->get_selected() != rename_behavior) {
+      m_rename_behavior_combo->set_selected(rename_behavior);
     }
   }
 
@@ -912,7 +921,7 @@ namespace {
 
   void  PreferencesDialog::on_rename_behavior_changed()
   {
-    m_gnote.preferences().note_rename_behavior(m_rename_behavior_combo->get_active_row_number());
+    m_gnote.preferences().note_rename_behavior(m_rename_behavior_combo->get_selected());
   }
 
 
