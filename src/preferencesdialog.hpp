@@ -27,8 +27,7 @@
 #include <map>
 
 #include <gtkmm/dialog.h>
-#include <gtkmm/liststore.h>
-#include <gtkmm/combobox.h>
+#include <gtkmm/dropdown.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/spinbutton.h>
 
@@ -69,7 +68,7 @@ private:
   void on_advanced_sync_config_button();
   void on_reset_sync_addin_button(bool signal);
   void on_save_sync_addin_button();
-  void on_sync_settings_saved(bool saved, Glib::ustring errorMsg);
+  void on_sync_settings_saved(const Glib::RefPtr<Glib::Object> & active_sync_service, bool saved, Glib::ustring errorMsg);
 
   void on_note_rename_behavior_changed();
   void on_autosync_timeout_setting_changed();
@@ -88,28 +87,12 @@ private:
   void on_addin_info_button();
   void addin_info_dialog_response(int, Gtk::Dialog*);
   void on_sync_addin_prefs_changed();
-  void combo_box_text_data_func(const Gtk::TreeIter<Gtk::TreeConstRow> & iter);
   void update_sync_services();
   void update_timeout_pref();
   void on_autosync_check_toggled();
 ////
 
-  class SyncStoreModel
-    : public Gtk::TreeModelColumnRecord
-  {
-  public:
-    SyncStoreModel()
-      {
-        add(m_col1);
-      }
-
-    Gtk::TreeModelColumn<sync::SyncServiceAddin*> m_col1;
-  };
-
-  SyncStoreModel m_sync_addin_store_record;
-  Glib::RefPtr<Gtk::ListStore> m_sync_addin_store;
-  std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_sync_addin_iters;
-  Gtk::ComboBox *m_sync_addin_combo;
+  Gtk::DropDown *m_sync_addin_combo;
   sync::SyncServiceAddin *m_selected_sync_addin;
   Gtk::Grid   *m_sync_addin_prefs_container;
   Gtk::Widget *m_sync_addin_prefs_widget;

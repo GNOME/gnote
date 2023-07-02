@@ -57,6 +57,29 @@
 
 namespace gnote {
 
+namespace {
+
+  class SyncService
+    : public Glib::Object
+  {
+  public:
+    static Glib::RefPtr<SyncService> create(sync::SyncServiceAddin *service)
+      {
+        return Glib::make_refptr_for_instance(new SyncService(service));
+      }
+
+    sync::SyncServiceAddin & service()
+      {
+        return *m_service;
+      }
+  private:
+    SyncService(sync::SyncServiceAddin *service)
+      : m_service(service)
+      {}
+
+    sync::SyncServiceAddin *m_service;
+  };
+
   struct CompareSyncAddinsByName
   {
     bool operator()(sync::SyncServiceAddin *x, sync::SyncServiceAddin *y)
@@ -79,6 +102,7 @@ namespace gnote {
     AddinInfo m_addin_info;
     Glib::ustring m_id;
   };
+}
 
 
   PreferencesDialog::PreferencesDialog(IGnote & ignote, NoteManager & note_manager)
@@ -355,17 +379,6 @@ namespace gnote {
   }
 
 
-  void PreferencesDialog::combo_box_text_data_func(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-  {
-    sync::SyncServiceAddin *addin = NULL;
-    iter->get_value(0, addin);
-    Gtk::CellRendererText *renderer = dynamic_cast<Gtk::CellRendererText*>(m_sync_addin_combo->get_first_cell());
-    if(addin && renderer) {
-      renderer->property_text() = addin->name();
-    }
-  }
-
-
   Gtk::Widget *PreferencesDialog::make_sync_pane()
   {
     auto vbox = Gtk::make_managed<Gtk::Grid>();
@@ -381,61 +394,63 @@ namespace gnote {
     hbox->attach(*label, hbox_col++, 0, 1, 1);
 
     // Populate the store with all the available SyncServiceAddins
-    m_sync_addin_store = Gtk::ListStore::create(m_sync_addin_store_record);
+    auto sync_addin_store = Gio::ListStore<SyncService>::create();
     std::vector<sync::SyncServiceAddin*> addins = m_addin_manager.get_sync_service_addins();
     std::sort(addins.begin(), addins.end(), CompareSyncAddinsByName());
     for(auto addin : addins) {
       if(addin->initialized()) {
-	auto iter = m_sync_addin_store->append();
-	iter->set_value(0, addin);
-	m_sync_addin_iters[addin->id()] = iter;
+	sync_addin_store->append(SyncService::create(addin));
       }
     }
 
-    m_sync_addin_combo = Gtk::make_managed<Gtk::ComboBox>(std::static_pointer_cast<Gtk::TreeModel>(m_sync_addin_store));
+    auto expr = Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase> & o) {
+      return std::dynamic_pointer_cast<SyncService>(o)->service().name();
+    });
+    m_sync_addin_combo = Gtk::make_managed<Gtk::DropDown>(sync_addin_store, expr);
     label->set_mnemonic_widget(*m_sync_addin_combo);
-    Gtk::CellRendererText *crt = Gtk::make_managed<Gtk::CellRendererText>();
-    m_sync_addin_combo->pack_start(*crt, true);
-    m_sync_addin_combo->set_cell_data_func(*crt, sigc::mem_fun(*this, &PreferencesDialog::combo_box_text_data_func));
 
     // Read from Preferences which service is configured and select it
     // by default.  Otherwise, just select the first one in the list.
     Glib::ustring addin_id = m_gnote.preferences().sync_selected_service_addin();
 
-    Gtk::TreeIter<Gtk::TreeRow> active_iter;
-    if (!addin_id.empty() && m_sync_addin_iters.find(addin_id) != m_sync_addin_iters.end()) {
-      active_iter = m_sync_addin_iters [addin_id];
-      m_sync_addin_combo->set_active(active_iter);
+    Glib::RefPtr<SyncService> active_sync;
+    if(!addin_id.empty()) {
+      for(guint i = 0; i < sync_addin_store->get_n_items(); ++i) {
+        auto item = sync_addin_store->get_item(i);
+        if(item->service().id() == addin_id) {
+          active_sync = item;
+          m_sync_addin_combo->set_selected(i);
+          break;
+        }
+      }
+    }
+    if(!active_sync && sync_addin_store->get_n_items() > 0) {
+      active_sync = sync_addin_store->get_item(0);
     }
 
-    m_sync_addin_combo->signal_changed().connect(sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_combo_changed));
+    m_sync_addin_combo->signal_state_flags_changed().connect([this](Gtk::StateFlags flags){
+      auto was_active = (Gtk::StateFlags::ACTIVE == (flags & Gtk::StateFlags::ACTIVE));
+      auto now_active = (Gtk::StateFlags::ACTIVE == (m_sync_addin_combo->get_state_flags() & Gtk::StateFlags::ACTIVE));
+      if(!now_active && was_active) {
+        auto check_selection_change = [](gpointer data) {
+          auto self = static_cast<PreferencesDialog*>(data);
+          auto item = std::dynamic_pointer_cast<SyncService>(self->m_sync_addin_combo->get_selected_item());
+          sync::SyncServiceAddin *new_addin = item ? &item->service() : nullptr;
+          if(new_addin != self->m_selected_sync_addin) {
+            self->m_selected_sync_addin = new_addin;
+            self->on_sync_addin_combo_changed();
+          }
+        };
+        g_timeout_add_once(1, check_selection_change, this);
+      }
+    });
 
     m_sync_addin_combo->set_hexpand(true);
     hbox->attach(*m_sync_addin_combo, hbox_col++, 0, 1, 1);
 
     vbox->attach(*hbox, 0, vbox_row++, 1, 1);
 
-    // Get the preferences GUI for the Sync Addin
-    if (active_iter.get_stamp() != 0) {
-      Glib::ustring addin_name;
-      active_iter->get_value(0, m_selected_sync_addin);
-    }
-    
-    if(m_selected_sync_addin) {
-      m_sync_addin_prefs_widget = m_selected_sync_addin->create_preferences_control(
-        *this, sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
-    }
-    if (m_sync_addin_prefs_widget == NULL) {
-      auto l = make_label(_("Not configurable"));
-      m_sync_addin_prefs_widget = l;
-    }
-    if (m_sync_addin_prefs_widget && !addin_id.empty() &&
-        m_sync_addin_iters.find(addin_id) != m_sync_addin_iters.end() && m_selected_sync_addin->is_configured()) {
-      m_sync_addin_prefs_widget->set_sensitive(false);
-    }
-
     m_sync_addin_prefs_container = Gtk::make_managed<Gtk::Grid>();
-    m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
     m_sync_addin_prefs_container->set_hexpand(true);
     m_sync_addin_prefs_container->set_vexpand(true);
     vbox->attach(*m_sync_addin_prefs_container, 0, vbox_row++, 1, 1);
@@ -479,9 +494,9 @@ namespace gnote {
     m_reset_sync_addin_button->signal_clicked().connect([this]() {
       on_reset_sync_addin_button(true);
     });
-    m_reset_sync_addin_button->set_sensitive(m_selected_sync_addin &&
-                                        addin_id == m_selected_sync_addin->id() &&
-                                        m_selected_sync_addin->is_configured());
+
+    bool current_sync_configured = active_sync && addin_id == active_sync->service().id() && active_sync->service().is_configured();
+    m_reset_sync_addin_button->set_sensitive(current_sync_configured);
     bbox->append(*m_reset_sync_addin_button);
 
     // TODO: Tabbing should go directly from sync prefs widget to here
@@ -489,16 +504,26 @@ namespace gnote {
     m_save_sync_addin_button = Gtk::make_managed<Gtk::Button>(_("_Save"), true);
     m_save_sync_addin_button->signal_clicked().connect(
       sigc::mem_fun(*this, &PreferencesDialog::on_save_sync_addin_button));
-    m_save_sync_addin_button->set_sensitive(m_selected_sync_addin != NULL &&
-                                          (addin_id != m_selected_sync_addin->id()
-                                           || !m_selected_sync_addin->is_configured()));
+    m_save_sync_addin_button->set_sensitive(current_sync_configured);
     bbox->append(*m_save_sync_addin_button);
 
-    m_sync_addin_combo->set_sensitive(!m_selected_sync_addin ||
-                                  addin_id != m_selected_sync_addin->id() ||
-                                  !m_selected_sync_addin->is_configured());
+    m_sync_addin_combo->set_sensitive(!current_sync_configured);
 
     vbox->attach(*bbox, 0, vbox_row++, 1, 1);
+
+    // Get the preferences GUI for the Sync Addin
+    if(active_sync) {
+      m_selected_sync_addin = &active_sync->service();
+      on_sync_addin_combo_changed();
+    }
+    if (m_sync_addin_prefs_widget == NULL) {
+      auto l = make_label(_("Not configurable"));
+      m_sync_addin_prefs_widget = l;
+    }
+    if (m_sync_addin_prefs_widget && current_sync_configured) {
+      m_sync_addin_prefs_widget->set_sensitive(false);
+    }
+    m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
 
     return vbox;
   }
@@ -960,31 +985,28 @@ namespace gnote {
 
   void PreferencesDialog::on_sync_addin_combo_changed()
   {
+    auto item = std::dynamic_pointer_cast<SyncService>(m_sync_addin_combo->get_selected_item());
+    sync::SyncServiceAddin *new_addin = item ? &item->service() : nullptr;
+
     if(m_sync_addin_prefs_widget != NULL) {
       m_sync_addin_prefs_container->remove(*m_sync_addin_prefs_widget);
       m_sync_addin_prefs_widget = NULL;
     }
 
-    Gtk::TreeIter iter = m_sync_addin_combo->get_active();
-    if(iter) {
-      sync::SyncServiceAddin *newAddin = NULL;
-      iter->get_value(0, newAddin);
-      if(newAddin != NULL) {
-        m_selected_sync_addin = newAddin;
-        m_sync_addin_prefs_widget = m_selected_sync_addin->create_preferences_control(
-          *this, sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
-        if(m_sync_addin_prefs_widget == NULL) {
-          auto l = Gtk::make_managed<Gtk::Label>(_("Not configurable"));
-          l->set_halign(Gtk::Align::CENTER);
-          l->set_valign(Gtk::Align::CENTER);
-          m_sync_addin_prefs_widget = l;
-        }
-
-        m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
-
-        m_reset_sync_addin_button->set_sensitive(false);
-        m_save_sync_addin_button->set_sensitive(false);
+    if(new_addin != NULL) {
+      m_sync_addin_prefs_widget = new_addin->create_preferences_control(
+        *this, sigc::mem_fun(*this, &PreferencesDialog::on_sync_addin_prefs_changed));
+      if(m_sync_addin_prefs_widget == NULL) {
+        auto l = Gtk::make_managed<Gtk::Label>(_("Not configurable"));
+        l->set_halign(Gtk::Align::CENTER);
+        l->set_valign(Gtk::Align::CENTER);
+        m_sync_addin_prefs_widget = l;
       }
+
+      m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
+
+      m_reset_sync_addin_button->set_sensitive(false);
+      m_save_sync_addin_button->set_sensitive(false);
     }
     else {
       m_selected_sync_addin = NULL;
@@ -996,16 +1018,17 @@ namespace gnote {
 
   void PreferencesDialog::on_reset_sync_addin_button(bool signal)
   {
-    if(m_selected_sync_addin == NULL) {
+    auto active_sync = std::dynamic_pointer_cast<SyncService>(m_sync_addin_combo->get_selected_item());
+    if(!active_sync) {
       return;
     }
 
-    auto after_dialog = [this] {
+    auto after_dialog = [this, active_sync] {
       try {
-        m_selected_sync_addin->reset_configuration();
+        active_sync->service().reset_configuration();
       }
       catch(std::exception & e) {
-        DBG_OUT("Error calling %s.reset_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
+        DBG_OUT("Error calling %s.reset_configuration: %s", active_sync->service().id().c_str(), e.what());
       }
 
       m_gnote.preferences().sync_selected_service_addin("");
@@ -1016,7 +1039,7 @@ namespace gnote {
       m_gnote.sync_manager().reset_client();
 
       m_sync_addin_combo->set_sensitive(true);
-      m_sync_addin_combo->unset_active();
+      m_sync_addin_combo->set_selected(GTK_INVALID_LIST_POSITION);
       m_reset_sync_addin_button->set_sensitive(false);
       m_save_sync_addin_button->set_sensitive(true);
     };
@@ -1057,7 +1080,8 @@ namespace gnote {
 
   void PreferencesDialog::on_save_sync_addin_button()
   {
-    if(m_selected_sync_addin == NULL) {
+    auto active_sync = std::dynamic_pointer_cast<SyncService>(m_sync_addin_combo->get_selected_item());
+    if(!active_sync) {
       return;
     }
 
@@ -1066,29 +1090,32 @@ namespace gnote {
     try {
       set_cursor("wait");
       set_sensitive(false);
-      saved = m_selected_sync_addin->save_configuration(sigc::mem_fun(*this, &PreferencesDialog::on_sync_settings_saved));
+      saved = active_sync->service().save_configuration([this, active_sync](bool saved, const Glib::ustring & err) {
+        on_sync_settings_saved(active_sync, saved, err);
+      });
     }
     catch(sync::GnoteSyncException & e) {
       errorMsg = e.what();
     }
     catch(std::exception & e) {
-      DBG_OUT("Unexpected error calling %s.save_configuration: %s", m_selected_sync_addin->id().c_str(), e.what());
+      DBG_OUT("Unexpected error calling %s.save_configuration: %s", active_sync->service().id().c_str(), e.what());
     }
 
     if(!saved) {
-      on_sync_settings_saved(saved, errorMsg);
+      on_sync_settings_saved(active_sync, saved, errorMsg);
     }
   }
 
 
-  void PreferencesDialog::on_sync_settings_saved(bool saved, Glib::ustring errorMsg)
+  void PreferencesDialog::on_sync_settings_saved(const Glib::RefPtr<Glib::Object> & active_sync_service, bool saved, Glib::ustring errorMsg)
   {
     set_sensitive(true);
     set_cursor("");
 
     utils::HIGMessageDialog *dialog;
     if(saved) {
-      m_gnote.preferences().sync_selected_service_addin(m_selected_sync_addin->id());
+      auto active_sync = std::dynamic_pointer_cast<SyncService>(active_sync_service);
+      m_gnote.preferences().sync_selected_service_addin(active_sync->service().id());
 
       m_sync_addin_combo->set_sensitive(false);
       m_sync_addin_prefs_widget->set_sensitive(false);
@@ -1143,8 +1170,9 @@ namespace gnote {
   void PreferencesDialog::on_sync_addin_prefs_changed()
   {
     // Enable/disable the save button based on required fields
-    if(m_selected_sync_addin != NULL) {
-      m_save_sync_addin_button->set_sensitive(m_selected_sync_addin->are_settings_valid());
+    auto active_sync = std::dynamic_pointer_cast<SyncService>(m_sync_addin_combo->get_selected_item());
+    if(active_sync) {
+      m_save_sync_addin_button->set_sensitive(active_sync->service().are_settings_valid());
     }
   }
 
@@ -1235,50 +1263,28 @@ namespace gnote {
     }
     std::sort(new_addins.begin(), new_addins.end(), CompareSyncAddinsByName());
 
-    // Build easier-to-navigate list if addins currently in the combo
-    std::vector<sync::SyncServiceAddin*> current_addins;
-    for(Gtk::TreeIter iter = m_sync_addin_store->children().begin();
-        iter != m_sync_addin_store->children().end(); ++iter) {
-      sync::SyncServiceAddin *current_addin = NULL;
-      iter->get_value(0, current_addin);
-      if(current_addin != NULL) {
-        current_addins.push_back(current_addin);
-      }
-    }
-
-    // Add new addins
-    // TODO: Would be nice to insert these alphabetically instead
+    auto model = Gio::ListStore<SyncService>::create();
     for(auto addin : new_addins) {
-      if(std::find(current_addins.begin(), current_addins.end(), addin) == current_addins.end()) {
-	Gtk::TreeIter iterator = m_sync_addin_store->append();
-	iterator->set_value(0, addin);
-	m_sync_addin_iters[addin->id()] = iterator;
+      model->append(SyncService::create(addin));
+    }
+
+    Glib::ustring current_selection;
+    if(auto selected = m_sync_addin_combo->get_selected_item()) {
+      current_selection = std::dynamic_pointer_cast<SyncService>(selected)->service().id();
+    }
+
+    guint select_item = GTK_INVALID_LIST_POSITION;
+    if(!current_selection.empty()) {
+      for(guint i = 0; i < model->get_n_items(); ++i) {
+        if(model->get_item(i)->service().id() == current_selection) {
+          select_item = i;
+          break;
+        }
       }
     }
 
-    // Remove deleted addins
-    for(auto current_addin : current_addins) {
-      if(std::find(new_addins.begin(), new_addins.end(), current_addin) == new_addins.end()) {
-	Gtk::TreeIter iter = m_sync_addin_iters[current_addin->id()];
-	m_sync_addin_store->erase(iter);
-	m_sync_addin_iters.erase(current_addin->id());
-
-	// FIXME: Lots of hacky stuff in here...rushing before freeze
-	if(current_addin == m_selected_sync_addin) {
-	  if(m_sync_addin_prefs_widget != NULL && !m_sync_addin_prefs_widget->get_sensitive()) {
-	    on_reset_sync_addin_button(false);
-          }
-
-	  Gtk::TreeIter active_iter = m_sync_addin_store->children().begin();
-	  if(active_iter != m_sync_addin_store->children().end()) {
-	    m_sync_addin_combo->set_active(active_iter);
-	  }
-          else {
-	    on_reset_sync_addin_button(false);
-	  }
-	}
-      }
-    }
+    m_sync_addin_combo->set_model(model);
+    m_sync_addin_combo->set_selected(select_item);
   }
 
   void PreferencesDialog::on_autosync_check_toggled()
