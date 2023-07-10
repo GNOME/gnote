@@ -52,7 +52,7 @@ public:
   virtual MainWindow & get_main_window() = 0;
   virtual MainWindow & get_window_for_note() = 0;
   virtual MainWindow & new_main_window() = 0;
-  virtual void open_note(const Note::Ptr & note) = 0;
+  virtual void open_note(const NoteBase & note) = 0;
   virtual MainWindow & open_search_all() = 0;
 
   sigc::signal<void()> signal_quit;

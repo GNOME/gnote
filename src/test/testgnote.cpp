@@ -81,7 +81,7 @@ gnote::MainWindow & Gnote::new_main_window()
   throw std::logic_error(std::string("Not implemented ") + __FUNCTION__);
 }
 
-void Gnote::open_note(const gnote::Note::Ptr & /*note*/)
+void Gnote::open_note(const gnote::NoteBase & /*note*/)
 {
   throw std::logic_error(std::string("Not implemented ") + __FUNCTION__);
 }

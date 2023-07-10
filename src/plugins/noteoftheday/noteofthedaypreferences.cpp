@@ -72,7 +72,7 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
   }
 
   if(0 != template_note) {
-    m_gnote.open_note(std::static_pointer_cast<gnote::Note>(template_note));
+    m_gnote.open_note(*template_note);
   }
 }
 

@@ -43,7 +43,7 @@ public:
   virtual gnote::MainWindow & get_main_window() override;
   virtual gnote::MainWindow & get_window_for_note() override;
   virtual gnote::MainWindow & new_main_window() override;
-  virtual void open_note(const gnote::Note::Ptr & note) override;
+  void open_note(const gnote::NoteBase & note) override;
   virtual gnote::MainWindow & open_search_all() override;
 private:
   gnote::notebooks::NotebookManager *m_notebook_manager;

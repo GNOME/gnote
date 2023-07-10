@@ -436,9 +436,10 @@ namespace gnote {
   }
 
 
-  void Gnote::open_note(const Note::Ptr & note)
+  void Gnote::open_note(const NoteBase & note)
   {
-    MainWindow::present_in(get_window_for_note(), note);
+    auto n = const_cast<NoteBase&>(note).shared_from_this();
+    MainWindow::present_in(get_window_for_note(), std::static_pointer_cast<Note>(n));
   }
 
   notebooks::NotebookManager & Gnote::notebook_manager()

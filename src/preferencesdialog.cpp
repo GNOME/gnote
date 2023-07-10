@@ -881,7 +881,7 @@ namespace {
     NoteBase::Ptr template_note = m_note_manager.get_or_create_template_note();
 
     // Open the template note
-    m_gnote.open_note(std::static_pointer_cast<Note>(template_note));
+    m_gnote.open_note(*template_note);
   }
 
 

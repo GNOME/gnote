@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2010-2019,2021-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -157,7 +157,7 @@ public:
     {
       return !is_background();
     }
-  virtual void open_note(const Note::Ptr & note) override;
+  void open_note(const NoteBase & note) override;
 protected:
   virtual int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine> & command_line) override;
   virtual void on_startup() override;
