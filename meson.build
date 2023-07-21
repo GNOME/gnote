@@ -8,7 +8,7 @@ gnome = import('gnome')
 i18n = import('i18n')
 
 gnote_release = meson.project_version().split('.')[0]
-libgnote_version_info = '0.0.0'
+libgnote_version_info = '0.0.1'
 
 glib_version = '>=2.62'
 gio_dep = dependency('gio-2.0', version: glib_version)
