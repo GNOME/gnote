@@ -32,7 +32,7 @@
 namespace gnote {
   namespace notebooks {
 
-    NotebooksTreeView::NotebooksTreeView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model)
+    NotebooksView::NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model)
       : Gtk::TreeView(model)
       , m_note_manager(manager)
     {
@@ -41,12 +41,12 @@ namespace gnote {
       types.push_back(Glib::Value<Glib::ustring>::value_type());
       types.push_back(Glib::Value<std::vector<Glib::ustring>>::value_type());
       drop_target->set_gtypes(types);
-      drop_target->signal_drop().connect(sigc::mem_fun(*this, &NotebooksTreeView::on_drag_data_received), false);
+      drop_target->signal_drop().connect(sigc::mem_fun(*this, &NotebooksView::on_drag_data_received), false);
       add_controller(drop_target);
       // TODO: add some visual when hovering over target notebook
     }
 
-    bool NotebooksTreeView::on_drag_data_received(const Glib::ValueBase & value, double x, double y)
+    bool NotebooksView::on_drag_data_received(const Glib::ValueBase & value, double x, double y)
     {
       Gtk::TreePath treepath;
       Gtk::TreeView::DropPosition pos;

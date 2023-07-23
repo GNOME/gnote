@@ -27,15 +27,13 @@
 
 namespace gnote {
 
-  class NoteManager;
-
   namespace notebooks {
 
-  class NotebooksTreeView
+  class NotebooksView
     : public Gtk::TreeView
   {
   public:
-    NotebooksTreeView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model);
+    NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model);
 
   private:
     bool on_drag_data_received(const Glib::ValueBase & value, double x, double y);

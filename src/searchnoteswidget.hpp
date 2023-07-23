@@ -156,7 +156,7 @@ private:
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::ScrolledWindow m_matches_window;
   std::shared_ptr<Gtk::Grid> m_no_matches_box;
-  notebooks::NotebooksTreeView *m_notebooks_view;
+  notebooks::NotebooksView *m_notebooks_view;
   sigc::connection m_on_notebook_selection_changed_cid;
   std::set<Tag::Ptr>  m_selected_tags;
   Glib::RefPtr<Gtk::ListStore> m_store;

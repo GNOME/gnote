@@ -179,7 +179,7 @@ void SearchNotesWidget::restore_matches_window()
 
 Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
-  m_notebooks_view = Gtk::make_managed<notebooks::NotebooksTreeView>(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items());
+  m_notebooks_view = Gtk::make_managed<notebooks::NotebooksView>(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items());
 
   m_notebooks_view->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
   m_notebooks_view->set_headers_visible(true);
