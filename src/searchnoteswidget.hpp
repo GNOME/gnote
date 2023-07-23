@@ -88,7 +88,7 @@ private:
   void select_notes(const Note::List &);
   Note::Ptr get_note(const Gtk::TreePath & p);
   bool filter_by_search(const Note::Ptr &);
-  bool filter_by_tag(const Note::Ptr &);
+  bool filter_by_tag(const Note::Ptr &, const Tag::Ptr &);
   void on_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
   void on_selection_changed();
   void on_treeview_right_button_pressed(int n_press, double x, double y);
@@ -156,7 +156,6 @@ private:
   std::shared_ptr<Gtk::Grid> m_no_matches_box;
   notebooks::NotebooksView *m_notebooks_view;
   sigc::connection m_on_notebook_selection_changed_cid;
-  std::set<Tag::Ptr>  m_selected_tags;
   Glib::RefPtr<Gtk::ListStore> m_store;
   Glib::RefPtr<Gtk::TreeModelSort> m_store_sort;
   Glib::RefPtr<Gtk::TreeModelFilter> m_store_filter;

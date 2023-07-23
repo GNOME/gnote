@@ -315,10 +315,6 @@ void SearchNotesWidget::on_notebook_selection_changed()
 
   bool allow_edit = false;
   if(!notebook) {
-    // Clear out the currently selected tags so that no notebook is selected
-    m_selected_tags.clear();
-
-
     // Select the "All Notes" item without causing
     // this handler to be called again
     m_on_notebook_selection_changed_cid.block();
@@ -326,10 +322,6 @@ void SearchNotesWidget::on_notebook_selection_changed()
     m_on_notebook_selection_changed_cid.unblock();
   }
   else {
-    m_selected_tags.clear();
-    if(notebook->get_tag()) {
-      m_selected_tags.insert(notebook->get_tag());
-    }
     if(!std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
       allow_edit = true;
     }
@@ -500,7 +492,12 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> & it
     return false; // don't waste time checking tags if it's already false
   }
 
-  bool passes_tag_filter = filter_by_tag(note);
+  bool passes_tag_filter = true; // no selected notebook
+  if(auto notebook = m_notebooks_view->get_selected_notebook()) {
+    if(auto tag = notebook->get_tag()) {
+      passes_tag_filter = filter_by_tag(note, tag);
+    }
+  }
 
   // Must pass both filters to appear in the list
   return passes_tag_filter && passes_search_filter;
@@ -638,16 +635,10 @@ bool SearchNotesWidget::filter_by_search(const Note::Ptr & note)
   return note && m_current_matches.find(note->uri()) != m_current_matches.end();
 }
 
-bool SearchNotesWidget::filter_by_tag(const Note::Ptr & note)
+bool SearchNotesWidget::filter_by_tag(const Note::Ptr & note, const Tag::Ptr & tag)
 {
-  if(m_selected_tags.empty()) {
-    return true;
-  }
-
-  //   // FIXME: Ugh!  NOT an O(1) operation.  Is there a better way?
-  std::vector<Tag::Ptr> tags = note->get_tags();
-  for(auto & tag : tags) {
-    if(m_selected_tags.find(tag) != m_selected_tags.end()) {
+  for(auto & t : note->get_tags()) {
+    if(tag == t) {
       return true;
     }
   }
