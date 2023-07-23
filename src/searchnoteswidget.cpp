@@ -209,7 +209,7 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   auto button_ctrl = Gtk::GestureClick::create();
   button_ctrl->set_button(3);
   button_ctrl->signal_pressed()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_tree_right_click), false);
+    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_view_right_click), false);
   m_notebooks_view->add_controller(button_ctrl);
 
   auto key_ctrl = Gtk::EventControllerKey::create();
@@ -348,7 +348,7 @@ void SearchNotesWidget::on_notebook_selection_changed()
   signal_name_changed(get_name());
 }
 
-void SearchNotesWidget::on_notebooks_tree_right_click(int n_press, double x, double y)
+void SearchNotesWidget::on_notebooks_view_right_click(int n_press, double x, double y)
 {
   auto popover = get_notebook_list_context_menu();
   Gdk::Rectangle pos;

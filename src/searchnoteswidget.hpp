@@ -76,7 +76,7 @@ private:
   void notebook_text_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_notebook_row_edited(const Glib::ustring& path, const Glib::ustring& new_text);
   void on_notebook_selection_changed();
-  void on_notebooks_tree_right_click(int n_press, double x, double y);
+  void on_notebooks_view_right_click(int n_press, double x, double y);
   bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void update_results();
   void popup_context_menu_at_location(Gtk::Popover*, Gtk::TreeView*);
