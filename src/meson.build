@@ -72,7 +72,7 @@ gnote_sources = [
   'preferencesdialog.cpp',
   'recentchanges.cpp',
   'searchnoteswidget.cpp',
-  'notebooks/notebookstreeview.cpp',
+  'notebooks/notebooksview.cpp',
   'synchronization/gnotesyncclient.cpp',
   'synchronization/silentui.cpp',
   'synchronization/syncdialog.cpp',

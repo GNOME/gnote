@@ -34,7 +34,7 @@
 
 #include "mainwindowembeds.hpp"
 #include "notebooks/notebook.hpp"
-#include "notebooks/notebookstreeview.hpp"
+#include "notebooks/notebooksview.hpp"
 
 
 namespace gnote {

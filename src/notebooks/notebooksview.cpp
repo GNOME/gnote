@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2019,2022 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 #include "debug.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
-#include "notebooks/notebookstreeview.hpp"
+#include "notebooks/notebooksview.hpp"
 #include "notebooks/specialnotebooks.hpp"
 #include "notemanagerbase.hpp"
 

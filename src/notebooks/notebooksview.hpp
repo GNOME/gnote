@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2019,2022 Aurimas Cernius
+ * Copyright (C) 2013,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,8 @@
 
 
 
-#ifndef _NOTEBOOKS_TREEVIEW_HPP_
-#define _NOTEBOOKS_TREEVIEW_HPP_
+#ifndef _NOTEBOOKSVIEW_HPP_
+#define _NOTEBOOKSVIEW_HPP_
 
 #include <gtkmm/treeview.h>
 
