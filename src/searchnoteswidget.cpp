@@ -110,7 +110,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
 Glib::ustring SearchNotesWidget::get_name() const
 {
-  notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
+  auto selected_notebook = m_notebooks_view->get_selected_notebook();
   if(!selected_notebook) {
     return "";
   }
@@ -145,7 +145,7 @@ void SearchNotesWidget::perform_search()
   m_current_matches.clear();
 
   // Search using the currently selected notebook
-  notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
+  auto selected_notebook = m_notebooks_view->get_selected_notebook();
   if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(selected_notebook)) {
     selected_notebook = notebooks::Notebook::Ptr();
   }
@@ -290,7 +290,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   if(notebook_manager.notebook_exists(new_text) || new_text == "") {
     return;
   }
-  notebooks::Notebook::Ptr old_notebook = this->get_selected_notebook();
+  auto old_notebook = m_notebooks_view->get_selected_notebook();
   if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(old_notebook)) {
     return;
   }
@@ -320,7 +320,7 @@ void SearchNotesWidget::on_notebook_row_activated(const Gtk::TreePath &,
 void SearchNotesWidget::on_notebook_selection_changed()
 {
   restore_matches_window();
-  notebooks::Notebook::Ptr notebook = get_selected_notebook();
+  auto notebook = m_notebooks_view->get_selected_notebook();
 
   bool allow_edit = false;
   if(!notebook) {
@@ -392,24 +392,6 @@ bool SearchNotesWidget::on_notebooks_key_pressed(guint keyval, guint keycode, Gd
   }
 
   return false; // Let Escape be handled by the window.
-}
-
-notebooks::Notebook::Ptr SearchNotesWidget::get_selected_notebook() const
-{
-  Gtk::TreeIter<Gtk::TreeRow> iter;
-
-  Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooks_view->get_selection();
-  if(!selection) {
-    return notebooks::Notebook::Ptr();
-  }
-  iter = selection->get_selected();
-  if(!iter) {
-    return notebooks::Notebook::Ptr(); // Nothing selected
-  }
-
-  notebooks::Notebook::Ptr notebook;
-  iter->get_value(0, notebook);
-  return notebook;
 }
 
 void SearchNotesWidget::select_all_notes_notebook()
@@ -517,7 +499,7 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> & it
     return false;
   }
 
-  notebooks::Notebook::Ptr selected_notebook = get_selected_notebook();
+  auto selected_notebook = m_notebooks_view->get_selected_notebook();
   if(!selected_notebook || !selected_notebook->contains_note(note)) {
     return false;
   }
@@ -1071,7 +1053,7 @@ Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
 void SearchNotesWidget::new_note()
 {
   Note::Ptr note;
-  notebooks::Notebook::Ptr notebook = get_selected_notebook();
+  auto notebook = m_notebooks_view->get_selected_notebook();
   if(!notebook || std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
     // Just create a standard note (not in a notebook)
     note = std::static_pointer_cast<Note>(m_manager.create());
@@ -1104,7 +1086,7 @@ Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
 
 void SearchNotesWidget::on_open_notebook_template_note(const Glib::VariantBase&)
 {
-  notebooks::Notebook::Ptr notebook = get_selected_notebook();
+  auto notebook = m_notebooks_view->get_selected_notebook();
   if(!notebook) {
     return;
   }
@@ -1124,7 +1106,7 @@ void SearchNotesWidget::on_new_notebook(const Glib::VariantBase&)
 
 void SearchNotesWidget::on_delete_notebook(const Glib::VariantBase&)
 {
-  notebooks::Notebook::Ptr notebook = get_selected_notebook();
+  auto notebook = m_notebooks_view->get_selected_notebook();
   if(!notebook) {
     return;
   }
