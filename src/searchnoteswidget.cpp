@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -179,10 +179,10 @@ void SearchNotesWidget::restore_matches_window()
 
 Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 {
-  m_notebooksTree = Gtk::make_managed<notebooks::NotebooksTreeView>(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items());
+  m_notebooks_view = Gtk::make_managed<notebooks::NotebooksTreeView>(m_manager, m_gnote.notebook_manager().get_notebooks_with_special_items());
 
-  m_notebooksTree->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
-  m_notebooksTree->set_headers_visible(true);
+  m_notebooks_view->get_selection()->set_mode(Gtk::SelectionMode::SINGLE);
+  m_notebooks_view->set_headers_visible(true);
 
   Gtk::CellRenderer *renderer;
 
@@ -201,28 +201,27 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   column->set_cell_data_func(*text_renderer, sigc::mem_fun(*this, &SearchNotesWidget::notebook_text_cell_data_func));
   text_renderer->signal_edited().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_row_edited));
 
-  m_notebooksTree->append_column(*column);
+  m_notebooks_view->append_column(*column);
 
-  m_notebooksTree->signal_row_activated()
+  m_notebooks_view->signal_row_activated()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_row_activated));
-  m_on_notebook_selection_changed_cid = m_notebooksTree->get_selection()->signal_changed()
+  m_on_notebook_selection_changed_cid = m_notebooks_view->get_selection()->signal_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_selection_changed));
 
   auto button_ctrl = Gtk::GestureClick::create();
   button_ctrl->set_button(3);
   button_ctrl->signal_pressed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_tree_right_click), false);
-  m_notebooksTree->add_controller(button_ctrl);
+  m_notebooks_view->add_controller(button_ctrl);
 
   auto key_ctrl = Gtk::EventControllerKey::create();
   key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_key_pressed), false);
-  m_notebooksTree->add_controller(key_ctrl);
+  m_notebooks_view->add_controller(key_ctrl);
 
-  m_notebooksTree->show();
   Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
   sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
-  sw->set_child(*m_notebooksTree);
+  sw->set_child(*m_notebooks_view);
 
   return sw;
 }
@@ -306,8 +305,8 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   notebook_manager.delete_notebook(old_notebook);
   Gtk::TreeIter<Gtk::TreeRow> iter;
   if(notebook_manager.get_notebook_iter(new_notebook, iter)) {
-    m_notebooksTree->get_selection()->select(iter);
-    m_notebooksTree->set_cursor(m_notebooksTree->get_model()->get_path(iter));
+    m_notebooks_view->get_selection()->select(iter);
+    m_notebooks_view->set_cursor(m_notebooks_view->get_model()->get_path(iter));
   }
 }
 
@@ -344,7 +343,7 @@ void SearchNotesWidget::on_notebook_selection_changed()
       allow_edit = true;
     }
 
-    std::vector<Gtk::CellRenderer*> renderers = m_notebooksTree->get_column(0)->get_cells();
+    std::vector<Gtk::CellRenderer*> renderers = m_notebooks_view->get_column(0)->get_cells();
     for(std::vector<Gtk::CellRenderer*>::iterator renderer = renderers.begin();
         renderer != renderers.end(); ++renderer) {
       Gtk::CellRendererText *text_rederer = dynamic_cast<Gtk::CellRendererText*>(*renderer);
@@ -385,7 +384,7 @@ bool SearchNotesWidget::on_notebooks_key_pressed(guint keyval, guint keycode, Gd
   case GDK_KEY_Menu:
   {
     Gtk::Popover *menu = get_notebook_list_context_menu();
-    popup_context_menu_at_location(menu, m_notebooksTree);
+    popup_context_menu_at_location(menu, m_notebooks_view);
     return true;
   }
   default:
@@ -399,7 +398,7 @@ notebooks::Notebook::Ptr SearchNotesWidget::get_selected_notebook() const
 {
   Gtk::TreeIter<Gtk::TreeRow> iter;
 
-  Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooksTree->get_selection();
+  Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooks_view->get_selection();
   if(!selection) {
     return notebooks::Notebook::Ptr();
   }
@@ -415,7 +414,7 @@ notebooks::Notebook::Ptr SearchNotesWidget::get_selected_notebook() const
 
 void SearchNotesWidget::select_all_notes_notebook()
 {
-  Glib::RefPtr<Gtk::TreeModel> model = m_notebooksTree->get_model();
+  Glib::RefPtr<Gtk::TreeModel> model = m_notebooks_view->get_model();
   DBG_ASSERT(model, "model is NULL");
   if(!model) {
     return;
@@ -424,7 +423,7 @@ void SearchNotesWidget::select_all_notes_notebook()
     notebooks::Notebook::Ptr notebook;
     iter->get_value(0, notebook);
     if(std::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook) != NULL) {
-      m_notebooksTree->get_selection()->select(iter);
+      m_notebooks_view->get_selection()->select(iter);
       break;
     }
   }
@@ -1093,10 +1092,10 @@ Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
     menu->append(_("_Open Template Note"), "win.open-template-note");
     menu->append(_("Re_name..."), "win.rename-notebook");
     menu->append(_("_Delete"), "win.delete-notebook");
-    m_notebook_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_notebooksTree, menu);
+    m_notebook_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_notebooks_view, menu);
   }
   else {
-    m_notebook_list_context_menu->set_parent(*m_notebooksTree);
+    m_notebook_list_context_menu->set_parent(*m_notebooks_view);
   }
 
   on_notebook_selection_changed();
@@ -1253,7 +1252,7 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
 
 void SearchNotesWidget::on_rename_notebook()
 {
-  Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooksTree->get_selection();
+  Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooks_view->get_selection();
   if(!selection) {
     return;
   }
@@ -1261,7 +1260,7 @@ void SearchNotesWidget::on_rename_notebook()
   if(selected_row.size() != 1) {
     return;
   }
-  m_notebooksTree->set_cursor(selected_row[0], *m_notebooksTree->get_column(0), true);
+  m_notebooks_view->set_cursor(selected_row[0], *m_notebooks_view->get_column(0), true);
 }
 
 }
