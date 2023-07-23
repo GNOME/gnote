@@ -203,8 +203,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
   m_notebooks_view->append_column(*column);
 
-  m_notebooks_view->signal_row_activated()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_row_activated));
   m_on_notebook_selection_changed_cid = m_notebooks_view->get_selection()->signal_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_selection_changed));
 
@@ -308,13 +306,6 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
     m_notebooks_view->get_selection()->select(iter);
     m_notebooks_view->set_cursor(m_notebooks_view->get_model()->get_path(iter));
   }
-}
-
-// Create a new note in the notebook when activated
-void SearchNotesWidget::on_notebook_row_activated(const Gtk::TreePath &,
-                                                  Gtk::TreeViewColumn*)
-{
-  new_note();
 }
 
 void SearchNotesWidget::on_notebook_selection_changed()

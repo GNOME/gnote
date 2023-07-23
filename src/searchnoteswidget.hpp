@@ -75,7 +75,6 @@ private:
   void notebook_pixbuf_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void notebook_text_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_notebook_row_edited(const Glib::ustring& path, const Glib::ustring& new_text);
-  void on_notebook_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
   void on_notebook_selection_changed();
   void on_notebooks_tree_right_click(int n_press, double x, double y);
   bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
