@@ -46,6 +46,22 @@ namespace gnote {
       // TODO: add some visual when hovering over target notebook
     }
 
+    Notebook::Ptr NotebooksView::get_selected_notebook() const
+    {
+      auto selection = get_selection();
+      if(!selection) {
+        return Notebook::Ptr();
+      }
+      auto iter = selection->get_selected();
+      if(!iter) {
+        return Notebook::Ptr(); // Nothing selected
+      }
+
+      Notebook::Ptr notebook;
+      iter->get_value(0, notebook);
+      return notebook;
+    }
+
     bool NotebooksView::on_drag_data_received(const Glib::ValueBase & value, double x, double y)
     {
       Gtk::TreePath treepath;
