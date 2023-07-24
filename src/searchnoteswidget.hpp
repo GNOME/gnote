@@ -75,7 +75,7 @@ private:
   void notebook_pixbuf_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void notebook_text_cell_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_notebook_row_edited(const Glib::ustring& path, const Glib::ustring& new_text);
-  void on_notebook_selection_changed();
+  void on_notebook_selection_changed(const notebooks::Notebook::Ptr & notebook);
   void on_notebooks_view_right_click(int n_press, double x, double y);
   bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void update_results();
@@ -155,7 +155,6 @@ private:
   Gtk::ScrolledWindow m_matches_window;
   std::shared_ptr<Gtk::Grid> m_no_matches_box;
   notebooks::NotebooksView *m_notebooks_view;
-  sigc::connection m_on_notebook_selection_changed_cid;
   Glib::RefPtr<Gtk::ListStore> m_store;
   Glib::RefPtr<Gtk::TreeModelSort> m_store_sort;
   Glib::RefPtr<Gtk::TreeModelFilter> m_store_filter;

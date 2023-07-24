@@ -203,7 +203,7 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
   m_notebooks_view->append_column(*column);
 
-  m_on_notebook_selection_changed_cid = m_notebooks_view->get_selection()->signal_changed()
+  m_notebooks_view->signal_selected_notebook_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_selection_changed));
 
   auto button_ctrl = Gtk::GestureClick::create();
@@ -308,31 +308,21 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   }
 }
 
-void SearchNotesWidget::on_notebook_selection_changed()
+void SearchNotesWidget::on_notebook_selection_changed(const notebooks::Notebook::Ptr & notebook)
 {
   restore_matches_window();
-  auto notebook = m_notebooks_view->get_selected_notebook();
 
   bool allow_edit = false;
-  if(!notebook) {
-    // Select the "All Notes" item without causing
-    // this handler to be called again
-    m_on_notebook_selection_changed_cid.block();
-    select_all_notes_notebook();
-    m_on_notebook_selection_changed_cid.unblock();
+  if(!std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
+    allow_edit = true;
   }
-  else {
-    if(!std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
-      allow_edit = true;
-    }
 
-    std::vector<Gtk::CellRenderer*> renderers = m_notebooks_view->get_column(0)->get_cells();
-    for(std::vector<Gtk::CellRenderer*>::iterator renderer = renderers.begin();
-        renderer != renderers.end(); ++renderer) {
-      Gtk::CellRendererText *text_rederer = dynamic_cast<Gtk::CellRendererText*>(*renderer);
-      if(text_rederer) {
-        text_rederer->property_editable() = allow_edit;
-      }
+  std::vector<Gtk::CellRenderer*> renderers = m_notebooks_view->get_column(0)->get_cells();
+  for(std::vector<Gtk::CellRenderer*>::iterator renderer = renderers.begin();
+      renderer != renderers.end(); ++renderer) {
+    Gtk::CellRendererText *text_rederer = dynamic_cast<Gtk::CellRendererText*>(*renderer);
+    if(text_rederer) {
+      text_rederer->property_editable() = allow_edit;
     }
   }
 
@@ -1050,7 +1040,7 @@ Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
     m_notebook_list_context_menu->set_parent(*m_notebooks_view);
   }
 
-  on_notebook_selection_changed();
+  on_notebook_selection_changed(m_notebooks_view->get_selected_notebook());
   return m_notebook_list_context_menu.get();
 }
 
