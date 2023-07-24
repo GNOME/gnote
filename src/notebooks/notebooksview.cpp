@@ -108,5 +108,22 @@ namespace gnote {
 
       return false;
     }
+
+    void NotebooksView::select_all_notes_notebook()
+    {
+      auto model = get_model();
+      DBG_ASSERT(model, "model is NULL");
+      if(!model) {
+        return;
+      }
+      for(Gtk::TreeIter iter = model->children().begin(); iter; ++iter) {
+        notebooks::Notebook::Ptr notebook;
+        iter->get_value(0, notebook);
+        if(std::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook) != NULL) {
+          get_selection()->select(iter);
+          break;
+        }
+      }
+    }
   }
 }

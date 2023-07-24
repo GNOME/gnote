@@ -36,6 +36,7 @@ namespace gnote {
     NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model);
 
     Notebook::Ptr get_selected_notebook() const;
+    void select_all_notes_notebook();
   private:
     bool on_drag_data_received(const Glib::ValueBase & value, double x, double y);
     NoteManagerBase & m_note_manager;

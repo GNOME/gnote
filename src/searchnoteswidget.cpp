@@ -379,19 +379,7 @@ bool SearchNotesWidget::on_notebooks_key_pressed(guint keyval, guint keycode, Gd
 
 void SearchNotesWidget::select_all_notes_notebook()
 {
-  Glib::RefPtr<Gtk::TreeModel> model = m_notebooks_view->get_model();
-  DBG_ASSERT(model, "model is NULL");
-  if(!model) {
-    return;
-  }
-  for(Gtk::TreeIter iter = model->children().begin(); iter; ++iter) {
-    notebooks::Notebook::Ptr notebook;
-    iter->get_value(0, notebook);
-    if(std::dynamic_pointer_cast<notebooks::AllNotesNotebook>(notebook) != NULL) {
-      m_notebooks_view->get_selection()->select(iter);
-      break;
-    }
-  }
+  m_notebooks_view->select_all_notes_notebook();
 }
 
 void SearchNotesWidget::update_results()
