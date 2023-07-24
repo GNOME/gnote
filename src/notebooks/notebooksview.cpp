@@ -44,6 +44,8 @@ namespace gnote {
       drop_target->signal_drop().connect(sigc::mem_fun(*this, &NotebooksView::on_drag_data_received), false);
       add_controller(drop_target);
       // TODO: add some visual when hovering over target notebook
+
+      get_selection()->signal_changed().connect(sigc::mem_fun(*this, &NotebooksView::on_selection_changed));
     }
 
     Notebook::Ptr NotebooksView::get_selected_notebook() const
@@ -123,6 +125,16 @@ namespace gnote {
           get_selection()->select(iter);
           break;
         }
+      }
+    }
+
+    void NotebooksView::on_selection_changed()
+    {
+      if(auto notebook = get_selected_notebook()) {
+        signal_selected_notebook_changed(notebook);
+      }
+      else {
+        select_all_notes_notebook();
       }
     }
   }
