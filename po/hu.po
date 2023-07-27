@@ -14,19 +14,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-02-10 20:30+0000\n"
-"PO-Revision-Date: 2023-02-21 01:53+0100\n"
+"POT-Creation-Date: 2023-06-19 15:43+0000\n"
+"PO-Revision-Date: 2023-07-27 02:02+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 23.04.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:88 src/recentchanges.cpp:116
+#: src/recentchanges.cpp:97 src/recentchanges.cpp:120
 msgid "Gnote"
 msgstr "Gnote jegyzettömb"
 
@@ -616,7 +616,6 @@ msgid "Delete selected note"
 msgstr "Kiválasztott jegyzet törlése"
 
 #: data/shortcuts-gnote.ui:132
-#| msgid "Note Title"
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "Jegyzetnézet"
@@ -706,35 +705,35 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Behúzás csökkentése/lista letiltása a kijelölés sorában"
 
-#: src/actionmanager.cpp:127
+#: src/actionmanager.cpp:133
 msgid "_New Note"
 msgstr "Ú_j jegyzet"
 
-#: src/actionmanager.cpp:128
+#: src/actionmanager.cpp:134
 msgid "New _Window"
 msgstr "Új _ablak"
 
-#: src/actionmanager.cpp:129 src/preferencesdialog.cpp:623
+#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:549
 msgid "_Preferences"
 msgstr "_Beállítások"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:136
 msgid "_Shortcuts"
 msgstr "Gy_orsbillentyűk"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:137
 msgid "_Help"
 msgstr "_Súgó"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:138
 msgid "_About Gnote"
 msgstr "A Gnote _névjegye"
 
-#: src/addininfo.cpp:71
+#: src/addininfo.cpp:72
 msgid "Failed to load plugin information!"
 msgstr "Nem sikerült betölteni a bővítményinformációkat!"
 
-#: src/addininfo.cpp:145
+#: src/addininfo.cpp:140
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Nem kompatibilis bővítmény (%s): várt: %s, kapott: %s"
@@ -792,19 +791,13 @@ msgstr ""
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere és a Tomboy projekt"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:75
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:77
 msgid "What links here?"
 msgstr "Mi hivatkozik erre?"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:96
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:92
 msgid "(none)"
 msgstr "(semmi)"
-
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:101
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
-#: src/notebooks/notebooknoteaddin.cpp:167
-msgid "_Back"
-msgstr "_Vissza"
 
 #: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid "Bugzilla Links"
@@ -824,11 +817,10 @@ msgstr ""
 #: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
 #: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
 #: src/plugins/printnotes/printnotes.desktop.in.in:6
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:6
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere és a Tomboy projekt"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:64
+#: src/plugins/bugzilla/bugzillapreferences.cpp:121
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -836,76 +828,76 @@ msgstr ""
 "Bármely bugzillát használhatja, a hivatkozások jegyzetekbe húzásával. Ha "
 "bizonyos gépekhez adott ikont kíván társítani, itt felveheti azokat."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:81
+#: src/plugins/bugzilla/bugzillapreferences.cpp:150
 msgid "Host Name"
 msgstr "Gépnév"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:94
+#: src/plugins/bugzilla/bugzillapreferences.cpp:156
 msgid "Icon"
 msgstr "Ikon"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+#: src/plugins/bugzilla/bugzillapreferences.cpp:172
 msgid "_Add"
 msgstr "_Hozzáadás"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+#: src/plugins/bugzilla/bugzillapreferences.cpp:176
 msgid "_Remove"
 msgstr "_Eltávolítás"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:225
+#: src/plugins/bugzilla/bugzillapreferences.cpp:278
 msgid "Select an icon..."
 msgstr "Válasszon ikont…"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:227
-#: src/plugins/bugzilla/bugzillapreferences.cpp:370
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/plugins/bugzilla/bugzillapreferences.cpp:279
+#: src/plugins/bugzilla/bugzillapreferences.cpp:419
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
-#: src/utils.cpp:375
+#: src/notebooks/notebookmanager.cpp:359 src/note.cpp:65 src/utils.cpp:274
+#: src/utils.cpp:281
 msgid "_Cancel"
 msgstr "_Mégse"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:228
-#: src/searchnoteswidget.cpp:1302
+#: src/plugins/bugzilla/bugzillapreferences.cpp:280
+#: src/searchnoteswidget.cpp:1058
 msgid "_Open"
 msgstr "_Megnyitás"
 
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:240
+#: src/plugins/bugzilla/bugzillapreferences.cpp:291
 msgid "_Host name:"
 msgstr "_Gépnév:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:274
-msgid "Host name invalid"
-msgstr "A gépnév érvénytelen"
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:275
-msgid "You must specify a valid Bugzilla host name to use with this icon."
-msgstr "Meg kell adnia az ikonnal használandó Bugzilla érvényes gépnevét."
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:294
+#: src/plugins/bugzilla/bugzillapreferences.cpp:321
 msgid "Error saving icon"
 msgstr "Hiba az ikon mentése közben"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:295
+#: src/plugins/bugzilla/bugzillapreferences.cpp:322
 msgid "Could not save the icon file."
 msgstr "Nem sikerült elmenteni a ikonfájlt."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/plugins/bugzilla/bugzillapreferences.cpp:337
+msgid "Host name invalid"
+msgstr "A gépnév érvénytelen"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:338
+msgid "You must specify a valid Bugzilla host name to use with this icon."
+msgstr "Meg kell adnia az ikonnal használandó Bugzilla érvényes gépnevét."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:416
 msgid "Really remove this icon?"
 msgstr "Biztosan törli ezt az ikont?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:368
+#: src/plugins/bugzilla/bugzillapreferences.cpp:417
 msgid "If you remove an icon it is permanently lost."
 msgstr "Ha töröl egy ikont, akkor az véglegesen elvész."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376
-#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
-#: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
+#: src/plugins/bugzilla/bugzillapreferences.cpp:423
+#: src/notebooks/notebookmanager.cpp:363 src/note.cpp:69
+#: src/searchnoteswidget.cpp:1060 src/searchnoteswidget.cpp:1095
 msgid "_Delete"
 msgstr "_Törlés"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:388
+#: src/plugins/bugzilla/bugzillapreferences.cpp:437
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Hiba az ikon (%s) eltávolításakor: %s"
@@ -956,69 +948,70 @@ msgstr "Az egyes jegyzetek HTML-be exportálása."
 msgid "Destination for HTML Export"
 msgstr "A HTML-be exportálás célja"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Export linked notes"
 msgstr "Hivatkozott jegyzetek exportálása"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:43
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Include all other linked notes"
 msgstr "Minden más hivatkozott jegyzet felvétele"
 
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
-#: src/preferencesdialog.cpp:547
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/preferencesdialog.cpp:489
 msgid "_Save"
 msgstr "_Mentés"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:82
 msgid "Export to HTML…"
 msgstr "Exportálás HTML-be…"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:122
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:129
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Nem nyitható meg az exportált jegyzet a webböngészőben: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:133
 msgid "Your note was exported to \"%1\"."
 msgstr "A jegyzet exportálásra került ide: „%1”."
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:136
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:142
 msgid "Note exported successfully"
 msgstr "A jegyzet sikeresen exportálva"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:150
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:158
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:157
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:165
 #, c-format
 msgid "Could not export: %s"
 msgstr "Nem sikerült az exportálás: %s"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:161
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:168
 msgid "Could not save the file \"%1\""
 msgstr "A(z) „%1” fájl mentése meghiúsult"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
 msgid "_Folder Path:"
 msgstr "Ma_ppaútvonal:"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:107
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:118
 msgid "Select Synchronization Folder..."
 msgstr "Szinkronizálási mappa kiválasztása…"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:129
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:153
 msgid "Folder path field is empty."
 msgstr "A mappaútvonal mező üres."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:160
 #: src/synchronization/gvfssyncservice.cpp:76
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr ""
 "A megadott mappaútvonal nem létezik, és a Gnote nem volt képes létrehozni."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:200
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:224
 msgid "Local Folder"
 msgstr "Helyi mappa"
 
@@ -1043,7 +1036,7 @@ msgstr "Rögzített szélességű"
 msgid "Adds fixed-width font style."
 msgstr "Rögzített szélességű betűtípus hozzáadása."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:57
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
 msgid "Fixed Wid_th"
 msgstr "_Rögzített szélességű"
 
@@ -1072,15 +1065,15 @@ msgstr "Példa: google-drive://nev.csaladnev@gmail.com/notes"
 msgid "Please, register your account in Online Accounts"
 msgstr "Regisztrálja a fiókját az Online fiókokban"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
 msgid "The URI is empty"
 msgstr "Az URI üres"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "URI field is empty."
 msgstr "Az URI mező üres."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Online mappa"
 
@@ -1094,16 +1087,17 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Beszúrja az aktuális dátumot és időt a kurzorpozícióba."
 
 #. Label
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:76
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:96
 msgid "Choose one of the predefined formats or use your own."
 msgstr ""
 "Válasszon egyet az előre definiált formátumok közül, vagy használja sajátját."
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:84
+#. Use Selected Format
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:102
 msgid "Use _Selected Format"
 msgstr "A _kijelölt formátum használata"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:114
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:127
 msgid "_Use Custom Format"
 msgstr "_Egyéni formátum használata"
 
@@ -1166,7 +1160,7 @@ msgstr "Ma: "
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
 #: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:68
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "A NoteOfTheDay nem tudja létrehozni ezt: %s: %s"
@@ -1219,16 +1213,16 @@ msgstr "Nyomtatás támogatása"
 msgid "Allows you to print a note."
 msgstr "Lehetővé teszi jegyzet kinyomtatását."
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:62
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
 msgid "Print…"
 msgstr "Nyomtatás…"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:110
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
 msgstr "Hiba a jegyzet nyomtatásakor"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:273
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
 msgid "Page %1 of %2"
 msgstr "%2 / %1. oldal"
 
@@ -1246,7 +1240,7 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray és Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
 msgid "Replace title"
 msgstr "Cím cseréje"
 
@@ -1272,7 +1266,7 @@ msgid "Show Statistics"
 msgstr "Statisztikák megjelenítése"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:173
+#: src/plugins/statistics/statisticswidget.cpp:176
 msgid "Statistics"
 msgstr "Statisztika"
 
@@ -1280,62 +1274,25 @@ msgstr "Statisztika"
 msgid "Show various statistics about notes."
 msgstr "Különböző statisztikák megjelenítése a jegyzetekről."
 
-#: src/plugins/statistics/statisticswidget.cpp:91
-msgid "Total Notes:"
-msgstr "Jegyzetek összesen:"
+#: src/plugins/statistics/statisticswidget.cpp:87
+#| msgid "Total Notes:"
+msgid "Total Notes"
+msgstr "Jegyzetek összesen"
 
-#: src/plugins/statistics/statisticswidget.cpp:97
-msgid "Total Notebooks:"
-msgstr "Jegyzettömbök összesen:"
+#: src/plugins/statistics/statisticswidget.cpp:90
+#| msgid "Total Notebooks:"
+msgid "Total Notebooks"
+msgstr "Jegyzettömbök összesen"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: src/plugins/statistics/statisticswidget.cpp:128
+#: src/plugins/statistics/statisticswidget.cpp:117
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 jegyzet"
 msgstr[1] "%1 jegyzet"
 
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:4
-msgid "Sticky Notes Importer"
-msgstr "Ragadós cetlik importáló"
-
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:5
-msgid "Import your notes from the Sticky Notes applet."
-msgstr "Jegyzetek importálása a Ragadós cetlik kisalkalmazásból."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:84
-msgid "Import from Sticky Notes"
-msgstr "Importálás a Ragadós cetlik kisalkalmazásból"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:206
-msgid "No Sticky Notes found"
-msgstr "Nem találhatók ragadós cetlik"
-
-#. %1 is a the file name
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
-msgid "No suitable Sticky Notes file was found at \"%1\"."
-msgstr "Nem található megfelelő Ragadós cetlik fájl a következő helyen: „%1”."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
-msgid "Sticky Notes import completed"
-msgstr "A Ragadós cetlik importálása befejeződött"
-
-#. here %1 is the number of notes imported, %2 the total number of notes.
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
-msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
-msgstr "<b>%1</b> / <b>%2</b> ragadós cetli sikeresen importálva."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
-msgid "Untitled"
-msgstr "Névtelen"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:275
-msgid "Sticky Note: "
-msgstr "Ragadós cetli: "
-
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:67
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:130
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:113
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
@@ -1356,25 +1313,17 @@ msgstr "Luc Pionchon"
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:145
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:207
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:137
 msgid "Heading 1"
 msgstr "Címsor 1"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:149
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:213
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:140
 msgid "Heading 2"
 msgstr "Címsor 2"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:153
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:219
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:143
 msgid "Table of Contents Help"
 msgstr "Tartalomjegyzék súgója"
-
-#. no toc items, and no action entries = empty menu
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:192
-msgid "(empty table of contents)"
-msgstr "(üres tartalomjegyzék)"
 
 #: src/plugins/todo/todo.desktop.in.in:4
 msgid "TODO"
@@ -1412,19 +1361,15 @@ msgstr "Lehetővé teszi a szöveg aláhúzását."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière és a Tomboy projekt"
 
-#: src/plugins/underline/underlinenoteaddin.cpp:56
-msgid "_Underline"
-msgstr "_Aláhúzás"
-
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:107
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:112
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "User_name:"
 msgstr "_Felhasználónév:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
 msgid "_Password:"
 msgstr "_Jelszó:"
 
@@ -1465,22 +1410,22 @@ msgstr "Gnote jegyzetek szinkronizálása WebDAV URL-re."
 msgid "Exception thrown when creating note: %s"
 msgstr "Kivétel történt a jegyzet létrehozásakor: %s"
 
-#: src/gnote.cpp:209
+#: src/gnote.cpp:206
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Nem érhető el D-Bus kapcsolat, a Shell keresése és a távoli vezérlés nem fog "
 "működni."
 
-#: src/gnote.cpp:242
+#: src/gnote.cpp:238
 msgid "Failed to get shortcuts window!"
 msgstr "Nem sikerült lekérni a gyorsbillentyűk ablakát."
 
-#: src/gnote.cpp:256
+#: src/gnote.cpp:252
 msgid "and Tomboy original authors."
 msgstr "és a Tomboy eredeti szerzői."
 
-#: src/gnote.cpp:262
+#: src/gnote.cpp:258
 msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>\n"
@@ -1491,12 +1436,7 @@ msgstr ""
 "Török Gábor <gabo at linuxportal dot hu>\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
-#: src/gnote.cpp:271
-#| msgid ""
-#| "Copyright © 2010-2022 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: src/gnote.cpp:267
 msgid ""
 "Copyright © 2010-2023 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1508,95 +1448,89 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 a Tomboy eredeti szerzői."
 
-#: src/gnote.cpp:275
+#: src/gnote.cpp:271
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Egyszerű és könnyen használható asztali jegyzetkezelő alkalmazás."
 
-#: src/gnote.cpp:286
+#: src/gnote.cpp:273
 msgid "Homepage"
 msgstr "Honlap"
 
-#: src/gnote.cpp:481
+#: src/gnote.cpp:467
 msgid "Run Gnote in background."
 msgstr "A Gnote futtatása a háttérben."
 
-#: src/gnote.cpp:482
+#: src/gnote.cpp:468
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "A Gnote futtatása GNOME parancsértelmező keresőszolgáltatóként."
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:469
 msgid "Specify the path of the directory containing the notes."
 msgstr "Adja meg a jegyzeteket tartalmazó könyvtár útvonalát."
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:469
 msgid "path"
 msgstr "útvonal"
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:470
 msgid "Open the search all notes window with the search text."
 msgstr "A Keresés minden jegyzetben ablak megnyitása a keresőkifejezéssel."
 
-#: src/gnote.cpp:484 src/gnote.cpp:489
+#: src/gnote.cpp:470 src/gnote.cpp:475
 msgid "text"
 msgstr "szöveg"
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:471
 msgid "Print version information."
 msgstr "Verzióinformációk kiírása."
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:472
 msgid "Create and display a new note, with a optional title."
 msgstr "Új jegyzet létrehozása és megjelenítése, elhagyható címmel."
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:472
 msgid "title"
 msgstr "cím"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:473
 msgid "Display the existing note matching title."
 msgstr "Az illeszkedő című meglévő jegyzet megjelenítése."
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:473
 msgid "title/url"
 msgstr "cím/url"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:474
 msgid "Display the 'Start Here' note."
 msgstr "A „Kezdje itt” jegyzet megjelenítése."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:475
 msgid "Search and highlight text in the opened note."
 msgstr "Szöveg keresése és kiemelése megnyitott jegyzetben."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:479
 msgid "A note taking application"
 msgstr "Jegyzetkezelő alkalmazás"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:479
 msgid "Gnote options at launch"
 msgstr "A Gnote indítási kapcsolói"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:677
+#: src/gnote.cpp:663
 msgid "Version %1"
 msgstr "%1 verzió"
 
-#. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: src/iconmanager.cpp:63
-#, c-format
-msgid "Failed to load icon (%s, %d): %s"
-msgstr "Nem sikerült betölteni az ikont (%s, %d): %s"
-
-#: src/noteaddin.cpp:138 src/noteaddin.cpp:152 src/noteaddin.cpp:164
+#: src/noteaddin.cpp:101
 msgid "Plugin is disposing already"
 msgstr "A bővítmény már betöltve"
 
-#: src/noteaddin.cpp:168
+#: src/noteaddin.cpp:105
 msgid "Window is not embedded"
 msgstr "Az ablak nincs beágyazva"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:355
+#: src/notebase.cpp:225 src/note.cpp:348
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Kivétel a jegyzet mentésekor: %s"
@@ -1630,7 +1564,7 @@ msgstr "A név már foglalt"
 msgid "C_reate"
 msgstr "_Létrehozás"
 
-#: src/notebooks/notebookapplicationaddin.cpp:78
+#: src/notebooks/notebookapplicationaddin.cpp:75
 msgid "New Note_book..."
 msgstr "Új jeg_yzettömb…"
 
@@ -1647,11 +1581,11 @@ msgstr "%1 jegyzet sablon"
 msgid "New Note"
 msgstr "Új jegyzet"
 
-#: src/notebooks/notebookmanager.cpp:352
+#: src/notebooks/notebookmanager.cpp:353
 msgid "Really delete this notebook?"
 msgstr "Biztosan törli ezt a jegyzettömböt?"
 
-#: src/notebooks/notebookmanager.cpp:353
+#: src/notebooks/notebookmanager.cpp:354
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1660,19 +1594,19 @@ msgstr ""
 "lesznek megtalálhatók ebben a jegyzettömbben. Ez a művelet nem vonható "
 "vissza."
 
-#: src/notebooks/notebookmenuitem.cpp:34
-#: src/notebooks/notebooknoteaddin.cpp:153
-msgid "No notebook"
-msgstr "Nincs jegyzettömb"
-
-#: src/notebooks/notebooknoteaddin.cpp:111
+#: src/notebooks/notebooknoteaddin.cpp:110
 msgid "Notebook"
 msgstr "Jegyzettömb"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:147
+#: src/notebooks/notebooknoteaddin.cpp:144
 msgid "_New notebook..."
 msgstr "Új jeg_yzettömb…"
+
+#. Add the "(no notebook)" item at the top of the list
+#: src/notebooks/notebooknoteaddin.cpp:148
+msgid "No notebook"
+msgstr "Nincs jegyzettömb"
 
 #: src/notebooks/specialnotebooks.cpp:47
 msgid "All"
@@ -1691,36 +1625,36 @@ msgstr "Fontos"
 msgid "Active"
 msgstr "Aktív"
 
-#: src/notebuffer.cpp:1403
+#: src/notebuffer.cpp:1397
 msgid "</list> tag mismatch"
 msgstr "</list> címke eltérés"
 
-#: src/notebuffer.cpp:1487
+#: src/notebuffer.cpp:1481
 #, c-format
 msgid "Exception: %s"
 msgstr "Kivétel: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: src/note.cpp:56
+#: src/note.cpp:55
 msgid "Really delete \"%1\"?"
 msgstr "Biztosan törli ezt: „%1”?"
 
 #. TRANSLATORS: %1 is number of notes
-#: src/note.cpp:60
+#: src/note.cpp:59
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
 msgstr[0] "Biztosan törli ezt a(z) %1 jegyzetet?"
 msgstr[1] "Biztosan törli ezt a(z) %1 jegyzetet?"
 
-#: src/note.cpp:67
+#: src/note.cpp:63
 msgid "If you delete a note it is permanently lost."
 msgstr "Ha töröl egy jegyzetet, akkor az véglegesen elvész."
 
-#: src/note.cpp:102
+#: src/note.cpp:95
 msgid "Error saving note data."
 msgstr "Hiba a jegyzet adatainak mentésekor."
 
-#: src/note.cpp:103
+#: src/note.cpp:96
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1730,17 +1664,17 @@ msgstr ""
 "lemezterület és rendelkezik jogosultságokkal a ~/.local/share/gnote könyvtár "
 "írásához. A hiba részletei a ~/.gnote.log fájlban találhatók."
 
-#: src/note.cpp:443
+#: src/note.cpp:435
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Hiba a mentéskor: %s"
 
-#: src/note.cpp:668
+#: src/note.cpp:660
 msgid "Setting text content for closed notes not supported"
 msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:317
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:280
 msgid "New Note Template"
 msgstr "Új jegyzet sablon"
 
@@ -1838,89 +1772,91 @@ msgstr "Hiba a kezdő jegyzetek létrehozásakor: %s"
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Hiba a jegyzet XML feldolgozásakor, „%s” kihagyása: %s"
 
-#: src/noterenamedialog.cpp:118
+#: src/noterenamedialog.cpp:142
 msgid "Rename Note Links?"
 msgstr "Átnevezi a jegyzet hivatkozásait?"
 
-#: src/noterenamedialog.cpp:123
+#: src/noterenamedialog.cpp:147
 msgid "_Don't Rename Links"
 msgstr "_Nem nevezem át"
 
-#: src/noterenamedialog.cpp:124
+#: src/noterenamedialog.cpp:148
 msgid "_Rename Links"
 msgstr "_Hivatkozások átnevezése"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:149
 msgid "Select All"
 msgstr "Összes kijelölése"
 
-#: src/noterenamedialog.cpp:126
+#: src/noterenamedialog.cpp:150
 msgid "Select None"
 msgstr "Kijelölés megszüntetése"
 
-#: src/noterenamedialog.cpp:127
+#: src/noterenamedialog.cpp:151
 msgid "Always show this _window"
 msgstr "Min_dig jelenjen meg ez az ablak"
 
-#: src/noterenamedialog.cpp:128
+#: src/noterenamedialog.cpp:152
 msgid "Alwa_ys rename links"
 msgstr "_Mindig átnevezem"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:153
 msgid "Never rename _links"
 msgstr "S_oha nem nevezem át"
 
-#: src/noterenamedialog.cpp:148
+#: src/noterenamedialog.cpp:171
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Átnevezi a hivatkozásokat más jegyzetekben erről: „<span underline=\"single"
-"\">%1</span>” erre: „<span underline=\"single\">%2</span>”?\n"
+"Átnevezi a hivatkozásokat más jegyzetekben erről: „<span "
+"underline=\"single\">%1</span>” erre: „<span underline=\"single\">%2</"
+"span>”?\n"
 "\n"
 "Ha nem nevezi át a hivatkozásokat, akkor azok nem fognak semmire sem "
 "hivatkozni."
 
-#: src/noterenamedialog.cpp:181
+#: src/noterenamedialog.cpp:186
 msgid "Rename Links"
 msgstr "Hivatkozások átnevezése"
 
-#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
+#. Set up columns
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:338
 msgid "Note Title"
 msgstr "Jegyzet neve"
 
-#: src/noterenamedialog.cpp:233
+#: src/noterenamedialog.cpp:234
 msgid "Ad_vanced"
 msgstr "Spe_ciális"
 
-#: src/notewindow.cpp:274
+#: src/notewindow.cpp:319
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: src/notewindow.cpp:276
+#: src/notewindow.cpp:321
 msgid "_Redo"
 msgstr "Új_ra"
 
-#: src/notewindow.cpp:278 src/notewindow.cpp:342
+#: src/notewindow.cpp:323 src/notewindow.cpp:355
 msgid "_Link to New Note"
 msgstr "_Hivatkozás egy új jegyzetre"
 
-#: src/notewindow.cpp:280
+#: src/notewindow.cpp:325
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Fontos"
 
-#: src/notewindow.cpp:290
+#: src/notewindow.cpp:335
 msgid "_Delete…"
 msgstr "_Törlés…"
 
-#: src/notewindow.cpp:377
+#: src/notewindow.cpp:375
 msgid "Set properties of text"
 msgstr "Szöveg beállításai"
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:387
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1928,105 +1864,80 @@ msgstr ""
 "Ez a jegyzet egy sablon jegyzet. A normál jegyzetek alap tartalmát határozza "
 "meg, és nem jelenik meg a jegyzet menüben vagy a keresés ablakban."
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:390
 msgid "Convert to regular note"
 msgstr "Átalakítás normál jegyzetté"
 
-#: src/notewindow.cpp:397
+#: src/notewindow.cpp:393
 msgid "Save Se_lection"
 msgstr "_Kijelölés mentése"
 
-#: src/notewindow.cpp:401
+#: src/notewindow.cpp:397
 msgid "Save _Title"
 msgstr "_Cím mentése"
 
-#: src/notewindow.cpp:491 src/notewindow.cpp:997
+#: src/notewindow.cpp:487 src/notewindow.cpp:597
 msgid "Cannot create note"
 msgstr "Nem hozható létre jegyzet"
 
-#: src/notewindow.cpp:767
-msgid "_Bold"
-msgstr "_Félkövér"
-
-#: src/notewindow.cpp:768
-msgid "_Italic"
-msgstr "_Dőlt"
-
-#: src/notewindow.cpp:769
-msgid "_Strikeout"
-msgstr "Á_thúzott"
-
-#: src/notewindow.cpp:773
+#: src/notewindow.cpp:957
 msgid "_Highlight"
 msgstr "_Kiemelés"
 
-#: src/notewindow.cpp:776
+#: src/notewindow.cpp:961
 msgid "_Normal"
 msgstr "N_ormál"
 
-#: src/notewindow.cpp:777
+#: src/notewindow.cpp:962
 msgid "S_mall"
 msgstr "Ki_csi"
 
-#: src/notewindow.cpp:778
+#: src/notewindow.cpp:963
 msgid "_Large"
 msgstr "_Nagy"
 
-#: src/notewindow.cpp:779
+#: src/notewindow.cpp:964
 msgid "Hu_ge"
 msgstr "Óriá_si"
 
-#: src/notewindow.cpp:801
-msgid "⦁ Bullets"
-msgstr "⦁ Felsorolás"
-
-#: src/notewindow.cpp:803
-msgid "→ Increase indent"
-msgstr "→ Behúzás növelése"
-
-#: src/notewindow.cpp:805
-msgid "← Decrease indent"
-msgstr "← Behúzás csökkentése"
-
-#: src/preferencesdialog.cpp:104
+#: src/preferencesdialog.cpp:99
 msgid "Gnote Preferences"
 msgstr "Gnote beállítások"
 
-#: src/preferencesdialog.cpp:121
+#: src/preferencesdialog.cpp:106
 msgid "General"
 msgstr "Általános"
 
-#: src/preferencesdialog.cpp:122
+#: src/preferencesdialog.cpp:107
 msgid "Links"
 msgstr "Hivatkozások"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:125 src/sharp/addinstreemodel.cpp:165
+#: src/preferencesdialog.cpp:108 src/sharp/pluginsmodel.cpp:215
 msgid "Synchronization"
 msgstr "Szinkronizálás"
 
-#: src/preferencesdialog.cpp:127
+#: src/preferencesdialog.cpp:109
 msgid "Plugins"
 msgstr "Bővítmények"
 
-#. Ok button...
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:793
-#: src/preferencesdialog.cpp:1056 src/preferencesdialog.cpp:1273
-#: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
+#: src/preferencesdialog.cpp:132 src/preferencesdialog.cpp:715
+#: src/preferencesdialog.cpp:954 src/preferencesdialog.cpp:1158
+#: src/synchronization/syncdialog.cpp:347 src/utils.cpp:271
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: src/preferencesdialog.cpp:202
+#: src/preferencesdialog.cpp:170
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "%s bővítmény hiányzik"
 
-#: src/preferencesdialog.cpp:255
+#: src/preferencesdialog.cpp:222
 msgid "_Spell check while typing"
 msgstr "_Helyesírás-ellenőrzés gépelés közben"
 
-#: src/preferencesdialog.cpp:256
+#: src/preferencesdialog.cpp:223
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2035,35 +1946,35 @@ msgstr ""
 "felbukkanó menüben jelennek meg."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:266
+#: src/preferencesdialog.cpp:233
 msgid "Enable auto-_bulleted lists"
 msgstr "A_utomatikusan felsorolásjelezett listák engedélyezése"
 
-#: src/preferencesdialog.cpp:267
+#: src/preferencesdialog.cpp:234
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Kezdjen új felsorolásos listát az új sort „-” karakterrel kezdve."
 
-#: src/preferencesdialog.cpp:275
+#: src/preferencesdialog.cpp:242
 msgid "Use custom _font"
 msgstr "_Egyéni betűkészlet használata"
 
-#: src/preferencesdialog.cpp:292
+#: src/preferencesdialog.cpp:258
 msgid "When renaming a linked note: "
 msgstr "Hivatkozott jegyzet átnevezésekor: "
 
-#: src/preferencesdialog.cpp:296
+#: src/preferencesdialog.cpp:262
 msgid "Ask me what to do"
 msgstr "Mindig kérdezzen"
 
-#: src/preferencesdialog.cpp:297
+#: src/preferencesdialog.cpp:263
 msgid "Never rename links"
 msgstr "Soha ne nevezze át a hivatkozásokat"
 
-#: src/preferencesdialog.cpp:298
+#: src/preferencesdialog.cpp:264
 msgid "Always rename links"
 msgstr "Mindig nevezze át a hivatkozásokat"
 
-#: src/preferencesdialog.cpp:318
+#: src/preferencesdialog.cpp:281
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2071,27 +1982,27 @@ msgstr ""
 "Az új jegyzet sablon segítségével megadható az új jegyzet létrehozásakor "
 "használandó szöveg."
 
-#: src/preferencesdialog.cpp:323
+#: src/preferencesdialog.cpp:286
 msgid "Open New Note Template"
 msgstr "Új jegyzet sablon megnyitása"
 
 #. internal links
-#: src/preferencesdialog.cpp:377
+#: src/preferencesdialog.cpp:332
 msgid "_Automatically link to notes"
 msgstr "Automatikus _hivatkozás a jegyzetekre"
 
-#: src/preferencesdialog.cpp:378
+#: src/preferencesdialog.cpp:333
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Kapcsolja be hivatkozás létrehozásához, amikor a szöveg megegyezik egy "
 "jegyzet nevével."
 
 #. URLs
-#: src/preferencesdialog.cpp:384
+#: src/preferencesdialog.cpp:339
 msgid "Create links for _URLs"
 msgstr "Hivatkozások létrehozása _URL-ekhez"
 
-#: src/preferencesdialog.cpp:385
+#: src/preferencesdialog.cpp:340
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2100,11 +2011,11 @@ msgstr ""
 "kattintás az URL-re megnyitja azt a megfelelő programmal."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:392
+#: src/preferencesdialog.cpp:347
 msgid "Highlight _WikiWords"
 msgstr "_Wiki-szavak kiemelése"
 
-#: src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:348
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2112,64 +2023,62 @@ msgstr ""
 "Engedélyezze ezt az opciót az <b>IlyenAlakú</b> szavak kiemeléséhez. Egy "
 "kattintás a szóra új jegyzetet hoz létre, ezzel a névvel."
 
-#: src/preferencesdialog.cpp:425
+#: src/preferencesdialog.cpp:380
 msgid "Ser_vice:"
 msgstr "S_zolgáltatás:"
 
-#: src/preferencesdialog.cpp:479 src/preferencesdialog.cpp:1099
+#: src/preferencesdialog.cpp:429 src/preferencesdialog.cpp:977
 msgid "Not configurable"
 msgstr "Nem konfigurálható"
 
-#: src/preferencesdialog.cpp:504
+#: src/preferencesdialog.cpp:451
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "_Automatikus háttér-szinkronizálás gyakorisága (perc)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:473
 msgid "_Advanced..."
 msgstr "Spe_ciális…"
 
-#: src/preferencesdialog.cpp:535
+#: src/preferencesdialog.cpp:478
 msgid "Clear"
 msgstr "Törlés"
 
-#: src/preferencesdialog.cpp:576
+#: src/preferencesdialog.cpp:515
 msgid "The following plugins are installed:"
 msgstr "A következő bővítmények vannak telepítve:"
 
-#. TODO: In a future version, add in an "Install Add-ins..." button
-#. TODO: In a future version, add in a "Repositories..." button
-#: src/preferencesdialog.cpp:611
+#: src/preferencesdialog.cpp:539
 msgid "_Enable"
 msgstr "_Engedélyezés"
 
-#: src/preferencesdialog.cpp:617
+#: src/preferencesdialog.cpp:544
 msgid "_Disable"
 msgstr "_Tiltás"
 
-#: src/preferencesdialog.cpp:629
+#: src/preferencesdialog.cpp:554
 msgid "In_formation"
 msgstr "In_formáció"
 
-#: src/preferencesdialog.cpp:773
+#: src/preferencesdialog.cpp:695
 msgid "Not Implemented"
 msgstr "Nincs megvalósítva"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:790
+#: src/preferencesdialog.cpp:712
 msgid "%1 Preferences"
 msgstr "%1 beállításai"
 
-#: src/preferencesdialog.cpp:923
+#: src/preferencesdialog.cpp:808
 msgid "Choose Note Font"
 msgstr "Jegyzet betűkészletének kiválasztása"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:1016
+#: src/preferencesdialog.cpp:903
 msgid "Other Synchronization Options"
 msgstr "A szinkronizálás további beállításai"
 
-#: src/preferencesdialog.cpp:1019
+#: src/preferencesdialog.cpp:906
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2177,24 +2086,23 @@ msgstr ""
 "Ha a helyi és a beállított szinkronizálási kiszolgálón található jegyzet "
 "között ütközés van:"
 
-#. label.Xalign = 0;
-#: src/preferencesdialog.cpp:1023
+#: src/preferencesdialog.cpp:910
 msgid "Always ask me what to do"
 msgstr "Mindig kérdezzen"
 
-#: src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:911
 msgid "Rename my local note"
 msgstr "Nevezze át a helyi jegyzetet"
 
-#: src/preferencesdialog.cpp:1031
+#: src/preferencesdialog.cpp:913
 msgid "Replace my local note with the server's update"
 msgstr "Cserélje a helyi jegyzetet a kiszolgálón találhatóra"
 
-#: src/preferencesdialog.cpp:1133
+#: src/preferencesdialog.cpp:1033
 msgid "Are you sure?"
 msgstr "Biztos benne?"
 
-#: src/preferencesdialog.cpp:1134
+#: src/preferencesdialog.cpp:1034
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2202,11 +2110,11 @@ msgstr ""
 "A szinkronizálás beállításainak törlése nem ajánlott. Új beállítások "
 "mentésekor szükség lehet a jegyzetek újraszinkronizálására."
 
-#: src/preferencesdialog.cpp:1144
+#: src/preferencesdialog.cpp:1045
 msgid "Resetting Synchronization Settings"
 msgstr "Szinkronizálás beállításainak visszaállítása"
 
-#: src/preferencesdialog.cpp:1145
+#: src/preferencesdialog.cpp:1046
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2216,11 +2124,11 @@ msgstr ""
 "beállításai törlésre kerülnek. Új beállítások mentésekor szükség lehet a "
 "jegyzetek újraszinkronizálására."
 
-#: src/preferencesdialog.cpp:1220
+#: src/preferencesdialog.cpp:1104
 msgid "Connection successful"
 msgstr "A kapcsolódás sikeres"
 
-#: src/preferencesdialog.cpp:1221
+#: src/preferencesdialog.cpp:1105
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2229,7 +2137,7 @@ msgstr ""
 "szinkronizálni?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1246
+#: src/preferencesdialog.cpp:1131
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2237,58 +2145,54 @@ msgstr ""
 "Ellenőrizze az információkat, és próbálkozzon újra. A(z) %1 naplófájl "
 "további információkat tartalmazhat a hibáról."
 
-#: src/preferencesdialog.cpp:1251
+#: src/preferencesdialog.cpp:1136
 msgid "Error connecting"
 msgstr "Hiba a csatlakozáskor"
 
-#: src/preferencesdialog.cpp:1313
+#: src/preferencesdialog.cpp:1198
 msgid "Version:"
 msgstr "Verzió:"
 
-#: src/preferencesdialog.cpp:1316
+#: src/preferencesdialog.cpp:1201
 msgid "Author:"
 msgstr "Szerző:"
 
-#: src/preferencesdialog.cpp:1320
+#: src/preferencesdialog.cpp:1205
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: src/recentchanges.cpp:65
+#: src/recentchanges.cpp:64
 msgid "Close"
 msgstr "Bezárás"
 
-#: src/recentchanges.cpp:257
+#: src/recentchanges.cpp:280
 msgid "Create New Note"
 msgstr "Új jegyzet létrehozása"
 
-#: src/recentchanges.cpp:284
+#: src/recentchanges.cpp:303
 msgid "Search"
 msgstr "Keresés"
 
-#: src/recentchanges.cpp:362
+#: src/recentchanges.cpp:379
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "A beágyazott doboz szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:404
+#: src/recentchanges.cpp:409
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "A keresés beviteli mezőjének szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:731
+#: src/recentchanges.cpp:705
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nincs beágyazva az "
 "ablakba"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:712
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nem Gtk::Widget"
 
-#: src/recentchanges.cpp:1008
-msgid "Expected widget to be a sub-menu!"
-msgstr "A várt felületi elem egy almenü."
-
-#: src/recentchanges.cpp:1013
+#: src/recentchanges.cpp:917
 msgid "No configured actions"
 msgstr "Nincsenek beállított műveletek"
 
@@ -2297,23 +2201,19 @@ msgstr "Nincsenek beállított műveletek"
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Nem sikerült betölteni a(z) %s D-Bus felületet: %s"
 
-#: src/searchnoteswidget.cpp:210
+#: src/searchnoteswidget.cpp:190
 msgid "Notebooks"
 msgstr "Jegyzettömbök"
 
-#: src/searchnoteswidget.cpp:682
+#: src/searchnoteswidget.cpp:590
 msgid "Note"
 msgstr "Jegyzet"
 
-#: src/searchnoteswidget.cpp:704
+#: src/searchnoteswidget.cpp:614
 msgid "Modified"
 msgstr "Módosítva"
 
-#: src/searchnoteswidget.cpp:1015
-msgid "Notes"
-msgstr "Jegyzetek"
-
-#: src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:792
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2321,92 +2221,64 @@ msgstr ""
 "Nincs találat a kijelölt jegyzettömbben.\n"
 "Kattintson ide az összes jegyzetben való kereséshez."
 
-#: src/searchnoteswidget.cpp:1038
+#: src/searchnoteswidget.cpp:796
 msgid "Click here to search across all notebooks"
 msgstr "Kattintson ide az összes jegyzetben való kereséshez"
 
-#: src/searchnoteswidget.cpp:1056
+#: src/searchnoteswidget.cpp:814
 msgid "Matches"
 msgstr "Találat"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:1107
+#: src/searchnoteswidget.cpp:864
 msgid "Title match"
 msgstr "Címtalálat"
 
-#: src/searchnoteswidget.cpp:1111
+#: src/searchnoteswidget.cpp:868
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 találat"
 msgstr[1] "%1 találat"
 
-#: src/searchnoteswidget.cpp:1306
-msgid "Open In New _Window"
-msgstr "Megnyitás új _ablakban"
-
-#: src/searchnoteswidget.cpp:1316
+#: src/searchnoteswidget.cpp:1057
 msgid "_New"
 msgstr "Ú_j"
 
-#: src/searchnoteswidget.cpp:1345
-msgid "_Open Template Note"
-msgstr "_Sablonjegyzet megnyitása"
+#: src/searchnoteswidget.cpp:1059
+msgid "Open In New _Window"
+msgstr "Megnyitás új _ablakban"
 
-#: src/searchnoteswidget.cpp:1349
-msgid "Re_name..."
-msgstr "Át_nevezés…"
-
-#: src/searchnoteswidget.cpp:1356
+#: src/searchnoteswidget.cpp:1092
 msgid "_New..."
 msgstr "Ú_j…"
 
-#: src/searchnoteswidget.cpp:1473 src/searchnoteswidget.cpp:1486
-#: src/searchnoteswidget.cpp:1497
+#: src/searchnoteswidget.cpp:1093
+msgid "_Open Template Note"
+msgstr "_Sablonjegyzet megnyitása"
+
+#: src/searchnoteswidget.cpp:1094
+msgid "Re_name..."
+msgstr "Át_nevezés…"
+
+#: src/searchnoteswidget.cpp:1221 src/searchnoteswidget.cpp:1234
+#: src/searchnoteswidget.cpp:1245
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Nem sikerült feldolgozni a „search-sorting” beállítást (érték: %s):"
 
-#: src/searchnoteswidget.cpp:1474
+#: src/searchnoteswidget.cpp:1222
 msgid "Expected format 'column:order'"
 msgstr "A várt formátum: „oszlop:sorrend”"
 
-#: src/searchnoteswidget.cpp:1487
+#: src/searchnoteswidget.cpp:1235
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Ismeretlen oszlop: %s"
 
-#: src/searchnoteswidget.cpp:1498
+#: src/searchnoteswidget.cpp:1246
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ismeretlen sorrend: %s"
-
-#: src/sharp/addinstreemodel.cpp:110
-msgid "Name"
-msgstr "Gépnév"
-
-#: src/sharp/addinstreemodel.cpp:122
-msgid "Version"
-msgstr "Verzió"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:156
-msgid "Formatting"
-msgstr "Formázás"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:159
-msgid "Desktop integration"
-msgstr "Integráció asztali környezettel"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:162
-msgid "Tools"
-msgstr "Eszközök"
-
-#. TRANSLATORS: Addin category is unknown.
-#: src/sharp/addinstreemodel.cpp:169
-msgid "Unknown"
-msgstr "Ismeretlen"
 
 #: src/sharp/modulemanager.cpp:62
 #, c-format
@@ -2417,6 +2289,38 @@ msgstr "Hiba %s betöltésekor"
 #, c-format
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Hiba a dynamic_module_instanciate szimbólum lekérésekor: %s"
+
+#: src/sharp/pluginsmodel.cpp:186
+msgid "Name"
+msgstr "Gépnév"
+
+#: src/sharp/pluginsmodel.cpp:189
+msgid "Version"
+msgstr "Verzió"
+
+#: src/sharp/pluginsmodel.cpp:191
+msgid "Category"
+msgstr "Kategória"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:206
+msgid "Formatting"
+msgstr "Formázás"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:209
+msgid "Desktop integration"
+msgstr "Integráció asztali környezettel"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:212
+msgid "Tools"
+msgstr "Eszközök"
+
+#. TRANSLATORS: Addin category is unknown.
+#: src/sharp/pluginsmodel.cpp:219
+msgid "Unknown"
+msgstr "Ismeretlen"
 
 #: src/sharp/xmlreader.cpp:219
 #, c-format
@@ -2462,7 +2366,6 @@ msgstr[0] "Nem sikerült letölteni %1 jegyzetfrissítést"
 msgstr[1] "Nem sikerült letölteni %1 jegyzetfrissítést"
 
 #: src/synchronization/filesystemsyncserver.cpp:427
-#: src/synchronization/filesystemsyncserver.cpp:431
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2472,12 +2375,12 @@ msgstr ""
 "integritása hibátlan, de néhány fölösleges fájl jelen lehet. A hibaüzenet: "
 "%s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:637
+#: src/synchronization/filesystemsyncserver.cpp:633
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Hiba a zár frissítésekor: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:676
+#: src/synchronization/filesystemsyncserver.cpp:672
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Hiba a régi szinkronizációs zár („%s”) törlésekor: %s"
@@ -2506,45 +2409,45 @@ msgstr "A tesztfájl tartalmának ellenőrzése sikertelen"
 msgid "Failure when trying to remove test file"
 msgstr "A tesztfájl eltávolításának kísérlete sikertelen"
 
-#: src/synchronization/gvfssyncservice.cpp:125
+#: src/synchronization/gvfssyncservice.cpp:121
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: src/synchronization/syncdialog.cpp:63
+#: src/synchronization/syncdialog.cpp:97
 msgid "Note Conflict"
 msgstr "Jegyzetütközés"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: src/synchronization/syncdialog.cpp:68
+#: src/synchronization/syncdialog.cpp:102
 msgid " (old)"
 msgstr " (régi)"
 
-#: src/synchronization/syncdialog.cpp:113
+#: src/synchronization/syncdialog.cpp:142
 msgid "Rename local note:"
 msgstr "Helyi jegyzet átnevezése:"
 
-#: src/synchronization/syncdialog.cpp:120
+#: src/synchronization/syncdialog.cpp:149
 msgid "Update links in referencing notes"
 msgstr "Hivatkozások frissítése a hivatkozó jegyzetekben"
 
-#: src/synchronization/syncdialog.cpp:126
+#: src/synchronization/syncdialog.cpp:155
 msgid "Overwrite local note"
 msgstr "Helyi jegyzet felülírása"
 
-#: src/synchronization/syncdialog.cpp:130
+#: src/synchronization/syncdialog.cpp:160
 msgid "Always perform this action"
 msgstr "Mindig ezen művelet végrehajtása"
 
-#: src/synchronization/syncdialog.cpp:133
+#: src/synchronization/syncdialog.cpp:163
 msgid "_Continue"
 msgstr "_Folytatás"
 
 #. Set initial dialog text
-#: src/synchronization/syncdialog.cpp:136
+#: src/synchronization/syncdialog.cpp:166
 msgid "Note conflict detected"
 msgstr "Jegyzetütközés"
 
-#: src/synchronization/syncdialog.cpp:138
+#: src/synchronization/syncdialog.cpp:168
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
@@ -2552,56 +2455,56 @@ msgstr ""
 "A(z) „%1” kiszolgálón található verziója ütközik a helyi jegyzettel. Mit "
 "kíván tenni a helyi jegyzettel?"
 
-#. Expander containing TreeView
-#: src/synchronization/syncdialog.cpp:292
+#. Expander containing table
+#: src/synchronization/syncdialog.cpp:313
 msgid "Details"
 msgstr "Részletek"
 
-#: src/synchronization/syncdialog.cpp:334
+#: src/synchronization/syncdialog.cpp:342
 msgid "Status"
 msgstr "Állapot"
 
-#: src/synchronization/syncdialog.cpp:478
+#: src/synchronization/syncdialog.cpp:466
 msgid "Acquiring sync lock..."
 msgstr "Szinkronizálási zár beszerzése…"
 
-#: src/synchronization/syncdialog.cpp:481
+#: src/synchronization/syncdialog.cpp:469
 msgid "Committing changes..."
 msgstr "Változások véglegesítése…"
 
-#: src/synchronization/syncdialog.cpp:484
+#: src/synchronization/syncdialog.cpp:472
 msgid "Synchronizing Notes"
 msgstr "Jegyzetek szinkronizálása"
 
-#: src/synchronization/syncdialog.cpp:485
+#: src/synchronization/syncdialog.cpp:473
 msgid "Synchronizing your notes..."
 msgstr "A jegyzetek szinkronizálása…"
 
-#: src/synchronization/syncdialog.cpp:486
+#: src/synchronization/syncdialog.cpp:474
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Ez eltarthat egy ideig, kis türelmet."
 
-#: src/synchronization/syncdialog.cpp:488
+#: src/synchronization/syncdialog.cpp:476
 msgid "Connecting to the server..."
 msgstr "Kapcsolódás a kiszolgálóhoz…"
 
-#: src/synchronization/syncdialog.cpp:494
+#: src/synchronization/syncdialog.cpp:482
 msgid "Deleting notes off of the server..."
 msgstr "Jegyzetek törlése a kiszolgálóról…"
 
-#: src/synchronization/syncdialog.cpp:498
+#: src/synchronization/syncdialog.cpp:486
 msgid "Downloading new/updated notes..."
 msgstr "Új/frissített jegyzetek letöltése…"
 
-#: src/synchronization/syncdialog.cpp:510
+#: src/synchronization/syncdialog.cpp:498
 msgid "Server Locked"
 msgstr "Kiszolgáló zárolva"
 
-#: src/synchronization/syncdialog.cpp:511
+#: src/synchronization/syncdialog.cpp:499
 msgid "Server is locked"
 msgstr "A kiszolgáló zárolva van"
 
-#: src/synchronization/syncdialog.cpp:512
+#: src/synchronization/syncdialog.cpp:500
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2609,144 +2512,139 @@ msgstr ""
 "A számítógépeinek egyike jelenleg szinkronizál. Várjon két percet, és "
 "próbálkozzon újra."
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:504
 msgid "Preparing to download updates from server..."
 msgstr "Frissítések letöltésének előkészítése a kiszolgálóról…"
 
-#: src/synchronization/syncdialog.cpp:519
+#: src/synchronization/syncdialog.cpp:507
 msgid "Preparing to upload updates to server..."
 msgstr "Frissítések feltöltésének előkészítése a kiszolgálóra…"
 
-#: src/synchronization/syncdialog.cpp:522
+#: src/synchronization/syncdialog.cpp:510
 msgid "Uploading notes to server..."
 msgstr "Jegyzetek feltöltése a kiszolgálóra…"
 
-#: src/synchronization/syncdialog.cpp:525
+#: src/synchronization/syncdialog.cpp:513
 msgid "Synchronization Failed"
 msgstr "A szinkronizálás meghiúsult"
 
-#: src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:514
 msgid "Failed to synchronize"
 msgstr "Nem sikerült szinkronizálni"
 
-#: src/synchronization/syncdialog.cpp:527
+#: src/synchronization/syncdialog.cpp:515
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "A jegyzetek nem szinkronizálhatók. Vizsgálja meg az alábbi részleteket, és "
 "próbálkozzon újra."
 
-#: src/synchronization/syncdialog.cpp:533
+#: src/synchronization/syncdialog.cpp:521
 msgid "Synchronization Complete"
 msgstr "A szinkronizálás befejeződött"
 
-#: src/synchronization/syncdialog.cpp:534
+#: src/synchronization/syncdialog.cpp:522
 msgid "Synchronization is complete"
 msgstr "A szinkronizálás befejeződött"
 
-#: src/synchronization/syncdialog.cpp:535
+#: src/synchronization/syncdialog.cpp:523
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "%1 jegyzet frissítve."
 msgstr[1] "%1 jegyzet frissítve."
 
-#: src/synchronization/syncdialog.cpp:536
+#: src/synchronization/syncdialog.cpp:524
 msgid "Your notes are now up to date."
 msgstr "A jegyzetei naprakészek."
 
-#: src/synchronization/syncdialog.cpp:541
+#: src/synchronization/syncdialog.cpp:529
 msgid "Synchronization Canceled"
 msgstr "A szinkronizálás megszakítva"
 
-#: src/synchronization/syncdialog.cpp:542
+#: src/synchronization/syncdialog.cpp:530
 msgid "Synchronization was canceled"
 msgstr "A szinkronizálás megszakítva"
 
-#: src/synchronization/syncdialog.cpp:543
+#: src/synchronization/syncdialog.cpp:531
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Megszakította a szinkronizálást. Bezárhatja az ablakot."
 
-#: src/synchronization/syncdialog.cpp:547
+#: src/synchronization/syncdialog.cpp:535
 msgid "Synchronization Not Configured"
 msgstr "A szinkronizálás nincs beállítva"
 
-#: src/synchronization/syncdialog.cpp:548
+#: src/synchronization/syncdialog.cpp:536
 msgid "Synchronization is not configured"
 msgstr "A szinkronizálás nincs beállítva"
 
-#: src/synchronization/syncdialog.cpp:549
+#: src/synchronization/syncdialog.cpp:537
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Állítsa be a szinkronizálást a beállítások párbeszédablakban."
 
-#: src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:541
 msgid "Synchronization Service Error"
 msgstr "Szinkronizációsszolgáltatás-hiba"
 
-#: src/synchronization/syncdialog.cpp:554
+#: src/synchronization/syncdialog.cpp:542
 msgid "Service error"
 msgstr "Szolgáltatáshiba"
 
-#: src/synchronization/syncdialog.cpp:555
+#: src/synchronization/syncdialog.cpp:543
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr ""
 "Hiba a szinkronizációs szolgáltatáshoz csatlakozás során. Próbálkozzon újra."
 
-#: src/synchronization/syncdialog.cpp:569
+#: src/synchronization/syncdialog.cpp:557
 msgid "Deleted locally"
 msgstr "Helyileg törölve"
 
-#: src/synchronization/syncdialog.cpp:572
+#: src/synchronization/syncdialog.cpp:560
 msgid "Deleted from server"
 msgstr "A kiszolgálóról törölve"
 
-#: src/synchronization/syncdialog.cpp:575
+#: src/synchronization/syncdialog.cpp:563
 msgid "Updated"
 msgstr "Frissítve"
 
-#: src/synchronization/syncdialog.cpp:578
+#: src/synchronization/syncdialog.cpp:566
 msgid "Added"
 msgstr "Felvéve"
 
-#: src/synchronization/syncdialog.cpp:581
+#: src/synchronization/syncdialog.cpp:569
 msgid "Uploaded changes to server"
 msgstr "Változások feltöltve a kiszolgálóra"
 
-#: src/synchronization/syncdialog.cpp:584
+#: src/synchronization/syncdialog.cpp:572
 msgid "Uploaded new note to server"
 msgstr "Új jegyzet feltöltve a kiszolgálóra"
 
-#: src/synchronization/syncmanager.cpp:59
+#: src/synchronization/syncmanager.cpp:58
 msgid "Synchronize Notes"
 msgstr "Jegyzetek szinkronizálása"
 
-#: src/synchronization/syncmanager.cpp:78
-#: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:557
+#: src/synchronization/syncmanager.cpp:77
+#: src/synchronization/syncmanager.cpp:94
+#: src/synchronization/syncmanager.cpp:552
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Hiba jelentése. Eldobás sikertelen: %s"
 
-#: src/synchronization/syncmanager.cpp:143
+#: src/synchronization/syncmanager.cpp:142
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Hiba a bővítmény tisztításakor a szinkronizálás után: %s"
 
-#: src/synchronization/syncmanager.cpp:168
+#: src/synchronization/syncmanager.cpp:167
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Hiba a SyncServer létrehozásakor: %s"
 
-#: src/synchronization/syncmanager.cpp:368
-#, c-format
-msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "A szinkronizálás meghiúsult a következő Glib kivétellel: %s"
-
 #. top-level try
-#: src/synchronization/syncmanager.cpp:372
+#: src/synchronization/syncmanager.cpp:367
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "A szinkronizálás meghiúsult a következő kivétellel: %s"
 
-#: src/utils.cpp:98
+#: src/utils.cpp:77
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2754,97 +2652,89 @@ msgstr ""
 "A „Gnote jegyzetkezelő kézikönyve” nem található. Ellenőrizze, hogy a "
 "telepítés sikeresen fejeződött-e be."
 
-#: src/utils.cpp:106
+#: src/utils.cpp:85
 msgid "Help not found"
 msgstr "Nem található súgó"
 
-#: src/utils.cpp:138
+#: src/utils.cpp:111
 msgid "Cannot open location"
 msgstr "Nem lehet megnyitni a helyet"
 
-#: src/utils.cpp:155
+#: src/utils.cpp:129
 msgid "No Date"
 msgstr "Nincs dátum"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:170
+#: src/utils.cpp:144
 msgid "Today, %1"
 msgstr "Ma, %1"
 
-#: src/utils.cpp:171
+#: src/utils.cpp:145
 msgid "Today"
 msgstr "Ma"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:177
+#: src/utils.cpp:151
 msgid "Yesterday, %1"
 msgstr "Tegnap, %1"
 
-#: src/utils.cpp:178
+#: src/utils.cpp:152
 msgid "Yesterday"
 msgstr "Tegnap"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:184
+#: src/utils.cpp:158
 msgid "Tomorrow, %1"
 msgstr "Holnap, %1"
 
-#: src/utils.cpp:185
+#: src/utils.cpp:159
 msgid "Tomorrow"
 msgstr "Holnap"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:189
+#: src/utils.cpp:163
 msgid "%b %d"
 msgstr "%b. %e."
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:192 src/utils.cpp:201
+#: src/utils.cpp:166 src/utils.cpp:175
 msgid "%1, %2"
 msgstr "%1, %2"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:172
 msgid "%b %d %Y"
 msgstr "%Y %b. %d"
 
-#: src/utils.cpp:362 src/utils.cpp:376
+#: src/utils.cpp:268 src/utils.cpp:282
 msgid "_OK"
 msgstr "_OK"
 
-#: src/utils.cpp:371
+#: src/utils.cpp:277
 msgid "_No"
 msgstr "_Nem"
 
-#: src/utils.cpp:372
+#: src/utils.cpp:278
 msgid "_Yes"
 msgstr "_Igen"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: src/watchers.cpp:198
+#: src/watchers.cpp:194
 msgid "(Untitled %1)"
 msgstr "(Névtelen %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:230
+#: src/watchers.cpp:226
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
 "Már létezik <b>%1</b> nevű jegyzet. A folytatáshoz válasszon másik nevet."
 
-#: src/watchers.cpp:245
+#: src/watchers.cpp:241
 msgid "Note title taken"
 msgstr "A jegyzet neve foglalt"
 
-#: src/watchers.cpp:312
+#: src/watchers.cpp:308
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
-
-#: src/watchers.cpp:708
-msgid "_Copy Link Address"
-msgstr "Hivatkozás cí_mének másolása"
-
-#: src/watchers.cpp:714
-msgid "_Open Link"
-msgstr "_Hivatkozás megnyitása"
