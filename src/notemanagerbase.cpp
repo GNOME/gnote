@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -436,38 +436,39 @@ NoteBase::Ptr NoteManagerBase::find_template_note() const
   return template_note;
 }
 
-void NoteManagerBase::delete_note(const NoteBase::Ptr & note)
+void NoteManagerBase::delete_note(NoteBase & note)
 {
-  if(sharp::file_exists(note->file_path())) {
+  auto file_path = note.file_path();
+  if(sharp::file_exists(file_path)) {
     if(!m_backup_dir.empty()) {
       if(!sharp::directory_exists(m_backup_dir)) {
         sharp::directory_create(m_backup_dir);
       }
-      Glib::ustring backup_path 
-        = Glib::build_filename(m_backup_dir, sharp::file_filename(note->file_path()));
+      Glib::ustring backup_path = Glib::build_filename(m_backup_dir, file_path);
 
       if(sharp::file_exists(backup_path)) {
         sharp::file_delete(backup_path);
       }
 
-      sharp::file_move(note->file_path(), backup_path);
+      sharp::file_move(file_path, backup_path);
     } 
     else {
-      sharp::file_delete(note->file_path());
+      sharp::file_delete(file_path);
     }
   }
 
+  auto sh_note = note.shared_from_this();
   for(auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
-    if(*iter == note) {
+    if(*iter == sh_note) {
       m_notes.erase(iter);
       break;
     }
   }
-  note->delete_note();
+  note.delete_note();
 
-  DBG_OUT("Deleting note '%s'.", note->get_title().c_str());
+  DBG_OUT("Deleting note '%s'.", note.get_title().c_str());
 
-  signal_note_deleted(note);
+  signal_note_deleted(sh_note);
 }
 
 NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2016-2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016-2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -104,7 +104,7 @@ namespace gnote {
       return false;
     }
 
-    m_manager.delete_note (note);
+    m_manager.delete_note(*note);
     return true;
 
   }

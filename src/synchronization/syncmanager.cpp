@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -684,7 +684,7 @@ namespace sync {
 	  if(m_sync_ui != 0) {
 	    m_sync_ui->note_synchronized(note->get_title(), DELETE_FROM_CLIENT);
 	  }
-	  note_mgr().delete_note(note);
+	  note_mgr().delete_note(*note);
 	}
       }
     }
@@ -729,7 +729,7 @@ namespace sync {
   void SyncManager::delete_note(const Note::Ptr & existingNote)
   {
     try {
-      note_mgr().delete_note(existingNote);
+      note_mgr().delete_note(*existingNote);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());

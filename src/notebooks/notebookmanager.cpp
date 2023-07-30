@@ -376,7 +376,7 @@ namespace gnote {
 
         // Delete the template note
         if(templateNote) {
-          g.notebook_manager().note_manager().delete_note(templateNote);
+          g.notebook_manager().note_manager().delete_note(*templateNote);
         }
         dialog->hide();
       });

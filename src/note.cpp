@@ -73,7 +73,7 @@ namespace gnote {
       dialog->signal_response().connect([dialog, notes](int result) {
         if (result == 666) {
           for(auto & note : notes) {
-            note->manager().delete_note(note);
+            note->manager().delete_note(*note);
           }
         }
         dialog->hide();

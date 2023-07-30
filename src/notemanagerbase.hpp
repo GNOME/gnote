@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -77,7 +77,7 @@ public:
   virtual NoteBase::Ptr get_or_create_template_note();
   NoteBase::Ptr find_template_note() const;
   Glib::ustring get_unique_name(const Glib::ustring & basename) const;
-  void delete_note(const NoteBase::Ptr & note);
+  void delete_note(NoteBase & note);
   // Import a note read from file_path
   // Will ensure the sanity including the unique title.
   NoteBase::Ptr import_note(const Glib::ustring & file_path);

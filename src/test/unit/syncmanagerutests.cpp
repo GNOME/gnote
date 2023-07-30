@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2020,2022 Aurimas Cernius
+ * Copyright (C) 2017-2020,2022-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -266,7 +266,7 @@ SUITE(SyncManagerTests)
 
     // remove note
     auto note2 = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
-    manager1->delete_note(note2);
+    manager1->delete_note(*note2);
     sync_manager1->perform_synchronization(sync_ui1);
 
     FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
@@ -309,7 +309,7 @@ SUITE(SyncManagerTests)
 
     // remove note
     auto note2 = std::dynamic_pointer_cast<test::Note>(manager2->find("note2"));
-    manager2->delete_note(note2);
+    manager2->delete_note(*note2);
     sync_manager2->perform_synchronization(sync_ui2);
 
     // update note and sync again

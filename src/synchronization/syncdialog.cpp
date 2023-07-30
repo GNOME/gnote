@@ -680,7 +680,7 @@ void SyncDialog::conflict_dialog_response(
       }
       // No need to delete if sync will overwrite
       if(localConflictNote->id() != remoteNote.m_uuid) {
-        m_manager.delete_note(localConflictNote);
+        m_manager.delete_note(*localConflictNote);
       }
       break;
     case RENAME_EXISTING_AND_UPDATE:
@@ -731,7 +731,7 @@ void SyncDialog::rename_note(const Note::Ptr & note, Glib::ustring && newTitle, 
   //Logger.Debug ("RenameNote: newCompleteContent: " + newCompleteContent);
 
   // We delete and recreate the note to simplify content conflict handling
-  m_manager.delete_note(note);
+  m_manager.delete_note(*note);
 
   // Create note with old XmlContent just in case GetCompleteNoteXml failed
   DBG_OUT("RenameNote: about to create %s", newTitle.c_str());
