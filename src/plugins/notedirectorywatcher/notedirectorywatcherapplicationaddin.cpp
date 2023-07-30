@@ -203,7 +203,7 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const Glib::ustring & not
 
   gnote::NoteBase::Ptr note_to_delete = note_manager().find_by_uri(note_uri);
   if(note_to_delete != 0) {
-    note_manager().delete_note(note_to_delete);
+    note_manager().delete_note(*note_to_delete);
   }
   else {
     DBG_OUT("notedirectorywatcher: did not delete %s because note not found.", note_id.c_str());
@@ -280,7 +280,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
     /* TRANSLATORS: first %s is file, second is error */
     ERR_OUT(_("NoteDirectoryWatcher: Update aborted, error parsing %s: %s"), note_path.c_str(), e.what());
     if(is_new_note) {
-      note_manager().delete_note(note);
+      note_manager().delete_note(*note);
     }
   }
 }
