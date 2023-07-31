@@ -438,6 +438,17 @@ NoteBase::Ptr NoteManagerBase::find_template_note() const
 
 void NoteManagerBase::delete_note(NoteBase & note)
 {
+  DBG_OUT("Deleting note '%s'.", note.get_title().c_str());
+
+  for(auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
+    if(iter->get() == &note) {
+      m_notes.erase(iter);
+      break;
+    }
+  }
+  note.delete_note();
+  signal_note_deleted(note.shared_from_this());
+
   auto file_path = note.file_path();
   if(sharp::file_exists(file_path)) {
     if(!m_backup_dir.empty()) {
@@ -456,19 +467,6 @@ void NoteManagerBase::delete_note(NoteBase & note)
       sharp::file_delete(file_path);
     }
   }
-
-  auto sh_note = note.shared_from_this();
-  for(auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
-    if(*iter == sh_note) {
-      m_notes.erase(iter);
-      break;
-    }
-  }
-  note.delete_note();
-
-  DBG_OUT("Deleting note '%s'.", note.get_title().c_str());
-
-  signal_note_deleted(sh_note);
 }
 
 NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
