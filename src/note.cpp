@@ -417,11 +417,15 @@ namespace gnote {
   {
     DBG_OUT("Got QueueSave");
 
-    // Replace the existing save timeout.  Wait 4 seconds
-    // before saving...
-    m_save_timeout->reset(4000);
-    if (!m_is_deleting)
+    if(!m_is_deleting) {
+      // Replace the existing save timeout.  Wait 4 seconds
+      // before saving...
+      m_save_timeout->reset(4000);
       m_save_needed = true;
+    }
+    else {
+      m_save_timeout->cancel();
+    }
     set_change_type(changeType);
   }
 
