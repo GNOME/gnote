@@ -444,7 +444,7 @@ void NoteManagerBase::delete_note(NoteBase & note)
       if(!sharp::directory_exists(m_backup_dir)) {
         sharp::directory_create(m_backup_dir);
       }
-      Glib::ustring backup_path = Glib::build_filename(m_backup_dir, file_path);
+      Glib::ustring backup_path = Glib::build_filename(m_backup_dir, sharp::file_filename(file_path));
 
       if(sharp::file_exists(backup_path)) {
         sharp::file_delete(backup_path);
