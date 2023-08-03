@@ -98,11 +98,6 @@ bool GvfsSyncService::test_sync_directory(const Glib::RefPtr<Gio::File> & path, 
         error = _("Failure writing test file");
         return false;
       }
-      Glib::ustring line = sharp::file_read_all_text(test_path);
-      if(line != test_line) {
-        error = _("Failure when checking test file contents");
-        return false;
-      }
 
       // Test ability to delete
       if(!test_path->remove()) {
