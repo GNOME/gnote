@@ -622,7 +622,7 @@ void SyncDialog::note_conflict_detected_(
   if(!noteSyncBitsMatch && savedBehavior == 0) {
     auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(localConflictNote, noteUpdateTitles);
     conflictDlg->signal_response()
-      .connect([this, conflictDlg, &localConflictNote, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait_mutex, &wait, &completed](int resp) {
+      .connect([this, conflictDlg, localConflictNote, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait_mutex, &wait, &completed](int resp) {
       auto response = static_cast<Gtk::ResponseType>(resp);
       conflict_dialog_response(
         conflictDlg,
