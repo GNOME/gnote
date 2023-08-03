@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017-2019,2022 Aurimas Cernius
+ * Copyright (C) 2011,2017-2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -126,18 +126,17 @@ namespace sharp {
 
   Glib::ustring file_read_all_text(const Glib::RefPtr<Gio::File> & path)
   {
-    auto stream = path->read();
-    std::ostringstream os;
-    int buf_size = 4 * 1024;
-    char buffer[buf_size];
-    gssize read = 0;
-    do {
-      read = stream->read(buffer, buf_size);
-      os.write(buffer, read);
+    Glib::ustring ret;
+    char *contents = nullptr;
+    gsize size = 0;
+    if(path->load_contents(contents, size)) {
+      if(contents) {
+        ret = contents;
+        g_free(contents);
+      }
     }
-    while(read == buf_size);
-    stream->close();
-    return os.str();
+
+    return ret;
   }
 
   void file_write_all_text(const Glib::ustring & path, const Glib::ustring & content)
