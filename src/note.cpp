@@ -538,7 +538,7 @@ namespace gnote {
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
-          iter->rename_links(old_title, self);
+          iter->rename_links(old_title, *this);
           process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
         }
       }
@@ -565,7 +565,7 @@ namespace gnote {
           notes->end() != iter; iter++) {
         const std::pair<NoteBase::Ptr, bool> p = *iter;
         if(p.second && response == Gtk::ResponseType::YES) { // Rename
-          p.first->rename_links(old_title, self);
+          p.first->rename_links(old_title, *this);
         }
         else {
           p.first->remove_links(old_title, self);

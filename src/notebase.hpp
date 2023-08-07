@@ -217,7 +217,7 @@ public:
 
   virtual void queue_save(ChangeType c);
   virtual void save();
-  void rename_links(const Glib::ustring & old_title, const Ptr & renamed);
+  void rename_links(const Glib::ustring & old_title, const NoteBase & renamed);
   void remove_links(const Glib::ustring & old_title, const Ptr & renamed);
   virtual void delete_note();
   void add_tag(const Tag::Ptr &);

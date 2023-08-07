@@ -164,13 +164,8 @@ void NoteBase::set_title(Glib::ustring && new_title, bool from_user_action)
 
 void NoteBase::process_rename_link_update(const Glib::ustring & old_title)
 {
-  NoteBase::List linking_notes = m_manager.get_notes_linking_to(old_title);
-  const NoteBase::Ptr self = shared_from_this();
-
-  if(!linking_notes.empty()) {
-    for(NoteBase::Ptr & note : linking_notes) {
-      note->rename_links(old_title, self);
-    }
+  for(NoteBase::Ptr & note : m_manager.get_notes_linking_to(old_title)) {
+    note->rename_links(old_title, *this);
   }
 
   signal_renamed(shared_from_this(), old_title);
@@ -228,11 +223,9 @@ void NoteBase::save()
   signal_saved(shared_from_this());
 }
 
-void NoteBase::rename_links(const Glib::ustring & old_title, const Ptr & renamed)
+void NoteBase::rename_links(const Glib::ustring & old_title, const NoteBase & renamed)
 {
-  if(renamed) {
-    handle_link_rename(old_title, *renamed, true);
-  }
+  handle_link_rename(old_title, renamed, true);
 }
 
 void NoteBase::remove_links(const Glib::ustring & old_title, const Ptr & renamed)
