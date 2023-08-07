@@ -532,7 +532,7 @@ namespace gnote {
       }
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
-          iter->remove_links(old_title, self);
+          iter->remove_links(old_title, *this);
           process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
         }
       }
@@ -568,7 +568,7 @@ namespace gnote {
           p.first->rename_links(old_title, *this);
         }
         else {
-          p.first->remove_links(old_title, self);
+          p.first->remove_links(old_title, *self);
         }
       }
       delete dialog;

@@ -228,11 +228,9 @@ void NoteBase::rename_links(const Glib::ustring & old_title, const NoteBase & re
   handle_link_rename(old_title, renamed, true);
 }
 
-void NoteBase::remove_links(const Glib::ustring & old_title, const Ptr & renamed)
+void NoteBase::remove_links(const Glib::ustring & old_title, const NoteBase & renamed)
 {
-  if(renamed) {
-    handle_link_rename(old_title, *renamed, false);
-  }
+  handle_link_rename(old_title, renamed, false);
 }
 
 void NoteBase::handle_link_rename(const Glib::ustring &, const NoteBase &, bool)
