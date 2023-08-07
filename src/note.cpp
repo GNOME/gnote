@@ -588,9 +588,7 @@ namespace gnote {
   }
 
 
-  void Note::handle_link_rename(const Glib::ustring & old_title,
-                                const NoteBase::Ptr & renamed,
-                                bool rename)
+  void Note::handle_link_rename(const Glib::ustring & old_title, const NoteBase & renamed, bool rename)
   {
     // Check again, things may have changed
     if (!contains_text(old_title))
@@ -615,12 +613,12 @@ namespace gnote {
       else {
         DBG_OUT("Replacing %s with %s",
                 range.text().c_str(),
-                renamed->get_title().c_str());
+                renamed.get_title().c_str());
         const Gtk::TextIter start_iter = range.start();
         const Gtk::TextIter end_iter = range.end();
         m_buffer->erase(start_iter, end_iter);
         m_buffer->insert_with_tag(range.start(),
-                                  renamed->get_title(),
+                                  renamed.get_title(),
                                   link_tag);
       }
     }

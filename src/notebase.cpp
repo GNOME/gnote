@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -230,15 +230,19 @@ void NoteBase::save()
 
 void NoteBase::rename_links(const Glib::ustring & old_title, const Ptr & renamed)
 {
-  handle_link_rename(old_title, renamed, true);
+  if(renamed) {
+    handle_link_rename(old_title, *renamed, true);
+  }
 }
 
 void NoteBase::remove_links(const Glib::ustring & old_title, const Ptr & renamed)
 {
-  handle_link_rename(old_title, renamed, false);
+  if(renamed) {
+    handle_link_rename(old_title, *renamed, false);
+  }
 }
 
-void NoteBase::handle_link_rename(const Glib::ustring &, const Ptr &, bool)
+void NoteBase::handle_link_rename(const Glib::ustring &, const NoteBase &, bool)
 {
 }
 

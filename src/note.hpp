@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -158,8 +158,7 @@ protected:
   }
 private:
   bool contains_text(const Glib::ustring & text);
-  virtual void handle_link_rename(const Glib::ustring & old_title,
-                                  const NoteBase::Ptr & renamed, bool rename) override;
+  void handle_link_rename(const Glib::ustring & old_title, const NoteBase & renamed, bool rename) override;
   void on_buffer_changed();
   void on_buffer_tag_applied(const Glib::RefPtr<Gtk::TextTag> &tag, 
                              const Gtk::TextBuffer::iterator &, 

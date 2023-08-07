@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -266,7 +266,7 @@ protected:
   virtual NoteDataBufferSynchronizerBase & data_synchronizer() = 0;
   virtual void process_rename_link_update(const Glib::ustring & old_title);
   void set_change_type(ChangeType c);
-  virtual void handle_link_rename(const Glib::ustring & old_title, const Ptr & renamed, bool rename);
+  virtual void handle_link_rename(const Glib::ustring & old_title, const NoteBase & renamed, bool rename);
 private:
   NoteManagerBase & m_manager;
   Glib::ustring m_file_path;
