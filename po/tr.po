@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-05-17 04:42+0000\n"
-"PO-Revision-Date: 2023-05-12 11:27+0300\n"
+"POT-Creation-Date: 2023-08-03 19:47+0000\n"
+"PO-Revision-Date: 2023-08-06 18:20+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -480,7 +480,7 @@ msgstr "URL Paylaş"
 
 #: data/org.gnome.gnote.gschema.xml:206
 msgid "WebDAV share URL where notes are synchronized to."
-msgstr "WebDAV notların eşitlendiği URL'i paylaşır."
+msgstr "WebDAV notların eşitlendiği URL'yi paylaşır."
 
 #: data/org.gnome.gnote.gschema.xml:210
 msgid "Share username"
@@ -702,7 +702,7 @@ msgstr "_Yeni Not"
 msgid "New _Window"
 msgstr "Yeni _Pencere"
 
-#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:550
+#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:583
 msgid "_Preferences"
 msgstr "_Tercihler"
 
@@ -807,7 +807,7 @@ msgstr ""
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere ve Tomboy Projesi"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:64
+#: src/plugins/bugzilla/bugzillapreferences.cpp:121
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -816,28 +816,28 @@ msgstr ""
 "kullanabilirsiniz. Eğer belirli makinalar için özel simgeler istiyorsanız, "
 "onları buraya ekleyin."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:81
+#: src/plugins/bugzilla/bugzillapreferences.cpp:150
 msgid "Host Name"
 msgstr "Makina Adı"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:94
+#: src/plugins/bugzilla/bugzillapreferences.cpp:156
 msgid "Icon"
 msgstr "Simge"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:112
+#: src/plugins/bugzilla/bugzillapreferences.cpp:172
 msgid "_Add"
 msgstr "_Ekle"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:116
+#: src/plugins/bugzilla/bugzillapreferences.cpp:176
 msgid "_Remove"
 msgstr "_Kaldır"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:221
+#: src/plugins/bugzilla/bugzillapreferences.cpp:278
 msgid "Select an icon..."
 msgstr "Simge seç..."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:222
-#: src/plugins/bugzilla/bugzillapreferences.cpp:363
+#: src/plugins/bugzilla/bugzillapreferences.cpp:279
+#: src/plugins/bugzilla/bugzillapreferences.cpp:419
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
 #: src/notebooks/notebookmanager.cpp:359 src/note.cpp:65 src/utils.cpp:274
@@ -845,48 +845,48 @@ msgstr "Simge seç..."
 msgid "_Cancel"
 msgstr "_İptal Et"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:223
-#: src/searchnoteswidget.cpp:1058
+#: src/plugins/bugzilla/bugzillapreferences.cpp:280
+#: src/searchnoteswidget.cpp:999
 msgid "_Open"
 msgstr "_Aç"
 
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:234
+#: src/plugins/bugzilla/bugzillapreferences.cpp:291
 msgid "_Host name:"
 msgstr "_Makina adı:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:264
+#: src/plugins/bugzilla/bugzillapreferences.cpp:321
 msgid "Error saving icon"
 msgstr "Simge kaydedilirken hata"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:265
+#: src/plugins/bugzilla/bugzillapreferences.cpp:322
 msgid "Could not save the icon file."
 msgstr "Simge dosyası kaydedilemedi."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:280
+#: src/plugins/bugzilla/bugzillapreferences.cpp:337
 msgid "Host name invalid"
 msgstr "Makine adı geçersiz"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:281
+#: src/plugins/bugzilla/bugzillapreferences.cpp:338
 msgid "You must specify a valid Bugzilla host name to use with this icon."
 msgstr ""
 "Bu simge ile kullanmak için, geçerli Bugzilla makine adı belirtmelisiniz."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:360
+#: src/plugins/bugzilla/bugzillapreferences.cpp:416
 msgid "Really remove this icon?"
 msgstr "Bu simgeyi silmek istediğinizden emin misiniz?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:361
+#: src/plugins/bugzilla/bugzillapreferences.cpp:417
 msgid "If you remove an icon it is permanently lost."
 msgstr "Eğer simgeyi silerseniz kalıcı olarak kaybolacaktır."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/plugins/bugzilla/bugzillapreferences.cpp:423
 #: src/notebooks/notebookmanager.cpp:363 src/note.cpp:69
-#: src/searchnoteswidget.cpp:1060 src/searchnoteswidget.cpp:1095
+#: src/searchnoteswidget.cpp:1001 src/searchnoteswidget.cpp:1036
 msgid "_Delete"
 msgstr "_Sil"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:379
+#: src/plugins/bugzilla/bugzillapreferences.cpp:437
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "%s simgesi kaldırılırken hata: %s"
@@ -948,7 +948,7 @@ msgstr "Bağlı notları içer"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:490
+#: src/preferencesdialog.cpp:513
 msgid "_Save"
 msgstr "_Kaydet"
 
@@ -1436,68 +1436,68 @@ msgstr "Basit ve kullanışlı not alma uygulaması."
 msgid "Homepage"
 msgstr "Web Sitesi"
 
-#: src/gnote.cpp:467
+#: src/gnote.cpp:468
 msgid "Run Gnote in background."
 msgstr "Gnote uygulamasını arkaplanda çalıştır."
 
-#: src/gnote.cpp:468
+#: src/gnote.cpp:469
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "GNOME Kabuk arama sağlayıcısı olarak Gnote çalıştırın."
 
-#: src/gnote.cpp:469
+#: src/gnote.cpp:470
 msgid "Specify the path of the directory containing the notes."
 msgstr "Notları içeren dizin yolunu belirtin."
 
-#: src/gnote.cpp:469
+#: src/gnote.cpp:470
 msgid "path"
 msgstr "yol"
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:471
 msgid "Open the search all notes window with the search text."
 msgstr "Arama metni ile tüm notları ara penceresini aç."
 
-#: src/gnote.cpp:470 src/gnote.cpp:475
+#: src/gnote.cpp:471 src/gnote.cpp:476
 msgid "text"
 msgstr "metin"
 
-#: src/gnote.cpp:471
+#: src/gnote.cpp:472
 msgid "Print version information."
 msgstr "Sürüm bilgisini yazdır."
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:473
 msgid "Create and display a new note, with a optional title."
 msgstr "İsteğe bağlı başlıkla yeni not oluştur ve görüntüle."
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:473
 msgid "title"
 msgstr "başlık"
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:474
 msgid "Display the existing note matching title."
 msgstr "Başlık ile eşleşen notu göster."
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:474
 msgid "title/url"
 msgstr "başlık/url"
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:475
 msgid "Display the 'Start Here' note."
 msgstr "'Buradan Başla' notunu görüntüle."
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:476
 msgid "Search and highlight text in the opened note."
 msgstr "Açılan not içindeki metni ara ve vurgula."
 
-#: src/gnote.cpp:479
+#: src/gnote.cpp:480
 msgid "A note taking application"
 msgstr "Not alma uygulaması"
 
-#: src/gnote.cpp:479
+#: src/gnote.cpp:480
 msgid "Gnote options at launch"
 msgstr "Başlangıçtaki Gnote seçenekleri"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:663
+#: src/gnote.cpp:664
 msgid "Version %1"
 msgstr "Sürüm %1"
 
@@ -1642,17 +1642,17 @@ msgstr ""
 "olduğundan ve ~/.local/share/gnote üzerinde uygun haklara sahip olduğunuzdan "
 "emin olun. Hata ayrıntıları ~/.gnote.log dosyasında bulunabilir."
 
-#: src/note.cpp:435
+#: src/note.cpp:439
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Kaydedilirken hata: %s"
 
-#: src/note.cpp:660
+#: src/note.cpp:664
 msgid "Setting text content for closed notes not supported"
 msgstr "Kapanmış notlar için metin içeriği ayarlama desteklenmez"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:281
+#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:313
 msgid "New Note Template"
 msgstr "Yeni Not Şablomu"
 
@@ -1749,39 +1749,39 @@ msgstr "Not başlangıcı oluşturulurken hata: %s"
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "XML not ayrıştırma hatası, \"%s\" dosyası geçiliyor: %s"
 
-#: src/noterenamedialog.cpp:119
+#: src/noterenamedialog.cpp:142
 msgid "Rename Note Links?"
 msgstr "Not Bağlantıları Yeniden Adlandırılsın Mı?"
 
-#: src/noterenamedialog.cpp:124
+#: src/noterenamedialog.cpp:147
 msgid "_Don't Rename Links"
 msgstr "Bağlantıları _Yeniden Adlandırma"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:148
 msgid "_Rename Links"
 msgstr "_Bağlantıları Yeniden Adlandır"
 
-#: src/noterenamedialog.cpp:126
+#: src/noterenamedialog.cpp:149
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: src/noterenamedialog.cpp:127
+#: src/noterenamedialog.cpp:150
 msgid "Select None"
 msgstr "Hiçbirini Seçme"
 
-#: src/noterenamedialog.cpp:128
+#: src/noterenamedialog.cpp:151
 msgid "Always show this _window"
 msgstr "Bu _pencereyi her zaman göster"
 
-#: src/noterenamedialog.cpp:129
+#: src/noterenamedialog.cpp:152
 msgid "Alwa_ys rename links"
 msgstr "Bağlantıları her _zaman yeniden adlandır"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:153
 msgid "Never rename _links"
 msgstr "_Bağlantıları hiçbir zaman yeniden adlandırma"
 
-#: src/noterenamedialog.cpp:147
+#: src/noterenamedialog.cpp:171
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1794,16 +1794,16 @@ msgstr ""
 "Eğer bağlantı değiştirilemezse, bundan sonra herhangi bir yeri "
 "göstermeyecekler."
 
-#: src/noterenamedialog.cpp:175
+#: src/noterenamedialog.cpp:186
 msgid "Rename Links"
 msgstr "Bağlantıları Yeniden Adlandır"
 
 #. Set up columns
-#: src/noterenamedialog.cpp:186 src/synchronization/syncdialog.cpp:338
+#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:338
 msgid "Note Title"
 msgstr "Not Başlığı"
 
-#: src/noterenamedialog.cpp:218
+#: src/noterenamedialog.cpp:234
 msgid "Ad_vanced"
 msgstr "_Gelişmiş"
 
@@ -1876,44 +1876,44 @@ msgstr "Bü_yük"
 msgid "Hu_ge"
 msgstr "Çok _büyük"
 
-#: src/preferencesdialog.cpp:100
+#: src/preferencesdialog.cpp:123
 msgid "Gnote Preferences"
 msgstr "Gnote Tercihleri"
 
-#: src/preferencesdialog.cpp:107
+#: src/preferencesdialog.cpp:130
 msgid "General"
 msgstr "Genel"
 
-#: src/preferencesdialog.cpp:108
+#: src/preferencesdialog.cpp:131
 msgid "Links"
 msgstr "Bağlantılar"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:109 src/sharp/addinstreemodel.cpp:158
+#: src/preferencesdialog.cpp:132 src/sharp/pluginsmodel.cpp:215
 msgid "Synchronization"
 msgstr "Eşitleme"
 
-#: src/preferencesdialog.cpp:110
+#: src/preferencesdialog.cpp:133
 msgid "Plugins"
 msgstr "Eklentiler"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:133 src/preferencesdialog.cpp:715
-#: src/preferencesdialog.cpp:954 src/preferencesdialog.cpp:1158
+#: src/preferencesdialog.cpp:156 src/preferencesdialog.cpp:749
+#: src/preferencesdialog.cpp:988 src/preferencesdialog.cpp:1195
 #: src/synchronization/syncdialog.cpp:347 src/utils.cpp:271
 msgid "_Close"
 msgstr "_Kapat"
 
-#: src/preferencesdialog.cpp:171
+#: src/preferencesdialog.cpp:194
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Eklenti %s yok"
 
-#: src/preferencesdialog.cpp:223
+#: src/preferencesdialog.cpp:246
 msgid "_Spell check while typing"
 msgstr "_Yazarken imla denetimi yap"
 
-#: src/preferencesdialog.cpp:224
+#: src/preferencesdialog.cpp:247
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -1922,75 +1922,75 @@ msgstr ""
 "menüsünde görüntülenir."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:234
+#: src/preferencesdialog.cpp:257
 msgid "Enable auto-_bulleted lists"
 msgstr "_Kendiliğinden işaretli listeleri etkinleştir"
 
-#: src/preferencesdialog.cpp:235
+#: src/preferencesdialog.cpp:258
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "\"-\" ile yeni satır başlatarak yeni madde işaretli liste başlat."
 
-#: src/preferencesdialog.cpp:243
+#: src/preferencesdialog.cpp:266
 msgid "Use custom _font"
 msgstr "Özel _yazı tipi kullan"
 
-#: src/preferencesdialog.cpp:259
+#: src/preferencesdialog.cpp:282
 msgid "When renaming a linked note: "
 msgstr "Bağlantılı notu yeniden adlandırırken: "
 
-#: src/preferencesdialog.cpp:263
+#: src/preferencesdialog.cpp:286
 msgid "Ask me what to do"
 msgstr "Ne yapılacağını bana sor"
 
-#: src/preferencesdialog.cpp:264
+#: src/preferencesdialog.cpp:287
 msgid "Never rename links"
 msgstr "Bağlantıları hiçbir zaman yeniden adlandırma"
 
-#: src/preferencesdialog.cpp:265
+#: src/preferencesdialog.cpp:288
 msgid "Always rename links"
 msgstr "Bağlantıları her zaman yeniden adlandır"
 
-#: src/preferencesdialog.cpp:282
+#: src/preferencesdialog.cpp:314
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr ""
 "Yeni not oluştururken kullanılacak metni yeni not şablomu olarak belirt."
 
-#: src/preferencesdialog.cpp:287
+#: src/preferencesdialog.cpp:319
 msgid "Open New Note Template"
 msgstr "Yeni Not Şablomu Aç"
 
 #. internal links
-#: src/preferencesdialog.cpp:333
+#: src/preferencesdialog.cpp:365
 msgid "_Automatically link to notes"
 msgstr "Notlara _kendiliğinden bağla"
 
-#: src/preferencesdialog.cpp:334
+#: src/preferencesdialog.cpp:366
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Metin not başlığı ile eşleşirse bağlantı oluşturmak için bu seçeneği "
 "etkinleştir."
 
 #. URLs
-#: src/preferencesdialog.cpp:340
+#: src/preferencesdialog.cpp:372
 msgid "Create links for _URLs"
 msgstr "_URL'ler için bağlantı oluştur"
 
-#: src/preferencesdialog.cpp:341
+#: src/preferencesdialog.cpp:373
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
 msgstr ""
 "URL'lere bağlantı oluşturmak için bu seçeneği etkinleştir. Tıklama uygun "
-"program URL'ini açacak."
+"program URL'sini açacak."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:348
+#: src/preferencesdialog.cpp:380
 msgid "Highlight _WikiWords"
 msgstr "_WikiSözcükleri aydınlat"
 
-#: src/preferencesdialog.cpp:349
+#: src/preferencesdialog.cpp:381
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -1999,62 +1999,62 @@ msgstr ""
 "etkinleştirin. Bu sözcüğü tıklatmak bu adla yeni not oluşturulmasını "
 "sağlayacaktır."
 
-#: src/preferencesdialog.cpp:381
+#: src/preferencesdialog.cpp:402
 msgid "Ser_vice:"
 msgstr "_Hizmet:"
 
-#: src/preferencesdialog.cpp:430 src/preferencesdialog.cpp:977
-msgid "Not configurable"
-msgstr "Yapılandırılamaz"
-
-#: src/preferencesdialog.cpp:452
+#: src/preferencesdialog.cpp:475
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Kendiliğinden arkaplan e_şitleme aralığı (dakika)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:474
+#: src/preferencesdialog.cpp:497
 msgid "_Advanced..."
 msgstr "_Gelişmiş..."
 
-#: src/preferencesdialog.cpp:479
+#: src/preferencesdialog.cpp:502
 msgid "Clear"
 msgstr "Temizle"
 
-#: src/preferencesdialog.cpp:516
+#: src/preferencesdialog.cpp:529 src/preferencesdialog.cpp:1009
+msgid "Not configurable"
+msgstr "Yapılandırılamaz"
+
+#: src/preferencesdialog.cpp:549
 msgid "The following plugins are installed:"
 msgstr "Aşağıdaki eklentiler kuruldu:"
 
-#: src/preferencesdialog.cpp:540
+#: src/preferencesdialog.cpp:573
 msgid "_Enable"
 msgstr "_Etkinleştir"
 
-#: src/preferencesdialog.cpp:545
+#: src/preferencesdialog.cpp:578
 msgid "_Disable"
 msgstr "_Devre dışı bırak"
 
-#: src/preferencesdialog.cpp:555
+#: src/preferencesdialog.cpp:588
 msgid "In_formation"
 msgstr "_Bilgilendirme"
 
-#: src/preferencesdialog.cpp:695
+#: src/preferencesdialog.cpp:729
 msgid "Not Implemented"
 msgstr "UygulanmamışIugul"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:712
+#: src/preferencesdialog.cpp:746
 msgid "%1 Preferences"
 msgstr "%1 Tercihleri"
 
-#: src/preferencesdialog.cpp:808
+#: src/preferencesdialog.cpp:842
 msgid "Choose Note Font"
 msgstr "Not Yazı Tipini Seç"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:903
+#: src/preferencesdialog.cpp:937
 msgid "Other Synchronization Options"
 msgstr "Diğer Eşitleme Seçenekleri"
 
-#: src/preferencesdialog.cpp:906
+#: src/preferencesdialog.cpp:940
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2062,23 +2062,23 @@ msgstr ""
 "Yerel not ile yapılandırılmış eşitleme sunucusu üzerindeki not arasında "
 "çakışma saptandığında:"
 
-#: src/preferencesdialog.cpp:910
+#: src/preferencesdialog.cpp:944
 msgid "Always ask me what to do"
 msgstr "Ne yapılacağını her zaman bana sor"
 
-#: src/preferencesdialog.cpp:911
+#: src/preferencesdialog.cpp:945
 msgid "Rename my local note"
 msgstr "Yerel notumu yeniden adlandır"
 
-#: src/preferencesdialog.cpp:913
+#: src/preferencesdialog.cpp:947
 msgid "Replace my local note with the server's update"
 msgstr "Sunucudaki güncel olanı ile benim notumu değiştir"
 
-#: src/preferencesdialog.cpp:1033
+#: src/preferencesdialog.cpp:1065
 msgid "Are you sure?"
 msgstr "Emin misiniz?"
 
-#: src/preferencesdialog.cpp:1034
+#: src/preferencesdialog.cpp:1066
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2086,11 +2086,11 @@ msgstr ""
 "Eşitleme ayarlarınızı temizlemek önerilmiyor. Yeni ayarları kaydettiğinizde "
 "tüm notlarınızı yeniden eşitlemeye zorlanabilirsiniz."
 
-#: src/preferencesdialog.cpp:1045
+#: src/preferencesdialog.cpp:1077
 msgid "Resetting Synchronization Settings"
 msgstr "Eşitleme Ayarları Sıfırlanıyor"
 
-#: src/preferencesdialog.cpp:1046
+#: src/preferencesdialog.cpp:1078
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2100,11 +2100,11 @@ msgstr ""
 "ayarlarını temizlenecek. Yeni ayarları kaydettiğinizde yeniden tüm "
 "notlarınızı eşitlemeye zorlanabilirsiniz."
 
-#: src/preferencesdialog.cpp:1104
+#: src/preferencesdialog.cpp:1140
 msgid "Connection successful"
 msgstr "Bağlantı başarılı"
 
-#: src/preferencesdialog.cpp:1105
+#: src/preferencesdialog.cpp:1141
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2113,7 +2113,7 @@ msgstr ""
 "musunuz?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1131
+#: src/preferencesdialog.cpp:1167
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2121,19 +2121,19 @@ msgstr ""
 "Lütfen bilgilerinizi denetleyip yeniden deneyin.  Sistem günlük dosyası %1 "
 "hata hakkında daha çok bilgi içeriyor olabilir."
 
-#: src/preferencesdialog.cpp:1136
+#: src/preferencesdialog.cpp:1172
 msgid "Error connecting"
 msgstr "Bağlanırken hata oluştu"
 
-#: src/preferencesdialog.cpp:1198
+#: src/preferencesdialog.cpp:1235
 msgid "Version:"
 msgstr "Sürüm:"
 
-#: src/preferencesdialog.cpp:1201
+#: src/preferencesdialog.cpp:1238
 msgid "Author:"
 msgstr "Yazan:"
 
-#: src/preferencesdialog.cpp:1205
+#: src/preferencesdialog.cpp:1242
 msgid "Copyright:"
 msgstr "Telif Hakkı:"
 
@@ -2178,15 +2178,15 @@ msgstr "%s D-Bus arayüzü yüklenemedi: %s"
 msgid "Notebooks"
 msgstr "Not Defterleri"
 
-#: src/searchnoteswidget.cpp:590
+#: src/searchnoteswidget.cpp:537
 msgid "Note"
 msgstr "Not"
 
-#: src/searchnoteswidget.cpp:614
+#: src/searchnoteswidget.cpp:561
 msgid "Modified"
 msgstr "Değiştirildi"
 
-#: src/searchnoteswidget.cpp:792
+#: src/searchnoteswidget.cpp:733
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2194,91 +2194,63 @@ msgstr ""
 "Seçilen not defterinde sonuç bulunamadı.\n"
 "Tüm notlarda aramak için buraya tıklayın."
 
-#: src/searchnoteswidget.cpp:796
+#: src/searchnoteswidget.cpp:737
 msgid "Click here to search across all notebooks"
 msgstr "Tüm not defterlerinde aramak için buraya tıkla"
 
-#: src/searchnoteswidget.cpp:814
+#: src/searchnoteswidget.cpp:755
 msgid "Matches"
 msgstr "Eşleşmeler"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:864
+#: src/searchnoteswidget.cpp:805
 msgid "Title match"
 msgstr "Başlık eşleşmesi"
 
-#: src/searchnoteswidget.cpp:868
+#: src/searchnoteswidget.cpp:809
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 eşleşme"
 
-#: src/searchnoteswidget.cpp:1057
+#: src/searchnoteswidget.cpp:998
 msgid "_New"
 msgstr "_Yeni"
 
-#: src/searchnoteswidget.cpp:1059
+#: src/searchnoteswidget.cpp:1000
 msgid "Open In New _Window"
 msgstr "Yeni _Pencerede Aç"
 
-#: src/searchnoteswidget.cpp:1092
+#: src/searchnoteswidget.cpp:1033
 msgid "_New..."
 msgstr "_Yeni..."
 
-#: src/searchnoteswidget.cpp:1093
+#: src/searchnoteswidget.cpp:1034
 msgid "_Open Template Note"
 msgstr "Şablom Notunu _Aç"
 
-#: src/searchnoteswidget.cpp:1094
+#: src/searchnoteswidget.cpp:1035
 msgid "Re_name..."
 msgstr "Ye_niden Adlandır..."
 
-#: src/searchnoteswidget.cpp:1221 src/searchnoteswidget.cpp:1234
-#: src/searchnoteswidget.cpp:1245
+#: src/searchnoteswidget.cpp:1162 src/searchnoteswidget.cpp:1175
+#: src/searchnoteswidget.cpp:1186
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "search-sorting ayarı ayrıştırılamadı (Değer: %s):"
 
-#: src/searchnoteswidget.cpp:1222
+#: src/searchnoteswidget.cpp:1163
 msgid "Expected format 'column:order'"
 msgstr "Beklenen biçim 'sütun:sıra'"
 
-#: src/searchnoteswidget.cpp:1235
+#: src/searchnoteswidget.cpp:1176
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Tanımlanamayan sütun %s"
 
-#: src/searchnoteswidget.cpp:1246
+#: src/searchnoteswidget.cpp:1187
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Tanımlanamayan sıra %s"
-
-#: src/sharp/addinstreemodel.cpp:106
-msgid "Name"
-msgstr "Ad"
-
-#: src/sharp/addinstreemodel.cpp:116
-msgid "Version"
-msgstr "Sürüm"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:149
-msgid "Formatting"
-msgstr "Biçimlendirme"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:152
-msgid "Desktop integration"
-msgstr "Masaüstü tümleşimi"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:155
-msgid "Tools"
-msgstr "Araçlar"
-
-#. TRANSLATORS: Addin category is unknown.
-#: src/sharp/addinstreemodel.cpp:162
-msgid "Unknown"
-msgstr "Bilinmiyor"
 
 #: src/sharp/modulemanager.cpp:62
 #, c-format
@@ -2289,6 +2261,38 @@ msgstr "%s yüklenirken hata oluştu"
 #, c-format
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "dynamic_module_instanciate simgesi alınırken hata: %s"
+
+#: src/sharp/pluginsmodel.cpp:186
+msgid "Name"
+msgstr "Ad"
+
+#: src/sharp/pluginsmodel.cpp:189
+msgid "Version"
+msgstr "Sürüm"
+
+#: src/sharp/pluginsmodel.cpp:191
+msgid "Category"
+msgstr "Kategori"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:206
+msgid "Formatting"
+msgstr "Biçimlendirme"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:209
+msgid "Desktop integration"
+msgstr "Masaüstü tümleşimi"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:212
+msgid "Tools"
+msgstr "Araçlar"
+
+#. TRANSLATORS: Addin category is unknown.
+#: src/sharp/pluginsmodel.cpp:219
+msgid "Unknown"
+msgstr "Bilinmiyor"
 
 #: src/sharp/xmlreader.cpp:219
 #, c-format
@@ -2366,15 +2370,11 @@ msgstr "%s dosyasında ayrıştırılamayan last-sync-rev ögesi"
 msgid "Failure writing test file"
 msgstr "Sınama dosyası yazılamadı"
 
-#: src/synchronization/gvfssyncservice.cpp:103
-msgid "Failure when checking test file contents"
-msgstr "Sınama dosyası içeriğini denetlenemedi"
-
-#: src/synchronization/gvfssyncservice.cpp:109
+#: src/synchronization/gvfssyncservice.cpp:104
 msgid "Failure when trying to remove test file"
 msgstr "Sınama dosyası kaldırılamadı"
 
-#: src/synchronization/gvfssyncservice.cpp:121
+#: src/synchronization/gvfssyncservice.cpp:116
 msgid "Unknown error"
 msgstr "Bilinmeyen hata"
 
