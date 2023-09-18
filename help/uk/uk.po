@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2023-09-04 19:50+0000\n"
-"PO-Revision-Date: 2023-09-07 09:31+0300\n"
+"POT-Creation-Date: 2023-09-16 19:38+0000\n"
+"PO-Revision-Date: 2023-09-18 22:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -384,10 +384,6 @@ msgstr "Вікно додатків <app>Gnote</app>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addins-preferences.page:30
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-preferences-add-ins.png' "
-#| "md5='a148cbfa935a78817b833a30a7addfbe'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-add-ins.png' "
@@ -723,8 +719,9 @@ msgstr "Luc Pionchon"
 
 #. (itstool) path: credit/years
 #: C/gnote-addin-tableofcontents.page:60
-msgid "2013,2014"
-msgstr "2013,2014"
+#| msgid "2011-2013,2019,2023"
+msgid "2013,2014,2023"
+msgstr "2013,2014,2023"
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-tableofcontents.page:79
@@ -796,13 +793,17 @@ msgstr "Структурована нотатка із її таблицею з�
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-tableofcontents.page:114
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-addin-table-of-contents.png' "
+#| "md5='15b52d64e171a3a03a13f0a2def2f3e3'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-addin-table-of-contents.png' "
-"md5='15b52d64e171a3a03a13f0a2def2f3e3'"
+"md5='55f061449955a465db0cc94612d0bbe1'"
 msgstr ""
 "external ref='figures/gnote-addin-table-of-contents.png' "
-"md5='15b52d64e171a3a03a13f0a2def2f3e3'"
+"md5='55f061449955a465db0cc94612d0bbe1'"
 
 #. (itstool) path: section/title
 #: C/gnote-addin-tableofcontents.page:120
@@ -942,15 +943,6 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gnote-addin-tableofcontents.page:185
 msgid ""
-"In <guiseq><gui>context menu</gui><gui>Table of Contents</gui></guiseq> "
-"(right-click on the note window)."
-msgstr ""
-"За допомогою пункту <guiseq><gui>контекстне меню</gui><gui>Зміст</gui></"
-"guiseq> (клацніть правою кнопкою миші на вікні нотатки)."
-
-#. (itstool) path: item/p
-#: C/gnote-addin-tableofcontents.page:186
-msgid ""
 "In a <gui>popup menu</gui>, with the keyboard shortcut <keyseq><key>Ctrl</"
 "key><key>Alt</key><key>1</key></keyseq>."
 msgstr ""
@@ -958,7 +950,7 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>Alt</key><key>1</key></keyseq>."
 
 #. (itstool) path: item/p
-#: C/gnote-addin-tableofcontents.page:187
+#: C/gnote-addin-tableofcontents.page:186
 msgid ""
 "Then you can navigate up and down with the arrow keys and jump to the "
 "selected heading with <key>enter</key>. Or just click with your mouse on the "
@@ -970,19 +962,19 @@ msgstr ""
 "заголовку, щоб перейти до нього."
 
 #. (itstool) path: section/title
-#: C/gnote-addin-tableofcontents.page:193
+#: C/gnote-addin-tableofcontents.page:192
 msgid "Troubleshooting"
 msgstr "Усування проблем"
 
 #. (itstool) path: item/title
-#: C/gnote-addin-tableofcontents.page:195
+#: C/gnote-addin-tableofcontents.page:194
 msgid ""
 "<em style=\"strong\">One heading does not show in the table of contents</em>"
 msgstr ""
 "<em style=\"strong\">Один із заголовків не показано у таблиці змісту</em>"
 
 #. (itstool) path: item/p
-#: C/gnote-addin-tableofcontents.page:195
+#: C/gnote-addin-tableofcontents.page:194
 msgid ""
 "There might be some characters in the heading line, such as whitespace "
 "characters, which are not formatted as a heading. Make sure that <em>the "
@@ -993,13 +985,13 @@ msgstr ""
 "<em>увесь рядок</em>. Див. розділ <link xref=\"#setheadings\"/>."
 
 #. (itstool) path: item/title
-#: C/gnote-addin-tableofcontents.page:198
+#: C/gnote-addin-tableofcontents.page:197
 msgid ""
 "<em style=\"strong\">There is an empty line in the table of contents</em>"
 msgstr "<em style=\"strong\">У таблиці змісту є порожній рядок</em>"
 
 #. (itstool) path: item/p
-#: C/gnote-addin-tableofcontents.page:198
+#: C/gnote-addin-tableofcontents.page:197
 msgid ""
 "An empty line, possibly including whitespaces, is formatted as a heading. "
 "Jump to this line and delete the area."
@@ -1928,10 +1920,6 @@ msgstr "Вікно <gui>Параметри</gui>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-notes-preferences.page:39
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-preferences-editing.png' "
-#| "md5='de21fae795592d3f1c753aa253a75584'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-preferences-editing.png' "
@@ -2493,10 +2481,6 @@ msgstr "Створення записника з контекстного мен
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:50
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-notebook-search.png' "
-#| "md5='1c53926aeb85ca4cd5f78712f4662f7e'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
@@ -2567,10 +2551,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:66
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-to-notebook.png' "
-#| "md5='937bfe6fcc3107e949d554d6a7c5b924'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
@@ -2648,10 +2628,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:84
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/note-template.png' "
-#| "md5='b128e2f67839219184c445c82614783d'"
 msgctxt "_"
 msgid ""
 "external ref='figures/note-template.png' "
@@ -2725,10 +2701,6 @@ msgstr "Вилучення нотаток з головного вікна пр�
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:98
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/delete-notebook.png' "
-#| "md5='622851e47c63142565b05cfcde2ee862'"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
@@ -2819,6 +2791,16 @@ msgstr "Налаштовування"
 #: C/index.page:41
 msgid "Common Problems"
 msgstr "Типові проблеми"
+
+#~ msgid "2013,2014"
+#~ msgstr "2013,2014"
+
+#~ msgid ""
+#~ "In <guiseq><gui>context menu</gui><gui>Table of Contents</gui></guiseq> "
+#~ "(right-click on the note window)."
+#~ msgstr ""
+#~ "За допомогою пункту <guiseq><gui>контекстне меню</gui><gui>Зміст</gui></"
+#~ "guiseq> (клацніть правою кнопкою миші на вікні нотатки)."
 
 #~ msgid "Use status icon"
 #~ msgstr "Використовувати піктограму стану"
