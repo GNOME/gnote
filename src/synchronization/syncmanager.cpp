@@ -222,7 +222,7 @@ namespace sync {
       //       Want this stuff to happen all at once first, but
       //       maybe there's a way to store this info and pass it on?
       for(auto & iter : noteUpdates) {
-        if(find_note_by_uuid(iter.second.m_uuid) != 0) {
+        if(find_note_by_uuid(iter.second.m_uuid)) {
           NoteBase::Ptr existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote != 0 && !iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote))) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
@@ -240,40 +240,44 @@ namespace sync {
 
       // Process updates from the server; the bread and butter of sync!
       for(auto & iter : noteUpdates) {
-        NoteBase::Ptr existingNote = find_note_by_uuid(iter.second.m_uuid);
+        auto existing_note = find_note_by_uuid(iter.second.m_uuid);
 
-        if(existingNote == 0) {
+        if(!existing_note) {
           // Actually, it's possible to have a conflict here
           // because of automatically-created notes like
           // template notes (if a note with a new tag syncs
           // before its associated template). So check by
           // title and delete if necessary.
-          existingNote = note_mgr().find(iter.second.m_title);
+          auto existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote != 0) {
             DBG_OUT("SyncManager: Deleting auto-generated note: %s", iter.second.m_title.c_str());
             delete_note_in_main_thread(std::static_pointer_cast<Note>(existingNote));
           }
           create_note_in_main_thread(iter.second);
         }
-        else if(existingNote->metadata_change_date() <= m_client->last_sync_date()
-                || iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote))) {
-          // Existing note hasn't been modified since last sync; simply update it from server
-          update_note_in_main_thread(std::static_pointer_cast<Note>(existingNote), iter.second);
-        }
         else {
-          // Logger.Debug ("Sync: Late conflict detection for '{0}'", noteUpdate.Title);
-          DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter.second.m_title.c_str());
-          // Note already exists locally, but has been modified since last sync; prompt user
-          if(m_sync_ui != 0) {
-            m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existingNote), iter.second, noteUpdateTitles);
+          NoteBase & existing = existing_note.value();
+          if(existing.metadata_change_date() <= m_client->last_sync_date()
+                || iter.second.basically_equal_to(std::static_pointer_cast<Note>(existing.shared_from_this()))) {
+            // Existing note hasn't been modified since last sync; simply update it from server
+            update_note_in_main_thread(std::static_pointer_cast<Note>(existing.shared_from_this()), iter.second);
           }
+          else {
+            // Logger.Debug ("Sync: Late conflict detection for '{0}'", noteUpdate.Title);
+            DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter.second.m_title.c_str());
+            // Note already exists locally, but has been modified since last sync; prompt user
+            if(m_sync_ui != 0) {
+              m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existing.shared_from_this()), iter.second, noteUpdateTitles);
+            }
 
-          // Note has been deleted or okay'd for overwrite
-          existingNote = find_note_by_uuid(iter.second.m_uuid);
-          if(existingNote == 0)
-            create_note_in_main_thread(iter.second);
-          else
-            update_note_in_main_thread(std::static_pointer_cast<Note>(existingNote), iter.second);
+            if(auto existingNote = find_note_by_uuid(iter.second.m_uuid)) {
+              update_note_in_main_thread(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()), iter.second);
+            }
+            else {
+              // Note has been deleted or okay'd for overwrite
+              create_note_in_main_thread(iter.second);
+            }
+          }
         }
       }
 
@@ -320,7 +324,7 @@ namespace sync {
       std::vector<Glib::ustring> locallyDeletedUUIDs;
       auto all_note_uuids = server->get_all_note_uuids();
       for(auto & iter : all_note_uuids) {
-        if(find_note_by_uuid(iter) == 0) {
+        if(!find_note_by_uuid(iter)) {
           locallyDeletedUUIDs.push_back(iter);
           if(m_sync_ui != 0) {
             Glib::ustring deletedTitle = iter;
@@ -603,9 +607,13 @@ namespace sync {
   }
 
 
-  NoteBase::Ptr SyncManager::find_note_by_uuid(const Glib::ustring & uuid)
+  NoteBase::Ref SyncManager::find_note_by_uuid(const Glib::ustring & uuid)
   {
-    return note_mgr().find_by_uri("note://gnote/" + uuid);
+    auto note = note_mgr().find_by_uri("note://gnote/" + uuid);
+    if(note) {
+      return NoteBase::Ref(std::ref(*note));
+    }
+    return NoteBase::Ref();
   }
 
 
