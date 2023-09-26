@@ -201,11 +201,9 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const Glib::ustring & not
 
   Glib::ustring note_uri = make_uri(note_id);
 
-  gnote::NoteBase::Ptr note_to_delete = note_manager().find_by_uri(note_uri);
-  if(note_to_delete != 0) {
-    note_manager().delete_note(*note_to_delete);
-  }
-  else {
+  if(!note_manager().find_by_uri(note_uri, [this](gnote::NoteBase & note_to_delete) {
+    note_manager().delete_note(note_to_delete);
+  })) {
     DBG_OUT("notedirectorywatcher: did not delete %s because note not found.", note_id.c_str());
   }
 }
