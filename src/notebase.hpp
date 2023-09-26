@@ -23,6 +23,7 @@
 #define _NOTEBASE_HPP_
 
 #include <map>
+#include <optional>
 #include <vector>
 
 #include <glibmm/ustring.h>
@@ -189,6 +190,7 @@ class NoteBase
 public:
   typedef std::shared_ptr<NoteBase> Ptr;
   typedef std::weak_ptr<NoteBase> WeakPtr;
+  typedef std::optional<std::reference_wrapper<NoteBase>> Ref;
   typedef std::vector<Ptr> List;
 
   static Glib::ustring url_from_path(const Glib::ustring &);
