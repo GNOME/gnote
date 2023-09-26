@@ -62,10 +62,9 @@ void BacklinksNoteAddin::on_note_opened ()
 void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
 {
   Glib::ustring uri = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(param).get();
-  gnote::NoteBase::Ptr note = get_note()->manager().find_by_uri(uri);
-  if(note) {
-    gnote::MainWindow::present_in_new_window(ignote(), std::static_pointer_cast<gnote::Note>(note));
-  }
+  get_note()->manager().find_by_uri(uri, [this](gnote::NoteBase & note) {
+    gnote::MainWindow::present_in_new_window(ignote(), std::static_pointer_cast<gnote::Note>(note.shared_from_this()));
+  });
 }
 
 std::vector<gnote::PopoverWidget> BacklinksNoteAddin::get_actions_popover_widgets() const
