@@ -141,7 +141,7 @@ SUITE(NoteManager)
     CHECK(test_note != NULL);
     CHECK_EQUAL(3, manager.get_notes().size());
     CHECK(manager.find("test note") == test_note);
-    CHECK(manager.find_by_uri(test_note->uri()) == test_note);
+    CHECK(manager.find_by_uri(test_note->uri()).value().get().shared_from_this() == test_note);
   }
 
   TEST_FIXTURE(Fixture, create_with_xml)
@@ -161,7 +161,8 @@ SUITE(NoteManager)
     CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->uri());
     CHECK_EQUAL(1, manager.get_notes().size());
     auto other = manager.find_by_uri("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a");
-    CHECK_EQUAL(note, other);
+    REQUIRE CHECK(other.has_value());
+    CHECK_EQUAL(note, other.value().get().shared_from_this());
   }
 
   TEST_FIXTURE(Fixture, create_with_guid_from_template)
@@ -174,7 +175,8 @@ SUITE(NoteManager)
     CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note->uri());
     CHECK_EQUAL(2, manager.get_notes().size());
     auto other = manager.find_by_uri("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a");
-    CHECK_EQUAL(note, other);
+    REQUIRE CHECK(other.has_value());
+    CHECK_EQUAL(note, other.value().get().shared_from_this());
   }
 
   TEST_FIXTURE(Fixture, create_with_guid_multiline_title)

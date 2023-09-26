@@ -233,11 +233,11 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
 
   Glib::ustring note_uri = make_uri(note_id);
 
-  gnote::NoteBase::Ptr note = note_manager().find_by_uri(note_uri);
+  auto note = note_manager().find_by_uri(note_uri);
 
   bool is_new_note = false;
 
-  if(note == 0) {
+  if(!note) {
     is_new_note = true;
     DBG_OUT("NoteDirectoryWatcher: Adding %s because file changed.", note_id.c_str());
 
@@ -254,12 +254,13 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
     }
 
     try {
-      note = note_manager().create_with_guid(std::move(title), Glib::ustring(note_id));
-      if(note == 0) {
+      auto n = note_manager().create_with_guid(std::move(title), Glib::ustring(note_id));
+      if(n == 0) {
         /* TRANSLATORS: %s is file */
         ERR_OUT(_("NoteDirectoryWatcher: Unknown error creating note from %s"), note_path.c_str());
         return;
       }
+      note = gnote::NoteBase::Ref(std::ref(*n));
     }
     catch(std::exception & e) {
       /* TRANSLATORS: first %s is file, second is error */
@@ -272,13 +273,13 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
     DBG_OUT("NoteDirectoryWatcher: Updating %s because file changed.", note_id.c_str());
   }
   try {
-    note->load_foreign_note_xml(noteXml, gnote::CONTENT_CHANGED);
+    note.value().get().load_foreign_note_xml(noteXml, gnote::CONTENT_CHANGED);
   }
   catch(std::exception & e) {
     /* TRANSLATORS: first %s is file, second is error */
     ERR_OUT(_("NoteDirectoryWatcher: Update aborted, error parsing %s: %s"), note_path.c_str(), e.what());
     if(is_new_note) {
-      note_manager().delete_note(*note);
+      note_manager().delete_note(note.value());
     }
   }
 }

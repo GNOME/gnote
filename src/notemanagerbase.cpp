@@ -221,14 +221,14 @@ NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
   return NoteBase::Ptr();
 }
 
-NoteBase::Ptr NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
+NoteBase::Ref NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
 {
   for(const NoteBase::Ptr & note : m_notes) {
     if (note->uri() == uri) {
-      return note;
+      return NoteBase::Ref(std::ref(*note));
     }
   }
-  return NoteBase::Ptr();
+  return NoteBase::Ref();
 }
 
 NoteBase::Ptr NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note)

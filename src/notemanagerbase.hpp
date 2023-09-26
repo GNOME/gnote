@@ -68,7 +68,7 @@ public:
       return m_read_only;
     }
   NoteBase::Ptr find(const Glib::ustring &) const;
-  NoteBase::Ptr find_by_uri(const Glib::ustring &) const;
+  NoteBase::Ref find_by_uri(const Glib::ustring &) const;
   template <typename F>
   bool find_by_uri(const Glib::ustring & uri, const F & func) const
     {

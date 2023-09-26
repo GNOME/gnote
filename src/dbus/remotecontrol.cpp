@@ -274,8 +274,7 @@ std::vector<Glib::ustring> RemoteControl::ListAllNotes()
 
 bool RemoteControl::NoteExists(const Glib::ustring& uri)
 {
-  NoteBase::Ptr note = m_manager.find_by_uri(uri);
-  return note != NULL;
+  return m_manager.find_by_uri(uri).has_value();
 }
 
 
