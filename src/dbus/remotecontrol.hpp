@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -77,7 +77,7 @@ private:
   void on_note_added(const NoteBase::Ptr &);
   void on_note_deleted(const NoteBase::Ptr &);
   void on_note_saved(const NoteBase::Ptr &);
-  MainWindow & present_note(const NoteBase::Ptr &);
+  MainWindow & present_note(NoteBase &);
 
   IGnote & m_gnote;
   NoteManagerBase & m_manager;

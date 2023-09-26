@@ -59,13 +59,10 @@ namespace gnote {
 
   bool RemoteControl::AddTagToNote(const Glib::ustring& uri, const Glib::ustring& tag_name)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note) {
-      return false;
-    }
-    Tag::Ptr tag = m_manager.tag_manager().get_or_create_tag(tag_name);
-    note->add_tag (tag);
-    return true;
+    return m_manager.find_by_uri(uri, [this, &tag_name](NoteBase & note) {
+      auto tag = m_manager.tag_manager().get_or_create_tag(tag_name);
+      note.add_tag(tag);
+    });
   }
 
 
@@ -99,40 +96,26 @@ namespace gnote {
 
   bool RemoteControl::DeleteNote(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note) {
-      return false;
-    }
-
-    m_manager.delete_note(*note);
-    return true;
-
+    return m_manager.find_by_uri(uri, [this](NoteBase & note) {
+      m_manager.delete_note(note);
+    });
   }
 
   bool RemoteControl::DisplayNote(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note) {
-      return false;
-    }
-
-    present_note(note);
-    return true;
+    return m_manager.find_by_uri(uri, [this](NoteBase & note) {
+      present_note(note);
+    });
   }
 
 
   bool RemoteControl::DisplayNoteWithSearch(const Glib::ustring& uri, const Glib::ustring& search)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note) {
-      return false;
-    }
-
-    MainWindow & window(present_note(note));
-    window.set_search_text(Glib::ustring(search));
-    window.show_search_bar();
-
-    return true;
+    return m_manager.find_by_uri(uri, [this, &search](NoteBase & note) {
+      MainWindow & window(present_note(note));
+      window.set_search_text(Glib::ustring(search));
+      window.show_search_bar();
+    });
   }
 
 
@@ -160,8 +143,11 @@ namespace gnote {
 
   Glib::ustring RemoteControl::FindStartHereNote()
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(m_gnote.preferences().start_note_uri());
-    return (!note) ? "" : note->uri();
+    Glib::ustring ret;
+    m_manager.find_by_uri(m_gnote.preferences().start_note_uri(), [&ret](NoteBase & note) {
+      ret = note.uri();
+    });
+    return ret;
   }
 
 
@@ -188,38 +174,41 @@ namespace gnote {
 
   int64_t RemoteControl::GetNoteChangeDateUnix(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note)
-      return -1;
-    return note->metadata_change_date().to_unix();
+    int64_t ret = -1;
+    m_manager.find_by_uri(uri, [&ret](NoteBase & note) {
+      ret = note.metadata_change_date().to_unix();
+    });
+    return ret;
   }
 
 
   Glib::ustring RemoteControl::GetNoteCompleteXml(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note)
-      return "";
-    return note->get_complete_note_xml();
-
+    Glib::ustring xml;
+    m_manager.find_by_uri(uri, [&xml](NoteBase & note) {
+      xml = note.get_complete_note_xml();
+    });
+    return xml;
   }
 
 
   Glib::ustring RemoteControl::GetNoteContents(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note)
-      return "";
-    return note->text_content();
+    Glib::ustring text;
+    m_manager.find_by_uri(uri, [&text](NoteBase & note) {
+      text = note.text_content();
+    });
+    return text;
   }
 
 
   Glib::ustring RemoteControl::GetNoteContentsXml(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note)
-      return "";
-    return note->xml_content();
+    Glib::ustring xml;
+    m_manager.find_by_uri(uri, [&xml](NoteBase & note) {
+      xml = note.xml_content();
+    });
+    return xml;
   }
 
 
@@ -231,52 +220,45 @@ namespace gnote {
 
   int64_t RemoteControl::GetNoteCreateDateUnix(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note)
-      return -1;
-    return note->create_date().to_unix();
+    int64_t ret = -1;
+    m_manager.find_by_uri(uri, [&ret](NoteBase & note) {
+      ret = note.create_date().to_unix();
+    });
+    return ret;
   }
 
 
   Glib::ustring RemoteControl::GetNoteTitle(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note)
-      return "";
-    return note->get_title();
+    Glib::ustring title;
+    m_manager.find_by_uri(uri, [&title](NoteBase & note) {
+      title = note.get_title();
+    });
+    return title;
   }
 
 
   std::vector<Glib::ustring> RemoteControl::GetTagsForNote(const Glib::ustring& uri)
   {
-    NoteBase::Ptr note = m_manager.find_by_uri(uri);
-    if (!note)
-      return std::vector<Glib::ustring>();
-
     std::vector<Glib::ustring> tags;
-    std::vector<Tag::Ptr> l = note->get_tags();
-    for(auto & tag : l) {
-      tags.push_back(tag->normalized_name());
-    }
+    m_manager.find_by_uri(uri, [&tags](NoteBase & note) {
+      for(auto & tag : note.get_tags()) {
+        tags.push_back(tag->normalized_name());
+      }
+    });
     return tags;
   }
 
 
 bool RemoteControl::HideNote(const Glib::ustring& uri)
 {
-  NoteBase::Ptr note = m_manager.find_by_uri(uri);
-  if (!note)
-    return false;
-
-  NoteWindow *window = std::static_pointer_cast<Note>(note)->get_window();
-  if(window == NULL) {
-    return true;
-  }
-  auto win = dynamic_cast<MainWindow*>(window->host());
-  if(win) {
-    win->unembed_widget(*window);
-  }
-  return true;
+  return m_manager.find_by_uri(uri, [](NoteBase & note) {
+    if(auto window = static_cast<Note&>(note).get_window()) {
+      if(auto win = dynamic_cast<MainWindow*>(window->host())) {
+        win->unembed_widget(*window);
+      }
+    }
+  });
 }
 
 
@@ -300,14 +282,11 @@ bool RemoteControl::NoteExists(const Glib::ustring& uri)
 bool RemoteControl::RemoveTagFromNote(const Glib::ustring& uri, 
                                       const Glib::ustring& tag_name)
 {
-  NoteBase::Ptr note = m_manager.find_by_uri(uri);
-  if (!note)
-    return false;
-  Tag::Ptr tag = m_manager.tag_manager().get_tag(tag_name);
-  if (tag) {
-    note->remove_tag (tag);
-  }
-  return true;
+  return m_manager.find_by_uri(uri, [this, &tag_name](NoteBase & note) {
+    if(auto tag = m_manager.tag_manager().get_tag(tag_name)) {
+      note.remove_tag(tag);
+    }
+  });
 }
 
 
@@ -335,38 +314,27 @@ std::vector<Glib::ustring> RemoteControl::SearchNotes(const Glib::ustring& query
 bool RemoteControl::SetNoteCompleteXml(const Glib::ustring& uri, 
                                        const Glib::ustring& xml_contents)
 {
-  NoteBase::Ptr note = m_manager.find_by_uri(uri);
-  if(!note) {
-    return false;
-  }
-    
-  note->load_foreign_note_xml(xml_contents, CONTENT_CHANGED);
-  return true;
+  return m_manager.find_by_uri(uri, [&xml_contents](NoteBase & note) {
+    note.load_foreign_note_xml(xml_contents, CONTENT_CHANGED);
+  });
 }
 
 
 bool RemoteControl::SetNoteContents(const Glib::ustring& uri, 
                                     const Glib::ustring& text_contents)
 {
-  NoteBase::Ptr note = m_manager.find_by_uri(uri);
-  if(!note) {
-    return false;
-  }
-
-  std::static_pointer_cast<Note>(note)->set_text_content(Glib::ustring(text_contents));
-  return true;
+  return m_manager.find_by_uri(uri, [&text_contents](NoteBase & note) {
+    static_cast<Note&>(note).set_text_content(Glib::ustring(text_contents));
+  });
 }
 
 
 bool RemoteControl::SetNoteContentsXml(const Glib::ustring& uri, 
                                        const Glib::ustring& xml_contents)
 {
-  NoteBase::Ptr note = m_manager.find_by_uri(uri);
-  if(!note) {
-    return false;
-  }
-  note->set_xml_content(Glib::ustring(xml_contents));
-  return true;
+  return m_manager.find_by_uri(uri, [&xml_contents](NoteBase & note) {
+    note.set_xml_content(Glib::ustring(xml_contents));
+  });
 }
 
 
@@ -401,9 +369,9 @@ void RemoteControl::on_note_saved(const NoteBase::Ptr & note)
 }
 
 
-MainWindow & RemoteControl::present_note(const NoteBase::Ptr & note)
+MainWindow & RemoteControl::present_note(NoteBase & note)
 {
-  return *MainWindow::present_default(m_gnote, std::static_pointer_cast<Note>(note));
+  return *MainWindow::present_default(m_gnote, std::static_pointer_cast<Note>(note.shared_from_this()));
 }
 
 
