@@ -69,6 +69,15 @@ public:
     }
   NoteBase::Ptr find(const Glib::ustring &) const;
   NoteBase::Ptr find_by_uri(const Glib::ustring &) const;
+  template <typename F>
+  bool find_by_uri(const Glib::ustring & uri, const F & func) const
+    {
+      if(auto note = find_by_uri(uri)) {
+        func(*note);
+        return true;
+      }
+      return false;
+    }
   NoteBase::List get_notes_linking_to(const Glib::ustring & title) const;
   NoteBase::Ptr create();
   NoteBase::Ptr create(Glib::ustring && title);
