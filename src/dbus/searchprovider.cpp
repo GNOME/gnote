@@ -157,15 +157,12 @@ std::vector<std::map<Glib::ustring, Glib::ustring> > SearchProvider::GetResultMe
 {
   std::vector<std::map<Glib::ustring, Glib::ustring> > ret;
   for(std::vector<Glib::ustring>::const_iterator iter = identifiers.begin(); iter != identifiers.end(); ++iter) {
-    gnote::NoteBase::Ptr note = m_manager.find_by_uri(*iter);
-    if(note == 0) {
-      continue;
-    }
-
-    std::map<Glib::ustring, Glib::ustring> meta;
-    meta["id"] = note->uri();
-    meta["name"] = note->get_title();
-    ret.push_back(meta);
+    m_manager.find_by_uri(*iter, [&ret](gnote::NoteBase & note) {
+      std::map<Glib::ustring, Glib::ustring> meta;
+      meta["id"] = note.uri();
+      meta["name"] = note.get_title();
+      ret.push_back(meta);
+    });
   }
 
   return ret;
@@ -201,10 +198,9 @@ void SearchProvider::ActivateResult(const Glib::ustring & identifier,
                                     const std::vector<Glib::ustring> & /*terms*/,
                                     guint32 /*timestamp*/)
 {
-  gnote::NoteBase::Ptr note = m_manager.find_by_uri(identifier);
-  if(note != 0) {
-    m_gnote.open_note(*note);
-  }
+  m_manager.find_by_uri(identifier, [this](gnote::NoteBase & note) {
+    m_gnote.open_note(note);
+  });
 }
 
 Glib::VariantContainerBase SearchProvider::ActivateResult_stub(const Glib::VariantContainerBase & params)
