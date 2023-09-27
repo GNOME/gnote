@@ -84,7 +84,7 @@ public:
   NoteBase::Ptr create(Glib::ustring && title, Glib::ustring && xml_content);
   NoteBase::Ptr create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note);
   virtual NoteBase::Ptr get_or_create_template_note();
-  NoteBase::Ptr find_template_note() const;
+  NoteBase::Ref find_template_note() const;
   Glib::ustring get_unique_name(const Glib::ustring & basename) const;
   void delete_note(NoteBase & note);
   // Import a note read from file_path

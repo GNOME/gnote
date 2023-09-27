@@ -295,9 +295,8 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring
 
   Glib::ustring content;
   if(body.empty()) {
-    auto template_note = find_template_note();
-    if(template_note) {
-      return create_note_from_template(std::move(title), template_note, std::move(guid));
+    if(auto template_note = find_template_note()) {
+      return create_note_from_template(std::move(title), template_note.value().get().shared_from_this(), std::move(guid));
     }
 
     // Use a simple "Describe..." body and highlight
@@ -358,25 +357,25 @@ Glib::ustring NoteManagerBase::get_note_content(const Glib::ustring & title, con
 
 NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
 {
-  NoteBase::Ptr template_note = find_template_note();
-  if(!template_note) {
-    Glib::ustring title = m_default_note_template_title;
-    if(find(title)) {
-      title = get_unique_name(title);
-    }
-    auto content = get_note_template_content(title);
-    template_note = create(std::move(title), std::move(content));
-    if(template_note == 0) {
-      throw sharp::Exception("Failed to create template note");
-    }
-
-    // Flag this as a template note
-    Tag::Ptr template_tag = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    template_note->add_tag(template_tag);
-
-    template_note->queue_save(CONTENT_CHANGED);
+  if(auto template_note = find_template_note()) {
+    return template_note.value().get().shared_from_this();
   }
-      
+
+  Glib::ustring title = m_default_note_template_title;
+  if(find(title)) {
+    title = get_unique_name(title);
+  }
+  auto content = get_note_template_content(title);
+  auto template_note = create(std::move(title), std::move(content));
+  if(template_note == 0) {
+    throw sharp::Exception("Failed to create template note");
+  }
+
+  // Flag this as a template note
+  Tag::Ptr template_tag = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+  template_note->add_tag(template_tag);
+
+  template_note->queue_save(CONTENT_CHANGED);
   return template_note;
 }
 
@@ -417,23 +416,18 @@ Glib::ustring NoteManagerBase::make_new_file_name(const Glib::ustring & guid) co
   return Glib::build_filename(notes_dir(), guid + ".note");
 }
 
-NoteBase::Ptr NoteManagerBase::find_template_note() const
+NoteBase::Ref NoteManagerBase::find_template_note() const
 {
-  NoteBase::Ptr template_note;
-  Tag::Ptr template_tag = tag_manager().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-  if(!template_tag) {
-    return template_note;
-  }
-  auto notes = template_tag->get_notes();
-  for(NoteBase *iter : notes) {
-    NoteBase::Ptr note = iter->shared_from_this();
-    if(!m_gnote.notebook_manager().get_notebook_from_note(note)) {
-      template_note = note;
-      break;
+  if(auto template_tag = tag_manager().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG)) {
+    auto notes = template_tag->get_notes();
+    for(NoteBase *iter : notes) {
+      if(!m_gnote.notebook_manager().get_notebook_from_note(iter->shared_from_this())) {
+        return NoteBase::Ref(std::ref(*iter));
+      }
     }
   }
 
-  return template_note;
+  return NoteBase::Ref();
 }
 
 void NoteManagerBase::delete_note(NoteBase & note)
