@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -272,15 +272,14 @@ namespace gnote {
     return Note::create_new_note(std::move(title), std::move(file_name), *this, m_gnote);
   }
 
-  NoteBase::Ptr NoteManager::get_or_create_template_note()
+  Note & NoteManager::get_or_create_template_note()
   {
-    NoteBase::Ptr template_note = NoteManagerBase::get_or_create_template_note();
+    Note & note = static_cast<Note&>(NoteManagerBase::get_or_create_template_note());
 
     // Select the initial text
-    Glib::RefPtr<NoteBuffer> buffer = std::static_pointer_cast<Note>(template_note)->get_buffer();
+    Glib::RefPtr<NoteBuffer> buffer = note.get_buffer();
     buffer->select_note_body();
-
-    return template_note;
+    return note;
   }
 
   // Creates a new note with the given title and guid with body based on

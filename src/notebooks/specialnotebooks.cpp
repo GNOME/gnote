@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -39,7 +39,7 @@ Tag::Ptr SpecialNotebook::get_tag() const
 
 Note::Ptr SpecialNotebook::get_template_note() const
 {
-  return std::static_pointer_cast<Note>(m_note_manager.get_or_create_template_note());
+  return std::static_pointer_cast<Note>(m_note_manager.get_or_create_template_note().shared_from_this());
 }
 
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2017,2019-2020,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,9 +46,9 @@ SUITE(NoteManager)
 
     gnote::NoteBase::Ptr create_template_note()
     {
-      auto templ = manager.get_or_create_template_note();
-      templ->set_xml_content(Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\ntest template content</note-content>", templ->get_title()));
-      return templ;
+      auto & templ = manager.get_or_create_template_note();
+      templ.set_xml_content(Glib::ustring::compose("<note-content><note-title>%1</note-title>\n\ntest template content</note-content>", templ.get_title()));
+      return templ.shared_from_this();
     }
   };
 

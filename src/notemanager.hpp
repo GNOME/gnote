@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,7 +66,7 @@ namespace gnote {
         return *m_addin_mgr;
       }
 
-    virtual NoteBase::Ptr get_or_create_template_note() override;
+    Note & get_or_create_template_note() override;
 
     ChangedHandler signal_note_buffer_changed;
 

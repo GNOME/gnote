@@ -355,10 +355,10 @@ Glib::ustring NoteManagerBase::get_note_content(const Glib::ustring & title, con
              utils::XmlEncoder::encode(body));
 }
 
-NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
+NoteBase & NoteManagerBase::get_or_create_template_note()
 {
   if(auto template_note = find_template_note()) {
-    return template_note.value().get().shared_from_this();
+    return template_note.value();
   }
 
   Glib::ustring title = m_default_note_template_title;
@@ -376,7 +376,7 @@ NoteBase::Ptr NoteManagerBase::get_or_create_template_note()
   template_note->add_tag(template_tag);
 
   template_note->queue_save(CONTENT_CHANGED);
-  return template_note;
+  return *template_note;
 }
 
 Glib::ustring NoteManagerBase::split_title_from_content(Glib::ustring title, Glib::ustring & body)

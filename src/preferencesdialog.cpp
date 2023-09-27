@@ -876,12 +876,10 @@ namespace {
 
 
 
-  void  PreferencesDialog::open_template_button_clicked()
+  void PreferencesDialog::open_template_button_clicked()
   {
-    NoteBase::Ptr template_note = m_note_manager.get_or_create_template_note();
-
     // Open the template note
-    m_gnote.open_note(*template_note);
+    m_gnote.open_note(m_note_manager.get_or_create_template_note());
   }
 
 
