@@ -140,7 +140,7 @@ SUITE(NoteManager)
     gnote::NoteBase::Ptr test_note = manager.create("test note");
     CHECK(test_note != NULL);
     CHECK_EQUAL(3, manager.get_notes().size());
-    CHECK(manager.find("test note") == test_note);
+    CHECK(manager.find("test note").value().get().shared_from_this() == test_note);
     CHECK(manager.find_by_uri(test_note->uri()).value().get().shared_from_this() == test_note);
   }
 

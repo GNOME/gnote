@@ -56,12 +56,13 @@ NoteOfTheDayPreferences::~NoteOfTheDayPreferences()
 
 void NoteOfTheDayPreferences::open_template_button_clicked() const
 {
-  gnote::NoteBase::Ptr template_note = m_note_manager.find(NoteOfTheDay::s_template_title);
+  auto template_note = m_note_manager.find(NoteOfTheDay::s_template_title);
 
-  if (0 == template_note) {
+  if(!template_note) {
     try {
-      template_note = m_note_manager.create(Glib::ustring(NoteOfTheDay::s_template_title), NoteOfTheDay::get_template_content(NoteOfTheDay::s_template_title));
-      template_note->queue_save(gnote::CONTENT_CHANGED);
+      auto note = m_note_manager.create(Glib::ustring(NoteOfTheDay::s_template_title), NoteOfTheDay::get_template_content(NoteOfTheDay::s_template_title));
+      template_note = gnote::NoteBase::Ref(std::ref(*note));
+      note->queue_save(gnote::CONTENT_CHANGED);
     }
     catch (const sharp::Exception & e) {
       /* TRANSLATORS: first %s is template note title, second is error */
@@ -71,8 +72,8 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
     }
   }
 
-  if(0 != template_note) {
-    m_gnote.open_note(*template_note);
+  if(template_note) {
+    m_gnote.open_note(template_note.value());
   }
 }
 

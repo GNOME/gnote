@@ -180,9 +180,9 @@ namespace gnote {
     auto start_note_uri = m_preferences.start_note_uri();
     if (start_note_uri.empty() || !find_by_uri(start_note_uri)) {
       // Attempt to find an existing Start Here note
-      NoteBase::Ptr start_note = find (_("Start Here"));
-      if (start_note) {
-        m_preferences.start_note_uri(start_note->uri());
+      auto start_note = find(_("Start Here"));
+      if(start_note) {
+        m_preferences.start_note_uri(start_note.value().get().uri());
       }
     }
   }

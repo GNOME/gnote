@@ -68,12 +68,12 @@ namespace gnote {
 
   Glib::ustring RemoteControl::CreateNamedNote(const Glib::ustring& linked_title)
   {
-    NoteBase::Ptr note = m_manager.find(linked_title);
-    if (note)
+    if(m_manager.find(linked_title)) {
       return "";
+    }
 
     try {
-      note = m_manager.create(Glib::ustring(linked_title));
+      auto note = m_manager.create(Glib::ustring(linked_title));
       return note->uri();
     } 
     catch (const std::exception & e) {
@@ -136,8 +136,8 @@ namespace gnote {
 
   Glib::ustring RemoteControl::FindNote(const Glib::ustring& linked_title)
   {
-    NoteBase::Ptr note = m_manager.find(linked_title);
-    return (!note) ? "" : note->uri();
+    auto note = m_manager.find(linked_title);
+    return (!note) ? "" : note.value().get().uri();
   }
 
 

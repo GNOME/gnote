@@ -475,10 +475,11 @@ namespace gnote {
     if (title.empty())
       return;
 
-    NoteBase::Ptr match = m_note.manager().find(title);
-    if (!match) {
+    auto match = m_note.manager().find(title);
+    if(!match) {
       try {
-        match = m_note.manager().create(std::move(select));
+        auto note = m_note.manager().create(std::move(select));
+        match = NoteBase::Ref(std::ref(*note));
       } 
       catch (const sharp::Exception & e) {
         auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(dynamic_cast<Gtk::Window*>(host()),
@@ -496,7 +497,7 @@ namespace gnote {
       m_note.get_buffer()->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
     }
 
-    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), std::static_pointer_cast<Note>(match));
+    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), std::static_pointer_cast<Note>(match.value().get().shared_from_this()));
   }
 
   bool NoteWindow::open_help_activate(Gtk::Widget&, const Glib::VariantBase&)
@@ -585,10 +586,11 @@ namespace gnote {
     }
 
     NoteManagerBase & manager(m_note.manager());
-    NoteBase::Ptr match = manager.find(title);
+    auto match = manager.find(title);
     if(!match) {
       try {
-        match = manager.create(std::move(select));
+        auto note = manager.create(std::move(select));
+        match = NoteBase::Ref(std::ref(*note));
       }
       catch(const sharp::Exception & e) {
         auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(dynamic_cast<Gtk::Window*>(m_note.get_window()->host()),
@@ -607,7 +609,7 @@ namespace gnote {
     }
 
     MainWindow::present_in(*dynamic_cast<MainWindow*>(m_note.get_window()->host()),
-                           std::static_pointer_cast<Note>(match));
+                           std::static_pointer_cast<Note>(match.value().get().shared_from_this()));
   }
 
   //

@@ -204,9 +204,9 @@ namespace gnote {
   {
     Glib::ustring title = get_window()->get_name();
 
-    NoteBase::Ptr existing = manager().find (title);
-    if (existing && (existing != get_note())) {
-      show_name_clash_error (title, only_warn);
+    auto existing = manager().find(title);
+    if(existing && (existing.value().get().shared_from_this() != get_note())) {
+      show_name_clash_error(title, only_warn);
       return false;
     }
 
@@ -959,9 +959,10 @@ namespace gnote {
     if(tag_name != link_tag_name)
       return;
     Glib::ustring link_name = start.get_text(end);
-    NoteBase::Ptr link = manager().find(link_name);
-    if(!link)
-        unhighlight_in_block(start, end);
+    auto link = manager().find(link_name);
+    if(!link) {
+      unhighlight_in_block(start, end);
+    }
   }
 
 
@@ -970,12 +971,13 @@ namespace gnote {
                                             const Gtk::TextIter & end)
   {
     Glib::ustring link_name = start.get_text (end);
-    NoteBase::Ptr link = manager().find(link_name);
+    auto link = manager().find(link_name);
 
     if (!link) {
       DBG_OUT("Creating note '%s'...", link_name.c_str());
       try {
-        link = manager().create(Glib::ustring(link_name));
+        auto note = manager().create(Glib::ustring(link_name));
+        link = NoteBase::Ref(std::ref(*note));
       } 
       catch(...)
       {
@@ -997,7 +999,7 @@ namespace gnote {
     // also works around the bug.
     if (link) {
       DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
-      MainWindow::present_default(ignote(), std::static_pointer_cast<Note>(link));
+      MainWindow::present_default(ignote(), std::static_pointer_cast<Note>(link.value().get().shared_from_this()));
       return true;
     }
 

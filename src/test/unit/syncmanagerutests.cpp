@@ -148,10 +148,10 @@ SUITE(SyncManagerTests)
 
 #define UPDATE_NOTE(manager, title, new_title, new_content) \
   do { \
-    auto note = std::dynamic_pointer_cast<test::Note>(manager->find(title)); \
-    note->set_xml_content(make_note_content(new_title, new_title)); \
-    note->set_change_type(gnote::CONTENT_CHANGED); \
-    note->save(); \
+    auto & note = dynamic_cast<test::Note&>(manager->find(title).value().get()); \
+    note.set_xml_content(make_note_content(new_title, new_title)); \
+    note.set_change_type(gnote::CONTENT_CHANGED); \
+    note.save(); \
   } \
   while(0)
 
@@ -265,8 +265,9 @@ SUITE(SyncManagerTests)
     FIRST_SYNC(gnote1, sync_manager1, manager1, manifest1, sync_client1, sync_ui1)
 
     // remove note
-    auto note2 = std::dynamic_pointer_cast<test::Note>(manager1->find("note2"));
-    manager1->delete_note(*note2);
+    auto note2 = manager1->find("note2");
+    REQUIRE CHECK(bool(note2));
+    manager1->delete_note(note2.value());
     sync_manager1->perform_synchronization(sync_ui1);
 
     FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
@@ -308,8 +309,8 @@ SUITE(SyncManagerTests)
     FIRST_SYNC(gnote2, sync_manager2, manager2, manifest2, sync_client2, sync_ui2)
 
     // remove note
-    auto note2 = std::dynamic_pointer_cast<test::Note>(manager2->find("note2"));
-    manager2->delete_note(*note2);
+    auto & note2 = dynamic_cast<test::Note&>(manager2->find("note2").value().get());
+    manager2->delete_note(note2);
     sync_manager2->perform_synchronization(sync_ui2);
 
     // update note and sync again

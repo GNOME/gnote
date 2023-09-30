@@ -212,7 +212,7 @@ private:
   bool is_note_title_available(const Glib::ustring & renamedTitle)
     {
       return std::find(m_note_update_titles.begin(), m_note_update_titles.end(), renamedTitle) == m_note_update_titles.end()
-             && m_existing_note->manager().find(renamedTitle) == 0;
+             && m_existing_note->manager().find(renamedTitle);
     }
   void radio_toggled()
     {
@@ -406,9 +406,8 @@ void SyncDialog::on_row_activated(guint idx)
 
   Glib::ustring noteTitle = item->value.title;
 
-  NoteBase::Ptr note = m_manager.find(noteTitle);
-  if(note != 0) {
-    present_note(std::static_pointer_cast<Note>(note));
+  if(auto note = m_manager.find(noteTitle)) {
+    present_note(std::static_pointer_cast<Note>(note.value().get().shared_from_this()));
   }
 }
 

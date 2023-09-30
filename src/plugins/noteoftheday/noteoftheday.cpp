@@ -92,10 +92,10 @@ Glib::ustring NoteOfTheDay::get_content(const Glib::Date & date, const gnote::No
   const Glib::ustring title = get_title(date);
 
   // Attempt to load content from template
-  const gnote::NoteBase::Ptr template_note = manager.find(s_template_title);
+  auto template_note = manager.find(s_template_title);
 
-  if (0 != template_note) {
-    Glib::ustring xml_content = template_note->xml_content();
+  if(template_note) {
+    Glib::ustring xml_content = template_note.value().get().xml_content();
     return xml_content.replace(xml_content.find(s_template_title, 0),
                                s_template_title.length(),
                                title);

@@ -211,14 +211,14 @@ void NoteManagerBase::on_note_save (const NoteBase::Ptr & note)
   std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 }
 
-NoteBase::Ptr NoteManagerBase::find(const Glib::ustring & linked_title) const
+NoteBase::Ref NoteManagerBase::find(const Glib::ustring & linked_title) const
 {
   for(const NoteBase::Ptr & note : m_notes) {
     if(note->get_title().lowercase() == linked_title.lowercase()) {
-      return note;
+      return NoteBase::Ref(std::ref(*note));
     }
   }
-  return NoteBase::Ptr();
+  return NoteBase::Ref();
 }
 
 NoteBase::Ref NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
@@ -433,13 +433,16 @@ NoteBase::Ref NoteManagerBase::find_template_note() const
 void NoteManagerBase::delete_note(NoteBase & note)
 {
   DBG_OUT("Deleting note '%s'.", note.get_title().c_str());
+  NoteBase::Ptr cached_ref;  // prevent note from being destroyed
 
   for(auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
     if(iter->get() == &note) {
+      cached_ref = *iter;
       m_notes.erase(iter);
       break;
     }
   }
+  DBG_ASSERT(cached_ref != nullptr, "Deleting note that is not present");
   note.delete_note();
   signal_note_deleted(note.shared_from_this());
 

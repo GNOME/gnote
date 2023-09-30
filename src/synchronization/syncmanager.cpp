@@ -223,11 +223,11 @@ namespace sync {
       //       maybe there's a way to store this info and pass it on?
       for(auto & iter : noteUpdates) {
         if(find_note_by_uuid(iter.second.m_uuid)) {
-          NoteBase::Ptr existingNote = note_mgr().find(iter.second.m_title);
-          if(existingNote != 0 && !iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote))) {
+          auto existingNote = note_mgr().find(iter.second.m_title);
+          if(existingNote && !iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()))) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existingNote), iter.second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()), iter.second, noteUpdateTitles);
             }
           }
         }
@@ -249,9 +249,9 @@ namespace sync {
           // before its associated template). So check by
           // title and delete if necessary.
           auto existingNote = note_mgr().find(iter.second.m_title);
-          if(existingNote != 0) {
+          if(existingNote) {
             DBG_OUT("SyncManager: Deleting auto-generated note: %s", iter.second.m_title.c_str());
-            delete_note_in_main_thread(std::static_pointer_cast<Note>(existingNote));
+            delete_note_in_main_thread(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()));
           }
           create_note_in_main_thread(iter.second);
         }
