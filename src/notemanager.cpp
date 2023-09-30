@@ -284,22 +284,19 @@ namespace gnote {
 
   // Creates a new note with the given title and guid with body based on
   // the template note.
-  NoteBase::Ptr NoteManager::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note, Glib::ustring && guid)
+  Note & NoteManager::create_note_from_template(Glib::ustring && title, const NoteBase & template_note, Glib::ustring && guid)
   {
     auto title_size = title.size();
-    NoteBase::Ptr new_note = NoteManagerBase::create_note_from_template(std::move(title), template_note, std::move(guid));
-    if(new_note == 0) {
-      return new_note;
-    }
+    auto & new_note = static_cast<Note&>(NoteManagerBase::create_note_from_template(std::move(title), template_note, std::move(guid)));
 
     // Copy template note's properties
-    Glib::RefPtr<Gtk::TextBuffer> buffer = std::static_pointer_cast<Note>(new_note)->get_buffer();
+    Glib::RefPtr<Gtk::TextBuffer> buffer = new_note.get_buffer();
     Gtk::TextIter cursor, selection;
     Tag::Ptr template_save_selection = m_tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
-    if(template_note->contains_tag(template_save_selection)) {
-      Glib::ustring template_title = template_note->get_title();
-      int cursor_pos = template_note->data().cursor_position();
-      int selection_bound = template_note->data().selection_bound_position();
+    if(template_note.contains_tag(template_save_selection)) {
+      Glib::ustring template_title = template_note.get_title();
+      int cursor_pos = template_note.data().cursor_position();
+      int selection_bound = template_note.data().selection_bound_position();
       if(cursor_pos == 0) {
         // the created note has different title from template, take that into account
         // selection starts at the beginning of title

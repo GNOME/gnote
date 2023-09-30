@@ -233,7 +233,7 @@ NoteBase::Ref NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
 
 NoteBase::Ptr NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note)
 {
-  return create_note_from_template(std::move(title), template_note, "");
+  return create_note_from_template(std::move(title), *template_note, "").shared_from_this();
 }
 
 NoteBase::Ptr NoteManagerBase::create()
@@ -255,21 +255,21 @@ NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title, Glib::ustring && x
 
 // Creates a new note with the given title and guid with body based on
 // the template note.
-NoteBase::Ptr NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note, Glib::ustring && guid)
+NoteBase & NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase & template_note, Glib::ustring && guid)
 {
   Tag::Ptr template_save_title = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
-  if(template_note->contains_tag(template_save_title)) {
-    title = get_unique_name(template_note->get_title());
+  if(template_note.contains_tag(template_save_title)) {
+    title = get_unique_name(template_note.get_title());
   }
 
   // Use the body from the template note
-  Glib::ustring xml_content = sharp::string_replace_first(template_note->xml_content(),
-                                                          utils::XmlEncoder::encode(template_note->get_title()),
+  Glib::ustring xml_content = sharp::string_replace_first(template_note.xml_content(),
+                                                          utils::XmlEncoder::encode(template_note.get_title()),
                                                           utils::XmlEncoder::encode(title));
   xml_content = sanitize_xml_content(xml_content);
 
   NoteBase::Ptr new_note = create_new_note(std::move(title), std::move(xml_content), std::move(guid));
-  return new_note;
+  return *new_note;
 }
 
 // Find a title that does not exist using basename
@@ -296,7 +296,7 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring
   Glib::ustring content;
   if(body.empty()) {
     if(auto template_note = find_template_note()) {
-      return create_note_from_template(std::move(title), template_note.value().get().shared_from_this(), std::move(guid));
+      return create_note_from_template(std::move(title), *template_note, std::move(guid)).shared_from_this();
     }
 
     // Use a simple "Describe..." body and highlight
