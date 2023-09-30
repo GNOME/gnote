@@ -176,7 +176,7 @@ public:
     {
       return *m_data;
     }
-  virtual const Glib::ustring & text();
+  virtual const Glib::ustring & text() const;
   virtual void set_text(Glib::ustring && t);
 private:
   std::unique_ptr<NoteData> m_data;
@@ -232,7 +232,7 @@ public:
       return m_file_path;
     }
   Glib::ustring get_complete_note_xml();
-  const Glib::ustring & xml_content()
+  const Glib::ustring & xml_content() const
     {
       return data_synchronizer().text();
     }

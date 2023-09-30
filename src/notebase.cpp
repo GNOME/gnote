@@ -44,7 +44,7 @@ NoteDataBufferSynchronizerBase::~NoteDataBufferSynchronizerBase()
 {
 }
 
-const Glib::ustring & NoteDataBufferSynchronizerBase::text()
+const Glib::ustring & NoteDataBufferSynchronizerBase::text() const
 {
   return data().text();
 }

@@ -65,7 +65,7 @@ public:
       return m_buffer;
     }
   void set_buffer(Glib::RefPtr<NoteBuffer> && b);
-  const Glib::ustring & text() override;
+  const Glib::ustring & text() const override;
   void set_text(Glib::ustring && t) override;
 
 private:

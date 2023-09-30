@@ -167,7 +167,7 @@ namespace gnote {
     invalidate_text();
   }
 
-  const Glib::ustring & NoteDataBufferSynchronizer::text()
+  const Glib::ustring & NoteDataBufferSynchronizer::text() const
   {
     synchronize_text();
     return data().text();
