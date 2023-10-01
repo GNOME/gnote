@@ -34,14 +34,12 @@ void MainWindow::present_in(MainWindow & win, Note & note)
   win.present();
 }
 
-MainWindow *MainWindow::present_in_new_window(IGnote & g, Note & note)
+MainWindow & MainWindow::present_in_new_window(IGnote & g, Note & note)
 {
   MainWindow & window = g.new_main_window();
   window.present_note(note);
   window.present();
-  return &window;
-
-  return NULL;
+  return window;
 }
 
 MainWindow *MainWindow::present_default(IGnote & g, Note & note)

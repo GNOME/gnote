@@ -38,7 +38,7 @@ class MainWindow
 {
 public:
   static void present_in(MainWindow & win, Note & note);
-  static MainWindow *present_in_new_window(IGnote & g, Note & note);
+  static MainWindow & present_in_new_window(IGnote & g, Note & note);
   static MainWindow *present_default(IGnote & g, Note & note);
   static bool use_client_side_decorations(Preferences & prefs);
 
