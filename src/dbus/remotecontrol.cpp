@@ -369,7 +369,7 @@ void RemoteControl::on_note_saved(const NoteBase::Ptr & note)
 
 MainWindow & RemoteControl::present_note(NoteBase & note)
 {
-  return *MainWindow::present_default(m_gnote, static_cast<Note&>(note));
+  return MainWindow::present_default(m_gnote, static_cast<Note&>(note));
 }
 
 

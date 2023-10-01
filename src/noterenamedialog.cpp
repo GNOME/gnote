@@ -324,11 +324,9 @@ void NoteRenameDialog::on_notes_view_row_activated(guint pos, const Glib::ustrin
     return;
   }
 
-  MainWindow *window = MainWindow::present_default(m_gnote, static_cast<Note&>(*item->note));
-  if(window) {
-    window->set_search_text(Glib::ustring::compose("\"%1\"", old_title));
-    window->show_search_bar();
-  }
+  auto & window = MainWindow::present_default(m_gnote, static_cast<Note&>(*item->note));
+  window.set_search_text(Glib::ustring::compose("\"%1\"", old_title));
+  window.show_search_bar();
 }
 
 void NoteRenameDialog::on_select_all_button_clicked(bool select)

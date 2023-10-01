@@ -42,7 +42,7 @@ MainWindow & MainWindow::present_in_new_window(IGnote & g, Note & note)
   return window;
 }
 
-MainWindow *MainWindow::present_default(IGnote & g, Note & note)
+MainWindow & MainWindow::present_default(IGnote & g, Note & note)
 {
   if(note.has_window()) {
     auto note_window = note.get_window();
@@ -50,7 +50,7 @@ MainWindow *MainWindow::present_default(IGnote & g, Note & note)
       MainWindow *win = dynamic_cast<MainWindow*>(note_window->host());
       if(win) {
         win->present_note(note);
-        return win;
+        return *win;
       }
     }
   }
@@ -58,7 +58,7 @@ MainWindow *MainWindow::present_default(IGnote & g, Note & note)
   MainWindow & win = g.get_window_for_note();
   win.present_note(note);
   win.present();
-  return &win;
+  return win;
 }
 
 bool MainWindow::use_client_side_decorations(Preferences & prefs)
