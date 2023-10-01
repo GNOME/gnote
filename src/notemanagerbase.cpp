@@ -238,14 +238,14 @@ NoteBase::Ptr NoteManagerBase::create_note_from_template(Glib::ustring && title,
 
 NoteBase::Ptr NoteManagerBase::create()
 {
-  return create_note("", "");
+  return create_note("", "").shared_from_this();
 }
 
 NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title)
 {
   Glib::ustring body;
   auto note_title = split_title_from_content(title, body);
-  return create_note(std::move(note_title), std::move(body));
+  return create_note(std::move(note_title), std::move(body)).shared_from_this();
 }
 
 NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_content)
@@ -287,7 +287,7 @@ Glib::ustring NoteManagerBase::get_unique_name(const Glib::ustring & basename) c
   return title;
 }
 
-NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid)
+NoteBase & NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid)
 {
   if(title.empty()) {
     title = get_unique_name(_("New Note"));
@@ -296,7 +296,7 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring
   Glib::ustring content;
   if(body.empty()) {
     if(auto template_note = find_template_note()) {
-      return create_note_from_template(std::move(title), *template_note, std::move(guid)).shared_from_this();
+      return create_note_from_template(std::move(title), *template_note, std::move(guid));
     }
 
     // Use a simple "Describe..." body and highlight
@@ -307,7 +307,7 @@ NoteBase::Ptr NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring
     content = get_note_content(title, body);
   }
 
-  return create_new_note(std::move(title), std::move(content), std::move(guid));
+  return *create_new_note(std::move(title), std::move(content), std::move(guid));
 }
 
 // Create a new note with the specified Xml content
@@ -493,7 +493,7 @@ NoteBase::Ptr NoteManagerBase::create_with_guid(Glib::ustring && title, Glib::us
 {
   Glib::ustring body;
   auto note_title = split_title_from_content(title, body);
-  return create_note(std::move(note_title), std::move(body), std::move(guid));
+  return create_note(std::move(note_title), std::move(body), std::move(guid)).shared_from_this();
 }
 
 

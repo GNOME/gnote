@@ -245,13 +245,13 @@ namespace gnote {
   }
 
 
-  NoteBase::Ptr NoteManager::create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid)
+  Note & NoteManager::create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid)
   {
     bool select_body = body.empty();
-    auto new_note = NoteManagerBase::create_note(std::move(title), std::move(body), std::move(guid));
+    auto & new_note = static_cast<Note&>(NoteManagerBase::create_note(std::move(title), std::move(body), std::move(guid)));
     if(select_body) {
       // Select the inital text so typing will overwrite the body text
-      std::static_pointer_cast<Note>(new_note)->get_buffer()->select_note_body();
+      new_note.get_buffer()->select_note_body();
     }
     return new_note;
   }
