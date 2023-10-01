@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019,2021-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,8 +54,6 @@ protected:
   virtual void present_note(const Note::Ptr & note) = 0;
 private:
   static int s_use_client_side_decorations;
-
-  bool m_close_on_esc;
 };
 
 }
