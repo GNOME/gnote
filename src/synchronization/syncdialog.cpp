@@ -748,7 +748,7 @@ void SyncDialog::rename_note(const Note::Ptr & note, Glib::ustring && newTitle, 
 
 void SyncDialog::present_note(const Note::Ptr & note)
 {
-  MainWindow::present_in(m_gnote.get_window_for_note(), note);
+  MainWindow::present_in(m_gnote.get_window_for_note(), *note);
 }
 
 }

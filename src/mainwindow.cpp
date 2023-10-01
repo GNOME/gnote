@@ -28,9 +28,9 @@ namespace gnote {
 int MainWindow::s_use_client_side_decorations = -1;
 
 
-void MainWindow::present_in(MainWindow & win, const Note::Ptr & note)
+void MainWindow::present_in(MainWindow & win, Note & note)
 {
-  win.present_note(*note);
+  win.present_note(note);
   win.present();
 }
 

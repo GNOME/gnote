@@ -37,7 +37,7 @@ class MainWindow
   , public EmbeddableWidgetHost
 {
 public:
-  static void present_in(MainWindow & win, const Note::Ptr & note);
+  static void present_in(MainWindow & win, Note & note);
   static MainWindow *present_in_new_window(IGnote & g, const Note::Ptr & note);
   static MainWindow *present_default(IGnote & g, const Note::Ptr & note);
   static bool use_client_side_decorations(Preferences & prefs);

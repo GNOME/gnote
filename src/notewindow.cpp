@@ -496,7 +496,7 @@ namespace gnote {
       m_note.get_buffer()->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
     }
 
-    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), std::static_pointer_cast<Note>(match.value().get().shared_from_this()));
+    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), static_cast<Note&>(match.value().get()));
   }
 
   bool NoteWindow::open_help_activate(Gtk::Widget&, const Glib::VariantBase&)
@@ -606,8 +606,7 @@ namespace gnote {
       buffer->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
     }
 
-    MainWindow::present_in(*dynamic_cast<MainWindow*>(m_note.get_window()->host()),
-                           std::static_pointer_cast<Note>(match.value().get().shared_from_this()));
+    MainWindow::present_in(*dynamic_cast<MainWindow*>(m_note.get_window()->host()), static_cast<Note&>(match.value().get()));
   }
 
   //
