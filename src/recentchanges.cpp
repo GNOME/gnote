@@ -529,7 +529,7 @@ namespace gnote {
 
   void NoteRecentChanges::on_open_note_new_window(const Note::Ptr & note)
   {
-    present_in_new_window(m_gnote, note);
+    present_in_new_window(m_gnote, *note);
   }
 
   bool NoteRecentChanges::present_active(const Note::Ptr & note)

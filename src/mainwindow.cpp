@@ -34,14 +34,10 @@ void MainWindow::present_in(MainWindow & win, Note & note)
   win.present();
 }
 
-MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note)
+MainWindow *MainWindow::present_in_new_window(IGnote & g, Note & note)
 {
-  if(!note) {
-    return NULL;
-  }
-
   MainWindow & window = g.new_main_window();
-  window.present_note(*note);
+  window.present_note(note);
   window.present();
   return &window;
 

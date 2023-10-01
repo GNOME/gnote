@@ -63,7 +63,7 @@ void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
 {
   Glib::ustring uri = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(param).get();
   get_note()->manager().find_by_uri(uri, [this](gnote::NoteBase & note) {
-    gnote::MainWindow::present_in_new_window(ignote(), std::static_pointer_cast<gnote::Note>(note.shared_from_this()));
+    gnote::MainWindow::present_in_new_window(ignote(), static_cast<gnote::Note&>(note));
   });
 }
 
