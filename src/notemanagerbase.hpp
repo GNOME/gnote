@@ -79,7 +79,7 @@ public:
       return false;
     }
   NoteBase::List get_notes_linking_to(const Glib::ustring & title) const;
-  NoteBase::Ptr create();
+  NoteBase & create();
   NoteBase & create(Glib::ustring && title);
   NoteBase & create(Glib::ustring && title, Glib::ustring && xml_content);
   NoteBase & create_note_from_template(Glib::ustring && title, const NoteBase & template_note);

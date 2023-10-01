@@ -1016,7 +1016,7 @@ void SearchNotesWidget::new_note()
   auto notebook = m_notebooks_view->get_selected_notebook();
   if(!notebook || std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
     // Just create a standard note (not in a notebook)
-    note = std::static_pointer_cast<Note>(m_manager.create());
+    note = std::static_pointer_cast<Note>(m_manager.create().shared_from_this());
   }
   else {
     // Look for the template note and create a new note

@@ -236,9 +236,9 @@ NoteBase & NoteManagerBase::create_note_from_template(Glib::ustring && title, co
   return create_note_from_template(std::move(title), template_note, "");
 }
 
-NoteBase::Ptr NoteManagerBase::create()
+NoteBase & NoteManagerBase::create()
 {
-  return create_note("", "").shared_from_this();
+  return create_note("", "");
 }
 
 NoteBase & NoteManagerBase::create(Glib::ustring && title)

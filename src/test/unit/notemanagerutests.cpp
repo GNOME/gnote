@@ -81,22 +81,22 @@ SUITE(NoteManager)
 
   TEST_FIXTURE(Fixture, create_no_args)
   {
-    auto note1 = manager.create();
-    auto note2 = manager.create();
+    auto & note1 = manager.create();
+    auto & note2 = manager.create();
 
-    CHECK_EQUAL("New Note 1", note1->get_title());
-    CHECK(note1->data().text().find("Describe your new note here.") != Glib::ustring::npos);
-    CHECK_EQUAL("New Note 2", note2->get_title());
-    CHECK(note2->data().text().find("Describe your new note here.") != Glib::ustring::npos);
+    CHECK_EQUAL("New Note 1", note1.get_title());
+    CHECK(note1.data().text().find("Describe your new note here.") != Glib::ustring::npos);
+    CHECK_EQUAL("New Note 2", note2.get_title());
+    CHECK(note2.data().text().find("Describe your new note here.") != Glib::ustring::npos);
     CHECK_EQUAL(2, manager.get_notes().size());
   }
 
   TEST_FIXTURE(Fixture, create_no_args_from_template)
   {
     auto templ = create_template_note();
-    auto note = manager.create();
-    CHECK_EQUAL("New Note 1", note->get_title());
-    CHECK(note->data().text().find("test template content") != Glib::ustring::npos);
+    auto & note = manager.create();
+    CHECK_EQUAL("New Note 1", note.get_title());
+    CHECK(note.data().text().find("test template content") != Glib::ustring::npos);
   }
 
   TEST_FIXTURE(Fixture, create_with_title)

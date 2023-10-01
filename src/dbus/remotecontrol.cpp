@@ -85,8 +85,7 @@ namespace gnote {
   Glib::ustring RemoteControl::CreateNote()
   {
     try {
-      NoteBase::Ptr note = m_manager.create ();
-      return note->uri();
+      return m_manager.create().uri();
     } 
     catch(...)
     {
