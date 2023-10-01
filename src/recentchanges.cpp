@@ -122,8 +122,9 @@ namespace gnote {
     register_actions();
 
     m_search_notes_widget = new SearchNotesWidget(g, m);
-    m_search_notes_widget->signal_open_note
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::present_note));
+    m_search_notes_widget->signal_open_note.connect([this](const Note::Ptr & note) {
+      present_note(*note);
+    });
     m_search_notes_widget->signal_open_note_new_window
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_open_note_new_window));
     m_search_notes_widget->notes_widget_key_ctrl()->signal_key_pressed()
@@ -492,16 +493,13 @@ namespace gnote {
     foreground_embedded(*m_search_notes_widget);
   }
 
-  void NoteRecentChanges::present_note(const Note::Ptr & note)
+  void NoteRecentChanges::present_note(Note & note)
   {
-    if(!note) {
+    if(present_active(std::static_pointer_cast<Note>(note.shared_from_this()))) {
       return;
     }
-    if(present_active(note)) {
-      return;
-    }
-    if(note->has_window()) {
-      auto win = note->get_window();
+    if(note.has_window()) {
+      auto win = note.get_window();
       if(win->host()) {
         win->host()->unembed_widget(*win);
       }
@@ -509,7 +507,7 @@ namespace gnote {
       win->set_initial_focus();
     }
     else {
-      auto win = note->create_window();
+      auto win = note.create_window();
       embed_widget(*win);
       win->set_initial_focus();
     }
@@ -524,7 +522,7 @@ namespace gnote {
       search_wgt->new_note();
     }
     else {
-      present_note(std::static_pointer_cast<Note>(m_note_manager.create().shared_from_this()));
+      present_note(static_cast<Note&>(m_note_manager.create()));
     }
   }
 

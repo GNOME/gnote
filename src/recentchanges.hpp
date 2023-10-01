@@ -63,7 +63,7 @@ public:
   virtual MainWindowAction::Ptr find_action(const Glib::ustring & name) override;
   virtual void enabled(bool is_enabled) override;
 protected:
-  virtual void present_note(const Note::Ptr & note) override;
+  void present_note(Note & note) override;
   virtual void on_show() override;
   virtual void on_map() override;
 private:

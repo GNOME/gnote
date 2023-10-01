@@ -30,7 +30,7 @@ int MainWindow::s_use_client_side_decorations = -1;
 
 void MainWindow::present_in(MainWindow & win, const Note::Ptr & note)
 {
-  win.present_note(note);
+  win.present_note(*note);
   win.present();
 }
 
@@ -41,7 +41,7 @@ MainWindow *MainWindow::present_in_new_window(IGnote & g, const Note::Ptr & note
   }
 
   MainWindow & window = g.new_main_window();
-  window.present_note(note);
+  window.present_note(*note);
   window.present();
   return &window;
 
@@ -58,14 +58,14 @@ MainWindow *MainWindow::present_default(IGnote & g, const Note::Ptr & note)
     if(note_window->host()) {
       MainWindow *win = dynamic_cast<MainWindow*>(note_window->host());
       if(win) {
-        win->present_note(note);
+        win->present_note(*note);
         return win;
       }
     }
   }
 
   MainWindow & win = g.get_window_for_note();
-  win.present_note(note);
+  win.present_note(*note);
   win.present();
   return &win;
 }

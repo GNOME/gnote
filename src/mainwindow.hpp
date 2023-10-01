@@ -51,7 +51,7 @@ public:
   virtual void close_window() = 0;
   virtual bool is_search() = 0;
 protected:
-  virtual void present_note(const Note::Ptr & note) = 0;
+  virtual void present_note(Note & note) = 0;
 private:
   static int s_use_client_side_decorations;
 };
