@@ -465,7 +465,7 @@ void NoteManagerBase::delete_note(NoteBase & note)
   }
 }
 
-NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
+NoteBase::Ref NoteManagerBase::import_note(const Glib::ustring & file_path)
 {
   Glib::ustring dest_file = Glib::build_filename(notes_dir(), 
                                                  sharp::file_filename(file_path));
@@ -473,18 +473,31 @@ NoteBase::Ptr NoteManagerBase::import_note(const Glib::ustring & file_path)
   if(sharp::file_exists(dest_file)) {
     dest_file = make_new_file_name();
   }
-  NoteBase::Ptr note;
   try {
     sharp::file_copy(file_path, dest_file);
 
-    // TODO: make sure the title IS unique.
-    note = note_load(std::move(dest_file));
+    NoteBase::Ptr note = note_load(std::move(dest_file));
+    if(!note) {
+      return NoteBase::Ref();
+    }
+
+    if(find(note->get_title())) {
+      for(int i = 1;; ++i) {
+        auto new_title = note->get_title() + " " + TO_STRING(i);
+        if(!find(new_title)) {
+          note->set_title(std::move(new_title));
+          break;
+        }
+      }
+    }
     add_note(note);
+    return *note;
   }
   catch(...)
   {
   }
-  return note;
+
+  return NoteBase::Ref();
 }
 
 

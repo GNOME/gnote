@@ -89,7 +89,7 @@ public:
   void delete_note(NoteBase & note);
   // Import a note read from file_path
   // Will ensure the sanity including the unique title.
-  NoteBase::Ptr import_note(const Glib::ustring & file_path);
+  NoteBase::Ref import_note(const Glib::ustring & file_path);
   NoteBase::Ptr create_with_guid(Glib::ustring && title, Glib::ustring && guid);
 
   const Glib::ustring & notes_dir() const
