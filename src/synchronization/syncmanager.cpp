@@ -708,8 +708,8 @@ namespace sync {
   void SyncManager::create_note(const NoteUpdate & noteUpdate)
   {
     try {
-      NoteBase::Ptr existingNote = note_mgr().create_with_guid(Glib::ustring(noteUpdate.m_title), Glib::ustring(noteUpdate.m_uuid));
-      update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
+      auto & existingNote = note_mgr().create_with_guid(Glib::ustring(noteUpdate.m_title), Glib::ustring(noteUpdate.m_uuid));
+      update_local_note(existingNote.shared_from_this(), noteUpdate, DOWNLOAD_NEW);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());

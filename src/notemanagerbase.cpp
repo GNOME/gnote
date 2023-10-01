@@ -501,11 +501,11 @@ NoteBase::Ref NoteManagerBase::import_note(const Glib::ustring & file_path)
 }
 
 
-NoteBase::Ptr NoteManagerBase::create_with_guid(Glib::ustring && title, Glib::ustring && guid)
+NoteBase & NoteManagerBase::create_with_guid(Glib::ustring && title, Glib::ustring && guid)
 {
   Glib::ustring body;
   auto note_title = split_title_from_content(title, body);
-  return create_note(std::move(note_title), std::move(body), std::move(guid)).shared_from_this();
+  return create_note(std::move(note_title), std::move(body), std::move(guid));
 }
 
 

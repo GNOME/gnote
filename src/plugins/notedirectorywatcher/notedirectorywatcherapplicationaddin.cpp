@@ -254,13 +254,8 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
     }
 
     try {
-      auto n = note_manager().create_with_guid(std::move(title), Glib::ustring(note_id));
-      if(n == 0) {
-        /* TRANSLATORS: %s is file */
-        ERR_OUT(_("NoteDirectoryWatcher: Unknown error creating note from %s"), note_path.c_str());
-        return;
-      }
-      note = gnote::NoteBase::Ref(std::ref(*n));
+      auto & n = note_manager().create_with_guid(std::move(title), Glib::ustring(note_id));
+      note = gnote::NoteBase::Ref(std::ref(n));
     }
     catch(std::exception & e) {
       /* TRANSLATORS: first %s is file, second is error */
