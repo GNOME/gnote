@@ -231,9 +231,9 @@ NoteBase::Ref NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
   return NoteBase::Ref();
 }
 
-NoteBase::Ptr NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note)
+NoteBase & NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase & template_note)
 {
-  return create_note_from_template(std::move(title), *template_note, "").shared_from_this();
+  return create_note_from_template(std::move(title), template_note, "");
 }
 
 NoteBase::Ptr NoteManagerBase::create()

@@ -82,7 +82,7 @@ public:
   NoteBase::Ptr create();
   NoteBase::Ptr create(Glib::ustring && title);
   NoteBase::Ptr create(Glib::ustring && title, Glib::ustring && xml_content);
-  NoteBase::Ptr create_note_from_template(Glib::ustring && title, const NoteBase::Ptr & template_note);
+  NoteBase & create_note_from_template(Glib::ustring && title, const NoteBase & template_note);
   virtual NoteBase & get_or_create_template_note();
   NoteBase::Ref find_template_note() const;
   Glib::ustring get_unique_name(const Glib::ustring & basename) const;
