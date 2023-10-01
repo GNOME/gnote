@@ -734,15 +734,15 @@ void SyncDialog::rename_note(const Note::Ptr & note, Glib::ustring && newTitle, 
 
   // Create note with old XmlContent just in case GetCompleteNoteXml failed
   DBG_OUT("RenameNote: about to create %s", newTitle.c_str());
-  Note::Ptr renamedNote = std::static_pointer_cast<Note>(m_manager.create(std::move(newTitle), std::move(newContent)));
-  if(newCompleteContent != "") {// TODO: Anything to do if it is null?
+  auto & renamedNote = m_manager.create(std::move(newTitle), std::move(newContent));
+  if(newCompleteContent != "") {
     try {
-      renamedNote->load_foreign_note_xml(newCompleteContent, OTHER_DATA_CHANGED);
+      renamedNote.load_foreign_note_xml(newCompleteContent, OTHER_DATA_CHANGED);
     }
     catch(...) {} // TODO: Handle exception in case that newCompleteContent is invalid XML
   }
   if(noteOpen) {
-    present_note(renamedNote);
+    present_note(std::static_pointer_cast<Note>(renamedNote.shared_from_this()));
   }
 }
 

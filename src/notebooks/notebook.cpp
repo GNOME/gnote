@@ -139,7 +139,7 @@ namespace notebooks {
         title = m_note_manager.get_unique_name(title);
       }
       auto content = NoteManager::get_note_template_content(title);
-      note = m_note_manager.create(std::move(title), std::move(content));
+      note = m_note_manager.create(std::move(title), std::move(content)).shared_from_this();
           
       // Select the initial text
       NoteBuffer::Ptr buffer = std::static_pointer_cast<Note>(note)->get_buffer();

@@ -146,9 +146,9 @@ SUITE(NoteManager)
 
   TEST_FIXTURE(Fixture, create_with_xml)
   {
-    auto note = manager.create("test", "<note-content><note-title>test</note-title>\n\ntest content");
-    CHECK_EQUAL("test", note->get_title());
-    CHECK(note->data().text().find("test content") != Glib::ustring::npos);
+    auto & note = manager.create("test", "<note-content><note-title>test</note-title>\n\ntest content");
+    CHECK_EQUAL("test", note.get_title());
+    CHECK(note.data().text().find("test content") != Glib::ustring::npos);
     CHECK_EQUAL(1, manager.get_notes().size());
   }
 

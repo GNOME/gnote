@@ -145,12 +145,12 @@ namespace gnote {
         "</note-content>");
 
     try {
-      NoteBase::Ptr start_note = create (_("Start Here"), std::move(start_note_content));
-      start_note->queue_save (CONTENT_CHANGED);
-      m_preferences.start_note_uri(start_note->uri());
+      auto & start_note = create(_("Start Here"), std::move(start_note_content));
+      start_note.queue_save(CONTENT_CHANGED);
+      m_preferences.start_note_uri(start_note.uri());
 
-      NoteBase::Ptr links_note = create (_("Using Links in Gnote"), std::move(links_note_content));
-      links_note->queue_save (CONTENT_CHANGED);
+      auto & links_note = create(_("Using Links in Gnote"), std::move(links_note_content));
+      links_note.queue_save(CONTENT_CHANGED);
     } 
     catch (const std::exception & e) {
       ERR_OUT(_("Error creating start notes: %s"), e.what());

@@ -119,7 +119,7 @@ SUITE(SyncManagerTests)
     void create_note(test::NoteManager & manager, Glib::ustring && title, Glib::ustring && body)
     {
       auto content = make_note_content(title, body);
-      manager.create(std::move(title), std::move(content))->save();
+      manager.create(std::move(title), std::move(content)).save();
     }
 
     bool find_note_in_files(const Glib::ustring & title)

@@ -248,9 +248,9 @@ NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title)
   return create_note(std::move(note_title), std::move(body)).shared_from_this();
 }
 
-NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_content)
+NoteBase & NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_content)
 {
-  return create_new_note(std::move(title), std::move(xml_content), "").shared_from_this();
+  return create_new_note(std::move(title), std::move(xml_content), "");
 }
 
 // Creates a new note with the given title and guid with body based on
@@ -365,17 +365,14 @@ NoteBase & NoteManagerBase::get_or_create_template_note()
     title = get_unique_name(title);
   }
   auto content = get_note_template_content(title);
-  auto template_note = create(std::move(title), std::move(content));
-  if(template_note == 0) {
-    throw sharp::Exception("Failed to create template note");
-  }
+  auto & template_note = create(std::move(title), std::move(content));
 
   // Flag this as a template note
   Tag::Ptr template_tag = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-  template_note->add_tag(template_tag);
+  template_note.add_tag(template_tag);
 
-  template_note->queue_save(CONTENT_CHANGED);
-  return *template_note;
+  template_note.queue_save(CONTENT_CHANGED);
+  return template_note;
 }
 
 Glib::ustring NoteManagerBase::split_title_from_content(Glib::ustring title, Glib::ustring & body)

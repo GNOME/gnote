@@ -60,9 +60,9 @@ void NoteOfTheDayPreferences::open_template_button_clicked() const
 
   if(!template_note) {
     try {
-      auto note = m_note_manager.create(Glib::ustring(NoteOfTheDay::s_template_title), NoteOfTheDay::get_template_content(NoteOfTheDay::s_template_title));
-      template_note = gnote::NoteBase::Ref(std::ref(*note));
-      note->queue_save(gnote::CONTENT_CHANGED);
+      auto & note = m_note_manager.create(Glib::ustring(NoteOfTheDay::s_template_title), NoteOfTheDay::get_template_content(NoteOfTheDay::s_template_title));
+      template_note = gnote::NoteBase::Ref(std::ref(note));
+      note.queue_save(gnote::CONTENT_CHANGED);
     }
     catch (const sharp::Exception & e) {
       /* TRANSLATORS: first %s is template note title, second is error */

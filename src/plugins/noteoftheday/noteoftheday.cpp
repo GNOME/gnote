@@ -42,7 +42,7 @@ gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
 
   gnote::NoteBase::Ptr notd;
   try {
-    notd = manager.create(Glib::ustring(title), std::move(xml));
+    notd = manager.create(Glib::ustring(title), std::move(xml)).shared_from_this();
   }
   catch (const sharp::Exception & e) {
     /* TRANSLATORS: first %s is note title, second is error */
