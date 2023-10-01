@@ -257,12 +257,12 @@ namespace gnote {
   }
 
   // Create a new note with the specified Xml content
-  NoteBase::Ptr NoteManager::create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid)
+  Note & NoteManager::create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid)
   {
-    NoteBase::Ptr new_note = NoteManagerBase::create_new_note(std::move(title), std::move(xml_content), std::move(guid));
+    auto & new_note = static_cast<Note&>(NoteManagerBase::create_new_note(std::move(title), std::move(xml_content), std::move(guid)));
 
     // Load all the addins for the new note
-    m_addin_mgr->load_addins_for_note(std::static_pointer_cast<Note>(new_note));
+    m_addin_mgr->load_addins_for_note(std::static_pointer_cast<Note>(new_note.shared_from_this()));
 
     return new_note;
   }

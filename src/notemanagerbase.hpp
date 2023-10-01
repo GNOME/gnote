@@ -115,7 +115,7 @@ protected:
   void on_note_save(const NoteBase::Ptr & note);
   virtual NoteBase & create_note_from_template(Glib::ustring && title, const NoteBase & template_note, Glib::ustring && guid);
   virtual NoteBase & create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid = Glib::ustring());
-  virtual NoteBase::Ptr create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid);
+  virtual NoteBase & create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid);
   virtual NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) = 0;
   Glib::ustring make_new_file_name() const;
   Glib::ustring make_new_file_name(const Glib::ustring & guid) const;

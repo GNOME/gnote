@@ -250,7 +250,7 @@ NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title)
 
 NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_content)
 {
-  return create_new_note(std::move(title), std::move(xml_content), "");
+  return create_new_note(std::move(title), std::move(xml_content), "").shared_from_this();
 }
 
 // Creates a new note with the given title and guid with body based on
@@ -268,8 +268,7 @@ NoteBase & NoteManagerBase::create_note_from_template(Glib::ustring && title, co
                                                           utils::XmlEncoder::encode(title));
   xml_content = sanitize_xml_content(xml_content);
 
-  NoteBase::Ptr new_note = create_new_note(std::move(title), std::move(xml_content), std::move(guid));
-  return *new_note;
+  return create_new_note(std::move(title), std::move(xml_content), std::move(guid));
 }
 
 // Find a title that does not exist using basename
@@ -307,11 +306,11 @@ NoteBase & NoteManagerBase::create_note(Glib::ustring && title, Glib::ustring &&
     content = get_note_content(title, body);
   }
 
-  return *create_new_note(std::move(title), std::move(content), std::move(guid));
+  return create_new_note(std::move(title), std::move(content), std::move(guid));
 }
 
 // Create a new note with the specified Xml content
-NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid)
+NoteBase & NoteManagerBase::create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid)
 {
   if(title.empty())
     throw sharp::Exception("Invalid title");
@@ -337,7 +336,7 @@ NoteBase::Ptr NoteManagerBase::create_new_note(Glib::ustring && title, Glib::ust
 
   signal_note_added(new_note);
 
-  return new_note;
+  return *new_note;
 }
 
 Glib::ustring NoteManagerBase::get_note_template_content(const Glib::ustring & title)
