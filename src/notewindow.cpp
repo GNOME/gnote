@@ -478,8 +478,7 @@ namespace gnote {
     auto match = m_note.manager().find(title);
     if(!match) {
       try {
-        auto note = m_note.manager().create(std::move(select));
-        match = NoteBase::Ref(std::ref(*note));
+        match = NoteBase::Ref(std::ref(m_note.manager().create(std::move(select))));
       } 
       catch (const sharp::Exception & e) {
         auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(dynamic_cast<Gtk::Window*>(host()),
@@ -589,8 +588,7 @@ namespace gnote {
     auto match = manager.find(title);
     if(!match) {
       try {
-        auto note = manager.create(std::move(select));
-        match = NoteBase::Ref(std::ref(*note));
+        match = NoteBase::Ref(std::ref(manager.create(std::move(select))));
       }
       catch(const sharp::Exception & e) {
         auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(dynamic_cast<Gtk::Window*>(m_note.get_window()->host()),

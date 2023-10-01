@@ -976,8 +976,7 @@ namespace gnote {
     if (!link) {
       DBG_OUT("Creating note '%s'...", link_name.c_str());
       try {
-        auto note = manager().create(Glib::ustring(link_name));
-        link = NoteBase::Ref(std::ref(*note));
+        link = NoteBase::Ref(std::ref(manager().create(Glib::ustring(link_name))));
       } 
       catch(...)
       {

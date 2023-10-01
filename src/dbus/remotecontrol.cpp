@@ -73,8 +73,8 @@ namespace gnote {
     }
 
     try {
-      auto note = m_manager.create(Glib::ustring(linked_title));
-      return note->uri();
+      auto & note = m_manager.create(Glib::ustring(linked_title));
+      return note.uri();
     } 
     catch (const std::exception & e) {
       ERR_OUT(_("Exception thrown when creating note: %s"), e.what());

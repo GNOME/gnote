@@ -101,35 +101,35 @@ SUITE(NoteManager)
 
   TEST_FIXTURE(Fixture, create_with_title)
   {
-    auto note = manager.create("test");
-    CHECK_EQUAL("test", note->get_title());
-    CHECK(note->data().text().find("Describe your new note here.") != Glib::ustring::npos);
+    auto & note = manager.create("test");
+    CHECK_EQUAL("test", note.get_title());
+    CHECK(note.data().text().find("Describe your new note here.") != Glib::ustring::npos);
     CHECK_EQUAL(1, manager.get_notes().size());
   }
 
   TEST_FIXTURE(Fixture, create_with_title_from_template)
   {
     auto templ = create_template_note();
-    auto note = manager.create("test");
-    CHECK_EQUAL("test", note->get_title());
-    CHECK(note->data().text().find("test template content") != Glib::ustring::npos);
+    auto & note = manager.create("test");
+    CHECK_EQUAL("test", note.get_title());
+    CHECK(note.data().text().find("test template content") != Glib::ustring::npos);
     CHECK_EQUAL(2, manager.get_notes().size());
   }
 
   TEST_FIXTURE(Fixture, create_with_text_content)
   {
-    auto note = manager.create("test\ntest content");
-    CHECK_EQUAL("test", note->get_title());
-    CHECK(note->data().text().find("test content") != Glib::ustring::npos);
+    auto & note = manager.create("test\ntest content");
+    CHECK_EQUAL("test", note.get_title());
+    CHECK(note.data().text().find("test content") != Glib::ustring::npos);
     CHECK_EQUAL(1, manager.get_notes().size());
   }
 
   TEST_FIXTURE(Fixture, create_with_text_content_having_template)
   {
     auto templ = create_template_note();
-    auto note = manager.create("test\ntest content");
-    CHECK_EQUAL("test", note->get_title());
-    CHECK(note->data().text().find("test content") != Glib::ustring::npos);
+    auto & note = manager.create("test\ntest content");
+    CHECK_EQUAL("test", note.get_title());
+    CHECK(note.data().text().find("test content") != Glib::ustring::npos);
     CHECK_EQUAL(2, manager.get_notes().size());
   }
 
@@ -137,11 +137,10 @@ SUITE(NoteManager)
   {
     manager.create();
     manager.create();
-    gnote::NoteBase::Ptr test_note = manager.create("test note");
-    CHECK(test_note != NULL);
+    auto & test_note = manager.create("test note");
     CHECK_EQUAL(3, manager.get_notes().size());
-    CHECK(manager.find("test note").value().get().shared_from_this() == test_note);
-    CHECK(manager.find_by_uri(test_note->uri()).value().get().shared_from_this() == test_note);
+    CHECK(&manager.find("test note").value().get() == &test_note);
+    CHECK(&manager.find_by_uri(test_note.uri()).value().get() == &test_note);
   }
 
   TEST_FIXTURE(Fixture, create_with_xml)

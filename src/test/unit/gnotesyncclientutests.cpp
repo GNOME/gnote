@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2017,2019-2020,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -82,7 +82,7 @@ TEST(manifest_parsing)
   CHECK_EQUAL(3, client.deleted_note_titles().size());
 
   client.begin_synchronization();
-  gnote::NoteBase::Ptr note = manager.create("test");
+  gnote::NoteBase::Ptr note = manager.create("test").shared_from_this();
   client.set_revision(note, 1);
   client.end_synchronization();
   client.reparse();

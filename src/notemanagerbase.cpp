@@ -241,11 +241,11 @@ NoteBase::Ptr NoteManagerBase::create()
   return create_note("", "").shared_from_this();
 }
 
-NoteBase::Ptr NoteManagerBase::create(Glib::ustring && title)
+NoteBase & NoteManagerBase::create(Glib::ustring && title)
 {
   Glib::ustring body;
   auto note_title = split_title_from_content(title, body);
-  return create_note(std::move(note_title), std::move(body)).shared_from_this();
+  return create_note(std::move(note_title), std::move(body));
 }
 
 NoteBase & NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_content)
