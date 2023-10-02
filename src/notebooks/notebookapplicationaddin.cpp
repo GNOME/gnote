@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019,2021-2023 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -66,8 +66,6 @@ namespace gnote {
 
       nm.signal_note_added.connect(
         sigc::mem_fun(*this, &NotebookApplicationAddin::on_note_added));
-      nm.signal_note_deleted.connect(
-        sigc::mem_fun(*this, &NotebookApplicationAddin::on_note_deleted));
 
       am.add_app_action("new-notebook");
       am.get_app_action("new-notebook")->signal_activate().connect(
@@ -145,13 +143,6 @@ namespace gnote {
         note->signal_tag_removed.connect(
           sigc::mem_fun(*this, &NotebookApplicationAddin::on_tag_removed));
     }
-
-
-    void NotebookApplicationAddin::on_note_deleted(const NoteBase::Ptr &)
-    {
-      // remove the signal to the note...
-    }
-
 
   }
 }
