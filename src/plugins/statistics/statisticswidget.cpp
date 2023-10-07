@@ -121,7 +121,7 @@ private:
       DBG_OUT("Statistics updated");
     }
 
-  void on_note_list_changed(const gnote::NoteBase::Ptr &)
+  void on_note_list_changed(gnote::NoteBase &)
     {
       update();
     }

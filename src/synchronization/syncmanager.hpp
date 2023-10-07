@@ -71,8 +71,8 @@ namespace sync {
     std::unique_ptr<SyncClient> m_client;
     SyncUI::Ptr m_sync_ui;
   private:
-    void handle_note_saved_or_deleted(const NoteBase::Ptr & note);
-    void handle_note_buffer_changed(const NoteBase::Ptr & note);
+    void handle_note_saved_or_deleted(NoteBase & note);
+    void handle_note_buffer_changed(NoteBase & note);
     void update_sync_action();
     void background_sync_checker();
     void set_state(SyncState new_state);

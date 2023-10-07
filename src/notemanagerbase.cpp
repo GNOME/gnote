@@ -55,8 +55,8 @@ public:
       return m_title_trie;
     }
 private:
-  void on_note_added(const NoteBase::Ptr & added);
-  void on_note_deleted (const NoteBase::Ptr & deleted);
+  void on_note_added(NoteBase & added);
+  void on_note_deleted(NoteBase & deleted);
   void on_note_renamed(const NoteBase::Ptr & renamed, const Glib::ustring & old_title);
 
   NoteManagerBase & m_manager;
@@ -334,7 +334,7 @@ NoteBase & NoteManagerBase::create_new_note(Glib::ustring && title, Glib::ustrin
 
   m_notes.push_back(new_note);
 
-  signal_note_added(new_note);
+  signal_note_added(*new_note);
 
   return *new_note;
 }
@@ -440,7 +440,7 @@ void NoteManagerBase::delete_note(NoteBase & note)
   }
   DBG_ASSERT(cached_ref != nullptr, "Deleting note that is not present");
   note.delete_note();
-  signal_note_deleted(note.shared_from_this());
+  signal_note_deleted(note);
 
   auto file_path = note.file_path();
   if(sharp::file_exists(file_path)) {
@@ -523,12 +523,12 @@ TrieController::~TrieController()
   delete m_title_trie;
 }
 
-void TrieController::on_note_added(const NoteBase::Ptr & note)
+void TrieController::on_note_added(NoteBase & note)
 {
-  add_note(note);
+  add_note(note.shared_from_this());
 }
 
-void TrieController::on_note_deleted(const NoteBase::Ptr &)
+void TrieController::on_note_deleted(NoteBase &)
 {
   update();
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -106,7 +106,7 @@ public:
   bool empty();
   sigc::signal<void()> signal_size_changed;
 private:
-  void on_note_deleted(const NoteBase::Ptr & note);
+  void on_note_deleted(NoteBase & note);
 
   std::set<Note::Ptr> m_notes;
 };

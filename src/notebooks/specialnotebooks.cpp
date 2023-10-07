@@ -165,9 +165,9 @@ Glib::ustring ActiveNotesNotebook::get_icon_name() const
   return IconManager::ACTIVE_NOTES;
 }
 
-void ActiveNotesNotebook::on_note_deleted(const NoteBase::Ptr & note)
+void ActiveNotesNotebook::on_note_deleted(NoteBase & note)
 {
-  std::set<Note::Ptr>::iterator iter = m_notes.find(std::static_pointer_cast<Note>(note));
+  std::set<Note::Ptr>::iterator iter = m_notes.find(std::static_pointer_cast<Note>(note.shared_from_this()));
   if(iter != m_notes.end()) {
     m_notes.erase(iter);
     signal_size_changed();

@@ -696,14 +696,14 @@ namespace gnote {
     return m_initialized;
   }
 
-  void AppLinkWatcher::on_note_added(const NoteBase::Ptr & added)
+  void AppLinkWatcher::on_note_added(NoteBase & added)
   {
     for(auto & note : note_manager().get_notes()) {
-      if(added == note) {
+      if(&added == note.get()) {
         continue;
       }
 
-      if(!contains_text(note, added->get_title())) {
+      if(!contains_text(note, added.get_title())) {
         continue;
       }
 
@@ -714,21 +714,22 @@ namespace gnote {
     }
   }
 
-  void AppLinkWatcher::on_note_deleted(const NoteBase::Ptr & deleted)
+  void AppLinkWatcher::on_note_deleted(NoteBase & deleted)
   {
-    auto link_tag = std::static_pointer_cast<Note>(deleted)->get_tag_table()->get_link_tag();
-    auto broken_link_tag = std::static_pointer_cast<Note>(deleted)->get_tag_table()->get_broken_link_tag();
+    auto tag_table = static_cast<Note&>(deleted).get_tag_table();
+    auto link_tag = tag_table->get_link_tag();
+    auto broken_link_tag = tag_table->get_broken_link_tag();
 
     for(auto & note : note_manager().get_notes()) {
-      if(deleted == note) {
+      if(&deleted == note.get()) {
         continue;
       }
 
-      if(!contains_text(note, deleted->get_title())) {
+      if(!contains_text(note, deleted.get_title())) {
         continue;
       }
 
-      Glib::ustring old_title_lower = deleted->get_title().lowercase();
+      Glib::ustring old_title_lower = deleted.get_title().lowercase();
       auto buffer = std::static_pointer_cast<Note>(note)->get_buffer();
 
       // Turn all link:internal to link:broken for the deleted note.

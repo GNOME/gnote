@@ -863,16 +863,16 @@ int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter<Gtk::TreeConstRow
   return result;
 }
 
-void SearchNotesWidget::on_note_deleted(const NoteBase::Ptr & note)
+void SearchNotesWidget::on_note_deleted(NoteBase & note)
 {
   restore_matches_window();
-  delete_note(std::static_pointer_cast<Note>(note));
+  delete_note(std::static_pointer_cast<Note>(note.shared_from_this()));
 }
 
-void SearchNotesWidget::on_note_added(const NoteBase::Ptr & note)
+void SearchNotesWidget::on_note_added(NoteBase & note)
 {
   restore_matches_window();
-  add_note(std::static_pointer_cast<Note>(note));
+  add_note(std::static_pointer_cast<Note>(note.shared_from_this()));
 }
 
 void SearchNotesWidget::on_note_renamed(const NoteBase::Ptr & note,

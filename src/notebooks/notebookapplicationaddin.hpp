@@ -44,7 +44,7 @@ namespace gnote {
     private:
       void on_tag_added(const NoteBase&, const Tag::Ptr&);
       void on_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
-      void on_note_added(const NoteBase::Ptr &);
+      void on_note_added(NoteBase &);
       void on_new_notebook_action(const Glib::VariantBase&);
 
       bool m_initialized;

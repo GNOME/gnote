@@ -343,19 +343,15 @@ Glib::ustring RemoteControl::Version()
 
 
 
-void RemoteControl::on_note_added(const NoteBase::Ptr & note)
+void RemoteControl::on_note_added(NoteBase & note)
 {
-  if(note) {
-    NoteAdded(note->uri());
-  }
+  NoteAdded(note.uri());
 }
 
 
-void RemoteControl::on_note_deleted(const NoteBase::Ptr & note)
+void RemoteControl::on_note_deleted(NoteBase & note)
 {
-  if(note) {
-    NoteDeleted(note->uri(), note->get_title());
-  }
+  NoteDeleted(note.uri(), note.get_title());
 }
 
 

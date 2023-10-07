@@ -74,8 +74,8 @@ public:
   virtual Glib::ustring Version() override;
 
 private:
-  void on_note_added(const NoteBase::Ptr &);
-  void on_note_deleted(const NoteBase::Ptr &);
+  void on_note_added(NoteBase &);
+  void on_note_deleted(NoteBase &);
   void on_note_saved(const NoteBase::Ptr &);
   MainWindow & present_note(NoteBase &);
 

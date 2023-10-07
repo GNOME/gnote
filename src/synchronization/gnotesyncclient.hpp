@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -67,7 +67,7 @@ namespace sync {
   private:
     static const char *LOCAL_MANIFEST_FILE_NAME;
 
-    void note_deleted_handler(const NoteBase::Ptr &);
+    void note_deleted_handler(NoteBase &);
     void write(const Glib::ustring & manifest_path);
     void read_updated_note_atts(sharp::XmlReader & reader);
     void read_deleted_note_atts(sharp::XmlReader & reader);

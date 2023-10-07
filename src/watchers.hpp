@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -189,8 +189,8 @@ namespace gnote {
   private:
     static bool contains_text(const NoteBase::Ptr & note, const Glib::ustring & text);
     static void highlight_note_in_block(NoteManagerBase &, const Note::Ptr &, const NoteBase::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
-    void on_note_added(const NoteBase::Ptr &);
-    void on_note_deleted(const NoteBase::Ptr &);
+    void on_note_added(NoteBase &);
+    void on_note_deleted(NoteBase &);
     void on_note_renamed(const NoteBase::Ptr&, const Glib::ustring&);
 
     bool m_initialized;
