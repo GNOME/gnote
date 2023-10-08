@@ -193,12 +193,9 @@ namespace notebooks {
     return !is_template_note(note);
   }
 
-  bool Notebook::add_note(const Note::Ptr & note)
+  bool Notebook::add_note(Note & note)
   {
-    if(!note) {
-      return false;
-    }
-    m_note_manager.notebook_manager().move_note_to_notebook(*note, shared_from_this());
+    m_note_manager.notebook_manager().move_note_to_notebook(note, shared_from_this());
     return true;
   }
 

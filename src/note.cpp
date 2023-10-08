@@ -724,7 +724,7 @@ namespace gnote {
       m_note_window_embedded = true;
     }
 
-    m_gnote.notebook_manager().active_notes_notebook()->add_note(std::static_pointer_cast<Note>(shared_from_this()));
+    m_gnote.notebook_manager().active_notes_notebook()->add_note(*this);
   }
 
   void Note::on_note_window_foregrounded()

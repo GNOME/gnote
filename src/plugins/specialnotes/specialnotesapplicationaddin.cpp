@@ -49,7 +49,7 @@ namespace {
         return is_template_note(note);
       }
 
-    virtual bool add_note(const Note::Ptr &) override
+    bool add_note(Note &) override
       {
         return false;
       }

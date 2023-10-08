@@ -62,7 +62,7 @@ public:
   AllNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
-  bool add_note(const Note::Ptr &) override;
+  bool add_note(Note&) override;
   Glib::ustring get_icon_name() const override;
 };
 
@@ -75,7 +75,7 @@ public:
   UnfiledNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
-  bool add_note(const Note::Ptr &) override;
+  bool add_note(Note&) override;
   Glib::ustring get_icon_name() const override;
 };
 
@@ -88,7 +88,7 @@ public:
   PinnedNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
-  bool add_note(const Note::Ptr &) override;
+  bool add_note(Note&) override;
   virtual Glib::ustring get_icon_name() const override;
 };
 
@@ -101,7 +101,7 @@ public:
   ActiveNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
-  bool add_note(const Note::Ptr &) override;
+  bool add_note(Note&) override;
   Glib::ustring get_icon_name() const override;
   bool empty();
   sigc::signal<void()> signal_size_changed;

@@ -61,7 +61,7 @@ bool AllNotesNotebook::contains_note(const Note & note, bool include_system)
   return !is_template_note(note);
 }
 
-bool AllNotesNotebook::add_note(const Note::Ptr &)
+bool AllNotesNotebook::add_note(Note&)
 {
   return false;
 }
@@ -91,9 +91,9 @@ bool UnfiledNotesNotebook::contains_note(const Note & note, bool include_system)
   return !is_template_note(note);
 }
 
-bool UnfiledNotesNotebook::add_note(const Note::Ptr & note)
+bool UnfiledNotesNotebook::add_note(Note& note)
 {
-  m_note_manager.notebook_manager().move_note_to_notebook(*note, Notebook::Ptr());
+  m_note_manager.notebook_manager().move_note_to_notebook(note, Notebook::Ptr());
   return true;
 }
 
@@ -118,9 +118,9 @@ bool PinnedNotesNotebook::contains_note(const Note & note, bool)
   return note.is_pinned();
 }
 
-bool PinnedNotesNotebook::add_note(const Note::Ptr & note)
+bool PinnedNotesNotebook::add_note(Note & note)
 {
-  note->set_pinned(true);
+  note.set_pinned(true);
   return true;
 }
 
@@ -151,9 +151,9 @@ bool ActiveNotesNotebook::contains_note(const Note & note, bool include_system)
   return !is_template_note(note);
 }
 
-bool ActiveNotesNotebook::add_note(const Note::Ptr & note)
+bool ActiveNotesNotebook::add_note(Note & note)
 {
-  if(m_notes.insert(note).second) {
+  if(m_notes.insert(std::static_pointer_cast<Note>(note.shared_from_this())).second) {
     signal_size_changed();
   }
 

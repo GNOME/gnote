@@ -50,7 +50,7 @@ public:
   virtual Note::Ptr   get_template_note() const;
   Note::Ptr create_notebook_note();
   virtual bool contains_note(const Note & note, bool include_system = false);
-  virtual bool add_note(const Note::Ptr &);
+  virtual bool add_note(Note&);
   static Glib::ustring normalize(const Glib::ustring & s);
 ////
   virtual ~Notebook()
