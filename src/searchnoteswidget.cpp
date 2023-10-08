@@ -866,7 +866,7 @@ int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter<Gtk::TreeConstRow
 void SearchNotesWidget::on_note_deleted(NoteBase & note)
 {
   restore_matches_window();
-  delete_note(std::static_pointer_cast<Note>(note.shared_from_this()));
+  delete_note(note);
 }
 
 void SearchNotesWidget::on_note_added(NoteBase & note)
@@ -888,13 +888,13 @@ void SearchNotesWidget::on_note_saved(NoteBase&)
   update_results();
 }
 
-void SearchNotesWidget::delete_note(const Note::Ptr & note)
+void SearchNotesWidget::delete_note(const NoteBase & note)
 {
   Gtk::TreeModel::Children rows = m_store->children();
 
   for(Gtk::TreeModel::iterator iter = rows.begin();
       rows.end() != iter; iter++) {
-    if(note == iter->get_value(m_column_types.note)) {
+    if(&note == iter->get_value(m_column_types.note).get()) {
       m_store->erase(iter);
       break;
     }
