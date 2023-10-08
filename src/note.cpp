@@ -525,7 +525,7 @@ namespace gnote {
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, self, m_gnote);
         dlg->signal_response().connect([this, dlg, old_title, self](int response) {
-          process_rename_link_update_end(response, dlg, old_title, self);
+          process_rename_link_update_end(response, dlg, old_title, *self);
         });
         dlg->present();
         get_window()->editor()->set_editable(false);
@@ -533,13 +533,13 @@ namespace gnote {
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
           iter->remove_links(old_title, *this);
-          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *self);
         }
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
         for(NoteBase::Ptr & iter : linking_notes) {
           iter->rename_links(old_title, *this);
-          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, self);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *self);
         }
       }
     }
@@ -550,7 +550,7 @@ namespace gnote {
   }
 
   void Note::process_rename_link_update_end(int response, Gtk::Dialog *dialog,
-                                            const Glib::ustring & old_title, const Note::Ptr & self)
+                                            const Glib::ustring & old_title, const Note & self)
   {
     if(dialog) {
       NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
@@ -568,7 +568,7 @@ namespace gnote {
           p.first->rename_links(old_title, *this);
         }
         else {
-          p.first->remove_links(old_title, *self);
+          p.first->remove_links(old_title, self);
         }
       }
       delete dialog;
