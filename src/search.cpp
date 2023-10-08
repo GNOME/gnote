@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -74,7 +74,7 @@ namespace gnote {
       if (0 < find_match_count_in_note(note->get_title(), words, case_sensitive)) {
         temp_matches->insert(std::make_pair(INT_MAX, note));
       }
-      else if (check_note_has_match(note, encoded_words, case_sensitive)) {
+      else if(check_note_has_match(*note, encoded_words, case_sensitive)) {
         int match_count = find_match_count_in_note(note->text_content(), words, case_sensitive);
         if (match_count > 0) {
           // TODO: Improve note.GetHashCode()
@@ -85,11 +85,11 @@ namespace gnote {
     return temp_matches;
   }
 
-  bool Search::check_note_has_match(const Note::Ptr & note, 
+  bool Search::check_note_has_match(const Note & note,
                                     const std::vector<Glib::ustring> & encoded_words,
                                     bool match_case)
   {
-    Glib::ustring note_text = note->xml_content();
+    Glib::ustring note_text = note.xml_content();
     if (!match_case) {
       note_text = note_text.lowercase();
     }
