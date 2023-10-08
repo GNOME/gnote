@@ -64,7 +64,7 @@ namespace gnote {
         
       // Skip notes that are not in the
       // selected notebook
-      if (selected_notebook && !selected_notebook->contains_note(note))
+      if(selected_notebook && !selected_notebook->contains_note(*note))
         continue;
         
       // First check the note's title for a match,

@@ -53,7 +53,7 @@ Glib::ustring AllNotesNotebook::get_normalized_name() const
   return "___NotebookManager___AllNotes__Notebook___";
 }
 
-bool AllNotesNotebook::contains_note(const Note::Ptr & note, bool include_system)
+bool AllNotesNotebook::contains_note(const Note & note, bool include_system)
 {
   if(include_system) {
     return true;
@@ -82,9 +82,9 @@ Glib::ustring UnfiledNotesNotebook::get_normalized_name() const
   return "___NotebookManager___UnfiledNotes__Notebook___";
 }
 
-bool UnfiledNotesNotebook::contains_note(const Note::Ptr & note, bool include_system)
+bool UnfiledNotesNotebook::contains_note(const Note & note, bool include_system)
 {
-  bool contains = m_note_manager.notebook_manager().get_notebook_from_note(*note) == nullptr;
+  bool contains = m_note_manager.notebook_manager().get_notebook_from_note(note) == nullptr;
   if(!contains || include_system) {
     return contains;
   }
@@ -113,9 +113,9 @@ Glib::ustring PinnedNotesNotebook::get_normalized_name() const
   return "___NotebookManager___PinnedNotes__Notebook___";
 }
 
-bool PinnedNotesNotebook::contains_note(const Note::Ptr & note, bool)
+bool PinnedNotesNotebook::contains_note(const Note & note, bool)
 {
-  return note->is_pinned();
+  return note.is_pinned();
 }
 
 bool PinnedNotesNotebook::add_note(const Note::Ptr & note)
@@ -142,9 +142,9 @@ Glib::ustring ActiveNotesNotebook::get_normalized_name() const
   return "___NotebookManager___ActiveNotes__Notebook___";
 }
 
-bool ActiveNotesNotebook::contains_note(const Note::Ptr & note, bool include_system)
+bool ActiveNotesNotebook::contains_note(const Note & note, bool include_system)
 {
-  bool contains = m_notes.find(note) != m_notes.end();
+  bool contains = m_notes.find(std::static_pointer_cast<Note>(const_cast<Note&>(note).shared_from_this())) != m_notes.end();
   if(!contains || include_system) {
     return contains;
   }

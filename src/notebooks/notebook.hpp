@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ public:
   Note::Ptr find_template_note() const;
   virtual Note::Ptr   get_template_note() const;
   Note::Ptr create_notebook_note();
-  virtual bool contains_note(const Note::Ptr & note, bool include_system = false);
+  virtual bool contains_note(const Note & note, bool include_system = false);
   virtual bool add_note(const Note::Ptr &);
   static Glib::ustring normalize(const Glib::ustring & s);
 ////
@@ -57,7 +57,7 @@ public:
     {}
 protected:
   Tag::Ptr template_tag() const;
-  bool is_template_note(const Note::Ptr &);
+  bool is_template_note(const Note&);
 
   NoteManagerBase & m_note_manager;
 private:

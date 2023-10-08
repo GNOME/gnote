@@ -460,7 +460,7 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> & it
   }
 
   auto selected_notebook = m_notebooks_view->get_selected_notebook();
-  if(!selected_notebook || !selected_notebook->contains_note(note)) {
+  if(!selected_notebook || !selected_notebook->contains_note(*note)) {
     return false;
   }
 

@@ -61,7 +61,7 @@ public:
   typedef std::shared_ptr<AllNotesNotebook> Ptr;
   AllNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
-  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(const Note::Ptr &) override;
   Glib::ustring get_icon_name() const override;
 };
@@ -74,7 +74,7 @@ public:
   typedef std::shared_ptr<UnfiledNotesNotebook> Ptr;
   UnfiledNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
-  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(const Note::Ptr &) override;
   Glib::ustring get_icon_name() const override;
 };
@@ -87,7 +87,7 @@ public:
   typedef std::shared_ptr<PinnedNotesNotebook> Ptr;
   PinnedNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
-  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(const Note::Ptr &) override;
   virtual Glib::ustring get_icon_name() const override;
 };
@@ -100,7 +100,7 @@ public:
   typedef std::shared_ptr<ActiveNotesNotebook> Ptr;
   ActiveNotesNotebook(NoteManagerBase &);
   Glib::ustring get_normalized_name() const override;
-  bool contains_note(const Note::Ptr & note, bool include_system = false) override;
+  bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(const Note::Ptr &) override;
   Glib::ustring get_icon_name() const override;
   bool empty();

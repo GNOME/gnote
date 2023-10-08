@@ -44,7 +44,7 @@ namespace {
         return "___SpecialNotesAddin___SpecialNotes__Notebook___";
       }
 
-    virtual bool contains_note(const Note::Ptr & note, bool = false) override
+    bool contains_note(const Note & note, bool = false) override
       {
         return is_template_note(note);
       }

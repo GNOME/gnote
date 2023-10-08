@@ -44,13 +44,13 @@ namespace notebooks {
     return s_template_tag;
   }
 
-  bool Notebook::is_template_note(const Note::Ptr & note)
+  bool Notebook::is_template_note(const Note & note)
   {
     Tag::Ptr tag = template_tag();
     if(tag == NULL) {
       return false;
     }
-    return note->contains_tag(tag);
+    return note.contains_tag(tag);
   }
 
   Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, bool is_special)
@@ -184,9 +184,9 @@ namespace notebooks {
   /// <returns>
   /// A <see cref="System.Boolean"/>
   /// </returns>
-  bool Notebook::contains_note(const Note::Ptr & note, bool include_system)
+  bool Notebook::contains_note(const Note & note, bool include_system)
   {
-    bool contains = note->contains_tag(m_tag);
+    bool contains = note.contains_tag(m_tag);
     if(!contains || include_system) {
       return contains;
     }
