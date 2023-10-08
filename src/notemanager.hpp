@@ -37,8 +37,6 @@ namespace gnote {
     : public NoteManagerBase
   {
   public:
-    typedef sigc::slot<void(const Note::Ptr &)> NoteChangedSlot;
-    
     NoteManager(IGnote & g);
     virtual ~NoteManager();
 
