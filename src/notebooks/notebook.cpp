@@ -195,7 +195,10 @@ namespace notebooks {
 
   bool Notebook::add_note(const Note::Ptr & note)
   {
-    m_note_manager.notebook_manager().move_note_to_notebook(note, shared_from_this());
+    if(!note) {
+      return false;
+    }
+    m_note_manager.notebook_manager().move_note_to_notebook(*note, shared_from_this());
     return true;
   }
 

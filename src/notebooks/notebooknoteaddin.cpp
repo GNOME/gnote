@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016,2019,2022 Aurimas Cernius
+ * Copyright (C) 2010-2016,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -84,7 +84,7 @@ namespace notebooks {
     EmbeddableWidgetHost *host = get_window()->host();
     m_new_notebook_cid = host->find_action("new-notebook")->signal_activate()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_new_notebook_menu_item));
-    Notebook::Ptr current_notebook = ignote().notebook_manager().get_notebook_from_note(get_note());
+    Notebook::Ptr current_notebook = ignote().notebook_manager().get_notebook_from_note(*get_note());
     Glib::ustring name;
     if(current_notebook) {
       name = current_notebook->get_name();
@@ -132,7 +132,7 @@ namespace notebooks {
     if(name.size()) {
       notebook = ignote().notebook_manager().get_notebook(name);
     }
-    ignote().notebook_manager().move_note_to_notebook(get_note(), notebook);
+    ignote().notebook_manager().move_note_to_notebook(*get_note(), notebook);
   }
 
 

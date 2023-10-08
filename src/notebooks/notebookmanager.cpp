@@ -241,9 +241,9 @@ namespace gnote {
     /// <returns>
     /// A <see cref="Notebook"/>
     /// </returns>
-    Notebook::Ptr NotebookManager::get_notebook_from_note(const NoteBase::Ptr & note)
+    Notebook::Ptr NotebookManager::get_notebook_from_note(const NoteBase & note)
     {
-      std::vector<Tag::Ptr> tags = note->get_tags();
+      std::vector<Tag::Ptr> tags = note.get_tags();
       for(auto & tag : tags) {
         Notebook::Ptr notebook = get_notebook_from_tag(tag);
         if (notebook)
@@ -335,7 +335,7 @@ namespace gnote {
         if(!notes_to_add.empty()) {
           // Move all the specified notesToAdd into the new notebook
           for(const auto & note : notes_to_add) {
-            g.notebook_manager().move_note_to_notebook(note, notebook);
+            g.notebook_manager().move_note_to_notebook(*note, notebook);
           }
         }
       }
@@ -397,13 +397,8 @@ namespace gnote {
     /// be removed from its current notebook.
     /// </param>
     /// <returns>True if the note was successfully moved.</returns>
-    bool NotebookManager::move_note_to_notebook (const Note::Ptr & note, 
-                                                 const Notebook::Ptr & notebook)
+    bool NotebookManager::move_note_to_notebook(Note & note, const Notebook::Ptr & notebook)
     {
-      if (!note) {
-        return false;
-      }
-
       // NOTE: In the future we may want to allow notes
       // to exist in multiple notebooks.  For now, to
       // alleviate the confusion, only allow a note to
@@ -414,15 +409,15 @@ namespace gnote {
         return true; // It's already there.
 
       if(currentNotebook) {
-        note->remove_tag (currentNotebook->get_tag());
-        m_note_removed_from_notebook(*note, currentNotebook);
+        note.remove_tag(currentNotebook->get_tag());
+        m_note_removed_from_notebook(note, currentNotebook);
       }
 
       // Only attempt to add the notebook tag when this
       // menu item is not the "No notebook" menu item.
       if(notebook) {
-        note->add_tag(notebook->get_tag());
-        m_note_added_to_notebook(*note, notebook);
+        note.add_tag(notebook->get_tag());
+        m_note_added_to_notebook(note, notebook);
       }
 
       return true;

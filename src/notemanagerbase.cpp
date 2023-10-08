@@ -417,7 +417,7 @@ NoteBase::Ref NoteManagerBase::find_template_note() const
   if(auto template_tag = tag_manager().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG)) {
     auto notes = template_tag->get_notes();
     for(NoteBase *iter : notes) {
-      if(!m_gnote.notebook_manager().get_notebook_from_note(iter->shared_from_this())) {
+      if(!m_gnote.notebook_manager().get_notebook_from_note(*iter)) {
         return NoteBase::Ref(std::ref(*iter));
       }
     }
