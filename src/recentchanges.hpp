@@ -67,7 +67,7 @@ protected:
   virtual void on_show() override;
   virtual void on_map() override;
 private:
-  void on_open_note_new_window(const Note::Ptr &);
+  void on_open_note_new_window(Note &);
   bool on_close();
   bool on_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   EmbeddableWidget *currently_foreground();

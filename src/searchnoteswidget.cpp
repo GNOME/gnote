@@ -932,7 +932,7 @@ void SearchNotesWidget::on_open_note()
     ++iter;
   }
   for(; iter != selected_notes.end(); ++iter) {
-    signal_open_note_new_window(*iter);
+    signal_open_note_new_window(**iter);
   }
 }
 
@@ -941,7 +941,7 @@ void SearchNotesWidget::on_open_note_new_window()
   Note::List selected_notes = get_selected_notes();
   for(Note::List::iterator iter = selected_notes.begin();
       iter != selected_notes.end(); ++iter) {
-    signal_open_note_new_window(*iter);
+    signal_open_note_new_window(**iter);
   }
 }
 
