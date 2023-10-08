@@ -632,7 +632,7 @@ void SearchNotesWidget::on_row_activated(const Gtk::TreePath & p, Gtk::TreeViewC
   }
 
   Note::Ptr note = (*iter)[m_column_types.note];
-  signal_open_note(note);
+  signal_open_note(*note);
 }
 
 void SearchNotesWidget::on_selection_changed()
@@ -928,7 +928,7 @@ void SearchNotesWidget::on_open_note()
   Note::List selected_notes = get_selected_notes ();
   Note::List::iterator iter = selected_notes.begin();
   if(iter != selected_notes.end()) {
-    signal_open_note(*iter);
+    signal_open_note(**iter);
     ++iter;
   }
   for(; iter != selected_notes.end(); ++iter) {
@@ -1023,7 +1023,7 @@ void SearchNotesWidget::new_note()
     note = notebook->create_notebook_note();
   }
 
-  signal_open_note(note);
+  signal_open_note(*note);
 }
 
 Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
@@ -1056,7 +1056,7 @@ void SearchNotesWidget::on_open_notebook_template_note(const Glib::VariantBase&)
     return; // something seriously went wrong
   }
 
-  signal_open_note(templateNote);
+  signal_open_note(*templateNote);
 }
 
 void SearchNotesWidget::on_new_notebook(const Glib::VariantBase&)

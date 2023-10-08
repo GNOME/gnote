@@ -65,7 +65,7 @@ public:
       return m_notes_widget_key_ctrl;
     }
 
-  sigc::signal<void(const Note::Ptr &)> signal_open_note;
+  sigc::signal<void(Note&)> signal_open_note;
   sigc::signal<void(const Note::Ptr &)> signal_open_note_new_window;
 private:
   void perform_search();
