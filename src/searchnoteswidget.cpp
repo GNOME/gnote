@@ -879,7 +879,7 @@ void SearchNotesWidget::on_note_renamed(const NoteBase & note,
                                         const Glib::ustring &)
 {
   restore_matches_window();
-  rename_note(std::static_pointer_cast<Note>(const_cast<NoteBase&>(note).shared_from_this()));
+  rename_note(note);
 }
 
 void SearchNotesWidget::on_note_saved(NoteBase&)
@@ -910,14 +910,14 @@ void SearchNotesWidget::add_note(const Note::Ptr & note)
   iter->set_value(m_column_types.note, note);
 }
 
-void SearchNotesWidget::rename_note(const Note::Ptr & note)
+void SearchNotesWidget::rename_note(const NoteBase & note)
 {
   Gtk::TreeModel::Children rows = m_store->children();
 
   for(Gtk::TreeModel::iterator iter = rows.begin();
       rows.end() != iter; iter++) {
-    if(note == iter->get_value(m_column_types.note)) {
-      iter->set_value(m_column_types.title, note->get_title());
+    if(&note == iter->get_value(m_column_types.note).get()) {
+      iter->set_value(m_column_types.title, note.get_title());
       break;
     }
   }
