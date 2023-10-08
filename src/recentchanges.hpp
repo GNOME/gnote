@@ -94,7 +94,7 @@ private:
   bool on_notes_widget_key_press(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_close_window(const Glib::VariantBase&);
   void add_action(const MainWindowAction::Ptr & action);
-  bool present_active(const Note::Ptr & note);
+  bool present_active(Note & note);
   void register_actions();
   void callbacks_changed();
   void register_callbacks();

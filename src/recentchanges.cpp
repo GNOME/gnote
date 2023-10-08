@@ -495,7 +495,7 @@ namespace gnote {
 
   void NoteRecentChanges::present_note(Note & note)
   {
-    if(present_active(std::static_pointer_cast<Note>(note.shared_from_this()))) {
+    if(present_active(note)) {
       return;
     }
     if(note.has_window()) {
@@ -532,10 +532,10 @@ namespace gnote {
     present_in_new_window(m_gnote, *note);
   }
 
-  bool NoteRecentChanges::present_active(const Note::Ptr & note)
+  bool NoteRecentChanges::present_active(Note & note)
   {
-    if(note && note->has_window()) {
-      auto note_window = note->get_window();
+    if(note.has_window()) {
+      auto note_window = note.get_window();
       auto win = dynamic_cast<NoteRecentChanges*>(note_window->host());
       if(!win) {
         return false;
