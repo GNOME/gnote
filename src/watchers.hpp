@@ -178,9 +178,9 @@ namespace gnote {
   {
   public:
     static ApplicationAddin *create();
-    static void highlight_in_block(NoteManagerBase &, const Note::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
-    static void do_highlight(NoteManagerBase &, const Note::Ptr &, const TrieHit<NoteBase::WeakPtr> &, const Gtk::TextIter & ,const Gtk::TextIter &);
-    static void remove_link_tag(const Note::Ptr & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end);
+    static void highlight_in_block(NoteManagerBase &, Note &, const Gtk::TextIter &, const Gtk::TextIter &);
+    static void do_highlight(NoteManagerBase &, Note &, const TrieHit<NoteBase::WeakPtr> &, const Gtk::TextIter & ,const Gtk::TextIter &);
+    static void remove_link_tag(Note & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end);
 
     AppLinkWatcher();
     virtual void initialize() override;
@@ -188,7 +188,7 @@ namespace gnote {
     virtual bool initialized() override;
   private:
     static bool contains_text(const NoteBase::Ptr & note, const Glib::ustring & text);
-    static void highlight_note_in_block(NoteManagerBase &, const Note::Ptr &, const NoteBase::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
+    static void highlight_note_in_block(NoteManagerBase &, Note &, const NoteBase::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
     void on_note_added(NoteBase &);
     void on_note_deleted(NoteBase &);
     void on_note_renamed(const NoteBase&, const Glib::ustring&);

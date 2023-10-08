@@ -708,8 +708,8 @@ namespace gnote {
       }
 
       // Highlight previously unlinked text
-      auto n = std::static_pointer_cast<Note>(note);
-      auto buffer = n->get_buffer();
+      auto & n = static_cast<Note&>(*note);
+      auto buffer = n.get_buffer();
       highlight_in_block(note_manager(), n, buffer->begin(), buffer->end());
     }
   }
@@ -754,8 +754,8 @@ namespace gnote {
 
       // Highlight previously unlinked text
       if(contains_text(note, renamed.get_title())) {
-        auto n = std::static_pointer_cast<Note>(note);
-        auto buffer = n->get_buffer();
+        auto & n = static_cast<Note&>(*note);
+        auto buffer = n.get_buffer();
         highlight_note_in_block(note_manager(), n, std::static_pointer_cast<Note>(const_cast<NoteBase&>(renamed).shared_from_this()), buffer->begin(), buffer->end());
       }
     }
@@ -769,7 +769,7 @@ namespace gnote {
     return body.find(match) != Glib::ustring::npos;
   }
 
-  void AppLinkWatcher::highlight_in_block(NoteManagerBase & note_manager, const Note::Ptr & note, const Gtk::TextIter & start, const Gtk::TextIter & end)
+  void AppLinkWatcher::highlight_in_block(NoteManagerBase & note_manager, Note & note, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
     TrieHit<NoteBase::WeakPtr>::ListPtr hits = note_manager.find_trie_matches(start.get_slice(end));
     for(TrieHit<NoteBase::WeakPtr>::List::const_iterator iter = hits->begin(); iter != hits->end(); ++iter) {
@@ -777,7 +777,7 @@ namespace gnote {
     }
   }
 
-  void AppLinkWatcher::highlight_note_in_block(NoteManagerBase & note_manager, const Note::Ptr & note, const NoteBase::Ptr & find_note, const Gtk::TextIter & start, const Gtk::TextIter & end)
+  void AppLinkWatcher::highlight_note_in_block(NoteManagerBase & note_manager, Note & note, const NoteBase::Ptr & find_note, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
     Glib::ustring buffer_text = start.get_text(end).lowercase();
     Glib::ustring find_title_lower = find_note->get_title().lowercase();
@@ -796,7 +796,7 @@ namespace gnote {
     }
   }
 
-  void AppLinkWatcher::do_highlight(NoteManagerBase & note_manager, const Note::Ptr & note, const TrieHit<NoteBase::WeakPtr> & hit, const Gtk::TextIter & start, const Gtk::TextIter &)
+  void AppLinkWatcher::do_highlight(NoteManagerBase & note_manager, Note & note, const TrieHit<NoteBase::WeakPtr> & hit, const Gtk::TextIter & start, const Gtk::TextIter &)
   {
     // Some of these checks should be replaced with fixes to
     // TitleTrie.FindMatches, probably.
@@ -817,7 +817,7 @@ namespace gnote {
       return;
     }
       
-    if(hit_note == note)
+    if(hit_note.get() == &note)
       return;
 
     Gtk::TextIter title_start = start;
@@ -833,25 +833,25 @@ namespace gnote {
     }
 
     // Don't create links inside URLs
-    if(note->get_tag_table()->has_link_tag(title_start)) {
+    if(note.get_tag_table()->has_link_tag(title_start)) {
       return;
     }
 
     DBG_OUT("Matching Note title '%s' at %d-%d...", hit.key().c_str(), hit.start(), hit.end());
 
-    auto link_tag = note->get_tag_table()->get_link_tag();
-    note->get_tag_table()->foreach(
-      [note, title_start, title_end](const Glib::RefPtr<Gtk::TextTag> & tag) {
-        remove_link_tag(note, tag, title_start, title_end);
+    auto tag_table = note.get_tag_table();
+    auto link_tag = tag_table->get_link_tag();
+    tag_table->foreach([&note, title_start, title_end](const Glib::RefPtr<Gtk::TextTag> & tag) {
+      remove_link_tag(note, tag, title_start, title_end);
     });
-    note->get_buffer()->apply_tag(link_tag, title_start, title_end);
+    note.get_buffer()->apply_tag(link_tag, title_start, title_end);
   }
 
-  void AppLinkWatcher::remove_link_tag(const Note::Ptr & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end)
+  void AppLinkWatcher::remove_link_tag(Note & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
     auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if(note_tag && note_tag->can_activate()) {
-      note->get_buffer()->remove_tag(note_tag, start, end);
+      note.get_buffer()->remove_tag(note_tag, start, end);
     }
   }
 
@@ -904,13 +904,13 @@ namespace gnote {
 
   void NoteLinkWatcher::do_highlight(const TrieHit<NoteBase::WeakPtr> & hit, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    AppLinkWatcher::do_highlight(manager(), get_note(), hit, start, end);
+    AppLinkWatcher::do_highlight(manager(), *get_note(), hit, start, end);
   }
 
   void NoteLinkWatcher::highlight_in_block(const Gtk::TextIter & start,
                                            const Gtk::TextIter & end)
   {
-    AppLinkWatcher::highlight_in_block(manager(), get_note(), start, end);
+    AppLinkWatcher::highlight_in_block(manager(), *get_note(), start, end);
   }
 
   void NoteLinkWatcher::unhighlight_in_block(const Gtk::TextIter & start,
