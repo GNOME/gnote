@@ -349,7 +349,7 @@ namespace gnote {
       show_io_error_dialog(dynamic_cast<Gtk::Window*>(m_window->host()));
     }
 
-    signal_saved(shared_from_this());
+    signal_saved(*this);
   }
 
   

@@ -220,7 +220,7 @@ void NoteBase::save()
     ERR_OUT(_("Exception while saving note: %s"), e.what());
   }
 
-  signal_saved(shared_from_this());
+  signal_saved(*this);
 }
 
 void NoteBase::rename_links(const Glib::ustring & old_title, const NoteBase & renamed)

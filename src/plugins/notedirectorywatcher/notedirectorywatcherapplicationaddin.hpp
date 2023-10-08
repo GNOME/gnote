@@ -67,7 +67,7 @@ private:
   static Glib::ustring make_uri(const Glib::ustring & note_id);
 
   NoteDirectoryWatcherApplicationAddin();
-  void handle_note_saved(const gnote::NoteBase::Ptr &);
+  void handle_note_saved(gnote::NoteBase &);
   void handle_file_system_change_event(const Glib::RefPtr<Gio::File> & file,
                                        const Glib::RefPtr<Gio::File> & other_file,
                                        Gio::FileMonitor::Event event_type);

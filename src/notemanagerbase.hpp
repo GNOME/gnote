@@ -112,7 +112,7 @@ protected:
   /** add the note to the manager and setup signals */
   void add_note(NoteBase::Ptr);
   void on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title);
-  void on_note_save(const NoteBase::Ptr & note);
+  void on_note_save(NoteBase & note);
   virtual NoteBase & create_note_from_template(Glib::ustring && title, const NoteBase & template_note, Glib::ustring && guid);
   virtual NoteBase & create_note(Glib::ustring && title, Glib::ustring && body, Glib::ustring && guid = Glib::ustring());
   virtual NoteBase & create_new_note(Glib::ustring && title, Glib::ustring && xml_content, Glib::ustring && guid);

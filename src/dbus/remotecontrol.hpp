@@ -76,7 +76,7 @@ public:
 private:
   void on_note_added(NoteBase &);
   void on_note_deleted(NoteBase &);
-  void on_note_saved(const NoteBase::Ptr &);
+  void on_note_saved(NoteBase &);
   MainWindow & present_note(NoteBase &);
 
   IGnote & m_gnote;

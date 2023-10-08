@@ -253,7 +253,7 @@ public:
     }
   virtual void enabled(bool is_enabled);
 
-  typedef sigc::signal<void(const NoteBase::Ptr &)> SavedHandler;
+  typedef sigc::signal<void(NoteBase&)> SavedHandler;
   SavedHandler signal_saved;
   typedef sigc::signal<void(const NoteBase::Ptr&, const Glib::ustring&)> RenamedHandler;
   RenamedHandler signal_renamed;

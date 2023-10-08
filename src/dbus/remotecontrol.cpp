@@ -355,11 +355,9 @@ void RemoteControl::on_note_deleted(NoteBase & note)
 }
 
 
-void RemoteControl::on_note_saved(const NoteBase::Ptr & note)
+void RemoteControl::on_note_saved(NoteBase & note)
 {
-  if(note) {
-    NoteSaved(note->uri());
-  }
+  NoteSaved(note.uri());
 }
 
 

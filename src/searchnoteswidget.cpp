@@ -882,7 +882,7 @@ void SearchNotesWidget::on_note_renamed(const NoteBase::Ptr & note,
   rename_note(std::static_pointer_cast<Note>(note));
 }
 
-void SearchNotesWidget::on_note_saved(const NoteBase::Ptr&)
+void SearchNotesWidget::on_note_saved(NoteBase&)
 {
   restore_matches_window();
   update_results();

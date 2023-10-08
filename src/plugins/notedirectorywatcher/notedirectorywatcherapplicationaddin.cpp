@@ -83,9 +83,9 @@ bool NoteDirectoryWatcherApplicationAddin::initialized()
   return m_initialized;
 }
 
-void NoteDirectoryWatcherApplicationAddin::handle_note_saved(const gnote::NoteBase::Ptr & note)
+void NoteDirectoryWatcherApplicationAddin::handle_note_saved(gnote::NoteBase & note)
 {
-  m_note_save_times[note->id()] = Glib::DateTime::create_now_utc();
+  m_note_save_times[note.id()] = Glib::DateTime::create_now_utc();
 }
 
 void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(

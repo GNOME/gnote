@@ -103,7 +103,7 @@ private:
   void on_note_deleted(NoteBase & note);
   void on_note_added(NoteBase & note);
   void on_note_renamed(const NoteBase::Ptr&, const Glib::ustring&);
-  void on_note_saved(const NoteBase::Ptr&);
+  void on_note_saved(NoteBase&);
   void delete_note(const Note::Ptr & note);
   void add_note(const Note::Ptr & note);
   void rename_note(const Note::Ptr & note);

@@ -85,7 +85,7 @@ namespace sync {
       NoteManager & manager(dynamic_cast<NoteManager&>(note_mgr()));
       m_gnote.preferences().signal_sync_selected_service_addin_changed.connect(sigc::mem_fun(*this, &SyncManager::update_sync_action));
       m_gnote.preferences().signal_sync_autosync_timeout_changed.connect(sigc::mem_fun(*this, &SyncManager::update_sync_action));
-      manager.signal_note_saved.connect([this](const NoteBase::Ptr & note) { handle_note_saved_or_deleted(*note); });
+      manager.signal_note_saved.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_deleted.connect(sigc::mem_fun(*this, &SyncManager::handle_note_saved_or_deleted));
       manager.signal_note_buffer_changed.connect(sigc::mem_fun(*this, &SyncManager::handle_note_buffer_changed));
       m_autosync_timer.signal_timeout.connect(sigc::mem_fun(*this, &SyncManager::background_sync_checker));

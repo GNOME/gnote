@@ -205,7 +205,7 @@ void NoteManagerBase::on_note_rename(const NoteBase::Ptr & note, const Glib::ust
   std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 }
 
-void NoteManagerBase::on_note_save (const NoteBase::Ptr & note)
+void NoteManagerBase::on_note_save(NoteBase & note)
 {
   signal_note_saved(note);
   std::sort(m_notes.begin(), m_notes.end(), compare_dates);
