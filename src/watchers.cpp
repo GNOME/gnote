@@ -745,18 +745,18 @@ namespace gnote {
     }
   }
 
-  void AppLinkWatcher::on_note_renamed(const NoteBase::Ptr & renamed, const Glib::ustring & /*old_title*/)
+  void AppLinkWatcher::on_note_renamed(const NoteBase & renamed, const Glib::ustring & /*old_title*/)
   {
     for(auto & note : note_manager().get_notes()) {
-      if(renamed == note) {
+      if(&renamed == note.get()) {
         continue;
       }
 
       // Highlight previously unlinked text
-      if(contains_text(note, renamed->get_title())) {
+      if(contains_text(note, renamed.get_title())) {
         auto n = std::static_pointer_cast<Note>(note);
         auto buffer = n->get_buffer();
-        highlight_note_in_block(note_manager(), n, std::static_pointer_cast<Note>(renamed), buffer->begin(), buffer->end());
+        highlight_note_in_block(note_manager(), n, std::static_pointer_cast<Note>(const_cast<NoteBase&>(renamed).shared_from_this()), buffer->begin(), buffer->end());
       }
     }
   }

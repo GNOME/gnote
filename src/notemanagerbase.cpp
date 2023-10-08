@@ -57,7 +57,7 @@ public:
 private:
   void on_note_added(NoteBase & added);
   void on_note_deleted(NoteBase & deleted);
-  void on_note_renamed(const NoteBase::Ptr & renamed, const Glib::ustring & old_title);
+  void on_note_renamed(const NoteBase & renamed, const Glib::ustring & old_title);
 
   NoteManagerBase & m_manager;
   TrieTree<NoteBase::WeakPtr> *m_title_trie;
@@ -199,7 +199,7 @@ void NoteManagerBase::add_note(NoteBase::Ptr note)
   }
 }
 
-void NoteManagerBase::on_note_rename(const NoteBase::Ptr & note, const Glib::ustring & old_title)
+void NoteManagerBase::on_note_rename(const NoteBase & note, const Glib::ustring & old_title)
 {
   signal_note_renamed(note, old_title);
   std::sort(m_notes.begin(), m_notes.end(), compare_dates);
@@ -533,7 +533,7 @@ void TrieController::on_note_deleted(NoteBase &)
   update();
 }
 
-void TrieController::on_note_renamed(const NoteBase::Ptr &, const Glib::ustring &)
+void TrieController::on_note_renamed(const NoteBase &, const Glib::ustring &)
 {
   update();
 }

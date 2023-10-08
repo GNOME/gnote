@@ -507,7 +507,7 @@ namespace gnote {
         process_rename_link_update(old_title);
       }
       else {
-        signal_renamed(shared_from_this(), old_title);
+        signal_renamed(*this, old_title);
         queue_save(CONTENT_CHANGED);
       }
     }
@@ -544,7 +544,7 @@ namespace gnote {
       }
     }
     else {
-      signal_renamed(shared_from_this(), old_title);
+      signal_renamed(*this, old_title);
       queue_save(CONTENT_CHANGED);
     }
   }
@@ -575,7 +575,7 @@ namespace gnote {
       get_window()->editor()->set_editable(true);
     }
 
-    signal_renamed(shared_from_this(), old_title);
+    signal_renamed(*this, old_title);
     queue_save(CONTENT_CHANGED);
   }
 

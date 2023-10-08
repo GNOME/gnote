@@ -191,7 +191,7 @@ namespace gnote {
     static void highlight_note_in_block(NoteManagerBase &, const Note::Ptr &, const NoteBase::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
     void on_note_added(NoteBase &);
     void on_note_deleted(NoteBase &);
-    void on_note_renamed(const NoteBase::Ptr&, const Glib::ustring&);
+    void on_note_renamed(const NoteBase&, const Glib::ustring&);
 
     bool m_initialized;
     sigc::connection m_on_note_deleted_cid;

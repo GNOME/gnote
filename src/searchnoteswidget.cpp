@@ -875,11 +875,11 @@ void SearchNotesWidget::on_note_added(NoteBase & note)
   add_note(std::static_pointer_cast<Note>(note.shared_from_this()));
 }
 
-void SearchNotesWidget::on_note_renamed(const NoteBase::Ptr & note,
+void SearchNotesWidget::on_note_renamed(const NoteBase & note,
                                         const Glib::ustring &)
 {
   restore_matches_window();
-  rename_note(std::static_pointer_cast<Note>(note));
+  rename_note(std::static_pointer_cast<Note>(const_cast<NoteBase&>(note).shared_from_this()));
 }
 
 void SearchNotesWidget::on_note_saved(NoteBase&)

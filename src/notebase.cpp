@@ -156,7 +156,7 @@ void NoteBase::set_title(Glib::ustring && new_title, bool from_user_action)
       process_rename_link_update(old_title);
     }
     else {
-      signal_renamed(shared_from_this(), old_title);
+      signal_renamed(*this, old_title);
       queue_save(CONTENT_CHANGED);
     }
   }
@@ -168,7 +168,7 @@ void NoteBase::process_rename_link_update(const Glib::ustring & old_title)
     note->rename_links(old_title, *this);
   }
 
-  signal_renamed(shared_from_this(), old_title);
+  signal_renamed(*this, old_title);
   queue_save(CONTENT_CHANGED);
 }
 
@@ -178,7 +178,7 @@ void NoteBase::rename_without_link_update(Glib::ustring && newTitle)
     data_synchronizer().data().title() = std::move(newTitle);
 
     // HACK:
-    signal_renamed(shared_from_this(), data_synchronizer().data().title());
+    signal_renamed(*this, data_synchronizer().data().title());
 
     queue_save(CONTENT_CHANGED); // TODO: Right place for this?
   }

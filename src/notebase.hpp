@@ -255,7 +255,7 @@ public:
 
   typedef sigc::signal<void(NoteBase&)> SavedHandler;
   SavedHandler signal_saved;
-  typedef sigc::signal<void(const NoteBase::Ptr&, const Glib::ustring&)> RenamedHandler;
+  typedef sigc::signal<void(const NoteBase&, const Glib::ustring&)> RenamedHandler;
   RenamedHandler signal_renamed;
   typedef sigc::signal<void(const NoteBase&, const Tag::Ptr&)> TagAddedHandler;
   TagAddedHandler signal_tag_added;
