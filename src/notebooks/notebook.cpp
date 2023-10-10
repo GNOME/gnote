@@ -109,56 +109,57 @@ namespace notebooks {
   }
 
 
-  Note::Ptr Notebook::find_template_note() const
+  Note::Ref Notebook::find_template_note() const
   {
-    Note::Ptr note;
     Tag::Ptr templ_tag = template_tag();
     Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
     if(!templ_tag || !notebook_tag) {
-      return note;
+      return Note::Ref();
     }
     auto notes = templ_tag->get_notes();
     for(NoteBase *n : notes) {
       if(n->contains_tag(notebook_tag)) {
-        note = std::static_pointer_cast<Note>(n->shared_from_this());
-        break;
+        return Note::Ref(std::ref(*static_cast<Note*>(n)));
       }
     }
 
-    return note;
+    return Note::Ref();
   }
 
   Note::Ptr Notebook::get_template_note() const
   {
-    NoteBase::Ptr note = find_template_note();
-
-    if (!note) {
-      Glib::ustring title = m_default_template_note_title;
-      if(m_note_manager.find(title)) {
-        auto tag_notes = m_tag->get_notes();
-        title = m_note_manager.get_unique_name(title);
+    {
+      auto note = find_template_note();
+      if(note) {
+        return std::static_pointer_cast<Note>(note.value().get().shared_from_this());
       }
-      auto content = NoteManager::get_note_template_content(title);
-      note = m_note_manager.create(std::move(title), std::move(content)).shared_from_this();
-          
-      // Select the initial text
-      NoteBuffer::Ptr buffer = std::static_pointer_cast<Note>(note)->get_buffer();
-      buffer->select_note_body();
-
-      // Flag this as a template note
-      Tag::Ptr templ_tag = template_tag();
-      note->add_tag(templ_tag);
-
-      // Add on the notebook system tag so Tomboy
-      // will persist the tag/notebook across sessions
-      // if no other notes are added to the notebook.
-      Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
-      note->add_tag (notebook_tag);
-        
-      note->queue_save (CONTENT_CHANGED);
     }
 
-    return std::static_pointer_cast<Note>(note);
+    Glib::ustring title = m_default_template_note_title;
+    if(m_note_manager.find(title)) {
+      auto tag_notes = m_tag->get_notes();
+      title = m_note_manager.get_unique_name(title);
+    }
+    auto content = NoteManager::get_note_template_content(title);
+    auto & note = m_note_manager.create(std::move(title), std::move(content));
+
+    // Select the initial text
+    NoteBuffer::Ptr buffer = static_cast<Note&>(note).get_buffer();
+    buffer->select_note_body();
+
+    // Flag this as a template note
+    Tag::Ptr templ_tag = template_tag();
+    note.add_tag(templ_tag);
+
+    // Add on the notebook system tag so Tomboy
+    // will persist the tag/notebook across sessions
+    // if no other notes are added to the notebook.
+    Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
+    note.add_tag(notebook_tag);
+
+    note.queue_save(CONTENT_CHANGED);
+
+    return std::static_pointer_cast<Note>(note.shared_from_this());
   }
 
   Note::Ptr Notebook::create_notebook_note()
