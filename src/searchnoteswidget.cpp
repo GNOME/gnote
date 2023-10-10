@@ -1050,12 +1050,8 @@ void SearchNotesWidget::on_open_notebook_template_note(const Glib::VariantBase&)
     return;
   }
 
-  Note::Ptr templateNote = notebook->get_template_note();
-  if(!templateNote) {
-    return; // something seriously went wrong
-  }
-
-  signal_open_note(*templateNote);
+  auto & template_note = notebook->get_template_note();
+  signal_open_note(template_note);
 }
 
 void SearchNotesWidget::on_new_notebook(const Glib::VariantBase&)

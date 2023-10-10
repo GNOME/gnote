@@ -126,12 +126,12 @@ namespace notebooks {
     return Note::Ref();
   }
 
-  Note::Ptr Notebook::get_template_note() const
+  Note & Notebook::get_template_note() const
   {
     {
       auto note = find_template_note();
       if(note) {
-        return std::static_pointer_cast<Note>(note.value().get().shared_from_this());
+        return note.value();
       }
     }
 
@@ -159,16 +159,16 @@ namespace notebooks {
 
     note.queue_save(CONTENT_CHANGED);
 
-    return std::static_pointer_cast<Note>(note.shared_from_this());
+    return static_cast<Note&>(note);
   }
 
   Note::Ptr Notebook::create_notebook_note()
   {
     Glib::ustring temp_title;
-    Note::Ptr note_template = get_template_note();
+    auto & note_template = get_template_note();
 
     temp_title = m_note_manager.get_unique_name(_("New Note"));
-    auto & note = m_note_manager.create_note_from_template(std::move(temp_title), *note_template);
+    auto & note = m_note_manager.create_note_from_template(std::move(temp_title), note_template);
 
     // Add the notebook tag
     note.add_tag(m_tag);

@@ -140,13 +140,13 @@ namespace gnote {
         // that represents the notebook actually gets
         // saved to a note (and persisted after Tomboy
         // is shut down).
-        Note::Ptr templateNote = notebook->get_template_note ();
+        auto & template_note = notebook->get_template_note();
         
         // Make sure the template note has the notebook tag.
         // Since it's possible for the template note to already
         // exist, we need to make sure it gets tagged.
-        templateNote->add_tag (notebook->get_tag());
-        m_note_added_to_notebook (*templateNote, notebook);
+        template_note.add_tag(notebook->get_tag());
+        m_note_added_to_notebook(template_note, notebook);
 //      }
 
       signal_notebook_list_changed();
@@ -370,14 +370,12 @@ namespace gnote {
         }
 
         // Grab the template note before removing all the notebook tags
-        Note::Ptr templateNote = notebook->get_template_note ();
+        auto & template_note = notebook->get_template_note();
 
         g.notebook_manager().delete_notebook(notebook);
 
         // Delete the template note
-        if(templateNote) {
-          g.notebook_manager().note_manager().delete_note(*templateNote);
-        }
+        g.notebook_manager().note_manager().delete_note(template_note);
         dialog->hide();
       });
       dialog->show();

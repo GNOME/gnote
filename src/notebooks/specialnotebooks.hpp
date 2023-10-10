@@ -50,7 +50,7 @@ protected:
     {
     }
   Tag::Ptr get_tag() const override;
-  Note::Ptr get_template_note() const override;
+  Note & get_template_note() const override;
 };
 
 

@@ -37,9 +37,9 @@ Tag::Ptr SpecialNotebook::get_tag() const
   return Tag::Ptr();
 }
 
-Note::Ptr SpecialNotebook::get_template_note() const
+Note & SpecialNotebook::get_template_note() const
 {
-  return std::static_pointer_cast<Note>(m_note_manager.get_or_create_template_note().shared_from_this());
+  return static_cast<Note&>(m_note_manager.get_or_create_template_note());
 }
 
 
