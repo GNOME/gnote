@@ -48,7 +48,7 @@ public:
   virtual Tag::Ptr    get_tag() const;
   Note::Ref find_template_note() const;
   virtual Note & get_template_note() const;
-  Note::Ptr create_notebook_note();
+  Note & create_notebook_note();
   virtual bool contains_note(const Note & note, bool include_system = false);
   virtual bool add_note(Note&);
   static Glib::ustring normalize(const Glib::ustring & s);

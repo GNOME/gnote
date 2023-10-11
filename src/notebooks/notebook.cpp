@@ -162,7 +162,7 @@ namespace notebooks {
     return static_cast<Note&>(note);
   }
 
-  Note::Ptr Notebook::create_notebook_note()
+  Note & Notebook::create_notebook_note()
   {
     Glib::ustring temp_title;
     auto & note_template = get_template_note();
@@ -173,7 +173,7 @@ namespace notebooks {
     // Add the notebook tag
     note.add_tag(m_tag);
 
-    return std::static_pointer_cast<Note>(note.shared_from_this());
+    return static_cast<Note&>(note);
   }
 
   /// <summary>

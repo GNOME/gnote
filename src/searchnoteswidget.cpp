@@ -1011,18 +1011,14 @@ Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
 
 void SearchNotesWidget::new_note()
 {
-  Note::Ptr note;
   auto notebook = m_notebooks_view->get_selected_notebook();
-  if(!notebook || std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
+  auto & note = (!notebook || std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook))
     // Just create a standard note (not in a notebook)
-    note = std::static_pointer_cast<Note>(m_manager.create().shared_from_this());
-  }
-  else {
+    ? static_cast<Note&>(m_manager.create())
     // Look for the template note and create a new note
-    note = notebook->create_notebook_note();
-  }
+    : notebook->create_notebook_note();
 
-  signal_open_note(*note);
+  signal_open_note(note);
 }
 
 Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
