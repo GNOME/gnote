@@ -464,7 +464,7 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> & it
     return false;
   }
 
-  bool passes_search_filter = filter_by_search(note);
+  bool passes_search_filter = filter_by_search(*note);
   if(passes_search_filter == false) {
     return false; // don't waste time checking tags if it's already false
   }
@@ -599,7 +599,7 @@ Note::Ptr SearchNotesWidget::get_note(const Gtk::TreePath & p)
   return Note::Ptr();
 }
 
-bool SearchNotesWidget::filter_by_search(const Note::Ptr & note)
+bool SearchNotesWidget::filter_by_search(const Note & note)
 {
   if(m_search_text.empty()) {
     return true;
@@ -609,7 +609,7 @@ bool SearchNotesWidget::filter_by_search(const Note::Ptr & note)
     return false;
   }
 
-  return note && m_current_matches.find(note->uri()) != m_current_matches.end();
+  return m_current_matches.find(note.uri()) != m_current_matches.end();
 }
 
 bool SearchNotesWidget::filter_by_tag(const Note::Ptr & note, const Tag::Ptr & tag)
