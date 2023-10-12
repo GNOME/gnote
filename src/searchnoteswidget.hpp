@@ -88,7 +88,7 @@ private:
   void select_notes(const Note::List &);
   Note::Ptr get_note(const Gtk::TreePath & p);
   bool filter_by_search(const Note &);
-  bool filter_by_tag(const Note::Ptr &, const Tag::Ptr &);
+  bool filter_by_tag(const Note &, const Tag::Ptr &);
   void on_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
   void on_selection_changed();
   void on_treeview_right_button_pressed(int n_press, double x, double y);
