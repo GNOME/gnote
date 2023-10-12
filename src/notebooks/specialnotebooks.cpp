@@ -144,7 +144,7 @@ Glib::ustring ActiveNotesNotebook::get_normalized_name() const
 
 bool ActiveNotesNotebook::contains_note(const Note & note, bool include_system)
 {
-  bool contains = m_notes.find(std::static_pointer_cast<Note>(const_cast<Note&>(note).shared_from_this())) != m_notes.end();
+  bool contains = m_notes.find(note.uri()) != m_notes.end();
   if(!contains || include_system) {
     return contains;
   }
@@ -153,7 +153,7 @@ bool ActiveNotesNotebook::contains_note(const Note & note, bool include_system)
 
 bool ActiveNotesNotebook::add_note(Note & note)
 {
-  if(m_notes.insert(std::static_pointer_cast<Note>(note.shared_from_this())).second) {
+  if(m_notes.insert(note.uri()).second) {
     signal_size_changed();
   }
 
@@ -167,7 +167,7 @@ Glib::ustring ActiveNotesNotebook::get_icon_name() const
 
 void ActiveNotesNotebook::on_note_deleted(NoteBase & note)
 {
-  std::set<Note::Ptr>::iterator iter = m_notes.find(std::static_pointer_cast<Note>(note.shared_from_this()));
+  auto iter = m_notes.find(note.uri());
   if(iter != m_notes.end()) {
     m_notes.erase(iter);
     signal_size_changed();
@@ -182,9 +182,12 @@ bool ActiveNotesNotebook::empty()
 
   // ignore template notes
   Tag::Ptr templ_tag = template_tag();
-  for(const Note::Ptr & note : m_notes) {
-    if(!note->contains_tag(templ_tag)) {
-      return false;
+  for(const auto & note_uri : m_notes) {
+    if(auto note_ref = m_note_manager.find_by_uri(note_uri)) {
+      const NoteBase & note = note_ref.value();
+      if(!note.contains_tag(templ_tag)) {
+        return false;
+      }
     }
   }
 

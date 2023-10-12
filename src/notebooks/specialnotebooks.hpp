@@ -24,7 +24,7 @@
 #define __NOTEBOOKS_SPECIALNOTEBOOKS_HPP_
 
 
-#include <set>
+#include <unordered_set>
 
 #include "notebook.hpp"
 #include "tag.hpp"
@@ -108,7 +108,7 @@ public:
 private:
   void on_note_deleted(NoteBase & note);
 
-  std::set<Note::Ptr> m_notes;
+  std::unordered_set<std::string> m_notes;
 };
 
 
