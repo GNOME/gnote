@@ -46,13 +46,12 @@ class TrieController
 {
 public:
   TrieController(NoteManagerBase &);
-  ~TrieController();
 
   void add_note(const NoteBase::Ptr & note);
   void update();
-  TrieTree<NoteBase::WeakPtr> *title_trie() const
+  TrieTree<NoteBase::WeakPtr> & title_trie() const
     {
-      return m_title_trie;
+      return *m_title_trie;
     }
 private:
   void on_note_added(NoteBase & added);
@@ -60,7 +59,7 @@ private:
   void on_note_renamed(const NoteBase & renamed, const Glib::ustring & old_title);
 
   NoteManagerBase & m_manager;
-  TrieTree<NoteBase::WeakPtr> *m_title_trie;
+  std::unique_ptr<TrieTree<NoteBase::WeakPtr>> m_title_trie;
 };
 
 
@@ -168,12 +167,12 @@ void NoteManagerBase::post_load()
 
 size_t NoteManagerBase::trie_max_length()
 {
-  return m_trie_controller->title_trie()->max_length();
+  return m_trie_controller->title_trie().max_length();
 }
 
 TrieHit<NoteBase::WeakPtr>::ListPtr NoteManagerBase::find_trie_matches(const Glib::ustring & match)
 {
-  return m_trie_controller->title_trie()->find_matches(match);
+  return m_trie_controller->title_trie().find_matches(match);
 }
 
 NoteBase::List NoteManagerBase::get_notes_linking_to(const Glib::ustring & title) const
@@ -509,18 +508,12 @@ NoteBase & NoteManagerBase::create_with_guid(Glib::ustring && title, Glib::ustri
 
 TrieController::TrieController(NoteManagerBase & manager)
   : m_manager(manager)
-  ,  m_title_trie(NULL)
 {
   m_manager.signal_note_deleted.connect(sigc::mem_fun(*this, &TrieController::on_note_deleted));
   m_manager.signal_note_added.connect(sigc::mem_fun(*this, &TrieController::on_note_added));
   m_manager.signal_note_renamed.connect(sigc::mem_fun(*this, &TrieController::on_note_renamed));
 
   update();
-}
-
-TrieController::~TrieController()
-{
-  delete m_title_trie;
 }
 
 void TrieController::on_note_added(NoteBase & note)
@@ -546,10 +539,7 @@ void TrieController::add_note(const NoteBase::Ptr & note)
 
 void TrieController::update()
 {
-  if(m_title_trie) {
-    delete m_title_trie;
-  }
-  m_title_trie = new TrieTree<NoteBase::WeakPtr>(false /* !case_sensitive */);
+  m_title_trie = std::make_unique<TrieTree<NoteBase::WeakPtr>>(false /* !case_sensitive */);
 
   for(const NoteBase::Ptr & note : m_manager.get_notes()) {
     m_title_trie->add_keyword(note->get_title(), note);
