@@ -101,6 +101,14 @@ public:
       return m_notes;
     }
 
+  template <typename F>
+  void for_each(const F & func) const
+    {
+      for(const auto & note : m_notes) {
+        func(*note);
+      }
+    }
+
   ChangedHandler signal_note_deleted;
   ChangedHandler signal_note_added;
   NoteBase::RenamedHandler signal_note_renamed;
