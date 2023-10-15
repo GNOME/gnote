@@ -771,9 +771,8 @@ namespace gnote {
 
   void AppLinkWatcher::highlight_in_block(NoteManagerBase & note_manager, Note & note, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    TrieHit<NoteBase::WeakPtr>::ListPtr hits = note_manager.find_trie_matches(start.get_slice(end));
-    for(TrieHit<NoteBase::WeakPtr>::List::const_iterator iter = hits->begin(); iter != hits->end(); ++iter) {
-      do_highlight(note_manager, note, **iter, start, end);
+    for(const auto & hit : *note_manager.find_trie_matches(start.get_slice(end))) {
+      do_highlight(note_manager, note, *hit, start, end);
     }
   }
 
@@ -789,36 +788,38 @@ namespace gnote {
         break;
 
       auto title_len = find_title_lower.length();
-      TrieHit<NoteBase::WeakPtr> hit(idx, idx + title_len, Glib::ustring(find_title_lower), find_note);
+      TrieHit<Glib::ustring> hit(idx, idx + title_len, Glib::ustring(find_title_lower), Glib::ustring(find_note->uri()));
       do_highlight(note_manager, note, hit, start, end);
 
       idx += title_len;
     }
   }
 
-  void AppLinkWatcher::do_highlight(NoteManagerBase & note_manager, Note & note, const TrieHit<NoteBase::WeakPtr> & hit, const Gtk::TextIter & start, const Gtk::TextIter &)
+  void AppLinkWatcher::do_highlight(NoteManagerBase & note_manager, Note & note, const TrieHit<Glib::ustring> & hit, const Gtk::TextIter & start, const Gtk::TextIter &)
   {
     // Some of these checks should be replaced with fixes to
     // TitleTrie.FindMatches, probably.
-    if(hit.value().expired()) {
-      DBG_OUT("DoHighlight: null pointer error for '%s'." , hit.key().c_str());
+    auto hit_ref = note_manager.find_by_uri(hit.value());
+    if(!hit_ref) {
+      DBG_OUT("do_highlight: missing note '%s'." , hit.key().c_str());
       return;
     }
       
     if(!note_manager.find(hit.key())) {
-      DBG_OUT("DoHighlight: '%s' links to non-existing note." , hit.key().c_str());
+      DBG_OUT("do_highlight: '%s' links to non-existing note." , hit.key().c_str());
       return;
     }
       
-    NoteBase::Ptr hit_note(hit.value());
+    const NoteBase & hit_note = hit_ref.value();
 
-    if(hit.key().lowercase() != hit_note->get_title().lowercase()) { // == 0 if same string
-      DBG_OUT("DoHighlight: '%s' links wrongly to note '%s'." , hit.key().c_str(), hit_note->get_title().c_str());
+    if(hit.key().lowercase() != hit_note.get_title().lowercase()) { // == 0 if same string
+      DBG_OUT("do_highlight: '%s' links wrongly to note '%s'." , hit.key().c_str(), hit_note.get_title().c_str());
       return;
     }
       
-    if(hit_note.get() == &note)
+    if(&hit_note == &note) {
       return;
+    }
 
     Gtk::TextIter title_start = start;
     title_start.forward_chars(hit.start());

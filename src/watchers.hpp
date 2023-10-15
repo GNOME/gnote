@@ -179,7 +179,7 @@ namespace gnote {
   public:
     static ApplicationAddin *create();
     static void highlight_in_block(NoteManagerBase &, Note &, const Gtk::TextIter &, const Gtk::TextIter &);
-    static void do_highlight(NoteManagerBase &, Note &, const TrieHit<NoteBase::WeakPtr> &, const Gtk::TextIter & ,const Gtk::TextIter &);
+    static void do_highlight(NoteManagerBase &, Note &, const TrieHit<Glib::ustring> &, const Gtk::TextIter & ,const Gtk::TextIter &);
     static void remove_link_tag(Note & note, const Glib::RefPtr<Gtk::TextTag> & tag, const Gtk::TextIter & start, const Gtk::TextIter & end);
 
     AppLinkWatcher();

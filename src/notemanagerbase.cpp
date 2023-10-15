@@ -49,7 +49,7 @@ public:
 
   void add_note(const NoteBase::Ptr & note);
   void update();
-  TrieTree<NoteBase::WeakPtr> & title_trie() const
+  TrieTree<Glib::ustring> & title_trie() const
     {
       return *m_title_trie;
     }
@@ -59,7 +59,7 @@ private:
   void on_note_renamed(const NoteBase & renamed, const Glib::ustring & old_title);
 
   NoteManagerBase & m_manager;
-  std::unique_ptr<TrieTree<NoteBase::WeakPtr>> m_title_trie;
+  std::unique_ptr<TrieTree<Glib::ustring>> m_title_trie;
 };
 
 
@@ -170,7 +170,7 @@ size_t NoteManagerBase::trie_max_length()
   return m_trie_controller->title_trie().max_length();
 }
 
-TrieHit<NoteBase::WeakPtr>::ListPtr NoteManagerBase::find_trie_matches(const Glib::ustring & match)
+TrieHit<Glib::ustring>::ListPtr NoteManagerBase::find_trie_matches(const Glib::ustring & match)
 {
   return m_trie_controller->title_trie().find_matches(match);
 }
@@ -533,16 +533,16 @@ void TrieController::on_note_renamed(const NoteBase &, const Glib::ustring &)
 
 void TrieController::add_note(const NoteBase::Ptr & note)
 {
-  m_title_trie->add_keyword(note->get_title(), note);
+  m_title_trie->add_keyword(note->get_title(), note->uri());
   m_title_trie->compute_failure_graph();
 }
 
 void TrieController::update()
 {
-  m_title_trie = std::make_unique<TrieTree<NoteBase::WeakPtr>>(false /* !case_sensitive */);
+  m_title_trie = std::make_unique<TrieTree<Glib::ustring>>(false /* !case_sensitive */);
 
   for(const NoteBase::Ptr & note : m_manager.get_notes()) {
-    m_title_trie->add_keyword(note->get_title(), note);
+    m_title_trie->add_keyword(note->get_title(), note->uri());
   }
   m_title_trie->compute_failure_graph();
 }
