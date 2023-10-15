@@ -54,34 +54,34 @@ namespace gnote {
       // Skip over notes that are template notes
     Tag::Ptr template_tag = m_manager.tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
-    for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
-      Note::Ptr note(std::static_pointer_cast<Note>(iter));
-
+    m_manager.for_each([this, &temp_matches, template_tag, selected_notebook, case_sensitive, words=std::move(words), encoded_words=std::move(encoded_words)](NoteBase & note) {
       // Skip template notes
-      if (note->contains_tag (template_tag)) {
-        continue;
+      if(note.contains_tag(template_tag)) {
+        return;
       }
         
       // Skip notes that are not in the
       // selected notebook
-      if(selected_notebook && !selected_notebook->contains_note(*note))
-        continue;
+      if(selected_notebook && !selected_notebook->contains_note(static_cast<Note&>(note))) {
+        return;
+      }
         
       // First check the note's title for a match,
       // if there is no match check the note's raw
       // XML for at least one match, to avoid
       // deserializing Buffers unnecessarily.
-      if (0 < find_match_count_in_note(note->get_title(), words, case_sensitive)) {
-        temp_matches->insert(std::make_pair(INT_MAX, note));
+      if(0 < find_match_count_in_note(note.get_title(), words, case_sensitive)) {
+        temp_matches->insert(std::make_pair(INT_MAX, std::static_pointer_cast<Note>(note.shared_from_this())));
       }
-      else if(check_note_has_match(*note, encoded_words, case_sensitive)) {
-        int match_count = find_match_count_in_note(note->text_content(), words, case_sensitive);
+      else if(check_note_has_match(note, encoded_words, case_sensitive)) {
+        int match_count = find_match_count_in_note(note.text_content(), words, case_sensitive);
         if (match_count > 0) {
           // TODO: Improve note.GetHashCode()
-          temp_matches->insert(std::make_pair(match_count, note));
+          temp_matches->insert(std::make_pair(match_count, std::static_pointer_cast<Note>(note.shared_from_this())));
         }
       }
-    }
+    });
+
     return temp_matches;
   }
 
