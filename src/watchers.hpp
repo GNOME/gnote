@@ -210,7 +210,6 @@ namespace gnote {
     virtual void on_note_opened() override;
 
   private:
-    void do_highlight(const TrieHit<NoteBase::WeakPtr> & , const Gtk::TextIter &,const Gtk::TextIter &);
     void highlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
     void unhighlight_in_block(const Gtk::TextIter &,const Gtk::TextIter &);
     void on_delete_range(const Gtk::TextIter &,const Gtk::TextIter &);

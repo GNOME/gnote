@@ -901,12 +901,6 @@ namespace gnote {
       sigc::mem_fun(*this, &NoteLinkWatcher::on_delete_range));
   }
 
-
-  void NoteLinkWatcher::do_highlight(const TrieHit<NoteBase::WeakPtr> & hit, const Gtk::TextIter & start, const Gtk::TextIter & end)
-  {
-    AppLinkWatcher::do_highlight(manager(), *get_note(), hit, start, end);
-  }
-
   void NoteLinkWatcher::highlight_in_block(const Gtk::TextIter & start,
                                            const Gtk::TextIter & end)
   {
