@@ -85,7 +85,7 @@ namespace gnote {
     return temp_matches;
   }
 
-  bool Search::check_note_has_match(const Note & note,
+  bool Search::check_note_has_match(const NoteBase & note,
                                     const std::vector<Glib::ustring> & encoded_words,
                                     bool match_case)
   {

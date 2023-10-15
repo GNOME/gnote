@@ -70,7 +70,7 @@ public:
   /// </returns>  
   ResultsPtr search_notes(const Glib::ustring &, bool,
                           const notebooks::Notebook::Ptr & );
-  bool check_note_has_match(const Note & note, const std::vector<Glib::ustring> &, bool match_case);
+  bool check_note_has_match(const NoteBase & note, const std::vector<Glib::ustring> &, bool match_case);
   int find_match_count_in_note(Glib::ustring note_text, const std::vector<Glib::ustring> &,
                                bool match_case);
 private:
