@@ -170,7 +170,7 @@ size_t NoteManagerBase::trie_max_length()
   return m_trie_controller->title_trie().max_length();
 }
 
-TrieHit<Glib::ustring>::ListPtr NoteManagerBase::find_trie_matches(const Glib::ustring & match)
+TrieHit<Glib::ustring>::List NoteManagerBase::find_trie_matches(const Glib::ustring & match)
 {
   return m_trie_controller->title_trie().find_matches(match);
 }

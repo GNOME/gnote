@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2022-2023 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -33,9 +33,7 @@ template<class value_t>
 class TrieHit
 {
 public:
-  typedef std::shared_ptr<TrieHit> Ptr;
-  typedef std::vector<Ptr> List;
-  typedef std::shared_ptr<List> ListPtr;
+  typedef std::vector<TrieHit> List;
 
   TrieHit(int s, int e, Glib::ustring && k, value_t && v)
     : m_start(s)

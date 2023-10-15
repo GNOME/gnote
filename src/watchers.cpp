@@ -771,8 +771,8 @@ namespace gnote {
 
   void AppLinkWatcher::highlight_in_block(NoteManagerBase & note_manager, Note & note, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
-    for(const auto & hit : *note_manager.find_trie_matches(start.get_slice(end))) {
-      do_highlight(note_manager, note, *hit, start, end);
+    for(const auto & hit : note_manager.find_trie_matches(start.get_slice(end))) {
+      do_highlight(note_manager, note, hit, start, end);
     }
   }
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ SUITE(TrieTree)
   {
     const Glib::ustring src;
     gnote::TrieTree<Glib::ustring> trie;
-    gnote::TrieHit<Glib::ustring>::ListPtr matches;
+    gnote::TrieHit<Glib::ustring>::List matches;
 
     Fixture()
       : src("bazar this is some foo, bar, and baz BazBarFooFoo bazbazarbaz end bazar ąČęĖįŠųŪž")
@@ -48,101 +48,99 @@ SUITE(TrieTree)
 
   TEST_FIXTURE(Fixture, matches)
   {
-    CHECK(matches.get());
-    CHECK_EQUAL(16, matches->size());
-    gnote::TrieHit<Glib::ustring>::List::const_iterator iter = matches->begin();
+    CHECK_EQUAL(16, matches.size());
+    auto iter = matches.begin();
 
-    CHECK(*iter);
-    CHECK_EQUAL("baz", (*iter)->key());
-    CHECK_EQUAL(0, (*iter)->start());
-    CHECK_EQUAL(3, (*iter)->end());
+    CHECK_EQUAL("baz", iter->key());
+    CHECK_EQUAL(0, iter->start());
+    CHECK_EQUAL(3, iter->end());
     ++iter;
-    CHECK(*iter);
-    CHECK_EQUAL("bazar", (*iter)->key());
-    CHECK_EQUAL(0, (*iter)->start());
-    CHECK_EQUAL(5, (*iter)->end());
+    CHECK_EQUAL("bazar", iter->key());
+    CHECK_EQUAL(0, iter->start());
+    CHECK_EQUAL(5, iter->end());
   }
 
   TEST_FIXTURE(Fixture, search)
   {
-    auto hit = matches->begin();
-    CHECK_EQUAL("baz", (*hit)->key());
-    CHECK_EQUAL(0, (*hit)->start());
-    CHECK_EQUAL(3, (*hit)->end());
+    auto hit = matches.begin();
+    CHECK_EQUAL("baz", hit->key());
+    CHECK_EQUAL(0, hit->start());
+    CHECK_EQUAL(3, hit->end());
 
     ++hit;
-    CHECK_EQUAL("bazar", (*hit)->key());
-    CHECK_EQUAL(0, (*hit)->start());
-    CHECK_EQUAL(5, (*hit)->end());
+    CHECK_EQUAL("bazar", hit->key());
+    CHECK_EQUAL(0, hit->start());
+    CHECK_EQUAL(5, hit->end());
 
     ++hit;
-    CHECK_EQUAL("foo", (*hit)->key());
-    CHECK_EQUAL(19, (*hit)->start());
-    CHECK_EQUAL(22, (*hit)->end());
+    CHECK_EQUAL("foo", hit->key());
+    CHECK_EQUAL(19, hit->start());
+    CHECK_EQUAL(22, hit->end());
 
     ++hit;
-    CHECK_EQUAL("bar", (*hit)->key());
-    CHECK_EQUAL(24, (*hit)->start());
-    CHECK_EQUAL(27, (*hit)->end());
+    CHECK_EQUAL("bar", hit->key());
+    CHECK_EQUAL(24, hit->start());
+    CHECK_EQUAL(27, hit->end());
 
     ++hit;
-    CHECK_EQUAL("baz", (*hit)->key());
-    CHECK_EQUAL(33, (*hit)->start());
-    CHECK_EQUAL(36, (*hit)->end());
+    CHECK_EQUAL("baz", hit->key());
+    CHECK_EQUAL(33, hit->start());
+    CHECK_EQUAL(36, hit->end());
 
     ++hit;
-    CHECK_EQUAL("Baz", (*hit)->key());
-    CHECK_EQUAL(37, (*hit)->start());
-    CHECK_EQUAL(40, (*hit)->end());
+    CHECK_EQUAL("Baz", hit->key());
+    CHECK_EQUAL(37, hit->start());
+    CHECK_EQUAL(40, hit->end());
 
     ++hit;
-    CHECK_EQUAL("Bar", (*hit)->key());
-    CHECK_EQUAL(40, (*hit)->start());
-    CHECK_EQUAL(43, (*hit)->end());
+    CHECK_EQUAL("Bar", hit->key());
+    CHECK_EQUAL(40, hit->start());
+    CHECK_EQUAL(43, hit->end());
 
     ++hit;
-    CHECK_EQUAL("Foo", (*hit)->key());
-    CHECK_EQUAL(43, (*hit)->start());
-    CHECK_EQUAL(46, (*hit)->end());
+    CHECK_EQUAL("Foo", hit->key());
+    CHECK_EQUAL(43, hit->start());
+    CHECK_EQUAL(46, hit->end());
 
     ++hit;
-    CHECK_EQUAL("Foo", (*hit)->key());
-    CHECK_EQUAL(46, (*hit)->start());
-    CHECK_EQUAL(49, (*hit)->end());
+    CHECK_EQUAL("Foo", hit->key());
+    CHECK_EQUAL(46, hit->start());
+    CHECK_EQUAL(49, hit->end());
 
     ++hit;
-    CHECK_EQUAL("baz", (*hit)->key());
-    CHECK_EQUAL(50, (*hit)->start());
-    CHECK_EQUAL(53, (*hit)->end());
+    CHECK_EQUAL("baz", hit->key());
+    CHECK_EQUAL(50, hit->start());
+    CHECK_EQUAL(53, hit->end());
 
     ++hit;
-    CHECK_EQUAL("baz", (*hit)->key());
-    CHECK_EQUAL(53, (*hit)->start());
-    CHECK_EQUAL(56, (*hit)->end());
+    CHECK_EQUAL("baz", hit->key());
+    CHECK_EQUAL(53, hit->start());
+    CHECK_EQUAL(56, hit->end());
 
     ++hit;
-    CHECK_EQUAL("bazar", (*hit)->key());
-    CHECK_EQUAL(53, (*hit)->start());
-    CHECK_EQUAL(58, (*hit)->end());
+    CHECK_EQUAL("bazar", hit->key());
+    CHECK_EQUAL(53, hit->start());
+    CHECK_EQUAL(58, hit->end());
 
     ++hit;
-    CHECK_EQUAL("baz", (*hit)->key());
-    CHECK_EQUAL(58, (*hit)->start());
-    CHECK_EQUAL(61, (*hit)->end());
+    CHECK_EQUAL("baz", hit->key());
+    CHECK_EQUAL(58, hit->start());
+    CHECK_EQUAL(61, hit->end());
 
     ++hit;
-    CHECK_EQUAL("baz", (*hit)->key());
-    CHECK_EQUAL(66, (*hit)->start());
-    CHECK_EQUAL(69, (*hit)->end());
+    CHECK_EQUAL("baz", hit->key());
+    CHECK_EQUAL(66, hit->start());
+    CHECK_EQUAL(69, hit->end());
 
     ++hit;
-    CHECK_EQUAL("bazar", (*hit)->key());
-    CHECK_EQUAL(66, (*hit)->start());
-    CHECK_EQUAL(71, (*hit)->end());
+    CHECK_EQUAL("bazar", hit->key());
+    CHECK_EQUAL(66, hit->start());
+    CHECK_EQUAL(71, hit->end());
 
     ++hit;
-    CHECK_EQUAL("ąČęĖįŠųŪž", (*hit)->key());
-    CHECK_EQUAL(72, (*hit)->start());
-    CHECK_EQUAL(81, (*hit)->end());
+    CHECK_EQUAL("ąČęĖįŠųŪž", hit->key());
+    CHECK_EQUAL(72, hit->start());
+    CHECK_EQUAL(81, hit->end());
   }
 }
+
