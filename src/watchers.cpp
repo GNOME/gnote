@@ -753,7 +753,7 @@ namespace gnote {
       if(contains_text(note.shared_from_this(), renamed.get_title())) {
         auto & n = static_cast<Note&>(note);
         auto buffer = n.get_buffer();
-        highlight_note_in_block(note_manager(), n, std::static_pointer_cast<Note>(const_cast<NoteBase&>(renamed).shared_from_this()), buffer->begin(), buffer->end());
+        highlight_note_in_block(note_manager(), n, renamed, buffer->begin(), buffer->end());
       }
     });
   }
@@ -773,10 +773,10 @@ namespace gnote {
     }
   }
 
-  void AppLinkWatcher::highlight_note_in_block(NoteManagerBase & note_manager, Note & note, const NoteBase::Ptr & find_note, const Gtk::TextIter & start, const Gtk::TextIter & end)
+  void AppLinkWatcher::highlight_note_in_block(NoteManagerBase & note_manager, Note & note, const NoteBase & find_note, const Gtk::TextIter & start, const Gtk::TextIter & end)
   {
     Glib::ustring buffer_text = start.get_text(end).lowercase();
-    Glib::ustring find_title_lower = find_note->get_title().lowercase();
+    Glib::ustring find_title_lower = find_note.get_title().lowercase();
     int idx = 0;
 
     while (true) {
@@ -785,7 +785,7 @@ namespace gnote {
         break;
 
       auto title_len = find_title_lower.length();
-      TrieHit<Glib::ustring> hit(idx, idx + title_len, Glib::ustring(find_title_lower), Glib::ustring(find_note->uri()));
+      TrieHit<Glib::ustring> hit(idx, idx + title_len, Glib::ustring(find_title_lower), Glib::ustring(find_note.uri()));
       do_highlight(note_manager, note, hit, start, end);
 
       idx += title_len;

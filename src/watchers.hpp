@@ -188,7 +188,7 @@ namespace gnote {
     virtual bool initialized() override;
   private:
     static bool contains_text(const NoteBase::Ptr & note, const Glib::ustring & text);
-    static void highlight_note_in_block(NoteManagerBase &, Note &, const NoteBase::Ptr &, const Gtk::TextIter &, const Gtk::TextIter &);
+    static void highlight_note_in_block(NoteManagerBase &, Note &, const NoteBase &, const Gtk::TextIter &, const Gtk::TextIter &);
     void on_note_added(NoteBase &);
     void on_note_deleted(NoteBase &);
     void on_note_renamed(const NoteBase&, const Glib::ustring&);
