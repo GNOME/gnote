@@ -717,17 +717,17 @@ namespace gnote {
     auto link_tag = tag_table->get_link_tag();
     auto broken_link_tag = tag_table->get_broken_link_tag();
 
-    for(auto & note : note_manager().get_notes()) {
-      if(&deleted == note.get()) {
-        continue;
+    note_manager().for_each([this, &deleted, &link_tag, &broken_link_tag](NoteBase & note) {
+      if(&deleted == &note) {
+        return;
       }
 
-      if(!contains_text(note, deleted.get_title())) {
-        continue;
+      if(!contains_text(note.shared_from_this(), deleted.get_title())) {
+        return;
       }
 
       Glib::ustring old_title_lower = deleted.get_title().lowercase();
-      auto buffer = std::static_pointer_cast<Note>(note)->get_buffer();
+      auto buffer = static_cast<Note&>(note).get_buffer();
 
       // Turn all link:internal to link:broken for the deleted note.
       utils::TextTagEnumerator enumerator(buffer, link_tag);
@@ -739,7 +739,7 @@ namespace gnote {
         buffer->remove_tag(link_tag, range.start(), range.end());
         buffer->apply_tag(broken_link_tag, range.start(), range.end());
       }
-    }
+    });
   }
 
   void AppLinkWatcher::on_note_renamed(const NoteBase & renamed, const Glib::ustring & /*old_title*/)
