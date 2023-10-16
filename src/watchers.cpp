@@ -695,20 +695,20 @@ namespace gnote {
 
   void AppLinkWatcher::on_note_added(NoteBase & added)
   {
-    for(auto & note : note_manager().get_notes()) {
-      if(&added == note.get()) {
-        continue;
+    note_manager().for_each([this, &added](NoteBase & note) {
+      if(&added == &note) {
+        return;
       }
 
-      if(!contains_text(note, added.get_title())) {
-        continue;
+      if(!contains_text(note.shared_from_this(), added.get_title())) {
+        return;
       }
 
       // Highlight previously unlinked text
-      auto & n = static_cast<Note&>(*note);
+      auto & n = static_cast<Note&>(note);
       auto buffer = n.get_buffer();
       highlight_in_block(note_manager(), n, buffer->begin(), buffer->end());
-    }
+    });
   }
 
   void AppLinkWatcher::on_note_deleted(NoteBase & deleted)
