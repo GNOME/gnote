@@ -700,7 +700,7 @@ namespace gnote {
         return;
       }
 
-      if(!contains_text(note.shared_from_this(), added.get_title())) {
+      if(!contains_text(note, added.get_title())) {
         return;
       }
 
@@ -722,7 +722,7 @@ namespace gnote {
         return;
       }
 
-      if(!contains_text(note.shared_from_this(), deleted.get_title())) {
+      if(!contains_text(note, deleted.get_title())) {
         return;
       }
 
@@ -750,7 +750,7 @@ namespace gnote {
       }
 
       // Highlight previously unlinked text
-      if(contains_text(note.shared_from_this(), renamed.get_title())) {
+      if(contains_text(note, renamed.get_title())) {
         auto & n = static_cast<Note&>(note);
         auto buffer = n.get_buffer();
         highlight_note_in_block(note_manager(), n, renamed, buffer->begin(), buffer->end());
@@ -758,9 +758,9 @@ namespace gnote {
     });
   }
 
-  bool AppLinkWatcher::contains_text(const NoteBase::Ptr & note, const Glib::ustring & text)
+  bool AppLinkWatcher::contains_text(const NoteBase & note, const Glib::ustring & text)
   {
-    Glib::ustring body = note->text_content().lowercase();
+    Glib::ustring body = const_cast<NoteBase&>(note).text_content().lowercase();
     Glib::ustring match = text.lowercase();
 
     return body.find(match) != Glib::ustring::npos;
