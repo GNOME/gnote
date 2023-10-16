@@ -186,13 +186,10 @@ namespace gnote {
 
   Glib::ustring NoteRenameWatcher::get_unique_untitled()
   {
-    int new_num = manager().get_notes().size();
-    Glib::ustring temp_title;
-
-    while (true) {
+    for(int i = 1;; ++i) {
       // TRANSLATORS: %1 is the placeholder for the number.
-      temp_title = Glib::ustring::compose(_("(Untitled %1)"), ++new_num);
-      if (!manager().find (temp_title)) {
+      auto temp_title = Glib::ustring::compose(_("(Untitled %1)"), i);
+      if(!manager().find(temp_title)) {
         return temp_title;
       }
     }
