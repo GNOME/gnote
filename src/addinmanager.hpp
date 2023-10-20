@@ -107,7 +107,7 @@ private:
   typedef std::map<Glib::ustring, ApplicationAddin*> AppAddinMap;
   AppAddinMap                               m_app_addins;
   typedef std::map<Glib::ustring, NoteAddin *> IdAddinMap;
-  typedef std::map<Note::Ptr, IdAddinMap> NoteAddinMap;
+  typedef std::unordered_map<std::string, IdAddinMap> NoteAddinMap;
   NoteAddinMap                              m_note_addins;
   /// Key = TypeExtensionNode.Id
   /// the iface factory is not owned by the manager.

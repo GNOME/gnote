@@ -170,12 +170,13 @@ namespace {
         continue;
       }
 
-      const Note::Ptr & note = iter->first;
-      NoteAddin *const addin = dynamic_cast<NoteAddin *>((*f)());
-      if(addin) {
-       addin->initialize(m_gnote, note);
-       id_addin_map.insert(std::make_pair(std::move(id), addin));
-      }
+      m_note_manager.find_by_uri(iter->first, [this, id=std::move(id), f, &id_addin_map](NoteBase & note) {
+        NoteAddin *const addin = dynamic_cast<NoteAddin*>((*f)());
+        if(addin) {
+          addin->initialize(m_gnote, std::static_pointer_cast<Note>(note.shared_from_this()));
+          id_addin_map.insert(std::make_pair(std::move(id), addin));
+        }
+      });
     }
   }
 
@@ -362,14 +363,15 @@ namespace {
 
   void AddinManager::load_addins_for_note(const Note::Ptr & note)
   {
-    if(m_note_addins.find(note) != m_note_addins.end()) {
+    std::string uri = note->uri();
+    if(m_note_addins.find(uri) != m_note_addins.end()) {
       ERR_OUT(_("Trying to load addins when they are already loaded"));
       return;
     }
     IdAddinMap loaded_addins;
-    m_note_addins[note] = loaded_addins;
+    m_note_addins[uri] = loaded_addins;
 
-    IdAddinMap & loaded(m_note_addins[note]); // avoid copying the whole map
+    IdAddinMap & loaded(m_note_addins[uri]); // avoid copying the whole map
     for(IdInfoMap::const_iterator iter = m_note_addin_infos.begin();
         iter != m_note_addin_infos.end(); ++iter) {
 
@@ -390,7 +392,7 @@ namespace {
   std::vector<NoteAddin*> AddinManager::get_note_addins(const Note::Ptr & note) const
   {
     std::vector<NoteAddin*> addins;
-    NoteAddinMap::const_iterator iter = m_note_addins.find(note);
+    NoteAddinMap::const_iterator iter = m_note_addins.find(note->uri());
     if(iter != m_note_addins.end()) {
       for(IdAddinMap::const_iterator it = iter->second.begin(); it != iter->second.end(); ++it) {
         addins.push_back(it->second);
