@@ -116,14 +116,4 @@ std::vector<Glib::RefPtr<Gio::MenuItem>> BacklinksNoteAddin::get_backlink_menu_i
 }
 
 
-bool BacklinksNoteAddin::check_note_has_match(const gnote::Note::Ptr & note, 
-                                              const Glib::ustring & encoded_title)
-{
-  Glib::ustring note_text = note->xml_content();
-  note_text = note_text.lowercase();
-  return note_text.find(encoded_title) != Glib::ustring::npos;
-}
-
-
-
 }

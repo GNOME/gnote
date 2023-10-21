@@ -57,7 +57,6 @@ private:
   void on_open_note(const Glib::VariantBase & param);
   void update_menu(Gio::Menu & menu) const;
   std::vector<Glib::RefPtr<Gio::MenuItem>> get_backlink_menu_items() const;
-  bool check_note_has_match(const gnote::Note::Ptr &, const Glib::ustring &);
 };
 
 }
