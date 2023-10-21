@@ -2,7 +2,7 @@
  * "Table of Contents" is a Note add-in for Gnote.
  *  It lists note's table of contents in a menu.
  *
- * Copyright (C) 2013,2015 Aurimas Cernius
+ * Copyright (C) 2013,2015,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 
 namespace tableofcontents {
 
-void goto_heading(const gnote::Note::Ptr & note, int heading_position);
+void goto_heading(gnote::Note & note, int heading_position);
 
 }
 

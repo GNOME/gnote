@@ -340,7 +340,7 @@ void TableofcontentsNoteAddin::headification_switch (Heading::Type heading_reque
 void TableofcontentsNoteAddin::on_goto_heading(const Glib::VariantBase & param)
 {
   int value = Glib::VariantBase::cast_dynamic<Glib::Variant<gint32>>(param).get();
-  goto_heading(get_note(), value);
+  goto_heading(*get_note(), value);
 }
 
 
