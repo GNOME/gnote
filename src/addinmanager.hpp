@@ -27,6 +27,7 @@
 
 #include <sigc++/signal.h>
 
+#include "base/hash.hpp"
 #include "sharp/modulemanager.hpp"
 #include "addininfo.hpp"
 #include "note.hpp"
@@ -107,7 +108,7 @@ private:
   typedef std::map<Glib::ustring, ApplicationAddin*> AppAddinMap;
   AppAddinMap                               m_app_addins;
   typedef std::map<Glib::ustring, NoteAddin *> IdAddinMap;
-  typedef std::unordered_map<std::string, IdAddinMap> NoteAddinMap;
+  typedef std::unordered_map<Glib::ustring, IdAddinMap, Hash<Glib::ustring>> NoteAddinMap;
   NoteAddinMap                              m_note_addins;
   /// Key = TypeExtensionNode.Id
   /// the iface factory is not owned by the manager.

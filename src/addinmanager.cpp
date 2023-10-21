@@ -363,7 +363,7 @@ namespace {
 
   void AddinManager::load_addins_for_note(const Note::Ptr & note)
   {
-    std::string uri = note->uri();
+    auto & uri = note->uri();
     if(m_note_addins.find(uri) != m_note_addins.end()) {
       ERR_OUT(_("Trying to load addins when they are already loaded"));
       return;
