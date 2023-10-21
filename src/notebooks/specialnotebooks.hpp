@@ -28,6 +28,7 @@
 
 #include "notebook.hpp"
 #include "tag.hpp"
+#include "base/hash.hpp"
 
 
 namespace gnote {
@@ -108,7 +109,7 @@ public:
 private:
   void on_note_deleted(NoteBase & note);
 
-  std::unordered_set<std::string> m_notes;
+  std::unordered_set<Glib::ustring, Hash<Glib::ustring>> m_notes;
 };
 
 
