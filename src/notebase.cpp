@@ -29,6 +29,7 @@
 #include "itagmanager.hpp"
 #include "notebase.hpp"
 #include "notemanagerbase.hpp"
+#include "base/hash.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/files.hpp"
 #include "sharp/map.hpp"
@@ -122,7 +123,7 @@ NoteBase::NoteBase(const Glib::ustring && filepath, NoteManagerBase & _manager)
 
 int NoteBase::get_hash_code() const
 {
-  std::hash<std::string> h;
+  Hash<Glib::ustring> h;
   return h(get_title());
 }
 
