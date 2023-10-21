@@ -12,6 +12,7 @@ test_sources = [
   'unit/filesutests.cpp',
   'unit/fileinfoutests.cpp',
   'unit/gnotesyncclientutests.cpp',
+  'unit/hashtests.cpp',
   'unit/noteutests.cpp',
   'unit/notemanagerutests.cpp',
   'unit/stringutests.cpp',
