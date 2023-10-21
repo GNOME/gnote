@@ -62,7 +62,7 @@ private:
   sharp::XslTransform & get_note_xsl();
   void export_button_clicked(const Glib::VariantBase&);
   void export_dialog_response(ExportToHtmlDialog & dialog);
-  void write_html_for_note (sharp::StreamWriter &, const gnote::Note::Ptr &, bool, bool);
+  void write_html_for_note(sharp::StreamWriter &, gnote::Note &, bool, bool);
 
   static sharp::XslTransform *s_xsl;
 };

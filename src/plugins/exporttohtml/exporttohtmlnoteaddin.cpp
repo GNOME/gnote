@@ -114,8 +114,7 @@ void ExportToHtmlNoteAddin::export_dialog_response(ExportToHtmlDialog & dialog)
     sharp::file_delete(output_path);
 
     writer.init(output_path);
-    write_html_for_note (writer, get_note(), dialog.get_export_linked(), 
-                         dialog.get_export_linked_all());
+    write_html_for_note(writer, *get_note(), dialog.get_export_linked(), dialog.get_export_linked_all());
 
     // Save the dialog preferences now that the note has
     // successfully been exported
@@ -227,21 +226,17 @@ sharp::XslTransform & ExportToHtmlNoteAddin::get_note_xsl()
 }
 
 
-
-
-void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer, 
-                                                 const gnote::Note::Ptr & note, 
-                                                 bool export_linked, 
-                                                 bool export_linked_all)
+void ExportToHtmlNoteAddin::write_html_for_note(sharp::StreamWriter & writer,
+  gnote::Note & note, bool export_linked, bool export_linked_all)
 {
   Glib::ustring s_writer;
-  s_writer = note->manager().note_archiver().write_string(note->data());
+  s_writer = note.manager().note_archiver().write_string(note.data());
   xmlDocPtr doc = xmlParseMemory(s_writer.c_str(), s_writer.bytes());
 
   sharp::XsltArgumentList args;
-  args.add_param ("export-linked", "", export_linked);
-  args.add_param ("export-linked-all", "", export_linked_all);
-  args.add_param ("root-note", "", gnote::utils::XmlEncoder::encode(note->get_title()));
+  args.add_param("export-linked", "", export_linked);
+  args.add_param("export-linked-all", "", export_linked_all);
+  args.add_param("root-note", "", gnote::utils::XmlEncoder::encode(note.get_title()));
 
   if(ignote().preferences().enable_custom_font()) {
     Glib::ustring font_face = ignote().preferences().custom_font_face();
@@ -251,7 +246,7 @@ void ExportToHtmlNoteAddin::write_html_for_note (sharp::StreamWriter & writer,
     args.add_param ("font", "", font);
   }
 
-  NoteNameResolver resolver(note->manager(), note);
+  NoteNameResolver resolver(note.manager(), std::static_pointer_cast<gnote::Note>(note.shared_from_this()));
   get_note_xsl().transform(doc, args, writer, resolver);
 
   xmlFreeDoc(doc);
