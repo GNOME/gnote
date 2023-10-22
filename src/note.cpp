@@ -254,13 +254,10 @@ namespace gnote {
     for(const auto & iter : m_data.data().tags()) {
       add_tag(iter.second);
     }
-    m_save_timeout = new utils::InterruptableTimeout();
-    m_save_timeout->signal_timeout.connect(sigc::mem_fun(*this, &Note::on_save_timeout));
   }
 
   Note::~Note()
   {
-    delete m_save_timeout;
     delete m_window;
   }
 
@@ -296,7 +293,6 @@ namespace gnote {
   void Note::delete_note()
   {
     m_is_deleting = true;
-    m_save_timeout->cancel ();
     
     // Remove the note from all the tags
     for(NoteData::TagMap::const_iterator iter = m_data.data().tags().begin();
@@ -420,24 +416,10 @@ namespace gnote {
     if(!m_is_deleting) {
       // Replace the existing save timeout.  Wait 4 seconds
       // before saving...
-      m_save_timeout->reset(4000);
       m_save_needed = true;
-    }
-    else {
-      m_save_timeout->cancel();
+      static_cast<NoteManager&>(manager()).queue_save(*this);
     }
     set_change_type(changeType);
-  }
-
-  void Note::on_save_timeout()
-  {
-    try {
-      save();
-    }
-    catch(const sharp::Exception &e) 
-    {
-      ERR_OUT(_("Error while saving: %s"), e.what());
-    }
   }
 
   void Note::remove_tag(Tag & tag)

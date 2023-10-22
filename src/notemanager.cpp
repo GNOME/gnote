@@ -44,6 +44,11 @@ namespace gnote {
     , m_addin_mgr(NULL)
     , m_note_archiver(*this)
   {
+    auto save_callback = [](gpointer data) -> gboolean {
+      static_cast<NoteManager*>(data)->save_notes();
+      return TRUE;
+    };
+    g_timeout_add_seconds(4, save_callback, this);
   }
 
 
@@ -336,6 +341,44 @@ namespace gnote {
     }
 
     return new_note;
+  }
+
+  void NoteManager::queue_save(NoteBase & note)
+  {
+    const auto & uri = note.uri();
+    for(const auto & to_save : m_queued_saves) {
+      if(to_save == uri) {
+        return;
+      }
+    }
+
+    m_queued_saves.push_back(uri);
+  }
+
+  void NoteManager::save_notes()
+  {
+    if(m_queued_saves.size() == 0) {
+      return;
+    }
+
+    // make copy, just incase saving causes new queues
+    decltype(m_queued_saves) to_save;
+    std::swap(m_queued_saves, to_save);
+
+    for(const auto & uri : to_save) {
+      bool did_find = find_by_uri(uri, [](NoteBase & note) {
+        try {
+          note.save();
+        }
+        catch(const sharp::Exception &e) {
+          ERR_OUT(_("Error while saving: %s"), e.what());
+        }
+      });
+
+      if(!did_find) {
+        ERR_OUT(_("Did not find note with uri '%s', cannot save"), uri.c_str());
+      }
+    }
   }
 
 }

@@ -66,6 +66,9 @@ namespace gnote {
 
     Note & get_or_create_template_note() override;
 
+    void queue_save(NoteBase & note);
+    void save_notes();
+
     ChangedHandler signal_note_buffer_changed;
 
     using NoteManagerBase::create_note_from_template;
@@ -88,6 +91,9 @@ namespace gnote {
     AddinManager   *m_addin_mgr;
     NoteArchiver m_note_archiver;
     TagManager m_tag_manager;
+
+    // Notes to save, URIs
+    std::vector<Glib::ustring> m_queued_saves;
   };
 
 
