@@ -126,7 +126,7 @@ namespace {
 
     Gtk::Notebook *notebook = Gtk::make_managed<Gtk::Notebook>();
     notebook->set_margin(5);
-    
+
     notebook->append_page(*make_editing_pane(), _("General"));
     notebook->append_page(*make_links_pane(), _("Links"));
     notebook->append_page(*make_sync_pane(), _("Synchronization"));
