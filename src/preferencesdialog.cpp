@@ -528,11 +528,11 @@ namespace {
     if (m_sync_addin_prefs_widget == NULL) {
       auto l = make_label(_("Not configurable"));
       m_sync_addin_prefs_widget = l;
+      m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
     }
     if (m_sync_addin_prefs_widget && current_sync_configured) {
       m_sync_addin_prefs_widget->set_sensitive(false);
     }
-    m_sync_addin_prefs_container->attach(*m_sync_addin_prefs_widget, 0, 0, 1, 1);
 
     return vbox;
   }
