@@ -94,6 +94,7 @@ namespace gnote {
 
     // Notes to save, URIs
     std::vector<Glib::ustring> m_queued_saves;
+    guint m_save_timeout;
   };
 
 

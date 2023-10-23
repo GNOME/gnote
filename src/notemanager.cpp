@@ -43,12 +43,8 @@ namespace gnote {
     , m_notebook_manager(*this)
     , m_addin_mgr(NULL)
     , m_note_archiver(*this)
+    , m_save_timeout(0)
   {
-    auto save_callback = [](gpointer data) -> gboolean {
-      static_cast<NoteManager*>(data)->save_notes();
-      return TRUE;
-    };
-    g_timeout_add_seconds(4, save_callback, this);
   }
 
 
@@ -353,6 +349,21 @@ namespace gnote {
     }
 
     m_queued_saves.push_back(uri);
+    if(m_save_timeout) {
+      return;
+    }
+
+    auto save_callback = [](gpointer data) -> gboolean {
+      auto & manager = *static_cast<NoteManager*>(data);
+      manager.save_notes();
+      if(manager.m_queued_saves.size()) {
+        return TRUE;
+      }
+
+      manager.m_save_timeout = 0;
+      return FALSE;
+    };
+    m_save_timeout = g_timeout_add_seconds(4, save_callback, this);
   }
 
   void NoteManager::save_notes()
