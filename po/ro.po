@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-10-01 13:16+0000\n"
-"PO-Revision-Date: 2023-10-21 15:17+0300\n"
+"POT-Creation-Date: 2023-10-22 19:44+0000\n"
+"PO-Revision-Date: 2023-10-25 15:15+0300\n"
 "Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
 "gmail [dot] com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
@@ -748,27 +748,27 @@ msgstr "%s nu implementează %s"
 msgid "Note plugin %s already present"
 msgstr "Pluginul de notițe %s  este prezent deja"
 
-#: src/addinmanager.cpp:187
+#: src/addinmanager.cpp:188
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Informațiile despre pluginul de notițe %s  sunt absente"
 
-#: src/addinmanager.cpp:200
+#: src/addinmanager.cpp:201
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Pluginul de notițe %s  este absent"
 
-#: src/addinmanager.cpp:236
+#: src/addinmanager.cpp:237
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Eșec la găsirea modulului %s pentru adaosul %s"
 
-#: src/addinmanager.cpp:240
+#: src/addinmanager.cpp:241
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Eșec la încărcarea informațiilor modulului pentru %s: %s"
 
-#: src/addinmanager.cpp:366
+#: src/addinmanager.cpp:368
 msgid "Trying to load addins when they are already loaded"
 msgstr "Se încearcă încărcarea adaosurilor când sunt încărcate deja"
 
@@ -852,7 +852,7 @@ msgid "_Cancel"
 msgstr "_Anulează"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:280
-#: src/searchnoteswidget.cpp:999
+#: src/searchnoteswidget.cpp:998
 msgid "_Open"
 msgstr "_Deschide"
 
@@ -889,7 +889,7 @@ msgstr "Dacă ștergeți o iconiță ea va fi pierdută definitiv."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:423
 #: src/notebooks/notebookmanager.cpp:363 src/note.cpp:69
-#: src/searchnoteswidget.cpp:1001 src/searchnoteswidget.cpp:1036
+#: src/searchnoteswidget.cpp:1000 src/searchnoteswidget.cpp:1031
 msgid "_Delete"
 msgstr "Șt_erge"
 
@@ -963,27 +963,27 @@ msgstr "_Salvează"
 msgid "Export to HTML…"
 msgstr "Exportă în HTML…"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:129
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:128
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Nu s-a putut deschide notița într-un navigator web: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:133
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:132
 msgid "Your note was exported to \"%1\"."
 msgstr "Notița a fost exportată în „%1”."
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:142
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:141
 msgid "Note exported successfully"
 msgstr "Notița a fost exportată cu succes"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:157
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:165
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:156
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:164
 #, c-format
 msgid "Could not export: %s"
 msgstr "Nu s-a putut exporta %s"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:168
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:167
 msgid "Could not save the file \"%1\""
 msgstr "Nu s-a putut salva fișierul „%1”"
 
@@ -1518,18 +1518,18 @@ msgid "Window is not embedded"
 msgstr "Fereastra nu este încorporată"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:220 src/note.cpp:348
+#: src/notebase.cpp:221 src/note.cpp:344
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Excepție la salvarea notiței: %s"
 
 #. write failure, but not critical
-#: src/notebase.cpp:460
+#: src/notebase.cpp:461
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Eșec la actualizarea formatului notiței: %s"
 
-#: src/notebase.cpp:578
+#: src/notebase.cpp:579
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Eroare la sistemul de fișiere: %s"
@@ -1552,7 +1552,7 @@ msgstr "Nume deja în uz"
 msgid "C_reate"
 msgstr "C_reează"
 
-#: src/notebooks/notebookapplicationaddin.cpp:75
+#: src/notebooks/notebookapplicationaddin.cpp:73
 msgid "New Note_book..."
 msgstr "_Carnețel nou..."
 
@@ -1565,7 +1565,7 @@ msgstr "_Carnețel nou..."
 msgid "%1 Notebook Template"
 msgstr "Șablon carnețel %1"
 
-#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:292
+#: src/notebooks/notebook.cpp:170 src/notemanagerbase.cpp:291
 msgid "New Note"
 msgstr "Notiță nouă"
 
@@ -1652,26 +1652,21 @@ msgstr ""
 "suficient pe disc și că aveți drepturi de scriere în ~/.local/share/gnote. "
 "Detaliile despre eroare se găsesc în ~/gnote.log."
 
-#: src/note.cpp:439
-#, c-format
-msgid "Error while saving: %s"
-msgstr "Eroare la salvare: %s"
-
-#: src/note.cpp:662
+#: src/note.cpp:644
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 "Stabilirea conținutului de text pentru notele închise nu este suportată"
 
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:313
+#: src/notemanagerbase.cpp:106 src/preferencesdialog.cpp:313
 msgid "New Note Template"
 msgstr "Șablon notiță nouă"
 
-#: src/notemanagerbase.cpp:344
+#: src/notemanagerbase.cpp:343
 msgid "Describe your new note here."
 msgstr "Descrieți aici noua dumneavoastră notiță."
 
-#: src/notemanager.cpp:114
+#: src/notemanager.cpp:119
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1712,7 +1707,7 @@ msgstr ""
 "subliniat automat? Faceți clic pe legătură pentru a deschide notița.</note-"
 "content>"
 
-#: src/notemanager.cpp:133
+#: src/notemanager.cpp:138
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1741,24 +1736,34 @@ msgstr ""
 "fi legat automat pentru dumneavoastră.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:183
+#: src/notemanager.cpp:153 src/notemanager.cpp:188
 msgid "Start Here"
 msgstr "Începeți aici"
 
-#: src/notemanager.cpp:152
+#: src/notemanager.cpp:157
 msgid "Using Links in Gnote"
 msgstr "Folosirea legăturilor în Gnote"
 
-#: src/notemanager.cpp:156
+#: src/notemanager.cpp:161
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Eroare la creerea notițelor de început: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:171
+#: src/notemanager.cpp:176
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Eroare la parsarea XML-ului notiței, se omite „%s”: %s"
+
+#: src/notemanager.cpp:374
+#, c-format
+msgid "Error while saving: %s"
+msgstr "Eroare la salvare: %s"
+
+#: src/notemanager.cpp:379
+#, c-format
+msgid "Did not find note with uri '%s', cannot save"
+msgstr "Nu s-a găsit notița cu uri „%s”, nu se poate salva"
 
 #: src/noterenamedialog.cpp:142
 msgid "Rename Note Links?"
@@ -1866,23 +1871,23 @@ msgstr "Salvează _titlul"
 msgid "Cannot create note"
 msgstr "Nu se poate crea notița"
 
-#: src/notewindow.cpp:957
+#: src/notewindow.cpp:956
 msgid "_Highlight"
 msgstr "_Evidențiere"
 
-#: src/notewindow.cpp:961
+#: src/notewindow.cpp:960
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:961
 msgid "S_mall"
 msgstr "M_ic"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:962
 msgid "_Large"
 msgstr "_Mare"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:963
 msgid "Hu_ge"
 msgstr "_Foarte mare"
 
@@ -2167,15 +2172,15 @@ msgstr ""
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Părintele căutării nu este un Gtk::Grid, raportați eroarea!"
 
-#: src/recentchanges.cpp:705
+#: src/recentchanges.cpp:702
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Încearcă să trimiți un widget neînglobat în fereastră pe prim plan"
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:709
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Încearcă să trimiți un widget care nu este Gtk::Widget pe prim plan"
 
-#: src/recentchanges.cpp:917
+#: src/recentchanges.cpp:914
 msgid "No configured actions"
 msgstr "Nicio acțiune configurată"
 
@@ -2188,15 +2193,15 @@ msgstr "Eșec la încărcarea interfeței D-Bus %s: %s"
 msgid "Notebooks"
 msgstr "Carnețele"
 
-#: src/searchnoteswidget.cpp:537
+#: src/searchnoteswidget.cpp:536
 msgid "Note"
 msgstr "Notiță"
 
-#: src/searchnoteswidget.cpp:561
+#: src/searchnoteswidget.cpp:560
 msgid "Modified"
 msgstr "Modificat"
 
-#: src/searchnoteswidget.cpp:733
+#: src/searchnoteswidget.cpp:732
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2204,62 +2209,62 @@ msgstr ""
 "Niciun rezultat găsit în carnețelul selectat\n"
 "Apăsați aici pentru a căuta în toate notițele."
 
-#: src/searchnoteswidget.cpp:737
+#: src/searchnoteswidget.cpp:736
 msgid "Click here to search across all notebooks"
 msgstr "Clic aici pentru a căuta în toate carnețelele"
 
-#: src/searchnoteswidget.cpp:755
+#: src/searchnoteswidget.cpp:754
 msgid "Matches"
 msgstr "Rezultate"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:805
+#: src/searchnoteswidget.cpp:804
 msgid "Title match"
 msgstr "Potrivire titlu"
 
-#: src/searchnoteswidget.cpp:809
+#: src/searchnoteswidget.cpp:808
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 potrivire"
 msgstr[1] "%1 potriviri"
 msgstr[2] "%1 de potriviri"
 
-#: src/searchnoteswidget.cpp:998
+#: src/searchnoteswidget.cpp:997
 msgid "_New"
 msgstr "_Notiță nouă"
 
-#: src/searchnoteswidget.cpp:1000
+#: src/searchnoteswidget.cpp:999
 msgid "Open In New _Window"
 msgstr "Deschide într-o _fereastră nouă"
 
-#: src/searchnoteswidget.cpp:1033
+#: src/searchnoteswidget.cpp:1028
 msgid "_New..."
 msgstr "_Nouă..."
 
-#: src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:1029
 msgid "_Open Template Note"
 msgstr "Deschide n_otița șablon"
 
-#: src/searchnoteswidget.cpp:1035
+#: src/searchnoteswidget.cpp:1030
 msgid "Re_name..."
 msgstr "Rede_numește…"
 
-#: src/searchnoteswidget.cpp:1162 src/searchnoteswidget.cpp:1175
-#: src/searchnoteswidget.cpp:1186
+#: src/searchnoteswidget.cpp:1153 src/searchnoteswidget.cpp:1166
+#: src/searchnoteswidget.cpp:1177
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Eșec la parsarea configurării sortării căutării (Valoare: %s):"
 
-#: src/searchnoteswidget.cpp:1163
+#: src/searchnoteswidget.cpp:1154
 msgid "Expected format 'column:order'"
 msgstr "Format așteptat „coloană:ordine”"
 
-#: src/searchnoteswidget.cpp:1176
+#: src/searchnoteswidget.cpp:1167
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Coloană nerecunoscută %s"
 
-#: src/searchnoteswidget.cpp:1187
+#: src/searchnoteswidget.cpp:1178
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ordine nerecunoscută %s"
@@ -2701,12 +2706,12 @@ msgid "_Yes"
 msgstr "_Da"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: src/watchers.cpp:194
+#: src/watchers.cpp:191
 msgid "(Untitled %1)"
 msgstr "(Neintitulat %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:226
+#: src/watchers.cpp:223
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2714,11 +2719,11 @@ msgstr ""
 "O notiță cu titlul <b>%1</b> există deja. Înainte de a continua, alegeți un "
 "alt nume pentru această notiță."
 
-#: src/watchers.cpp:241
+#: src/watchers.cpp:238
 msgid "Note title taken"
 msgstr "Titlu acceptat pentru notiță"
 
-#: src/watchers.cpp:308
+#: src/watchers.cpp:305
 msgid "Check spelling"
 msgstr "Verifică ortografia"
 
