@@ -62,7 +62,7 @@ namespace sync {
     virtual void on_realize() override;
   private:
     static void on_expander_activated(GtkExpander*, gpointer);
-    void note_conflict_detected_(const Note::Ptr & localConflictNote,
+    void note_conflict_detected_(Note & localConflictNote,
                                  NoteUpdate remoteNote,
                                  const std::vector<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,

@@ -591,7 +591,7 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
   // and then rethrown in the synchronization thread.
   utils::main_context_invoke(
     [this, localConflictNote, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait_mutex, &wait, &completed]() {
-      note_conflict_detected_(localConflictNote, remoteNote, noteUpdateTitles,
+      note_conflict_detected_(*localConflictNote, remoteNote, noteUpdateTitles,
                               static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
                               OVERWRITE_EXISTING, wait_mutex, wait, completed
       );
@@ -604,7 +604,7 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
 
 
 void SyncDialog::note_conflict_detected_(
-  const Note::Ptr & localConflictNote,
+  Note & localConflictNote,
   NoteUpdate remoteNote,
   const std::vector<Glib::ustring> & noteUpdateTitles,
   SyncTitleConflictResolution savedBehavior,
@@ -614,18 +614,19 @@ void SyncDialog::note_conflict_detected_(
   bool & completed)
 {
   bool noteSyncBitsMatch = m_gnote.sync_manager().synchronized_note_xml_matches(
-    localConflictNote->get_complete_note_xml(), remoteNote.m_xml_content);
+    localConflictNote.get_complete_note_xml(), remoteNote.m_xml_content);
 
   // If the synchronized note content is in conflict
   // and there is no saved conflict handling behavior, show the dialog
   if(!noteSyncBitsMatch && savedBehavior == 0) {
-    auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(localConflictNote, noteUpdateTitles);
+    auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(std::static_pointer_cast<Note>(localConflictNote.shared_from_this()), noteUpdateTitles);
+    auto local_conflict_note = localConflictNote.uri();
     conflictDlg->signal_response()
-      .connect([this, conflictDlg, localConflictNote, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait_mutex, &wait, &completed](int resp) {
+      .connect([this, conflictDlg, local_conflict_note, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait_mutex, &wait, &completed](int resp) {
       auto response = static_cast<Gtk::ResponseType>(resp);
       conflict_dialog_response(
         conflictDlg,
-        localConflictNote->uri(),
+        local_conflict_note,
         remoteNote,
         savedBehavior,
         resolution,
