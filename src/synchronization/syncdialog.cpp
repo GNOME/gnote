@@ -625,7 +625,7 @@ void SyncDialog::note_conflict_detected_(
       auto response = static_cast<Gtk::ResponseType>(resp);
       conflict_dialog_response(
         conflictDlg,
-        localConflictNote,
+        localConflictNote->uri(),
         remoteNote,
         savedBehavior,
         resolution,
@@ -649,7 +649,7 @@ void SyncDialog::note_conflict_detected_(
 
 void SyncDialog::conflict_dialog_response(
   Gtk::Dialog *dialog,
-  const Note::Ptr & localConflictNote,
+  const Glib::ustring & localConflictNote,
   NoteUpdate remoteNote,
   SyncTitleConflictResolution savedBehavior,
   SyncTitleConflictResolution resolution,
@@ -678,21 +678,23 @@ void SyncDialog::conflict_dialog_response(
         savedBehavior = resolution;
       }
       // No need to delete if sync will overwrite
-      if(localConflictNote->id() != remoteNote.m_uuid) {
-        m_manager.delete_note(*localConflictNote);
+      if(localConflictNote != remoteNote.m_uuid) {
+        if(auto local_conflict_note = m_manager.find_by_uri(localConflictNote)) {
+          m_manager.delete_note(local_conflict_note.value());
+        }
       }
       break;
     case RENAME_EXISTING_AND_UPDATE:
       if(conflictDlg->always_perform_this_action()) {
         savedBehavior = resolution;
       }
-      rename_note(localConflictNote->uri(), conflictDlg->renamed_title(), true);
+      rename_note(localConflictNote, conflictDlg->renamed_title(), true);
       break;
     case RENAME_EXISTING_NO_UPDATE:
       if(conflictDlg->always_perform_this_action()) {
         savedBehavior = resolution;
       }
-      rename_note(localConflictNote->uri(), conflictDlg->renamed_title(), false);
+      rename_note(localConflictNote, conflictDlg->renamed_title(), false);
       break;
     case CANCEL:
       break;

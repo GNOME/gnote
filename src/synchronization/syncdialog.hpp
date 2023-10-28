@@ -72,7 +72,7 @@ namespace sync {
                                  bool & completed);
     void conflict_dialog_response(
       Gtk::Dialog *dialog,
-      const Note::Ptr & localConflictNote,
+      const Glib::ustring & localConflictNote,
       NoteUpdate remoteNote,
       SyncTitleConflictResolution savedBehavior,
       SyncTitleConflictResolution resolution,
