@@ -407,7 +407,7 @@ void SyncDialog::on_row_activated(guint idx)
   Glib::ustring noteTitle = item->value.title;
 
   if(auto note = m_manager.find(noteTitle)) {
-    present_note(std::static_pointer_cast<Note>(note.value().get().shared_from_this()));
+    present_note(static_cast<Note&>(note.value().get()));
   }
 }
 
@@ -742,13 +742,13 @@ void SyncDialog::rename_note(const Note::Ptr & note, Glib::ustring && newTitle, 
     catch(...) {} // TODO: Handle exception in case that newCompleteContent is invalid XML
   }
   if(noteOpen) {
-    present_note(std::static_pointer_cast<Note>(renamedNote.shared_from_this()));
+    present_note(static_cast<Note&>(renamedNote));
   }
 }
 
-void SyncDialog::present_note(const Note::Ptr & note)
+void SyncDialog::present_note(Note & note)
 {
-  MainWindow::present_in(m_gnote.get_window_for_note(), *note);
+  MainWindow::present_in(m_gnote.get_window_for_note(), note);
 }
 
 }

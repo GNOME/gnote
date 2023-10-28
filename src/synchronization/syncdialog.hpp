@@ -83,7 +83,7 @@ namespace sync {
     void on_row_activated(guint idx);
     void sync_state_changed_(SyncState state);
     void rename_note(const Note::Ptr & note, Glib::ustring && newTitle, bool updateReferencingNotes);
-    void present_note(const Note::Ptr &);
+    void present_note(Note &);
 
     Gtk::Image *m_image;
     Gtk::Label *m_header_label;
