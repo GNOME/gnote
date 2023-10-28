@@ -686,13 +686,13 @@ void SyncDialog::conflict_dialog_response(
       if(conflictDlg->always_perform_this_action()) {
         savedBehavior = resolution;
       }
-      rename_note(localConflictNote, conflictDlg->renamed_title(), true);
+      rename_note(localConflictNote->uri(), conflictDlg->renamed_title(), true);
       break;
     case RENAME_EXISTING_NO_UPDATE:
       if(conflictDlg->always_perform_this_action()) {
         savedBehavior = resolution;
       }
-      rename_note(localConflictNote, conflictDlg->renamed_title(), false);
+      rename_note(localConflictNote->uri(), conflictDlg->renamed_title(), false);
       break;
     case CANCEL:
       break;
@@ -708,9 +708,15 @@ void SyncDialog::conflict_dialog_response(
 }
 
 
-void SyncDialog::rename_note(const Note::Ptr & note, Glib::ustring && newTitle, bool)
+void SyncDialog::rename_note(const Glib::ustring & note_uri, Glib::ustring && newTitle, bool)
 {
-  Glib::ustring oldTitle = note->get_title();
+  auto note_ref = m_manager.find_by_uri(note_uri);
+  if(!note_ref) {
+    return;
+  }
+
+  Note & note = static_cast<Note&>(note_ref.value().get());
+  Glib::ustring oldTitle = note.get_title();
   // Rename the note (skip for now...never using updateReferencingNotes option)
   //if (updateReferencingNotes) // NOTE: This might never work, or lead to a ton of conflicts
   // note.Title = newTitle;
@@ -720,17 +726,17 @@ void SyncDialog::rename_note(const Note::Ptr & note, Glib::ustring && newTitle, 
   //note.XmlContent = NoteArchiver.Instance.GetRenamedNoteXml (oldContent, oldTitle, newTitle);
 
   // Preserve note information
-  note->save(); // Write to file
-  bool noteOpen = note->is_opened();
+  note.save(); // Write to file
+  bool noteOpen = note.is_opened();
   Glib::ustring newContent = //note.XmlContent;
-    m_manager.note_archiver().get_renamed_note_xml(note->xml_content(), oldTitle, newTitle);
+    m_manager.note_archiver().get_renamed_note_xml(note.xml_content(), oldTitle, newTitle);
   Glib::ustring newCompleteContent = //note.GetCompleteNoteXml ();
-    m_manager.note_archiver().get_renamed_note_xml(note->get_complete_note_xml(), oldTitle, newTitle);
+    m_manager.note_archiver().get_renamed_note_xml(note.get_complete_note_xml(), oldTitle, newTitle);
   //Logger.Debug ("RenameNote: newContent: " + newContent);
   //Logger.Debug ("RenameNote: newCompleteContent: " + newCompleteContent);
 
   // We delete and recreate the note to simplify content conflict handling
-  m_manager.delete_note(*note);
+  m_manager.delete_note(note);
 
   // Create note with old XmlContent just in case GetCompleteNoteXml failed
   DBG_OUT("RenameNote: about to create %s", newTitle.c_str());
