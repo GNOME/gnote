@@ -93,14 +93,14 @@ class SyncTitleConflictDialog
   : public Gtk::Dialog
 {
 public:
-  SyncTitleConflictDialog(const Note::Ptr & existingNote, const std::vector<Glib::ustring> & noteUpdateTitles)
+  SyncTitleConflictDialog(Note & existingNote, const std::vector<Glib::ustring> & noteUpdateTitles)
     : Gtk::Dialog(_("Note Conflict"), true)
-    , m_existing_note(existingNote)
+    , m_note_manager(existingNote.manager())
     , m_note_update_titles(noteUpdateTitles)
     {
       // Suggest renaming note by appending " (old)" to the existing title
       char *old = _(" (old)");
-      Glib::ustring suggestedRenameBase = existingNote->get_title() + old;
+      Glib::ustring suggestedRenameBase = existingNote.get_title() + old;
       Glib::ustring suggestedRename = suggestedRenameBase;
       for(int i = 1; !is_note_title_available(suggestedRename); i++) {
         suggestedRename = suggestedRenameBase + " " + TO_STRING(i);
@@ -166,7 +166,7 @@ public:
       header_text(_("Note conflict detected"));
       message_text(Glib::ustring::compose(
         _("The server version of \"%1\" conflicts with your local note.  What do you want to do with your local note?"),
-        existingNote->get_title()));
+        existingNote.get_title()));
     }
   void header_text(const Glib::ustring & value)
     {
@@ -212,7 +212,7 @@ private:
   bool is_note_title_available(const Glib::ustring & renamedTitle)
     {
       return std::find(m_note_update_titles.begin(), m_note_update_titles.end(), renamedTitle) == m_note_update_titles.end()
-             && m_existing_note->manager().find(renamedTitle);
+             && m_note_manager.find(renamedTitle);
     }
   void radio_toggled()
     {
@@ -224,7 +224,7 @@ private:
       renameUpdateCheck->set_sensitive(renameRadio->get_active());
     }
 
-  Note::Ptr m_existing_note;
+  NoteManagerBase & m_note_manager;
   std::vector<Glib::ustring> m_note_update_titles;
 
   Gtk::Button *continueButton;
@@ -619,7 +619,7 @@ void SyncDialog::note_conflict_detected_(
   // If the synchronized note content is in conflict
   // and there is no saved conflict handling behavior, show the dialog
   if(!noteSyncBitsMatch && savedBehavior == 0) {
-    auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(std::static_pointer_cast<Note>(localConflictNote.shared_from_this()), noteUpdateTitles);
+    auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(localConflictNote, noteUpdateTitles);
     auto local_conflict_note = localConflictNote.uri();
     conflictDlg->signal_response()
       .connect([this, conflictDlg, local_conflict_note, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait_mutex, &wait, &completed](int resp) {
