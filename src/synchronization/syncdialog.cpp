@@ -575,7 +575,7 @@ void SyncDialog::note_synchronized(const Glib::ustring & noteTitle, NoteSyncType
 }
 
 
-void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
+void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
@@ -589,12 +589,20 @@ void SyncDialog::note_conflict_detected(const Note::Ptr & localConflictNote,
   // so we have to use the delegate here to manipulate the GUI.
   // To be consistent, any exceptions in the delgate will be caught
   // and then rethrown in the synchronization thread.
+  auto local_conflict_note = localConflictNote.uri();
+  auto & manager = localConflictNote.manager();
   utils::main_context_invoke(
-    [this, localConflictNote, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait_mutex, &wait, &completed]() {
-      note_conflict_detected_(*localConflictNote, remoteNote, noteUpdateTitles,
-                              static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
-                              OVERWRITE_EXISTING, wait_mutex, wait, completed
-      );
+    [this, &manager, local_conflict_note, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait_mutex, &wait, &completed]() {
+      if(auto note = manager.find_by_uri(local_conflict_note)) {
+        note_conflict_detected_(static_cast<Note&>(note.value().get()), remoteNote, noteUpdateTitles,
+                                static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
+                                OVERWRITE_EXISTING, wait_mutex, wait, completed
+        );
+      }
+      else {
+        std::unique_lock lock(wait_mutex);
+        wait.notify_one();
+      }
     });
 
   while(!completed) {

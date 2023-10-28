@@ -74,15 +74,15 @@ namespace sync {
   }
 
 
-  void SilentUI::note_conflict_detected(const Note::Ptr & localConflictNote,
+  void SilentUI::note_conflict_detected(NoteBase & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::vector<Glib::ustring> &)
   {
     DBG_OUT("note conflict detected, overwriting without a care");
     // TODO: At least respect conflict prefs
     // TODO: Implement more useful conflict handling
-    if(localConflictNote->id() != remoteNote.m_uuid) {
-      m_manager.delete_note(*localConflictNote);
+    if(localConflictNote.id() != remoteNote.m_uuid) {
+      m_manager.delete_note(localConflictNote);
     }
     m_gnote.sync_manager().resolve_conflict(OVERWRITE_EXISTING);
   }

@@ -227,7 +227,7 @@ namespace sync {
           if(existingNote && !iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()))) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()), iter.second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(existingNote.value(), iter.second, noteUpdateTitles);
             }
           }
         }
@@ -267,7 +267,7 @@ namespace sync {
             DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter.second.m_title.c_str());
             // Note already exists locally, but has been modified since last sync; prompt user
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(std::static_pointer_cast<Note>(existing.shared_from_this()), iter.second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(existing, iter.second, noteUpdateTitles);
             }
 
             if(auto existingNote = find_note_by_uuid(iter.second.m_uuid)) {
