@@ -150,15 +150,14 @@ void SearchNotesWidget::perform_search()
     selected_notebook = notebooks::Notebook::Ptr();
   }
 
-  Search::ResultsPtr results = search.search_notes(text, false, selected_notebook);
+  auto results = search.search_notes(text, false, selected_notebook);
   // if no results found in current notebook ask user whether
   // to search in all notebooks
-  if(results->size() == 0 && selected_notebook != NULL) {
+  if(results.size() == 0 && selected_notebook != NULL) {
     no_matches_found_action();
   }
   else {
-    for(Search::Results::const_reverse_iterator iter = results->rbegin();
-        iter != results->rend(); iter++) {
+    for(auto iter = results.rbegin(); iter != results.rend(); ++iter) {
       m_current_matches[iter->second->uri()] = iter->first;
     }
 

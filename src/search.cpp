@@ -35,7 +35,7 @@ namespace gnote {
   }
 
 
-  Search::ResultsPtr Search::search_notes(const Glib::ustring & query, bool case_sensitive,
+  Search::Results Search::search_notes(const Glib::ustring & query, bool case_sensitive,
                                   const notebooks::Notebook::Ptr & selected_notebook)
   {
     Glib::ustring search_text = query;
@@ -49,7 +49,7 @@ namespace gnote {
     // Used for matching in the raw note XML
     std::vector<Glib::ustring> encoded_words;
     Search::split_watching_quotes(encoded_words, utils::XmlEncoder::encode(search_text));
-    ResultsPtr temp_matches(std::make_shared<Results>());
+    Results temp_matches;
       
       // Skip over notes that are template notes
     Tag::Ptr template_tag = m_manager.tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
@@ -71,13 +71,13 @@ namespace gnote {
       // XML for at least one match, to avoid
       // deserializing Buffers unnecessarily.
       if(0 < find_match_count_in_note(note.get_title(), words, case_sensitive)) {
-        temp_matches->insert(std::make_pair(INT_MAX, std::static_pointer_cast<Note>(note.shared_from_this())));
+        temp_matches.insert(std::make_pair(INT_MAX, std::static_pointer_cast<Note>(note.shared_from_this())));
       }
       else if(check_note_has_match(note, encoded_words, case_sensitive)) {
         int match_count = find_match_count_in_note(note.text_content(), words, case_sensitive);
         if (match_count > 0) {
           // TODO: Improve note.GetHashCode()
-          temp_matches->insert(std::make_pair(match_count, std::static_pointer_cast<Note>(note.shared_from_this())));
+          temp_matches.insert(std::make_pair(match_count, std::static_pointer_cast<Note>(note.shared_from_this())));
         }
       }
     });

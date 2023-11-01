@@ -296,12 +296,9 @@ std::vector<Glib::ustring> RemoteControl::SearchNotes(const Glib::ustring& query
 
   Search search(m_manager);
   std::vector<Glib::ustring> list;
-  Search::ResultsPtr results =
-    search.search_notes(query, case_sensitive, notebooks::Notebook::Ptr());
+  auto results = search.search_notes(query, case_sensitive, notebooks::Notebook::Ptr());
 
-  for(Search::Results::const_reverse_iterator iter = results->rbegin();
-      iter != results->rend(); iter++) {
-
+  for(auto iter = results.rbegin(); iter != results.rend(); ++iter) {
     list.push_back(iter->second->uri());
   }
 

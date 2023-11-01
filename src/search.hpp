@@ -24,7 +24,6 @@
 #define __SEARCH_HPP_
 
 #include <map>
-#include <memory>
 #include <vector>
 
 #include "note.hpp"
@@ -39,7 +38,6 @@ class Search
 {
 public:
   typedef std::multimap<int,Note::Ptr> Results;
-  typedef std::shared_ptr<Results> ResultsPtr;
 
   template<typename T>
   static void split_watching_quotes(std::vector<T> & split,
@@ -68,8 +66,7 @@ public:
   /// and a match number. If the search term is in the title,
   /// number will be INT_MAX.
   /// </returns>  
-  ResultsPtr search_notes(const Glib::ustring &, bool,
-                          const notebooks::Notebook::Ptr & );
+  Results search_notes(const Glib::ustring &, bool, const notebooks::Notebook::Ptr & );
   bool check_note_has_match(const NoteBase & note, const std::vector<Glib::ustring> &, bool match_case);
   int find_match_count_in_note(Glib::ustring note_text, const std::vector<Glib::ustring> &,
                                bool match_case);
