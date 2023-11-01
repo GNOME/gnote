@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016-2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016-2017,2019,2021,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,24 +49,24 @@ namespace sync {
   }
 
 
-  bool NoteUpdate::basically_equal_to(const Note::Ptr & existing_note)
+  bool NoteUpdate::basically_equal_to(NoteBase & existing_note)
   {
     // NOTE: This would be so much easier if NoteUpdate
     //       was not just a container for a big XML string
     sharp::XmlReader xml;
     xml.load_buffer(m_xml_content);
     NoteData *data = new NoteData(Glib::ustring(m_uuid));
-    existing_note->manager().note_archiver().read(xml, *data);
+    existing_note.manager().note_archiver().read(xml, *data);
     std::unique_ptr<NoteData> update_data(data);
     xml.close();
 
     // NOTE: Mostly a hack to ignore missing version attributes
-    Glib::ustring existing_inner_content = get_inner_content(existing_note->data().text());
+    Glib::ustring existing_inner_content = get_inner_content(existing_note.data().text());
     Glib::ustring update_inner_content = get_inner_content(update_data->text());
 
     return existing_inner_content == update_inner_content &&
-           existing_note->data().title() == update_data->title() &&
-           compare_tags(existing_note->data().tags(), update_data->tags());
+           existing_note.data().title() == update_data->title() &&
+           compare_tags(existing_note.data().tags(), update_data->tags());
            // TODO: Compare open-on-startup, pinned
   }
 

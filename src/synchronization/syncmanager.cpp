@@ -224,7 +224,7 @@ namespace sync {
       for(auto & iter : noteUpdates) {
         if(find_note_by_uuid(iter.second.m_uuid)) {
           auto existingNote = note_mgr().find(iter.second.m_title);
-          if(existingNote && !iter.second.basically_equal_to(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()))) {
+          if(existingNote && !iter.second.basically_equal_to(existingNote.value())) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
               m_sync_ui->note_conflict_detected(existingNote.value(), iter.second, noteUpdateTitles);
@@ -258,7 +258,7 @@ namespace sync {
         else {
           NoteBase & existing = existing_note.value();
           if(existing.metadata_change_date() <= m_client->last_sync_date()
-                || iter.second.basically_equal_to(std::static_pointer_cast<Note>(existing.shared_from_this()))) {
+                || iter.second.basically_equal_to(existing)) {
             // Existing note hasn't been modified since last sync; simply update it from server
             update_note_in_main_thread(std::static_pointer_cast<Note>(existing.shared_from_this()), iter.second);
           }
