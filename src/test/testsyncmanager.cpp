@@ -82,9 +82,9 @@ void SyncManager::create_note_in_main_thread(const gnote::sync::NoteUpdate & not
   create_note(noteUpdate);
 }
 
-void SyncManager::update_note_in_main_thread(const gnote::Note::Ptr & existingNote, const gnote::sync::NoteUpdate & noteUpdate)
+void SyncManager::update_note_in_main_thread(const gnote::NoteBase & existing_note, const gnote::sync::NoteUpdate & note_update)
 {
-  update_note(*existingNote, noteUpdate);
+  update_note(const_cast<gnote::NoteBase&>(existing_note), note_update);
 }
 
 void SyncManager::delete_note_in_main_thread(const gnote::Note::Ptr & existingNote)

@@ -260,7 +260,7 @@ namespace sync {
           if(existing.metadata_change_date() <= m_client->last_sync_date()
                 || iter.second.basically_equal_to(existing)) {
             // Existing note hasn't been modified since last sync; simply update it from server
-            update_note_in_main_thread(std::static_pointer_cast<Note>(existing.shared_from_this()), iter.second);
+            update_note_in_main_thread(existing, iter.second);
           }
           else {
             // Logger.Debug ("Sync: Late conflict detection for '{0}'", noteUpdate.Title);
@@ -271,7 +271,7 @@ namespace sync {
             }
 
             if(auto existingNote = find_note_by_uuid(iter.second.m_uuid)) {
-              update_note_in_main_thread(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()), iter.second);
+              update_note_in_main_thread(existingNote.value(), iter.second);
             }
             else {
               // Note has been deleted or okay'd for overwrite
@@ -570,14 +570,14 @@ namespace sync {
   }
 
 
-  void SyncManager::update_note_in_main_thread(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate)
+  void SyncManager::update_note_in_main_thread(const NoteBase & existing_note, const NoteUpdate & note_update)
   {
     // Note update may affect the GUI, so we have to use the
     // delegate to run in the main gtk thread.
-    auto existing = existingNote->uri();
-    utils::main_context_call([this, existing, noteUpdate]() {
-      note_mgr().find_by_uri(existing, [this, noteUpdate](NoteBase & note) {
-        update_note(note, noteUpdate);
+    auto existing = existing_note.uri();
+    utils::main_context_call([this, existing, note_update]() {
+      note_mgr().find_by_uri(existing, [this, note_update](NoteBase & note) {
+        update_note(note, note_update);
       });
     });
   }
