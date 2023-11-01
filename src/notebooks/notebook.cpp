@@ -109,21 +109,21 @@ namespace notebooks {
   }
 
 
-  Note::Ref Notebook::find_template_note() const
+  Note::ORef Notebook::find_template_note() const
   {
     Tag::Ptr templ_tag = template_tag();
     Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
     if(!templ_tag || !notebook_tag) {
-      return Note::Ref();
+      return Note::ORef();
     }
     auto notes = templ_tag->get_notes();
     for(NoteBase *n : notes) {
       if(n->contains_tag(notebook_tag)) {
-        return Note::Ref(std::ref(*static_cast<Note*>(n)));
+        return Note::ORef(std::ref(*static_cast<Note*>(n)));
       }
     }
 
-    return Note::Ref();
+    return Note::ORef();
   }
 
   Note & Notebook::get_template_note() const

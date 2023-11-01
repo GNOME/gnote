@@ -46,7 +46,7 @@ public:
   void set_name(const Glib::ustring &);
   virtual Glib::ustring get_normalized_name() const;
   virtual Tag::Ptr    get_tag() const;
-  Note::Ref find_template_note() const;
+  Note::ORef find_template_note() const;
   virtual Note & get_template_note() const;
   Note & create_notebook_note();
   virtual bool contains_note(const Note & note, bool include_system = false);

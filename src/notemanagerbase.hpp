@@ -67,8 +67,8 @@ public:
     {
       return m_read_only;
     }
-  NoteBase::Ref find(const Glib::ustring &) const;
-  NoteBase::Ref find_by_uri(const Glib::ustring &) const;
+  NoteBase::ORef find(const Glib::ustring &) const;
+  NoteBase::ORef find_by_uri(const Glib::ustring &) const;
   template <typename F>
   bool find_by_uri(const Glib::ustring & uri, const F & func) const
     {
@@ -84,12 +84,12 @@ public:
   NoteBase & create(Glib::ustring && title, Glib::ustring && xml_content);
   NoteBase & create_note_from_template(Glib::ustring && title, const NoteBase & template_note);
   virtual NoteBase & get_or_create_template_note();
-  NoteBase::Ref find_template_note() const;
+  NoteBase::ORef find_template_note() const;
   Glib::ustring get_unique_name(const Glib::ustring & basename) const;
   void delete_note(NoteBase & note);
   // Import a note read from file_path
   // Will ensure the sanity including the unique title.
-  NoteBase::Ref import_note(const Glib::ustring & file_path);
+  NoteBase::ORef import_note(const Glib::ustring & file_path);
   NoteBase & create_with_guid(Glib::ustring && title, Glib::ustring && guid);
 
   const Glib::ustring & notes_dir() const

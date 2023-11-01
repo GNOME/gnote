@@ -77,7 +77,7 @@ namespace sync {
     void background_sync_checker();
     void set_state(SyncState new_state);
     void update_local_note(NoteBase & local_note, const NoteUpdate & server_note, NoteSyncType sync_type);
-    NoteBase::Ref find_note_by_uuid(const Glib::ustring & uuid);
+    NoteBase::ORef find_note_by_uuid(const Glib::ustring & uuid);
     NoteManagerBase & note_mgr();
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
     void abort_sync(SyncServer *server);

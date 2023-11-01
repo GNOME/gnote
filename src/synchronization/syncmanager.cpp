@@ -614,13 +614,13 @@ namespace sync {
   }
 
 
-  NoteBase::Ref SyncManager::find_note_by_uuid(const Glib::ustring & uuid)
+  NoteBase::ORef SyncManager::find_note_by_uuid(const Glib::ustring & uuid)
   {
     auto note = note_mgr().find_by_uri("note://gnote/" + uuid);
     if(note) {
-      return NoteBase::Ref(std::ref(*note));
+      return std::ref(*note);
     }
-    return NoteBase::Ref();
+    return NoteBase::ORef();
   }
 
 

@@ -190,7 +190,8 @@ class NoteBase
 public:
   typedef std::shared_ptr<NoteBase> Ptr;
   typedef std::weak_ptr<NoteBase> WeakPtr;
-  typedef std::optional<std::reference_wrapper<NoteBase>> Ref;
+  typedef std::reference_wrapper<NoteBase> Ref;
+  typedef std::optional<Ref> ORef;
   typedef std::vector<Ptr> List;
 
   static Glib::ustring url_from_path(const Glib::ustring &);

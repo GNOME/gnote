@@ -210,24 +210,24 @@ void NoteManagerBase::on_note_save(NoteBase & note)
   std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 }
 
-NoteBase::Ref NoteManagerBase::find(const Glib::ustring & linked_title) const
+NoteBase::ORef NoteManagerBase::find(const Glib::ustring & linked_title) const
 {
   for(const NoteBase::Ptr & note : m_notes) {
     if(note->get_title().lowercase() == linked_title.lowercase()) {
-      return NoteBase::Ref(std::ref(*note));
+      return std::ref(*note);
     }
   }
-  return NoteBase::Ref();
+  return NoteBase::ORef();
 }
 
-NoteBase::Ref NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
+NoteBase::ORef NoteManagerBase::find_by_uri(const Glib::ustring & uri) const
 {
   for(const NoteBase::Ptr & note : m_notes) {
     if (note->uri() == uri) {
-      return NoteBase::Ref(std::ref(*note));
+      return std::ref(*note);
     }
   }
-  return NoteBase::Ref();
+  return NoteBase::ORef();
 }
 
 NoteBase & NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase & template_note)
@@ -411,18 +411,18 @@ Glib::ustring NoteManagerBase::make_new_file_name(const Glib::ustring & guid) co
   return Glib::build_filename(notes_dir(), guid + ".note");
 }
 
-NoteBase::Ref NoteManagerBase::find_template_note() const
+NoteBase::ORef NoteManagerBase::find_template_note() const
 {
   if(auto template_tag = tag_manager().get_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG)) {
     auto notes = template_tag->get_notes();
     for(NoteBase *iter : notes) {
       if(!m_gnote.notebook_manager().get_notebook_from_note(*iter)) {
-        return NoteBase::Ref(std::ref(*iter));
+        return std::ref(*iter);
       }
     }
   }
 
-  return NoteBase::Ref();
+  return NoteBase::ORef();
 }
 
 void NoteManagerBase::delete_note(NoteBase & note)
@@ -461,7 +461,7 @@ void NoteManagerBase::delete_note(NoteBase & note)
   }
 }
 
-NoteBase::Ref NoteManagerBase::import_note(const Glib::ustring & file_path)
+NoteBase::ORef NoteManagerBase::import_note(const Glib::ustring & file_path)
 {
   Glib::ustring dest_file = Glib::build_filename(notes_dir(), 
                                                  sharp::file_filename(file_path));
@@ -474,7 +474,7 @@ NoteBase::Ref NoteManagerBase::import_note(const Glib::ustring & file_path)
 
     NoteBase::Ptr note = note_load(std::move(dest_file));
     if(!note) {
-      return NoteBase::Ref();
+      return NoteBase::ORef();
     }
 
     if(find(note->get_title())) {
@@ -493,7 +493,7 @@ NoteBase::Ref NoteManagerBase::import_note(const Glib::ustring & file_path)
   {
   }
 
-  return NoteBase::Ref();
+  return NoteBase::ORef();
 }
 
 
