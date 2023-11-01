@@ -574,9 +574,12 @@ namespace sync {
   {
     // Note update may affect the GUI, so we have to use the
     // delegate to run in the main gtk thread.
-    // To be consistent, any exceptions in the delgate will be caught
-    // and then rethrown in the synchronization thread.
-    utils::main_context_call([this, existingNote, noteUpdate]() { update_note(existingNote, noteUpdate); });
+    auto existing = existingNote->uri();
+    utils::main_context_call([this, existing, noteUpdate]() {
+      note_mgr().find_by_uri(existing, [this, noteUpdate](NoteBase & note) {
+        update_note(note, noteUpdate);
+      });
+    });
   }
 
 
@@ -720,10 +723,10 @@ namespace sync {
   }
 
 
-  void SyncManager::update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate)
+  void SyncManager::update_note(NoteBase & existing_note, const NoteUpdate & note_update)
   {
     try {
-      update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
+      update_local_note(existing_note, note_update, DOWNLOAD_MODIFIED);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
