@@ -72,9 +72,9 @@ void SyncManager::delete_notes_in_main_thread(gnote::sync::SyncServer & server)
   delete_notes(server);
 }
 
-void SyncManager::note_save(const gnote::Note::Ptr & note)
+void SyncManager::note_save(const gnote::NoteBase & note)
 {
-  note->save();
+  const_cast<gnote::NoteBase&>(note).save();
 }
 
 void SyncManager::create_note_in_main_thread(const gnote::sync::NoteUpdate & noteUpdate)

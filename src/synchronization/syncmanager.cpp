@@ -299,14 +299,14 @@ namespace sync {
           // This is a new note that has never been synchronized to the server
           // TODO: *OR* this is a note that we lost revision info for!!!
           // TODO: Do the above NOW!!! (don't commit this dummy)
-          note_save(note);
+          note_save(*note);
           newOrModifiedNotes.push_back(note);
           if(m_sync_ui != 0)
             m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_NEW);
         }
         else if(m_client->get_revision(note) <= m_client->last_synchronized_revision()
                 && note->metadata_change_date() > m_client->last_sync_date()) {
-          note_save(note);
+          note_save(*note);
           newOrModifiedNotes.push_back(note);
           if(m_sync_ui != 0) {
             m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_MODIFIED);
@@ -755,9 +755,12 @@ namespace sync {
   }
 
 
-  void SyncManager::note_save(const Note::Ptr & note)
+  void SyncManager::note_save(const NoteBase & note)
   {
-    utils::main_context_call(sigc::mem_fun(*note, &Note::save));
+    auto uri = note.uri();
+    utils::main_context_call([this, uri] {
+      note_mgr().find_by_uri(uri, [](NoteBase & note) { note.save(); });
+    });
   }
 
 
