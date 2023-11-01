@@ -37,7 +37,7 @@ namespace gnote {
 class Search 
 {
 public:
-  typedef std::multimap<int,Note::Ptr> Results;
+  typedef std::multimap<int, NoteBase::Ref> Results;
 
   template<typename T>
   static void split_watching_quotes(std::vector<T> & split,

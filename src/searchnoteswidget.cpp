@@ -158,7 +158,7 @@ void SearchNotesWidget::perform_search()
   }
   else {
     for(auto iter = results.rbegin(); iter != results.rend(); ++iter) {
-      m_current_matches[iter->second->uri()] = iter->first;
+      m_current_matches[iter->second.get().uri()] = iter->first;
     }
 
     add_matches_column();

@@ -71,13 +71,13 @@ namespace gnote {
       // XML for at least one match, to avoid
       // deserializing Buffers unnecessarily.
       if(0 < find_match_count_in_note(note.get_title(), words, case_sensitive)) {
-        temp_matches.insert(std::make_pair(INT_MAX, std::static_pointer_cast<Note>(note.shared_from_this())));
+        temp_matches.insert(std::make_pair(INT_MAX, std::ref(note)));
       }
       else if(check_note_has_match(note, encoded_words, case_sensitive)) {
         int match_count = find_match_count_in_note(note.text_content(), words, case_sensitive);
         if (match_count > 0) {
           // TODO: Improve note.GetHashCode()
-          temp_matches.insert(std::make_pair(match_count, std::static_pointer_cast<Note>(note.shared_from_this())));
+          temp_matches.insert(std::make_pair(match_count, std::ref(note)));
         }
       }
     });

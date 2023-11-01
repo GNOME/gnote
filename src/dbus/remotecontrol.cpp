@@ -299,7 +299,7 @@ std::vector<Glib::ustring> RemoteControl::SearchNotes(const Glib::ustring& query
   auto results = search.search_notes(query, case_sensitive, notebooks::Notebook::Ptr());
 
   for(auto iter = results.rbegin(); iter != results.rend(); ++iter) {
-    list.push_back(iter->second->uri());
+    list.push_back(iter->second.get().uri());
   }
 
   return list;
