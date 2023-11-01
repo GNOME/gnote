@@ -587,9 +587,13 @@ namespace sync {
   {
     // Note deletion may affect the GUI, so we have to use the
     // delegate to run in the main gtk thread.
-    // To be consistent, any exceptions in the delgate will be caught
-    // and then rethrown in the synchronization thread.
-    utils::main_context_call([this, existingNote]() { delete_note(existingNote); });
+    auto existing = existingNote->uri();
+    utils::main_context_call([this, existing]() {
+      auto note = note_mgr().find_by_uri(existing);
+      if(note) {
+        delete_note(note.value());
+      }
+    });
   }
 
 
@@ -737,10 +741,10 @@ namespace sync {
   }
 
 
-  void SyncManager::delete_note(const Note::Ptr & existingNote)
+  void SyncManager::delete_note(NoteBase & existing_note)
   {
     try {
-      note_mgr().delete_note(*existingNote);
+      note_mgr().delete_note(existing_note);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());

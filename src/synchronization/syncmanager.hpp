@@ -66,7 +66,7 @@ namespace sync {
     virtual void delete_note_in_main_thread(const Note::Ptr & existingNote);
     void create_note(const NoteUpdate & noteUpdate);
     void update_note(NoteBase & existing_note, const NoteUpdate & note_update);
-    void delete_note(const Note::Ptr & existingNote);
+    void delete_note(NoteBase & existing_note);
 
     std::unique_ptr<SyncClient> m_client;
     SyncUI::Ptr m_sync_ui;

@@ -89,7 +89,7 @@ void SyncManager::update_note_in_main_thread(const gnote::Note::Ptr & existingNo
 
 void SyncManager::delete_note_in_main_thread(const gnote::Note::Ptr & existingNote)
 {
-  delete_note(existingNote);
+  delete_note(*existingNote);
 }
 
 }
