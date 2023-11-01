@@ -590,19 +590,19 @@ namespace sync {
   }
 
 
-  void SyncManager::update_local_note(const NoteBase::Ptr & localNote, const NoteUpdate & serverNote, NoteSyncType syncType)
+  void SyncManager::update_local_note(NoteBase & local_note, const NoteUpdate & server_note, NoteSyncType sync_type)
   {
     // In each case, update existingNote's content and revision
     try {
-      localNote->load_foreign_note_xml(serverNote.m_xml_content, OTHER_DATA_CHANGED);
+      local_note.load_foreign_note_xml(server_note.m_xml_content, OTHER_DATA_CHANGED);
     }
     catch(...)
     {} // TODO: Handle exception in case that serverNote.XmlContent is invalid XML
-    m_client->set_revision(std::static_pointer_cast<Note>(localNote), serverNote.m_latest_revision);
+    m_client->set_revision(std::static_pointer_cast<Note>(local_note.shared_from_this()), server_note.m_latest_revision);
 
     // Update dialog's sync status
     if(m_sync_ui != 0) {
-      m_sync_ui->note_synchronized(localNote->get_title(), syncType);
+      m_sync_ui->note_synchronized(local_note.get_title(), sync_type);
     }
   }
 
@@ -709,7 +709,7 @@ namespace sync {
   {
     try {
       auto & existingNote = note_mgr().create_with_guid(Glib::ustring(noteUpdate.m_title), Glib::ustring(noteUpdate.m_uuid));
-      update_local_note(existingNote.shared_from_this(), noteUpdate, DOWNLOAD_NEW);
+      update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
@@ -723,7 +723,7 @@ namespace sync {
   void SyncManager::update_note(const Note::Ptr & existingNote, const NoteUpdate & noteUpdate)
   {
     try {
-      update_local_note(existingNote, noteUpdate, DOWNLOAD_MODIFIED);
+      update_local_note(*existingNote, noteUpdate, DOWNLOAD_MODIFIED);
     }
     catch(std::exception & e) {
       DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
