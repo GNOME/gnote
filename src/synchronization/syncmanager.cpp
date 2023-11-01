@@ -251,7 +251,7 @@ namespace sync {
           auto existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote) {
             DBG_OUT("SyncManager: Deleting auto-generated note: %s", iter.second.m_title.c_str());
-            delete_note_in_main_thread(std::static_pointer_cast<Note>(existingNote.value().get().shared_from_this()));
+            delete_note_in_main_thread(existingNote.value());
           }
           create_note_in_main_thread(iter.second);
         }
@@ -583,11 +583,11 @@ namespace sync {
   }
 
 
-  void SyncManager::delete_note_in_main_thread(const Note::Ptr & existingNote)
+  void SyncManager::delete_note_in_main_thread(const NoteBase & existing_note)
   {
     // Note deletion may affect the GUI, so we have to use the
     // delegate to run in the main gtk thread.
-    auto existing = existingNote->uri();
+    auto existing = existing_note.uri();
     utils::main_context_call([this, existing]() {
       auto note = note_mgr().find_by_uri(existing);
       if(note) {

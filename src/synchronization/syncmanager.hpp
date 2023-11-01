@@ -63,7 +63,7 @@ namespace sync {
     virtual void note_save(const NoteBase & note);
     virtual void create_note_in_main_thread(const NoteUpdate & noteUpdate);
     virtual void update_note_in_main_thread(const NoteBase & existing_note, const NoteUpdate & note_update);
-    virtual void delete_note_in_main_thread(const Note::Ptr & existingNote);
+    virtual void delete_note_in_main_thread(const NoteBase & existing_note);
     void create_note(const NoteUpdate & noteUpdate);
     void update_note(NoteBase & existing_note, const NoteUpdate & note_update);
     void delete_note(NoteBase & existing_note);

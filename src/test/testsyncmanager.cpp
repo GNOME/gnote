@@ -87,9 +87,9 @@ void SyncManager::update_note_in_main_thread(const gnote::NoteBase & existing_no
   update_note(const_cast<gnote::NoteBase&>(existing_note), note_update);
 }
 
-void SyncManager::delete_note_in_main_thread(const gnote::Note::Ptr & existingNote)
+void SyncManager::delete_note_in_main_thread(const gnote::NoteBase & existing_note)
 {
-  delete_note(*existingNote);
+  delete_note(const_cast<gnote::NoteBase&>(existing_note));
 }
 
 }
