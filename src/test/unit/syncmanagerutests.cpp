@@ -143,6 +143,7 @@ SUITE(SyncManagerTests)
 
 #define FIRST_SYNC(ignote, sync_manager, note_manager, manifest, client, ui) \
   test::SyncClient & client = dynamic_cast<test::SyncClient&>(sync_manager->get_client(manifest)); \
+  (void)client; \
   gnote::sync::SilentUI::Ptr ui = gnote::sync::SilentUI::create(ignote, *note_manager); \
   sync_manager->perform_synchronization(ui);
 
