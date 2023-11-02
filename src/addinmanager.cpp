@@ -139,7 +139,6 @@ namespace {
 
   AddinManager::~AddinManager()
   {
-    sharp::map_delete_all_second(m_addin_prefs);
     for(auto iter : m_builtin_ifaces) {
       delete iter;
     }

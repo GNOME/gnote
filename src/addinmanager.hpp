@@ -117,7 +117,7 @@ private:
   IdSyncServiceAddinMap                    m_sync_service_addins;
   typedef std::map<Glib::ustring, std::unique_ptr<ImportAddin>> IdImportAddinMap;
   IdImportAddinMap                         m_import_addins;
-  typedef std::map<Glib::ustring, AddinPreferenceFactoryBase*> IdAddinPrefsMap;
+  typedef std::map<Glib::ustring, std::unique_ptr<AddinPreferenceFactoryBase>> IdAddinPrefsMap;
   IdAddinPrefsMap                          m_addin_prefs;
   sigc::signal<void()> m_application_addin_list_changed;
 };
