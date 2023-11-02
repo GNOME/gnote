@@ -140,7 +140,6 @@ namespace {
   AddinManager::~AddinManager()
   {
     sharp::map_delete_all_second(m_addin_prefs);
-    sharp::map_delete_all_second(m_import_addins);
     for(auto iter : m_builtin_ifaces) {
       delete iter;
     }
@@ -410,7 +409,7 @@ namespace {
       = m_import_addins.find(id);
 
     if (m_import_addins.end() != import_iter)
-      return import_iter->second;
+      return import_iter->second.get();
 
     const AppAddinMap::const_iterator app_iter
       = m_app_addins.find(id);
@@ -443,7 +442,11 @@ namespace {
 
   std::vector<ImportAddin*> AddinManager::get_import_addins() const
   {
-    return sharp::map_get_values(m_import_addins);
+    std::vector<ImportAddin*> ret;
+    for(auto & plugin : m_import_addins) {
+      ret.push_back(plugin.second.get());
+    }
+    return ret;
   }
 
   void AddinManager::initialize_application_addins() const

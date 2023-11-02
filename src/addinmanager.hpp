@@ -115,7 +115,7 @@ private:
   IdInfoMap                                m_note_addin_infos;
   typedef std::map<Glib::ustring, std::unique_ptr<sync::SyncServiceAddin>> IdSyncServiceAddinMap;
   IdSyncServiceAddinMap                    m_sync_service_addins;
-  typedef std::map<Glib::ustring, ImportAddin *> IdImportAddinMap;
+  typedef std::map<Glib::ustring, std::unique_ptr<ImportAddin>> IdImportAddinMap;
   IdImportAddinMap                         m_import_addins;
   typedef std::map<Glib::ustring, AddinPreferenceFactoryBase*> IdAddinPrefsMap;
   IdAddinPrefsMap                          m_addin_prefs;
