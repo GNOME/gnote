@@ -113,7 +113,7 @@ private:
   /// TODO: make sure it is removed if the dynamic module is unloaded.
   typedef std::map<Glib::ustring, sharp::IfaceFactoryBase*> IdInfoMap;
   IdInfoMap                                m_note_addin_infos;
-  typedef std::map<Glib::ustring, sync::SyncServiceAddin*> IdSyncServiceAddinMap;
+  typedef std::map<Glib::ustring, std::unique_ptr<sync::SyncServiceAddin>> IdSyncServiceAddinMap;
   IdSyncServiceAddinMap                    m_sync_service_addins;
   typedef std::map<Glib::ustring, ImportAddin *> IdImportAddinMap;
   IdImportAddinMap                         m_import_addins;

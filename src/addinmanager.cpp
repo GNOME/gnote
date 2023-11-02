@@ -425,7 +425,7 @@ namespace {
   {
     const IdSyncServiceAddinMap::const_iterator iter = m_sync_service_addins.find(id);
     if(iter != m_sync_service_addins.end()) {
-      return iter->second;
+      return iter->second.get();
     }
 
     return NULL;
@@ -433,7 +433,11 @@ namespace {
 
   std::vector<sync::SyncServiceAddin*> AddinManager::get_sync_service_addins() const
   {
-    return sharp::map_get_values(m_sync_service_addins);
+    std::vector<sync::SyncServiceAddin*> ret;
+    for(auto & plugin : m_sync_service_addins) {
+      ret.push_back(plugin.second.get());
+    }
+    return ret;
   }
 
 
@@ -462,7 +466,7 @@ namespace {
         iter != m_sync_service_addins.end(); ++iter) {
       sync::SyncServiceAddin *addin = NULL;
       try {
-        addin = iter->second;
+        addin = iter->second.get();
         const sharp::DynamicModule *dmod = m_module_manager.get_module(iter->first);
         if(!dmod || dmod->is_enabled()) {
           addin->initialize(m_gnote, m_gnote.sync_manager());
