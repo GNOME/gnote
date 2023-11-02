@@ -39,7 +39,6 @@
 namespace gnote {
 
 class ApplicationAddin;
-class PreferenceTabAddin;
 class AddinPreferenceFactoryBase;
 
 namespace sync {
@@ -67,7 +66,6 @@ public:
   std::vector<NoteAddin*> get_note_addins(const Note::Ptr &) const;
   ApplicationAddin *get_application_addin(const Glib::ustring & id) const;
   sync::SyncServiceAddin *get_sync_service_addin(const Glib::ustring & id) const;
-  std::vector<PreferenceTabAddin*> get_preference_tab_addins() const;
   std::vector<sync::SyncServiceAddin*> get_sync_service_addins() const;
   std::vector<ImportAddin*> get_import_addins() const;
   void initialize_application_addins() const;
@@ -115,8 +113,6 @@ private:
   /// TODO: make sure it is removed if the dynamic module is unloaded.
   typedef std::map<Glib::ustring, sharp::IfaceFactoryBase*> IdInfoMap;
   IdInfoMap                                m_note_addin_infos;
-  typedef std::map<Glib::ustring, PreferenceTabAddin*> IdPrefTabAddinMap;
-  IdPrefTabAddinMap                        m_pref_tab_addins;
   typedef std::map<Glib::ustring, sync::SyncServiceAddin*> IdSyncServiceAddinMap;
   IdSyncServiceAddinMap                    m_sync_service_addins;
   typedef std::map<Glib::ustring, ImportAddin *> IdImportAddinMap;

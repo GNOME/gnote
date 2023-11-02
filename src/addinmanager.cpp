@@ -36,7 +36,6 @@
 #include "debug.hpp"
 #include "iactionmanager.hpp"
 #include "ignote.hpp"
-#include "preferencetabaddin.hpp"
 #include "watchers.hpp"
 #include "notebooks/notebookapplicationaddin.hpp"
 #include "notebooks/notebooknoteaddin.hpp"
@@ -432,12 +431,6 @@ namespace {
     return NULL;
   }
 
-  std::vector<PreferenceTabAddin*> AddinManager::get_preference_tab_addins() const
-  {
-    return sharp::map_get_values(m_pref_tab_addins);
-  }
-
-
   std::vector<sync::SyncServiceAddin*> AddinManager::get_sync_service_addins() const
   {
     return sharp::map_get_values(m_sync_service_addins);
@@ -536,9 +529,6 @@ namespace {
   {
     Glib::ustring id;
     id = get_id_for_addin(addin, m_app_addins);
-    if(id.empty()) {
-      id = get_id_for_addin(addin, m_pref_tab_addins);
-    }
     if(id.empty()) {
       id = get_id_for_addin(addin, m_sync_service_addins);
     }

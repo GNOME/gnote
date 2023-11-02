@@ -45,7 +45,6 @@
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "preferences.hpp"
-#include "preferencetabaddin.hpp"
 #include "utils.hpp"
 #include "watchers.hpp"
 
@@ -131,25 +130,6 @@ namespace {
     notebook->append_page(*make_links_pane(), _("Links"));
     notebook->append_page(*make_sync_pane(), _("Synchronization"));
     notebook->append_page(*make_addins_pane(), _("Plugins"));
-
-      // TODO: Figure out a way to have these be placed in a specific order
-    std::vector<PreferenceTabAddin*> tabAddins = m_addin_manager.get_preference_tab_addins();
-    for(auto tabAddin : tabAddins) {
-      DBG_OUT("Adding preference tab addin: %s", 
-              typeid(*tabAddin).name());
-        try {
-          Glib::ustring tabName;
-          Gtk::Widget *tabWidget = NULL;
-          if (tabAddin->get_preference_tab_widget (this, tabName, tabWidget)) {
-            notebook->append_page (*manage(tabWidget), tabName);
-          }
-        } 
-        catch(...)
-        {
-          DBG_OUT("Problems adding preferences tab addin: %s", 
-                  typeid(*tabAddin).name());
-        }
-      }
 
     get_content_area()->append(*notebook);
 
