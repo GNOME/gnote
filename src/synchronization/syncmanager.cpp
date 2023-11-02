@@ -292,7 +292,7 @@ namespace sync {
       set_state(PREPARE_UPLOAD);
       // Look through all the notes modified on the client
       // and upload new or modified ones to the server
-      std::vector<Note::Ptr> newOrModifiedNotes;
+      std::vector<NoteBase::Ref> new_or_modified_notes;
       for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
         Note::Ptr note = std::static_pointer_cast<Note>(iter);
         if(m_client->get_revision(note) == -1) {
@@ -300,24 +300,24 @@ namespace sync {
           // TODO: *OR* this is a note that we lost revision info for!!!
           // TODO: Do the above NOW!!! (don't commit this dummy)
           note_save(*note);
-          newOrModifiedNotes.push_back(note);
+          new_or_modified_notes.push_back(*note);
           if(m_sync_ui != 0)
             m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_NEW);
         }
         else if(m_client->get_revision(note) <= m_client->last_synchronized_revision()
                 && note->metadata_change_date() > m_client->last_sync_date()) {
           note_save(*note);
-          newOrModifiedNotes.push_back(note);
+          new_or_modified_notes.push_back(*note);
           if(m_sync_ui != 0) {
             m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_MODIFIED);
           }
         }
       }
 
-      DBG_OUT("Sync: Uploading %d note updates", int(newOrModifiedNotes.size()));
-      if(newOrModifiedNotes.size() > 0) {
+      DBG_OUT("Sync: Uploading %zu note updates", new_or_modified_notes.size());
+      if(new_or_modified_notes.size() > 0) {
         set_state(UPLOADING);
-        server->upload_notes(newOrModifiedNotes); // TODO: Callbacks to update GUI as upload progresses
+        server->upload_notes(new_or_modified_notes); // TODO: Callbacks to update GUI as upload progresses
       }
 
       // Handle notes deleted on client
@@ -346,8 +346,8 @@ namespace sync {
       if(commitResult) {
         // Apply this revision number to all new/modified notes since last sync
         // TODO: Is this the best place to do this (after successful server commit)
-        for(auto & iter : newOrModifiedNotes) {
-          m_client->set_revision(iter, newRevision);
+        for(NoteBase & iter : new_or_modified_notes) {
+          m_client->set_revision(iter.shared_from_this(), newRevision);
         }
         set_state(SUCCEEDED);
       }

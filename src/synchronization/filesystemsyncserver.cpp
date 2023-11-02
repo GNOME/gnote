@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2022 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -94,7 +94,7 @@ void FileSystemSyncServer::mkdir_p(const Glib::RefPtr<Gio::File> & path)
 }
 
 
-void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
+void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes)
 {
   mkdir_p(m_new_revision_path);
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
@@ -104,8 +104,8 @@ void FileSystemSyncServer::upload_notes(const std::vector<Note::Ptr> & notes)
   auto cancel_op = Gio::Cancellable::create();
   unsigned failures = 0;
   unsigned total = notes.size();
-  for(auto & iter : notes) {
-    auto file_path = iter->file_path();
+  for(const NoteBase & iter : notes) {
+    auto file_path = iter.file_path();
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
     auto local_note = Gio::File::create_for_path(file_path);
     local_note->copy_async(server_note, [this, &notes_lock, &all_uploaded, &total, &failures, local_note, file_path = std::move(file_path)]

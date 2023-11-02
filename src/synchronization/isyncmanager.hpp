@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2021,2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -84,7 +84,7 @@ public:
   virtual std::vector<Glib::ustring> get_all_note_uuids() = 0;
   virtual std::map<Glib::ustring, NoteUpdate> get_note_updates_since(int revision) = 0;
   virtual void delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs) = 0;
-  virtual void upload_notes(const std::vector<Note::Ptr> & notes) = 0;
+  virtual void upload_notes(const std::vector<NoteBase::Ref> & notes) = 0;
   virtual int latest_revision() = 0; // NOTE: Only reliable during a transaction
   virtual SyncLockInfo current_sync_lock() = 0;
   virtual Glib::ustring id() = 0;
