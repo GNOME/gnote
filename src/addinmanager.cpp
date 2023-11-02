@@ -100,19 +100,6 @@ namespace {
     }
     return "";
   }
-  template <typename AddinType>
-  Glib::ustring get_id_for_addin(const AbstractAddin & addin, const std::map<Glib::ustring, AddinType*> & addins)
-  {
-    const AddinType *plugin = dynamic_cast<const AddinType*>(&addin);
-    if(plugin != NULL) {
-      for(auto iter : addins) {
-        if(iter.second == plugin) {
-          return iter.first;
-        }
-      }
-    }
-    return "";
-  }
 }
 
 
