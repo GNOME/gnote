@@ -107,7 +107,7 @@ private:
   /// Key = TypeExtensionNode.Id
   typedef std::map<Glib::ustring, std::unique_ptr<ApplicationAddin>> AppAddinMap;
   AppAddinMap                               m_app_addins;
-  typedef std::map<Glib::ustring, NoteAddin *> IdAddinMap;
+  typedef std::map<Glib::ustring, std::unique_ptr<NoteAddin>> IdAddinMap;
   typedef std::unordered_map<Glib::ustring, IdAddinMap, Hash<Glib::ustring>> NoteAddinMap;
   NoteAddinMap                              m_note_addins;
   /// Key = TypeExtensionNode.Id

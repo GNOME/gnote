@@ -140,10 +140,6 @@ namespace {
 
   AddinManager::~AddinManager()
   {
-    for(NoteAddinMap::const_iterator iter = m_note_addins.begin();
-        iter != m_note_addins.end(); ++iter) {
-      sharp::map_delete_all_second(iter->second);
-    }
     sharp::map_delete_all_second(m_addin_prefs);
     sharp::map_delete_all_second(m_import_addins);
     for(auto iter : m_builtin_ifaces) {
@@ -214,12 +210,8 @@ namespace {
           continue;
         }
 
-        NoteAddin * const addin = it->second;
-        if (addin) {
-          addin->dispose(true);
-          delete addin;
-          id_addin_map.erase(it);
-        }
+        it->second->dispose(true);
+        id_addin_map.erase(it);
       }
     }
   }
@@ -380,8 +372,6 @@ namespace {
       ERR_OUT(_("Trying to load addins when they are already loaded"));
       return;
     }
-    IdAddinMap loaded_addins;
-    m_note_addins[uri] = loaded_addins;
 
     IdAddinMap & loaded(m_note_addins[uri]); // avoid copying the whole map
     for(IdInfoMap::const_iterator iter = m_note_addin_infos.begin();
@@ -407,7 +397,7 @@ namespace {
     NoteAddinMap::const_iterator iter = m_note_addins.find(note->uri());
     if(iter != m_note_addins.end()) {
       for(IdAddinMap::const_iterator it = iter->second.begin(); it != iter->second.end(); ++it) {
-        addins.push_back(it->second);
+        addins.push_back(it->second.get());
       }
     }
 
