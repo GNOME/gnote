@@ -105,7 +105,7 @@ private:
   std::vector<sharp::IfaceFactoryBase*> m_builtin_ifaces;
   AddinInfoMap m_addin_infos;
   /// Key = TypeExtensionNode.Id
-  typedef std::map<Glib::ustring, ApplicationAddin*> AppAddinMap;
+  typedef std::map<Glib::ustring, std::unique_ptr<ApplicationAddin>> AppAddinMap;
   AppAddinMap                               m_app_addins;
   typedef std::map<Glib::ustring, NoteAddin *> IdAddinMap;
   typedef std::unordered_map<Glib::ustring, IdAddinMap, Hash<Glib::ustring>> NoteAddinMap;

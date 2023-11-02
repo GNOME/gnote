@@ -91,6 +91,19 @@ namespace gnote {
 
 namespace {
   template <typename AddinType>
+  Glib::ustring get_id_for_addin(const AbstractAddin & addin, const std::map<Glib::ustring, std::unique_ptr<AddinType>> & addins)
+  {
+    const AddinType *plugin = dynamic_cast<const AddinType*>(&addin);
+    if(plugin != NULL) {
+      for(const auto & iter : addins) {
+        if(iter.second.get() == plugin) {
+          return iter.first;
+        }
+      }
+    }
+    return "";
+  }
+  template <typename AddinType>
   Glib::ustring get_id_for_addin(const AbstractAddin & addin, const std::map<Glib::ustring, AddinType*> & addins)
   {
     const AddinType *plugin = dynamic_cast<const AddinType*>(&addin);
@@ -127,7 +140,6 @@ namespace {
 
   AddinManager::~AddinManager()
   {
-    sharp::map_delete_all_second(m_app_addins);
     for(NoteAddinMap::const_iterator iter = m_note_addins.begin();
         iter != m_note_addins.end(); ++iter) {
       sharp::map_delete_all_second(iter->second);
@@ -415,7 +427,7 @@ namespace {
       = m_app_addins.find(id);
 
     if (m_app_addins.end() != app_iter)
-      return app_iter->second;
+      return app_iter->second.get();
 
     return 0;
   }
@@ -452,11 +464,11 @@ namespace {
     register_addin_actions();
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
-      ApplicationAddin * addin = iter->second;
+      ApplicationAddin & addin = *iter->second;
       const sharp::DynamicModule * dmod
         = m_module_manager.get_module(iter->first);
       if (!dmod || dmod->is_enabled()) {
-        addin->initialize(m_gnote, m_note_manager);
+        addin.initialize(m_gnote, m_note_manager);
       }
     }
   }
@@ -485,16 +497,16 @@ namespace {
   {
     for(AppAddinMap::const_iterator iter = m_app_addins.begin();
         iter != m_app_addins.end(); ++iter) {
-      ApplicationAddin * addin = iter->second;
+      ApplicationAddin & addin = *iter->second;
       const sharp::DynamicModule * dmod
         = m_module_manager.get_module(iter->first);
       if (!dmod || dmod->is_enabled()) {
         try {
-          addin->shutdown();
+          addin.shutdown();
         }
         catch (const sharp::Exception & e) {
           DBG_OUT("Error calling %s.Shutdown (): %s",
-                  typeid(*addin).name(), e.what());
+                  typeid(addin).name(), e.what());
         }
       }
     }
