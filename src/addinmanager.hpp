@@ -100,7 +100,7 @@ private:
   Glib::ustring m_addins_prefs_dir;
   Glib::ustring m_addins_prefs_file;
   sharp::ModuleManager m_module_manager;
-  std::vector<sharp::IfaceFactoryBase*> m_builtin_ifaces;
+  std::vector<std::unique_ptr<sharp::IfaceFactoryBase>> m_builtin_ifaces;
   AddinInfoMap m_addin_infos;
   /// Key = TypeExtensionNode.Id
   typedef std::map<Glib::ustring, std::unique_ptr<ApplicationAddin>> AppAddinMap;

@@ -47,9 +47,8 @@
 namespace gnote {
 
 #define REGISTER_BUILTIN_NOTE_ADDIN(klass) \
-  do { sharp::IfaceFactoryBase *iface = new sharp::IfaceFactory<klass>; \
-  m_builtin_ifaces.push_back(iface); \
-  m_note_addin_infos.insert(std::make_pair(typeid(klass).name(),iface)); } while(0)
+  do { m_builtin_ifaces.push_back(std::make_unique<sharp::IfaceFactory<klass>>()); \
+  m_note_addin_infos.insert(std::make_pair(typeid(klass).name(), m_builtin_ifaces.back().get())); } while(0)
 
 #define REGISTER_APP_ADDIN(klass) \
   m_app_addins.insert(std::make_pair(typeid(klass).name(),        \
@@ -58,9 +57,8 @@ namespace gnote {
 #define SETUP_NOTE_ADDIN(key, klass) \
   m_preferences.signal_##key##_changed.connect([this]() { \
     if(m_preferences.key()) { \
-      sharp::IfaceFactoryBase *iface = new sharp::IfaceFactory<klass>; \
-      m_builtin_ifaces.push_back(iface); \
-      load_note_addin(typeid(klass).name(), iface); \
+      m_builtin_ifaces.push_back(std::make_unique<sharp::IfaceFactory<klass>>()); \
+      load_note_addin(typeid(klass).name(), m_builtin_ifaces.back().get()); \
     } \
     else { \
       erase_note_addin_info(typeid(klass).name()); \
@@ -139,9 +137,6 @@ namespace {
 
   AddinManager::~AddinManager()
   {
-    for(auto iter : m_builtin_ifaces) {
-      delete iter;
-    }
   }
 
   void AddinManager::add_note_addin_info(Glib::ustring && id, const sharp::DynamicModule * dmod)
