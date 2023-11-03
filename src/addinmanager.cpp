@@ -370,10 +370,10 @@ namespace {
     }
   }
 
-  std::vector<NoteAddin*> AddinManager::get_note_addins(const Note::Ptr & note) const
+  std::vector<NoteAddin*> AddinManager::get_note_addins(const NoteBase & note) const
   {
     std::vector<NoteAddin*> addins;
-    NoteAddinMap::const_iterator iter = m_note_addins.find(note->uri());
+    NoteAddinMap::const_iterator iter = m_note_addins.find(note.uri());
     if(iter != m_note_addins.end()) {
       for(IdAddinMap::const_iterator it = iter->second.begin(); it != iter->second.end(); ++it) {
         addins.push_back(it->second.get());

@@ -326,8 +326,7 @@ namespace gnote {
     popover_widgets.push_back(PopoverWidget(NOTE_SECTION_FLAGS, IMPORTANT_ORDER, important));
 
     NoteManager & manager = static_cast<NoteManager&>(m_note.manager());
-    Note::Ptr note = std::dynamic_pointer_cast<Note>(m_note.shared_from_this());
-    for(NoteAddin *addin : manager.get_addin_manager().get_note_addins(note)) {
+    for(NoteAddin *addin : manager.get_addin_manager().get_note_addins(m_note)) {
       auto addin_widgets = addin->get_actions_popover_widgets();
       popover_widgets.insert(popover_widgets.end(), addin_widgets.begin(), addin_widgets.end());
     }
