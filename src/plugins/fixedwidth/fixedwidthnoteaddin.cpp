@@ -50,7 +50,7 @@ namespace fixedwidth {
   void FixedWidthNoteAddin::initialize()
   {
     // If a tag of this name already exists, don't install.
-    auto tag_table = get_note()->get_tag_table();
+    auto tag_table = get_note().get_tag_table();
     if(!tag_table->lookup("monospace")) {
       auto tag = std::make_shared<FixedWidthTag>();
       m_tag = tag;
@@ -63,7 +63,7 @@ namespace fixedwidth {
   {
     // Remove the tag only if we installed it.
     if(m_tag) {
-      get_note()->get_tag_table()->remove(m_tag);
+      get_note().get_tag_table()->remove(m_tag);
       m_tag.reset();
     }
   }
