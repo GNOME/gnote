@@ -47,9 +47,10 @@ namespace underline {
   void UnderlineNoteAddin::initialize()
   {
     // If a tag of this name already exists, don't install.
-    if(!get_note()->get_tag_table()->lookup("underline")) {
+    auto & tag_table = get_note().get_tag_table();
+    if(!tag_table->lookup("underline")) {
       m_tag = Glib::make_refptr_for_instance(new UnderlineTag());
-      get_note()->get_tag_table()->add (m_tag);
+      tag_table->add(m_tag);
     }
   }
 
@@ -58,7 +59,7 @@ namespace underline {
   {
     // Remove the tag only if we installed it.
     if(m_tag) {
-      get_note()->get_tag_table()->remove(m_tag);
+      get_note().get_tag_table()->remove(m_tag);
       m_tag.reset();
     }
   }
