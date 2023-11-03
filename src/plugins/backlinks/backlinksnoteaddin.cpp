@@ -62,7 +62,7 @@ void BacklinksNoteAddin::on_note_opened ()
 void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
 {
   Glib::ustring uri = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(param).get();
-  get_note()->manager().find_by_uri(uri, [this](gnote::NoteBase & note) {
+  manager().find_by_uri(uri, [this](gnote::NoteBase & note) {
     gnote::MainWindow::present_in_new_window(ignote(), static_cast<gnote::Note&>(note));
   });
 }
@@ -96,17 +96,18 @@ void BacklinksNoteAddin::update_menu(Gio::Menu & menu) const
 
 std::vector<Glib::RefPtr<Gio::MenuItem>> BacklinksNoteAddin::get_backlink_menu_items() const
 {
-  gnote::NoteBase::List notes = get_note()->manager().get_notes_linking_to(get_note()->get_title());
+  auto & note = get_note();
+  gnote::NoteBase::List notes = note.manager().get_notes_linking_to(note.get_title());
   std::sort(notes.begin(), notes.end(), [](const gnote::NoteBase::Ptr & x, const gnote::NoteBase::Ptr & y)
     {
       return x->get_title() < y->get_title();
     });
 
   std::vector<Glib::RefPtr<Gio::MenuItem>> items;
-  for(const gnote::NoteBase::Ptr & note : notes) {
-    if(note != get_note()) { // don't match ourself
-      auto item = Gio::MenuItem::create(note->get_title(), "");
-      item->set_action_and_target("win.backlinks-open-note", Glib::Variant<Glib::ustring>::create(note->uri()));
+  for(const auto & n : notes) {
+    if(&*n != &note) { // don't match ourself
+      auto item = Gio::MenuItem::create(n->get_title(), "");
+      item->set_action_and_target("win.backlinks-open-note", Glib::Variant<Glib::ustring>::create(n->uri()));
       items.push_back(std::move(item));
     }
   }
