@@ -42,13 +42,14 @@ TodoModule::TodoModule()
 
 void Todo::initialize()
 {
+  auto & tag_table = get_note().get_tag_table();
   for(auto s : s_todo_patterns) {
-    if(!get_note()->get_tag_table()->lookup(s)) {
+    if(!tag_table->lookup(s)) {
       Glib::RefPtr<Gtk::TextTag> tag = gnote::NoteTag::create(Glib::ustring(s), gnote::NoteTag::NO_FLAG);
       tag->property_foreground() = "#0080f0";
       tag->property_weight() = PANGO_WEIGHT_BOLD;
       tag->property_underline() = Pango::Underline::SINGLE;
-      get_note()->get_tag_table()->add(tag);
+      tag_table->add(tag);
     }
   }
 }
