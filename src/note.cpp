@@ -542,19 +542,20 @@ namespace gnote {
         m_gnote.preferences().note_rename_behavior(selected_behavior);
       }
 
-      const NoteRenameDialog::MapPtr notes = dlg->get_notes();
-
-      for(std::map<NoteBase::Ptr, bool>::const_iterator iter = notes->begin();
-          notes->end() != iter; iter++) {
-        const std::pair<NoteBase::Ptr, bool> p = *iter;
-        if(p.second && response == Gtk::ResponseType::YES) { // Rename
-          p.first->rename_links(old_title, *this);
-        }
-        else {
-          p.first->remove_links(old_title, self);
-        }
-      }
+      const auto notes = dlg->get_notes();
       delete dialog;
+
+      for(const auto & item : notes) {
+        bool rename = item.second && response == Gtk::ResponseType::YES;
+        manager().find_by_uri(item.first, [this, rename, &old_title, &self](NoteBase & note) {
+          if(rename) {
+            note.rename_links(old_title, *this);
+          }
+          else {
+            note.remove_links(old_title, self);
+          }
+        });
+      }
       get_window()->editor()->set_editable(true);
     }
 

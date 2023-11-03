@@ -270,17 +270,13 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   set_focus(m_dont_rename_button);
 }
 
-NoteRenameDialog::MapPtr NoteRenameDialog::get_notes() const
+NoteRenameDialog::Map NoteRenameDialog::get_notes() const
 {
-  const MapPtr notes(std::make_shared<std::map<NoteBase::Ptr, bool>>());
+  Map notes;
   auto count = m_notes_model->get_n_items();
   for(guint i = 0; i < count; ++i) {
     auto record = m_notes_model->get_item(i);
-    auto note = m_manager.find_by_uri(record->note_uri);
-    if(!note) {
-      continue;
-    }
-    notes->insert(std::make_pair(std::dynamic_pointer_cast<Note>(note.value().get().shared_from_this()), record->selected()));
+    notes.insert(std::make_pair(record->note_uri, record->selected()));
   }
   return notes;
 }

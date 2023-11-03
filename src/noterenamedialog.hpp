@@ -72,14 +72,13 @@ class NoteRenameDialog
   : public Gtk::Dialog
 {
 public:
-
-  typedef std::shared_ptr<std::map<NoteBase::Ptr, bool> > MapPtr;
+  typedef std::map<Glib::ustring, bool> Map;
 
   NoteRenameDialog(const NoteBase::List & notes,
                    const Glib::ustring & old_title,
                    Note & renamed_note,
                    IGnote & g);
-  MapPtr get_notes() const;
+  Map get_notes() const;
   NoteRenameBehavior get_selected_behavior() const;
 
 private:
