@@ -77,7 +77,7 @@ public:
 
   NoteRenameDialog(const NoteBase::List & notes,
                    const Glib::ustring & old_title,
-                   const NoteBase::Ptr & renamed_note,
+                   Note & renamed_note,
                    IGnote & g);
   MapPtr get_notes() const;
   NoteRenameBehavior get_selected_behavior() const;

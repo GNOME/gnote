@@ -139,13 +139,13 @@ void NoteRenameRecord::selected(bool select)
 
 NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
                                    const Glib::ustring & old_title,
-                                   const NoteBase::Ptr & renamed_note,
+                                   Note & renamed_note,
                                    IGnote & g)
   : Gtk::Dialog(_("Rename Note Links?"),
-                *dynamic_cast<Gtk::Window*>(std::static_pointer_cast<Note>(renamed_note)->get_window()->host()),
+                *dynamic_cast<Gtk::Window*>(renamed_note.get_window()->host()),
                 false)
   , m_gnote(g)
-  , m_manager(renamed_note->manager())
+  , m_manager(renamed_note.manager())
   , m_notes_model(Gio::ListStore<NoteRenameRecord>::create())
   , m_dont_rename_button(_("_Don't Rename Links"), true)
   , m_rename_button(_("_Rename Links"), true)
@@ -177,7 +177,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
         "If you do not rename the links, they will no longer link to "
         "anything."),
       old_title,
-      renamed_note->get_title()));
+      renamed_note.get_title()));
   label->set_wrap(true);
   label->set_margin(5);
   vbox->append(*label);
