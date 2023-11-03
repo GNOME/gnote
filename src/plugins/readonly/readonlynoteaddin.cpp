@@ -79,7 +79,7 @@ void ReadOnlyNoteAddin::on_foreground()
 
   m_readonly_toggle_cid = action->signal_change_state()
     .connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_menu_item_toggled));
-  action->change_state(Glib::Variant<bool>::create(get_note()->contains_tag(ro_tag)));
+  action->change_state(Glib::Variant<bool>::create(get_note().contains_tag(ro_tag)));
 }
 
 void ReadOnlyNoteAddin::on_background()
@@ -94,13 +94,14 @@ void ReadOnlyNoteAddin::on_menu_item_toggled(const Glib::VariantBase & state)
   bool read_only = Glib::VariantBase::cast_dynamic<Glib::Variant<bool>>(state).get();
   auto action = get_window()->host()->find_action("readonly-toggle");
   action->set_state(state);
+  auto & note = get_note();
   if(read_only) {
-    get_note()->enabled(false);
-    get_note()->add_tag(ro_tag);
+    note.enabled(false);
+    note.add_tag(ro_tag);
   }
   else {
-    get_note()->enabled(true);
-    get_note()->remove_tag(ro_tag);
+    note.enabled(true);
+    note.remove_tag(ro_tag);
   }
 }
 
