@@ -106,9 +106,9 @@ void ExportToGTGNoteAddin::export_button_clicked(const Glib::VariantBase&)
       return;
     }
 
-    gnote::Note::Ptr note(get_note());
-    Glib::ustring title = note->get_title();
-    Glib::ustring body = sharp::string_trim(sharp::string_replace_first(note->text_content(), title, ""));
+    auto & note = get_note();
+    Glib::ustring title = note.get_title();
+    Glib::ustring body = sharp::string_trim(sharp::string_replace_first(note.text_content(), title, ""));
 
     std::vector<Glib::VariantBase> parameters;
     parameters.reserve(2);
