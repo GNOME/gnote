@@ -69,7 +69,8 @@ void TableofcontentsNoteAddin::on_note_opened()
   auto win = get_window();
   win->signal_foregrounded.connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_foregrounded));
 
-  auto buffer = get_note()->get_buffer();
+  auto & note = get_note();
+  auto buffer = note.get_buffer();
   if(buffer) {
     buffer->signal_changed().connect(sigc::mem_fun(*this, &TableofcontentsNoteAddin::on_note_changed));
   }
@@ -92,9 +93,10 @@ void TableofcontentsNoteAddin::on_note_opened()
   }
 
   // Heading tags
-  m_tag_bold  = get_note()->get_tag_table()->lookup ("bold");
-  m_tag_large = get_note()->get_tag_table()->lookup ("size:large");
-  m_tag_huge  = get_note()->get_tag_table()->lookup ("size:huge");
+  auto & tag_table = note.get_tag_table();
+  m_tag_bold = tag_table->lookup("bold");
+  m_tag_large = tag_table->lookup("size:large");
+  m_tag_huge = tag_table->lookup("size:huge");
 }
 
 
@@ -186,8 +188,9 @@ void TableofcontentsNoteAddin::get_toc_items(std::vector<TocItem> & items) const
 
   //for each line of the buffer,
   //check if the full line has bold and (large or huge) tags
-  iter     = get_note()->get_buffer()->begin();
-  iter_end = get_note()->get_buffer()->end();
+  auto & buffer = get_note().get_buffer();
+  iter = buffer->begin();
+  iter_end = buffer->end();
 
   while (iter != iter_end) {
     eol = iter;
@@ -213,7 +216,7 @@ void TableofcontentsNoteAddin::get_toc_popover_items(std::vector<Glib::RefPtr<Gi
 
   get_toc_items(toc_items);
   if(toc_items.size()) {
-    auto item = Gio::MenuItem::create(get_note()->get_title(), "");
+    auto item = Gio::MenuItem::create(get_note().get_title(), "");
     item->set_action_and_target("win.tableofcontents-goto-heading", Glib::Variant<int>::create(0));
     items.push_back(item);
   }
@@ -286,7 +289,7 @@ void TableofcontentsNoteAddin::headification_switch (Heading::Type heading_reque
 //apply the correct heading style to the current line(s) including the selection
 //switch:  Level_1 <--> Level_2 <--> text
 {
-  Glib::RefPtr<gnote::NoteBuffer> buffer = get_note()->get_buffer();
+  auto & buffer = get_note().get_buffer();
   Gtk::TextIter start, end;
   Gtk::TextIter selection_start, selection_end;
   bool has_selection;
@@ -340,13 +343,13 @@ void TableofcontentsNoteAddin::headification_switch (Heading::Type heading_reque
 void TableofcontentsNoteAddin::on_goto_heading(const Glib::VariantBase & param)
 {
   int value = Glib::VariantBase::cast_dynamic<Glib::Variant<gint32>>(param).get();
-  goto_heading(*get_note(), value);
+  goto_heading(get_note(), value);
 }
 
 
 void TableofcontentsNoteAddin::on_note_changed()
 {
-  auto win = get_note()->get_window();
+  auto win = get_note().get_window();
   if(!win) {
     return;
   }
