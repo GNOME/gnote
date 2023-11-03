@@ -870,7 +870,7 @@ void SearchNotesWidget::on_note_deleted(NoteBase & note)
 void SearchNotesWidget::on_note_added(NoteBase & note)
 {
   restore_matches_window();
-  add_note(std::static_pointer_cast<Note>(note.shared_from_this()));
+  add_note(note);
 }
 
 void SearchNotesWidget::on_note_renamed(const NoteBase & note,
@@ -899,13 +899,13 @@ void SearchNotesWidget::delete_note(const NoteBase & note)
   }
 }
 
-void SearchNotesWidget::add_note(const Note::Ptr & note)
+void SearchNotesWidget::add_note(NoteBase & note)
 {
-  Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
+  Glib::ustring nice_date = utils::get_pretty_print_date(note.change_date(), true, m_gnote.preferences());
   Gtk::TreeIter iter = m_store->append();
-  iter->set_value(m_column_types.title, note->get_title());
+  iter->set_value(m_column_types.title, note.get_title());
   iter->set_value(m_column_types.change_date, nice_date);
-  iter->set_value(m_column_types.note, note);
+  iter->set_value(m_column_types.note, std::static_pointer_cast<Note>(note.shared_from_this()));
 }
 
 void SearchNotesWidget::rename_note(const NoteBase & note)
