@@ -90,14 +90,14 @@ namespace inserttimestamp {
     auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_D, Gdk::ModifierType::CONTROL_MASK);
     auto action = Gtk::NamedAction::create("win.inserttimestamp-insert");
     m_shortcut = Gtk::Shortcut::create(trigger, action);
-    get_note()->get_window()->shortcut_controller().add_shortcut(m_shortcut);
+    get_note().get_window()->shortcut_controller().add_shortcut(m_shortcut);
   }
 
 
   void InsertTimestampNoteAddin::on_note_backgrounded()
   {
     if(m_shortcut) {
-      auto window = get_note()->get_window();
+      auto window = get_note().get_window();
       if(window) {
         window->shortcut_controller().remove_shortcut(m_shortcut);
       }
