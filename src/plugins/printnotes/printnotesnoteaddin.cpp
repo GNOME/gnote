@@ -70,7 +70,7 @@ namespace printnotes {
   {
     try {
       m_print_op = Gtk::PrintOperation::create();
-      m_print_op->set_job_name(get_note()->get_title());
+      m_print_op->set_job_name(get_note().get_title());
 
       Glib::RefPtr<Gtk::PrintSettings> settings = Gtk::PrintSettings::create();
 
@@ -102,7 +102,7 @@ namespace printnotes {
     } 
     catch (const sharp::Exception & e) 
     {
-      DBG_OUT("Exception while printing %s: %s", get_note()->get_title().c_str(),
+      DBG_OUT("Exception while printing %s: %s", get_note().get_title().c_str(),
               e.what());
       auto dlg = Gtk::make_managed<gnote::utils::HIGMessageDialog>(get_host_window(),
                                          GTK_DIALOG_MODAL,
