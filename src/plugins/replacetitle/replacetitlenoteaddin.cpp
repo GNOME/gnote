@@ -60,7 +60,8 @@ void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&
   auto refClipboard = Gdk::Display::get_default()->get_primary_clipboard();
   refClipboard->read_text_async([this, refClipboard](const Glib::RefPtr<Gio::AsyncResult> & result) {
     const Glib::ustring newTitle = refClipboard->read_text_finish(result);
-    Glib::RefPtr<Gtk::TextBuffer> buffer = get_note()->get_buffer();
+    auto & note = get_note();
+    auto & buffer = note.get_buffer();
 
     // replace note content
     if(!newTitle.empty()) {
@@ -74,7 +75,7 @@ void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&
       Glib::RefPtr<Gtk::TextTag> title_tag = buffer->get_tag_table()->lookup("note-title");
       buffer->apply_tag(title_tag, title_start, title_end);
       // in case the text was multile, new title is only the first line
-      get_note()->set_title(title_start.get_text(title_end));
+      note.set_title(title_start.get_text(title_end));
     }
   });
 }
