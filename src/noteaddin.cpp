@@ -31,10 +31,10 @@ namespace gnote {
 
   const char * NoteAddin::IFACE_NAME = "gnote::NoteAddin";
 
-  void NoteAddin::initialize(IGnote & ignote, const Note::Ptr & note)
+  void NoteAddin::initialize(IGnote & ignote, Note::Ptr && note)
   {
     AbstractAddin::initialize(ignote);
-    m_note = note;
+    m_note = std::move(note);
     m_note_opened_cid = m_note->signal_opened().connect(
       sigc::mem_fun(*this, &NoteAddin::on_note_opened_event));
     initialize();
