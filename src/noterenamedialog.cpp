@@ -34,8 +34,9 @@
 
 #include "ignote.hpp"
 #include "mainwindow.hpp"
-#include "notewindow.hpp"
+#include "notemanager.hpp"
 #include "noterenamedialog.hpp"
+#include "notewindow.hpp"
 
 namespace gnote {
 
@@ -102,7 +103,7 @@ public:
 protected:
   Glib::ustring get_text(Gtk::ListItem & item) override
     {
-      return std::dynamic_pointer_cast<NoteRenameRecord>(item.get_item())->note->get_title();
+      return std::dynamic_pointer_cast<NoteRenameRecord>(item.get_item())->note_title;
     }
   void set_text(Gtk::Label & label, const Glib::ustring & text) override
     {
@@ -112,13 +113,14 @@ protected:
 
 }
 
-Glib::RefPtr<NoteRenameRecord> NoteRenameRecord::create(const NoteBase::Ptr & note, bool selected)
+Glib::RefPtr<NoteRenameRecord> NoteRenameRecord::create(const NoteBase & note, bool selected)
 {
   return Glib::make_refptr_for_instance(new NoteRenameRecord(note, selected));
 }
 
-NoteRenameRecord::NoteRenameRecord(const NoteBase::Ptr & note, bool selected)
-  : note(note)
+NoteRenameRecord::NoteRenameRecord(const NoteBase & note, bool selected)
+  : note_uri(note.uri())
+  , note_title(note.get_title())
   , m_selected(selected)
 {
 }
@@ -143,6 +145,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
                 *dynamic_cast<Gtk::Window*>(std::static_pointer_cast<Note>(renamed_note)->get_window()->host()),
                 false)
   , m_gnote(g)
+  , m_manager(renamed_note->manager())
   , m_notes_model(Gio::ListStore<NoteRenameRecord>::create())
   , m_dont_rename_button(_("_Don't Rename Links"), true)
   , m_rename_button(_("_Rename Links"), true)
@@ -161,7 +164,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   add_action_widget(m_dont_rename_button, Gtk::ResponseType::NO);
 
   for(const auto & note : notes) {
-    m_notes_model->append(NoteRenameRecord::create(note, true));
+    m_notes_model->append(NoteRenameRecord::create(*note, true));
   };
 
   Gtk::Label * const label = Gtk::manage(new Gtk::Label());
@@ -195,7 +198,7 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   {
     auto column = Gtk::ColumnViewColumn::create(_("Note Title"), NoteTitleFactory::create());
     auto expr = Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase> & item) {
-      return std::dynamic_pointer_cast<NoteRenameRecord>(item)->note->get_title();
+      return std::dynamic_pointer_cast<NoteRenameRecord>(item)->note_title;
     });
     column->set_sorter(Gtk::StringSorter::create(expr));
     column->set_resizable(true);
@@ -273,7 +276,11 @@ NoteRenameDialog::MapPtr NoteRenameDialog::get_notes() const
   auto count = m_notes_model->get_n_items();
   for(guint i = 0; i < count; ++i) {
     auto record = m_notes_model->get_item(i);
-    notes->insert(std::make_pair(record->note, record->selected()));
+    auto note = m_manager.find_by_uri(record->note_uri);
+    if(!note) {
+      continue;
+    }
+    notes->insert(std::make_pair(std::dynamic_pointer_cast<Note>(note.value().get().shared_from_this()), record->selected()));
   }
   return notes;
 }
@@ -323,8 +330,12 @@ void NoteRenameDialog::on_notes_view_row_activated(guint pos, const Glib::ustrin
   if(!item) {
     return;
   }
+  auto note = m_manager.find_by_uri(item->note_uri);
+  if(!note) {
+    return;
+  }
 
-  auto & window = MainWindow::present_default(m_gnote, static_cast<Note&>(*item->note));
+  auto & window = MainWindow::present_default(m_gnote, static_cast<Note&>(note.value().get()));
   window.set_search_text(Glib::ustring::compose("\"%1\"", old_title));
   window.show_search_bar();
 }

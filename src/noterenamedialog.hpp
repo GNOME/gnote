@@ -45,7 +45,7 @@ class NoteRenameRecord
   : public Glib::Object
 {
 public:
-  static Glib::RefPtr<NoteRenameRecord> create(const NoteBase::Ptr & note, bool selected);
+  static Glib::RefPtr<NoteRenameRecord> create(const NoteBase & note, bool selected);
   virtual ~NoteRenameRecord();
 
   bool selected() const
@@ -58,10 +58,11 @@ public:
       m_check_button = button;
     }
 
-  const NoteBase::Ptr note;
+  const Glib::ustring note_uri;
+  const Glib::ustring note_title;
   sigc::connection signal_cid;
 private:
-  NoteRenameRecord(const NoteBase::Ptr & note, bool selected);
+  NoteRenameRecord(const NoteBase & note, bool selected);
 
   Gtk::CheckButton *m_check_button;
   bool m_selected;
@@ -91,6 +92,7 @@ private:
   void on_select_all_button_clicked(bool select);
 
   IGnote & m_gnote;
+  NoteManagerBase & m_manager;
   Glib::RefPtr<Gio::ListStore<NoteRenameRecord>> m_notes_model;
   Gtk::Button m_dont_rename_button;
   Gtk::Button m_rename_button;
