@@ -57,7 +57,7 @@ namespace gnote {
 
   void NoteRenameWatcher::initialize ()
   {
-    m_title_tag = get_note()->get_tag_table()->lookup("note-title");
+    m_title_tag = get_note().get_tag_table()->lookup("note-title");
   }
 
   void NoteRenameWatcher::shutdown ()
@@ -199,16 +199,17 @@ namespace gnote {
 
   bool NoteRenameWatcher::update_note_title(bool only_warn)
   {
+    Note & note = get_note();
     Glib::ustring title = get_window()->get_name();
 
     auto existing = manager().find(title);
-    if(existing && (existing.value().get().shared_from_this() != get_note())) {
+    if(existing && (&existing.value().get() != &note)) {
       show_name_clash_error(title, only_warn);
       return false;
     }
 
-    DBG_OUT ("Renaming note from %s to %s", get_note()->get_title().c_str(), title.c_str());
-    get_note()->set_title(std::move(title), true);
+    DBG_OUT("Renaming note from %s to %s", note.get_title().c_str(), title.c_str());
+    note.set_title(std::move(title), true);
     return true;
   }
 
@@ -513,7 +514,7 @@ namespace gnote {
 
   void NoteUrlWatcher::initialize ()
   {
-    m_url_tag = get_note()->get_tag_table()->get_url_tag();
+    m_url_tag = get_note().get_tag_table()->get_url_tag();
   }
 
 
@@ -866,8 +867,9 @@ namespace gnote {
 
   void NoteLinkWatcher::initialize ()
   {
-    m_link_tag = get_note()->get_tag_table()->get_link_tag();
-    m_broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
+    auto & tag_table = get_note().get_tag_table();
+    m_link_tag = tag_table->get_link_tag();
+    m_broken_link_tag = tag_table->get_broken_link_tag();
   }
 
 
@@ -902,7 +904,7 @@ namespace gnote {
   void NoteLinkWatcher::highlight_in_block(const Gtk::TextIter & start,
                                            const Gtk::TextIter & end)
   {
-    AppLinkWatcher::highlight_in_block(manager(), *get_note(), start, end);
+    AppLinkWatcher::highlight_in_block(manager(), get_note(), start, end);
   }
 
   void NoteLinkWatcher::unhighlight_in_block(const Gtk::TextIter & start,
@@ -948,7 +950,7 @@ namespace gnote {
                                      const Gtk::TextIter & start, const Gtk::TextIter &end)
   {
     Glib::ustring tag_name = tag->property_name();
-    Glib::ustring link_tag_name = get_note()->get_tag_table()->get_link_tag()->property_name();
+    Glib::ustring link_tag_name = get_note().get_tag_table()->get_link_tag()->property_name();
     if(tag_name != link_tag_name)
       return;
     Glib::ustring link_name = start.get_text(end);
@@ -977,10 +979,11 @@ namespace gnote {
       }
     }
 
-    Glib::RefPtr<Gtk::TextTag> broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
+    Note & note = get_note();
+    Glib::RefPtr<Gtk::TextTag> broken_link_tag = note.get_tag_table()->get_broken_link_tag();
     if(start.starts_tag(broken_link_tag)) {
-      get_note()->get_buffer()->remove_tag(broken_link_tag, start, end);
-      get_note()->get_buffer()->apply_tag(get_note()->get_tag_table()->get_link_tag(), start, end);
+      note.get_buffer()->remove_tag(broken_link_tag, start, end);
+      note.get_buffer()->apply_tag(note.get_tag_table()->get_link_tag(), start, end);
     }
 
     // FIXME: We used to also check here for (link != this.Note), but
@@ -1019,7 +1022,7 @@ namespace gnote {
 
   void NoteWikiWatcher::initialize ()
   {
-    m_broken_link_tag = get_note()->get_tag_table()->get_broken_link_tag();
+    m_broken_link_tag = get_note().get_tag_table()->get_broken_link_tag();
   }
 
 
@@ -1059,7 +1062,7 @@ namespace gnote {
       Gtk::TextIter end_cpy = start_cpy;
       end_cpy.forward_chars(match.size());
 
-      if(get_note()->get_tag_table()->has_link_tag(start_cpy)) {
+      if(get_note().get_tag_table()->has_link_tag(start_cpy)) {
 	break;
       }
 
@@ -1250,14 +1253,12 @@ namespace gnote {
 
   void NoteTagsWatcher::initialize ()
   {
+    Note & note = get_note();
 #ifdef DEBUG
-    m_on_tag_added_cid = get_note()->signal_tag_added.connect(
-      sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_added));
-    m_on_tag_removing_cid = get_note()->signal_tag_removing.connect(
-      sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removing));
+    m_on_tag_added_cid = note.signal_tag_added.connect(sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_added));
+    m_on_tag_removing_cid = note.signal_tag_removing.connect(sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removing));
 #endif
-    m_on_tag_removed_cid = get_note()->signal_tag_removed.connect(
-      sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removed));      
+    m_on_tag_removed_cid = note.signal_tag_removed.connect(sigc::mem_fun(*this, &NoteTagsWatcher::on_tag_removed));
   }
 
 
@@ -1272,10 +1273,10 @@ namespace gnote {
   void NoteTagsWatcher::on_note_opened ()
   {
     // FIXME: Just for kicks, spit out the current tags
-    DBG_OUT ("%s tags:", get_note()->get_title().c_str());
-//    foreach (const Tag::Ptr & tag, get_note()->tags()) {
-//      DBG_OUT ("\t%s", tag->name().c_str());
-//    }
+    DBG_OUT ("%s tags:", get_note().get_title().c_str());
+    for(const auto & tag : get_note().get_tags()) {
+      DBG_OUT ("\t%s", tag->name().c_str());
+    }
   }
 
 #ifdef DEBUG

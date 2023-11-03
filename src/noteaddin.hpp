@@ -71,9 +71,12 @@ public:
   virtual std::vector<PopoverWidget> get_actions_popover_widgets() const;
   void register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void(const Glib::VariantBase&)> && callback);
 
-  const Note::Ptr & get_note() const
+  Note & get_note() const
     {
-      return m_note;
+      if(is_disposing() || !m_note) {
+        throw sharp::Exception("Plugin is disposing already");
+      }
+      return *m_note;
     }
   bool has_buffer() const
     {

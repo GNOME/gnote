@@ -84,7 +84,7 @@ namespace notebooks {
     EmbeddableWidgetHost *host = get_window()->host();
     m_new_notebook_cid = host->find_action("new-notebook")->signal_activate()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_new_notebook_menu_item));
-    Notebook::Ptr current_notebook = ignote().notebook_manager().get_notebook_from_note(*get_note());
+    Notebook::Ptr current_notebook = ignote().notebook_manager().get_notebook_from_note(get_note());
     Glib::ustring name;
     if(current_notebook) {
       name = current_notebook->get_name();
@@ -106,7 +106,7 @@ namespace notebooks {
   std::vector<gnote::PopoverWidget> NotebookNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
-    if(!get_note()->contains_tag(get_template_tag())) {
+    if(!get_note().contains_tag(get_template_tag())) {
       auto notebook_button = Gio::MenuItem::create(_("Notebook"), make_menu());
       widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
     }
@@ -118,7 +118,7 @@ namespace notebooks {
   void NotebookNoteAddin::on_new_notebook_menu_item(const Glib::VariantBase&) const
   {
     Note::List note_list;
-    note_list.emplace_back(get_note());
+    note_list.emplace_back(std::static_pointer_cast<Note>(get_note().shared_from_this()));
     NotebookManager::prompt_create_new_notebook(ignote(), *dynamic_cast<Gtk::Window*>(get_window()->host()), std::move(note_list));
     get_window()->signal_popover_widgets_changed();
   }
@@ -132,7 +132,7 @@ namespace notebooks {
     if(name.size()) {
       notebook = ignote().notebook_manager().get_notebook(name);
     }
-    ignote().notebook_manager().move_note_to_notebook(*get_note(), notebook);
+    ignote().notebook_manager().move_note_to_notebook(get_note(), notebook);
   }
 
 
