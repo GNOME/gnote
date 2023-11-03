@@ -78,9 +78,9 @@ namespace bugzilla {
 
   void BugzillaNoteAddin::initialize()
   {
-    if(!get_note()->get_tag_table()->is_dynamic_tag_registered(TAG_NAME)) {
-      get_note()->get_tag_table()
-        ->register_dynamic_tag(TAG_NAME, [this]() { return BugzillaLink::create(ignote()); });
+    auto & tag_table = get_note().get_tag_table();
+    if(!tag_table->is_dynamic_tag_registered(TAG_NAME)) {
+      tag_table->register_dynamic_tag(TAG_NAME, [this]() { return BugzillaLink::create(ignote()); });
     }
   }
 
@@ -143,7 +143,7 @@ namespace bugzilla {
   {
     try {
       BugzillaLink::Ptr link_tag = std::dynamic_pointer_cast<BugzillaLink>(
-        get_note()->get_tag_table()->create_dynamic_tag(TAG_NAME));
+        get_note().get_tag_table()->create_dynamic_tag(TAG_NAME));
       link_tag->set_bug_url(uri);
 
       // Place the cursor in the position where the uri was
