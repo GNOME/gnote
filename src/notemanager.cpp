@@ -198,9 +198,7 @@ namespace gnote {
     // changed when loading addins.
     NoteBase::List notesCopy(m_notes);
     for(const NoteBase::Ptr & iter : notesCopy) {
-      Note::Ptr note(std::static_pointer_cast<Note>(iter));
-
-      m_addin_mgr->load_addins_for_note (note);
+      m_addin_mgr->load_addins_for_note(*iter);
     }
   }
 
@@ -263,7 +261,7 @@ namespace gnote {
     auto & new_note = static_cast<Note&>(NoteManagerBase::create_new_note(std::move(title), std::move(xml_content), std::move(guid)));
 
     // Load all the addins for the new note
-    m_addin_mgr->load_addins_for_note(std::static_pointer_cast<Note>(new_note.shared_from_this()));
+    m_addin_mgr->load_addins_for_note(new_note);
 
     return new_note;
   }

@@ -62,7 +62,7 @@ public:
       return m_addins_prefs_dir;
     }
 
-  void load_addins_for_note(const Note::Ptr &);
+  void load_addins_for_note(NoteBase &);
   std::vector<NoteAddin*> get_note_addins(const Note::Ptr &) const;
   ApplicationAddin *get_application_addin(const Glib::ustring & id) const;
   sync::SyncServiceAddin *get_sync_service_addin(const Glib::ustring & id) const;

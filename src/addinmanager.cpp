@@ -344,9 +344,9 @@ namespace {
     return AddinInfo();
   }
 
-  void AddinManager::load_addins_for_note(const Note::Ptr & note)
+  void AddinManager::load_addins_for_note(NoteBase & note)
   {
-    auto & uri = note->uri();
+    auto & uri = note.uri();
     if(m_note_addins.find(uri) != m_note_addins.end()) {
       ERR_OUT(_("Trying to load addins when they are already loaded"));
       return;
@@ -360,7 +360,7 @@ namespace {
       sharp::IInterface* iface = (*addin_info.second)();
       NoteAddin * addin = dynamic_cast<NoteAddin *>(iface);
       if(addin) {
-        addin->initialize(m_gnote, note);
+        addin->initialize(m_gnote, std::static_pointer_cast<Note>(note.shared_from_this()));
         loaded.insert(std::make_pair(addin_info.first, addin));
       }
       else {
