@@ -87,7 +87,7 @@ std::vector<gnote::PopoverWidget> ExportToHtmlNoteAddin::get_actions_popover_wid
 
 void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
 {
-  auto dialog = Gtk::make_managed<ExportToHtmlDialog>(ignote(), get_note()->get_title() + ".html");
+  auto dialog = Gtk::make_managed<ExportToHtmlDialog>(ignote(), get_note().get_title() + ".html");
   dialog->show();
   dialog->signal_response().connect([this, dialog](int response) {
     dialog->hide();
@@ -103,8 +103,7 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
 void ExportToHtmlNoteAddin::export_dialog_response(ExportToHtmlDialog & dialog)
 {
   Glib::ustring output_path = dialog.get_file()->get_path();
-  DBG_OUT("Exporting Note '%s' to '%s'...", get_note()->get_title().c_str(), 
-          output_path.c_str());
+  DBG_OUT("Exporting Note '%s' to '%s'...", get_note().get_title().c_str(), output_path.c_str());
 
   sharp::StreamWriter writer;
   Glib::ustring error_message;
@@ -114,7 +113,7 @@ void ExportToHtmlNoteAddin::export_dialog_response(ExportToHtmlDialog & dialog)
     sharp::file_delete(output_path);
 
     writer.init(output_path);
-    write_html_for_note(writer, *get_note(), dialog.get_export_linked(), dialog.get_export_linked_all());
+    write_html_for_note(writer, get_note(), dialog.get_export_linked(), dialog.get_export_linked_all());
 
     // Save the dialog preferences now that the note has
     // successfully been exported
