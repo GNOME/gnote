@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -65,6 +65,7 @@ namespace gnote {
     , m_note(note_)
     , m_preferences(preferences)
   {
+    set_enable_undo(false);  // for now use our own legacy undo
     m_undomanager = new UndoManager(this);
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));
     signal_mark_set().connect(sigc::mem_fun(*this, &NoteBuffer::mark_set_event));
