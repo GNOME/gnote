@@ -115,9 +115,7 @@ Glib::ustring NoteOfTheDay::get_content_without_title(const Glib::ustring & cont
     return Glib::ustring();
 }
 
-gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(
-                                 gnote::NoteManager & manager,
-                                 const Glib::Date & date)
+gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(gnote::NoteManagerBase & manager, const Glib::Date & date)
 {
   const gnote::NoteBase::List & notes = manager.get_notes();
 
