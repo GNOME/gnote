@@ -202,7 +202,7 @@ namespace gnote {
   void NoteWindow::add_shortcuts()
   {
     auto controller = Gtk::ShortcutController::create();
-    controller->set_scope(Gtk::ShortcutScope::LOCAL);
+    controller->set_scope(Gtk::ShortcutScope::GLOBAL);
     add_controller(controller);
     m_shortcut_controller = controller;
 
