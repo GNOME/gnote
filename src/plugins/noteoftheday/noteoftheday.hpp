@@ -42,8 +42,7 @@ public:
   static gnote::NoteBase::Ptr create(gnote::NoteManager & manager,
                                  const Glib::Date & date);
   static void cleanup_old(gnote::NoteManager & manager);
-  static Glib::ustring get_content(const Glib::Date & date,
-                                 const gnote::NoteManager & manager);
+  static Glib::ustring get_content(const Glib::Date & date, const gnote::NoteManagerBase & manager);
   static gnote::NoteBase::Ptr get_note_by_date(
                             gnote::NoteManager & manager,
                             const Glib::Date & date);

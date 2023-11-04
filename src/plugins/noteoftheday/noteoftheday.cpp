@@ -87,7 +87,7 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
   }
 }
 
-Glib::ustring NoteOfTheDay::get_content(const Glib::Date & date, const gnote::NoteManager & manager)
+Glib::ustring NoteOfTheDay::get_content(const Glib::Date & date, const gnote::NoteManagerBase & manager)
 {
   const Glib::ustring title = get_title(date);
 
@@ -165,7 +165,7 @@ bool NoteOfTheDay::has_changed(gnote::NoteBase & note)
                     date_time.get_day_of_month(),
                     static_cast<Glib::Date::Month>(date_time.get_month()),
                     date_time.get_year()),
-                    static_cast<const gnote::NoteManager&>(note.manager()));
+                    note.manager());
 
   return get_content_without_title(note.text_content()) != get_content_without_title(gnote::utils::XmlDecoder::decode(original_xml));
 }
