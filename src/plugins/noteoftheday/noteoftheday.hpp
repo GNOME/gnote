@@ -27,20 +27,13 @@
 #include "applicationaddin.hpp"
 #include "note.hpp"
 
-namespace gnote {
-
-class NoteManager;
-
-}
-
 namespace noteoftheday {
 
 class NoteOfTheDay
 {
 public:
 
-  static gnote::NoteBase::Ptr create(gnote::NoteManager & manager,
-                                 const Glib::Date & date);
+  static gnote::NoteBase::Ptr create(gnote::NoteManagerBase & manager, const Glib::Date & date);
   static void cleanup_old(gnote::NoteManagerBase & manager);
   static Glib::ustring get_content(const Glib::Date & date, const gnote::NoteManagerBase & manager);
   static gnote::NoteBase::Ptr get_note_by_date(gnote::NoteManagerBase & manager, const Glib::Date & date);

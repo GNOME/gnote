@@ -23,7 +23,6 @@
 
 #include "sharp/datetime.hpp"
 #include "debug.hpp"
-#include "notemanager.hpp"
 #include "noteoftheday.hpp"
 #include "utils.hpp"
 
@@ -34,8 +33,7 @@ const Glib::ustring NoteOfTheDay::s_template_title
 const Glib::ustring NoteOfTheDay::s_title_prefix
                                   = _("Today: ");
 
-gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
-                                      const Glib::Date & date)
+gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManagerBase & manager, const Glib::Date & date)
 {
   Glib::ustring title = get_title(date);
   Glib::ustring xml = get_content(date, manager);
