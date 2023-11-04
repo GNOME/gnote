@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017 Aurimas Cernius
+ * Copyright (C) 2014,2017,2023 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ public:
                             const Glib::Date & date);
   static Glib::ustring get_template_content(const Glib::ustring & title);
   static Glib::ustring get_title(const Glib::Date & date);
-  static bool has_changed(const gnote::NoteBase::Ptr & note);
+  static bool has_changed(gnote::NoteBase & note);
 
   static const Glib::ustring s_template_title;
 

@@ -76,7 +76,7 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
              date_time.get_day_of_month(),
              static_cast<Glib::Date::Month>(date_time.get_month()),
              date_time.get_year()) != date
-        && !has_changed(note)) {
+        && !has_changed(*note)) {
       kill_list.push_back(note);
     }
   }
@@ -157,17 +157,17 @@ Glib::ustring NoteOfTheDay::get_title(const Glib::Date & date)
   return s_title_prefix + date.format_string(_("%A, %B %d %Y"));
 }
 
-bool NoteOfTheDay::has_changed(const gnote::NoteBase::Ptr & note)
+bool NoteOfTheDay::has_changed(gnote::NoteBase & note)
 {
-  const auto & date_time = note->create_date();
+  const auto & date_time = note.create_date();
   const Glib::ustring original_xml
     = get_content(Glib::Date(
                     date_time.get_day_of_month(),
                     static_cast<Glib::Date::Month>(date_time.get_month()),
                     date_time.get_year()),
-                    *static_cast<gnote::NoteManager*>(&note->manager()));
+                    static_cast<const gnote::NoteManager&>(note.manager()));
 
-  return get_content_without_title(note->text_content()) != get_content_without_title(gnote::utils::XmlDecoder::decode(original_xml));
+  return get_content_without_title(note.text_content()) != get_content_without_title(gnote::utils::XmlDecoder::decode(original_xml));
 }
 
 }
