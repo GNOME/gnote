@@ -33,25 +33,25 @@ const Glib::ustring NoteOfTheDay::s_template_title
 const Glib::ustring NoteOfTheDay::s_title_prefix
                                   = _("Today: ");
 
-gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManagerBase & manager, const Glib::Date & date)
+gnote::NoteBase::ORef NoteOfTheDay::create(gnote::NoteManagerBase & manager, const Glib::Date & date)
 {
   Glib::ustring title = get_title(date);
   Glib::ustring xml = get_content(date, manager);
 
-  gnote::NoteBase::Ptr notd;
+  gnote::NoteBase::ORef notd;
   try {
-    notd = manager.create(Glib::ustring(title), std::move(xml)).shared_from_this();
+    notd = manager.create(Glib::ustring(title), std::move(xml));
   }
   catch (const sharp::Exception & e) {
     /* TRANSLATORS: first %s is note title, second is error */
     ERR_OUT(_("NoteOfTheDay could not create %s: %s"),
             title.c_str(),
             e.what());
-    return gnote::NoteBase::Ptr();
+    return gnote::NoteBase::ORef();
   }
 
   // Automatically tag all new Note of the Day notes
-  notd->add_tag(manager.tag_manager().get_or_create_system_tag("NoteOfTheDay"));
+  notd.value().get().add_tag(manager.tag_manager().get_or_create_system_tag("NoteOfTheDay"));
 
   return notd;
 }
