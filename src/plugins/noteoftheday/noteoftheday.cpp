@@ -58,7 +58,7 @@ gnote::NoteBase::Ptr NoteOfTheDay::create(gnote::NoteManager & manager,
   return notd;
 }
 
-void NoteOfTheDay::cleanup_old(gnote::NoteManager & manager)
+void NoteOfTheDay::cleanup_old(gnote::NoteManagerBase & manager)
 {
   gnote::NoteBase::List kill_list;
   const gnote::NoteBase::List & notes = manager.get_notes();
