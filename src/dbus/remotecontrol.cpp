@@ -264,9 +264,9 @@ bool RemoteControl::HideNote(const Glib::ustring& uri)
 std::vector<Glib::ustring> RemoteControl::ListAllNotes()
 {
   std::vector<Glib::ustring> uris;
-  for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
-    uris.push_back(iter->uri());
-  }
+  m_manager.for_each([&uris](const NoteBase & note) {
+    uris.push_back(note.uri());
+  });
   return uris;
 }
 
