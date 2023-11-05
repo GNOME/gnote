@@ -293,9 +293,8 @@ namespace sync {
       // Look through all the notes modified on the client
       // and upload new or modified ones to the server
       std::vector<NoteBase::Ref> new_or_modified_notes;
-      for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
-        Note::Ptr note = std::static_pointer_cast<Note>(iter);
-        if(m_client->get_revision(note) == -1) {
+      for(const NoteBase::Ptr & note : note_mgr().get_notes()) {
+        if(m_client->get_revision(*note) == -1) {
           // This is a new note that has never been synchronized to the server
           // TODO: *OR* this is a note that we lost revision info for!!!
           // TODO: Do the above NOW!!! (don't commit this dummy)
@@ -304,7 +303,7 @@ namespace sync {
           if(m_sync_ui != 0)
             m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_NEW);
         }
-        else if(m_client->get_revision(note) <= m_client->last_synchronized_revision()
+        else if(m_client->get_revision(*note) <= m_client->last_synchronized_revision()
                 && note->metadata_change_date() > m_client->last_sync_date()) {
           note_save(*note);
           new_or_modified_notes.push_back(*note);
@@ -476,9 +475,8 @@ namespace sync {
       bool server_has_updates = false;
       bool client_has_updates = m_client->deleted_note_titles().size() > 0;
       if(!client_has_updates) {
-        for(const NoteBase::Ptr & iter : note_mgr().get_notes()) {
-          Note::Ptr note = std::static_pointer_cast<Note>(iter);
-          if(m_client->get_revision(note) == -1 || note->metadata_change_date() > m_client->last_sync_date()) {
+        for(const NoteBase::Ptr & note : note_mgr().get_notes()) {
+          if(m_client->get_revision(*note) == -1 || note->metadata_change_date() > m_client->last_sync_date()) {
             client_has_updates = true;
             break;
           }
@@ -692,9 +690,8 @@ namespace sync {
       auto serverNotes = server.get_all_note_uuids();
 
       // Delete notes locally that have been deleted on the server
-      for(const NoteBase::Ptr & iter : localNotes) {
-        Note::Ptr note = std::static_pointer_cast<Note>(iter);
-	if(m_client->get_revision(note) != -1
+      for(const NoteBase::Ptr & note : localNotes) {
+	if(m_client->get_revision(*note) != -1
 	   && std::find(serverNotes.begin(), serverNotes.end(), note->id()) == serverNotes.end()) {
 	  if(m_sync_ui != 0) {
 	    m_sync_ui->note_synchronized(note->get_title(), DELETE_FROM_CLIENT);

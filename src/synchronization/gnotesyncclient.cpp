@@ -249,9 +249,9 @@ namespace sync {
   }
 
 
-  int GnoteSyncClient::get_revision(const NoteBase::Ptr & note)
+  int GnoteSyncClient::get_revision(const NoteBase & note)
   {
-    Glib::ustring note_guid = note->id();
+    Glib::ustring note_guid = note.id();
     auto iter = m_file_revisions.find(note_guid);
     if(iter != m_file_revisions.end()) {
       return iter->second;

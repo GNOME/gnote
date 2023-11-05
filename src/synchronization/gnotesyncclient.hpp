@@ -44,7 +44,7 @@ namespace sync {
         return m_last_sync_rev;
       }
     virtual void last_synchronized_revision(int) override;
-    virtual int get_revision(const NoteBase::Ptr & note) override;
+    int get_revision(const NoteBase & note) override;
     virtual void set_revision(const NoteBase::Ptr & note, int revision) override;
     virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() override
       {

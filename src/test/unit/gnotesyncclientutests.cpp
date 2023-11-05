@@ -86,7 +86,7 @@ TEST(manifest_parsing)
   client.set_revision(note, 1);
   client.end_synchronization();
   client.reparse();
-  CHECK_EQUAL(1, client.get_revision(note));
+  CHECK_EQUAL(1, client.get_revision(*note));
 
   std::remove(test_manifest.c_str());
 }
