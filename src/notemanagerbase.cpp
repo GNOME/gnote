@@ -541,9 +541,9 @@ void TrieController::update()
 {
   m_title_trie = std::make_unique<TrieTree<Glib::ustring>>(false /* !case_sensitive */);
 
-  for(const NoteBase::Ptr & note : m_manager.get_notes()) {
-    m_title_trie->add_keyword(note->get_title(), note->uri());
-  }
+  m_manager.for_each([this](NoteBase & note) {
+    m_title_trie->add_keyword(note.get_title(), note.uri());
+  });
   m_title_trie->compute_failure_graph();
 }
 
