@@ -245,7 +245,7 @@ void ExportToHtmlNoteAddin::write_html_for_note(sharp::StreamWriter & writer,
     args.add_param ("font", "", font);
   }
 
-  NoteNameResolver resolver(note.manager(), std::static_pointer_cast<gnote::Note>(note.shared_from_this()));
+  NoteNameResolver resolver(note.manager(), note);
   get_note_xsl().transform(doc, args, writer, resolver);
 
   xmlFreeDoc(doc);

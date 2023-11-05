@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014 Aurimas Cernius
+ * Copyright (C) 2014,2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ class NoteNameResolver
   : public sharp::XmlResolver
 {
 public:
-  NoteNameResolver(const gnote::NoteManagerBase &, const gnote::NoteBase::Ptr &)
+  NoteNameResolver(const gnote::NoteManagerBase &, const gnote::NoteBase &)
     {}
 };
 
