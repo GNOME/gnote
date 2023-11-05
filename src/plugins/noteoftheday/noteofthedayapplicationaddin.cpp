@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2017 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017,2023 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -54,7 +54,7 @@ void NoteOfTheDayApplicationAddin::check_new_day() const
   Glib::Date date;
   date.set_time_current();
 
-  if (0 == NoteOfTheDay::get_note_by_date(note_manager(), date)) {
+  if(!NoteOfTheDay::get_note_by_date(note_manager(), date)) {
     NoteOfTheDay::cleanup_old(note_manager());
 
     // Create a new NotD if the day has changed

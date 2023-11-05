@@ -113,7 +113,7 @@ Glib::ustring NoteOfTheDay::get_content_without_title(const Glib::ustring & cont
     return Glib::ustring();
 }
 
-gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(gnote::NoteManagerBase & manager, const Glib::Date & date)
+gnote::NoteBase::ORef NoteOfTheDay::get_note_by_date(gnote::NoteManagerBase & manager, const Glib::Date & date)
 {
   const gnote::NoteBase::List & notes = manager.get_notes();
 
@@ -127,11 +127,11 @@ gnote::NoteBase::Ptr NoteOfTheDay::get_note_by_date(gnote::NoteManagerBase & man
              date_time.get_day_of_month(),
              static_cast<Glib::Date::Month>(date_time.get_month()),
              date_time.get_year()) == date) {
-      return note;
+      return *note;
     }
   }
 
-  return gnote::Note::Ptr();
+  return gnote::Note::ORef();
 }
 
 Glib::ustring NoteOfTheDay::get_template_content(const Glib::ustring & title)
