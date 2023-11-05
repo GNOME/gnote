@@ -23,8 +23,9 @@
 #include <giomm/dbusconnection.h>
 #include <giomm/dbuserror.h>
 
-#include <set>
+#include <unordered_set>
 
+#include "base/hash.hpp"
 #include "debug.hpp"
 #include "iconmanager.hpp"
 #include "ignote.hpp"
@@ -85,27 +86,22 @@ void SearchProvider::on_method_call(const Glib::RefPtr<Gio::DBus::Connection> &,
 
 std::vector<Glib::ustring> SearchProvider::GetInitialResultSet(const std::vector<Glib::ustring> & terms)
 {
-  std::set<gnote::NoteBase::Ptr> final_result;
+  std::unordered_set<Glib::ustring, gnote::Hash<Glib::ustring>> final_result;
   std::vector<Glib::ustring> search_terms;
   search_terms.reserve(terms.size());
   for(auto & term : terms) {
     search_terms.push_back(term.casefold());
   }
-  for(auto note : m_manager.get_notes()) {
-    auto title = note->get_title().casefold();
+  m_manager.for_each([&final_result, search_terms](gnote::NoteBase & note) {
+    auto title = note.get_title().casefold();
     for(auto term : search_terms) {
       if(title.find(term) != Glib::ustring::npos) {
-        final_result.insert(note);
+        final_result.insert(note.uri());
       }
     }
-  }
+  });
 
-  std::vector<Glib::ustring> ret;
-  for(auto note : final_result) {
-    ret.push_back(note->uri());
-  }
-
-  return ret;
+  return std::vector<Glib::ustring>(final_result.begin(), final_result.end());
 }
 
 Glib::VariantContainerBase SearchProvider::GetInitialResultSet_stub(const Glib::VariantContainerBase & params)
@@ -123,7 +119,7 @@ Glib::VariantContainerBase SearchProvider::GetInitialResultSet_stub(const Glib::
 std::vector<Glib::ustring> SearchProvider::GetSubsearchResultSet(
     const std::vector<Glib::ustring> & previous_results, const std::vector<Glib::ustring> & terms)
 {
-  std::set<Glib::ustring> previous(previous_results.begin(), previous_results.end());
+  std::unordered_set<Glib::ustring, gnote::Hash<Glib::ustring>> previous(previous_results.begin(), previous_results.end());
   if(previous.size() == 0) {
     return std::vector<Glib::ustring>();
   }
