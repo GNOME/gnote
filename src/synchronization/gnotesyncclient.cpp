@@ -262,9 +262,9 @@ namespace sync {
   }
 
 
-  void GnoteSyncClient::set_revision(const NoteBase::Ptr & note, int revision)
+  void GnoteSyncClient::set_revision(const NoteBase & note, int revision)
   {
-    m_file_revisions[note->id()] = revision;
+    m_file_revisions[note.id()] = revision;
   }
 
 

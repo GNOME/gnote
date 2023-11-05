@@ -346,7 +346,7 @@ namespace sync {
         // Apply this revision number to all new/modified notes since last sync
         // TODO: Is this the best place to do this (after successful server commit)
         for(NoteBase & iter : new_or_modified_notes) {
-          m_client->set_revision(iter.shared_from_this(), newRevision);
+          m_client->set_revision(iter, newRevision);
         }
         set_state(SUCCEEDED);
       }
@@ -603,7 +603,7 @@ namespace sync {
     }
     catch(...)
     {} // TODO: Handle exception in case that serverNote.XmlContent is invalid XML
-    m_client->set_revision(std::static_pointer_cast<Note>(local_note.shared_from_this()), server_note.m_latest_revision);
+    m_client->set_revision(local_note, server_note.m_latest_revision);
 
     // Update dialog's sync status
     if(m_sync_ui != 0) {

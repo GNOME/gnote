@@ -82,11 +82,11 @@ TEST(manifest_parsing)
   CHECK_EQUAL(3, client.deleted_note_titles().size());
 
   client.begin_synchronization();
-  gnote::NoteBase::Ptr note = manager.create("test").shared_from_this();
+  const auto & note = manager.create("test");
   client.set_revision(note, 1);
   client.end_synchronization();
   client.reparse();
-  CHECK_EQUAL(1, client.get_revision(*note));
+  CHECK_EQUAL(1, client.get_revision(note));
 
   std::remove(test_manifest.c_str());
 }

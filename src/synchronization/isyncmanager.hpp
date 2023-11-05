@@ -51,7 +51,7 @@ public:
   virtual Glib::DateTime last_sync_date() = 0;
   virtual void last_sync_date(const Glib::DateTime &) = 0;
   virtual int get_revision(const NoteBase & note) = 0;
-  virtual void set_revision(const NoteBase::Ptr & note, int revision) = 0;
+  virtual void set_revision(const NoteBase & note, int revision) = 0;
   virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() = 0;
   virtual void reset() = 0;
   virtual Glib::ustring associated_server_id() = 0;
