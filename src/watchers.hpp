@@ -294,7 +294,7 @@ namespace gnote {
   private:
     void on_tag_added(const NoteBase&, const Tag::Ptr&);
     void on_tag_removing(const NoteBase&, const Tag &);
-    void on_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
+    void on_tag_removed(const NoteBase&, const Glib::ustring&);
 
     sigc::connection m_on_tag_added_cid;
     sigc::connection m_on_tag_removing_cid;

@@ -151,7 +151,7 @@ private:
   void on_save_selection_check_button_toggled();
   void on_save_title_check_button_toggled();
   void on_note_tag_added(const NoteBase&, const Tag::Ptr&);
-  void on_note_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
+  void on_note_tag_removed(const NoteBase&, const Glib::ustring&);
   void link_button_clicked();
   bool open_help_activate(Gtk::Widget&, const Glib::VariantBase&);
   void change_depth_right_handler();

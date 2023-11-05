@@ -43,7 +43,7 @@ namespace gnote {
       NotebookApplicationAddin();
     private:
       void on_tag_added(const NoteBase&, const Tag::Ptr&);
-      void on_tag_removed(const NoteBase::Ptr&, const Glib::ustring&);
+      void on_tag_removed(const NoteBase&, const Glib::ustring&);
       void on_note_added(NoteBase &);
       void on_new_notebook_action(const Glib::VariantBase&);
 

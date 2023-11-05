@@ -282,7 +282,7 @@ void NoteBase::remove_tag(Tag & tag)
   thetags.erase(iter);
   tag.remove_note(*this);
 
-  signal_tag_removed(shared_from_this(), tag_name);
+  signal_tag_removed(*this, tag_name);
 
   DBG_OUT("Tag removed, queueing save");
   queue_save(OTHER_DATA_CHANGED);

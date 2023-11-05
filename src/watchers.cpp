@@ -1293,7 +1293,7 @@ namespace gnote {
 #endif
 
 
-  void NoteTagsWatcher::on_tag_removed(const NoteBase::Ptr&, const Glib::ustring& tag_name)
+  void NoteTagsWatcher::on_tag_removed(const NoteBase&, const Glib::ustring& tag_name)
   {
     Tag::Ptr tag = manager().tag_manager().get_tag(tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);

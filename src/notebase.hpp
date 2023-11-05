@@ -262,7 +262,7 @@ public:
   TagAddedHandler signal_tag_added;
   typedef sigc::signal<void(const NoteBase&, const Tag &)> TagRemovingHandler;
   TagRemovingHandler signal_tag_removing;
-  typedef sigc::signal<void(const NoteBase::Ptr&, const Glib::ustring&)> TagRemovedHandler;
+  typedef sigc::signal<void(const NoteBase&, const Glib::ustring&)> TagRemovedHandler;
   TagRemovedHandler signal_tag_removed;
 protected:
   virtual const NoteDataBufferSynchronizerBase & data_synchronizer() const = 0;

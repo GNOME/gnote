@@ -449,7 +449,7 @@ namespace gnote {
   }
 
 
-  void NoteWindow::on_note_tag_removed(const NoteBase::Ptr&, const Glib::ustring & tag)
+  void NoteWindow::on_note_tag_removed(const NoteBase&, const Glib::ustring & tag)
   {
     if(tag == m_template_tag->normalized_name()) {
       m_template_widget->hide();

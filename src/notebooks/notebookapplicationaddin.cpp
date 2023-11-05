@@ -114,7 +114,7 @@ namespace gnote {
 
 
 
-    void NotebookApplicationAddin::on_tag_removed(const NoteBase::Ptr & note,
+    void NotebookApplicationAddin::on_tag_removed(const NoteBase & note,
                                                   const Glib::ustring & normalizedTagName)
     {
       Glib::ustring megaPrefix(Tag::SYSTEM_TAG_PREFIX);
@@ -133,7 +133,7 @@ namespace gnote {
         return;
       }
 
-      manager.signal_note_removed_from_notebook() (*std::static_pointer_cast<Note>(note), notebook);
+      manager.signal_note_removed_from_notebook() (static_cast<const Note&>(note), notebook);
     }
 
     void NotebookApplicationAddin::on_note_added(NoteBase & note)
