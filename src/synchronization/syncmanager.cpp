@@ -475,12 +475,13 @@ namespace sync {
       bool server_has_updates = false;
       bool client_has_updates = m_client->deleted_note_titles().size() > 0;
       if(!client_has_updates) {
-        for(const NoteBase::Ptr & note : note_mgr().get_notes()) {
-          if(m_client->get_revision(*note) == -1 || note->metadata_change_date() > m_client->last_sync_date()) {
-            client_has_updates = true;
-            break;
+        client_has_updates = note_mgr().search([this](const NoteBase & note, bool & has_updates) {
+          if(m_client->get_revision(note) == -1 || note.metadata_change_date() > m_client->last_sync_date()) {
+            has_updates = true;
+            return false;
           }
-        }
+          return true;
+        }, false);
       }
 
       // NOTE: Important to check, at least to verify
