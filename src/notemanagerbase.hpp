@@ -109,6 +109,18 @@ public:
       }
     }
 
+  template <typename RetT, typename FuncT>
+  RetT search(const FuncT & func, const RetT & default_ret) const
+    {
+      RetT ret{default_ret};
+      for(const auto & note : m_notes) {
+        if(!func(*note, ret)) {
+          break;
+        }
+      }
+      return ret;
+    }
+
   template <typename C, typename F>
   void copy_to(C & container, const F & func) const
     {
