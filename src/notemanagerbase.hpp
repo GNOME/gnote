@@ -109,6 +109,14 @@ public:
       }
     }
 
+  template <typename C, typename F>
+  void copy_to(C & container, const F & func) const
+    {
+      for(const auto & note : m_notes) {
+        func(container, note);
+      }
+    }
+
   ChangedHandler signal_note_deleted;
   ChangedHandler signal_note_added;
   NoteBase::RenamedHandler signal_note_renamed;
