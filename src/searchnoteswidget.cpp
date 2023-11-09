@@ -392,15 +392,15 @@ void SearchNotesWidget::update_results()
   m_store_sort->signal_sort_column_changed()
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
 
-  for(const NoteBase::Ptr & note_iter : m_manager.get_notes()) {
-    Note::Ptr note(std::static_pointer_cast<Note>(note_iter));
+  m_manager.copy_to(m_store, [this](const Glib::RefPtr<Gtk::ListStore> & store, const NoteBase::Ptr & note_base) {
+    Note::Ptr note(std::static_pointer_cast<Note>(note_base));
     Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
 
-    Gtk::TreeIter iter = m_store->append();
+    Gtk::TreeIter iter = store->append();
     iter->set_value(RecentNotesColumnTypes::TITLE, note->get_title());
     iter->set_value(RecentNotesColumnTypes::CHANGE_DATE, nice_date);
     iter->set_value(RecentNotesColumnTypes::NOTE, note);
-  }
+  });
 
   m_tree->set_model(m_store_sort);
 
