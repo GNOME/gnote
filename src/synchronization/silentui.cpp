@@ -96,18 +96,18 @@ namespace sync {
   void SilentUI::on_connecting()
   {
     m_manager.read_only(true);
-    for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
-      iter->enabled(false);
-    }
+    m_manager.for_each([](NoteBase & note) {
+      note.enabled(false);
+    });
   }
 
 
   void SilentUI::on_idle()
   {
     m_manager.read_only(false);
-    for(const NoteBase::Ptr & iter : m_manager.get_notes()) {
-      iter->enabled(true);
-    }
+    m_manager.for_each([](NoteBase & note) {
+      note.enabled(true);
+    });
     m_ui_disabled = false;
   }
 
