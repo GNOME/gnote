@@ -293,25 +293,25 @@ namespace sync {
       // Look through all the notes modified on the client
       // and upload new or modified ones to the server
       std::vector<NoteBase::Ref> new_or_modified_notes;
-      for(const NoteBase::Ptr & note : note_mgr().get_notes()) {
-        if(m_client->get_revision(*note) == -1) {
+      note_mgr().for_each([this, &new_or_modified_notes](NoteBase & note) {
+        if(m_client->get_revision(note) == -1) {
           // This is a new note that has never been synchronized to the server
           // TODO: *OR* this is a note that we lost revision info for!!!
           // TODO: Do the above NOW!!! (don't commit this dummy)
-          note_save(*note);
-          new_or_modified_notes.push_back(*note);
+          note_save(note);
+          new_or_modified_notes.push_back(note);
           if(m_sync_ui != 0)
-            m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_NEW);
+            m_sync_ui->note_synchronized_th(note.get_title(), UPLOAD_NEW);
         }
-        else if(m_client->get_revision(*note) <= m_client->last_synchronized_revision()
-                && note->metadata_change_date() > m_client->last_sync_date()) {
-          note_save(*note);
-          new_or_modified_notes.push_back(*note);
+        else if(m_client->get_revision(note) <= m_client->last_synchronized_revision()
+                && note.metadata_change_date() > m_client->last_sync_date()) {
+          note_save(note);
+          new_or_modified_notes.push_back(note);
           if(m_sync_ui != 0) {
-            m_sync_ui->note_synchronized_th(note->get_title(), UPLOAD_MODIFIED);
+            m_sync_ui->note_synchronized_th(note.get_title(), UPLOAD_MODIFIED);
           }
         }
-      }
+      });
 
       DBG_OUT("Sync: Uploading %zu note updates", new_or_modified_notes.size());
       if(new_or_modified_notes.size() > 0) {
