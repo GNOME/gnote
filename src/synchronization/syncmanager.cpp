@@ -684,21 +684,23 @@ namespace sync {
   void SyncManager::delete_notes(SyncServer & server)
   {
     try {
-      // Make list of all local notes
-      auto localNotes = note_mgr().get_notes();
-
       // Get all notes currently on server
-      auto serverNotes = server.get_all_note_uuids();
+      auto server_notes = server.get_all_note_uuids();
+      std::vector<NoteBase::Ref> to_delete;
 
       // Delete notes locally that have been deleted on the server
-      for(const NoteBase::Ptr & note : localNotes) {
-	if(m_client->get_revision(*note) != -1
-	   && std::find(serverNotes.begin(), serverNotes.end(), note->id()) == serverNotes.end()) {
+      note_mgr().for_each([this, server_notes=std::move(server_notes), &to_delete](NoteBase & note) {
+	if(m_client->get_revision(note) != -1
+	   && std::find(server_notes.begin(), server_notes.end(), note.id()) == server_notes.end()) {
 	  if(m_sync_ui != 0) {
-	    m_sync_ui->note_synchronized(note->get_title(), DELETE_FROM_CLIENT);
+	    m_sync_ui->note_synchronized(note.get_title(), DELETE_FROM_CLIENT);
 	  }
-	  note_mgr().delete_note(*note);
+          to_delete.push_back(note);
 	}
+      });
+
+      for(auto note : to_delete) {
+        note_mgr().delete_note(note);
       }
     }
     catch(std::exception & e) {
