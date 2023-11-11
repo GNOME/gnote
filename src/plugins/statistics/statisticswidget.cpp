@@ -82,9 +82,8 @@ private:
   void build_stats()
     {
       m_model->remove_all();
-      gnote::NoteBase::List notes = m_note_manager.get_notes();
 
-      m_model->append(StatisticsRecord::create({_("Total Notes"), TO_STRING(notes.size())}));
+      m_model->append(StatisticsRecord::create({_("Total Notes"), TO_STRING(m_note_manager.note_count())}));
 
       auto notebooks = m_gnote.notebook_manager().get_notebooks();
       m_model->append(StatisticsRecord::create({_("Total Notebooks"), TO_STRING(notebooks->children().size())}));
@@ -99,14 +98,13 @@ private:
       }
       gnote::Tag::Ptr template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
         gnote::ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      for(gnote::NoteBase::Ptr note : notes) {
-        for(std::map<gnote::notebooks::Notebook::Ptr, int>::iterator nb = notebook_notes.begin();
-            nb != notebook_notes.end(); ++nb) {
-          if(note->contains_tag(nb->first->get_tag()) && !note->contains_tag(template_tag)) {
-            ++nb->second;
+      m_note_manager.for_each([&notebook_notes, template_tag](gnote::NoteBase & note) {
+        for(auto & nb : notebook_notes) {
+          if(note.contains_tag(nb.first->get_tag()) && !note.contains_tag(template_tag)) {
+            ++nb.second;
           }
         }
-      }
+      });
       std::map<Glib::ustring, int> notebook_stats;
       for(std::map<gnote::notebooks::Notebook::Ptr, int>::iterator nb = notebook_notes.begin();
           nb != notebook_notes.end(); ++nb) {
