@@ -96,6 +96,10 @@ public:
     {
       return m_notes_dir;
     }
+  std::size_t note_count() const
+    {
+      return m_notes.size();
+    }
   const NoteBase::List & get_notes() const
     { 
       return m_notes;
