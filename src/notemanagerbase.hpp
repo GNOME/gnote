@@ -100,10 +100,6 @@ public:
     {
       return m_notes.size();
     }
-  const NoteBase::List & get_notes() const
-    { 
-      return m_notes;
-    }
 
   template <typename F>
   void for_each(const F & func) const
