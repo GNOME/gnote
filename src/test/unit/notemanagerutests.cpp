@@ -88,7 +88,7 @@ SUITE(NoteManager)
     CHECK(note1.data().text().find("Describe your new note here.") != Glib::ustring::npos);
     CHECK_EQUAL("New Note 2", note2.get_title());
     CHECK(note2.data().text().find("Describe your new note here.") != Glib::ustring::npos);
-    CHECK_EQUAL(2, manager.get_notes().size());
+    CHECK_EQUAL(2, manager.note_count());
   }
 
   TEST_FIXTURE(Fixture, create_no_args_from_template)
@@ -104,7 +104,7 @@ SUITE(NoteManager)
     auto & note = manager.create("test");
     CHECK_EQUAL("test", note.get_title());
     CHECK(note.data().text().find("Describe your new note here.") != Glib::ustring::npos);
-    CHECK_EQUAL(1, manager.get_notes().size());
+    CHECK_EQUAL(1, manager.note_count());
   }
 
   TEST_FIXTURE(Fixture, create_with_title_from_template)
@@ -113,7 +113,7 @@ SUITE(NoteManager)
     auto & note = manager.create("test");
     CHECK_EQUAL("test", note.get_title());
     CHECK(note.data().text().find("test template content") != Glib::ustring::npos);
-    CHECK_EQUAL(2, manager.get_notes().size());
+    CHECK_EQUAL(2, manager.note_count());
   }
 
   TEST_FIXTURE(Fixture, create_with_text_content)
@@ -121,7 +121,7 @@ SUITE(NoteManager)
     auto & note = manager.create("test\ntest content");
     CHECK_EQUAL("test", note.get_title());
     CHECK(note.data().text().find("test content") != Glib::ustring::npos);
-    CHECK_EQUAL(1, manager.get_notes().size());
+    CHECK_EQUAL(1, manager.note_count());
   }
 
   TEST_FIXTURE(Fixture, create_with_text_content_having_template)
@@ -130,7 +130,7 @@ SUITE(NoteManager)
     auto & note = manager.create("test\ntest content");
     CHECK_EQUAL("test", note.get_title());
     CHECK(note.data().text().find("test content") != Glib::ustring::npos);
-    CHECK_EQUAL(2, manager.get_notes().size());
+    CHECK_EQUAL(2, manager.note_count());
   }
 
   TEST_FIXTURE(Fixture, create_and_find)
@@ -138,7 +138,7 @@ SUITE(NoteManager)
     manager.create();
     manager.create();
     auto & test_note = manager.create("test note");
-    CHECK_EQUAL(3, manager.get_notes().size());
+    CHECK_EQUAL(3, manager.note_count());
     CHECK(&manager.find("test note").value().get() == &test_note);
     CHECK(&manager.find_by_uri(test_note.uri()).value().get() == &test_note);
   }
@@ -148,7 +148,7 @@ SUITE(NoteManager)
     auto & note = manager.create("test", "<note-content><note-title>test</note-title>\n\ntest content");
     CHECK_EQUAL("test", note.get_title());
     CHECK(note.data().text().find("test content") != Glib::ustring::npos);
-    CHECK_EQUAL(1, manager.get_notes().size());
+    CHECK_EQUAL(1, manager.note_count());
   }
 
   TEST_FIXTURE(Fixture, create_with_guid)
@@ -158,7 +158,7 @@ SUITE(NoteManager)
     CHECK(note.data().text().find("Describe your new note here.") != Glib::ustring::npos);
     CHECK_EQUAL("93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.id());
     CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.uri());
-    CHECK_EQUAL(1, manager.get_notes().size());
+    CHECK_EQUAL(1, manager.note_count());
     auto other = manager.find_by_uri("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a");
     REQUIRE CHECK(other.has_value());
     CHECK_EQUAL(&note, &other.value().get());
@@ -172,7 +172,7 @@ SUITE(NoteManager)
     CHECK(note.data().text().find("test template content") != Glib::ustring::npos);
     CHECK_EQUAL("93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.id());
     CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.uri());
-    CHECK_EQUAL(2, manager.get_notes().size());
+    CHECK_EQUAL(2, manager.note_count());
     auto other = manager.find_by_uri("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a");
     REQUIRE CHECK(other.has_value());
     CHECK_EQUAL(&note, &other.value().get());
@@ -185,7 +185,7 @@ SUITE(NoteManager)
     CHECK(note.data().text().find("test content") != Glib::ustring::npos);
     CHECK_EQUAL("93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.id());
     CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.uri());
-    CHECK_EQUAL(1, manager.get_notes().size());
+    CHECK_EQUAL(1, manager.note_count());
   }
 }
 
