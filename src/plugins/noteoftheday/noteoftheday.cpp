@@ -114,11 +114,9 @@ Glib::ustring NoteOfTheDay::get_content_without_title(const Glib::ustring & cont
 
 gnote::NoteBase::ORef NoteOfTheDay::get_note_by_date(gnote::NoteManagerBase & manager, const Glib::Date & date)
 {
-  const gnote::NoteBase::List & notes = manager.get_notes();
-
-  for(gnote::NoteBase::Ptr note : notes) {
-    const Glib::ustring & title = note->get_title();
-    const auto & date_time = note->create_date();
+  return manager.search([date](gnote::NoteBase & note, gnote::NoteBase::ORef & ret) {
+    const Glib::ustring & title = note.get_title();
+    const auto & date_time = note.create_date();
 
     if (true == Glib::str_has_prefix(title, s_title_prefix)
         && s_template_title != title
@@ -126,11 +124,11 @@ gnote::NoteBase::ORef NoteOfTheDay::get_note_by_date(gnote::NoteManagerBase & ma
              date_time.get_day_of_month(),
              static_cast<Glib::Date::Month>(date_time.get_month()),
              date_time.get_year()) == date) {
-      return *note;
+      ret = note;
+      return false;
     }
-  }
-
-  return gnote::Note::ORef();
+    return true;
+  }, gnote::NoteBase::ORef());
 }
 
 Glib::ustring NoteOfTheDay::get_template_content(const Glib::ustring & title)
