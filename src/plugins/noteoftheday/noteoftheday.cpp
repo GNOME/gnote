@@ -58,15 +58,14 @@ gnote::NoteBase::ORef NoteOfTheDay::create(gnote::NoteManagerBase & manager, con
 
 void NoteOfTheDay::cleanup_old(gnote::NoteManagerBase & manager)
 {
-  gnote::NoteBase::List kill_list;
-  const gnote::NoteBase::List & notes = manager.get_notes();
+  std::vector<gnote::NoteBase::Ref> kill_list;
 
   Glib::Date date;
   date.set_time_current(); // time set to 00:00:00
 
-  for(const gnote::NoteBase::Ptr & note : notes) {
-    const Glib::ustring & title = note->get_title();
-    const auto & date_time = note->create_date();
+  manager.for_each([&kill_list, date](gnote::NoteBase & note) {
+    const Glib::ustring & title = note.get_title();
+    const auto & date_time = note.create_date();
 
     if (true == Glib::str_has_prefix(title, s_title_prefix)
         && s_template_title != title
@@ -74,14 +73,14 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManagerBase & manager)
              date_time.get_day_of_month(),
              static_cast<Glib::Date::Month>(date_time.get_month()),
              date_time.get_year()) != date
-        && !has_changed(*note)) {
+        && !has_changed(note)) {
       kill_list.push_back(note);
     }
-  }
+  });
 
-  for(gnote::NoteBase::Ptr & note : kill_list) {
-    DBG_OUT("NoteOfTheDay: Deleting old unmodified '%s'", note->get_title().c_str());
-    manager.delete_note(*note);
+  for(const auto & note : kill_list) {
+    DBG_OUT("NoteOfTheDay: Deleting old unmodified '%s'", note.get().get_title().c_str());
+    manager.delete_note(note);
   }
 }
 
