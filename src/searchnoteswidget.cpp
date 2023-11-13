@@ -641,7 +641,7 @@ void SearchNotesWidget::on_row_activated(const Gtk::TreePath & p, Gtk::TreeViewC
 void SearchNotesWidget::on_selection_changed()
 {
   if(auto win = dynamic_cast<MainWindow*>(host())) {
-    bool enabled = get_selected_notes().empty() == false;
+    bool enabled = selected_note_count();
     if(auto action = win->find_action("open-note")) {
       action->set_enabled(enabled);
     }
@@ -673,8 +673,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
   case GDK_KEY_Menu:
   {
     // Pop up the context menu if a note is selected
-    Note::List selected_notes = get_selected_notes();
-    if(!selected_notes.empty()) {
+    if(selected_note_count()) {
       auto menu = get_note_list_context_menu();
       popup_context_menu_at_location(menu, m_tree);
     }
