@@ -432,6 +432,11 @@ void SearchNotesWidget::popup_context_menu_at_location(Gtk::Popover *popover, Gt
   popover->popup();
 }
 
+unsigned SearchNotesWidget::selected_note_count() const
+{
+  return m_tree->get_selection()->count_selected_rows();
+}
+
 Note::List SearchNotesWidget::get_selected_notes()
 {
   Note::List selected_notes;

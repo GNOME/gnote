@@ -80,6 +80,7 @@ private:
   bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void update_results();
   void popup_context_menu_at_location(Gtk::Popover*, Gtk::TreeView*);
+  unsigned selected_note_count() const;
   Note::List get_selected_notes();
   bool filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
