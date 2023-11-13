@@ -945,12 +945,21 @@ void SearchNotesWidget::on_open_note_new_window()
 
 void SearchNotesWidget::delete_selected_notes()
 {
-  Note::List selected_notes = get_selected_notes();
+  auto owning = get_owning_window();
+  if(!owning) {
+    return;
+  }
+  auto & owning_window = *owning;
+
+  std::vector<NoteBase::Ref> selected_notes;
+  for(const auto & note : get_selected_notes()) {
+    selected_notes.push_back(*note);
+  }
   if(selected_notes.empty()) {
     return;
   }
 
-  noteutils::show_deletion_dialog(selected_notes, get_owning_window());
+  noteutils::show_deletion_dialog(selected_notes, owning_window);
 }
 
 Gtk::Window *SearchNotesWidget::get_owning_window()

@@ -46,20 +46,20 @@ namespace gnote {
 
   namespace noteutils {
 
-    void show_deletion_dialog(const Note::List & notes, Gtk::Window *parent)
+    void show_deletion_dialog(const std::vector<NoteBase::Ref> & notes, Gtk::Window & parent)
     {
       Glib::ustring message;
 
       if(notes.size() == 1) {
         // TRANSLATORS: %1 will be replaced by note title
-        message = Glib::ustring::compose(_("Really delete \"%1\"?"), notes.front()->get_title());
+        message = Glib::ustring::compose(_("Really delete \"%1\"?"), notes.front().get().get_title());
       }
       else {
         // TRANSLATORS: %1 is number of notes
         message = Glib::ustring::compose(ngettext("Really delete %1 note?", "Really delete %1 notes?", notes.size()), notes.size());
       }
 
-      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(parent, GTK_DIALOG_DESTROY_WITH_PARENT, Gtk::MessageType::QUESTION,
+      auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(&parent, GTK_DIALOG_DESTROY_WITH_PARENT, Gtk::MessageType::QUESTION,
                                                Gtk::ButtonsType::NONE, message, _("If you delete a note it is permanently lost."));
 
       Gtk::Button *button = Gtk::make_managed<Gtk::Button>(_("_Cancel"), true);
@@ -70,10 +70,16 @@ namespace gnote {
       button->get_style_context()->add_class("destructive-action");
       dialog->add_action_widget(*button, 666);
 
-      dialog->signal_response().connect([dialog, notes](int result) {
+      std::vector<Glib::ustring> note_uris;
+      for(auto & note : notes) {
+        note_uris.push_back(note.get().uri());
+      }
+      dialog->signal_response().connect([&manager=notes.front().get().manager(), dialog, notes=std::move(note_uris)](int result) {
         if (result == 666) {
-          for(auto & note : notes) {
-            note->manager().delete_note(*note);
+          for(const auto & uri : notes) {
+            if(auto note = manager.find_by_uri(uri)) {
+              manager.delete_note(note.value());
+            }
           }
         }
         dialog->hide();

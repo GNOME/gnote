@@ -209,7 +209,7 @@ private:
 };
 
 namespace noteutils {
-  void show_deletion_dialog(const Note::List & notes, Gtk::Window * parent);
+  void show_deletion_dialog(const std::vector<NoteBase::Ref> & notes, Gtk::Window & parent);
 }
 
 }
