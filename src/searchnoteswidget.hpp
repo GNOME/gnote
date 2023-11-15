@@ -86,7 +86,7 @@ private:
   int compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void make_recent_tree();
-  void select_notes(const Note::List &);
+  void select_notes(const std::vector<Note::Ref> &);
   Note::Ptr get_note(const Gtk::TreePath & p);
   bool filter_by_search(const Note &);
   bool filter_by_tag(const Note &, const Tag::Ptr &);

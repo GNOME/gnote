@@ -414,11 +414,7 @@ void SearchNotesWidget::update_results()
 
   // Restore the previous selection
   if(!selected_notes.empty()) {
-    Note::List notes;
-    for(auto n : selected_notes) {
-      notes.push_back(std::static_pointer_cast<Note>(n.get().shared_from_this()));
-    }
-    select_notes(notes);
+    select_notes(selected_notes);
   }
 }
 
@@ -581,7 +577,7 @@ void SearchNotesWidget::make_recent_tree()
   m_tree->append_column(*change);
 }
 
-void SearchNotesWidget::select_notes(const Note::List & notes)
+void SearchNotesWidget::select_notes(const std::vector<Note::Ref> & notes)
 {
   Gtk::TreeIter iter = m_store_sort->children().begin();
 
@@ -591,7 +587,7 @@ void SearchNotesWidget::select_notes(const Note::List & notes)
 
   do {
     Note::Ptr iter_note = (*iter)[m_column_types.note];
-    if(find(notes.begin(), notes.end(), iter_note) != notes.end()) {
+    if(find_if(notes.begin(), notes.end(), [iter_note](const Note::Ref & note) { return &note.get() == iter_note.get(); }) != notes.end()) {
       // Found one
       m_tree->get_selection()->select(iter);
     }
