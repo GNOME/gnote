@@ -81,7 +81,7 @@ private:
   void update_results();
   void popup_context_menu_at_location(Gtk::Popover*, Gtk::TreeView*);
   unsigned selected_note_count() const;
-  Note::List get_selected_notes();
+  std::vector<Note::Ref> get_selected_notes();
   bool filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);

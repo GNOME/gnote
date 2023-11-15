@@ -373,7 +373,7 @@ void SearchNotesWidget::select_all_notes_notebook()
 void SearchNotesWidget::update_results()
 {
   // Save the currently selected notes
-  Note::List selected_notes = get_selected_notes();
+  auto selected_notes = get_selected_notes();
 
   int sort_column = RecentNotesColumnTypes::CHANGE_DATE;
   Gtk::SortType sort_type = Gtk::SortType::DESCENDING;
@@ -414,7 +414,11 @@ void SearchNotesWidget::update_results()
 
   // Restore the previous selection
   if(!selected_notes.empty()) {
-    select_notes(selected_notes);
+    Note::List notes;
+    for(auto n : selected_notes) {
+      notes.push_back(std::static_pointer_cast<Note>(n.get().shared_from_this()));
+    }
+    select_notes(notes);
   }
 }
 
@@ -437,9 +441,9 @@ unsigned SearchNotesWidget::selected_note_count() const
   return m_tree->get_selection()->count_selected_rows();
 }
 
-Note::List SearchNotesWidget::get_selected_notes()
+std::vector<Note::Ref> SearchNotesWidget::get_selected_notes()
 {
-  Note::List selected_notes;
+  std::vector<Note::Ref> selected_notes;
 
   std::vector<Gtk::TreePath> selected_rows =
     m_tree->get_selection()->get_selected_rows();
@@ -450,7 +454,7 @@ Note::List SearchNotesWidget::get_selected_notes()
       continue;
     }
 
-    selected_notes.push_back(note);
+    selected_notes.push_back(*note);
   }
 
   return selected_notes;
@@ -693,7 +697,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
 
 Glib::RefPtr<Gdk::ContentProvider> SearchNotesWidget::on_treeview_drag_data_get(double, double)
 {
-  Note::List selected_notes = get_selected_notes();
+  auto selected_notes = get_selected_notes();
   if(selected_notes.empty()) {
     // TODO grab note under cursor
     return Glib::RefPtr<Gdk::ContentProvider>();
@@ -702,13 +706,13 @@ Glib::RefPtr<Gdk::ContentProvider> SearchNotesWidget::on_treeview_drag_data_get(
   if(selected_notes.size() == 1) {
     Glib::Value<Glib::ustring> value;
     value.init(Glib::Value<Glib::ustring>::value_type());
-    value.set(selected_notes.front()->uri());
+    value.set(selected_notes.front().get().uri());
     return Gdk::ContentProvider::create(value);
   }
   else {
     std::vector<Glib::ustring> uris;
     for(const auto & note : selected_notes) {
-      uris.emplace_back(note->uri());
+      uris.emplace_back(note.get().uri());
     }
 
     Glib::Value<std::vector<Glib::ustring>> value;
@@ -927,23 +931,22 @@ void SearchNotesWidget::rename_note(const NoteBase & note)
 
 void SearchNotesWidget::on_open_note()
 {
-  Note::List selected_notes = get_selected_notes ();
-  Note::List::iterator iter = selected_notes.begin();
+  auto selected_notes = get_selected_notes();
+  auto iter = selected_notes.begin();
   if(iter != selected_notes.end()) {
-    signal_open_note(**iter);
+    signal_open_note(*iter);
     ++iter;
   }
   for(; iter != selected_notes.end(); ++iter) {
-    signal_open_note_new_window(**iter);
+    signal_open_note_new_window(*iter);
   }
 }
 
 void SearchNotesWidget::on_open_note_new_window()
 {
-  Note::List selected_notes = get_selected_notes();
-  for(Note::List::iterator iter = selected_notes.begin();
-      iter != selected_notes.end(); ++iter) {
-    signal_open_note_new_window(**iter);
+  auto selected_notes = get_selected_notes();
+  for(auto note : selected_notes) {
+    signal_open_note_new_window(note);
   }
 }
 
@@ -955,15 +958,12 @@ void SearchNotesWidget::delete_selected_notes()
   }
   auto & owning_window = *owning;
 
-  std::vector<NoteBase::Ref> selected_notes;
-  for(const auto & note : get_selected_notes()) {
-    selected_notes.push_back(*note);
-  }
+  auto selected_notes = get_selected_notes();
   if(selected_notes.empty()) {
     return;
   }
 
-  noteutils::show_deletion_dialog(selected_notes, owning_window);
+  noteutils::show_deletion_dialog(std::vector<NoteBase::Ref>(selected_notes.begin(), selected_notes.end()), owning_window);
 }
 
 Gtk::Window *SearchNotesWidget::get_owning_window()
