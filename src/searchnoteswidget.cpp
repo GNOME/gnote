@@ -1060,7 +1060,7 @@ void SearchNotesWidget::on_open_notebook_template_note(const Glib::VariantBase&)
 
 void SearchNotesWidget::on_new_notebook(const Glib::VariantBase&)
 {
-  notebooks::NotebookManager::prompt_create_new_notebook(m_gnote, *get_owning_window());
+  m_gnote.notebook_manager().prompt_create_new_notebook(m_gnote, *get_owning_window());
 }
 
 void SearchNotesWidget::on_delete_notebook(const Glib::VariantBase&)

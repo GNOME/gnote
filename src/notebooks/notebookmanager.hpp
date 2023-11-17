@@ -85,7 +85,7 @@ public:
   Notebook::Ptr get_notebook_from_note(const NoteBase&);
   Notebook::Ptr get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
-  static void prompt_create_new_notebook(IGnote &, Gtk::Window &,
+  void prompt_create_new_notebook(IGnote &, Gtk::Window &,
     sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
   static void prompt_create_new_notebook(IGnote &, Gtk::Window &, Note::List && notes_to_add,
     sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
