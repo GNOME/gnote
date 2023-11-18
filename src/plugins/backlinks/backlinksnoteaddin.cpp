@@ -97,17 +97,20 @@ void BacklinksNoteAddin::update_menu(Gio::Menu & menu) const
 std::vector<Glib::RefPtr<Gio::MenuItem>> BacklinksNoteAddin::get_backlink_menu_items() const
 {
   auto & note = get_note();
-  gnote::NoteBase::List notes = note.manager().get_notes_linking_to(note.get_title());
-  std::sort(notes.begin(), notes.end(), [](const gnote::NoteBase::Ptr & x, const gnote::NoteBase::Ptr & y)
+  std::vector<gnote::NoteBase::Ref> notes;
+  for(const auto & note : note.manager().get_notes_linking_to(note.get_title())) {
+    notes.push_back(*note);
+  }
+  std::sort(notes.begin(), notes.end(), [](const gnote::NoteBase & x, const gnote::NoteBase & y)
     {
-      return x->get_title() < y->get_title();
+      return x.get_title() < y.get_title();
     });
 
   std::vector<Glib::RefPtr<Gio::MenuItem>> items;
-  for(const auto & n : notes) {
-    if(&*n != &note) { // don't match ourself
-      auto item = Gio::MenuItem::create(n->get_title(), "");
-      item->set_action_and_target("win.backlinks-open-note", Glib::Variant<Glib::ustring>::create(n->uri()));
+  for(const gnote::NoteBase & n : notes) {
+    if(&n != &note) { // don't match ourself
+      auto item = Gio::MenuItem::create(n.get_title(), "");
+      item->set_action_and_target("win.backlinks-open-note", Glib::Variant<Glib::ustring>::create(n.uri()));
       items.push_back(std::move(item));
     }
   }
