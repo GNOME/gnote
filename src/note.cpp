@@ -504,10 +504,7 @@ namespace gnote {
 
   void Note::process_rename_link_update(const Glib::ustring & old_title)
   {
-    std::vector<NoteBase::Ref> linking_notes;
-    for(const auto & note : manager().get_notes_linking_to(old_title)) {
-      linking_notes.push_back(*note);
-    }
+    std::vector<NoteBase::Ref> linking_notes(manager().get_notes_linking_to(old_title));
 
     if (!linking_notes.empty()) {
       const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());

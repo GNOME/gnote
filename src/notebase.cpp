@@ -165,8 +165,8 @@ void NoteBase::set_title(Glib::ustring && new_title, bool from_user_action)
 
 void NoteBase::process_rename_link_update(const Glib::ustring & old_title)
 {
-  for(NoteBase::Ptr & note : m_manager.get_notes_linking_to(old_title)) {
-    note->rename_links(old_title, *this);
+  for(NoteBase & note : m_manager.get_notes_linking_to(old_title)) {
+    note.rename_links(old_title, *this);
   }
 
   signal_renamed(*this, old_title);

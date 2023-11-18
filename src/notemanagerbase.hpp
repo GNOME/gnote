@@ -78,7 +78,7 @@ public:
       }
       return false;
     }
-  NoteBase::List get_notes_linking_to(const Glib::ustring & title) const;
+  std::vector<NoteBase::Ref> get_notes_linking_to(const Glib::ustring & title) const;
   NoteBase & create();
   NoteBase & create(Glib::ustring && title);
   NoteBase & create(Glib::ustring && title, Glib::ustring && xml_content);

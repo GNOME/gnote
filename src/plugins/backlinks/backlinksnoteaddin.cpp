@@ -97,10 +97,7 @@ void BacklinksNoteAddin::update_menu(Gio::Menu & menu) const
 std::vector<Glib::RefPtr<Gio::MenuItem>> BacklinksNoteAddin::get_backlink_menu_items() const
 {
   auto & note = get_note();
-  std::vector<gnote::NoteBase::Ref> notes;
-  for(const auto & note : note.manager().get_notes_linking_to(note.get_title())) {
-    notes.push_back(*note);
-  }
+  std::vector<gnote::NoteBase::Ref> notes(note.manager().get_notes_linking_to(note.get_title()));
   std::sort(notes.begin(), notes.end(), [](const gnote::NoteBase & x, const gnote::NoteBase & y)
     {
       return x.get_title() < y.get_title();

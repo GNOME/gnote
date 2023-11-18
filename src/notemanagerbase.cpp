@@ -175,14 +175,14 @@ TrieHit<Glib::ustring>::List NoteManagerBase::find_trie_matches(const Glib::ustr
   return m_trie_controller->title_trie().find_matches(match);
 }
 
-NoteBase::List NoteManagerBase::get_notes_linking_to(const Glib::ustring & title) const
+std::vector<NoteBase::Ref> NoteManagerBase::get_notes_linking_to(const Glib::ustring & title) const
 {
   Glib::ustring tag = "<link:internal>" + utils::XmlEncoder::encode(title) + "</link:internal>";
-  NoteBase::List result;
+  std::vector<NoteBase::Ref> result;
   for(const NoteBase::Ptr & note : m_notes) {
     if(note->get_title() != title) {
       if(note->get_complete_note_xml().find(tag) != Glib::ustring::npos) {
-        result.push_back(note);
+        result.push_back(*note);
       }
     }
   }
