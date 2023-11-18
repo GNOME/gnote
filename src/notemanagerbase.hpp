@@ -22,6 +22,8 @@
 #ifndef _NOTEMANAGERBASE_HPP_
 #define _NOTEMANAGERBASE_HPP_
 
+#include <unordered_set>
+
 #include "itagmanager.hpp"
 #include "notebase.hpp"
 #include "triehit.hpp"
@@ -149,8 +151,13 @@ protected:
   Glib::ustring make_new_file_name(const Glib::ustring & guid) const;
   virtual NoteBase::Ptr note_load(Glib::ustring && file_name) = 0;
 
+  struct NoteHash
+  {
+    std::size_t operator()(const NoteBase::Ptr &) const noexcept;
+  };
+
   IGnote & m_gnote;
-  NoteBase::List m_notes;
+  std::unordered_set<NoteBase::Ptr, NoteHash> m_notes;
   Glib::ustring m_backup_dir;
   Glib::ustring m_default_note_template_title;
 private:

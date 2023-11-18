@@ -28,6 +28,7 @@
 #include "utils.hpp"
 #include "trie.hpp"
 #include "notebooks/notebookmanager.hpp"
+#include "base/hash.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
 #include "sharp/string.hpp"
@@ -35,12 +36,6 @@
 
 
 namespace gnote {
-
-bool compare_dates(const NoteBase::Ptr & a, const NoteBase::Ptr & b)
-{
-  return (std::static_pointer_cast<Note>(a)->change_date() > std::static_pointer_cast<Note>(b)->change_date());
-}
-
 
 class TrieController
 {
@@ -159,8 +154,6 @@ TrieController *NoteManagerBase::create_trie_controller()
 
 void NoteManagerBase::post_load()
 {
-  std::sort(m_notes.begin(), m_notes.end(), compare_dates);
-
   // Update the trie so addins can access it, if they want.
   m_trie_controller->update ();
 }
@@ -194,20 +187,18 @@ void NoteManagerBase::add_note(NoteBase::Ptr note)
   if(note) {
     note->signal_renamed.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_rename));
     note->signal_saved.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_save));
-    m_notes.push_back(std::move(note));
+    m_notes.insert(std::move(note));
   }
 }
 
 void NoteManagerBase::on_note_rename(const NoteBase & note, const Glib::ustring & old_title)
 {
   signal_note_renamed(note, old_title);
-  std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 }
 
 void NoteManagerBase::on_note_save(NoteBase & note)
 {
   signal_note_saved(note);
-  std::sort(m_notes.begin(), m_notes.end(), compare_dates);
 }
 
 NoteBase::ORef NoteManagerBase::find(const Glib::ustring & linked_title) const
@@ -331,7 +322,7 @@ NoteBase & NoteManagerBase::create_new_note(Glib::ustring && title, Glib::ustrin
   new_note->signal_renamed.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_rename));
   new_note->signal_saved.connect(sigc::mem_fun(*this, &NoteManagerBase::on_note_save));
 
-  m_notes.push_back(new_note);
+  m_notes.insert(new_note);
 
   signal_note_added(*new_note);
 
@@ -502,6 +493,13 @@ NoteBase & NoteManagerBase::create_with_guid(Glib::ustring && title, Glib::ustri
   Glib::ustring body;
   auto note_title = split_title_from_content(title, body);
   return create_note(std::move(note_title), std::move(body), std::move(guid));
+}
+
+
+std::size_t NoteManagerBase::NoteHash::operator()(const NoteBase::Ptr & note) const noexcept
+{
+  Hash<Glib::ustring> hash;
+  return hash(note->uri());
 }
 
 
