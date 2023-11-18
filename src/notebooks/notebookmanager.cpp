@@ -310,12 +310,16 @@ namespace gnote {
     {
       // Prompt the user for the name of a new notebook
       auto dialog = Gtk::make_managed<CreateNotebookDialog>(&parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), g);
-      dialog->signal_response().connect([&g, dialog, notes=std::move(notes_to_add), on_complete](int response) { on_create_notebook_response(g, *dialog, response, notes, on_complete); });
+      std::vector<Glib::ustring> notes;
+      for(const auto & note : notes_to_add) {
+        notes.emplace_back(note->uri());
+      }
+      dialog->signal_response().connect([&g, dialog, notes=std::move(notes), on_complete](int response) { on_create_notebook_response(g, *dialog, response, notes, on_complete); });
       dialog->show();
     }
 
 
-    void NotebookManager::on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int response, const Note::List & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
+    void NotebookManager::on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int response, const std::vector<Glib::ustring> & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
     {
       Glib::ustring notebookName = dialog.get_notebook_name();
       dialog.hide();
@@ -335,7 +339,9 @@ namespace gnote {
         if(!notes_to_add.empty()) {
           // Move all the specified notesToAdd into the new notebook
           for(const auto & note : notes_to_add) {
-            g.notebook_manager().move_note_to_notebook(*note, notebook);
+            notebook->note_manager().find_by_uri(note, [&g, &notebook](NoteBase & note) {
+              g.notebook_manager().move_note_to_notebook(static_cast<Note&>(note), notebook);
+            });
           }
         }
       }

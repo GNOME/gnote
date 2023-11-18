@@ -107,7 +107,7 @@ public:
   sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
 private:
   static int compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const Note::List & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete);
+  static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const std::vector<Glib::ustring> & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete);
   void load_notebooks();
   bool filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_active_notes_size_changed();
