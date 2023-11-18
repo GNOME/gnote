@@ -192,7 +192,6 @@ public:
   typedef std::weak_ptr<NoteBase> WeakPtr;
   typedef std::reference_wrapper<NoteBase> Ref;
   typedef std::optional<Ref> ORef;
-  typedef std::vector<Ptr> List;
 
   static Glib::ustring url_from_path(const Glib::ustring &);
   static std::vector<Glib::ustring> parse_tags(const xmlNodePtr tagnodes);
