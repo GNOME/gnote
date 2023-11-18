@@ -137,7 +137,7 @@ void NoteRenameRecord::selected(bool select)
   }
 }
 
-NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
+NoteRenameDialog::NoteRenameDialog(const std::vector<NoteBase::Ref> & notes,
                                    const Glib::ustring & old_title,
                                    Note & renamed_note,
                                    IGnote & g)
@@ -163,8 +163,8 @@ NoteRenameDialog::NoteRenameDialog(const NoteBase::List & notes,
   add_action_widget(m_rename_button, Gtk::ResponseType::YES);
   add_action_widget(m_dont_rename_button, Gtk::ResponseType::NO);
 
-  for(const auto & note : notes) {
-    m_notes_model->append(NoteRenameRecord::create(*note, true));
+  for(const NoteBase & note : notes) {
+    m_notes_model->append(NoteRenameRecord::create(note, true));
   };
 
   Gtk::Label * const label = Gtk::manage(new Gtk::Label());

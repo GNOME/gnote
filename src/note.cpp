@@ -504,7 +504,10 @@ namespace gnote {
 
   void Note::process_rename_link_update(const Glib::ustring & old_title)
   {
-    NoteBase::List linking_notes = manager().get_notes_linking_to(old_title);
+    std::vector<NoteBase::Ref> linking_notes;
+    for(const auto & note : manager().get_notes_linking_to(old_title)) {
+      linking_notes.push_back(*note);
+    }
 
     if (!linking_notes.empty()) {
       const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());
@@ -520,14 +523,14 @@ namespace gnote {
         get_window()->editor()->set_editable(false);
       }
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
-        for(NoteBase::Ptr & iter : linking_notes) {
-          iter->remove_links(old_title, *this);
+        for(NoteBase & note : linking_notes) {
+          note.remove_links(old_title, *this);
           process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *this);
         }
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
-        for(NoteBase::Ptr & iter : linking_notes) {
-          iter->rename_links(old_title, *this);
+        for(NoteBase & note : linking_notes) {
+          note.rename_links(old_title, *this);
           process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *this);
         }
       }

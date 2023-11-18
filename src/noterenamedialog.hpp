@@ -74,7 +74,7 @@ class NoteRenameDialog
 public:
   typedef std::map<Glib::ustring, bool> Map;
 
-  NoteRenameDialog(const NoteBase::List & notes,
+  NoteRenameDialog(const std::vector<NoteBase::Ref> & notes,
                    const Glib::ustring & old_title,
                    Note & renamed_note,
                    IGnote & g);
