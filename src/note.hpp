@@ -93,7 +93,6 @@ public:
   typedef std::weak_ptr<Note> WeakPtr;
   typedef std::reference_wrapper<Note> Ref;
   typedef std::optional<Ref> ORef;
-  typedef std::vector<Ptr> List;
 
   ~Note();
 
