@@ -87,7 +87,7 @@ public:
   static bool is_notebook_tag(const Tag::Ptr &);
   void prompt_create_new_notebook(IGnote &, Gtk::Window &,
     sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
-  void prompt_create_new_notebook(IGnote &, Gtk::Window &, Note::List && notes_to_add,
+  void prompt_create_new_notebook(IGnote &, Gtk::Window &, std::vector<NoteBase::Ref> && notes_to_add,
     sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
   static void prompt_delete_notebook(IGnote &, Gtk::Window *, const Notebook::Ptr &);
   bool move_note_to_notebook(Note&, const Notebook::Ptr &);
