@@ -189,7 +189,6 @@ class NoteBase
 {
 public:
   typedef std::shared_ptr<NoteBase> Ptr;
-  typedef std::weak_ptr<NoteBase> WeakPtr;
   typedef std::reference_wrapper<NoteBase> Ref;
   typedef std::optional<Ref> ORef;
 

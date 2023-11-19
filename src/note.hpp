@@ -90,7 +90,6 @@ class Note
 {
 public:
   typedef std::shared_ptr<Note> Ptr;
-  typedef std::weak_ptr<Note> WeakPtr;
   typedef std::reference_wrapper<Note> Ref;
   typedef std::optional<Ref> ORef;
 
