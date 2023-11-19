@@ -89,7 +89,7 @@ class Note
   : public NoteBase
 {
 public:
-  typedef std::shared_ptr<Note> Ptr;
+  typedef Glib::RefPtr<Note> Ptr;
   typedef std::reference_wrapper<Note> Ref;
   typedef std::optional<Ref> ORef;
 
@@ -100,7 +100,6 @@ public:
 
   static Note::Ptr create_existing_note(std::unique_ptr<NoteData> data, Glib::ustring && filepath, NoteManager & manager, IGnote & g);
 
-  Note(std::unique_ptr<NoteData> _data, Glib::ustring && filepath, NoteManager & manager, IGnote & g);
   virtual void delete_note() override;
   static Note::Ptr load(Glib::ustring &&, NoteManager &, IGnote &);
   virtual void save() override;
@@ -157,6 +156,8 @@ protected:
     return m_data;
   }
 private:
+  Note(std::unique_ptr<NoteData> _data, Glib::ustring && filepath, NoteManager & manager, IGnote & g);
+
   bool contains_text(const Glib::ustring & text);
   void handle_link_rename(const Glib::ustring & old_title, const NoteBase & renamed, bool rename) override;
   void on_buffer_changed();

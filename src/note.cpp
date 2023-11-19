@@ -275,7 +275,7 @@ namespace gnote {
     note_data->create_date() = date;
     note_data->set_change_date(date);
       
-    return std::make_shared<Note>(std::move(note_data), std::move(filename), manager, g);
+    return Glib::make_refptr_for_instance(new Note(std::move(note_data), std::move(filename), manager, g));
   }
 
   Note::Ptr Note::create_existing_note(std::unique_ptr<NoteData> data, Glib::ustring && filepath, NoteManager & manager, IGnote & g)
@@ -293,7 +293,7 @@ namespace gnote {
         data->create_date() = d;
       }
     }
-    return std::make_shared<Note>(std::move(data), std::move(filepath), manager, g);
+    return Glib::make_refptr_for_instance(new Note(std::move(data), std::move(filepath), manager, g));
   }
 
   void Note::delete_note()

@@ -26,6 +26,7 @@
 #include <optional>
 #include <vector>
 
+#include <glibmm/object.h>
 #include <glibmm/ustring.h>
 #include <sigc++/signal.h>
 
@@ -184,11 +185,11 @@ private:
 
 
 class NoteBase
-  : public std::enable_shared_from_this<NoteBase>
-  , public sigc::trackable
+  : public Glib::Object
+  , public std::enable_shared_from_this<NoteBase>
 {
 public:
-  typedef std::shared_ptr<NoteBase> Ptr;
+  typedef Glib::RefPtr<NoteBase> Ptr;
   typedef std::reference_wrapper<NoteBase> Ref;
   typedef std::optional<Ref> ORef;
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2018-2019,2022 Aurimas Cernius
+ * Copyright (C) 2014,2018-2019,2022-2023 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,12 +26,17 @@ class Note
   : public gnote::NoteBase
 {
 public:
-  Note(std::unique_ptr<gnote::NoteData> _data, Glib::ustring && filepath, gnote::NoteManagerBase & manager);
+  static gnote::NoteBase::Ptr create(std::unique_ptr<gnote::NoteData> _data, Glib::ustring && filepath, gnote::NoteManagerBase & manager)
+    {
+      return Glib::make_refptr_for_instance(new Note(std::move(_data), std::move(filepath), manager));
+    }
   void set_change_type(gnote::ChangeType c);
 protected:
   virtual const gnote::NoteDataBufferSynchronizerBase & data_synchronizer() const;
   virtual gnote::NoteDataBufferSynchronizerBase & data_synchronizer();
 private:
+  Note(std::unique_ptr<gnote::NoteData> _data, Glib::ustring && filepath, gnote::NoteManagerBase & manager);
+
   gnote::NoteDataBufferSynchronizerBase m_data_synchronizer;
 };
 
