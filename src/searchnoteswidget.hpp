@@ -23,8 +23,6 @@
 #ifndef _SEARCHNOTESWIDGET_
 #define _SEARCHNOTESWIDGET_
 
-#include <set>
-
 #include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/liststore.h>
