@@ -66,14 +66,14 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   set_start_child(*notebooksPane);
   set_end_child(m_matches_window);
 
-  make_recent_tree();
-  m_tree->set_enable_search(false);
+  make_recent_notes_view();
+  m_notes_view->set_enable_search(false);
 
   update_results();
 
   m_matches_window.property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   m_matches_window.property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
-  m_matches_window.set_child(*m_tree);
+  m_matches_window.set_child(*m_notes_view);
 
   // Update on changes to notes
   m.signal_note_deleted.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_deleted));
@@ -135,8 +135,8 @@ void SearchNotesWidget::perform_search()
   if(text.empty()) {
     m_current_matches.clear();
     m_store_filter->refilter();
-    if(m_tree->get_realized()) {
-      m_tree->scroll_to_point (0, 0);
+    if(m_notes_view->get_realized()) {
+      m_notes_view->scroll_to_point(0, 0);
     }
     return;
   }
@@ -163,8 +163,8 @@ void SearchNotesWidget::perform_search()
 
     add_matches_column();
     m_store_filter->refilter();
-    if(m_tree->get_realized()) {
-      m_tree->scroll_to_point(0, 0);
+    if(m_notes_view->get_realized()) {
+      m_notes_view->scroll_to_point(0, 0);
     }
   }
 }
@@ -402,7 +402,7 @@ void SearchNotesWidget::update_results()
     iter->set_value(RecentNotesColumnTypes::NOTE, note);
   });
 
-  m_tree->set_model(m_store_sort);
+  m_notes_view->set_model(m_store_sort);
 
   perform_search();
 
@@ -434,15 +434,14 @@ void SearchNotesWidget::popup_context_menu_at_location(Gtk::Popover *popover, Gt
 
 unsigned SearchNotesWidget::selected_note_count() const
 {
-  return m_tree->get_selection()->count_selected_rows();
+  return m_notes_view->get_selection()->count_selected_rows();
 }
 
 std::vector<Note::Ref> SearchNotesWidget::get_selected_notes()
 {
   std::vector<Note::Ref> selected_notes;
 
-  std::vector<Gtk::TreePath> selected_rows =
-    m_tree->get_selection()->get_selected_rows();
+  std::vector<Gtk::TreePath> selected_rows = m_notes_view->get_selection()->get_selected_rows();
   for(std::vector<Gtk::TreePath>::const_iterator iter = selected_rows.begin();
       iter != selected_rows.end(); ++iter) {
     Note::Ptr note = get_note(*iter);
@@ -509,30 +508,30 @@ int SearchNotesWidget::compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> & a,
   }
 }
 
-void SearchNotesWidget::make_recent_tree()
+void SearchNotesWidget::make_recent_notes_view()
 {
-  m_tree = Gtk::make_managed<Gtk::TreeView>();
-  m_tree->set_headers_visible(true);
-  m_tree->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
-  m_tree->get_selection()->set_mode(Gtk::SelectionMode::MULTIPLE);
-  m_tree->get_selection()->signal_changed().connect(
+  m_notes_view = Gtk::make_managed<Gtk::TreeView>();
+  m_notes_view->set_headers_visible(true);
+  m_notes_view->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
+  m_notes_view->get_selection()->set_mode(Gtk::SelectionMode::MULTIPLE);
+  m_notes_view->get_selection()->signal_changed().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_selection_changed));
 
   auto button_ctrl = Gtk::GestureClick::create();
   button_ctrl->set_button(3);
   button_ctrl->signal_pressed().connect(
     sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_right_button_pressed));
-  m_tree->add_controller(button_ctrl);
+  m_notes_view->add_controller(button_ctrl);
 
   m_notes_widget_key_ctrl = Gtk::EventControllerKey::create();
   m_notes_widget_key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_key_pressed), false);
-  m_tree->add_controller(m_notes_widget_key_ctrl);
+  m_notes_view->add_controller(m_notes_widget_key_ctrl);
 
   auto drag_source = Gtk::DragSource::create();
   auto paintable = Gtk::IconTheme::get_for_display(Gdk::Display::get_default())->lookup_icon(IconManager::NOTE, 24);
   drag_source->set_icon(paintable, 0, 0);
   drag_source->signal_prepare().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_drag_data_get), false);
-  m_tree->add_controller(drag_source);
+  m_notes_view->add_controller(drag_source);
 
   Gtk::CellRenderer *renderer;
 
@@ -558,7 +557,7 @@ void SearchNotesWidget::make_recent_tree()
   title->set_reorderable(false);
   title->set_sort_order(Gtk::SortType::ASCENDING);
 
-  m_tree->append_column(*title);
+  m_notes_view->append_column(*title);
 
   Gtk::TreeViewColumn *change = manage(new Gtk::TreeViewColumn());
   change->set_title(_("Modified"));
@@ -574,7 +573,7 @@ void SearchNotesWidget::make_recent_tree()
   change->set_reorderable(false);
   change->set_sort_order(Gtk::SortType::DESCENDING);
 
-  m_tree->append_column(*change);
+  m_notes_view->append_column(*change);
 }
 
 void SearchNotesWidget::select_notes(const std::vector<Note::Ref> & notes)
@@ -589,7 +588,7 @@ void SearchNotesWidget::select_notes(const std::vector<Note::Ref> & notes)
     Note::Ptr iter_note = (*iter)[m_column_types.note];
     if(find_if(notes.begin(), notes.end(), [iter_note](const Note::Ref & note) { return &note.get() == iter_note.get(); }) != notes.end()) {
       // Found one
-      m_tree->get_selection()->select(iter);
+      m_notes_view->get_selection()->select(iter);
     }
   } while(++iter);
 }
@@ -675,7 +674,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
     // Pop up the context menu if a note is selected
     if(selected_note_count()) {
       auto menu = get_note_list_context_menu();
-      popup_context_menu_at_location(menu, m_tree);
+      popup_context_menu_at_location(menu, m_notes_view);
     }
     return true;
   }
@@ -772,7 +771,7 @@ void SearchNotesWidget::add_matches_column()
     m_store_sort->set_sort_func(4 /* matches */,
                                 sigc::mem_fun(*this, &SearchNotesWidget::compare_search_hits));
 
-    m_tree->append_column(*m_matches_column);
+    m_notes_view->append_column(*m_matches_column);
     m_store_sort->set_sort_column(4, Gtk::SortType::DESCENDING);
   }
   else {
@@ -1007,10 +1006,10 @@ Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
     menu->append(_("Open In New _Window"), "win.open-note-new-window");
     menu->append(_("_Delete"), "win.delete-selected-notes");
 
-    m_note_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_tree, menu);
+    m_note_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_notes_view, menu);
   }
   else {
-    m_note_list_context_menu->set_parent(*m_tree);
+    m_note_list_context_menu->set_parent(*m_notes_view);
   }
 
   on_selection_changed();
@@ -1119,7 +1118,7 @@ void SearchNotesWidget::set_initial_focus()
 {
   Gtk::Window *win = dynamic_cast<Gtk::Window*>(host());
   if(win) {
-    win->set_focus(*m_tree);
+    win->set_focus(*m_notes_view);
   }
 }
 

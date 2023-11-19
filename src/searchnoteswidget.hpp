@@ -58,7 +58,7 @@ public:
   void delete_selected_notes();
   Gtk::Widget & notes_widget() const
     {
-      return *m_tree;
+      return *m_notes_view;
     }
   const Glib::RefPtr<Gtk::EventControllerKey> & notes_widget_key_ctrl() const
     {
@@ -85,7 +85,7 @@ private:
   bool filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  void make_recent_tree();
+  void make_recent_notes_view();
   void select_notes(const std::vector<Note::Ref> &);
   Note::Ptr get_note(const Gtk::TreePath & p);
   bool filter_by_search(const Note &);
@@ -162,7 +162,7 @@ private:
   RecentNotesColumnTypes m_column_types;
   IGnote & m_gnote;
   NoteManagerBase & m_manager;
-  Gtk::TreeView *m_tree;
+  Gtk::TreeView *m_notes_view;
   std::map<Glib::ustring, int> m_current_matches;
   int m_clickX, m_clickY;
   Gtk::TreeViewColumn *m_matches_column;
