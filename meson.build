@@ -16,7 +16,7 @@ gio_dep = dependency('gio-2.0', version: glib_version)
 dependencies = [
   dependency('glibmm-2.68', version: glib_version),
   dependency('giomm-2.68', version: glib_version),
-  dependency('gtkmm-4.0', version: '>=4.0.0'),
+  dependency('gtkmm-4.0', version: '>=4.10.0'),
   dependency('libsecret-1', version: '>=0.8'),
   dependency('libxml-2.0'),
   dependency('libxslt'),
