@@ -326,6 +326,11 @@ namespace gnote {
       signal_bind().connect(sigc::mem_fun(*this, &LabelFactory::on_bind));
     }
 
+    void LabelFactory::set_text(Gtk::Label & label, const Glib::ustring & text)
+    {
+      label.set_text(text);
+    }
+
     void LabelFactory::on_setup(const Glib::RefPtr<Gtk::ListItem> & item)
     {
       auto label = Gtk::make_managed<Gtk::Label>();

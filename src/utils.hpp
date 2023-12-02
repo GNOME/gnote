@@ -116,7 +116,7 @@ class Preferences;
       LabelFactory();
     protected:
       virtual Glib::ustring get_text(Gtk::ListItem & item) = 0;
-      virtual void set_text(Gtk::Label & label, const Glib::ustring & text) = 0;
+      virtual void set_text(Gtk::Label & label, const Glib::ustring & text);
     private:
       void on_setup(const Glib::RefPtr<Gtk::ListItem> & item);
       void on_bind(const Glib::RefPtr<Gtk::ListItem> & item);
