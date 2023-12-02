@@ -818,14 +818,9 @@ namespace gnote {
     if(!m_search_box || !m_search_box->get_visible()) {
       return;
     }
-    Glib::ustring search_text = get_search_text();
-    if(search_text.empty()) {
-      return;
-    }
 
-    SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_foreground());
-    if(searchable_widget) {
-      searchable_widget->perform_search(search_text);
+    if(auto searchable_widget = dynamic_cast<SearchableItem*>(currently_foreground())) {
+      searchable_widget->perform_search(get_search_text());
     }
   }
 
