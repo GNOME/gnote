@@ -30,6 +30,7 @@
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <gtkmm/label.h>
+#include <gtkmm/urilauncher.h>
 
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
@@ -64,29 +65,24 @@ namespace gnote {
         uri += "/" + link_id;
       }
 
-      gtk_show_uri_full(parent.gobj(), uri.c_str(), GDK_CURRENT_TIME, nullptr, [](GObject *obj, GAsyncResult *res, gpointer data) {
-        auto parent = static_cast<Gtk::Window*>(data);
-        GError *error = NULL;
-        if(gtk_show_uri_full_finish(parent->gobj(), res, &error)) {
-          return;
+      auto launcher = Gtk::UriLauncher::create(uri);
+      launcher->launch(parent, [launcher, &parent](const Glib::RefPtr<Gio::AsyncResult> & ready) {
+        try {
+          launcher->launch_finish(ready);
         }
-        if(error) {
-          g_error_free(error);
+        catch(const Glib::Error & error) {
+          ERR_OUT(_("Failed to show help: %s"), error.what());
+          Glib::ustring message = _("The \"Gnote Manual\" could "
+                                    "not be found.  Please verify "
+                                    "that your installation has been "
+                                    "completed successfully.");
+          auto dialog = Gtk::make_managed<HIGMessageDialog>(const_cast<Gtk::Window*>(&parent),
+            GTK_DIALOG_DESTROY_WITH_PARENT, Gtk::MessageType::ERROR, Gtk::ButtonsType::OK,
+            _("Help not found"), message);
+          dialog->show();
+          dialog->signal_response().connect([dialog](int) { dialog->hide(); });
         }
-        
-        Glib::ustring message = _("The \"Gnote Manual\" could "
-                                  "not be found.  Please verify "
-                                  "that your installation has been "
-                                  "completed successfully.");
-        auto dialog = Gtk::make_managed<HIGMessageDialog>(parent,
-                                GTK_DIALOG_DESTROY_WITH_PARENT,
-                                Gtk::MessageType::ERROR,
-                                Gtk::ButtonsType::OK,
-                                _("Help not found"),
-                                message);
-        dialog->show();
-        dialog->signal_response().connect([dialog](int) { dialog->hide(); });
-      }, &parent);
+      });
     }
 
 
