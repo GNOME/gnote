@@ -90,7 +90,15 @@ namespace gnote {
     {
       if(!url.empty()) {
         DBG_OUT("Opening url '%s'...", url.c_str());
-        gtk_show_uri(parent.gobj(), url.c_str(), GDK_CURRENT_TIME);
+        auto launcher = Gtk::UriLauncher::create(url);
+        launcher->launch(parent, [launcher](const Glib::RefPtr<Gio::AsyncResult> & ready) {
+          try {
+            launcher->launch_finish(ready);
+          }
+          catch(const Glib::Error & error) {
+            ERR_OUT(_("Failed to open URL: %s"), error.what());
+          }
+        });
       }
     }
 
