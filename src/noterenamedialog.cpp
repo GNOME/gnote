@@ -105,10 +105,6 @@ protected:
     {
       return std::dynamic_pointer_cast<NoteRenameRecord>(item.get_item())->note_title;
     }
-  void set_text(Gtk::Label & label, const Glib::ustring & text) override
-    {
-      label.set_text(text);
-    }
 };
 
 }

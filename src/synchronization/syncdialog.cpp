@@ -60,10 +60,6 @@ protected:
     return get_text(*record);
   }
   virtual Glib::ustring get_text(ListRecord & record) = 0;
-  void set_text(Gtk::Label & label, const Glib::ustring & text) override
-  {
-    label.set_text(text);
-  }
 };
 
 

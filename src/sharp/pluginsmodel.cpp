@@ -94,11 +94,6 @@ protected:
     auto plugin = std::dynamic_pointer_cast<sharp::Plugin>(item.get_item());
     return plugin->info.version();
   }
-
-  void set_text(Gtk::Label & label, const Glib::ustring & text) override
-  {
-    label.set_text(text);
-  }
 };
 
 class PluginCategoryFactory
@@ -115,11 +110,6 @@ protected:
     auto plugin = std::dynamic_pointer_cast<sharp::Plugin>(item.get_item());
     auto category = plugin->info.category();
     return sharp::AddinsModel::get_addin_category_name(category);
-  }
-
-  void set_text(Gtk::Label & label, const Glib::ustring & text) override
-  {
-    label.set_text(text);
   }
 };
 

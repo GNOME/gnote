@@ -148,11 +148,6 @@ private:
       return Glib::ustring();
     }
 
-  void set_text(Gtk::Label & label, const Glib::ustring & text) override
-    {
-      label.set_label(text);
-    }
-
   Preferences & m_preferences;
 };
 
@@ -252,11 +247,6 @@ private:
         }
       }
       return Glib::ustring();
-    }
-
-  void set_text(Gtk::Label & label, const Glib::ustring & text) override
-    {
-      label.set_label(text);
     }
 
   Glib::RefPtr<NoteFilterModel> m_filter;
