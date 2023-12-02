@@ -23,9 +23,9 @@
 #ifndef _SEARCHNOTESWIDGET_
 #define _SEARCHNOTESWIDGET_
 
+#include <gtkmm/columnview.h>
 #include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/liststore.h>
 #include <gtkmm/paned.h>
 #include <gtkmm/scrolledwindow.h>
 #include <sigc++/sigc++.h>
@@ -82,14 +82,12 @@ private:
   std::vector<Note::Ref> get_selected_notes();
   bool filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> &);
   int compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  int compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void make_recent_notes_view();
   void select_notes(const std::vector<Note::Ref> &);
-  Note::Ptr get_note(const Gtk::TreePath & p);
   bool filter_by_search(const Note &);
   bool filter_by_tag(const Note &, const Tag::Ptr &);
-  void on_row_activated(const Gtk::TreePath &, Gtk::TreeViewColumn*);
-  void on_selection_changed();
+  void on_row_activated(guint idx);
+  void on_selection_changed(guint, guint);
   void on_treeview_right_button_pressed(int n_press, double x, double y);
   bool on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   Glib::RefPtr<Gdk::ContentProvider> on_treeview_drag_data_get(double, double);
@@ -97,13 +95,11 @@ private:
   void no_matches_found_action();
   void add_matches_column();
   bool show_all_search_results();
-  void matches_column_data_func(Gtk::CellRenderer *, const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  int compare_search_hits(const Gtk::TreeIter<Gtk::TreeConstRow> & , const Gtk::TreeIter<Gtk::TreeConstRow> &);
   void on_note_deleted(NoteBase & note);
   void on_note_added(NoteBase & note);
   void on_note_renamed(const NoteBase&, const Glib::ustring&);
   void on_note_saved(NoteBase&);
-  void delete_note(const NoteBase & note);
+  void delete_note(NoteBase & note);
   void add_note(NoteBase & note);
   void rename_note(const NoteBase & note);
   void on_open_note();
@@ -117,7 +113,7 @@ private:
   void on_open_notebook_template_note(const Glib::VariantBase&);
   void on_new_notebook(const Glib::VariantBase&);
   void on_delete_notebook(const Glib::VariantBase&);
-  void on_sorting_changed();
+  void on_sorting_changed(Gtk::Sorter::Change);
   void parse_sorting_setting(const Glib::ustring & sorting);
   void on_rename_notebook();
 
@@ -154,21 +150,23 @@ private:
   Gtk::ScrolledWindow m_matches_window;
   std::shared_ptr<Gtk::Grid> m_no_matches_box;
   notebooks::NotebooksView *m_notebooks_view;
-  Glib::RefPtr<Gtk::ListStore> m_store;
-  Glib::RefPtr<Gtk::TreeModelSort> m_store_sort;
-  Glib::RefPtr<Gtk::TreeModelFilter> m_store_filter;
+  Glib::RefPtr<Gio::ListModel> m_store;
+  Glib::RefPtr<Gio::ListModel> m_store_sort;
+  Glib::RefPtr<Gio::ListModel> m_store_filter;
   RecentNotesColumnTypes m_column_types;
   IGnote & m_gnote;
   NoteManagerBase & m_manager;
-  Gtk::TreeView *m_notes_view;
+  Gtk::ColumnView *m_notes_view;
   std::map<Glib::ustring, int> m_current_matches;
   int m_clickX, m_clickY;
-  Gtk::TreeViewColumn *m_matches_column;
+  Glib::RefPtr<Gtk::ColumnViewColumn> m_title_column;
+  Glib::RefPtr<Gtk::ColumnViewColumn> m_change_column;
+  Glib::RefPtr<Gtk::ColumnViewColumn> m_matches_column;
   std::shared_ptr<Gtk::Popover> m_note_list_context_menu;
   std::shared_ptr<Gtk::Popover> m_notebook_list_context_menu;
   bool m_initial_position_restored;
   Glib::ustring m_search_text;
-  int m_sort_column_id;
+  Glib::RefPtr<const Gtk::ColumnViewColumn> m_sort_column;
   Gtk::SortType m_sort_column_order;
 };
 

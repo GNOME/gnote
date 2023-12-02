@@ -21,13 +21,21 @@
 
 
 #include <glibmm/i18n.h>
+#include <giomm/liststore.h>
+#include <gtkmm/boolfilter.h>
+#include <gtkmm/columnviewsorter.h>
 #include <gtkmm/dragsource.h>
+#include <gtkmm/expression.h>
+#include <gtkmm/filterlistmodel.h>
 #include <gtkmm/gestureclick.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/linkbutton.h>
-#include <gtkmm/liststore.h>
+#include <gtkmm/multiselection.h>
+#include <gtkmm/numericsorter.h>
 #include <gtkmm/popovermenu.h>
 #include <gtkmm/shortcutcontroller.h>
+#include <gtkmm/sortlistmodel.h>
+#include <gtkmm/stringsorter.h>
 
 #include "debug.hpp"
 #include "iactionmanager.hpp"
@@ -46,6 +54,216 @@
 
 namespace gnote {
 
+namespace {
+
+bool get_column_view_sort(const Gtk::ColumnView & view, Glib::RefPtr<const Gtk::ColumnViewColumn> & sort_column, Gtk::SortType & sort_column_order)
+{
+  if(auto sorter = std::dynamic_pointer_cast<const Gtk::ColumnViewSorter>(view.get_sorter())) {
+    if(auto column = sorter->get_primary_sort_column()) {
+      sort_column = column;
+      sort_column_order = sorter->get_primary_sort_order();
+      return true;
+    }
+  }
+
+  return false;
+}
+
+class NoteColumnItemFactory
+  : public Gtk::SignalListItemFactory
+{
+public:
+  static Glib::RefPtr<NoteColumnItemFactory> create()
+    {
+      return Glib::make_refptr_for_instance(new NoteColumnItemFactory);
+    }
+private:
+  static const Glib::ustring TITLE_WIDGET;
+  NoteColumnItemFactory()
+    {
+      signal_setup().connect(sigc::mem_fun(*this, &NoteColumnItemFactory::setup));
+      signal_bind().connect(sigc::mem_fun(*this, &NoteColumnItemFactory::bind));
+    }
+
+  void setup(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      auto box = Gtk::make_managed<Gtk::Box>();
+      auto image = Gtk::make_managed<Gtk::Image>();
+      image->property_icon_name() = IconManager::NOTE;
+      image->set_margin_end(3);
+      box->append(*image);
+      auto title = Gtk::make_managed<Gtk::Label>();
+      title->set_name(TITLE_WIDGET);
+      title->set_xalign(0.0f);
+      title->set_size_request(150);
+      title->set_ellipsize(Pango::EllipsizeMode::END);
+      box->append(*title);
+      list_item->set_child(*box);
+    }
+
+  void bind(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      Gtk::Label *label = nullptr;
+      if(auto widget = dynamic_cast<Gtk::Box*>(list_item->get_child())) {
+        auto child = widget->get_last_child();
+        while(child) {
+          if(child->get_name() == TITLE_WIDGET) {
+            break;
+          }
+          child = child->get_prev_sibling();
+        }
+
+        label = dynamic_cast<Gtk::Label*>(child);
+      }
+
+      if(label) {
+        if(auto note = std::dynamic_pointer_cast<Note>(list_item->get_item())) {
+          label->set_label(note->get_title());
+        }
+      }
+    }
+};
+
+const Glib::ustring NoteColumnItemFactory::TITLE_WIDGET = "note-title";
+
+class ChangeColumnFactory
+  : public utils::LabelFactory
+{
+public:
+  static Glib::RefPtr<ChangeColumnFactory> create(Preferences & preferences)
+    {
+      return Glib::make_refptr_for_instance(new ChangeColumnFactory(preferences));
+    }
+private:
+  ChangeColumnFactory(Preferences & prefs)
+    : m_preferences(prefs)
+    {
+    }
+
+  Glib::ustring get_text(Gtk::ListItem & item) override
+    {
+      if(auto note = std::dynamic_pointer_cast<Note>(item.get_item())) {
+        return utils::get_pretty_print_date(note->change_date(), true, m_preferences);
+      }
+      return Glib::ustring();
+    }
+
+  void set_text(Gtk::Label & label, const Glib::ustring & text) override
+    {
+      label.set_label(text);
+    }
+
+  Preferences & m_preferences;
+};
+
+class NoteFilterModel
+  : public Gtk::FilterListModel
+{
+public:
+  static Glib::RefPtr<NoteFilterModel> create(const Glib::RefPtr<Gio::ListModel> & model)
+    {
+      return Glib::make_refptr_for_instance(new NoteFilterModel(model));
+    }
+
+  void set_selected_notebook(const notebooks::Notebook::Ptr & notebook)
+    {
+      m_selected_notebook = notebook;
+      gtk_filter_changed(get_filter()->gobj(), GTK_FILTER_CHANGE_DIFFERENT);
+    }
+
+  void set_matches(std::map<Glib::ustring, unsigned> && matches)
+    {
+      m_current_matches = std::move(matches);
+      m_searching = true;
+      gtk_filter_changed(get_filter()->gobj(), GTK_FILTER_CHANGE_DIFFERENT);
+    }
+
+  void clear_matches()
+    {
+      m_current_matches.clear();
+      m_searching = false;
+      gtk_filter_changed(get_filter()->gobj(), GTK_FILTER_CHANGE_LESS_STRICT);
+    }
+
+  unsigned matches_for(const Glib::ustring & uri) const
+    {
+      auto iter = m_current_matches.find(uri);
+      return (iter == m_current_matches.end()) ? 0 : iter->second;
+    }
+
+private:
+  explicit NoteFilterModel(const Glib::RefPtr<Gio::ListModel> & model)
+    : Gtk::FilterListModel(model, {})
+    , m_searching(false)
+    {
+      auto expression = Gtk::ClosureExpression<bool>::create(sigc::mem_fun(*this, &NoteFilterModel::filter));
+      set_filter(Gtk::BoolFilter::create(std::move(expression)));
+    }
+
+  bool filter(const Glib::RefPtr<Glib::ObjectBase> & obj) const
+    {
+      if(!m_selected_notebook) {
+        return false;
+      }
+      auto note = std::dynamic_pointer_cast<Note>(obj);
+      if(!note) {
+        return false;
+      }
+      if(!m_selected_notebook->contains_note(*note)) {
+        return false;
+      }
+      if(!m_searching) {
+        return true;
+      }
+
+      return m_current_matches.find(note->uri()) != m_current_matches.end();
+    }
+
+  notebooks::Notebook::Ptr m_selected_notebook;
+  std::map<Glib::ustring, unsigned> m_current_matches;
+  bool m_searching;
+};
+
+class MatchesColumnFactory
+  : public utils::LabelFactory
+{
+public:
+  static Glib::RefPtr<MatchesColumnFactory> create(const Glib::RefPtr<NoteFilterModel> & filter)
+    {
+      return Glib::make_refptr_for_instance(new MatchesColumnFactory(filter));
+    }
+private:
+  explicit MatchesColumnFactory(const Glib::RefPtr<NoteFilterModel> & filter)
+    : m_filter(filter)
+    {}
+
+  Glib::ustring get_text(Gtk::ListItem & item) override
+    {
+      if(auto note = std::dynamic_pointer_cast<Note>(item.get_item())) {
+        auto matches = m_filter->matches_for(note->uri());
+        if(matches == INT_MAX) {
+          //TRANSLATORS: search found a match in note title
+          return _("Title match");
+        }
+        else if(matches > 0) {
+          const char * fmt;
+          fmt = ngettext("%1 match", "%1 matches", matches);
+          return Glib::ustring::compose(fmt, matches);
+        }
+      }
+      return Glib::ustring();
+    }
+
+  void set_text(Gtk::Label & label, const Glib::ustring & text) override
+    {
+      label.set_label(text);
+    }
+
+  Glib::RefPtr<NoteFilterModel> m_filter;
+};
+
+}
+
 
 SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   : m_gnote(g)
@@ -53,7 +271,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   , m_clickX(0), m_clickY(0)
   , m_matches_column(NULL)
   , m_initial_position_restored(false)
-  , m_sort_column_id(2)
   , m_sort_column_order(Gtk::SortType::DESCENDING)
 {
   set_hexpand(true);
@@ -67,8 +284,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   set_end_child(m_matches_window);
 
   make_recent_notes_view();
-  m_notes_view->set_enable_search(false);
-
   update_results();
 
   m_matches_window.property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
@@ -92,7 +307,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   notebook_manager.signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
-  parse_sorting_setting(g.preferences().search_sorting());
   g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
 
   auto shortcuts = Gtk::ShortcutController::create();
@@ -130,22 +344,20 @@ void SearchNotesWidget::perform_search()
   // every time because otherwise, it's not sortable.
   remove_matches_column();
   Search search(m_manager);
+  NoteFilterModel & store_filter = *std::static_pointer_cast<NoteFilterModel>(m_store_filter);
+  auto selected_notebook = m_notebooks_view->get_selected_notebook();
+  store_filter.set_selected_notebook(selected_notebook);
 
   Glib::ustring text = m_search_text;
   if(text.empty()) {
-    m_current_matches.clear();
-    m_store_filter->refilter();
-    if(m_notes_view->get_realized()) {
-      m_notes_view->scroll_to_point(0, 0);
-    }
+    store_filter.clear_matches();
     return;
   }
   text = text.lowercase();
 
-  m_current_matches.clear();
+  store_filter.clear_matches();
 
   // Search using the currently selected notebook
-  auto selected_notebook = m_notebooks_view->get_selected_notebook();
   if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(selected_notebook)) {
     selected_notebook = notebooks::Notebook::Ptr();
   }
@@ -157,15 +369,13 @@ void SearchNotesWidget::perform_search()
     no_matches_found_action();
   }
   else {
+    std::map<Glib::ustring, unsigned> current_matches;
     for(auto iter = results.rbegin(); iter != results.rend(); ++iter) {
-      m_current_matches[iter->second.get().uri()] = iter->first;
+      current_matches[iter->second.get().uri()] = iter->first;
     }
 
+    store_filter.set_matches(std::move(current_matches));
     add_matches_column();
-    m_store_filter->refilter();
-    if(m_notes_view->get_realized()) {
-      m_notes_view->scroll_to_point(0, 0);
-    }
   }
 }
 
@@ -373,44 +583,15 @@ void SearchNotesWidget::select_all_notes_notebook()
 void SearchNotesWidget::update_results()
 {
   // Save the currently selected notes
-  auto selected_notes = get_selected_notes();
-
-  int sort_column = RecentNotesColumnTypes::CHANGE_DATE;
-  Gtk::SortType sort_type = Gtk::SortType::DESCENDING;
-  if(m_store_sort) {
-    m_store_sort->get_sort_column_id(sort_column, sort_type);
+  std::vector<Note::Ref> selected_notes;
+  if(m_store) {
+    selected_notes = get_selected_notes();
   }
 
-  m_store = Gtk::ListStore::create(m_column_types);
-
-  m_store_filter = Gtk::TreeModelFilter::create(m_store);
-  m_store_filter->set_visible_func(sigc::mem_fun(*this, &SearchNotesWidget::filter_notes));
-  m_store_sort = Gtk::TreeModelSort::create(m_store_filter);
-  m_store_sort->set_sort_func(RecentNotesColumnTypes::TITLE, sigc::mem_fun(*this, &SearchNotesWidget::compare_titles));
-  m_store_sort->set_sort_func(RecentNotesColumnTypes::CHANGE_DATE, sigc::mem_fun(*this, &SearchNotesWidget::compare_dates));
-  m_store_sort->set_sort_column(m_sort_column_id, m_sort_column_order);
-  m_store_sort->signal_sort_column_changed()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
-
-  m_manager.copy_to(m_store, [this](const Glib::RefPtr<Gtk::ListStore> & store, const NoteBase::Ptr & note_base) {
-    Note::Ptr note(std::static_pointer_cast<Note>(note_base));
-    Glib::ustring nice_date = utils::get_pretty_print_date(note->change_date(), true, m_gnote.preferences());
-
-    Gtk::TreeIter iter = store->append();
-    iter->set_value(RecentNotesColumnTypes::TITLE, note->get_title());
-    iter->set_value(RecentNotesColumnTypes::CHANGE_DATE, nice_date);
-    iter->set_value(RecentNotesColumnTypes::NOTE, note);
-  });
-
-  m_notes_view->set_model(m_store_sort);
+  auto selection_model = std::static_pointer_cast<Gtk::MultiSelection>(m_notes_view->get_model());
+  selection_model->unselect_all();
 
   perform_search();
-
-  if(sort_column >= 0 && m_no_matches_box && get_end_child() != m_no_matches_box.get()) {
-    // Set the sort column after loading data, since we
-    // don't want to resort on every append.
-    m_store_sort->set_sort_column(sort_column, sort_type);
-  }
 
   // Restore the previous selection
   if(!selected_notes.empty()) {
@@ -434,22 +615,21 @@ void SearchNotesWidget::popup_context_menu_at_location(Gtk::Popover *popover, Gt
 
 unsigned SearchNotesWidget::selected_note_count() const
 {
-  return m_notes_view->get_selection()->count_selected_rows();
+  return m_notes_view->get_model()->get_selection()->get_size();
 }
 
 std::vector<Note::Ref> SearchNotesWidget::get_selected_notes()
 {
   std::vector<Note::Ref> selected_notes;
 
-  std::vector<Gtk::TreePath> selected_rows = m_notes_view->get_selection()->get_selected_rows();
-  for(std::vector<Gtk::TreePath>::const_iterator iter = selected_rows.begin();
-      iter != selected_rows.end(); ++iter) {
-    Note::Ptr note = get_note(*iter);
-    if(!note) {
-      continue;
+  auto selection = std::static_pointer_cast<Gtk::MultiSelection>(m_notes_view->get_model());
+  const unsigned num_items = selection->get_n_items();
+  for(unsigned i = 0; i < num_items; ++i) {
+    if(selection->is_selected(i)) {
+      if(auto note = std::dynamic_pointer_cast<Note>(selection->get_object(i))) {
+        selected_notes.push_back(*note);
+      }
     }
-
-    selected_notes.push_back(*note);
   }
 
   return selected_notes;
@@ -495,27 +675,11 @@ int SearchNotesWidget::compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> & a
   return title_a.lowercase().compare(title_b.lowercase());
 }
 
-int SearchNotesWidget::compare_dates(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
-{
-  Note::Ptr note_a = (*a)[m_column_types.note];
-  Note::Ptr note_b = (*b)[m_column_types.note];
-
-  if(!note_a || !note_b) {
-    return -1;
-  }
-  else {
-    return note_a->change_date().compare(note_b->change_date());
-  }
-}
-
 void SearchNotesWidget::make_recent_notes_view()
 {
-  m_notes_view = Gtk::make_managed<Gtk::TreeView>();
-  m_notes_view->set_headers_visible(true);
-  m_notes_view->signal_row_activated().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
-  m_notes_view->get_selection()->set_mode(Gtk::SelectionMode::MULTIPLE);
-  m_notes_view->get_selection()->signal_changed().connect(
-    sigc::mem_fun(*this, &SearchNotesWidget::on_selection_changed));
+  m_notes_view = Gtk::make_managed<Gtk::ColumnView>();
+  m_notes_view->set_reorderable(false);
+  m_notes_view->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
 
   auto button_ctrl = Gtk::GestureClick::create();
   button_ctrl->set_button(3);
@@ -533,73 +697,62 @@ void SearchNotesWidget::make_recent_notes_view()
   drag_source->signal_prepare().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_drag_data_get), false);
   m_notes_view->add_controller(drag_source);
 
-  Gtk::CellRenderer *renderer;
+  m_title_column = Gtk::ColumnViewColumn::create(_("Note"), NoteColumnItemFactory::create());
+  m_title_column->set_expand(true);
+  m_title_column->set_resizable(true);
+  m_title_column->set_sorter(Gtk::StringSorter::create(Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase> & item) {
+    if(auto note = std::dynamic_pointer_cast<Note>(item)) {
+      return note->get_title();
+    }
+    return Glib::ustring();
+  })));
 
-  Gtk::TreeViewColumn *title = manage(new Gtk::TreeViewColumn());
-  title->set_title(_("Note"));
-  title->set_min_width(150);
-  title->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
-  title->set_expand(true);
-  title->set_resizable(true);
+  m_notes_view->append_column(m_title_column);
 
-  {
-    auto renderer = Gtk::make_managed<Gtk::CellRendererPixbuf>();
-    renderer->property_icon_name() = IconManager::NOTE;
-    title->pack_start(*renderer, false);
+  m_change_column = Gtk::ColumnViewColumn::create(_("Modified"), ChangeColumnFactory::create(m_gnote.preferences()));
+  m_change_column->set_resizable(false);
+  m_change_column->set_sorter(Gtk::NumericSorter<guint64>::create(Gtk::ClosureExpression<guint64>::create([](const Glib::RefPtr<Glib::ObjectBase> & item) -> guint64 {
+    if(auto note = std::dynamic_pointer_cast<Note>(item)) {
+      return note->change_date().to_unix();
+    }
+    return 0;
+  })));
+
+  m_notes_view->append_column(m_change_column);
+
+  parse_sorting_setting(m_gnote.preferences().search_sorting());
+  if(!m_sort_column) {
+    m_sort_column = m_change_column;
+    m_sort_column_order = Gtk::SortType::DESCENDING;
   }
 
-  renderer = manage(new Gtk::CellRendererText());
-  static_cast<Gtk::CellRendererText*>(renderer)->property_ellipsize() = Pango::EllipsizeMode::END;
-  title->pack_start(*renderer, true);
-  title->add_attribute(*renderer, "text", RecentNotesColumnTypes::TITLE);
-  title->set_sort_column(RecentNotesColumnTypes::TITLE);
-  title->set_sort_indicator(false);
-  title->set_reorderable(false);
-  title->set_sort_order(Gtk::SortType::ASCENDING);
-
-  m_notes_view->append_column(*title);
-
-  Gtk::TreeViewColumn *change = manage(new Gtk::TreeViewColumn());
-  change->set_title(_("Modified"));
-  change->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
-  change->set_resizable(false);
-
-  renderer = manage(new Gtk::CellRendererText());
-  renderer->property_xalign() = 1.0;
-  change->pack_start(*renderer, false);
-  change->add_attribute(*renderer, "text", RecentNotesColumnTypes::CHANGE_DATE);
-  change->set_sort_column(RecentNotesColumnTypes::CHANGE_DATE);
-  change->set_sort_indicator(false);
-  change->set_reorderable(false);
-  change->set_sort_order(Gtk::SortType::DESCENDING);
-
-  m_notes_view->append_column(*change);
+  auto store = Gio::ListStore<Note>::create();
+  m_manager.copy_to(store, [this](const Glib::RefPtr<Gio::ListStore<Note>> & store, const NoteBase::Ptr & note_base) {
+    store->append(std::static_pointer_cast<Note>(note_base));
+  });
+  m_store = store;
+  m_store_filter = NoteFilterModel::create(m_store);
+  m_store_sort = Gtk::SortListModel::create(m_store_filter, m_notes_view->get_sorter());
+  auto selection = Gtk::MultiSelection::create(m_store_sort);
+  m_notes_view->set_model(selection);
+  m_notes_view->sort_by_column(std::const_pointer_cast<Gtk::ColumnViewColumn>(m_sort_column), m_sort_column_order);
+  m_notes_view->get_sorter()->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
+  selection->signal_selection_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_selection_changed));
 }
 
 void SearchNotesWidget::select_notes(const std::vector<Note::Ref> & notes)
 {
-  Gtk::TreeIter iter = m_store_sort->children().begin();
+  auto selection = std::static_pointer_cast<Gtk::MultiSelection>(m_notes_view->get_model());
+  auto model = selection->get_model();
+  auto n_items = model->get_n_items();
 
-  if(!iter) {
-    return;
-  }
-
-  do {
-    Note::Ptr iter_note = (*iter)[m_column_types.note];
+  for(unsigned i = 0; i < n_items; ++i) {
+    Note::Ptr iter_note = std::dynamic_pointer_cast<Note>(model->get_object(i));
     if(find_if(notes.begin(), notes.end(), [iter_note](const Note::Ref & note) { return &note.get() == iter_note.get(); }) != notes.end()) {
       // Found one
-      m_notes_view->get_selection()->select(iter);
+      selection->select_item(i, false);
     }
-  } while(++iter);
-}
-
-Note::Ptr SearchNotesWidget::get_note(const Gtk::TreePath & p)
-{
-  Gtk::TreeIter iter = m_store_sort->get_iter(p);
-  if(iter) {
-    return (*iter)[m_column_types.note];
   }
-  return Note::Ptr();
 }
 
 bool SearchNotesWidget::filter_by_search(const Note & note)
@@ -626,18 +779,14 @@ bool SearchNotesWidget::filter_by_tag(const Note & note, const Tag::Ptr & tag)
   return false;
 }
 
-void SearchNotesWidget::on_row_activated(const Gtk::TreePath & p, Gtk::TreeViewColumn*)
+void SearchNotesWidget::on_row_activated(guint idx)
 {
-  Gtk::TreeIter iter = m_store_sort->get_iter(p);
-  if(!iter) {
-    return;
+  if(auto note = std::dynamic_pointer_cast<Note>(m_store_sort->get_object(idx))) {
+    signal_open_note(*note);
   }
-
-  Note::Ptr note = (*iter)[m_column_types.note];
-  signal_open_note(*note);
 }
 
-void SearchNotesWidget::on_selection_changed()
+void SearchNotesWidget::on_selection_changed(guint, guint)
 {
   if(auto win = dynamic_cast<MainWindow*>(host())) {
     bool enabled = selected_note_count();
@@ -674,7 +823,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
     // Pop up the context menu if a note is selected
     if(selected_note_count()) {
       auto menu = get_note_list_context_menu();
-      popup_context_menu_at_location(menu, m_notes_view);
+      menu->popup();
     }
     return true;
   }
@@ -724,7 +873,7 @@ void SearchNotesWidget::remove_matches_column()
   }
 
   m_matches_column->set_visible(false);
-  m_store_sort->set_sort_column(m_sort_column_id, m_sort_column_order);
+  m_notes_view->sort_by_column(std::const_pointer_cast<Gtk::ColumnViewColumn>(m_sort_column), m_sort_column_order);
 }
 
 // called when no search results are found in the selected notebook
@@ -750,118 +899,33 @@ void SearchNotesWidget::no_matches_found_action()
 void SearchNotesWidget::add_matches_column()
 {
   if(!m_matches_column) {
-    Gtk::CellRenderer *renderer;
-
-    m_matches_column = manage(new Gtk::TreeViewColumn());
-    m_matches_column->set_title(_("Matches"));
-    m_matches_column->set_sizing(Gtk::TreeViewColumn::Sizing::AUTOSIZE);
+    m_matches_column = Gtk::ColumnViewColumn::create(_("Matches"), MatchesColumnFactory::create(std::static_pointer_cast<NoteFilterModel>(m_store_filter)));
     m_matches_column->set_resizable(false);
 
-    renderer = manage(new Gtk::CellRendererText());
-    renderer->property_width() = 75;
-    m_matches_column->pack_start(*renderer, false);
-    m_matches_column->set_cell_data_func(
-      *renderer,
-      sigc::mem_fun(*this, &SearchNotesWidget::matches_column_data_func));
-    m_matches_column->set_sort_column(4);
-    m_matches_column->set_sort_indicator(true);
-    m_matches_column->set_reorderable(false);
-    m_matches_column->set_sort_order(Gtk::SortType::DESCENDING);
-    m_matches_column->set_clickable(true);
-    m_store_sort->set_sort_func(4 /* matches */,
-                                sigc::mem_fun(*this, &SearchNotesWidget::compare_search_hits));
+    m_matches_column->set_sorter(Gtk::NumericSorter<unsigned>::create(
+      Gtk::ClosureExpression<unsigned>::create([this](const Glib::RefPtr<Glib::ObjectBase> & item) -> unsigned {
+        if(auto note = std::dynamic_pointer_cast<NoteBase>(item)) {
+          if(auto store_filter = std::dynamic_pointer_cast<NoteFilterModel>(m_store_filter)) {
+            return store_filter->matches_for(note->uri());
+          }
+        }
+        return 0;
+      })
+    ));
 
-    m_notes_view->append_column(*m_matches_column);
-    m_store_sort->set_sort_column(4, Gtk::SortType::DESCENDING);
+    m_notes_view->append_column(m_matches_column);
   }
   else {
     m_matches_column->set_visible(true);
-    m_store_sort->set_sort_column(4, Gtk::SortType::DESCENDING);
   }
+
+  m_notes_view->sort_by_column(m_matches_column, Gtk::SortType::DESCENDING);
 }
 
 bool SearchNotesWidget::show_all_search_results()
 {
   select_all_notes_notebook();
   return true;
-}
-
-void SearchNotesWidget::matches_column_data_func(Gtk::CellRenderer * cell, const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-{
-  Gtk::CellRendererText *crt = dynamic_cast<Gtk::CellRendererText*>(cell);
-  if(!crt) {
-    return;
-  }
-
-  Glib::ustring match_str = "";
-
-  Note::Ptr note = (*iter)[m_column_types.note];
-  if(note) {
-    int match_count;
-    auto miter = m_current_matches.find(note->uri());
-    if(miter != m_current_matches.end()) {
-      match_count = miter->second;
-      if(match_count == INT_MAX) {
-        //TRANSLATORS: search found a match in note title
-        match_str = _("Title match");
-      }
-      else if(match_count > 0) {
-        const char * fmt;
-        fmt = ngettext("%1 match", "%1 matches", match_count);
-        match_str = Glib::ustring::compose(fmt, match_count);
-      }
-    }
-  }
-
-  crt->property_text() = match_str;
-}
-
-int SearchNotesWidget::compare_search_hits(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
-{
-  Note::Ptr note_a = (*a)[m_column_types.note];
-  Note::Ptr note_b = (*b)[m_column_types.note];
-
-  if(!note_a || !note_b) {
-    return -1;
-  }
-
-  int matches_a;
-  int matches_b;
-  auto iter_a = m_current_matches.find(note_a->uri());
-  auto iter_b = m_current_matches.find(note_b->uri());
-  bool has_matches_a = (iter_a != m_current_matches.end());
-  bool has_matches_b = (iter_b != m_current_matches.end());
-
-  if(!has_matches_a || !has_matches_b) {
-    if(has_matches_a) {
-      return 1;
-    }
-
-    return -1;
-  }
-
-  matches_a = iter_a->second;
-  matches_b = iter_b->second;
-  int result = matches_a - matches_b;
-  if(result == 0) {
-    // Do a secondary sort by note title in alphabetical order
-    result = compare_titles(a, b);
-
-    // Make sure to always sort alphabetically
-    if(result != 0) {
-      int sort_col_id;
-      Gtk::SortType sort_type;
-      if(m_store_sort->get_sort_column_id(sort_col_id, sort_type)) {
-        if(sort_type == Gtk::SortType::DESCENDING) {
-          result = -result; // reverse sign
-        }
-      }
-    }
-
-    return result;
-  }
-
-  return result;
 }
 
 void SearchNotesWidget::on_note_deleted(NoteBase & note)
@@ -889,39 +953,27 @@ void SearchNotesWidget::on_note_saved(NoteBase&)
   update_results();
 }
 
-void SearchNotesWidget::delete_note(const NoteBase & note)
+void SearchNotesWidget::delete_note(NoteBase & note)
 {
-  Gtk::TreeModel::Children rows = m_store->children();
+  auto store = std::static_pointer_cast<Gio::ListStore<NoteBase>>(m_store);
+  auto item = store->find(note.shared_from_this());
 
-  for(Gtk::TreeModel::iterator iter = rows.begin();
-      rows.end() != iter; iter++) {
-    if(&note == iter->get_value(m_column_types.note).get()) {
-      m_store->erase(iter);
-      break;
-    }
+  if(item.first) {
+    store->remove(item.second);
   }
 }
 
 void SearchNotesWidget::add_note(NoteBase & note)
 {
-  Glib::ustring nice_date = utils::get_pretty_print_date(note.change_date(), true, m_gnote.preferences());
-  Gtk::TreeIter iter = m_store->append();
-  iter->set_value(m_column_types.title, note.get_title());
-  iter->set_value(m_column_types.change_date, nice_date);
-  iter->set_value(m_column_types.note, std::static_pointer_cast<Note>(note.shared_from_this()));
+  auto store = std::static_pointer_cast<Gio::ListStore<NoteBase>>(m_store);
+  store->append(note.shared_from_this());
 }
 
 void SearchNotesWidget::rename_note(const NoteBase & note)
 {
-  Gtk::TreeModel::Children rows = m_store->children();
-
-  for(Gtk::TreeModel::iterator iter = rows.begin();
-      rows.end() != iter; iter++) {
-    if(&note == iter->get_value(m_column_types.note).get()) {
-      iter->set_value(m_column_types.title, note.get_title());
-      break;
-    }
-  }
+  NoteBase & n = const_cast<NoteBase&>(note);
+  delete_note(n);
+  add_note(n);
 }
 
 void SearchNotesWidget::on_open_note()
@@ -1012,7 +1064,7 @@ Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
     m_note_list_context_menu->set_parent(*m_notes_view);
   }
 
-  on_selection_changed();
+  on_selection_changed(0, 0);
   return m_note_list_context_menu.get();
 }
 
@@ -1122,34 +1174,35 @@ void SearchNotesWidget::set_initial_focus()
   }
 }
 
-void SearchNotesWidget::on_sorting_changed()
+void SearchNotesWidget::on_sorting_changed(Gtk::Sorter::Change)
 {
   // don't do anything if in search mode
   if(m_matches_column && m_matches_column->get_visible()) {
     return;
   }
 
-  if(m_store_sort) {
-    m_store_sort->get_sort_column_id(m_sort_column_id, m_sort_column_order);
-    Glib::ustring value;
-    switch(m_sort_column_id) {
-    case RecentNotesColumnTypes::TITLE:
-      value = "note:";
-      break;
-    case RecentNotesColumnTypes::CHANGE_DATE:
-      value = "change:";
-      break;
-    default:
-      return;
-    }
-    if(m_sort_column_order == Gtk::SortType::ASCENDING) {
-      value += "asc";
-    }
-    else {
-      value += "desc";
-    }
-    m_gnote.preferences().search_sorting(value);
+  if(!get_column_view_sort(*m_notes_view, m_sort_column, m_sort_column_order)) {
+    return;
   }
+
+  Glib::ustring value;
+  if(m_sort_column == m_title_column) {
+    value = "note:";
+  }
+  else if(m_sort_column == m_change_column) {
+    value = "change:";
+  }
+  else {
+    return;
+  }
+
+  if(m_sort_column_order == Gtk::SortType::ASCENDING) {
+    value += "asc";
+  }
+  else {
+    value += "desc";
+  }
+  m_gnote.preferences().search_sorting(value);
 }
 
 void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
@@ -1161,13 +1214,13 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
     ERR_OUT(_("Expected format 'column:order'"));
     return;
   }
-  int column_id;
+  Glib::RefPtr<Gtk::ColumnViewColumn> column;
   Gtk::SortType order;
   if(tokens[0] == "note") {
-    column_id = RecentNotesColumnTypes::TITLE;
+    column = m_title_column;
   }
   else if(tokens[0] == "change") {
-    column_id = RecentNotesColumnTypes::CHANGE_DATE;
+    column = m_change_column;
   }
   else {
     ERR_OUT(_("Failed to parse setting search-sorting (Value: %s):"), sorting.c_str());
@@ -1186,7 +1239,7 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
     return;
   }
 
-  m_sort_column_id = column_id;
+  m_sort_column = column;
   m_sort_column_order = order;
 }
 
