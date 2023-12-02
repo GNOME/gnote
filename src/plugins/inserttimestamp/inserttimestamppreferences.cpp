@@ -43,11 +43,6 @@ namespace inserttimestamp {
       {
         return std::dynamic_pointer_cast<InsertTimestampPreferences::FormatColumns>(item.get_item())->value.formatted;
       }
-
-      void set_text(Gtk::Label & label, const Glib::ustring & text) override
-      {
-        label.set_text(text);
-      }
     };
 
   }
