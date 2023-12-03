@@ -340,10 +340,10 @@ namespace gnote {
     }
   }
 
-  void NoteRecentChanges::make_search_box()
+  bool NoteRecentChanges::make_search_box()
   {
     if(m_search_box) {
-      return;
+      return false;
     }
 
     Glib::ustring search_text;
@@ -374,10 +374,13 @@ namespace gnote {
     auto content = dynamic_cast<Gtk::Grid*>(m_search_button.get_parent());
     if(content) {
       content->attach_next_to(*m_search_box, m_search_button, Gtk::PositionType::LEFT);
+      return true;
     }
     else {
       ERR_OUT(_("Parent of embed box is not a Gtk::Grid, please report a bug!"));
     }
+
+    return false;
   }
 
   void NoteRecentChanges::make_find_next_prev()
@@ -442,8 +445,8 @@ namespace gnote {
 
   void NoteRecentChanges::show_search_bar(bool focus)
   {
-    make_search_box();
-    if(m_search_box->get_visible()) {
+    if(!make_search_box() && m_search_box->get_visible()) {
+      // grab focus only if freshly create or became visible
       focus = false;
     }
     m_search_box->show();

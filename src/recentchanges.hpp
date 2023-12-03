@@ -76,7 +76,7 @@ private:
   void add_shortcut(Gtk::Widget & widget, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
   void add_shortcut(Gtk::ShortcutController & controller, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
   void make_header_bar();
-  void make_search_box();
+  bool make_search_box();
   void make_find_next_prev();
   bool on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_search_changed();
