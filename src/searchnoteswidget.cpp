@@ -274,7 +274,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   set_end_child(m_matches_window);
 
   make_recent_notes_view();
-  update_results();
 
   m_matches_window.property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   m_matches_window.property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
