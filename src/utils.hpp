@@ -55,6 +55,7 @@ class Preferences;
 
     void main_context_invoke(const sigc::slot<void()> & slot);
     void main_context_call(const sigc::slot<void()> & slot);
+    void timeout_add_once(guint interval, std::function<void()> func);
 
     template <typename T>
     bool remove_swap_back(std::vector<T> & v, const T & e)

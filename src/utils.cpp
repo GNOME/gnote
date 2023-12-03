@@ -218,6 +218,17 @@ namespace gnote {
     }
 
 
+    void timeout_add_once(guint interval, std::function<void()> func)
+    {
+      auto f = new std::function<void()>(std::move(func));
+      g_timeout_add_once(interval, [](gpointer data) {
+        auto func = static_cast<std::function<void()>*>(data);
+        (*func)();
+        delete func;
+      }, f);
+    }
+
+
     HIGMessageDialog::HIGMessageDialog(Gtk::Window *parent,
                                        GtkDialogFlags flags, Gtk::MessageType msg_type, 
                                        Gtk::ButtonsType btn_type, const Glib::ustring & header,
