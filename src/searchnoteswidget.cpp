@@ -728,6 +728,11 @@ void SearchNotesWidget::make_recent_notes_view()
   m_notes_view->sort_by_column(std::const_pointer_cast<Gtk::ColumnViewColumn>(m_sort_column), m_sort_column_order);
   m_notes_view->get_sorter()->signal_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_sorting_changed));
   selection->signal_selection_changed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_selection_changed));
+  utils::timeout_add_once(1, [store, selection]() {
+    if(store->get_n_items() > 0) {
+      selection->select_item(0, false);
+    }
+  });
 }
 
 void SearchNotesWidget::select_notes(const std::vector<Note::Ref> & notes)
