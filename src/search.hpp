@@ -66,7 +66,7 @@ public:
   /// and a match number. If the search term is in the title,
   /// number will be INT_MAX.
   /// </returns>  
-  Results search_notes(const Glib::ustring &, bool, const notebooks::Notebook::Ptr & );
+  Results search_notes(const Glib::ustring &, bool, notebooks::Notebook::ORef);
   bool check_note_has_match(const NoteBase & note, const std::vector<Glib::ustring> &, bool match_case);
   int find_match_count_in_note(Glib::ustring note_text, const std::vector<Glib::ustring> &,
                                bool match_case);

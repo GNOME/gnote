@@ -351,7 +351,7 @@ void SearchNotesWidget::perform_search()
     selected_notebook = notebooks::Notebook::Ptr();
   }
 
-  auto results = search.search_notes(text, false, selected_notebook);
+  auto results = search.search_notes(text, false, selected_notebook ? *selected_notebook : notebooks::Notebook::ORef());
   // if no results found in current notebook ask user whether
   // to search in all notebooks
   if(results.size() == 0 && selected_notebook != NULL) {

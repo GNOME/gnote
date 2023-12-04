@@ -36,7 +36,7 @@ namespace gnote {
 
 
   Search::Results Search::search_notes(const Glib::ustring & query, bool case_sensitive,
-                                  const notebooks::Notebook::Ptr & selected_notebook)
+                                       notebooks::Notebook::ORef selected_notebook)
   {
     Glib::ustring search_text = query;
     if(!case_sensitive) {
@@ -62,7 +62,7 @@ namespace gnote {
         
       // Skip notes that are not in the
       // selected notebook
-      if(selected_notebook && !selected_notebook->contains_note(static_cast<Note&>(note))) {
+      if(selected_notebook && !selected_notebook.value().get().contains_note(static_cast<Note&>(note))) {
         return;
       }
         
