@@ -38,6 +38,9 @@ class Notebook
 {
 public:
   typedef std::shared_ptr<Notebook> Ptr;
+  typedef std::reference_wrapper<Notebook> Ref;
+  typedef std::optional<Ref> ORef;
+
   static const char * NOTEBOOK_TAG_PREFIX;
   Notebook(NoteManagerBase &, const Glib::ustring &, bool is_special = false);
   Notebook(NoteManagerBase &, const Tag::Ptr &);
