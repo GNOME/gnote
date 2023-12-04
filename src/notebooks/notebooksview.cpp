@@ -127,7 +127,7 @@ namespace gnote {
     void NotebooksView::on_selection_changed()
     {
       if(auto notebook = get_selected_notebook()) {
-        signal_selected_notebook_changed(notebook);
+        signal_selected_notebook_changed(*notebook);
       }
       else {
         select_all_notes_notebook();

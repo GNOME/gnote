@@ -38,7 +38,7 @@ namespace gnote {
     Notebook::Ptr get_selected_notebook() const;
     void select_all_notes_notebook();
 
-    sigc::signal<void(const Notebook::Ptr &)> signal_selected_notebook_changed;
+    sigc::signal<void(const Notebook &)> signal_selected_notebook_changed;
   private:
     bool on_drag_data_received(const Glib::ValueBase & value, double x, double y);
     void on_selection_changed();

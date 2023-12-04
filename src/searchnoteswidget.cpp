@@ -505,12 +505,12 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   }
 }
 
-void SearchNotesWidget::on_notebook_selection_changed(const notebooks::Notebook::Ptr & notebook)
+void SearchNotesWidget::on_notebook_selection_changed(const notebooks::Notebook & notebook)
 {
   restore_matches_window();
 
   bool allow_edit = false;
-  if(!std::dynamic_pointer_cast<notebooks::SpecialNotebook>(notebook)) {
+  if(!dynamic_cast<const notebooks::SpecialNotebook*>(&notebook)) {
     allow_edit = true;
   }
 
@@ -1088,7 +1088,7 @@ Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
     m_notebook_list_context_menu->set_parent(*m_notebooks_view);
   }
 
-  on_notebook_selection_changed(m_notebooks_view->get_selected_notebook());
+  on_notebook_selection_changed(*m_notebooks_view->get_selected_notebook());
   return m_notebook_list_context_menu.get();
 }
 
