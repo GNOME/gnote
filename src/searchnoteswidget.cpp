@@ -497,7 +497,7 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   for(NoteBase *note : notes) {
     notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
   }
-  notebook_manager.delete_notebook(old_notebook);
+  notebook_manager.delete_notebook(*old_notebook);
   Gtk::TreeIter<Gtk::TreeRow> iter;
   if(notebook_manager.get_notebook_iter(new_notebook, iter)) {
     m_notebooks_view->get_selection()->select(iter);

@@ -166,37 +166,30 @@ namespace gnote {
       return true;
     }
 
-    void NotebookManager::delete_notebook(const Notebook::Ptr & notebook)
+    void NotebookManager::delete_notebook(Notebook & notebook)
     {
-      if (!notebook)
-        throw sharp::Exception ("NotebookManager::delete_notebook () called with a null argument.");
-      Glib::ustring normalized_name = notebook->get_normalized_name();
-      auto map_iter = m_notebookMap.find (normalized_name);
-      if (map_iter == m_notebookMap.end())
+      Glib::ustring normalized_name = notebook.get_normalized_name();
+      auto map_iter = m_notebookMap.find(normalized_name);
+      if(map_iter == m_notebookMap.end()) {
         return;
+      }
       
-//      lock (locker) {
-        map_iter = m_notebookMap.find (normalized_name);
-        if (map_iter == m_notebookMap.end()) {
-          return;
-        }
-        
-        Gtk::TreeIter iter = map_iter->second;;
-        // first remove notebook from map, then from store, because the later cases a UI refresh, that can query back here
-        m_notebookMap.erase(map_iter);
-        m_notebooks->erase (iter);
+      Gtk::TreeIter iter = map_iter->second;;
+      // first remove notebook from map, then from store, because the later cases a UI refresh, that can query back here
+      m_notebookMap.erase(map_iter);
+      m_notebooks->erase(iter);
 
-        // Remove the notebook tag from every note that's in the notebook
-        std::vector<NoteBase*> notes;
-        Tag::Ptr tag = notebook->get_tag();
-        if(tag) {
-          notes = tag->get_notes();
-        }
-        for(NoteBase *note : notes) {
-          note->remove_tag (notebook->get_tag());
-          m_note_removed_from_notebook (*static_cast<Note*>(note), notebook);
-        }
-//      }
+      // Remove the notebook tag from every note that's in the notebook
+      std::vector<NoteBase*> notes;
+      Tag::Ptr tag = notebook.get_tag();
+      if(tag) {
+        notes = tag->get_notes();
+      }
+      for(NoteBase *note : notes) {
+        note->remove_tag(tag);
+        m_note_removed_from_notebook(*static_cast<Note*>(note), notebook.shared_from_this());
+      }
+
       signal_notebook_list_changed();
     }
 
@@ -378,7 +371,7 @@ namespace gnote {
         // Grab the template note before removing all the notebook tags
         auto & template_note = notebook->get_template_note();
 
-        g.notebook_manager().delete_notebook(notebook);
+        g.notebook_manager().delete_notebook(*notebook);
 
         // Delete the template note
         g.notebook_manager().note_manager().delete_note(template_note);

@@ -97,7 +97,7 @@ void SpecialNotesApplicationAddin::initialize()
 void SpecialNotesApplicationAddin::shutdown()
 {
   if(m_notebook != NULL) {
-    ignote().notebook_manager().delete_notebook(m_notebook);
+    ignote().notebook_manager().delete_notebook(*m_notebook);
     m_notebook.reset();
     m_initialized = false;
   }
