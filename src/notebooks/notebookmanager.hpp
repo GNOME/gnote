@@ -98,9 +98,9 @@ public:
   NotebookEventHandler & signal_note_removed_from_notebook()
     { return m_note_removed_from_notebook; }
 
-  Notebook::Ptr & active_notes_notebook()
+  Notebook & active_notes_notebook()
     {
-      return m_active_notes;
+      return *m_active_notes;
     }
 
   sigc::signal<void()> signal_notebook_list_changed;
