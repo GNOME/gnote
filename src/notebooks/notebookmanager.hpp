@@ -88,7 +88,7 @@ public:
   void prompt_create_new_notebook(IGnote &, Gtk::Window &, std::function<void(Notebook::ORef)> on_complete = {});
   void prompt_create_new_notebook(IGnote &, Gtk::Window &, std::vector<NoteBase::Ref> && notes_to_add,
     std::function<void(Notebook::ORef)> on_complete = {});
-  static void prompt_delete_notebook(IGnote &, Gtk::Window *, const Notebook::Ptr &);
+  static void prompt_delete_notebook(IGnote &, Gtk::Window *, Notebook &);
   bool move_note_to_notebook(Note &, Notebook::ORef);
 
   NotebookEventHandler & signal_note_added_to_notebook()

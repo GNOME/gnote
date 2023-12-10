@@ -1115,7 +1115,7 @@ void SearchNotesWidget::on_delete_notebook(const Glib::VariantBase&)
     return;
   }
 
-  notebooks::NotebookManager::prompt_delete_notebook(m_gnote, get_owning_window(), notebook);
+  notebooks::NotebookManager::prompt_delete_notebook(m_gnote, get_owning_window(), *notebook);
 }
 
 void SearchNotesWidget::embed(EmbeddableWidgetHost *h)

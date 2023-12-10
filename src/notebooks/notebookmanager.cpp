@@ -343,7 +343,7 @@ namespace gnote {
       on_complete(*notebook);
     }
     
-    void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, const Notebook::Ptr & notebook)
+    void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, Notebook & notebook)
     {
       // Confirmation Dialog
       auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(parent,
@@ -364,15 +364,17 @@ namespace gnote {
       button->get_style_context()->add_class("destructive-action");
       dialog->add_action_widget(*button, Gtk::ResponseType::YES);
 
-      dialog->signal_response().connect([&g, notebook, dialog](int response) {
+      dialog->signal_response().connect([&g, notebook = notebook.get_normalized_name(), dialog](int response) {
         if(response != Gtk::ResponseType::YES) {
           return;
         }
 
-        // Grab the template note before removing all the notebook tags
-        auto & template_note = notebook->get_template_note();
+        auto nb = g.notebook_manager().get_notebook(notebook);
 
-        g.notebook_manager().delete_notebook(*notebook);
+        // Grab the template note before removing all the notebook tags
+        auto & template_note = nb->get_template_note();
+
+        g.notebook_manager().delete_notebook(*nb);
 
         // Delete the template note
         g.notebook_manager().note_manager().delete_note(template_note);
