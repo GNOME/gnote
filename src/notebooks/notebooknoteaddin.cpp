@@ -133,7 +133,7 @@ namespace notebooks {
     if(name.size()) {
       notebook = ignote().notebook_manager().get_notebook(name);
     }
-    ignote().notebook_manager().move_note_to_notebook(get_note(), notebook);
+    ignote().notebook_manager().move_note_to_notebook(get_note(), *notebook);
   }
 
 

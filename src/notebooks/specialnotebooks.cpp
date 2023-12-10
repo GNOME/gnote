@@ -93,7 +93,7 @@ bool UnfiledNotesNotebook::contains_note(const Note & note, bool include_system)
 
 bool UnfiledNotesNotebook::add_note(Note& note)
 {
-  m_note_manager.notebook_manager().move_note_to_notebook(note, Notebook::Ptr());
+  m_note_manager.notebook_manager().move_note_to_notebook(note, Notebook::ORef());
   return true;
 }
 

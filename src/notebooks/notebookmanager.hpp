@@ -90,7 +90,7 @@ public:
   void prompt_create_new_notebook(IGnote &, Gtk::Window &, std::vector<NoteBase::Ref> && notes_to_add,
     sigc::slot<void(const Notebook::Ptr&)> on_complete = [](const Notebook::Ptr&) {});
   static void prompt_delete_notebook(IGnote &, Gtk::Window *, const Notebook::Ptr &);
-  bool move_note_to_notebook(Note&, const Notebook::Ptr &);
+  bool move_note_to_notebook(Note &, Notebook::ORef);
 
   NotebookEventHandler & signal_note_added_to_notebook()
     { return m_note_added_to_notebook; }
