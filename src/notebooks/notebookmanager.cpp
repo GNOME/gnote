@@ -293,13 +293,13 @@ namespace gnote {
     }
 
 
-    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, sigc::slot<void(const Notebook::Ptr&)> on_complete)
+    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, std::function<void(Notebook::ORef)> on_complete)
     {
       return prompt_create_new_notebook(g, parent, std::vector<NoteBase::Ref>(), on_complete);
     }
 
 
-    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, std::vector<NoteBase::Ref> && notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
+    void NotebookManager::prompt_create_new_notebook(IGnote & g, Gtk::Window & parent, std::vector<NoteBase::Ref> && notes_to_add, std::function<void(Notebook::ORef)> on_complete)
     {
       // Prompt the user for the name of a new notebook
       auto dialog = Gtk::make_managed<CreateNotebookDialog>(&parent, (GtkDialogFlags)(GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT), g);
@@ -312,12 +312,13 @@ namespace gnote {
     }
 
 
-    void NotebookManager::on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int response, const std::vector<Glib::ustring> & notes_to_add, sigc::slot<void(const Notebook::Ptr&)> on_complete)
+    void NotebookManager::on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int response, const std::vector<Glib::ustring> & notes_to_add,
+      std::function<void(Notebook::ORef)> on_complete)
     {
       Glib::ustring notebookName = dialog.get_notebook_name();
       dialog.hide();
       if(response != Gtk::ResponseType::OK) {
-        on_complete(Notebook::Ptr());
+        on_complete(Notebook::ORef());
         return;
       }
       
@@ -339,7 +340,7 @@ namespace gnote {
         }
       }
 
-      on_complete(notebook);
+      on_complete(*notebook);
     }
     
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, const Notebook::Ptr & notebook)
