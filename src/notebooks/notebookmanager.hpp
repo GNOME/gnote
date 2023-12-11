@@ -82,7 +82,7 @@ public:
   bool add_notebook(Notebook::Ptr &&);
   void delete_notebook(Notebook &);
   bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter<Gtk::TreeRow> & );
-  Notebook::Ptr get_notebook_from_note(const NoteBase&);
+  Notebook::ORef get_notebook_from_note(const NoteBase&);
   Notebook::Ptr get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
   void prompt_create_new_notebook(IGnote &, Gtk::Window &, std::function<void(Notebook::ORef)> on_complete = {});

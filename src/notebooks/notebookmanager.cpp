@@ -235,16 +235,16 @@ namespace gnote {
     /// <returns>
     /// A <see cref="Notebook"/>
     /// </returns>
-    Notebook::Ptr NotebookManager::get_notebook_from_note(const NoteBase & note)
+    Notebook::ORef NotebookManager::get_notebook_from_note(const NoteBase & note)
     {
       std::vector<Tag::Ptr> tags = note.get_tags();
       for(auto & tag : tags) {
-        Notebook::Ptr notebook = get_notebook_from_tag(tag);
-        if (notebook)
-          return notebook;
+        if(auto notebook = get_notebook_from_tag(tag)) {
+          return *notebook;
+        }
       }
       
-      return Notebook::Ptr();
+      return Notebook::ORef();
     }
 
 
@@ -399,18 +399,19 @@ namespace gnote {
       // alleviate the confusion, only allow a note to
       // exist in one notebook at a time.
 
-      Notebook::Ptr currentNotebook = get_notebook_from_note (note);
+      auto currentNotebook = get_notebook_from_note(note);
       if(!currentNotebook && !notebook) {
         return true; // It's already there.
       }
       Notebook & move_to = notebook.value();
-      if(currentNotebook.get() == &move_to) {
+      if(&currentNotebook.value().get() == &move_to) {
         return true; // It's already there.
       }
 
       if(currentNotebook) {
-        note.remove_tag(currentNotebook->get_tag());
-        m_note_removed_from_notebook(note, currentNotebook);
+        Notebook & nb = currentNotebook.value();
+        note.remove_tag(nb.get_tag());
+        m_note_removed_from_notebook(note, nb.shared_from_this());
       }
 
       // Only attempt to add the notebook tag when this

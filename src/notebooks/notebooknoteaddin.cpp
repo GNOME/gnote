@@ -84,10 +84,9 @@ namespace notebooks {
     EmbeddableWidgetHost *host = get_window()->host();
     m_new_notebook_cid = host->find_action("new-notebook")->signal_activate()
       .connect(sigc::mem_fun(*this, &NotebookNoteAddin::on_new_notebook_menu_item));
-    Notebook::Ptr current_notebook = ignote().notebook_manager().get_notebook_from_note(get_note());
     Glib::ustring name;
-    if(current_notebook) {
-      name = current_notebook->get_name();
+    if(auto current_notebook = ignote().notebook_manager().get_notebook_from_note(get_note())) {
+      name = current_notebook.value().get().get_name();
     }
     MainWindowAction::Ptr action = host->find_action("move-to-notebook");
     action->set_state(Glib::Variant<Glib::ustring>::create(name));
