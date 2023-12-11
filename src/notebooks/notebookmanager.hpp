@@ -46,7 +46,7 @@ namespace notebooks {
 class NotebookManager
 {
 public:
-  typedef sigc::signal<void(const Note &, const Notebook::Ptr &)> NotebookEventHandler;
+  typedef sigc::signal<void(const Note &, const Notebook &)> NotebookEventHandler;
 
   NotebookManager(NoteManagerBase &);
   void init();
@@ -91,17 +91,13 @@ public:
   static void prompt_delete_notebook(IGnote &, Gtk::Window *, Notebook &);
   bool move_note_to_notebook(Note &, Notebook::ORef);
 
-  NotebookEventHandler & signal_note_added_to_notebook()
-    { return m_note_added_to_notebook; }
-
-  NotebookEventHandler & signal_note_removed_from_notebook()
-    { return m_note_removed_from_notebook; }
-
   Notebook & active_notes_notebook()
     {
       return *m_active_notes;
     }
 
+  NotebookEventHandler signal_note_added_to_notebook;
+  NotebookEventHandler signal_note_removed_from_notebook;
   sigc::signal<void()> signal_notebook_list_changed;
   sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
 private:
@@ -133,8 +129,6 @@ private:
   std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_notebookMap;
   //object locker = new object ();    
   bool                                 m_adding_notebook;
-  NotebookEventHandler                 m_note_added_to_notebook;
-  NotebookEventHandler                 m_note_removed_from_notebook;
   Notebook::Ptr                        m_active_notes;
   NoteManagerBase                    & m_note_manager;
 };

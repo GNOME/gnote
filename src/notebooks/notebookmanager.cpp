@@ -142,7 +142,7 @@ namespace gnote {
         // Since it's possible for the template note to already
         // exist, we need to make sure it gets tagged.
         template_note.add_tag(notebook->get_tag());
-        m_note_added_to_notebook(template_note, notebook);
+        signal_note_added_to_notebook(template_note, *notebook);
 //      }
 
       signal_notebook_list_changed();
@@ -184,7 +184,7 @@ namespace gnote {
       }
       for(NoteBase *note : notes) {
         note->remove_tag(tag);
-        m_note_removed_from_notebook(*static_cast<Note*>(note), notebook.shared_from_this());
+        signal_note_removed_from_notebook(*static_cast<Note*>(note), notebook);
       }
 
       signal_notebook_list_changed();
@@ -410,14 +410,14 @@ namespace gnote {
       if(currentNotebook) {
         Notebook & nb = currentNotebook.value();
         note.remove_tag(nb.get_tag());
-        m_note_removed_from_notebook(note, nb.shared_from_this());
+        signal_note_removed_from_notebook(note, nb);
       }
 
       // Only attempt to add the notebook tag when this
       // menu item is not the "No notebook" menu item.
       if(notebook) {
         note.add_tag(move_to.get_tag());
-        m_note_added_to_notebook(note, move_to.shared_from_this());
+        signal_note_added_to_notebook(note, move_to);
       }
 
       return true;

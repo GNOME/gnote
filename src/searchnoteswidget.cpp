@@ -289,9 +289,9 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   // results will be updated immediately instead of waiting
   // until the note's queue_save () kicks in.
   notebooks::NotebookManager & notebook_manager = g.notebook_manager();
-  notebook_manager.signal_note_added_to_notebook()
+  notebook_manager.signal_note_added_to_notebook
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_added_to_notebook));
-  notebook_manager.signal_note_removed_from_notebook()
+  notebook_manager.signal_note_removed_from_notebook
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_removed_from_notebook));
   notebook_manager.signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
@@ -1021,15 +1021,13 @@ Gtk::Window *SearchNotesWidget::get_owning_window()
   return dynamic_cast<Gtk::Window*>(widget);
 }
 
-void SearchNotesWidget::on_note_added_to_notebook(const Note &,
-                                                  const notebooks::Notebook::Ptr &)
+void SearchNotesWidget::on_note_added_to_notebook(const Note &, const notebooks::Notebook &)
 {
   restore_matches_window();
   update_results();
 }
 
-void SearchNotesWidget::on_note_removed_from_notebook(const Note &,
-                                                      const notebooks::Notebook::Ptr &)
+void SearchNotesWidget::on_note_removed_from_notebook(const Note &, const notebooks::Notebook &)
 {
   restore_matches_window();
   update_results();

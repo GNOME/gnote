@@ -108,7 +108,7 @@ namespace gnote {
 
       auto & notebook = manager.get_or_create_notebook(notebookName);
 
-      manager.signal_note_added_to_notebook() (static_cast<const Note&>(note), notebook.shared_from_this());
+      manager.signal_note_added_to_notebook(static_cast<const Note&>(note), notebook);
     }
 
 
@@ -133,7 +133,7 @@ namespace gnote {
       }
 
       Notebook & notebook = nb.value();
-      manager.signal_note_removed_from_notebook() (static_cast<const Note&>(note), notebook.shared_from_this());
+      manager.signal_note_removed_from_notebook(static_cast<const Note&>(note), notebook);
     }
 
     void NotebookApplicationAddin::on_note_added(NoteBase & note)

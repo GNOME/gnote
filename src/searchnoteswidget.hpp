@@ -105,8 +105,8 @@ private:
   void on_open_note();
   void on_open_note_new_window();
   Gtk::Window *get_owning_window();
-  void on_note_added_to_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
-  void on_note_removed_from_notebook(const Note & note, const notebooks::Notebook::Ptr & notebook);
+  void on_note_added_to_notebook(const Note & note, const notebooks::Notebook & notebook);
+  void on_note_removed_from_notebook(const Note & note, const notebooks::Notebook & notebook);
   void on_note_pin_status_changed(const Note &, bool);
   Gtk::Popover *get_note_list_context_menu();
   Gtk::Popover *get_notebook_list_context_menu();
