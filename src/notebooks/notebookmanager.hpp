@@ -78,7 +78,7 @@ public:
 
   Notebook::Ptr get_notebook(const Glib::ustring & notebookName) const;
   bool notebook_exists(const Glib::ustring & notebookName) const;
-  Notebook::Ptr get_or_create_notebook(const Glib::ustring &);
+  Notebook & get_or_create_notebook(const Glib::ustring &);
   bool add_notebook(const Notebook::Ptr &);
   void delete_notebook(Notebook &);
   bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter<Gtk::TreeRow> & );

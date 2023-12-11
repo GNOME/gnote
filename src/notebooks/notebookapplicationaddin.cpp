@@ -106,9 +106,9 @@ namespace gnote {
 
       Glib::ustring notebookName = sharp::string_substring(tag->name(), megaPrefix.size());
 
-      Notebook::Ptr notebook = manager.get_or_create_notebook(notebookName);
+      auto & notebook = manager.get_or_create_notebook(notebookName);
 
-      manager.signal_note_added_to_notebook() (static_cast<const Note&>(note), notebook);
+      manager.signal_note_added_to_notebook() (static_cast<const Note&>(note), notebook.shared_from_this());
     }
 
 

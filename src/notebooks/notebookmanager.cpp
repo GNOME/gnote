@@ -105,21 +105,21 @@ namespace gnote {
       return m_notebookMap.find(normalizedName) != m_notebookMap.end();
     }
 
-    Notebook::Ptr NotebookManager::get_or_create_notebook(const Glib::ustring & notebookName)
+    Notebook & NotebookManager::get_or_create_notebook(const Glib::ustring & notebookName)
     {
       if (notebookName.empty())
         throw sharp::Exception ("NotebookManager.GetNotebook () called with a null name.");
       
       Notebook::Ptr notebook = get_notebook (notebookName);
       if (notebook) {
-        return notebook;
+        return *notebook;
       }
       
       Gtk::TreeIter<Gtk::TreeRow> iter;
 //      lock (locker) {
         notebook = get_notebook (notebookName);
         if (notebook)
-          return notebook;
+          return *notebook;
         
         try {
           m_adding_notebook = true;
@@ -150,7 +150,7 @@ namespace gnote {
 //      }
 
       signal_notebook_list_changed();
-      return notebook;
+      return *notebook;
     }
 
     bool NotebookManager::add_notebook(const Notebook::Ptr & notebook)
@@ -322,25 +322,19 @@ namespace gnote {
         return;
       }
       
-      Notebook::Ptr notebook = g.notebook_manager().get_or_create_notebook (notebookName);
-      if (!notebook) {
-        DBG_OUT ("Could not create notebook: %s", notebookName.c_str());
-      } 
-      else {
-        DBG_OUT ("Created the notebook: %s (%s)", notebook->get_name().c_str(),
-                 notebook->get_normalized_name().c_str());
+      auto & notebook = g.notebook_manager().get_or_create_notebook (notebookName);
+      DBG_OUT("Created the notebook: %s (%s)", notebook.get_name().c_str(), notebook.get_normalized_name().c_str());
         
-        if(!notes_to_add.empty()) {
-          // Move all the specified notesToAdd into the new notebook
-          for(const auto & note : notes_to_add) {
-            notebook->note_manager().find_by_uri(note, [&g, &notebook](NoteBase & note) {
-              g.notebook_manager().move_note_to_notebook(static_cast<Note&>(note), *notebook);
-            });
-          }
+      if(!notes_to_add.empty()) {
+        // Move all the specified notesToAdd into the new notebook
+        for(const auto & note : notes_to_add) {
+          notebook.note_manager().find_by_uri(note, [&g, &notebook](NoteBase & note) {
+            g.notebook_manager().move_note_to_notebook(static_cast<Note&>(note), notebook);
+          });
         }
       }
 
-      on_complete(*notebook);
+      on_complete(notebook);
     }
     
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, Notebook & notebook)

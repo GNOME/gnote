@@ -490,16 +490,15 @@ void SearchNotesWidget::on_notebook_row_edited(const Glib::ustring& /*tree_path*
   if(std::dynamic_pointer_cast<notebooks::SpecialNotebook>(old_notebook)) {
     return;
   }
-  notebooks::Notebook::Ptr new_notebook = notebook_manager.get_or_create_notebook(new_text);
-  DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook->get_name().c_str(),
-          new_text.c_str());
+  auto & new_notebook = notebook_manager.get_or_create_notebook(new_text);
+  DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook->get_name().c_str(), new_text.c_str());
   auto notes = old_notebook->get_tag()->get_notes();
   for(NoteBase *note : notes) {
-    notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), *new_notebook);
+    notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
   }
   notebook_manager.delete_notebook(*old_notebook);
   Gtk::TreeIter<Gtk::TreeRow> iter;
-  if(notebook_manager.get_notebook_iter(new_notebook, iter)) {
+  if(notebook_manager.get_notebook_iter(new_notebook.shared_from_this(), iter)) {
     m_notebooks_view->get_selection()->select(iter);
     m_notebooks_view->set_cursor(m_notebooks_view->get_model()->get_path(iter));
   }
