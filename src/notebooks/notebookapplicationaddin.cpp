@@ -127,12 +127,13 @@ namespace gnote {
         sharp::string_substring(normalizedTagName, megaPrefix.size());
 
       NotebookManager & manager = ignote().notebook_manager();
-      Notebook::Ptr notebook = manager.get_notebook(normalizedNotebookName);
-      if (!notebook) {
+      auto nb = manager.get_notebook(normalizedNotebookName);
+      if(!nb) {
         return;
       }
 
-      manager.signal_note_removed_from_notebook() (static_cast<const Note&>(note), notebook);
+      Notebook & notebook = nb.value();
+      manager.signal_note_removed_from_notebook() (static_cast<const Note&>(note), notebook.shared_from_this());
     }
 
     void NotebookApplicationAddin::on_note_added(NoteBase & note)

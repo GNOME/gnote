@@ -128,11 +128,11 @@ namespace notebooks {
   {
     get_window()->host()->find_action("move-to-notebook")->set_state(state);
     Glib::ustring name = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(state).get();
-    Notebook::Ptr notebook;
+    Notebook::ORef notebook;
     if(name.size()) {
       notebook = ignote().notebook_manager().get_notebook(name);
     }
-    ignote().notebook_manager().move_note_to_notebook(get_note(), *notebook);
+    ignote().notebook_manager().move_note_to_notebook(get_note(), notebook);
   }
 
 

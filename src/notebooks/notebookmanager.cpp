@@ -78,7 +78,7 @@ namespace gnote {
     }
 
 
-    Notebook::Ptr NotebookManager::get_notebook(const Glib::ustring & notebookName) const
+    Notebook::ORef NotebookManager::get_notebook(const Glib::ustring & notebookName) const
     {
       if (notebookName.empty()) {
         throw sharp::Exception ("NotebookManager::get_notebook() called with an empty name.");
@@ -92,10 +92,10 @@ namespace gnote {
         Gtk::TreeIter iter = map_iter->second;
         Notebook::Ptr notebook;
         iter->get_value(0, notebook);
-        return notebook;
+        return *notebook;
       }
       
-      return Notebook::Ptr();
+      return Notebook::ORef();
     }
     
 
@@ -110,17 +110,13 @@ namespace gnote {
       if (notebookName.empty())
         throw sharp::Exception ("NotebookManager.GetNotebook () called with a null name.");
       
-      Notebook::Ptr notebook = get_notebook (notebookName);
-      if (notebook) {
-        return *notebook;
-      }
-      
       Gtk::TreeIter<Gtk::TreeRow> iter;
 //      lock (locker) {
-        notebook = get_notebook (notebookName);
-        if (notebook)
-          return *notebook;
-        
+        if(auto nb = get_notebook(notebookName)) {
+          return nb.value();
+        }
+
+        Notebook::Ptr notebook;
         try {
           m_adding_notebook = true;
           notebook = std::make_shared<Notebook>(m_note_manager, notebookName);
@@ -271,10 +267,7 @@ namespace gnote {
       Glib::ustring notebookName = sharp::string_substring(tag->name(),
                                                          systemNotebookPrefix.size());
       
-      if(auto nb = get_notebook(notebookName)) {
-        return *nb;
-      }
-      return Notebook::ORef();
+      return get_notebook(notebookName);
     }
     
 
@@ -367,15 +360,18 @@ namespace gnote {
           return;
         }
 
-        auto nb = g.notebook_manager().get_notebook(notebook);
+        if(auto nb = g.notebook_manager().get_notebook(notebook)) {
+          Notebook & nbook = nb.value();
 
-        // Grab the template note before removing all the notebook tags
-        auto & template_note = nb->get_template_note();
+          // Grab the template note before removing all the notebook tags
+          auto & template_note = nbook.get_template_note();
 
-        g.notebook_manager().delete_notebook(*nb);
+          g.notebook_manager().delete_notebook(nbook);
 
-        // Delete the template note
-        g.notebook_manager().note_manager().delete_note(template_note);
+          // Delete the template note
+          g.notebook_manager().note_manager().delete_note(template_note);
+        }
+
         dialog->hide();
       });
       dialog->show();

@@ -76,7 +76,7 @@ public:
   Glib::RefPtr<Gtk::TreeModel> get_notebooks_with_special_items()
     { return m_notebooks_to_display; }
 
-  Notebook::Ptr get_notebook(const Glib::ustring & notebookName) const;
+  Notebook::ORef get_notebook(const Glib::ustring & notebookName) const;
   bool notebook_exists(const Glib::ustring & notebookName) const;
   Notebook & get_or_create_notebook(const Glib::ustring &);
   bool add_notebook(Notebook::Ptr &&);
