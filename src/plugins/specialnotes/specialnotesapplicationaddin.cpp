@@ -90,7 +90,7 @@ void SpecialNotesApplicationAddin::initialize()
     m_initialized = true;
 
     m_notebook = Notebook::Ptr(new SpecialNotesNotebook(note_manager()));
-    ignote().notebook_manager().add_notebook(m_notebook);
+    ignote().notebook_manager().add_notebook(Notebook::Ptr(m_notebook));
   }
 }
 

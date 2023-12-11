@@ -153,15 +153,16 @@ namespace gnote {
       return *notebook;
     }
 
-    bool NotebookManager::add_notebook(const Notebook::Ptr & notebook)
+    bool NotebookManager::add_notebook(Notebook::Ptr && notebook)
     {
-      if(m_notebookMap.find(notebook->get_normalized_name()) != m_notebookMap.end()) {
+      auto normalized_name = notebook->get_normalized_name();
+      if(m_notebookMap.find(normalized_name) != m_notebookMap.end()) {
         return false;
       }
 
       Gtk::TreeIter iter = m_notebooks->append();
-      iter->set_value(0, notebook);
-      m_notebookMap[notebook->get_normalized_name()] = iter;
+      iter->set_value(0, std::move(notebook));
+      m_notebookMap[std::move(normalized_name)] = iter;
       signal_notebook_list_changed();
       return true;
     }
