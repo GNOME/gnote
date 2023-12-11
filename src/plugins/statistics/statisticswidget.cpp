@@ -73,9 +73,9 @@ private:
       set_model(m_model);
       nm.signal_note_added.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
       nm.signal_note_deleted.connect(sigc::mem_fun(*this, &StatisticsModel::on_note_list_changed));
-      g.notebook_manager().signal_note_added_to_notebook()
+      g.notebook_manager().signal_note_added_to_notebook
         .connect(sigc::mem_fun(*this, &StatisticsModel::on_notebook_note_list_changed));
-      g.notebook_manager().signal_note_removed_from_notebook()
+      g.notebook_manager().signal_note_removed_from_notebook
         .connect(sigc::mem_fun(*this, &StatisticsModel::on_notebook_note_list_changed));
     }
 
@@ -124,7 +124,7 @@ private:
       update();
     }
 
-  void on_notebook_note_list_changed(const gnote::Note &, const gnote::notebooks::Notebook::Ptr &)
+  void on_notebook_note_list_changed(const gnote::Note &, const gnote::notebooks::Notebook &)
     {
       update();
     }
