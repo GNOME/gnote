@@ -240,7 +240,7 @@ namespace gnote {
       std::vector<Tag::Ptr> tags = note.get_tags();
       for(auto & tag : tags) {
         if(auto notebook = get_notebook_from_tag(tag)) {
-          return *notebook;
+          return notebook;
         }
       }
       
@@ -258,10 +258,10 @@ namespace gnote {
     /// <returns>
     /// A <see cref="Notebook"/>
     /// </returns>
-    Notebook::Ptr NotebookManager::get_notebook_from_tag(const Tag::Ptr &tag)
+    Notebook::ORef NotebookManager::get_notebook_from_tag(const Tag::Ptr &tag)
     {
       if (!is_notebook_tag (tag)) {
-        return Notebook::Ptr();
+        return Notebook::ORef();
       }
       
       // Parse off the system and notebook prefix to get
@@ -271,7 +271,10 @@ namespace gnote {
       Glib::ustring notebookName = sharp::string_substring(tag->name(),
                                                          systemNotebookPrefix.size());
       
-      return get_notebook (notebookName);
+      if(auto nb = get_notebook(notebookName)) {
+        return *nb;
+      }
+      return Notebook::ORef();
     }
     
 
