@@ -35,7 +35,7 @@ namespace gnote {
   public:
     NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model);
 
-    Notebook::Ptr get_selected_notebook() const;
+    Notebook::ORef get_selected_notebook() const;
     void select_all_notes_notebook();
 
     sigc::signal<void(const Notebook &)> signal_selected_notebook_changed;

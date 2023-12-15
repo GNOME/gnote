@@ -48,20 +48,20 @@ namespace gnote {
       get_selection()->signal_changed().connect(sigc::mem_fun(*this, &NotebooksView::on_selection_changed));
     }
 
-    Notebook::Ptr NotebooksView::get_selected_notebook() const
+    Notebook::ORef NotebooksView::get_selected_notebook() const
     {
       auto selection = get_selection();
       if(!selection) {
-        return Notebook::Ptr();
+        return Notebook::ORef();
       }
       auto iter = selection->get_selected();
       if(!iter) {
-        return Notebook::Ptr(); // Nothing selected
+        return Notebook::ORef(); // Nothing selected
       }
 
       Notebook::Ptr notebook;
       iter->get_value(0, notebook);
-      return notebook;
+      return *notebook;
     }
 
     bool NotebooksView::on_drag_data_received(const Glib::ValueBase & value, double x, double y)
@@ -127,7 +127,7 @@ namespace gnote {
     void NotebooksView::on_selection_changed()
     {
       if(auto notebook = get_selected_notebook()) {
-        signal_selected_notebook_changed(*notebook);
+        signal_selected_notebook_changed(notebook.value());
       }
       else {
         select_all_notes_notebook();
