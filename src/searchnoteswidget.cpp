@@ -48,6 +48,7 @@
 #include "searchnoteswidget.hpp"
 #include "itagmanager.hpp"
 #include "notebooks/notebookmanager.hpp"
+#include "notebooks/notebooknamepopover.hpp"
 #include "notebooks/specialnotebooks.hpp"
 #include "sharp/string.hpp"
 
@@ -1250,15 +1251,16 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
 
 void SearchNotesWidget::on_rename_notebook()
 {
-  Glib::RefPtr<Gtk::TreeSelection> selection = m_notebooks_view->get_selection();
-  if(!selection) {
+  auto selected = m_notebooks_view->get_selected_notebook();
+  if(!selected) {
     return;
   }
-  std::vector<Gtk::TreeModel::Path> selected_row = selection->get_selected_rows();
-  if(selected_row.size() != 1) {
+  notebooks::Notebook & selected_notebook = selected.value();
+  if(dynamic_cast<notebooks::SpecialNotebook*>(&selected_notebook)) {
     return;
   }
-  m_notebooks_view->set_cursor(selected_row[0], *m_notebooks_view->get_column(0), true);
+
+  notebooks::NotebookNamePopover::create(*m_notebooks_view, selected_notebook, sigc::mem_fun(*this, &SearchNotesWidget::rename_notebook)).popup();
 }
 
 }
