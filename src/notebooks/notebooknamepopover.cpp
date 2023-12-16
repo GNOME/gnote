@@ -25,6 +25,13 @@
 namespace gnote {
 namespace notebooks {
 
+NotebookNamePopover& NotebookNamePopover::create(Gtk::Widget& parent, NotebookManager& manager)
+{
+  auto popover = manage(new NotebookNamePopover(parent, manager));
+  utils::unparent_popover_on_close(popover);
+  return *popover;
+}
+
 NotebookNamePopover& NotebookNamePopover::create(Gtk::Widget & parent, Notebook & notebook, sigc::slot<void(const Notebook&, const Glib::ustring&)> renamed)
 {
   auto popover = manage(new NotebookNamePopover(parent, notebook, renamed));
@@ -32,10 +39,22 @@ NotebookNamePopover& NotebookNamePopover::create(Gtk::Widget & parent, Notebook 
   return *popover;
 }
 
+NotebookNamePopover::NotebookNamePopover(Gtk::Widget& parent, NotebookManager& manager)
+  : m_nb_manager(manager)
+{
+  init(parent, sigc::mem_fun(*this, &NotebookNamePopover::on_create));
+}
+
 NotebookNamePopover::NotebookNamePopover(Gtk::Widget & parent, Notebook & notebook, sigc::slot<void(const Notebook&, const Glib::ustring&)> renamed)
   : m_nb_manager(notebook.note_manager().notebook_manager())
   , m_notebook(notebook.get_normalized_name())
   , m_renamed(renamed)
+{
+  init(parent, sigc::mem_fun(*this, &NotebookNamePopover::on_rename));
+  m_name->set_text(notebook.get_name());
+}
+
+void NotebookNamePopover::init(Gtk::Widget& parent, sigc::slot<void()> on_confirm)
 {
   set_parent(parent);
   set_position(Gtk::PositionType::BOTTOM);
@@ -43,18 +62,29 @@ NotebookNamePopover::NotebookNamePopover(Gtk::Widget & parent, Notebook & notebo
   auto box = Gtk::make_managed<Gtk::Box>();
   box->set_spacing(5);
   m_name = Gtk::make_managed<Gtk::Entry>();
-  m_name->set_text(notebook.get_name());
   m_name->set_activates_default(true);
   auto confirm = Gtk::make_managed<Gtk::Button>();
   confirm->set_icon_name("object-select-symbolic");
-  confirm->signal_clicked().connect(sigc::mem_fun(*this, &NotebookNamePopover::on_confirm));
+  confirm->signal_clicked().connect(on_confirm);
   box->append(*m_name);
   box->append(*confirm);
   set_child(*box);
   set_default_widget(*confirm);
 }
 
-void NotebookNamePopover::on_confirm()
+void NotebookNamePopover::on_create()
+{
+  const auto new_name = m_name->get_text();
+  if(new_name.empty() || m_nb_manager.notebook_exists(new_name)) {
+    m_name->grab_focus();
+    return;
+  }
+
+  m_nb_manager.get_or_create_notebook(new_name);
+  popdown();
+}
+
+void NotebookNamePopover::on_rename()
 {
   const auto new_name = m_name->get_text();
   if(new_name.empty() || m_nb_manager.notebook_exists(new_name)) {

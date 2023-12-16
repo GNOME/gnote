@@ -35,10 +35,14 @@ class NotebookNamePopover
   : public Gtk::Popover
 {
 public:
+  static NotebookNamePopover& create(Gtk::Widget& parent, NotebookManager& manager);
   static NotebookNamePopover& create(Gtk::Widget & parent, Notebook & notebook, sigc::slot<void(const Notebook&, const Glib::ustring&)> renamed);
 private:
+  NotebookNamePopover(Gtk::Widget& parent, NotebookManager& manager);
   NotebookNamePopover(Gtk::Widget & parent, Notebook & notebook, sigc::slot<void(const Notebook&, const Glib::ustring&)> renamed);
-  void on_confirm();
+  void init(Gtk::Widget& parent, sigc::slot<void()> on_confirm);
+  void on_create();
+  void on_rename();
 
   Gtk::Entry *m_name;
   NotebookManager & m_nb_manager;
