@@ -51,10 +51,10 @@ If you have translated Gnote, please contact the corresponding team:
 
 https://l10n.gnome.org/teams/
 
-## Mailing list
+## Support Forum
 
-There is a mailing list for gnote. More info here:
-https://mail.gnome.org/mailman/listinfo/gnote-list
+There is a support forum for gnote. More info here:
+https://discourse.gnome.org/tag/gnote
 
 ## License
 
