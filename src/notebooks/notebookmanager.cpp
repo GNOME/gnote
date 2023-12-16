@@ -315,7 +315,9 @@ namespace gnote {
       Glib::ustring notebookName = dialog.get_notebook_name();
       dialog.hide();
       if(response != Gtk::ResponseType::OK) {
-        on_complete(Notebook::ORef());
+        if(on_complete) {
+          on_complete(Notebook::ORef());
+        }
         return;
       }
       
@@ -331,7 +333,9 @@ namespace gnote {
         }
       }
 
-      on_complete(notebook);
+      if(on_complete) {
+        on_complete(notebook);
+      }
     }
     
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, Notebook & notebook)
