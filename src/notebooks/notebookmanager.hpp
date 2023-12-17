@@ -56,6 +56,17 @@ public:
       return m_note_manager;
     }
 
+  template <typename Container, typename Adder>
+  void get_notebooks(Container& container, Adder add, bool include_special = false) const
+    {
+      auto store = include_special ? m_notebooks_to_display->children() : m_filteredNotebooks->children();
+      for(auto& iter : store) {
+        Notebook::Ptr nb;
+        iter.get_value(0, nb);
+        add(container, nb);
+      }
+    }
+
   Glib::RefPtr<Gtk::TreeModel> get_notebooks()
     { return m_filteredNotebooks; }
   /// <summary>
