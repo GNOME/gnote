@@ -37,8 +37,7 @@ namespace gnote {
   namespace notebooks {
 
     NotebookManager::NotebookManager(NoteManagerBase & manager)
-      : m_adding_notebook(false)
-      , m_active_notes(new ActiveNotesNotebook(manager))
+      : m_active_notes(new ActiveNotesNotebook(manager))
       , m_note_manager(manager)
     { 
     }
@@ -116,18 +115,7 @@ namespace gnote {
           return nb.value();
         }
 
-        Notebook::Ptr notebook;
-        try {
-          m_adding_notebook = true;
-          notebook = std::make_shared<Notebook>(m_note_manager, notebookName);
-        } 
-        catch(...)
-        {
-          // set flag to fast and rethrow
-          m_adding_notebook = false;
-          throw;
-        }
-        m_adding_notebook = false;
+        Notebook::Ptr notebook = std::make_shared<Notebook>(m_note_manager, notebookName);
         iter = m_notebooks->append ();
         iter->set_value(0, notebook);
         m_notebookMap [notebook->get_normalized_name()] = iter;

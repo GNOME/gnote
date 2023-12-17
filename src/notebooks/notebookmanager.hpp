@@ -55,10 +55,6 @@ public:
     {
       return m_note_manager;
     }
-  bool is_adding_notebook() const
-    {
-      return m_adding_notebook;
-    }
 
   Glib::RefPtr<Gtk::TreeModel> get_notebooks()
     { return m_filteredNotebooks; }
@@ -127,8 +123,6 @@ private:
   // The key for this dictionary is Notebook.Name.ToLower ().
   // </summary>
   std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_notebookMap;
-  //object locker = new object ();    
-  bool                                 m_adding_notebook;
   Notebook::Ptr                        m_active_notes;
   NoteManagerBase                    & m_note_manager;
 };
