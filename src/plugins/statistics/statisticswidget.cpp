@@ -28,6 +28,7 @@
 #include "itagmanager.hpp"
 #include "statisticswidget.hpp"
 #include "utils.hpp"
+#include "base/hash.hpp"
 #include "notebooks/notebookmanager.hpp"
 
 
@@ -85,35 +86,39 @@ private:
 
       m_model->append(StatisticsRecord::create({_("Total Notes"), TO_STRING(m_note_manager.note_count())}));
 
-      auto notebooks = m_gnote.notebook_manager().get_notebooks();
-      m_model->append(StatisticsRecord::create({_("Total Notebooks"), TO_STRING(notebooks->children().size())}));
+      struct NotebookHash
+      {
+        std::size_t operator()(const gnote::notebooks::Notebook::Ref & nb) const noexcept
+          {
+            gnote::Hash<Glib::ustring> hash;
+            return hash(nb.get().get_normalized_name());
+          }
+      };
+      struct NotebookEq
+      {
+        bool operator()(const gnote::notebooks::Notebook::Ref& x, const gnote::notebooks::Notebook::Ref& y) const noexcept
+          {
+            return &x.get() == &y.get();
+          }
+      };
+      typedef std::unordered_map<gnote::notebooks::Notebook::Ref, unsigned, NotebookHash, NotebookEq> NotebookMap;
+      NotebookMap notebooks;
+      m_gnote.notebook_manager().get_notebooks(notebooks, [](NotebookMap& cont, const gnote::notebooks::Notebook::Ptr& nb) { cont[*nb] = 0; });
+      m_model->append(StatisticsRecord::create({_("Total Notebooks"), TO_STRING(notebooks.size())}));
 
-      Gtk::TreeIter notebook = notebooks->children().begin();
-      std::map<gnote::notebooks::Notebook::Ptr, int> notebook_notes;
-      while(notebook) {
-        gnote::notebooks::Notebook::Ptr nbook;
-        notebook->get_value(0, nbook);
-        notebook_notes[nbook] = 0;
-        ++notebook;
-      }
       gnote::Tag::Ptr template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
         gnote::ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      m_note_manager.for_each([&notebook_notes, template_tag](gnote::NoteBase & note) {
-        for(auto & nb : notebook_notes) {
-          if(note.contains_tag(nb.first->get_tag()) && !note.contains_tag(template_tag)) {
+      m_note_manager.for_each([&notebooks, template_tag](gnote::NoteBase & note) {
+        for(auto & nb : notebooks) {
+          if(note.contains_tag(nb.first.get().get_tag()) && !note.contains_tag(template_tag)) {
             ++nb.second;
           }
         }
       });
-      std::map<Glib::ustring, int> notebook_stats;
-      for(std::map<gnote::notebooks::Notebook::Ptr, int>::iterator nb = notebook_notes.begin();
-          nb != notebook_notes.end(); ++nb) {
-        notebook_stats[nb->first->get_name()] = nb->second;
-      }
-      for(auto nb : notebook_stats) {
+      for(const auto& nb : notebooks) {
         // TRANSLATORS: %1 is the format placeholder for the number of notes.
         char *fmt = ngettext("%1 note", "%1 notes", nb.second);
-        m_model->append(StatisticsRecord::create({"\t" + nb.first, Glib::ustring::compose(fmt, nb.second)}));
+        m_model->append(StatisticsRecord::create({"\t" + nb.first.get().get_name(), Glib::ustring::compose(fmt, nb.second)}));
       }
 
       DBG_OUT("Statistics updated");
