@@ -94,9 +94,6 @@ namespace gnote {
     void NotebookApplicationAddin::on_tag_added(const NoteBase & note, const Tag::Ptr& tag)
     {
       NotebookManager & manager = ignote().notebook_manager();
-      if (manager.is_adding_notebook()) {
-        return;
-      }
 
       Glib::ustring megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
