@@ -134,6 +134,7 @@ private:
   // The key for this dictionary is Notebook.Name.ToLower ().
   // </summary>
   std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_notebookMap;
+  std::vector<Notebook::Ptr> m_all_notebooks;
   Notebook::Ptr                        m_active_notes;
   NoteManagerBase                    & m_note_manager;
 };

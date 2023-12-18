@@ -42,7 +42,7 @@ class SpecialNotebook
   : public Notebook
 {
 public:
-  typedef std::shared_ptr<SpecialNotebook> Ptr;
+  typedef Glib::RefPtr<SpecialNotebook> Ptr;
 
   virtual Glib::ustring get_icon_name() const = 0;
 protected:
@@ -59,12 +59,14 @@ class AllNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::shared_ptr<AllNotesNotebook> Ptr;
-  AllNotesNotebook(NoteManagerBase &);
+  typedef Glib::RefPtr<AllNotesNotebook> Ptr;
+  static Ptr create(NoteManagerBase&);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(Note&) override;
   Glib::ustring get_icon_name() const override;
+private:
+  explicit AllNotesNotebook(NoteManagerBase &);
 };
 
 
@@ -72,12 +74,14 @@ class UnfiledNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::shared_ptr<UnfiledNotesNotebook> Ptr;
-  UnfiledNotesNotebook(NoteManagerBase &);
+  typedef Glib::RefPtr<UnfiledNotesNotebook> Ptr;
+  static Ptr create(NoteManagerBase&);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(Note&) override;
   Glib::ustring get_icon_name() const override;
+private:
+  explicit UnfiledNotesNotebook(NoteManagerBase &);
 };
 
 
@@ -85,12 +89,14 @@ class PinnedNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::shared_ptr<PinnedNotesNotebook> Ptr;
-  PinnedNotesNotebook(NoteManagerBase &);
+  typedef Glib::RefPtr<PinnedNotesNotebook> Ptr;
+  static Ptr create(NoteManagerBase&);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(Note&) override;
   virtual Glib::ustring get_icon_name() const override;
+private:
+  explicit PinnedNotesNotebook(NoteManagerBase &);
 };
 
 
@@ -98,8 +104,8 @@ class ActiveNotesNotebook
   : public SpecialNotebook
 {
 public:
-  typedef std::shared_ptr<ActiveNotesNotebook> Ptr;
-  ActiveNotesNotebook(NoteManagerBase &);
+  typedef Glib::RefPtr<ActiveNotesNotebook> Ptr;
+  static Ptr create(NoteManagerBase&);
   Glib::ustring get_normalized_name() const override;
   bool contains_note(const Note & note, bool include_system = false) override;
   bool add_note(Note&) override;
@@ -107,6 +113,7 @@ public:
   bool empty();
   sigc::signal<void()> signal_size_changed;
 private:
+  explicit ActiveNotesNotebook(NoteManagerBase &);
   void on_note_deleted(NoteBase & note);
 
   std::unordered_set<Glib::ustring, Hash<Glib::ustring>> m_notes;

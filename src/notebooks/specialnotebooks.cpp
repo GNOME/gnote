@@ -43,6 +43,11 @@ Note & SpecialNotebook::get_template_note() const
 }
 
 
+AllNotesNotebook::Ptr AllNotesNotebook::create(NoteManagerBase& manager)
+{
+  return Glib::make_refptr_for_instance(new AllNotesNotebook(manager));
+}
+
 AllNotesNotebook::AllNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, _("All"))
 {
@@ -71,6 +76,11 @@ Glib::ustring AllNotesNotebook::get_icon_name() const
   return IconManager::FILTER_NOTE_ALL;
 }
 
+
+UnfiledNotesNotebook::Ptr UnfiledNotesNotebook::create(NoteManagerBase& manager)
+{
+  return Glib::make_refptr_for_instance(new UnfiledNotesNotebook(manager));
+}
 
 UnfiledNotesNotebook::UnfiledNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, _("Unfiled"))
@@ -103,6 +113,11 @@ Glib::ustring UnfiledNotesNotebook::get_icon_name() const
 }
 
 
+PinnedNotesNotebook::Ptr PinnedNotesNotebook::create(NoteManagerBase& manager)
+{
+  return Glib::make_refptr_for_instance(new PinnedNotesNotebook(manager));
+}
+
 PinnedNotesNotebook::PinnedNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, C_("notebook", "Important"))
 {
@@ -129,6 +144,11 @@ Glib::ustring PinnedNotesNotebook::get_icon_name() const
   return IconManager::PIN_DOWN;
 }
 
+
+ActiveNotesNotebook::Ptr ActiveNotesNotebook::create(NoteManagerBase& manager)
+{
+  return Glib::make_refptr_for_instance(new ActiveNotesNotebook(manager));
+}
 
 ActiveNotesNotebook::ActiveNotesNotebook(NoteManagerBase & manager)
   : SpecialNotebook(manager, _("Active"))

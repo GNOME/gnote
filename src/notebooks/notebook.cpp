@@ -53,6 +53,16 @@ namespace notebooks {
     return note.contains_tag(tag);
   }
 
+  Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special)
+  {
+    return Glib::make_refptr_for_instance(new Notebook(manager, name, is_special));
+  }
+
+  Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Tag::Ptr& tag)
+  {
+    return Glib::make_refptr_for_instance(new Notebook(manager, tag));
+  }
+
   Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, bool is_special)
     : m_note_manager(manager)
   {

@@ -37,7 +37,7 @@ namespace gnote {
   namespace notebooks {
 
     NotebookManager::NotebookManager(NoteManagerBase & manager)
-      : m_active_notes(new ActiveNotesNotebook(manager))
+      : m_active_notes(ActiveNotesNotebook::create(manager))
       , m_note_manager(manager)
     { 
     }
@@ -56,20 +56,24 @@ namespace gnote {
       m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
       m_filteredNotebooks->set_visible_func(sigc::ptr_fun(&NotebookManager::filter_notebooks));
 
-      Notebook::Ptr allNotesNotebook(std::make_shared<AllNotesNotebook>(m_note_manager));
+      Notebook::Ptr allNotesNotebook(AllNotesNotebook::create(m_note_manager));
       auto iter = m_notebooks->append();
-      iter->set_value(0, Notebook::Ptr(allNotesNotebook));
+      iter->set_value(0, allNotesNotebook);
+      m_all_notebooks.push_back(allNotesNotebook);
 
-      Notebook::Ptr unfiledNotesNotebook(std::make_shared<UnfiledNotesNotebook>(m_note_manager));
+      Notebook::Ptr unfiledNotesNotebook(UnfiledNotesNotebook::create(m_note_manager));
       iter = m_notebooks->append();
-      iter->set_value(0, Notebook::Ptr(unfiledNotesNotebook));
+      iter->set_value(0, unfiledNotesNotebook);
+      m_all_notebooks.push_back(unfiledNotesNotebook);
 
-      Notebook::Ptr pinned_notes_notebook(std::make_shared<PinnedNotesNotebook>(m_note_manager));
+      Notebook::Ptr pinned_notes_notebook(PinnedNotesNotebook::create(m_note_manager));
       iter = m_notebooks->append();
       iter->set_value(0, pinned_notes_notebook);
+      m_all_notebooks.push_back(pinned_notes_notebook);
 
       iter = m_notebooks->append();
       iter->set_value(0, m_active_notes);
+      m_all_notebooks.push_back(m_active_notes);
       std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
         .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
 
@@ -115,10 +119,11 @@ namespace gnote {
           return nb.value();
         }
 
-        Notebook::Ptr notebook = std::make_shared<Notebook>(m_note_manager, notebookName);
+        Notebook::Ptr notebook = Notebook::create(m_note_manager, notebookName);
         iter = m_notebooks->append ();
         iter->set_value(0, notebook);
         m_notebookMap [notebook->get_normalized_name()] = iter;
+        m_all_notebooks.push_back(notebook);
         
         // Create the template note so the system tag
         // that represents the notebook actually gets
@@ -460,9 +465,10 @@ namespace gnote {
                                      + Notebook::NOTEBOOK_TAG_PREFIX)) {
           continue;
         }
-        Notebook::Ptr notebook = std::make_shared<Notebook>(m_note_manager, tag);
+        Notebook::Ptr notebook = Notebook::create(m_note_manager, tag);
         iter = m_notebooks->append ();
         iter->set_value(0, notebook);
+        m_all_notebooks.push_back(notebook);
         m_notebookMap [notebook->get_normalized_name()] = iter;
       }
     }

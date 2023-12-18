@@ -34,16 +34,18 @@ namespace notebooks {
 /// An object that represents a notebook in Tomboy
 /// </summary>
 class Notebook 
-  : public std::enable_shared_from_this<Notebook>
+  : public Glib::Object
+  , public std::enable_shared_from_this<Notebook>
 {
 public:
-  typedef std::shared_ptr<Notebook> Ptr;
+  typedef Glib::RefPtr<Notebook> Ptr;
   typedef std::reference_wrapper<Notebook> Ref;
   typedef std::optional<Ref> ORef;
 
   static const char * NOTEBOOK_TAG_PREFIX;
-  Notebook(NoteManagerBase &, const Glib::ustring &, bool is_special = false);
-  Notebook(NoteManagerBase &, const Tag::Ptr &);
+
+  static Ptr create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special = false);
+  static Ptr create(NoteManagerBase& manager, const Tag::Ptr& tag);
   Glib::ustring get_name() const
     { return m_name; }
   void set_name(const Glib::ustring &);
@@ -63,6 +65,8 @@ public:
       return m_note_manager;
     }
 protected:
+  Notebook(NoteManagerBase &, const Glib::ustring &, bool is_special = false);
+
   Tag::Ptr template_tag() const;
   bool is_template_note(const Note&);
 
@@ -70,6 +74,7 @@ protected:
 private:
   static Tag::Ptr s_template_tag;
 
+  Notebook(NoteManagerBase &, const Tag::Ptr &);
   Notebook(const Notebook &);
   Notebook & operator=(const Notebook &);
   Glib::ustring m_name;
