@@ -103,7 +103,7 @@ private:
       };
       typedef std::unordered_map<gnote::notebooks::Notebook::Ref, unsigned, NotebookHash, NotebookEq> NotebookMap;
       NotebookMap notebooks;
-      m_gnote.notebook_manager().get_notebooks(notebooks, [](NotebookMap& cont, const gnote::notebooks::Notebook::Ptr& nb) { cont[*nb] = 0; });
+      m_gnote.notebook_manager().get_notebooks([&notebooks](const gnote::notebooks::Notebook::Ptr& nb) { notebooks[*nb] = 0; });
       m_model->append(StatisticsRecord::create({_("Total Notebooks"), TO_STRING(notebooks.size())}));
 
       gnote::Tag::Ptr template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
