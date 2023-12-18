@@ -158,12 +158,12 @@ namespace notebooks {
   Glib::RefPtr<Gio::MenuModel> NotebookNoteAddin::get_notebook_menu_items() const
   {
     auto items = Gio::Menu::create();
-    Glib::RefPtr<Gtk::TreeModel> model = ignote().notebook_manager().get_notebooks();
-    for(const auto& row : model->children()) {
-      Notebook::Ptr notebook;
-      row.get_value(0, notebook);
-      auto item = Gio::MenuItem::create(notebook->get_name(), "");
-      item->set_action_and_target("win.move-to-notebook", Glib::Variant<Glib::ustring>::create(notebook->get_name()));
+    std::vector<Notebook::Ref> notebooks;
+    ignote().notebook_manager().get_notebooks([&notebooks](const Notebook::Ptr& nb) { notebooks.emplace_back(*nb); });
+    for(const Notebook& notebook : notebooks) {
+      const auto name = notebook.get_name();
+      auto item = Gio::MenuItem::create(name, "");
+      item->set_action_and_target("win.move-to-notebook", Glib::Variant<Glib::ustring>::create(name));
       items->append_item(item);
     }
 
