@@ -397,10 +397,9 @@ namespace gnote {
 
       auto currentNotebook = get_notebook_from_note(note);
       if(!currentNotebook && !notebook) {
-        return true; // It's already there.
+        return true; // remove from without notebook
       }
-      Notebook & move_to = notebook.value();
-      if(&currentNotebook.value().get() == &move_to) {
+      if(currentNotebook && notebook && &currentNotebook.value().get() == &notebook.value().get()) {
         return true; // It's already there.
       }
 
@@ -413,8 +412,8 @@ namespace gnote {
       // Only attempt to add the notebook tag when this
       // menu item is not the "No notebook" menu item.
       if(notebook) {
-        note.add_tag(move_to.get_tag());
-        signal_note_added_to_notebook(note, move_to);
+        note.add_tag(notebook.value().get().get_tag());
+        signal_note_added_to_notebook(note, notebook.value());
       }
 
       return true;
