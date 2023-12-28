@@ -23,25 +23,26 @@
 #ifndef _NOTEBOOKSVIEW_HPP_
 #define _NOTEBOOKSVIEW_HPP_
 
-#include <gtkmm/treeview.h>
+#include <gtkmm/listview.h>
 
 namespace gnote {
 
   namespace notebooks {
 
   class NotebooksView
-    : public Gtk::TreeView
+    : public Gtk::ListView
   {
   public:
-    NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gtk::TreeModel> & model);
+    NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gio::ListModel> & model);
 
     Notebook::ORef get_selected_notebook() const;
     void select_all_notes_notebook();
+    void select_notebook(Notebook&);
+    void set_notebooks(const Glib::RefPtr<Gio::ListModel> & model);
 
     sigc::signal<void(const Notebook &)> signal_selected_notebook_changed;
   private:
-    bool on_drag_data_received(const Glib::ValueBase & value, double x, double y);
-    void on_selection_changed();
+    void on_selection_changed(guint, guint);
 
     NoteManagerBase & m_note_manager;
   };
