@@ -22,7 +22,6 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
-#include <gtkmm/treemodelsort.h>
 
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
@@ -44,38 +43,10 @@ namespace gnote {
 
     void NotebookManager::init()
     {
-      m_notebooks = Gtk::ListStore::create(m_column_types);
-
-      m_sortedNotebooks = Gtk::TreeModelSort::create (m_notebooks);
-      m_sortedNotebooks->set_sort_func(0, sigc::ptr_fun(&NotebookManager::compare_notebooks_sort_func));
-      m_sortedNotebooks->set_sort_column (0, Gtk::SortType::ASCENDING);
-
-      m_notebooks_to_display = Gtk::TreeModelFilter::create(m_sortedNotebooks);
-      m_notebooks_to_display->set_visible_func(sigc::mem_fun(*this, &NotebookManager::filter_notebooks_to_display));
-
-      m_filteredNotebooks = Gtk::TreeModelFilter::create (m_sortedNotebooks);
-      m_filteredNotebooks->set_visible_func(sigc::ptr_fun(&NotebookManager::filter_notebooks));
-
-      Notebook::Ptr allNotesNotebook(AllNotesNotebook::create(m_note_manager));
-      auto iter = m_notebooks->append();
-      iter->set_value(0, allNotesNotebook);
-      m_all_notebooks.push_back(allNotesNotebook);
-
-      Notebook::Ptr unfiledNotesNotebook(UnfiledNotesNotebook::create(m_note_manager));
-      iter = m_notebooks->append();
-      iter->set_value(0, unfiledNotesNotebook);
-      m_all_notebooks.push_back(unfiledNotesNotebook);
-
-      Notebook::Ptr pinned_notes_notebook(PinnedNotesNotebook::create(m_note_manager));
-      iter = m_notebooks->append();
-      iter->set_value(0, pinned_notes_notebook);
-      m_all_notebooks.push_back(pinned_notes_notebook);
-
-      iter = m_notebooks->append();
-      iter->set_value(0, m_active_notes);
+      m_all_notebooks.push_back(AllNotesNotebook::create(m_note_manager));
+      m_all_notebooks.push_back(UnfiledNotesNotebook::create(m_note_manager));
+      m_all_notebooks.push_back(PinnedNotesNotebook::create(m_note_manager));
       m_all_notebooks.push_back(m_active_notes);
-      std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->signal_size_changed
-        .connect(sigc::mem_fun(*this, &NotebookManager::on_active_notes_size_changed));
 
       load_notebooks();
     }
@@ -90,14 +61,12 @@ namespace gnote {
       if (normalizedName.empty()) {
         throw sharp::Exception ("NotebookManager::get_notebook() called with an empty name.");
       }
-      auto map_iter = m_notebookMap.find(normalizedName);
-      if (map_iter != m_notebookMap.end()) {
-        Gtk::TreeIter iter = map_iter->second;
-        Notebook::Ptr notebook;
-        iter->get_value(0, notebook);
-        return *notebook;
+      for(const auto& nb : m_all_notebooks) {
+        if(nb->get_normalized_name() == normalizedName) {
+          return *nb;
+        }
       }
-      
+
       return Notebook::ORef();
     }
     
@@ -105,7 +74,13 @@ namespace gnote {
     bool NotebookManager::notebook_exists(const Glib::ustring & notebookName) const
     {
       Glib::ustring normalizedName = Notebook::normalize(notebookName);
-      return m_notebookMap.find(normalizedName) != m_notebookMap.end();
+      for(const auto& nb : m_all_notebooks) {
+        if(nb->get_normalized_name() == normalizedName) {
+          return true;
+        }
+      }
+
+      return false;
     }
 
     Notebook & NotebookManager::get_or_create_notebook(const Glib::ustring & notebookName)
@@ -113,16 +88,12 @@ namespace gnote {
       if (notebookName.empty())
         throw sharp::Exception ("NotebookManager.GetNotebook () called with a null name.");
       
-      Gtk::TreeIter<Gtk::TreeRow> iter;
 //      lock (locker) {
         if(auto nb = get_notebook(notebookName)) {
           return nb.value();
         }
 
         Notebook::Ptr notebook = Notebook::create(m_note_manager, notebookName);
-        iter = m_notebooks->append ();
-        iter->set_value(0, notebook);
-        m_notebookMap [notebook->get_normalized_name()] = iter;
         m_all_notebooks.push_back(notebook);
         
         // Create the template note so the system tag
@@ -145,13 +116,11 @@ namespace gnote {
     bool NotebookManager::add_notebook(Notebook::Ptr && notebook)
     {
       auto normalized_name = notebook->get_normalized_name();
-      if(m_notebookMap.find(normalized_name) != m_notebookMap.end()) {
+      if(get_notebook(normalized_name)) {
         return false;
       }
 
-      Gtk::TreeIter iter = m_notebooks->append();
-      iter->set_value(0, std::move(notebook));
-      m_notebookMap[std::move(normalized_name)] = iter;
+      m_all_notebooks.emplace_back(std::move(notebook));
       signal_notebook_list_changed();
       return true;
     }
@@ -159,16 +128,19 @@ namespace gnote {
     void NotebookManager::delete_notebook(Notebook & notebook)
     {
       Glib::ustring normalized_name = notebook.get_normalized_name();
-      auto map_iter = m_notebookMap.find(normalized_name);
-      if(map_iter == m_notebookMap.end()) {
+      auto iter = m_all_notebooks.begin();
+      for(; iter != m_all_notebooks.end(); ++iter) {
+        if(&**iter == &notebook) {
+          break;
+        }
+      }
+      if(iter == m_all_notebooks.end()) {
         return;
       }
 
       Tag::Ptr tag = notebook.get_tag();
-      Gtk::TreeIter iter = map_iter->second;
-      // first remove notebook from map, then from store, because the later cases a UI refresh, that can query back here
-      m_notebookMap.erase(map_iter);
-      m_notebooks->erase(iter);
+      Notebook::Ptr keep_alive = *iter;
+      m_all_notebooks.erase(iter);
 
       // Remove the notebook tag from every note that's in the notebook
       std::vector<NoteBase*> notes;
@@ -181,37 +153,6 @@ namespace gnote {
       }
 
       signal_notebook_list_changed();
-    }
-
-    /// <summary>
-    /// Returns the Gtk.TreeIter that points to the specified Notebook.
-    /// </summary>
-    /// <param name="notebook">
-    /// A <see cref="Notebook"/>
-    /// </param>
-    /// <param name="iter">
-    /// A <see cref="Gtk.TreeIter"/>.  Will be set to a valid iter if
-    /// the specified notebook is found.
-    /// </param>
-    /// <returns>
-    /// A <see cref="System.Boolean"/>.  True if the specified notebook
-    /// was found, false otherwise.
-    /// </returns>
-    bool NotebookManager::get_notebook_iter(const Notebook::Ptr & notebook, Gtk::TreeIter<Gtk::TreeRow> & iter)
-    {
-      Gtk::TreeNodeChildren notebooks = m_notebooks_to_display->children();
-      for (Gtk::TreeIter notebooks_iter = notebooks.begin();
-           notebooks_iter != notebooks.end(); ++notebooks_iter) {
-        Notebook::Ptr current_notebook;
-        notebooks_iter->get_value(0, current_notebook);
-        if (current_notebook == notebook) {
-          iter = notebooks_iter;
-          return true;
-        }
-      }
-      
-      iter = Gtk::TreeIter<Gtk::TreeRow>();
-      return false;
     }
 
     /// <summary>
@@ -418,37 +359,7 @@ namespace gnote {
 
       return true;
     }
-
-
-    int NotebookManager::compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &a, const Gtk::TreeIter<Gtk::TreeConstRow> &b)
-    {
-      Notebook::Ptr notebook_a;
-      a->get_value (0, notebook_a);
-      Notebook::Ptr notebook_b;
-      b->get_value (0, notebook_b);
-
-      if (!notebook_a || !notebook_b)
-        return 0;
-
-      SpecialNotebook::Ptr spec_a = std::dynamic_pointer_cast<SpecialNotebook>(notebook_a);
-      SpecialNotebook::Ptr spec_b = std::dynamic_pointer_cast<SpecialNotebook>(notebook_b);
-      if(spec_a != 0 && spec_b != 0) {
-        return strcmp(spec_a->get_normalized_name().c_str(), spec_b->get_normalized_name().c_str());
-      }
-      else if(spec_a != 0) {
-        return -1;
-      }
-      else if(spec_b != 0) {
-        return 1;
-      }
-
-      Glib::ustring a_name(notebook_a->get_name());
-      a_name = a_name.lowercase();
-      Glib::ustring b_name(notebook_b->get_name());
-      b_name = b_name.lowercase();
-      return a_name.compare(b_name);
-    }
-    
+ 
     /// <summary>
     /// Loop through the system tags looking for notebooks
     /// </summary>
@@ -465,42 +376,9 @@ namespace gnote {
           continue;
         }
         Notebook::Ptr notebook = Notebook::create(m_note_manager, tag);
-        iter = m_notebooks->append ();
-        iter->set_value(0, notebook);
         m_all_notebooks.push_back(notebook);
-        m_notebookMap [notebook->get_normalized_name()] = iter;
       }
     }
-
-    /// <summary>
-    /// Filter out SpecialNotebooks from the model
-    /// </summary>
-    bool NotebookManager::filter_notebooks(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-    {
-      Notebook::Ptr notebook;
-      iter->get_value(0, notebook);
-      if (!notebook || std::dynamic_pointer_cast<SpecialNotebook>(notebook)) {
-        return false;
-      }
-      return true;
-    }
-
-    bool NotebookManager::filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-    {
-      Notebook::Ptr notebook;
-      iter->get_value(0, notebook);
-      if(notebook == m_active_notes) {
-        return !std::static_pointer_cast<ActiveNotesNotebook>(m_active_notes)->empty();
-      }
-
-      return true;
-    }
-
-    void NotebookManager::on_active_notes_size_changed()
-    {
-      m_notebooks_to_display->refilter();
-    }
-
 
   }
 }

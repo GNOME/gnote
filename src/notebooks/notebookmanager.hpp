@@ -25,10 +25,6 @@
 #define _NOTEBOOK_MANAGER_HPP__
 
 #include <sigc++/signal.h>
-#include <gtkmm/liststore.h>
-#include <gtkmm/treemodel.h>
-#include <gtkmm/treemodelsort.h>
-#include <gtkmm/treemodelfilter.h>
 
 #include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebook.hpp"
@@ -68,28 +64,11 @@ public:
       }
     }
 
-  Glib::RefPtr<Gtk::TreeModel> get_notebooks()
-    { return m_filteredNotebooks; }
-  /// <summary>
-  /// A Gtk.TreeModel that contains all of the items in the
-  /// NotebookManager TreeStore including SpecialNotebooks
-  /// which are used in the "Search All Notes" window.
-  /// </summary>
-  /// <param name="notebookName">
-  /// A <see cref="System.String"/>
-  /// </param>
-  /// <returns>
-  /// A <see cref="Notebook"/>
-  /// </returns>
-  Glib::RefPtr<Gtk::TreeModel> get_notebooks_with_special_items()
-    { return m_notebooks_to_display; }
-
   Notebook::ORef get_notebook(const Glib::ustring & notebookName) const;
   bool notebook_exists(const Glib::ustring & notebookName) const;
   Notebook & get_or_create_notebook(const Glib::ustring &);
   bool add_notebook(Notebook::Ptr &&);
   void delete_notebook(Notebook &);
-  bool get_notebook_iter(const Notebook::Ptr &, Gtk::TreeIter<Gtk::TreeRow> & );
   Notebook::ORef get_notebook_from_note(const NoteBase&);
   Notebook::ORef get_notebook_from_tag(const Tag::Ptr &);
   static bool is_notebook_tag(const Tag::Ptr &);
@@ -109,32 +88,10 @@ public:
   sigc::signal<void()> signal_notebook_list_changed;
   sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
 private:
-  static int compare_notebooks_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> &, const Gtk::TreeIter<Gtk::TreeConstRow> &);
   static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const std::vector<Glib::ustring> & notes_to_add,
     std::function<void(Notebook::ORef)> on_complete);
   void load_notebooks();
-  bool filter_notebooks_to_display(const Gtk::TreeIter<Gtk::TreeConstRow> &);
-  void on_active_notes_size_changed();
-  static bool filter_notebooks(const Gtk::TreeIter<Gtk::TreeConstRow> &);
 
-  class ColumnRecord
-    : public Gtk::TreeModelColumnRecord
-  {
-  public:
-    ColumnRecord()
-      { add(m_col1); }
-    Gtk::TreeModelColumn<Notebook::Ptr> m_col1;
-  };
-
-  ColumnRecord                         m_column_types;
-  Glib::RefPtr<Gtk::ListStore>         m_notebooks;
-  Glib::RefPtr<Gtk::TreeModelSort>     m_sortedNotebooks;
-  Glib::RefPtr<Gtk::TreeModelFilter>   m_notebooks_to_display;
-  Glib::RefPtr<Gtk::TreeModelFilter>   m_filteredNotebooks;
-  // <summary>
-  // The key for this dictionary is Notebook.Name.ToLower ().
-  // </summary>
-  std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> m_notebookMap;
   std::vector<Notebook::Ptr> m_all_notebooks;
   Notebook::Ptr                        m_active_notes;
   NoteManagerBase                    & m_note_manager;
