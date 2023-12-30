@@ -175,7 +175,6 @@ bool ActiveNotesNotebook::add_note(Note & note)
 {
   if(m_notes.insert(note.uri()).second) {
     m_note_manager.notebook_manager().signal_note_added_to_notebook(note, *this);
-    signal_size_changed();
   }
 
   return true;
@@ -192,7 +191,6 @@ void ActiveNotesNotebook::on_note_deleted(NoteBase & note)
   if(iter != m_notes.end()) {
     m_notes.erase(iter);
     m_note_manager.notebook_manager().signal_note_removed_from_notebook(static_cast<Note&>(note), *this);
-    signal_size_changed();
   }
 }
 

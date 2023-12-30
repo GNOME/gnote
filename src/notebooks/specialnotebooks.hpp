@@ -111,7 +111,6 @@ public:
   bool add_note(Note&) override;
   Glib::ustring get_icon_name() const override;
   bool empty();
-  sigc::signal<void()> signal_size_changed;
 private:
   explicit ActiveNotesNotebook(NoteManagerBase &);
   void on_note_deleted(NoteBase & note);
