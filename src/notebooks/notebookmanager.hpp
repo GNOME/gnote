@@ -32,6 +32,7 @@
 
 #include "notebooks/createnotebookdialog.hpp"
 #include "notebooks/notebook.hpp"
+#include "notebooks/specialnotebooks.hpp"
 #include "note.hpp"
 #include "tag.hpp"
 
@@ -59,10 +60,10 @@ public:
   template <typename Adder>
   void get_notebooks(Adder add, bool include_special = false) const
     {
-      auto store = include_special ? m_notebooks_to_display->children() : m_filteredNotebooks->children();
-      for(auto& iter : store) {
-        Notebook::Ptr nb;
-        iter.get_value(0, nb);
+      for(const auto& nb : m_all_notebooks) {
+        if(!include_special && std::dynamic_pointer_cast<SpecialNotebook>(nb)) {
+          continue;
+        }
         add(nb);
       }
     }
