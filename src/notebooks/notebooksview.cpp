@@ -20,8 +20,13 @@
 
 
 
+#include <gtkmm/expression.h>
 #include <gtkmm/droptarget.h>
+#include <gtkmm/multisorter.h>
+#include <gtkmm/numericsorter.h>
 #include <gtkmm/singleselection.h>
+#include <gtkmm/sortlistmodel.h>
+#include <gtkmm/stringsorter.h>
 
 #include "debug.hpp"
 #include "iconmanager.hpp"
@@ -153,12 +158,42 @@ namespace gnote {
         }
     };
 
+
+    Glib::RefPtr<Gtk::SingleSelection> make_selection_model(const Glib::RefPtr<Gio::ListModel> & list_model)
+    {
+      auto type_expr = Gtk::ClosureExpression<guint>::create([](const Glib::RefPtr<Glib::ObjectBase>& obj) {
+        if(auto nb = std::dynamic_pointer_cast<notebooks::Notebook>(obj)) {
+          if(auto snb = std::dynamic_pointer_cast<notebooks::SpecialNotebook>(nb)) {
+            if(std::dynamic_pointer_cast<notebooks::AllNotesNotebook>(snb)) {
+              return 0;
+            }
+            return 1;
+          }
+          return 100;
+        }
+        return INT_MAX;
+      });
+      auto type_sorter = Gtk::NumericSorter<guint>::create(type_expr);
+      auto name_expr = Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase>& obj) {
+        if(auto nb = std::dynamic_pointer_cast<notebooks::Notebook>(obj)) {
+          return nb->get_name();
+        }
+        return Glib::ustring();
+      });
+      auto name_sorter = Gtk::StringSorter::create(name_expr);
+      auto sorter = Gtk::MultiSorter::create();
+      sorter->append(type_sorter);
+      sorter->append(name_sorter);
+      auto sort_model = Gtk::SortListModel::create(list_model, sorter);
+      return Gtk::SingleSelection::create(sort_model);
+    }
+
   }
 
   namespace notebooks {
 
     NotebooksView::NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gio::ListModel> & model)
-      : Gtk::ListView(Gtk::SingleSelection::create(model), NotebookFactory::create())
+      : Gtk::ListView(make_selection_model(model), NotebookFactory::create())
       , m_note_manager(manager)
     {
       get_model()->signal_selection_changed().connect(sigc::mem_fun(*this, &NotebooksView::on_selection_changed));
@@ -228,9 +263,16 @@ namespace gnote {
       auto selection = std::dynamic_pointer_cast<Gtk::SingleSelection>(get_model());
       DBG_ASSERT(selection, "selection is NULL");
       if(!selection) {
+        ERR_OUT("Expected SingleSelection. This is a bug, please, report it!");
         return;
       }
-      selection->set_model(model);
+      auto sort_model = std::dynamic_pointer_cast<Gtk::SortListModel>(selection->get_model());
+      DBG_ASSERT(sort_model, "sort model is null");
+      if(!sort_model) {
+        ERR_OUT("Expected sort model. This is a bug, please, rerpot it!");
+        return;
+      }
+      sort_model->set_model(model);
     }
 
     void NotebooksView::on_selection_changed(guint, guint)
