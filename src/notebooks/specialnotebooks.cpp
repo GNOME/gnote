@@ -174,6 +174,7 @@ bool ActiveNotesNotebook::contains_note(const Note & note, bool include_system)
 bool ActiveNotesNotebook::add_note(Note & note)
 {
   if(m_notes.insert(note.uri()).second) {
+    m_note_manager.notebook_manager().signal_note_added_to_notebook(note, *this);
     signal_size_changed();
   }
 
@@ -190,6 +191,7 @@ void ActiveNotesNotebook::on_note_deleted(NoteBase & note)
   auto iter = m_notes.find(note.uri());
   if(iter != m_notes.end()) {
     m_notes.erase(iter);
+    m_note_manager.notebook_manager().signal_note_removed_from_notebook(static_cast<Note&>(note), *this);
     signal_size_changed();
   }
 }
