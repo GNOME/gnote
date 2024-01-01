@@ -130,50 +130,78 @@ namespace gnote {
     // separate function for testing purposes
     Glib::ustring get_pretty_print_date(const Glib::DateTime& date, bool show_time, bool use_12h, const Glib::DateTime& now)
     {
-      Glib::ustring pretty_str;
       Glib::ustring short_time = use_12h
         /* TRANSLATORS: time in 12h format. */
         ? sharp::date_time_to_string(date, "%l:%M %P")
         /* TRANSLATORS: time in 24h format. */
         : sharp::date_time_to_string(date, "%H:%M");
 
+      enum class Format
+      {
+        TODAY,
+        TOMORROW,
+        YESTERDAY,
+        CURRENT_YEAR,
+        OTHER_YEAR,
+      } format = Format::OTHER_YEAR;
+
       if(date.get_year() == now.get_year()) {
         if(date.get_day_of_year() == now.get_day_of_year()) {
-          pretty_str = show_time ?
-            /* TRANSLATORS: argument %1 is time. */
-            Glib::ustring::compose(_("Today, %1"), short_time) :
-            _("Today");
+          format = Format::TODAY;
         }
-        else if((date.get_day_of_year() < now.get_day_of_year())
-                 && (date.get_day_of_year() == now.get_day_of_year() - 1)) {
-          pretty_str = show_time ?
-            /* TRANSLATORS: argument %1 is time. */
-            Glib::ustring::compose(_("Yesterday, %1"), short_time) :
-            _("Yesterday");
+        else if((date.get_day_of_year() == now.get_day_of_year() - 1)) {
+          format = Format::YESTERDAY;
         }
-        else if(date.get_day_of_year() > now.get_day_of_year()
-                 && date.get_day_of_year() == now.get_day_of_year() + 1) {
-          pretty_str = show_time ?
-            /* TRANSLATORS: argument %1 is time. */
-            Glib::ustring::compose(_("Tomorrow, %1"), short_time) :
-            _("Tomorrow");
+        else if(date.get_day_of_year() == now.get_day_of_year() + 1) {
+          format = Format::TOMORROW;
         }
         else {
-          /* TRANSLATORS: date in current year. */
-          pretty_str = sharp::date_time_to_string(date, _("%b %d")); // "MMMM d"
-          if(show_time) {
-            /* TRANSLATORS: argument %1 is date, %2 is time. */
-            pretty_str = Glib::ustring::compose(_("%1, %2"), pretty_str, short_time);
-          }
+          format = Format::CURRENT_YEAR;
         }
-      } 
-      else {
+      }
+      else if(date.get_year() + 1 == now.get_year() && date.get_month() == 12 && date.get_day_of_month() == 31
+              && now.get_month() == 1 && now.get_day_of_month() == 1) {
+        format = Format::YESTERDAY;
+      }
+      else if(date.get_year() == now.get_year() + 1 && date.get_month() == 1 && date.get_day_of_month() == 1
+              && now.get_month() == 12 && now.get_day_of_month() == 31) {
+        format = Format::TOMORROW;
+      }
+
+      Glib::ustring pretty_str;
+      switch(format) {
+      case Format::TODAY:
+        pretty_str = show_time
+          /* TRANSLATORS: argument %1 is time. */
+          ? Glib::ustring::compose(_("Today, %1"), short_time)
+          : _("Today");
+        break;
+      case Format::TOMORROW:
+        pretty_str = show_time
+          /* TRANSLATORS: argument %1 is time. */
+          ? Glib::ustring::compose(_("Tomorrow, %1"), short_time)
+          : _("Tomorrow");
+        break;
+      case Format::YESTERDAY:
+        pretty_str = show_time
+          /* TRANSLATORS: argument %1 is time. */
+          ? Glib::ustring::compose(_("Yesterday, %1"), short_time)
+          : _("Yesterday");
+        break;
+      case Format::CURRENT_YEAR:
+        /* TRANSLATORS: date in current year. */
+        pretty_str = sharp::date_time_to_string(date, _("%b %d")); // "MMMM d"
+        goto DATE_AND_TIME;
+      case Format::OTHER_YEAR:
         /* TRANSLATORS: date in other than current year. */
         pretty_str = sharp::date_time_to_string(date, _("%b %d %Y")); // "MMMM d yyyy"
+        goto DATE_AND_TIME;
+      DATE_AND_TIME:
         if(show_time) {
           /* TRANSLATORS: argument %1 is date, %2 is time. */
           pretty_str = Glib::ustring::compose(_("%1, %2"), pretty_str, short_time);
         }
+        break;
       }
 
       return pretty_str;
