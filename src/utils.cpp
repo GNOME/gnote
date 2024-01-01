@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -127,14 +127,10 @@ namespace gnote {
       return get_pretty_print_date(date, show_time, use_12h);
     }
 
-    Glib::ustring get_pretty_print_date(const Glib::DateTime & date, bool show_time, bool use_12h)
+    // separate function for testing purposes
+    Glib::ustring get_pretty_print_date(const Glib::DateTime& date, bool show_time, bool use_12h, const Glib::DateTime& now)
     {
-      if(!date) {
-        return _("No Date");
-      }
-
       Glib::ustring pretty_str;
-      auto now = Glib::DateTime::create_now_local();
       Glib::ustring short_time = use_12h
         /* TRANSLATORS: time in 12h format. */
         ? sharp::date_time_to_string(date, "%l:%M %P")
@@ -181,6 +177,15 @@ namespace gnote {
       }
 
       return pretty_str;
+    }
+
+    Glib::ustring get_pretty_print_date(const Glib::DateTime & date, bool show_time, bool use_12h)
+    {
+      if(!date) {
+        return _("No Date");
+      }
+
+      return get_pretty_print_date(date, show_time, use_12h, Glib::DateTime::create_now_local());
     }
 
     void main_context_invoke(const sigc::slot<void()> & slot)
