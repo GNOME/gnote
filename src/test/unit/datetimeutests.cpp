@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2020-2021,2023 Aurimas Cernius
+ * Copyright (C) 2017,2020-2021,2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,12 @@
 #include "utils.hpp"
 #include "sharp/xmlconvert.hpp"
 
+namespace gnote {
+namespace utils {
+  // not in header, inner impl as separate func for testing
+  Glib::ustring get_pretty_print_date(const Glib::DateTime& date, bool show_time, bool use_12h, const Glib::DateTime& now);
+}
+}
 
 SUITE(DateTime)
 {
@@ -90,7 +96,7 @@ SUITE(DateTime)
     CHECK_EQUAL(291468, d3.get_microsecond());
   }
 
-  TEST(pretty_print_date)
+  TEST(get_pretty_print_date_against_now)
   {
     Glib::DateTime d = Glib::DateTime::create_now_local();
     Glib::ustring date_string = gnote::utils::get_pretty_print_date(d, false, false);
@@ -111,6 +117,22 @@ SUITE(DateTime)
 
     date_string = gnote::utils::get_pretty_print_date(d, true, true);
     CHECK(Glib::str_has_suffix(date_string.lowercase(), "5:34 pm"));
+  }
+
+  TEST(get_pretty_print_date_different_year)
+  {
+    auto now = sharp::date_time_from_iso8601("2024-01-01T13:34:35.2914680");
+    auto d = sharp::date_time_from_iso8601("2023-12-31T12:38:15.2214680");
+
+    auto date_string = gnote::utils::get_pretty_print_date(d, false, false, now);
+    CHECK_EQUAL("Yesterday", date_string);
+
+    date_string = gnote::utils::get_pretty_print_date(now, false, false, d);
+    CHECK_EQUAL("Tomorrow", date_string);
+
+    d = d.add_months(-2);
+    date_string = gnote::utils::get_pretty_print_date(d, true, false, now);
+    CHECK_EQUAL("Oct 31 2023, 12:38", date_string);
   }
 
   TEST(date_time_equality_operators)
