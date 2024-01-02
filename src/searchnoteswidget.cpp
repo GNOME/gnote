@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -268,7 +268,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   set_vexpand(true);
 
   // Notebooks Pane
-  Gtk::Widget *notebooksPane = Gtk::manage(make_notebooks_pane());
+  Gtk::Widget *notebooksPane = make_notebooks_pane();
 
   set_position(150);
   set_start_child(*notebooksPane);
@@ -402,12 +402,7 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_key_pressed), false);
   m_notebooks_view->add_controller(key_ctrl);
 
-  Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
-  sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
-  sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
-  sw->set_child(*m_notebooks_view);
-
-  return sw;
+  return m_notebooks_view;
 }
 
 void SearchNotesWidget::save_position()
