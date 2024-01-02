@@ -18,14 +18,14 @@
 # Bernd Homuth <dev@hmt.im>, 2015.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2009-2012, 2016-2019, 2020.
 # Jürgen Benvenuti <gastornis@posteo.org>, 2023.
-# Philipp Kiemle <philipp.kiemle@gmail.com>, 2023.
+# Philipp Kiemle <philipp.kiemle@gmail.com>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-12-02 20:22+0000\n"
-"PO-Revision-Date: 2023-12-03 11:01+0100\n"
+"POT-Creation-Date: 2024-01-01 21:09+0000\n"
+"PO-Revision-Date: 2024-01-02 20:18+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -881,13 +881,13 @@ msgstr "Symbol wählen …"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:365 src/note.cpp:65 src/utils.cpp:278
-#: src/utils.cpp:285
+#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
+#: src/utils.cpp:329
 msgid "_Cancel"
 msgstr "Abbre_chen"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:276
-#: src/searchnoteswidget.cpp:1047
+#: src/searchnoteswidget.cpp:972
 msgid "_Open"
 msgstr "Ö_ffnen"
 
@@ -923,8 +923,8 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Ein gelöschtes Symbol ist für immer verloren."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:369 src/note.cpp:69
-#: src/searchnoteswidget.cpp:1049 src/searchnoteswidget.cpp:1080
+#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
+#: src/searchnoteswidget.cpp:974 src/searchnoteswidget.cpp:1005
 msgid "_Delete"
 msgstr "_Löschen"
 
@@ -1293,7 +1293,7 @@ msgid "Show Statistics"
 msgstr "Statistiken zeigen"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:174
+#: src/plugins/statistics/statisticswidget.cpp:179
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -1301,16 +1301,16 @@ msgstr "Statistik"
 msgid "Show various statistics about notes."
 msgstr "Verschiedene Statistiken über Notizen anzeigen."
 
-#: src/plugins/statistics/statisticswidget.cpp:86
+#: src/plugins/statistics/statisticswidget.cpp:87
 msgid "Total Notes"
 msgstr "Notizen insgesamt"
 
-#: src/plugins/statistics/statisticswidget.cpp:89
+#: src/plugins/statistics/statisticswidget.cpp:107
 msgid "Total Notebooks"
 msgstr "Notizbücher insgesamt"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: src/plugins/statistics/statisticswidget.cpp:115
+#: src/plugins/statistics/statisticswidget.cpp:120
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 Notiz"
@@ -1467,12 +1467,12 @@ msgstr ""
 
 #: src/gnote.cpp:267
 msgid ""
-"Copyright © 2010-2023 Aurimas Cernius\n"
+"Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2023 Aurimas Cernius\n"
+"Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 Originalautoren von Tomboy."
@@ -1602,19 +1602,19 @@ msgstr "Neues Notiz_buch …"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:94
+#: src/notebooks/notebook.cpp:104
 msgid "%1 Notebook Template"
 msgstr "Notizbuch-Vorlage %1"
 
-#: src/notebooks/notebook.cpp:170 src/notemanagerbase.cpp:282
+#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
 msgid "New Note"
 msgstr "Neue Notiz"
 
-#: src/notebooks/notebookmanager.cpp:359
+#: src/notebooks/notebookmanager.cpp:282
 msgid "Really delete this notebook?"
 msgstr "Dieses Notizbuch wirklich löschen?"
 
-#: src/notebooks/notebookmanager.cpp:360
+#: src/notebooks/notebookmanager.cpp:283
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1623,34 +1623,34 @@ msgstr ""
 "aber nicht länger diesem Notizbuch zugeordnet. Diese Aktion kann nicht "
 "rückgängig gemacht werden."
 
-#: src/notebooks/notebooknoteaddin.cpp:110
+#: src/notebooks/notebooknoteaddin.cpp:109
 msgid "Notebook"
 msgstr "Notizbuch"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:145
+#: src/notebooks/notebooknoteaddin.cpp:144
 msgid "_New notebook..."
 msgstr "Neues Notiz_buch …"
 
 #. Add the "(no notebook)" item at the top of the list
-#: src/notebooks/notebooknoteaddin.cpp:149
+#: src/notebooks/notebooknoteaddin.cpp:148
 msgid "No notebook"
 msgstr "Kein Notizbuch"
 
-#: src/notebooks/specialnotebooks.cpp:47
+#: src/notebooks/specialnotebooks.cpp:52
 msgid "All"
 msgstr "Alle"
 
-#: src/notebooks/specialnotebooks.cpp:76
+#: src/notebooks/specialnotebooks.cpp:86
 msgid "Unfiled"
 msgstr "Nicht zugeordnet"
 
-#: src/notebooks/specialnotebooks.cpp:107
+#: src/notebooks/specialnotebooks.cpp:122
 msgctxt "notebook"
 msgid "Important"
 msgstr "Wichtig"
 
-#: src/notebooks/specialnotebooks.cpp:134
+#: src/notebooks/specialnotebooks.cpp:154
 msgid "Active"
 msgstr "Aktiv"
 
@@ -1962,7 +1962,7 @@ msgstr "Erweiterungen"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:136 src/preferencesdialog.cpp:729
 #: src/preferencesdialog.cpp:966 src/preferencesdialog.cpp:1173
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:275
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -2217,31 +2217,31 @@ msgstr "Eine neue Notiz anlegen"
 msgid "Search"
 msgstr "Suchen"
 
-#: src/recentchanges.cpp:379
+#: src/recentchanges.cpp:380
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Das übergeordnete Element der eingebetteten Box ist kein Gtk::Grid. Bitte "
 "melden Sie den Fehler!"
 
-#: src/recentchanges.cpp:409
+#: src/recentchanges.cpp:412
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Das übergeordnete Element des Suchfelds ist kein Gtk::Grid. Bitte melden Sie "
 "den Fehler!"
 
-#: src/recentchanges.cpp:702
+#: src/recentchanges.cpp:705
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Versuchen, ein Widget in den Vordergrund zu bringen, das nicht im Fenster "
 "eingebettet ist"
 
-#: src/recentchanges.cpp:709
+#: src/recentchanges.cpp:712
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Versuchen, ein Widget in den Vordergrund zu bringen, das nicht Gtk::Widget "
 "ist"
 
-#: src/recentchanges.cpp:909
+#: src/recentchanges.cpp:912
 msgid "No configured actions"
 msgstr "Keine Aktionen konfiguriert"
 
@@ -2251,29 +2251,25 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Laden der D-Bus-Schnittstelle %s schlug fehl: %s"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:241
+#: src/searchnoteswidget.cpp:242
 msgid "Title match"
 msgstr "Titel-Übereinstimmung"
 
-#: src/searchnoteswidget.cpp:245
+#: src/searchnoteswidget.cpp:246
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 Treffer"
 msgstr[1] "%1 Treffer"
 
-#: src/searchnoteswidget.cpp:389
-msgid "Notebooks"
-msgstr "Notizbücher"
-
-#: src/searchnoteswidget.cpp:690
+#: src/searchnoteswidget.cpp:612
 msgid "Note"
 msgstr "Notiz"
 
-#: src/searchnoteswidget.cpp:702
+#: src/searchnoteswidget.cpp:624
 msgid "Modified"
 msgstr "Geändert"
 
-#: src/searchnoteswidget.cpp:873
+#: src/searchnoteswidget.cpp:800
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2281,50 +2277,50 @@ msgstr ""
 "Keine Ergebnisse im ausgewählten Notizbuch gefunden.\n"
 "Hier klicken, um alle Notizen zu durchsuchen."
 
-#: src/searchnoteswidget.cpp:877
+#: src/searchnoteswidget.cpp:804
 msgid "Click here to search across all notebooks"
 msgstr "Hier klicken, um alle Notizbücher zu durchsuchen"
 
-#: src/searchnoteswidget.cpp:892
+#: src/searchnoteswidget.cpp:819
 msgid "Matches"
 msgstr "Stimmt überein"
 
-#: src/searchnoteswidget.cpp:1046
+#: src/searchnoteswidget.cpp:971
 msgid "_New"
 msgstr "_Neu"
 
-#: src/searchnoteswidget.cpp:1048
+#: src/searchnoteswidget.cpp:973
 msgid "Open In New _Window"
 msgstr "In neuem _Fenster öffnen"
 
-#: src/searchnoteswidget.cpp:1077
+#: src/searchnoteswidget.cpp:1002
 msgid "_New..."
 msgstr "_Neu …"
 
-#: src/searchnoteswidget.cpp:1078
+#: src/searchnoteswidget.cpp:1003
 msgid "_Open Template Note"
 msgstr "Notizvorlage _öffnen"
 
-#: src/searchnoteswidget.cpp:1079
+#: src/searchnoteswidget.cpp:1004
 msgid "Re_name..."
 msgstr "_Umbenennen …"
 
-#: src/searchnoteswidget.cpp:1203 src/searchnoteswidget.cpp:1216
-#: src/searchnoteswidget.cpp:1227
+#: src/searchnoteswidget.cpp:1128 src/searchnoteswidget.cpp:1141
+#: src/searchnoteswidget.cpp:1152
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Fehler beim Verarbeiten der Einstellung suchen-sortieren (Wert: %s):"
 
-#: src/searchnoteswidget.cpp:1204
+#: src/searchnoteswidget.cpp:1129
 msgid "Expected format 'column:order'"
 msgstr "Erwartetes Format »Spalte:Ordner«"
 
-#: src/searchnoteswidget.cpp:1217
+#: src/searchnoteswidget.cpp:1142
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Unbekannte Spalte %s"
 
-#: src/searchnoteswidget.cpp:1228
+#: src/searchnoteswidget.cpp:1153
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Unbekannte Reihenfolge %s"
@@ -2716,61 +2712,61 @@ msgstr "Öffnen der Adresse schlug fehl: %s"
 msgid "Cannot open location"
 msgstr "Ort kann nicht geöffnet werden"
 
-#: src/utils.cpp:133
-msgid "No Date"
-msgstr "Kein Datum"
-
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:148
+#: src/utils.cpp:176
 msgid "Today, %1"
 msgstr "Heute, %1"
 
-#: src/utils.cpp:149
+#: src/utils.cpp:177
 msgid "Today"
 msgstr "Heute"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:155
-msgid "Yesterday, %1"
-msgstr "Gestern, %1"
-
-#: src/utils.cpp:156
-msgid "Yesterday"
-msgstr "Gestern"
-
-#. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:162
+#: src/utils.cpp:182
 msgid "Tomorrow, %1"
 msgstr "Morgen, %1"
 
-#: src/utils.cpp:163
+#: src/utils.cpp:183
 msgid "Tomorrow"
 msgstr "Morgen"
 
+#. TRANSLATORS: argument %1 is time.
+#: src/utils.cpp:188
+msgid "Yesterday, %1"
+msgstr "Gestern, %1"
+
+#: src/utils.cpp:189
+msgid "Yesterday"
+msgstr "Gestern"
+
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:167
+#: src/utils.cpp:193
 msgid "%b %d"
 msgstr "%b %d"
 
-#. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:170 src/utils.cpp:179
-msgid "%1, %2"
-msgstr "%1, %2"
-
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:176
+#: src/utils.cpp:197
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/utils.cpp:272 src/utils.cpp:286
+#. TRANSLATORS: argument %1 is date, %2 is time.
+#: src/utils.cpp:202
+msgid "%1, %2"
+msgstr "%1, %2"
+
+#: src/utils.cpp:213
+msgid "No Date"
+msgstr "Kein Datum"
+
+#: src/utils.cpp:316 src/utils.cpp:330
 msgid "_OK"
 msgstr "_OK"
 
-#: src/utils.cpp:281
+#: src/utils.cpp:325
 msgid "_No"
 msgstr "_Nein"
 
-#: src/utils.cpp:282
+#: src/utils.cpp:326
 msgid "_Yes"
 msgstr "_Ja"
 
@@ -2795,6 +2791,9 @@ msgstr "Titel der Notiz übernommen"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Rechtschreibung prüfen"
+
+#~ msgid "Notebooks"
+#~ msgstr "Notizbücher"
 
 #~ msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 #~ msgstr ""
