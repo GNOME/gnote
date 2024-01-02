@@ -2,13 +2,13 @@
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2010.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-12-02 20:22+0000\n"
-"PO-Revision-Date: 2023-12-03 18:26+0200\n"
+"POT-Creation-Date: 2024-01-01 21:09+0000\n"
+"PO-Revision-Date: 2024-01-02 09:37+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:97 src/recentchanges.cpp:120
@@ -842,13 +842,13 @@ msgstr "Вибрати піктограму…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:365 src/note.cpp:65 src/utils.cpp:278
-#: src/utils.cpp:285
+#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
+#: src/utils.cpp:329
 msgid "_Cancel"
 msgstr "_Скасувати"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:276
-#: src/searchnoteswidget.cpp:1047
+#: src/searchnoteswidget.cpp:972
 msgid "_Open"
 msgstr "_Відкрити"
 
@@ -884,8 +884,8 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Якщо ви вилучите піктограму, її буде втрачено остаточно."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:369 src/note.cpp:69
-#: src/searchnoteswidget.cpp:1049 src/searchnoteswidget.cpp:1080
+#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
+#: src/searchnoteswidget.cpp:974 src/searchnoteswidget.cpp:1005
 msgid "_Delete"
 msgstr "В_илучити"
 
@@ -1253,7 +1253,7 @@ msgid "Show Statistics"
 msgstr "Показати статистику"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:174
+#: src/plugins/statistics/statisticswidget.cpp:179
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -1261,16 +1261,16 @@ msgstr "Статистика"
 msgid "Show various statistics about notes."
 msgstr "Показати різноманітні статистичні дані щодо нотаток."
 
-#: src/plugins/statistics/statisticswidget.cpp:86
+#: src/plugins/statistics/statisticswidget.cpp:87
 msgid "Total Notes"
 msgstr "Загалом нотаток"
 
-#: src/plugins/statistics/statisticswidget.cpp:89
+#: src/plugins/statistics/statisticswidget.cpp:107
 msgid "Total Notebooks"
 msgstr "Загалом записників"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: src/plugins/statistics/statisticswidget.cpp:115
+#: src/plugins/statistics/statisticswidget.cpp:120
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 нотатка"
@@ -1420,13 +1420,18 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
 #: src/gnote.cpp:267
+#| msgid ""
+#| "Copyright © 2010-2023 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2023 Aurimas Cernius\n"
+"Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"© Aurimas Cernius, 2010–2023\n"
+"© Aurimas Cernius, 2010–2024\n"
 "© Debarshi Ray, 2009-2011\n"
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
@@ -1556,19 +1561,19 @@ msgstr "С_творити записник…"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:94
+#: src/notebooks/notebook.cpp:104
 msgid "%1 Notebook Template"
 msgstr "Шаблон записника %1"
 
-#: src/notebooks/notebook.cpp:170 src/notemanagerbase.cpp:282
+#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
 msgid "New Note"
 msgstr "Створити нотатку"
 
-#: src/notebooks/notebookmanager.cpp:359
+#: src/notebooks/notebookmanager.cpp:282
 msgid "Really delete this notebook?"
 msgstr "Вилучити цей записник?"
 
-#: src/notebooks/notebookmanager.cpp:360
+#: src/notebooks/notebookmanager.cpp:283
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1576,34 +1581,34 @@ msgstr ""
 "Нотатки, що належать до цього записника, не буде вилучено, але вони більше "
 "не будуть пов'язані з цим записником. Цю дію неможливо скасувати."
 
-#: src/notebooks/notebooknoteaddin.cpp:110
+#: src/notebooks/notebooknoteaddin.cpp:109
 msgid "Notebook"
 msgstr "Записник"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:145
+#: src/notebooks/notebooknoteaddin.cpp:144
 msgid "_New notebook..."
 msgstr "С_творити записник…"
 
 #. Add the "(no notebook)" item at the top of the list
-#: src/notebooks/notebooknoteaddin.cpp:149
+#: src/notebooks/notebooknoteaddin.cpp:148
 msgid "No notebook"
 msgstr "Немає записників"
 
-#: src/notebooks/specialnotebooks.cpp:47
+#: src/notebooks/specialnotebooks.cpp:52
 msgid "All"
 msgstr "Усі"
 
-#: src/notebooks/specialnotebooks.cpp:76
+#: src/notebooks/specialnotebooks.cpp:86
 msgid "Unfiled"
 msgstr "Невпорядковані"
 
-#: src/notebooks/specialnotebooks.cpp:107
+#: src/notebooks/specialnotebooks.cpp:122
 msgctxt "notebook"
 msgid "Important"
 msgstr "Важливі"
 
-#: src/notebooks/specialnotebooks.cpp:134
+#: src/notebooks/specialnotebooks.cpp:154
 msgid "Active"
 msgstr "Активні"
 
@@ -1912,7 +1917,7 @@ msgstr "Додатки"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:136 src/preferencesdialog.cpp:729
 #: src/preferencesdialog.cpp:966 src/preferencesdialog.cpp:1173
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:275
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
 msgid "_Close"
 msgstr "_Закрити"
 
@@ -2164,28 +2169,28 @@ msgstr "Створити нотатку"
 msgid "Search"
 msgstr "Пошук"
 
-#: src/recentchanges.cpp:379
+#: src/recentchanges.cpp:380
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Батьківським елементом вбудованої панелі не є Gtk::Grid. Будь ласка, "
 "повідомте розробникам про цю ваду!"
 
-#: src/recentchanges.cpp:409
+#: src/recentchanges.cpp:412
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Батьківським елементом запису для пошуку не є Gtk::Grid. Будь ласка, "
 "повідомте розробникам про цю ваду!"
 
-#: src/recentchanges.cpp:702
+#: src/recentchanges.cpp:705
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Спроба вивести на передній план віджет, який не вбудовано до вікна"
 
-#: src/recentchanges.cpp:709
+#: src/recentchanges.cpp:712
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Спроба вивести на передній план віджет, який не є віджетом Gtk::Widget"
 
-#: src/recentchanges.cpp:909
+#: src/recentchanges.cpp:912
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
@@ -2195,11 +2200,11 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Не вдалося завантажити інтерфейс D-Bus %s: %s"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:241
+#: src/searchnoteswidget.cpp:242
 msgid "Title match"
 msgstr "Збіг назв"
 
-#: src/searchnoteswidget.cpp:245
+#: src/searchnoteswidget.cpp:246
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 відповідність"
@@ -2207,19 +2212,15 @@ msgstr[1] "%1 відповідності"
 msgstr[2] "%1 відповідностей"
 msgstr[3] "%1 відповідність"
 
-#: src/searchnoteswidget.cpp:389
-msgid "Notebooks"
-msgstr "Записники"
-
-#: src/searchnoteswidget.cpp:690
+#: src/searchnoteswidget.cpp:612
 msgid "Note"
 msgstr "Нотатка"
 
-#: src/searchnoteswidget.cpp:702
+#: src/searchnoteswidget.cpp:624
 msgid "Modified"
 msgstr "Змінено"
 
-#: src/searchnoteswidget.cpp:873
+#: src/searchnoteswidget.cpp:800
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2227,50 +2228,50 @@ msgstr ""
 "Не знайдено результатів у вибраному записнику.\n"
 "Натисніть тут, щоб шукати по всіх нотатках. "
 
-#: src/searchnoteswidget.cpp:877
+#: src/searchnoteswidget.cpp:804
 msgid "Click here to search across all notebooks"
 msgstr "Натисніть тут, щоб шукати по всіх записниках"
 
-#: src/searchnoteswidget.cpp:892
+#: src/searchnoteswidget.cpp:819
 msgid "Matches"
 msgstr "Збіги"
 
-#: src/searchnoteswidget.cpp:1046
+#: src/searchnoteswidget.cpp:971
 msgid "_New"
 msgstr "_Створити"
 
-#: src/searchnoteswidget.cpp:1048
+#: src/searchnoteswidget.cpp:973
 msgid "Open In New _Window"
 msgstr "Відкрити у новому _вікні"
 
-#: src/searchnoteswidget.cpp:1077
+#: src/searchnoteswidget.cpp:1002
 msgid "_New..."
 msgstr "С_творити…"
 
-#: src/searchnoteswidget.cpp:1078
+#: src/searchnoteswidget.cpp:1003
 msgid "_Open Template Note"
 msgstr "_Відкрити Шаблон нотатки"
 
-#: src/searchnoteswidget.cpp:1079
+#: src/searchnoteswidget.cpp:1004
 msgid "Re_name..."
 msgstr "Пере_йменувати…"
 
-#: src/searchnoteswidget.cpp:1203 src/searchnoteswidget.cpp:1216
-#: src/searchnoteswidget.cpp:1227
+#: src/searchnoteswidget.cpp:1128 src/searchnoteswidget.cpp:1141
+#: src/searchnoteswidget.cpp:1152
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Не вдалося обробити параметр search-sorting (Значення: %s):"
 
-#: src/searchnoteswidget.cpp:1204
+#: src/searchnoteswidget.cpp:1129
 msgid "Expected format 'column:order'"
 msgstr "Очікуваний формат — «стовпчик:порядок»"
 
-#: src/searchnoteswidget.cpp:1217
+#: src/searchnoteswidget.cpp:1142
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нерозпізнаний стовпчик %s"
 
-#: src/searchnoteswidget.cpp:1228
+#: src/searchnoteswidget.cpp:1153
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нерозпізнаний порядок %s"
@@ -2643,7 +2644,6 @@ msgstr "Помилка синхронізації із таким виключе
 
 #: src/utils.cpp:74
 #, c-format
-#| msgid "Failed to upload note: %s"
 msgid "Failed to show help: %s"
 msgstr "Не вдалося показати довідку: %s"
 
@@ -2661,7 +2661,6 @@ msgstr "Довідку не знайдено"
 
 #: src/utils.cpp:99
 #, c-format
-#| msgid "Failed to call GTG: %s"
 msgid "Failed to open URL: %s"
 msgstr "Не вдалося відкрити адресу: %s"
 
@@ -2669,61 +2668,61 @@ msgstr "Не вдалося відкрити адресу: %s"
 msgid "Cannot open location"
 msgstr "Не вдалося відкрити адресу"
 
-#: src/utils.cpp:133
-msgid "No Date"
-msgstr "Без дати"
-
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:148
+#: src/utils.cpp:176
 msgid "Today, %1"
 msgstr "Сьогодні, %1"
 
-#: src/utils.cpp:149
+#: src/utils.cpp:177
 msgid "Today"
 msgstr "Сьогодні"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:155
-msgid "Yesterday, %1"
-msgstr "Вчора, %1"
-
-#: src/utils.cpp:156
-msgid "Yesterday"
-msgstr "Вчора"
-
-#. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:162
+#: src/utils.cpp:182
 msgid "Tomorrow, %1"
 msgstr "Завтра, %1"
 
-#: src/utils.cpp:163
+#: src/utils.cpp:183
 msgid "Tomorrow"
 msgstr "Завтра"
 
+#. TRANSLATORS: argument %1 is time.
+#: src/utils.cpp:188
+msgid "Yesterday, %1"
+msgstr "Вчора, %1"
+
+#: src/utils.cpp:189
+msgid "Yesterday"
+msgstr "Вчора"
+
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:167
+#: src/utils.cpp:193
 msgid "%b %d"
 msgstr "%d.%b"
 
-#. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:170 src/utils.cpp:179
-msgid "%1, %2"
-msgstr "%1, %2"
-
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:176
+#: src/utils.cpp:197
 msgid "%b %d %Y"
 msgstr "%d.%b.%Y"
 
-#: src/utils.cpp:272 src/utils.cpp:286
+#. TRANSLATORS: argument %1 is date, %2 is time.
+#: src/utils.cpp:202
+msgid "%1, %2"
+msgstr "%1, %2"
+
+#: src/utils.cpp:213
+msgid "No Date"
+msgstr "Без дати"
+
+#: src/utils.cpp:316 src/utils.cpp:330
 msgid "_OK"
 msgstr "_Гаразд"
 
-#: src/utils.cpp:281
+#: src/utils.cpp:325
 msgid "_No"
 msgstr "_Ні"
 
-#: src/utils.cpp:282
+#: src/utils.cpp:326
 msgid "_Yes"
 msgstr "_Так"
 
@@ -2748,6 +2747,9 @@ msgstr "Взято заголовок нотатки"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Перевірка правопису"
+
+#~ msgid "Notebooks"
+#~ msgstr "Записники"
 
 #, c-format
 #~ msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
