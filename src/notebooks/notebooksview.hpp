@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2013,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ namespace gnote {
   namespace notebooks {
 
   class NotebooksView
-    : public Gtk::ListView
+    : public Gtk::Box
   {
   public:
     NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gio::ListModel> & model);
@@ -45,6 +45,7 @@ namespace gnote {
     void on_selection_changed(guint, guint);
 
     NoteManagerBase & m_note_manager;
+    Gtk::ListView m_list;
   };
 
   }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -193,15 +193,17 @@ namespace gnote {
   namespace notebooks {
 
     NotebooksView::NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gio::ListModel> & model)
-      : Gtk::ListView(make_selection_model(model), NotebookFactory::create())
+      : Gtk::Box(Gtk::Orientation::VERTICAL)
       , m_note_manager(manager)
+      , m_list(make_selection_model(model), NotebookFactory::create())
     {
-      get_model()->signal_selection_changed().connect(sigc::mem_fun(*this, &NotebooksView::on_selection_changed));
+      append(m_list);
+      m_list.get_model()->signal_selection_changed().connect(sigc::mem_fun(*this, &NotebooksView::on_selection_changed));
     }
 
     Notebook::ORef NotebooksView::get_selected_notebook() const
     {
-      auto selection = std::dynamic_pointer_cast<const Gtk::SingleSelection>(get_model());
+      auto selection = std::dynamic_pointer_cast<const Gtk::SingleSelection>(m_list.get_model());
       if(!selection) {
         return Notebook::ORef();
       }
@@ -220,7 +222,7 @@ namespace gnote {
 
     void NotebooksView::select_all_notes_notebook()
     {
-      auto model = std::dynamic_pointer_cast<Gtk::SingleSelection>(get_model());
+      auto model = std::dynamic_pointer_cast<Gtk::SingleSelection>(m_list.get_model());
       DBG_ASSERT(model, "model is NULL");
       if(!model) {
         return;
@@ -241,7 +243,7 @@ namespace gnote {
 
     void NotebooksView::select_notebook(Notebook& notebook)
     {
-      auto model = std::dynamic_pointer_cast<Gtk::SingleSelection>(get_model());
+      auto model = std::dynamic_pointer_cast<Gtk::SingleSelection>(m_list.get_model());
       DBG_ASSERT(model, "model is NULL");
       if(!model) {
         return;
@@ -260,7 +262,7 @@ namespace gnote {
 
     void NotebooksView::set_notebooks(const Glib::RefPtr<Gio::ListModel> & model)
     {
-      auto selection = std::dynamic_pointer_cast<Gtk::SingleSelection>(get_model());
+      auto selection = std::dynamic_pointer_cast<Gtk::SingleSelection>(m_list.get_model());
       DBG_ASSERT(selection, "selection is NULL");
       if(!selection) {
         ERR_OUT("Expected SingleSelection. This is a bug, please, report it!");
