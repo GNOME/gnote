@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -87,7 +87,7 @@ namespace gnote {
     }
 
     m_notebook_manager.init();
-    m_gnote.signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
+    gnote().signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
   }
 
   NoteManager::~NoteManager()
@@ -97,7 +97,7 @@ namespace gnote {
 
   AddinManager *NoteManager::create_addin_manager()
   {
-    return new AddinManager(m_gnote, *this, m_preferences, IGnote::conf_dir());
+    return new AddinManager(gnote(), *this, m_preferences, IGnote::conf_dir());
   }
 
   void NoteManager::create_start_notes ()
@@ -164,7 +164,7 @@ namespace gnote {
 
     for(auto & file_path : files) {
       try {
-        Note::Ptr note = Note::load(std::move(file_path), *this, m_gnote);
+        Note::Ptr note = Note::load(std::move(file_path), *this, gnote());
         add_note(note);
       } 
       catch (const std::exception & e) {
@@ -240,7 +240,7 @@ namespace gnote {
 
   NoteBase::Ptr NoteManager::note_load(Glib::ustring && file_name)
   {
-    return Note::load(std::move(file_name), *this, m_gnote);
+    return Note::load(std::move(file_name), *this, gnote());
   }
 
 
@@ -268,7 +268,7 @@ namespace gnote {
 
   NoteBase::Ptr NoteManager::note_create_new(Glib::ustring && title, Glib::ustring && file_name)
   {
-    return Note::create_new_note(std::move(title), std::move(file_name), *this, m_gnote);
+    return Note::create_new_note(std::move(title), std::move(file_name), *this, gnote());
   }
 
   Note & NoteManager::get_or_create_template_note()
