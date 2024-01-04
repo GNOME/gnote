@@ -44,6 +44,7 @@ namespace gnote {
     sigc::signal<void(Note&)> signal_open_template_note;
   private:
     void on_selection_changed(guint, guint);
+    bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
     void on_selected_notebook_changed(const Notebook&);
     void on_create_new_notebook();
     void on_rename_notebook();

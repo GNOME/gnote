@@ -21,6 +21,7 @@
 
 
 #include <glibmm/i18n.h>
+#include <gtkmm/eventcontrollerkey.h>
 #include <gtkmm/expression.h>
 #include <gtkmm/droptarget.h>
 #include <gtkmm/multisorter.h>
@@ -219,6 +220,10 @@ namespace gnote {
       m_delete_button.set_sensitive(false);
       m_delete_button.signal_clicked().connect(sigc::mem_fun(*this, &NotebooksView::on_delete_notebook));
 
+      auto key_ctrl = Gtk::EventControllerKey::create();
+      key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &NotebooksView::on_notebooks_key_pressed), false);
+      m_list.add_controller(key_ctrl);
+
       Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
       sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
       sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
@@ -321,6 +326,17 @@ namespace gnote {
       else {
         select_all_notes_notebook();
       }
+    }
+
+    bool NotebooksView::on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
+    {
+      switch(keyval) {
+      case GDK_KEY_F2:
+        on_rename_notebook();
+        return true;
+      }
+
+      return false;
     }
 
     void NotebooksView::on_selected_notebook_changed(const Notebook& notebook)
