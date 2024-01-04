@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -109,8 +109,6 @@ private:
   Gtk::Popover *get_note_list_context_menu();
   Gtk::Popover *get_notebook_list_context_menu();
   void on_open_notebook_template_note(const Glib::VariantBase&);
-  void on_new_notebook(const Glib::VariantBase&);
-  void on_delete_notebook(const Glib::VariantBase&);
   void on_sorting_changed(Gtk::Sorter::Change);
   void parse_sorting_setting(const Glib::ustring & sorting);
   void on_rename_notebook();
