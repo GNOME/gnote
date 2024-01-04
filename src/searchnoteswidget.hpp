@@ -73,7 +73,6 @@ private:
   void rename_notebook(const notebooks::Notebook& old_notebook, const Glib::ustring& new_name);
   void on_notebook_selection_changed(const notebooks::Notebook & notebook);
   void on_notebook_list_changed();
-  void on_notebooks_view_right_click(int n_press, double x, double y);
   bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void update_results();
   unsigned selected_note_count() const;
@@ -159,7 +158,6 @@ private:
   Glib::RefPtr<Gtk::ColumnViewColumn> m_change_column;
   Glib::RefPtr<Gtk::ColumnViewColumn> m_matches_column;
   std::shared_ptr<Gtk::Popover> m_note_list_context_menu;
-  std::shared_ptr<Gtk::Popover> m_notebook_list_context_menu;
   bool m_initial_position_restored;
   Glib::ustring m_search_text;
   Glib::RefPtr<const Gtk::ColumnViewColumn> m_sort_column;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2019,2022,2023 Aurimas Cernius
+ * Copyright (C) 2011-2019,2022,2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -76,7 +76,6 @@ namespace gnote {
     register_main_window_action("enable-spell-check", &Glib::Variant<bool>::variant_type());
     register_main_window_action("new-notebook", NULL, false);
     register_main_window_action("move-to-notebook", &Glib::Variant<Glib::ustring>::variant_type(), false);
-    register_main_window_action("open-template-note", NULL, false);
     register_main_window_action("undo", NULL, true);
     register_main_window_action("redo", NULL, true);
     register_main_window_action("link", NULL, true);

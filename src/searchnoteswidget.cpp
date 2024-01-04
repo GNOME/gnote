@@ -393,12 +393,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   m_notebooks_view->signal_open_template_note.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
   notebook_manager.signal_notebook_list_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_list_changed));
 
-  auto button_ctrl = Gtk::GestureClick::create();
-  button_ctrl->set_button(3);
-  button_ctrl->signal_pressed()
-    .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_view_right_click), false);
-  m_notebooks_view->add_controller(button_ctrl);
-
   auto key_ctrl = Gtk::EventControllerKey::create();
   key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_key_pressed), false);
   m_notebooks_view->add_controller(key_ctrl);
@@ -454,28 +448,12 @@ void SearchNotesWidget::on_notebook_list_changed()
   m_notebooks_view->set_notebooks(model);
 }
 
-void SearchNotesWidget::on_notebooks_view_right_click(int n_press, double x, double y)
-{
-  auto popover = get_notebook_list_context_menu();
-  Gdk::Rectangle pos;
-  pos.set_x(x);
-  pos.set_y(y);
-  popover->set_pointing_to(pos);
-  popover->popup();
-}
-
 bool SearchNotesWidget::on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
   switch(keyval) {
   case GDK_KEY_F2:
     on_rename_notebook();
     return true;
-  case GDK_KEY_Menu:
-  {
-    Gtk::Popover *menu = get_notebook_list_context_menu();
-    menu->popup();
-    return true;
-  }
   default:
     break;
   }
@@ -975,21 +953,6 @@ void SearchNotesWidget::new_note()
     : notebook.value().get().create_notebook_note();
 
   signal_open_note(note);
-}
-
-Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
-{
-  if(!m_notebook_list_context_menu) {
-    auto menu = Gio::Menu::create();
-    menu->append(_("_Open Template Note"), "win.open-template-note");
-    m_notebook_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_notebooks_view, menu);
-  }
-  else {
-    m_notebook_list_context_menu->set_parent(*m_notebooks_view);
-  }
-
-  on_notebook_selection_changed(*m_notebooks_view->get_selected_notebook());
-  return m_notebook_list_context_menu.get();
 }
 
 void SearchNotesWidget::on_open_notebook_template_note(Note& note)
