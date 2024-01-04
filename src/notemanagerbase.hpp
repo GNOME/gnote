@@ -160,7 +160,6 @@ protected:
     std::size_t operator()(const NoteBase::Ptr &) const noexcept;
   };
 
-  IGnote & m_gnote;
   std::unordered_set<NoteBase::Ptr, NoteHash> m_notes;
   Glib::ustring m_backup_dir;
   Glib::ustring m_default_note_template_title;
@@ -170,6 +169,7 @@ private:
   bool create_directory(const Glib::ustring & directory) const;
   TrieController *create_trie_controller();
 
+  IGnote & m_gnote;
   TrieController *m_trie_controller;
   Glib::ustring m_notes_dir;
   bool m_read_only;
