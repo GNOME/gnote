@@ -209,6 +209,10 @@ namespace gnote {
       m_rename_button.set_has_frame(false);
       m_rename_button.set_sensitive(false);
       m_rename_button.signal_clicked().connect(sigc::mem_fun(*this, &NotebooksView::on_rename_notebook));
+      m_open_template_note.set_icon_name("emblem-system-symbolic");
+      m_open_template_note.set_tooltip_text(_("Open Template Note"));
+      m_open_template_note.set_has_frame(false);
+      m_open_template_note.signal_clicked().connect(sigc::mem_fun(*this, &NotebooksView::on_open_template_note));
       m_delete_button.set_icon_name("edit-delete-symbolic");
       m_delete_button.set_tooltip_text(_("Delete Notebook"));
       m_delete_button.set_has_frame(false);
@@ -224,6 +228,7 @@ namespace gnote {
       auto actions = Gtk::make_managed<Gtk::Box>();
       actions->append(m_new_button);
       actions->append(m_rename_button);
+      actions->append(m_open_template_note);
       actions->append(m_delete_button);
       append(*actions);
 
@@ -357,6 +362,22 @@ namespace gnote {
       }
       notebook_manager.delete_notebook(const_cast<Notebook&>(old_notebook));
       select_notebook(new_notebook);
+    }
+
+    void NotebooksView::on_open_template_note()
+    {
+      auto notebook = get_selected_notebook();
+      if(!notebook) {
+        return;
+      }
+
+      Notebook& nb = notebook.value();
+      if(dynamic_cast<SpecialNotebook*>(&nb)) {
+        signal_open_template_note(static_cast<Note&>(m_note_manager.get_or_create_template_note()));
+      }
+      else {
+        signal_open_template_note(nb.get_template_note());
+      }
     }
 
     void NotebooksView::on_delete_notebook()

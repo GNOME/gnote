@@ -41,6 +41,7 @@ namespace gnote {
     void set_notebooks(const Glib::RefPtr<Gio::ListModel> & model);
 
     sigc::signal<void(const Notebook &)> signal_selected_notebook_changed;
+    sigc::signal<void(Note&)> signal_open_template_note;
   private:
     void on_selection_changed(guint, guint);
     void on_selected_notebook_changed(const Notebook&);
@@ -48,11 +49,13 @@ namespace gnote {
     void on_rename_notebook();
     void rename_notebook(const Notebook& old_notebook, const Glib::ustring& new_name);
     void on_delete_notebook();
+    void on_open_template_note();
 
     NoteManagerBase & m_note_manager;
     Gtk::Button m_new_button;
     Gtk::Button m_rename_button;
     Gtk::Button m_delete_button;
+    Gtk::Button m_open_template_note;
     Gtk::ListView m_list;
   };
 

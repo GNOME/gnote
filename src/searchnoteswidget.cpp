@@ -390,6 +390,7 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
 
   m_notebooks_view->signal_selected_notebook_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_selection_changed));
+  m_notebooks_view->signal_open_template_note.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
   notebook_manager.signal_notebook_list_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_list_changed));
 
   auto button_ctrl = Gtk::GestureClick::create();
@@ -991,15 +992,9 @@ Gtk::Popover *SearchNotesWidget::get_notebook_list_context_menu()
   return m_notebook_list_context_menu.get();
 }
 
-void SearchNotesWidget::on_open_notebook_template_note(const Glib::VariantBase&)
+void SearchNotesWidget::on_open_notebook_template_note(Note& note)
 {
-  auto notebook = m_notebooks_view->get_selected_notebook();
-  if(!notebook) {
-    return;
-  }
-
-  auto & template_note = notebook.value().get().get_template_note();
-  signal_open_note(template_note);
+  signal_open_note(note);
 }
 
 void SearchNotesWidget::embed(EmbeddableWidgetHost *h)
@@ -1014,9 +1009,6 @@ void SearchNotesWidget::embed(EmbeddableWidgetHost *h)
     }
     if(auto action = win->find_action("delete-selected-notes")) {
       action->signal_activate().connect([this](const Glib::VariantBase&) { delete_selected_notes(); });
-    }
-    if(auto action = win->find_action("open-template-note")) {
-      action->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
     }
   }
 }

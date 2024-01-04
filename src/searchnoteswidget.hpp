@@ -108,7 +108,7 @@ private:
   void on_note_pin_status_changed(const Note &, bool);
   Gtk::Popover *get_note_list_context_menu();
   Gtk::Popover *get_notebook_list_context_menu();
-  void on_open_notebook_template_note(const Glib::VariantBase&);
+  void on_open_notebook_template_note(Note&);
   void on_sorting_changed(Gtk::Sorter::Change);
   void parse_sorting_setting(const Glib::ustring & sorting);
   void on_rename_notebook();
