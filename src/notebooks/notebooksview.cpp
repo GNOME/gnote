@@ -20,21 +20,24 @@
 
 
 
+#include <glibmm/i18n.h>
 #include <gtkmm/expression.h>
 #include <gtkmm/droptarget.h>
 #include <gtkmm/multisorter.h>
 #include <gtkmm/numericsorter.h>
 #include <gtkmm/singleselection.h>
+#include <gtkmm/scrolledwindow.h>
 #include <gtkmm/sortlistmodel.h>
 #include <gtkmm/stringsorter.h>
 
 #include "debug.hpp"
 #include "iconmanager.hpp"
-#include "notebooks/notebook.hpp"
-#include "notebooks/notebookmanager.hpp"
-#include "notebooks/notebooksview.hpp"
-#include "notebooks/specialnotebooks.hpp"
+#include "notebook.hpp"
+#include "notebookmanager.hpp"
+#include "notebooknamepopover.hpp"
+#include "notebooksview.hpp"
 #include "notemanagerbase.hpp"
+#include "specialnotebooks.hpp"
 
 namespace gnote {
 
@@ -197,7 +200,33 @@ namespace gnote {
       , m_note_manager(manager)
       , m_list(make_selection_model(model), NotebookFactory::create())
     {
-      append(m_list);
+      m_new_button.set_icon_name("list-add-symbolic");
+      m_new_button.set_tooltip_text(_("New Notebook"));
+      m_new_button.set_has_frame(false);
+      m_new_button.signal_clicked().connect(sigc::mem_fun(*this, &NotebooksView::on_create_new_notebook));
+      m_rename_button.set_icon_name("document-edit-symbolic");
+      m_rename_button.set_tooltip_text(_("Rename Notebook"));
+      m_rename_button.set_has_frame(false);
+      m_rename_button.set_sensitive(false);
+      m_rename_button.signal_clicked().connect(sigc::mem_fun(*this, &NotebooksView::on_rename_notebook));
+      m_delete_button.set_icon_name("edit-delete-symbolic");
+      m_delete_button.set_tooltip_text(_("Delete Notebook"));
+      m_delete_button.set_has_frame(false);
+      m_delete_button.set_sensitive(false);
+      m_delete_button.signal_clicked().connect(sigc::mem_fun(*this, &NotebooksView::on_delete_notebook));
+
+      Gtk::ScrolledWindow *sw = new Gtk::ScrolledWindow();
+      sw->property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+      sw->property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
+      sw->set_expand(true);
+      sw->set_child(m_list);
+      append(*sw);
+      auto actions = Gtk::make_managed<Gtk::Box>();
+      actions->append(m_new_button);
+      actions->append(m_rename_button);
+      actions->append(m_delete_button);
+      append(*actions);
+
       m_list.get_model()->signal_selection_changed().connect(sigc::mem_fun(*this, &NotebooksView::on_selection_changed));
     }
 
@@ -280,11 +309,83 @@ namespace gnote {
     void NotebooksView::on_selection_changed(guint, guint)
     {
       if(auto notebook = get_selected_notebook()) {
-        signal_selected_notebook_changed(notebook.value());
+        const Notebook& nb = notebook.value();
+        on_selected_notebook_changed(nb);
+        signal_selected_notebook_changed(nb);
       }
       else {
         select_all_notes_notebook();
       }
+    }
+
+    void NotebooksView::on_selected_notebook_changed(const Notebook& notebook)
+    {
+      bool allow_edit = nullptr == dynamic_cast<const SpecialNotebook*>(&notebook);
+      m_rename_button.set_sensitive(allow_edit);
+      m_delete_button.set_sensitive(allow_edit);
+    }
+
+    void NotebooksView::on_create_new_notebook()
+    {
+      auto& popover = NotebookNamePopover::create(m_new_button, m_note_manager.notebook_manager());
+      popover.set_position(Gtk::PositionType::BOTTOM);
+      popover.popup();
+    }
+
+    void NotebooksView::on_rename_notebook()
+    {
+      auto selected = get_selected_notebook();
+      if(!selected) {
+        return;
+      }
+      Notebook & selected_notebook = selected.value();
+      if(dynamic_cast<SpecialNotebook*>(&selected_notebook)) {
+        return;
+      }
+
+      NotebookNamePopover::create(m_rename_button, selected_notebook, sigc::mem_fun(*this, &NotebooksView::rename_notebook)).popup();
+    }
+
+    void NotebooksView::rename_notebook(const Notebook& old_notebook, const Glib::ustring& new_name)
+    {
+      NotebookManager & notebook_manager = m_note_manager.notebook_manager();
+      auto & new_notebook = notebook_manager.get_or_create_notebook(new_name);
+      DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook.get_name().c_str(), new_name.c_str());
+      auto notes = old_notebook.get_tag()->get_notes();
+      for(NoteBase *note : notes) {
+        notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
+      }
+      notebook_manager.delete_notebook(const_cast<Notebook&>(old_notebook));
+      select_notebook(new_notebook);
+    }
+
+    void NotebooksView::on_delete_notebook()
+    {
+      auto notebook = get_selected_notebook();
+      if(!notebook) {
+        return;
+      }
+
+      Gtk::Widget* widget = get_parent();
+      if(!widget) {
+        return;
+      }
+      while(true) {
+        auto parent = widget->get_parent();
+        if(!parent) {
+          break;
+        }
+        else {
+          widget = parent;
+        }
+      }
+
+      auto window = dynamic_cast<Gtk::Window*>(widget);
+      if(!window) {
+        return;
+      }
+
+      NotebookManager::prompt_delete_notebook(m_note_manager.gnote(), window, *notebook);
     }
   }
 }

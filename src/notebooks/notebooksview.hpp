@@ -43,8 +43,16 @@ namespace gnote {
     sigc::signal<void(const Notebook &)> signal_selected_notebook_changed;
   private:
     void on_selection_changed(guint, guint);
+    void on_selected_notebook_changed(const Notebook&);
+    void on_create_new_notebook();
+    void on_rename_notebook();
+    void rename_notebook(const Notebook& old_notebook, const Glib::ustring& new_name);
+    void on_delete_notebook();
 
     NoteManagerBase & m_note_manager;
+    Gtk::Button m_new_button;
+    Gtk::Button m_rename_button;
+    Gtk::Button m_delete_button;
     Gtk::ListView m_list;
   };
 
