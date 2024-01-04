@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -53,6 +53,10 @@ public:
   NoteManagerBase(IGnote & g);
   virtual ~NoteManagerBase();
 
+  IGnote& gnote()
+    {
+      return m_gnote;
+    }
   virtual notebooks::NotebookManager & notebook_manager() = 0;
   size_t trie_max_length();
   TrieHit<Glib::ustring>::List find_trie_matches(const Glib::ustring &);
