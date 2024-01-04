@@ -73,7 +73,6 @@ private:
   void rename_notebook(const notebooks::Notebook& old_notebook, const Glib::ustring& new_name);
   void on_notebook_selection_changed(const notebooks::Notebook & notebook);
   void on_notebook_list_changed();
-  bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void update_results();
   unsigned selected_note_count() const;
   std::vector<Note::Ref> get_selected_notes();
@@ -110,7 +109,6 @@ private:
   void on_open_notebook_template_note(Note&);
   void on_sorting_changed(Gtk::Sorter::Change);
   void parse_sorting_setting(const Glib::ustring & sorting);
-  void on_rename_notebook();
 
   class RecentSearchColumnTypes
     : public Gtk::TreeModelColumnRecord

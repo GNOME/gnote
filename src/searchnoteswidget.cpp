@@ -393,10 +393,6 @@ Gtk::Widget *SearchNotesWidget::make_notebooks_pane()
   m_notebooks_view->signal_open_template_note.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_open_notebook_template_note));
   notebook_manager.signal_notebook_list_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebook_list_changed));
 
-  auto key_ctrl = Gtk::EventControllerKey::create();
-  key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_notebooks_key_pressed), false);
-  m_notebooks_view->add_controller(key_ctrl);
-
   return m_notebooks_view;
 }
 
@@ -446,19 +442,6 @@ void SearchNotesWidget::on_notebook_list_changed()
   auto model = Gio::ListStore<notebooks::Notebook>::create();
   m_gnote.notebook_manager().get_notebooks([&model](const notebooks::Notebook::Ptr& nb) { model->append(nb); }, true);
   m_notebooks_view->set_notebooks(model);
-}
-
-bool SearchNotesWidget::on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
-{
-  switch(keyval) {
-  case GDK_KEY_F2:
-    on_rename_notebook();
-    return true;
-  default:
-    break;
-  }
-
-  return false; // Let Escape be handled by the window.
 }
 
 void SearchNotesWidget::select_all_notes_notebook()
@@ -1065,20 +1048,6 @@ void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
 
   m_sort_column = column;
   m_sort_column_order = order;
-}
-
-void SearchNotesWidget::on_rename_notebook()
-{
-  auto selected = m_notebooks_view->get_selected_notebook();
-  if(!selected) {
-    return;
-  }
-  notebooks::Notebook & selected_notebook = selected.value();
-  if(dynamic_cast<notebooks::SpecialNotebook*>(&selected_notebook)) {
-    return;
-  }
-
-  notebooks::NotebookNamePopover::create(*m_notebooks_view, selected_notebook, sigc::mem_fun(*this, &SearchNotesWidget::rename_notebook)).popup();
 }
 
 }
