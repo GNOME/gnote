@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -294,6 +294,7 @@ namespace gnote {
       dialog->add_action_widget(*button, Gtk::ResponseType::YES);
 
       dialog->signal_response().connect([&g, notebook = notebook.get_normalized_name(), dialog](int response) {
+        dialog->hide();
         if(response != Gtk::ResponseType::YES) {
           return;
         }
@@ -309,8 +310,6 @@ namespace gnote {
           // Delete the template note
           g.notebook_manager().note_manager().delete_note(template_note);
         }
-
-        dialog->hide();
       });
       dialog->show();
     }
