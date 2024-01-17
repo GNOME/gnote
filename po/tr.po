@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-12-02 20:22+0000\n"
-"PO-Revision-Date: 2023-12-19 07:40+0300\n"
+"POT-Creation-Date: 2024-01-08 17:00+0000\n"
+"PO-Revision-Date: 2024-01-09 01:52+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-POOTLE-MTIME: 1421955849.000000\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -697,27 +697,27 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Geçerli satır için girintiyi azalt/işaretleri devre dışı bırak"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:130
 msgid "_New Note"
 msgstr "_Yeni Not"
 
-#: src/actionmanager.cpp:134
+#: src/actionmanager.cpp:131
 msgid "New _Window"
 msgstr "Yeni _Pencere"
 
-#: src/actionmanager.cpp:135 src/preferencesdialog.cpp:563
+#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:563
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: src/actionmanager.cpp:136
+#: src/actionmanager.cpp:133
 msgid "_Shortcuts"
 msgstr "_Kısayollar"
 
-#: src/actionmanager.cpp:137
+#: src/actionmanager.cpp:134
 msgid "_Help"
 msgstr "_Yardım"
 
-#: src/actionmanager.cpp:138
+#: src/actionmanager.cpp:135
 msgid "_About Gnote"
 msgstr "_Gnote Hakkında"
 
@@ -843,13 +843,13 @@ msgstr "Simge seç..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:365 src/note.cpp:65 src/utils.cpp:278
-#: src/utils.cpp:285
+#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
+#: src/utils.cpp:329
 msgid "_Cancel"
 msgstr "İ_ptal"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:276
-#: src/searchnoteswidget.cpp:1047
+#: src/searchnoteswidget.cpp:915
 msgid "_Open"
 msgstr "_Aç"
 
@@ -884,8 +884,8 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Eğer simgeyi silerseniz kalıcı olarak kaybolacaktır."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:369 src/note.cpp:69
-#: src/searchnoteswidget.cpp:1049 src/searchnoteswidget.cpp:1080
+#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
+#: src/searchnoteswidget.cpp:917
 msgid "_Delete"
 msgstr "_Sil"
 
@@ -1251,7 +1251,7 @@ msgid "Show Statistics"
 msgstr "İstatistikleri Göster"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:174
+#: src/plugins/statistics/statisticswidget.cpp:179
 msgid "Statistics"
 msgstr "İstatistikler"
 
@@ -1259,16 +1259,16 @@ msgstr "İstatistikler"
 msgid "Show various statistics about notes."
 msgstr "Notlar hakkında çeşitli istatistikler göster."
 
-#: src/plugins/statistics/statisticswidget.cpp:86
+#: src/plugins/statistics/statisticswidget.cpp:87
 msgid "Total Notes"
 msgstr "Tüm Notlar"
 
-#: src/plugins/statistics/statisticswidget.cpp:89
+#: src/plugins/statistics/statisticswidget.cpp:107
 msgid "Total Notebooks"
 msgstr "Tüm Not Defterleri"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: src/plugins/statistics/statisticswidget.cpp:115
+#: src/plugins/statistics/statisticswidget.cpp:120
 msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 not"
@@ -1415,12 +1415,12 @@ msgstr ""
 
 #: src/gnote.cpp:267
 msgid ""
-"Copyright © 2010-2023 Aurimas Cernius\n"
+"Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Telif Hakkı © 2010-2023 Aurimas Cernius\n"
+"Telif Hakkı © 2010-2024 Aurimas Cernius\n"
 "Telif Hakkı © 2009-2011 Debarshi Ray\n"
 "Telif Hakkı © 2009 Hubert Figuiere\n"
 "Telif Hakkı © 2004-2009 Tomboy özgün yazarları."
@@ -1550,19 +1550,19 @@ msgstr "Yeni _Not Defteri..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:94
+#: src/notebooks/notebook.cpp:104
 msgid "%1 Notebook Template"
 msgstr "%1 Not Defteri Şablonu"
 
-#: src/notebooks/notebook.cpp:170 src/notemanagerbase.cpp:282
+#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
 msgid "New Note"
 msgstr "Yeni Not"
 
-#: src/notebooks/notebookmanager.cpp:359
+#: src/notebooks/notebookmanager.cpp:282
 msgid "Really delete this notebook?"
 msgstr "Bu not defterini silmek istediğinizden emin misiniz?"
 
-#: src/notebooks/notebookmanager.cpp:360
+#: src/notebooks/notebookmanager.cpp:283
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1570,34 +1570,50 @@ msgstr ""
 "Bu not defterine ait olan notlar silinmeyecek, ancak artık bu not defteri "
 "ile ilişkilendirilmeyecekler. Bu eylem geri alınamaz."
 
-#: src/notebooks/notebooknoteaddin.cpp:110
+#: src/notebooks/notebooknoteaddin.cpp:109
 msgid "Notebook"
 msgstr "Not defteri"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:145
+#: src/notebooks/notebooknoteaddin.cpp:144
 msgid "_New notebook..."
 msgstr "Yeni _not defteri..."
 
 #. Add the "(no notebook)" item at the top of the list
-#: src/notebooks/notebooknoteaddin.cpp:149
+#: src/notebooks/notebooknoteaddin.cpp:148
 msgid "No notebook"
 msgstr "Not defteri yok"
 
-#: src/notebooks/specialnotebooks.cpp:47
+#: src/notebooks/notebooksview.cpp:205
+msgid "New Notebook"
+msgstr "Yeni Not Defteri"
+
+#: src/notebooks/notebooksview.cpp:209
+msgid "Rename Notebook"
+msgstr "Not Defterini Yeniden Adlandır"
+
+#: src/notebooks/notebooksview.cpp:214
+msgid "Open Template Note"
+msgstr "Şablon Notunu Aç"
+
+#: src/notebooks/notebooksview.cpp:218
+msgid "Delete Notebook"
+msgstr "Not Defterini Sil"
+
+#: src/notebooks/specialnotebooks.cpp:52
 msgid "All"
 msgstr "Tümü"
 
-#: src/notebooks/specialnotebooks.cpp:76
+#: src/notebooks/specialnotebooks.cpp:86
 msgid "Unfiled"
 msgstr "Dosyalanmamış"
 
-#: src/notebooks/specialnotebooks.cpp:107
+#: src/notebooks/specialnotebooks.cpp:122
 msgctxt "notebook"
 msgid "Important"
 msgstr "Önemli"
 
-#: src/notebooks/specialnotebooks.cpp:134
+#: src/notebooks/specialnotebooks.cpp:154
 msgid "Active"
 msgstr "Etkin"
 
@@ -1902,7 +1918,7 @@ msgstr "Eklentiler"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:136 src/preferencesdialog.cpp:729
 #: src/preferencesdialog.cpp:966 src/preferencesdialog.cpp:1173
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:275
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
 msgid "_Close"
 msgstr "_Kapat"
 
@@ -2151,23 +2167,23 @@ msgstr "Yeni Not Oluştur"
 msgid "Search"
 msgstr "Ara"
 
-#: src/recentchanges.cpp:379
+#: src/recentchanges.cpp:380
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Gömü kutusunun ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:409
+#: src/recentchanges.cpp:412
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Arama girdisinin ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:702
+#: src/recentchanges.cpp:705
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Pencereye gömülü olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:709
+#: src/recentchanges.cpp:712
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Gtk::Widget olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:909
+#: src/recentchanges.cpp:912
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
@@ -2177,28 +2193,24 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr "%s D-Bus arayüzü yüklenemedi: %s"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:241
+#: src/searchnoteswidget.cpp:242
 msgid "Title match"
 msgstr "Başlık eşleşmesi"
 
-#: src/searchnoteswidget.cpp:245
+#: src/searchnoteswidget.cpp:246
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 eşleşme"
 
-#: src/searchnoteswidget.cpp:389
-msgid "Notebooks"
-msgstr "Not Defterleri"
-
-#: src/searchnoteswidget.cpp:690
+#: src/searchnoteswidget.cpp:555
 msgid "Note"
 msgstr "Not"
 
-#: src/searchnoteswidget.cpp:702
+#: src/searchnoteswidget.cpp:567
 msgid "Modified"
 msgstr "Değiştirildi"
 
-#: src/searchnoteswidget.cpp:873
+#: src/searchnoteswidget.cpp:743
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2206,50 +2218,38 @@ msgstr ""
 "Seçilen not defterinde sonuç bulunamadı.\n"
 "Tüm notlarda aramak için buraya tıklayın."
 
-#: src/searchnoteswidget.cpp:877
+#: src/searchnoteswidget.cpp:747
 msgid "Click here to search across all notebooks"
 msgstr "Tüm not defterlerinde aramak için buraya tıkla"
 
-#: src/searchnoteswidget.cpp:892
+#: src/searchnoteswidget.cpp:762
 msgid "Matches"
 msgstr "Eşleşmeler"
 
-#: src/searchnoteswidget.cpp:1046
+#: src/searchnoteswidget.cpp:914
 msgid "_New"
 msgstr "_Yeni"
 
-#: src/searchnoteswidget.cpp:1048
+#: src/searchnoteswidget.cpp:916
 msgid "Open In New _Window"
 msgstr "Yeni _Pencerede Aç"
 
-#: src/searchnoteswidget.cpp:1077
-msgid "_New..."
-msgstr "_Yeni..."
-
-#: src/searchnoteswidget.cpp:1078
-msgid "_Open Template Note"
-msgstr "Şablom Notunu _Aç"
-
-#: src/searchnoteswidget.cpp:1079
-msgid "Re_name..."
-msgstr "Ye_niden Adlandır..."
-
-#: src/searchnoteswidget.cpp:1203 src/searchnoteswidget.cpp:1216
-#: src/searchnoteswidget.cpp:1227
+#: src/searchnoteswidget.cpp:1020 src/searchnoteswidget.cpp:1033
+#: src/searchnoteswidget.cpp:1044
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "search-sorting ayarı ayrıştırılamadı (Değer: %s):"
 
-#: src/searchnoteswidget.cpp:1204
+#: src/searchnoteswidget.cpp:1021
 msgid "Expected format 'column:order'"
 msgstr "Beklenen biçim 'sütun:sıra'"
 
-#: src/searchnoteswidget.cpp:1217
+#: src/searchnoteswidget.cpp:1034
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Tanımlanamayan sütun %s"
 
-#: src/searchnoteswidget.cpp:1228
+#: src/searchnoteswidget.cpp:1045
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Tanımlanamayan sıra %s"
@@ -2634,61 +2634,61 @@ msgstr "URL açılamadı: %s"
 msgid "Cannot open location"
 msgstr "Konum açılamıyor"
 
-#: src/utils.cpp:133
-msgid "No Date"
-msgstr "Tarih Yok"
-
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:148
+#: src/utils.cpp:176
 msgid "Today, %1"
 msgstr "Bugün, %1"
 
-#: src/utils.cpp:149
+#: src/utils.cpp:177
 msgid "Today"
 msgstr "Bugün"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:155
-msgid "Yesterday, %1"
-msgstr "Dün, %1"
-
-#: src/utils.cpp:156
-msgid "Yesterday"
-msgstr "Dün"
-
-#. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:162
+#: src/utils.cpp:182
 msgid "Tomorrow, %1"
 msgstr "Yarın, %1"
 
-#: src/utils.cpp:163
+#: src/utils.cpp:183
 msgid "Tomorrow"
 msgstr "Yarın"
 
+#. TRANSLATORS: argument %1 is time.
+#: src/utils.cpp:188
+msgid "Yesterday, %1"
+msgstr "Dün, %1"
+
+#: src/utils.cpp:189
+msgid "Yesterday"
+msgstr "Dün"
+
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:167
+#: src/utils.cpp:193
 msgid "%b %d"
 msgstr "%b %d"
 
-#. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:170 src/utils.cpp:179
-msgid "%1, %2"
-msgstr "%1, %2"
-
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:176
+#: src/utils.cpp:197
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/utils.cpp:272 src/utils.cpp:286
+#. TRANSLATORS: argument %1 is date, %2 is time.
+#: src/utils.cpp:202
+msgid "%1, %2"
+msgstr "%1, %2"
+
+#: src/utils.cpp:213
+msgid "No Date"
+msgstr "Tarih Yok"
+
+#: src/utils.cpp:316 src/utils.cpp:330
 msgid "_OK"
 msgstr "_Tamam"
 
-#: src/utils.cpp:281
+#: src/utils.cpp:325
 msgid "_No"
 msgstr "_Hayır"
 
-#: src/utils.cpp:282
+#: src/utils.cpp:326
 msgid "_Yes"
 msgstr "_Evet"
 
@@ -2713,6 +2713,15 @@ msgstr "Not başlığı alındı"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Yazım denetimi"
+
+#~ msgid "Notebooks"
+#~ msgstr "Not Defterleri"
+
+#~ msgid "_New..."
+#~ msgstr "_Yeni..."
+
+#~ msgid "Re_name..."
+#~ msgstr "Ye_niden Adlandır..."
 
 #~ msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
 #~ msgstr ""
