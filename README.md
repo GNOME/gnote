@@ -16,10 +16,11 @@ meson <dirname> && cd <dirname> && meson compile && ninja install
 Dependencies:
 - Glibmm 2.74
 - Gtkmm 4.0
+- libadwaita
+- libsecret
+- libuuid
 - libxml2
 - libxslt
-- libuuid
-- libsecret
 
 ## Importing Tomboy notes
 
