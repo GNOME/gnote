@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021-2023 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -251,6 +251,7 @@ public:
   typedef sigc::slot<DynamicNoteTag::Ptr()> Factory;
 
   static const char *HIGHLIGHT_COLOR;
+  static const char *HIGHLIGHT_TEXT_COLOR;
 
   static const NoteTagTable::Ptr & instance() 
     {

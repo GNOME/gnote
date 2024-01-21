@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -253,7 +253,8 @@ namespace gnote {
   }
 
 
-  const char *NoteTagTable::HIGHLIGHT_COLOR = "#808080";
+  const char *NoteTagTable::HIGHLIGHT_COLOR = "#3584e4"; // From libadwaita: @accent_bg_color
+  const char *NoteTagTable::HIGHLIGHT_TEXT_COLOR = "#ffffff"; // From libadwaita: @accent_fg_color
   NoteTagTable::Ptr NoteTagTable::s_instance;
 
   void NoteTagTable::_init_common_tags()
@@ -289,7 +290,7 @@ namespace gnote {
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = HIGHLIGHT_COLOR;
-    tag->property_background_set() = true;
+    tag->property_foreground() = HIGHLIGHT_TEXT_COLOR;
     add(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
