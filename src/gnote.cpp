@@ -27,6 +27,7 @@
 
 #include <iostream>
 
+#include <adwaita.h>
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <glibmm/optionentry.h>
@@ -97,6 +98,7 @@ namespace gnote {
 
   void Gnote::on_startup()
   {
+    adw_init();
     Gtk::Application::on_startup();
     auto display = Gdk::Display::get_default();
     m_icon_theme = Gtk::IconTheme::get_for_display(display);
