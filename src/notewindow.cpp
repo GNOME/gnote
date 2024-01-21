@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2023 Aurimas Cernius
+ * Copyright (C) 2011-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -954,7 +954,8 @@ namespace gnote {
       highlight->set_action_name("win.change-font-highlight");
       highlight->set_has_frame(false);
       auto label = Gtk::make_managed<Gtk::Label>();
-      Glib::ustring markup = Glib::ustring::compose("<span background=\"%1\">%2</span>", NoteTagTable::HIGHLIGHT_COLOR, _("_Highlight"));
+      Glib::ustring markup = Glib::ustring::compose("<span color=\"%1\" background=\"%2\">%3</span>",
+        NoteTagTable::HIGHLIGHT_TEXT_COLOR, NoteTagTable::HIGHLIGHT_COLOR, _("_Highlight"));
       label->set_markup_with_mnemonic(markup);
       highlight->set_child(*label);
 
