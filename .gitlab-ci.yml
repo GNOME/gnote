@@ -3,15 +3,16 @@ image: fedora:latest
 variables:
   DEPENDENCIES: desktop-file-utils
                 gettext
+                gcc-c++
                 gtkmm4.0-devel
                 itstool
+                libadwaita-devel
                 libsecret-devel
                 libuuid-devel
                 libxml2-devel
                 libxslt-devel
                 meson
                 pcre-devel
-                gcc-c++
                 yelp-tools
 
   GIT_SUBMODULE_STRATEGY: normal
