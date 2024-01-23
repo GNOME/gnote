@@ -14,44 +14,64 @@
   <p>Gnote also supports synchronization, making it simple to use it on multiple devices.</p>
  </description>
  <screenshots>
-  <screenshot type="default" width="872" height="637">https://wiki.gnome.org/Apps/Gnote?action=AttachFile&amp;do=get&amp;target=gnote_main_window.png</screenshot>
-  <screenshot type="default" width="872" height="637">https://wiki.gnome.org/Apps/Gnote?action=AttachFile&amp;do=get&amp;target=start_here.png</screenshot>
-  <screenshot type="default" width="872" height="637">https://wiki.gnome.org/Apps/Gnote?action=AttachFile&amp;do=get&amp;target=using_links.png</screenshot>
+    <screenshot type="default">
+      <image width="872" height="637">https://wiki.gnome.org/Apps/Gnote?action=AttachFile&amp;do=get&amp;target=gnote_main_window.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image width="872" height="637">https://wiki.gnome.org/Apps/Gnote?action=AttachFile&amp;do=get&amp;target=start_here.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image width="872" height="637">https://wiki.gnome.org/Apps/Gnote?action=AttachFile&amp;do=get&amp;target=using_links.png</image>
+    </screenshot>
  </screenshots>
  <url type="homepage">https://wiki.gnome.org/Gnote</url>
  <url type="bugtracker">https://gitlab.gnome.org/GNOME/gnote/issues</url>
- <url type="donation">http://www.gnome.org/friends/</url>
- <url type="translate">https://wiki.gnome.org/TranslationProject</url>
+ <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnote</url>
+ <url type="donation">https://www.gnome.org/donate/</url>
+ <url type="translate">https://l10n.gnome.org/module/gnote/</url>
+ <developer_name translatable="no">The Gnote Team</developer_name>
+ <developer id="gnome.org">
+  <name translatable="no">The Gnote Team</name>
+ </developer>
  <update_contact>aurisc4_at_gmail.com</update_contact>
  <content_rating type="oars-1.1"/>
  <releases>
   <release version="45.0" date="2023-09-25">
+    <description>
     <ul>
       <li>Translation updates</li>
     </ul>
+    </description>
   </release>
   <release version="45~rc" date="2023-09-17">
+    <description>
     <ul>
       <li>Manual updates</li>
       <li>Translation updates</li>
     </ul>
+    </description>
   </release>
   <release version="45~beta" date="2023-09-10">
+    <description>
     <ul>
       <li>Fix crash when showing synchronization conflict dialog</li>
       <li>Fix gvfs synchronization setup when using Google Drive</li>
       <li>Update manual screenshots</li>
     </ul>
+    </description>
   </release>
   <release version="45~alpha" date="2023-07-30">
+    <description>
     <ul>
       <li>Migrate to Gtk 4</li>
       <li>Limit tab max width and add tab scroll (#153)</li>
       <li>Use highlight color that is readable in both light and dark modes (#33)</li>
       <li>Fix occasional crash when renaming link</li>
     </ul>
+    </description>
   </release>
   <release version="44.0" date="2023-03-19">
+    <description>
     <ul>
       <li>Open notes in tab next to current and move to previous on close</li>
       <li>Fix meson a deprecation warning</li>
@@ -62,8 +82,10 @@
       <li>Fix noteoftheday not deleting unmodified notes</li>
       <li>Updated German (de) manual</li>
     </ul>
+    </description>
   </release>
   <release version="43.0" date="2022-10-05">
+    <description>
     <ul>
       <li>Make delete button visually destructive in confirmation dialog (#120)</li>
       <li>Fix png icons renamed as svg (#136)</li>
@@ -74,8 +96,10 @@
       <li>Add shortcuts for switching tabs in main window (#124)</li>
       <li>Add shortcut to open shortcuts window (#123)</li>
     </ul>
+    </description>
   </release>
   <release version="42.0" date="2022-03-27">
+    <description>
     <ul>
       <li>Fix build using meson 0.61.0</li>
       <li>Manual updates and fixes</li>
@@ -89,8 +113,10 @@
       <li>Fix search box focus when very first search in window is in note (#108)</li>
       <li>Added Catalan manual (ca)</li>
     </ul>
+    </description>
   </release>
   <release version="41.0" date="2021-09-06">
+    <description>
     <ul>
       <li>Fix size and add more screenshots to appdata</li>
       <li>Fix a bunch of outdated URLs and instructions</li>
@@ -101,8 +127,10 @@
       <li>Fix synchronization when files are larger than 64k (#50)</li>
       <li>Stopped using lots of Glib and Gtk deprecations</li>
     </ul>
+    </description>
   </release>
   <release version="40.0" date="2021-03-26">
+    <description>
     <ul>
       <li>Use reverse-domain convention for naming desktop and search provider files</li>
       <li>Refactor D-Bus support to reuse the connection established by GtkApplication</li>
@@ -121,8 +149,10 @@
       <li>Fix GTK criticals upon exiting the application (issue #43)</li>
       <li>Fix few memory leaks</li>
     </ul>
+    </description>
   </release>
   <release version="3.38.0" date="2020-09-19">
+    <description>
     <ul>
       <li>Fix occasional crash when closing</li>
       <li>Note rename optimisation</li>
@@ -131,6 +161,7 @@
       <li>Fix invalid Mallard markup in manual</li>
       <li>Allow selecting local sync folder directly in drop down (fixes issue 41)</li>
     </ul>
+    </description>
   </release>
   <release version="3.37.0" date="2020-04-18">
     <description>
@@ -144,10 +175,12 @@
     </description>
   </release>
   <release version="3.36.0" date="2020-03-15">
+    <description>
     <ul>
       <li>Required Glibmm version now is 2.62</li>
       <li>Fix a number of crashes during synchronization</li>
     </ul>
+    </description>
   </release>
   <release version="3.35.0" date="2020-02-23">
     <description>
@@ -165,5 +198,6 @@
   <release version="3.32.0" date="2019-03-17"/>
  </releases>
  <translation type="gettext">gnote</translation>
+  <launchable type="desktop-id">org.gnome.Gnote.desktop</launchable>
 </component>
 
