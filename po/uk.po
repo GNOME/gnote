@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2024-01-04 21:46+0000\n"
-"PO-Revision-Date: 2024-01-05 09:42+0200\n"
+"POT-Creation-Date: 2024-01-29 21:13+0000\n"
+"PO-Revision-Date: 2024-01-30 22:45+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1293,8 +1293,9 @@ msgstr ""
 "меню."
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
-msgid "Luc Pionchon"
-msgstr "Luc Pionchon"
+#| msgid "Aurimas Černius"
+msgid "Aurimas Černius, Luc Pionchon"
+msgstr "Aurimas Černius, Luc Pionchon"
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
 msgid "© 2013 Luc Pionchon"
@@ -1398,28 +1399,28 @@ msgstr "Синхронізувати нотатки Gnote з адресою WebD
 msgid "Exception thrown when creating note: %s"
 msgstr "Виключення під час створення нотатки: %s"
 
-#: src/gnote.cpp:206
+#: src/gnote.cpp:208
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Немає доступного з'єднання D-Bus. Пошук оболонки і віддалене керування не "
 "працюватимуть."
 
-#: src/gnote.cpp:238
+#: src/gnote.cpp:240
 msgid "Failed to get shortcuts window!"
 msgstr "Не вдалося отримати вікно клавіатурних скорочень!"
 
-#: src/gnote.cpp:252
+#: src/gnote.cpp:254
 msgid "and Tomboy original authors."
 msgstr "й автори Tomboy."
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:260
 msgid "translator-credits"
 msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/gnote.cpp:267
+#: src/gnote.cpp:269
 msgid ""
 "Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1431,76 +1432,76 @@ msgstr ""
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:273
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Проста програма створення нотаток."
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:275
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: src/gnote.cpp:468
+#: src/gnote.cpp:470
 msgid "Run Gnote in background."
 msgstr "Запустити Gnote на тлі."
 
-#: src/gnote.cpp:469
+#: src/gnote.cpp:471
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запускати Gnote як надавач даних пошуку GNOME Shell."
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:472
 msgid "Specify the path of the directory containing the notes."
 msgstr "Вкажіть шлях до каталогу із нотатками."
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:472
 msgid "path"
 msgstr "шлях"
 
-#: src/gnote.cpp:471
+#: src/gnote.cpp:473
 msgid "Open the search all notes window with the search text."
 msgstr "Відкрити вікно пошуку в усіх нотатках за допомогою тексту пошуку."
 
-#: src/gnote.cpp:471 src/gnote.cpp:476
+#: src/gnote.cpp:473 src/gnote.cpp:478
 msgid "text"
 msgstr "Текст"
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:474
 msgid "Print version information."
 msgstr "Показати інформацію про версію."
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:475
 msgid "Create and display a new note, with a optional title."
 msgstr "Створити та показати нову нотатку з довільним заголовком."
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:475
 msgid "title"
 msgstr "заголовок"
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:476
 msgid "Display the existing note matching title."
 msgstr "Показати наявну нотатку з відповідним заголовком."
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:476
 msgid "title/url"
 msgstr "Заголовок/посилання"
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:477
 msgid "Display the 'Start Here' note."
 msgstr "Показувати першу нотатку"
 
-#: src/gnote.cpp:476
+#: src/gnote.cpp:478
 msgid "Search and highlight text in the opened note."
 msgstr "Шукати та виділити текст у відкритій нотатці."
 
-#: src/gnote.cpp:480
+#: src/gnote.cpp:482
 msgid "A note taking application"
 msgstr "Програма для роботи з нотатками"
 
-#: src/gnote.cpp:480
+#: src/gnote.cpp:482
 msgid "Gnote options at launch"
 msgstr "Параметри Gnote під час запуску"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:664
+#: src/gnote.cpp:666
 msgid "Version %1"
 msgstr "Версія %1"
 
@@ -1591,22 +1592,18 @@ msgid "No notebook"
 msgstr "Немає записників"
 
 #: src/notebooks/notebooksview.cpp:205
-#| msgid "New Note_book..."
 msgid "New Notebook"
 msgstr "Новий записник"
 
 #: src/notebooks/notebooksview.cpp:209
-#| msgid "Create Notebook"
 msgid "Rename Notebook"
 msgstr "Перейменувати записник"
 
 #: src/notebooks/notebooksview.cpp:214
-#| msgid "_Open Template Note"
 msgid "Open Template Note"
 msgstr "Відкрити шаблон нотатки"
 
 #: src/notebooks/notebooksview.cpp:218
-#| msgid "Create Notebook"
 msgid "Delete Notebook"
 msgstr "Вилучити записник"
 
@@ -1888,23 +1885,23 @@ msgstr "Зберегти _назву"
 msgid "Cannot create note"
 msgstr "Не вдалося створити нотатку"
 
-#: src/notewindow.cpp:957
+#: src/notewindow.cpp:958
 msgid "_Highlight"
 msgstr "Під_свічений"
 
-#: src/notewindow.cpp:961
+#: src/notewindow.cpp:962
 msgid "_Normal"
 msgstr "_Звичайний"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:963
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:964
 msgid "_Large"
 msgstr "_Великий"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:965
 msgid "Hu_ge"
 msgstr "В_еличезний"
 
@@ -2750,6 +2747,9 @@ msgstr "Взято заголовок нотатки"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Перевірка правопису"
+
+#~ msgid "Luc Pionchon"
+#~ msgstr "Luc Pionchon"
 
 #~ msgid "_New..."
 #~ msgstr "С_творити…"
