@@ -284,7 +284,6 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   m.signal_note_deleted.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_deleted));
   m.signal_note_added.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_added));
   m.signal_note_renamed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_renamed));
-  m.signal_note_saved.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_saved));
 
   // Watch when notes are added to notebooks so the search
   // results will be updated immediately instead of waiting
@@ -805,12 +804,6 @@ void SearchNotesWidget::on_note_renamed(const NoteBase & note,
 {
   restore_matches_window();
   rename_note(note);
-}
-
-void SearchNotesWidget::on_note_saved(NoteBase&)
-{
-  restore_matches_window();
-  update_results();
 }
 
 void SearchNotesWidget::delete_note(NoteBase & note)
