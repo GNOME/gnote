@@ -370,7 +370,7 @@ namespace gnote {
       m_sync_dlg->signal_response().connect(sigc::mem_fun(*this, &Gnote::on_sync_dialog_response));
     }
 
-    m_sync_dlg->present();
+    m_sync_dlg->present_ui();
   }
 
 

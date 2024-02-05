@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016,2017,2019-2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -410,6 +410,8 @@ void SyncDialog::on_row_activated(guint idx)
 
 void SyncDialog::present_ui()
 {
+  auto &window = m_gnote.get_window_for_note();
+  set_transient_for(window);
   present();
 }
 
