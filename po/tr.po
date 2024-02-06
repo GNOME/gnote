@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2024-01-08 17:00+0000\n"
-"PO-Revision-Date: 2024-01-09 01:52+0300\n"
+"POT-Creation-Date: 2024-01-29 21:13+0000\n"
+"PO-Revision-Date: 2024-02-05 01:52+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -1287,8 +1287,9 @@ msgstr ""
 "ayarlayın, İçindekiler bunları bir menüde gösterecektir."
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
-msgid "Luc Pionchon"
-msgstr "Luc Pionchon"
+#| msgid "Aurimas Černius"
+msgid "Aurimas Černius, Luc Pionchon"
+msgstr "Aurimas Černius, Luc Pionchon"
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
 msgid "© 2013 Luc Pionchon"
@@ -1392,28 +1393,28 @@ msgstr "Gnote Notlarını WebDAV adresine eşzamanla."
 msgid "Exception thrown when creating note: %s"
 msgstr "Not oluşturulurken olağandışı durum oluştu: %s"
 
-#: src/gnote.cpp:206
+#: src/gnote.cpp:208
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Kullanılabilir D-Bus bağlantısı yok. Kabuk araması ve uzaktan denetim "
 "çalışmayacaktır."
 
-#: src/gnote.cpp:238
+#: src/gnote.cpp:240
 msgid "Failed to get shortcuts window!"
 msgstr "Kısayollar penceresi alınamadı!"
 
-#: src/gnote.cpp:252
+#: src/gnote.cpp:254
 msgid "and Tomboy original authors."
 msgstr "ve Tomboy’un özgün yazarları."
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:260
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/gnote.cpp:267
+#: src/gnote.cpp:269
 msgid ""
 "Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1425,76 +1426,76 @@ msgstr ""
 "Telif Hakkı © 2009 Hubert Figuiere\n"
 "Telif Hakkı © 2004-2009 Tomboy özgün yazarları."
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:273
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Basit ve kullanışlı not alma uygulaması."
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:275
 msgid "Homepage"
 msgstr "Web Sitesi"
 
-#: src/gnote.cpp:468
+#: src/gnote.cpp:470
 msgid "Run Gnote in background."
 msgstr "Gnote uygulamasını arkaplanda çalıştır."
 
-#: src/gnote.cpp:469
+#: src/gnote.cpp:471
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "GNOME Kabuk arama sağlayıcısı olarak Gnote çalıştırın."
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:472
 msgid "Specify the path of the directory containing the notes."
 msgstr "Notları içeren dizin yolunu belirtin."
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:472
 msgid "path"
 msgstr "yol"
 
-#: src/gnote.cpp:471
+#: src/gnote.cpp:473
 msgid "Open the search all notes window with the search text."
 msgstr "Arama metni ile tüm notları ara penceresini aç."
 
-#: src/gnote.cpp:471 src/gnote.cpp:476
+#: src/gnote.cpp:473 src/gnote.cpp:478
 msgid "text"
 msgstr "metin"
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:474
 msgid "Print version information."
 msgstr "Sürüm bilgisini yazdır."
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:475
 msgid "Create and display a new note, with a optional title."
 msgstr "İsteğe bağlı başlıkla yeni not oluştur ve görüntüle."
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:475
 msgid "title"
 msgstr "başlık"
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:476
 msgid "Display the existing note matching title."
 msgstr "Başlık ile eşleşen notu göster."
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:476
 msgid "title/url"
 msgstr "başlık/url"
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:477
 msgid "Display the 'Start Here' note."
 msgstr "'Buradan Başla' notunu görüntüle."
 
-#: src/gnote.cpp:476
+#: src/gnote.cpp:478
 msgid "Search and highlight text in the opened note."
 msgstr "Açılan not içindeki metni ara ve vurgula."
 
-#: src/gnote.cpp:480
+#: src/gnote.cpp:482
 msgid "A note taking application"
 msgstr "Not alma uygulaması"
 
-#: src/gnote.cpp:480
+#: src/gnote.cpp:482
 msgid "Gnote options at launch"
 msgstr "Başlangıçtaki Gnote seçenekleri"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:664
+#: src/gnote.cpp:666
 msgid "Version %1"
 msgstr "Sürüm %1"
 
@@ -1874,23 +1875,23 @@ msgstr "_Başlığı Kaydet"
 msgid "Cannot create note"
 msgstr "Not oluşturulamıyor"
 
-#: src/notewindow.cpp:957
+#: src/notewindow.cpp:958
 msgid "_Highlight"
 msgstr "_Aydınlat"
 
-#: src/notewindow.cpp:961
+#: src/notewindow.cpp:962
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:963
 msgid "S_mall"
 msgstr "_Küçük"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:964
 msgid "_Large"
 msgstr "Bü_yük"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:965
 msgid "Hu_ge"
 msgstr "Çok _büyük"
 
@@ -2713,6 +2714,9 @@ msgstr "Not başlığı alındı"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Yazım denetimi"
+
+#~ msgid "Luc Pionchon"
+#~ msgstr "Luc Pionchon"
 
 #~ msgid "Notebooks"
 #~ msgstr "Not Defterleri"
