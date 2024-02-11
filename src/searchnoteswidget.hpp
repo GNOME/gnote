@@ -96,7 +96,13 @@ private:
   void delete_note(NoteBase & note);
   void add_note(NoteBase & note);
   void rename_note(const NoteBase & note);
-  void on_open_note();
+
+  enum class OpenNoteMode
+  {
+    CURRENT_WINDOW,
+    NEW_WINDOW,
+  };
+  void on_open_note(OpenNoteMode);
   void on_open_note_new_window();
   Gtk::Window *get_owning_window();
   void on_note_added_to_notebook(const Note & note, const notebooks::Notebook & notebook);

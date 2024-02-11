@@ -636,7 +636,7 @@ void SearchNotesWidget::on_row_activated(guint idx)
 {
   auto selected_notes = get_selected_notes();
   if(selected_notes.size() > 0) {
-    on_open_note();
+    on_open_note(OpenNoteMode::CURRENT_WINDOW);
   }
   else if(auto note = std::dynamic_pointer_cast<Note>(m_store_sort->get_object(idx))) {
     signal_open_note(*note);
@@ -668,7 +668,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
   case GDK_KEY_Return:
   case GDK_KEY_KP_Enter:
     // Open all selected notes
-    on_open_note();
+    on_open_note(OpenNoteMode::CURRENT_WINDOW);
     return true;
   default:
     break;
@@ -808,16 +808,20 @@ void SearchNotesWidget::rename_note(const NoteBase & note)
   add_note(n);
 }
 
-void SearchNotesWidget::on_open_note()
+void SearchNotesWidget::on_open_note(OpenNoteMode mode)
 {
   auto selected_notes = get_selected_notes();
-  auto iter = selected_notes.begin();
-  if(iter != selected_notes.end()) {
-    signal_open_note(*iter);
-    ++iter;
-  }
-  for(; iter != selected_notes.end(); ++iter) {
-    signal_open_note_new_window(*iter);
+  switch(mode) {
+  case OpenNoteMode::CURRENT_WINDOW:
+    for(auto &note : selected_notes) {
+      signal_open_note(note);
+    }
+    break;
+  case OpenNoteMode::NEW_WINDOW:
+    for(auto &note : selected_notes) {
+      signal_open_note_new_window(note);
+    }
+    break;
   }
 }
 
@@ -900,7 +904,7 @@ void SearchNotesWidget::embed(EmbeddableWidgetHost *h)
   EmbeddableWidget::embed(h);
   if(auto win = dynamic_cast<MainWindow*>(host())) {
     if(auto action = win->find_action("open-note")) {
-      action->signal_activate().connect([this](const Glib::VariantBase&) { on_open_note(); });
+      action->signal_activate().connect([this](const Glib::VariantBase&) { on_open_note(OpenNoteMode::CURRENT_WINDOW); });
     }
     if(auto action = win->find_action("open-note-new-window")) {
       action->signal_activate().connect([this](const Glib::VariantBase&) { on_open_note_new_window(); });
