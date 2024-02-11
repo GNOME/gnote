@@ -668,7 +668,7 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
   case GDK_KEY_Return:
   case GDK_KEY_KP_Enter:
     // Open all selected notes
-    on_open_note(OpenNoteMode::CURRENT_WINDOW);
+    on_open_note(Gdk::ModifierType::CONTROL_MASK == (state & Gdk::ModifierType::CONTROL_MASK) ? OpenNoteMode::NEW_WINDOW : OpenNoteMode::CURRENT_WINDOW);
     return true;
   default:
     break;
