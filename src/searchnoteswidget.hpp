@@ -84,7 +84,6 @@ private:
   bool filter_by_tag(const Note &, const Tag::Ptr &);
   void on_row_activated(guint idx);
   void on_selection_changed(guint, guint);
-  void on_treeview_right_button_pressed(int n_press, double x, double y);
   bool on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   Glib::RefPtr<Gdk::ContentProvider> on_treeview_drag_data_get(double, double);
   void remove_matches_column();
@@ -103,7 +102,6 @@ private:
   void on_note_added_to_notebook(const Note & note, const notebooks::Notebook & notebook);
   void on_note_removed_from_notebook(const Note & note, const notebooks::Notebook & notebook);
   void on_note_pin_status_changed(const Note &, bool);
-  Gtk::Popover *get_note_list_context_menu();
   void on_open_notebook_template_note(Note&);
   void on_sorting_changed(Gtk::Sorter::Change);
   void parse_sorting_setting(const Glib::ustring & sorting);
@@ -153,7 +151,6 @@ private:
   Glib::RefPtr<Gtk::ColumnViewColumn> m_title_column;
   Glib::RefPtr<Gtk::ColumnViewColumn> m_change_column;
   Glib::RefPtr<Gtk::ColumnViewColumn> m_matches_column;
-  std::shared_ptr<Gtk::Popover> m_note_list_context_menu;
   bool m_initial_position_restored;
   Glib::ustring m_search_text;
   Glib::RefPtr<const Gtk::ColumnViewColumn> m_sort_column;

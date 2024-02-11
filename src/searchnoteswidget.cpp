@@ -535,12 +535,6 @@ void SearchNotesWidget::make_recent_notes_view()
   m_notes_view->set_reorderable(false);
   m_notes_view->signal_activate().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_row_activated));
 
-  auto button_ctrl = Gtk::GestureClick::create();
-  button_ctrl->set_button(3);
-  button_ctrl->signal_pressed().connect(
-    sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_right_button_pressed));
-  m_notes_view->add_controller(button_ctrl);
-
   m_notes_widget_key_ctrl = Gtk::EventControllerKey::create();
   m_notes_widget_key_ctrl->signal_key_pressed().connect(sigc::mem_fun(*this, &SearchNotesWidget::on_treeview_key_pressed), false);
   m_notes_view->add_controller(m_notes_widget_key_ctrl);
@@ -661,31 +655,12 @@ void SearchNotesWidget::on_selection_changed(guint, guint)
   }
 }
 
-void SearchNotesWidget::on_treeview_right_button_pressed(int n_press, double x, double y)
-{
-  auto popover = get_note_list_context_menu();
-  Gdk::Rectangle pos;
-  pos.set_x(x);
-  pos.set_y(y);
-  popover->set_pointing_to(pos);
-  popover->popup();
-}
-
 bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state)
 {
   switch(keyval) {
   case GDK_KEY_Delete:
     delete_selected_notes();
     break;
-  case GDK_KEY_Menu:
-  {
-    // Pop up the context menu if a note is selected
-    if(selected_note_count()) {
-      auto menu = get_note_list_context_menu();
-      menu->popup();
-    }
-    return true;
-  }
   case GDK_KEY_Return:
   case GDK_KEY_KP_Enter:
     // Open all selected notes
@@ -897,26 +872,6 @@ void SearchNotesWidget::on_note_pin_status_changed(const Note &, bool)
 {
   restore_matches_window();
   update_results();
-}
-
-Gtk::Popover *SearchNotesWidget::get_note_list_context_menu()
-{
-  if(!m_note_list_context_menu) {
-    auto menu = Gio::Menu::create();
-
-    menu->append(_("_New"), "app.new-note");
-    menu->append(_("_Open"), "win.open-note");
-    menu->append(_("Open In New _Window"), "win.open-note-new-window");
-    menu->append(_("_Delete"), "win.delete-selected-notes");
-
-    m_note_list_context_menu = utils::make_owned_popover<Gtk::PopoverMenu>(*m_notes_view, menu);
-  }
-  else {
-    m_note_list_context_menu->set_parent(*m_notes_view);
-  }
-
-  on_selection_changed(0, 0);
-  return m_note_list_context_menu.get();
 }
 
 void SearchNotesWidget::new_note()
