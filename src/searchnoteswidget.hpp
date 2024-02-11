@@ -101,6 +101,7 @@ private:
   {
     CURRENT_WINDOW,
     NEW_WINDOW,
+    SINGLE_NEW_WINDOW,
   };
   void on_open_note(OpenNoteMode);
   void on_open_note_new_window();

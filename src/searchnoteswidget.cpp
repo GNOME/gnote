@@ -668,8 +668,19 @@ bool SearchNotesWidget::on_treeview_key_pressed(guint keyval, guint keycode, Gdk
   case GDK_KEY_Return:
   case GDK_KEY_KP_Enter:
     // Open all selected notes
-    on_open_note(Gdk::ModifierType::CONTROL_MASK == (state & Gdk::ModifierType::CONTROL_MASK) ? OpenNoteMode::NEW_WINDOW : OpenNoteMode::CURRENT_WINDOW);
-    return true;
+    {
+      OpenNoteMode mode = OpenNoteMode::CURRENT_WINDOW;
+      if(Gdk::ModifierType::CONTROL_MASK == (state & Gdk::ModifierType::CONTROL_MASK)) {
+        if(Gdk::ModifierType::SHIFT_MASK == (state & Gdk::ModifierType::SHIFT_MASK)) {
+          mode = OpenNoteMode::NEW_WINDOW ;
+        }
+        else {
+          mode = OpenNoteMode::SINGLE_NEW_WINDOW;
+        }
+      }
+      on_open_note(mode);
+      return true;
+    }
   default:
     break;
   }
@@ -811,6 +822,10 @@ void SearchNotesWidget::rename_note(const NoteBase & note)
 void SearchNotesWidget::on_open_note(OpenNoteMode mode)
 {
   auto selected_notes = get_selected_notes();
+  if(selected_notes.size() == 0) {
+    return;
+  }
+
   switch(mode) {
   case OpenNoteMode::CURRENT_WINDOW:
     for(auto &note : selected_notes) {
@@ -822,6 +837,18 @@ void SearchNotesWidget::on_open_note(OpenNoteMode mode)
       signal_open_note_new_window(note);
     }
     break;
+  case OpenNoteMode::SINGLE_NEW_WINDOW:
+    {
+      auto iter = selected_notes.begin();
+      signal_open_note_new_window(*iter);
+      if(selected_notes.size() > 1) {
+        if(auto host = dynamic_cast<MainWindow*>(iter->get().get_window()->host())) {
+          for(++iter; iter != selected_notes.end(); ++iter) {
+            MainWindow::present_in(*host, *iter);
+          }
+        }
+      }
+    }
   }
 }
 
