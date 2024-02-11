@@ -634,7 +634,11 @@ bool SearchNotesWidget::filter_by_tag(const Note & note, const Tag::Ptr & tag)
 
 void SearchNotesWidget::on_row_activated(guint idx)
 {
-  if(auto note = std::dynamic_pointer_cast<Note>(m_store_sort->get_object(idx))) {
+  auto selected_notes = get_selected_notes();
+  if(selected_notes.size() > 0) {
+    on_open_note();
+  }
+  else if(auto note = std::dynamic_pointer_cast<Note>(m_store_sort->get_object(idx))) {
     signal_open_note(*note);
   }
 }
