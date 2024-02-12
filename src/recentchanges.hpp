@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -77,7 +77,10 @@ private:
   void add_shortcut(Gtk::ShortcutController & controller, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
   void make_header_bar();
   bool make_search_box();
-  void make_find_next_prev();
+  void make_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev);
+  void show_find_next_prev();
+  void hide_find_next_prev();
+  bool get_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev) const;
   bool on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_search_changed();
   void on_search_stopped();
@@ -108,8 +111,7 @@ private:
   Preferences        &m_preferences;
   Gtk::Widget        *m_header_bar;
   SearchNotesWidget  *m_search_notes_widget;
-  Gtk::Grid          *m_search_box;
-  Gtk::Grid          *m_find_next_prev_box;
+  Gtk::Box *m_search_box;
   union
   {
     Gtk::SearchEntry *m_search_entry;

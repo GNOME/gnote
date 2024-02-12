@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2023 Aurimas Cernius
+ * Copyright (C) 2010-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -45,6 +45,8 @@ namespace gnote {
   namespace {
     const char *MAIN_MENU_PRIMARY_ICON = "open-menu-symbolic";
     const char *MAIN_MENU_SECONDARY_ICON = "view-more-symbolic";
+    const char *BUTTON_FIND_NEXT = "find-next";
+    const char *BUTTON_FIND_PREV = "find-prev";
 
     class TabLabel
       : public Gtk::Box
@@ -99,7 +101,6 @@ namespace gnote {
     , m_note_manager(m)
     , m_preferences(g.preferences())
     , m_search_box(nullptr)
-    , m_find_next_prev_box(nullptr)
     , m_search_entry(nullptr)
     , m_mapped(false)
   {
@@ -366,9 +367,10 @@ namespace gnote {
     m_search_entry->signal_previous_match()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
 
-    m_search_box = manage(new Gtk::Grid);
+    m_search_box = Gtk::make_managed<Gtk::Box>();
+    m_search_box->add_css_class("linked");
     m_search_box->set_hexpand(false);
-    m_search_box->attach(*m_search_entry, 0, 0, 1, 1);
+    m_search_box->append(*m_search_entry);
     m_search_box->set_halign(Gtk::Align::CENTER);
 
     auto content = dynamic_cast<Gtk::Grid*>(m_search_button.get_parent());
@@ -383,34 +385,67 @@ namespace gnote {
     return false;
   }
 
-  void NoteRecentChanges::make_find_next_prev()
+  void NoteRecentChanges::make_find_next_prev(Gtk::Button *&find_next_button, Gtk::Button *&find_prev_button)
   {
-    if(m_find_next_prev_box) {
-      return;
-    }
-
-    m_find_next_prev_box = manage(new Gtk::Grid);
-    m_find_next_prev_box->set_margin_start(5);
-
-    Gtk::Button *find_next_button = manage(new Gtk::Button);
+    find_next_button = Gtk::make_managed<Gtk::Button>();
+    find_next_button->set_name(BUTTON_FIND_NEXT);
     find_next_button->property_icon_name() = "go-down-symbolic";
     find_next_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
-    m_find_next_prev_box->attach(*find_next_button, 0, 0, 1, 1);
 
-    Gtk::Button *find_prev_button = manage(new Gtk::Button);
+    find_prev_button = Gtk::make_managed<Gtk::Button>();
+    find_prev_button->set_name(BUTTON_FIND_PREV);
     find_prev_button->property_icon_name() = "go-up-symbolic";
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
-    m_find_next_prev_box->attach(*find_prev_button, 1, 0, 1, 1);
 
-    auto grid = dynamic_cast<Gtk::Grid*>(m_search_entry->get_parent());
-    if(grid) {
-      grid->attach(*m_find_next_prev_box, 1, 0, 1, 1);
+    if(auto box = dynamic_cast<Gtk::Box*>(m_search_entry->get_parent())) {
+      box->append(*find_next_button);
+      box->append(*find_prev_button);
     }
     else {
       ERR_OUT(_("Parent of search entry is not Gtk::Grid, please report a bug!"));
     }
+  }
+
+  void NoteRecentChanges::show_find_next_prev()
+  {
+    Gtk::Button *find_next, *find_prev;
+    if(!get_find_next_prev(find_next, find_prev)) {
+      make_find_next_prev(find_next, find_prev);
+    }
+
+    find_next->show();
+    find_prev->show();
+  }
+
+  void NoteRecentChanges::hide_find_next_prev()
+  {
+    Gtk::Button *find_next, *find_prev;
+    if(get_find_next_prev(find_next, find_prev)) {
+      find_next->hide();
+      find_prev->hide();
+    }
+  }
+
+  bool NoteRecentChanges::get_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev) const
+  {
+    find_next = find_prev = nullptr;
+    if(m_search_entry == nullptr) {
+      return false;
+    }
+
+    Gtk::Widget *widget = m_search_entry;
+    while((widget = widget->get_next_sibling())) {
+      if(widget->get_name() == BUTTON_FIND_NEXT) {
+        find_next = dynamic_cast<Gtk::Button*>(widget);
+      }
+      else if(widget->get_name() == BUTTON_FIND_PREV) {
+        find_prev = dynamic_cast<Gtk::Button*>(widget);
+      }
+    }
+
+    return find_next != nullptr && find_prev != nullptr;
   }
 
   void NoteRecentChanges::on_search_button_toggled()
@@ -464,14 +499,11 @@ namespace gnote {
       m_search_button.show();
       if(searchable_item->supports_goto_result()) {
         if(m_search_box && m_search_box->get_visible()) {
-          make_find_next_prev();
-          m_find_next_prev_box->show();
+          show_find_next_prev();
         }
       }
       else {
-        if(m_find_next_prev_box) {
-          m_find_next_prev_box->hide();
-        }
+        hide_find_next_prev();
       }
       if(perform_search) {
         searchable_item->perform_search(m_search_button.get_active() ? m_search_entry->get_text() : "");
