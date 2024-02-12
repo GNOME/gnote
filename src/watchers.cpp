@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -201,14 +201,20 @@ namespace gnote {
   {
     Note & note = get_note();
     Glib::ustring title = get_window()->get_name();
-
-    auto existing = manager().find(title);
-    if(existing && (&existing.value().get() != &note)) {
-      show_name_clash_error(title, only_warn);
+    if(note.get_title() == title) {
       return false;
     }
 
-    DBG_OUT("Renaming note from %s to %s", note.get_title().c_str(), title.c_str());
+    if(auto n = manager().find(title)) {
+      NoteBase &existing = n.value();
+      if(&existing != &note) {
+        show_name_clash_error(title, only_warn);
+      }
+
+      return false;  // same note, same title
+    }
+
+    DBG_OUT("Renaming note from '%s' to '%s'", note.get_title().c_str(), title.c_str());
     note.set_title(std::move(title), true);
     return true;
   }
