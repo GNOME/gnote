@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2024-01-04 21:46+0000\n"
-"PO-Revision-Date: 2024-01-04 23:25+0100\n"
+"POT-Creation-Date: 2024-01-29 21:13+0000\n"
+"PO-Revision-Date: 2024-01-29 22:15+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -1288,8 +1288,9 @@ msgstr ""
 "underavsnitt så kommer innehållsförteckningen visas i en meny."
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
-msgid "Luc Pionchon"
-msgstr "Luc Pionchon"
+#| msgid "Aurimas Černius"
+msgid "Aurimas Černius, Luc Pionchon"
+msgstr "Aurimas Černius, Luc Pionchon"
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
 msgid "© 2013 Luc Pionchon"
@@ -1394,22 +1395,22 @@ msgstr "Synkronisera Gnote-anteckningar till en WebDAV-URL."
 msgid "Exception thrown when creating note: %s"
 msgstr "Undantag kastat vid skapande av anteckning: %s"
 
-#: src/gnote.cpp:206
+#: src/gnote.cpp:208
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Ingen D-Bus-anslutning tillgänglig, skalsökning och fjärrkontroll kommer "
 "inte att fungera."
 
-#: src/gnote.cpp:238
+#: src/gnote.cpp:240
 msgid "Failed to get shortcuts window!"
 msgstr "Misslyckades med att hämta genvägsfönster!"
 
-#: src/gnote.cpp:252
+#: src/gnote.cpp:254
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:260
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -1421,7 +1422,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gnote.cpp:267
+#: src/gnote.cpp:269
 msgid ""
 "Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1433,76 +1434,76 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:273
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:275
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: src/gnote.cpp:468
+#: src/gnote.cpp:470
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: src/gnote.cpp:469
+#: src/gnote.cpp:471
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:472
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:472
 msgid "path"
 msgstr "sökväg"
 
-#: src/gnote.cpp:471
+#: src/gnote.cpp:473
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: src/gnote.cpp:471 src/gnote.cpp:476
+#: src/gnote.cpp:473 src/gnote.cpp:478
 msgid "text"
 msgstr "text"
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:474
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:475
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:475
 msgid "title"
 msgstr "titel"
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:476
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:476
 msgid "title/url"
 msgstr "titel/url"
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:477
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: src/gnote.cpp:476
+#: src/gnote.cpp:478
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: src/gnote.cpp:480
+#: src/gnote.cpp:482
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: src/gnote.cpp:480
+#: src/gnote.cpp:482
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:664
+#: src/gnote.cpp:666
 msgid "Version %1"
 msgstr "Version %1"
 
@@ -1889,23 +1890,23 @@ msgstr "Spara _titel"
 msgid "Cannot create note"
 msgstr "Kan inte skapa anteckning"
 
-#: src/notewindow.cpp:957
+#: src/notewindow.cpp:958
 msgid "_Highlight"
 msgstr "_Markera"
 
-#: src/notewindow.cpp:961
+#: src/notewindow.cpp:962
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:963
 msgid "S_mall"
 msgstr "_Liten"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:964
 msgid "_Large"
 msgstr "_Stor"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:965
 msgid "Hu_ge"
 msgstr "_Enorm"
 
@@ -2735,6 +2736,9 @@ msgstr "Anteckningstiteln är upptagen"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
+
+#~ msgid "Luc Pionchon"
+#~ msgstr "Luc Pionchon"
 
 #~ msgid "_New..."
 #~ msgstr "_Ny…"
