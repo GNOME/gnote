@@ -2,12 +2,12 @@
 # Copyright (C) 2020 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2023-09-16 19:38+0000\n"
-"PO-Revision-Date: 2023-09-18 22:57+0300\n"
+"POT-Creation-Date: 2024-02-29 21:32+0000\n"
+"PO-Revision-Date: 2024-03-01 23:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -719,7 +719,6 @@ msgstr "Luc Pionchon"
 
 #. (itstool) path: credit/years
 #: C/gnote-addin-tableofcontents.page:60
-#| msgid "2011-2013,2019,2023"
 msgid "2013,2014,2023"
 msgstr "2013,2014,2023"
 
@@ -793,10 +792,6 @@ msgstr "Структурована нотатка із її таблицею з�
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-tableofcontents.page:114
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-addin-table-of-contents.png' "
-#| "md5='15b52d64e171a3a03a13f0a2def2f3e3'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-addin-table-of-contents.png' "
@@ -1279,8 +1274,9 @@ msgstr "Створення нотаток"
 
 #. (itstool) path: credit/years
 #: C/gnote-creating-notes.page:16
-msgid "2011-2012,2019,2023"
-msgstr "2011-2012,2019,2023"
+#| msgid "2011-2012,2019,2023"
+msgid "2011-2012,2019,2023-2024"
+msgstr "2011-2012,2019,2023–2024"
 
 #. (itstool) path: page/title
 #: C/gnote-creating-notes.page:25
@@ -1311,24 +1307,6 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:31
 msgid ""
-"In the main window, right click in the note list and select <gui>New</gui>. "
-"This will create a note in the currently selected notebook."
-msgstr ""
-"У головному вікні програми клацніть правою кнопкою миші на списку нотаток і "
-"виберіть у контекстному меню пункт <gui>Створити</gui>. У відповідь буде "
-"створено нотатку у поточному позначеному записнику."
-
-#. (itstool) path: item/p
-#: C/gnote-creating-notes.page:32
-msgid ""
-"If the status icon is enabled, click on it and select <gui>New Note</gui>."
-msgstr ""
-"Якщо увімкнено піктограму стану, клацніть на ній і виберіть <gui>Створити "
-"нотатку</gui>."
-
-#. (itstool) path: item/p
-#: C/gnote-creating-notes.page:33
-msgid ""
 "Use the keyboard shortcut <keyseq><key>Ctrl</key><key>Shift</key><key>N</"
 "key></keyseq>."
 msgstr ""
@@ -1341,10 +1319,10 @@ msgid "Deleting notes"
 msgstr "Вилучення нотаток"
 
 #. (itstool) path: credit/years
-#: C/gnote-deleting-notes.page:16 C/gnote-introduction.page:17
-#: C/gnote-template-notes.page:13
-msgid "2011-2012"
-msgstr "2011-2012"
+#: C/gnote-deleting-notes.page:16
+#| msgid "2011-2012,2019"
+msgid "2011-2012,2024"
+msgstr "2011–2012,2024"
 
 #. (itstool) path: page/title
 #: C/gnote-deleting-notes.page:25
@@ -1358,12 +1336,15 @@ msgstr "Вилучити нотатку можна у один з двох та�
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:28
+#| msgid ""
+#| "Right click in the list of notes and select <gui>Delete</gui>. This will "
+#| "delete all selected notes."
 msgid ""
-"Right click in the list of notes and select <gui>Delete</gui>. This will "
-"delete all selected notes."
+"In the list of notes press <key>Delete</key>. This will delete all selected "
+"notes."
 msgstr ""
-"Клацніть правою кнопкою на списку нотаток і виберіть пункт <gui>Вилучити</"
-"gui>. У відповідь буде вилучено усі позначені нотатки."
+"У списку нотаток натисніть клавішу <key>Delete</key>. У результаті буде"
+" вилучено усі позначені нотатки."
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:29
@@ -1667,6 +1648,11 @@ msgstr "Форматування вмісту нотатки"
 #: C/gnote-introduction.page:9
 msgid "Introduction to <app>Gnote</app>"
 msgstr "Вступ до <app>Gnote</app>"
+
+#. (itstool) path: credit/years
+#: C/gnote-introduction.page:17 C/gnote-template-notes.page:13
+msgid "2011-2012"
+msgstr "2011-2012"
 
 #. (itstool) path: page/title
 #: C/gnote-introduction.page:26
@@ -2019,8 +2005,9 @@ msgstr "Пошук нотаток"
 
 #. (itstool) path: credit/years
 #: C/gnote-searching-notes.page:16
-msgid "2011-2013"
-msgstr "2011-2013"
+#| msgid "2011-2013,2023"
+msgid "2011-2013,2024"
+msgstr "2011–2013,2024"
 
 #. (itstool) path: page/title
 #: C/gnote-searching-notes.page:25
@@ -2071,32 +2058,36 @@ msgstr "Двічі клацніть на нотатці."
 #. (itstool) path: item/p
 #: C/gnote-searching-notes.page:32
 msgid ""
-"Right-click in the list of notes and select <gui>Open</gui> from the context "
-"menu. This will open all selected notes, each in its own window."
-msgstr ""
-"Клацніть правою кнопкою миші на списку нотаток і виберіть пункт "
-"<gui>Відкрити</gui> у контекстному меню. У відповідь буде відкрито усі "
-"позначені нотатки, кожну у окремому вікні."
-
-#. (itstool) path: item/p
-#: C/gnote-searching-notes.page:33
-msgid ""
-"Right-click in the list of notes and select <gui>Open in New Window</gui> "
-"from the context menu. This will open each selected note in a new window, "
-"leaving the original window as is."
-msgstr ""
-"Клацніть правою кнопкою миші на списку нотаток і виберіть у контекстному "
-"меню пункт <gui>Відкрити у новому вікні</gui>. У відповідь усі позначені "
-"нотатки буде відкрито у новому вікні. Початкове вікно лишиться незмінним."
-
-#. (itstool) path: item/p
-#: C/gnote-searching-notes.page:34
-msgid ""
 "Select one or more notes in a list and press <keyseq><key>Ctrl</key><key>O</"
 "key></keyseq>."
 msgstr ""
 "Позначте одну або декілька нотаток у списку і натисніть комбінацію клавіш "
 "<keyseq><key>Ctrl</key><key>O</key></keyseq>."
+
+#. (itstool) path: item/p
+#: C/gnote-searching-notes.page:33
+#| msgid ""
+#| "Select one or more notes in a list and press <keyseq><key>Ctrl</"
+#| "key><key>O</key></keyseq>."
+msgid "Select one or more notes in a list and press <key>Enter</key>."
+msgstr ""
+"Позначте одну або декілька нотаток у списку і натисніть клавішу <key>Enter<"
+"/key>."
+
+#. (itstool) path: item/p
+#: C/gnote-searching-notes.page:34
+#| msgid ""
+#| "Select one or more notes in a list and press <keyseq><key>Ctrl</"
+#| "key><key>O</key></keyseq>."
+msgid ""
+"Select one or more notes in a list and press <keyseq><key>Ctrl</"
+"key><key>Enter</key></keyseq>. This will open selected notes in the new "
+"window."
+msgstr ""
+"Позначте одну або декілька нотаток у списку і натисніть комбінацію клавіш<"
+"keyseq><key>Ctrl</"
+"key><key>Enter</key></keyseq>. У результаті позначені нотатки буде відкрито"
+" у новому вікні."
 
 #. (itstool) path: info/desc
 #: C/gnote-synchronization.page:8
@@ -2414,8 +2405,9 @@ msgstr "Упорядковування ваших нотаток"
 
 #. (itstool) path: credit/years
 #: C/gnote-working-with-notebooks.page:17
-msgid "2011-2012,2019"
-msgstr "2011-2012,2019"
+#| msgid "2011-2012,2019,2023"
+msgid "2011-2012,2019,2024"
+msgstr "2011–2012,2019,2024"
 
 #. (itstool) path: page/title
 #: C/gnote-working-with-notebooks.page:26
@@ -2452,7 +2444,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:36
-#: C/gnote-working-with-notebooks.page:45
 msgid "Enter a name for the new notebook."
 msgstr "Введіть назву нового записника."
 
@@ -2463,12 +2454,18 @@ msgstr "Крім того, можете виконати такі дії:"
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:42
-msgid ""
-"In the note overview, right click in the left hand pane and choose "
-"<gui>New...</gui>."
+msgid "In the notebooks list at the bottom click the <gui>+</gui> button."
 msgstr ""
-"У вікні огляду нотаток клацніть правою кнопкою миші на лівій панелі і "
-"виберіть у контекстному меню пункт <gui>Створити...</gui>."
+"У списку нотатників у нижній частині вікна натисніть кнопку <gui>+</gui>."
+
+#. (itstool) path: item/p
+#: C/gnote-working-with-notebooks.page:45
+msgid ""
+"Enter a name for the new notebook and press <key>Enter</key> or click the "
+"confirmation button."
+msgstr ""
+"Введіть назву нового нотатника і натисніть клавішу <key>Enter</key> або"
+" кнопку підтвердження."
 
 #. (itstool) path: figure/title
 #: C/gnote-working-with-notebooks.page:49
@@ -2527,13 +2524,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:61
+#| msgid ""
+#| "Click on a notebook, right-click in notes list and select <gui>New</gui> "
+#| "from the context menu. A new note will be created and added to the "
+#| "notebook."
 msgid ""
-"Click on a notebook, right-click in notes list and select <gui>New</gui> "
-"from the context menu. A new note will be created and added to the notebook."
+"Select a notebook and use any of main window actions to create new note. A "
+"new note will be created and added to the notebook."
 msgstr ""
-"Клацніть на пункті записника, клацніть правою кнопкою миші на списку нотаток "
-"і виберіть у контекстному меню пункт <gui>Створити</gui>. У відповідь "
-"програма створить нотатку і додасть її до записника."
+"Позначте нотатник і скористайтеся будь-якою з кнопок основного вікна для"
+" створення нотатки. У результаті буде створено нотатку, яку буде додано до"
+" нотатника."
 
 #. (itstool) path: section/p
 #: C/gnote-working-with-notebooks.page:63
@@ -2606,11 +2607,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:78
 msgid ""
-"In the main window, right click on a notebook and choose <gui>Open Template "
-"Note</gui>."
+"In the notebooks list at the bottom click on <gui>Open Template Note</gui> "
+"button (the gear button)."
 msgstr ""
-"У головному вікні програми клацніть правою кнопкою миші на пункті записника "
-"і виберіть у контекстному меню пункт <gui>Відкрити шаблон нотатки</gui>."
+"У списку нотатників у нижній частині вікна натисніть кнопку <gui>Відкрити"
+" шаблонну нотатку</gui> (кнопку із шестернею)."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:80
@@ -2676,10 +2677,11 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:93
-msgid "Right click on a notebook and choose <gui>Delete Notebook</gui>."
+msgid ""
+"Click <gui>Delete Notebook</gui> button at the bottom of notebooks list."
 msgstr ""
-"Клацніть правою кнопкою миші на записнику і виберіть пункт меню "
-"<gui>Вилучити записник</gui>."
+"Натисніть кнопку <gui>Вилучити нотатник</gui> у нижній частині списку"
+" нотатників."
 
 #. (itstool) path: item/p
 #: C/gnote-working-with-notebooks.page:94
@@ -2791,6 +2793,60 @@ msgstr "Налаштовування"
 #: C/index.page:41
 msgid "Common Problems"
 msgstr "Типові проблеми"
+
+#~ msgid ""
+#~ "In the main window, right click in the note list and select <gui>New</"
+#~ "gui>. This will create a note in the currently selected notebook."
+#~ msgstr ""
+#~ "У головному вікні програми клацніть правою кнопкою миші на списку нотаток "
+#~ "і виберіть у контекстному меню пункт <gui>Створити</gui>. У відповідь "
+#~ "буде створено нотатку у поточному позначеному записнику."
+
+#~ msgid ""
+#~ "If the status icon is enabled, click on it and select <gui>New Note</gui>."
+#~ msgstr ""
+#~ "Якщо увімкнено піктограму стану, клацніть на ній і виберіть <gui>Створити "
+#~ "нотатку</gui>."
+
+#~ msgid "2011-2013"
+#~ msgstr "2011-2013"
+
+#~ msgid ""
+#~ "Right-click in the list of notes and select <gui>Open</gui> from the "
+#~ "context menu. This will open all selected notes, each in its own window."
+#~ msgstr ""
+#~ "Клацніть правою кнопкою миші на списку нотаток і виберіть пункт "
+#~ "<gui>Відкрити</gui> у контекстному меню. У відповідь буде відкрито усі "
+#~ "позначені нотатки, кожну у окремому вікні."
+
+#~ msgid ""
+#~ "Right-click in the list of notes and select <gui>Open in New Window</gui> "
+#~ "from the context menu. This will open each selected note in a new window, "
+#~ "leaving the original window as is."
+#~ msgstr ""
+#~ "Клацніть правою кнопкою миші на списку нотаток і виберіть у контекстному "
+#~ "меню пункт <gui>Відкрити у новому вікні</gui>. У відповідь усі позначені "
+#~ "нотатки буде відкрито у новому вікні. Початкове вікно лишиться незмінним."
+
+#~ msgid ""
+#~ "In the note overview, right click in the left hand pane and choose "
+#~ "<gui>New...</gui>."
+#~ msgstr ""
+#~ "У вікні огляду нотаток клацніть правою кнопкою миші на лівій панелі і "
+#~ "виберіть у контекстному меню пункт <gui>Створити...</gui>."
+
+#~ msgid ""
+#~ "In the main window, right click on a notebook and choose <gui>Open "
+#~ "Template Note</gui>."
+#~ msgstr ""
+#~ "У головному вікні програми клацніть правою кнопкою миші на пункті "
+#~ "записника і виберіть у контекстному меню пункт <gui>Відкрити шаблон "
+#~ "нотатки</gui>."
+
+#~ msgid "Right click on a notebook and choose <gui>Delete Notebook</gui>."
+#~ msgstr ""
+#~ "Клацніть правою кнопкою миші на записнику і виберіть пункт меню "
+#~ "<gui>Вилучити записник</gui>."
 
 #~ msgid "2013,2014"
 #~ msgstr "2013,2014"
