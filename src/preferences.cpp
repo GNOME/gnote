@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2021 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2021,2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -93,6 +93,7 @@ const Glib::ustring SEARCH_WINDOW_HEIGHT = "search-window-height";
 const Glib::ustring SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
 const Glib::ustring SEARCH_SORTING = "search-sorting";
 const Glib::ustring USE_CLIENT_SIDE_DECORATIONS = "use-client-side-decorations";
+const Glib::ustring COLOR_SCHEME = "color-scheme";
 
 const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
@@ -149,6 +150,7 @@ namespace gnote {
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_splitter_pos, SEARCH_WINDOW_SPLITTER_POS)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, search_sorting, SEARCH_SORTING)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, use_client_side_decorations, USE_CLIENT_SIDE_DECORATIONS)
+  DEFINE_GETTER_SETTER_STRING(m_schema_gnote, color_scheme, COLOR_SCHEME)
 
   DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)

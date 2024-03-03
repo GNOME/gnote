@@ -155,6 +155,21 @@ namespace gnote {
     m_sync_manager = new sync::SyncManager(*this, default_note_manager());
     m_sync_manager->init();
 
+    {
+      auto style_manager = adw_style_manager_get_default();
+      auto scheme = m_preferences.color_scheme();
+      auto color_scheme = ADW_COLOR_SCHEME_DEFAULT;
+      if(scheme == "dark") {
+        color_scheme = ADW_COLOR_SCHEME_FORCE_DARK;
+      }
+      else if(scheme == "light") {
+        color_scheme = ADW_COLOR_SCHEME_FORCE_LIGHT;
+      }
+
+      g_object_set(style_manager, "color-scheme", color_scheme, nullptr);
+    }
+
+
     m_manager->get_addin_manager().initialize_application_addins();
   }
 

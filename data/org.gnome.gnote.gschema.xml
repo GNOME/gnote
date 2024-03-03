@@ -136,6 +136,11 @@
       <summary>Use client side window decorations</summary>
       <description>Should Gnote draw its window titlebar, or leave that to window manager. Possible values are 'enabled' to draw them, 'disabled' to leave them to window manager, or a comma separated list of desktop environments, where Gnote should draw decorations itself. Requires application restart.</description>
     </key>
+    <key name="color-scheme" type="s">
+      <default>''</default>
+      <summary>Prefered colot scheme to use</summary>
+      <description>The theme variant to use. Possible values are empty string to follow the system, 'dark' and 'light'.</description>
+    </key>
     <child name="export-html" schema="org.gnome.gnote.export-html" />
     <child name="sync" schema="org.gnome.gnote.sync" />
     <child name="sync-gvfs" schema="org.gnome.gnote.sync.gvfs" />

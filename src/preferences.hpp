@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2022 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2022,2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -74,6 +74,7 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_INT(search_window_splitter_pos)
     GNOTE_PREFERENCES_SETTING_STRING(search_sorting)
     GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
+    GNOTE_PREFERENCES_SETTING_STRING(color_scheme)
 
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
 
