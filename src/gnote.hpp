@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2019,2021-2023 Aurimas Cernius
+ * Copyright (C) 2010-2019,2021-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -174,6 +174,7 @@ private:
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
   void on_show_help_shortcust_action(const Glib::VariantBase&);
+  void on_color_scheme_pref_changed();
   MainWindow *get_active_window();
   void register_object();
 
