@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-02-11 21:47+0000\n"
-"PO-Revision-Date: 2024-02-23 00:43+0100\n"
+"POT-Creation-Date: 2024-03-03 21:01+0000\n"
+"PO-Revision-Date: 2024-03-04 21:01+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:97 src/recentchanges.cpp:120
+#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
 msgid "Gnote"
 msgstr "Gnote jegyzettömb"
 
@@ -358,22 +358,34 @@ msgstr ""
 "listája, ahol önmagának a Gnote programnak kell kirajzolnia a díszítést. Az "
 "alkalmazás újraindítását igényli."
 
-#: data/org.gnome.gnote.gschema.xml:148
+#: data/org.gnome.gnote.gschema.xml:141
+msgid "Preferred color scheme to use"
+msgstr "Előnyben részesített használandó színséma"
+
+#: data/org.gnome.gnote.gschema.xml:142
+msgid ""
+"The theme variant to use. Possible values are empty string to follow the "
+"system, 'dark' and 'light'."
+msgstr ""
+"A használandó témaváltozat. A lehetséges értékek az üres karakterlánc a"
+" rendszer követéséhez, „dark” (sötét) és „light” (világos)."
+
+#: data/org.gnome.gnote.gschema.xml:153
 msgid "HTML Export Last Directory"
 msgstr "Utolsó HTML-be exportálás könyvtára"
 
-#: data/org.gnome.gnote.gschema.xml:149
+#: data/org.gnome.gnote.gschema.xml:154
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "A HTML-be exportálás bővítménnyel jegyzet exportálására legutóbb használt "
 "könyvtár."
 
-#: data/org.gnome.gnote.gschema.xml:153
+#: data/org.gnome.gnote.gschema.xml:158
 msgid "HTML Export Linked Notes"
 msgstr "Hivatkozott jegyzetek exportálása HTML-be"
 
-#: data/org.gnome.gnote.gschema.xml:154
+#: data/org.gnome.gnote.gschema.xml:159
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -381,11 +393,11 @@ msgstr ""
 "A „Hivatkozott jegyzetek exportálása” jelölőnégyzet utolsó állapota a HTML-"
 "be exportálás bővítményen."
 
-#: data/org.gnome.gnote.gschema.xml:158
+#: data/org.gnome.gnote.gschema.xml:163
 msgid "HTML Export All Linked Notes"
 msgstr "Hivatkozott jegyzetek exportálása HTML-be"
 
-#: data/org.gnome.gnote.gschema.xml:159
+#: data/org.gnome.gnote.gschema.xml:164
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -397,11 +409,11 @@ msgstr ""
 "exportálása HTML-be” beállítással együtt használandó annak megadására, hogy "
 "HTML-be exportáláskor a rekurzívan megtalált jegyzeteket fel kell-e venni."
 
-#: data/org.gnome.gnote.gschema.xml:165
+#: data/org.gnome.gnote.gschema.xml:170
 msgid "Synchronization Client ID"
 msgstr "Szinkronizációs kliens azonosítója"
 
-#: data/org.gnome.gnote.gschema.xml:166
+#: data/org.gnome.gnote.gschema.xml:171
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -409,11 +421,11 @@ msgstr ""
 "Ezen Gnote kliens szinkronizációs kiszolgálóval való kommunikációban "
 "használt egyedi azonosítója."
 
-#: data/org.gnome.gnote.gschema.xml:170
+#: data/org.gnome.gnote.gschema.xml:175
 msgid "Synchronization Local Server Path"
 msgstr "Helyi szinkronizációs kiszolgáló útvonala"
 
-#: data/org.gnome.gnote.gschema.xml:171
+#: data/org.gnome.gnote.gschema.xml:176
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -421,11 +433,11 @@ msgstr ""
 "A fájlrendszer-szinkronizációs szolgáltatásbővítményhez használandó "
 "szinkronizációs kiszolgáló útvonala."
 
-#: data/org.gnome.gnote.gschema.xml:175
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Selected Synchronization Service Addin"
 msgstr "Kijelölt szinkronizációs szolgáltatás bővítmény"
 
-#: data/org.gnome.gnote.gschema.xml:176
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -433,11 +445,11 @@ msgstr ""
 "A jelenleg beállított jegyzetszinkronizációs szolgáltatás bővítmény egyedi "
 "azonosítója."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Jegyzetszinkronizálási ütközés mentett viselkedése"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -450,11 +462,11 @@ msgstr ""
 "felsorolásra kerülnek leképezésre. A 0 esetén a felhasználó ütközések esetén "
 "értesítést kér, így azokat külön-külön kezelheti."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Automatikus háttér-szinkronizálás időkorlátja"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -466,20 +478,20 @@ msgstr ""
 "szinkronizálás kikapcsolt állapotát jelzi. A legkisebb elfogadható érték az "
 "5. Az érték percekben értendő."
 
-#: data/org.gnome.gnote.gschema.xml:193
+#: data/org.gnome.gnote.gschema.xml:198
 msgid "Online directory URI"
 msgstr "Online könyvtár URI"
 
-#: data/org.gnome.gnote.gschema.xml:194
+#: data/org.gnome.gnote.gschema.xml:199
 msgid "URI to online directory where notes are synchronized to."
 msgstr ""
 "Az online könyvtár URI-ja, ahova a jegyzetek szinkronizálásra kerülnek."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Accept SSL Certificates"
 msgstr "SSL tanúsítványok elfogadása"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -487,37 +499,37 @@ msgstr ""
 "A „-ac” wdfs kapcsoló használata SSL tanúsítványok elfogadására a "
 "felhasználó megkérdezése nélkül."
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:210
 msgid "Share URL"
 msgstr "Megosztási URL"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:211
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "WebDAV megosztás, ahova a jegyzetek szinkronizálásra kerülnek."
 
-#: data/org.gnome.gnote.gschema.xml:210
+#: data/org.gnome.gnote.gschema.xml:215
 msgid "Share username"
 msgstr "Megosztás felhasználóneve"
 
-#: data/org.gnome.gnote.gschema.xml:211
+#: data/org.gnome.gnote.gschema.xml:216
 msgid "Username to access WebDAV share."
 msgstr "Felhasználónév a WebDAV megosztás eléréséhez."
 
-#: data/org.gnome.gnote.gschema.xml:217
+#: data/org.gnome.gnote.gschema.xml:222
 msgid "Timestamp format"
 msgstr "Időbélyeg formátuma"
 
-#: data/org.gnome.gnote.gschema.xml:218
+#: data/org.gnome.gnote.gschema.xml:223
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "Az időbélyeghez használt dátumformátum."
 
-#: data/org.gnome.gnote.gschema.xml:224
+#: data/org.gnome.gnote.gschema.xml:229
 msgid "Time between checks"
 msgstr "Ellenőrzések közötti idő"
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -1296,7 +1308,6 @@ msgstr ""
 "menüben."
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
-#| msgid "Aurimas Černius"
 msgid "Aurimas Černius, Luc Pionchon"
 msgstr "Aurimas Černius, Luc Pionchon"
 
@@ -1401,22 +1412,22 @@ msgstr "Gnote jegyzetek szinkronizálása WebDAV URL-re."
 msgid "Exception thrown when creating note: %s"
 msgstr "Kivétel történt a jegyzet létrehozásakor: %s"
 
-#: src/gnote.cpp:208
+#: src/gnote.cpp:223
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Nem érhető el D-Bus kapcsolat, a Shell keresése és a távoli vezérlés nem fog "
 "működni."
 
-#: src/gnote.cpp:240
+#: src/gnote.cpp:255
 msgid "Failed to get shortcuts window!"
 msgstr "Nem sikerült lekérni a gyorsbillentyűk ablakát."
 
-#: src/gnote.cpp:254
+#: src/gnote.cpp:269
 msgid "and Tomboy original authors."
 msgstr "és a Tomboy eredeti szerzői."
 
-#: src/gnote.cpp:260
+#: src/gnote.cpp:275
 msgid "translator-credits"
 msgstr ""
 "Kelemen Gábor <kelemeng at gnome dot hu>\n"
@@ -1427,12 +1438,7 @@ msgstr ""
 "Török Gábor <gabo at linuxportal dot hu>\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
-#: src/gnote.cpp:269
-#| msgid ""
-#| "Copyright © 2010-2023 Aurimas Cernius\n"
-#| "Copyright © 2009-2011 Debarshi Ray\n"
-#| "Copyright © 2009 Hubert Figuiere\n"
-#| "Copyright © 2004-2009 the Tomboy original authors."
+#: src/gnote.cpp:284
 msgid ""
 "Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1444,76 +1450,76 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 a Tomboy eredeti szerzői."
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:288
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Egyszerű és könnyen használható asztali jegyzetkezelő alkalmazás."
 
-#: src/gnote.cpp:275
+#: src/gnote.cpp:290
 msgid "Homepage"
 msgstr "Honlap"
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:485
 msgid "Run Gnote in background."
 msgstr "A Gnote futtatása a háttérben."
 
-#: src/gnote.cpp:471
+#: src/gnote.cpp:486
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "A Gnote futtatása GNOME parancsértelmező keresőszolgáltatóként."
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:487
 msgid "Specify the path of the directory containing the notes."
 msgstr "Adja meg a jegyzeteket tartalmazó könyvtár útvonalát."
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:487
 msgid "path"
 msgstr "útvonal"
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:488
 msgid "Open the search all notes window with the search text."
 msgstr "A Keresés minden jegyzetben ablak megnyitása a keresőkifejezéssel."
 
-#: src/gnote.cpp:473 src/gnote.cpp:478
+#: src/gnote.cpp:488 src/gnote.cpp:493
 msgid "text"
 msgstr "szöveg"
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:489
 msgid "Print version information."
 msgstr "Verzióinformációk kiírása."
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:490
 msgid "Create and display a new note, with a optional title."
 msgstr "Új jegyzet létrehozása és megjelenítése, elhagyható címmel."
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:490
 msgid "title"
 msgstr "cím"
 
-#: src/gnote.cpp:476
+#: src/gnote.cpp:491
 msgid "Display the existing note matching title."
 msgstr "Az illeszkedő című meglévő jegyzet megjelenítése."
 
-#: src/gnote.cpp:476
+#: src/gnote.cpp:491
 msgid "title/url"
 msgstr "cím/url"
 
-#: src/gnote.cpp:477
+#: src/gnote.cpp:492
 msgid "Display the 'Start Here' note."
 msgstr "A „Kezdje itt” jegyzet megjelenítése."
 
-#: src/gnote.cpp:478
+#: src/gnote.cpp:493
 msgid "Search and highlight text in the opened note."
 msgstr "Szöveg keresése és kiemelése megnyitott jegyzetben."
 
-#: src/gnote.cpp:482
+#: src/gnote.cpp:497
 msgid "A note taking application"
 msgstr "Jegyzetkezelő alkalmazás"
 
-#: src/gnote.cpp:482
+#: src/gnote.cpp:497
 msgid "Gnote options at launch"
 msgstr "A Gnote indítási kapcsolói"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:666
+#: src/gnote.cpp:681
 msgid "Version %1"
 msgstr "%1 verzió"
 
@@ -1605,22 +1611,18 @@ msgid "No notebook"
 msgstr "Nincs jegyzettömb"
 
 #: src/notebooks/notebooksview.cpp:205
-#| msgid "New Note_book..."
 msgid "New Notebook"
 msgstr "Új jegyzettömb"
 
 #: src/notebooks/notebooksview.cpp:209
-#| msgid "Create Notebook"
 msgid "Rename Notebook"
 msgstr "Jegyzettömb átnevezése"
 
 #: src/notebooks/notebooksview.cpp:214
-#| msgid "_Open Template Note"
 msgid "Open Template Note"
 msgstr "Sablonjegyzet megnyitása"
 
 #: src/notebooks/notebooksview.cpp:218
-#| msgid "Create Notebook"
 msgid "Delete Notebook"
 msgstr "Jegyzettömb törlése"
 
@@ -2182,38 +2184,38 @@ msgstr "Szerző:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: src/recentchanges.cpp:64
+#: src/recentchanges.cpp:66
 msgid "Close"
 msgstr "Bezárás"
 
-#: src/recentchanges.cpp:280
+#: src/recentchanges.cpp:281
 msgid "Create New Note"
 msgstr "Új jegyzet létrehozása"
 
-#: src/recentchanges.cpp:303
+#: src/recentchanges.cpp:304
 msgid "Search"
 msgstr "Keresés"
 
-#: src/recentchanges.cpp:380
+#: src/recentchanges.cpp:382
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "A beágyazott doboz szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:412
+#: src/recentchanges.cpp:407
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "A keresés beviteli mezőjének szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:705
+#: src/recentchanges.cpp:737
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nincs beágyazva az "
 "ablakba"
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:744
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nem Gtk::Widget"
 
-#: src/recentchanges.cpp:912
+#: src/recentchanges.cpp:944
 msgid "No configured actions"
 msgstr "Nincsenek beállított műveletek"
 
@@ -2639,7 +2641,6 @@ msgstr "A szinkronizálás meghiúsult a következő kivétellel: %s"
 
 #: src/utils.cpp:74
 #, c-format
-#| msgid "Failed to upload note: %s"
 msgid "Failed to show help: %s"
 msgstr "Nem sikerült megjeleníteni a súgót: %s"
 
@@ -2657,7 +2658,6 @@ msgstr "Nem található súgó"
 
 #: src/utils.cpp:99
 #, c-format
-#| msgid "Failed to call GTG: %s"
 msgid "Failed to open URL: %s"
 msgstr "Nem sikerült megnyitni az URL-t: %s"
 
@@ -2729,17 +2729,17 @@ msgid "(Untitled %1)"
 msgstr "(Névtelen %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:224
+#: src/watchers.cpp:230
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
 "Már létezik <b>%1</b> nevű jegyzet. A folytatáshoz válasszon másik nevet."
 
-#: src/watchers.cpp:239
+#: src/watchers.cpp:245
 msgid "Note title taken"
 msgstr "A jegyzet neve foglalt"
 
-#: src/watchers.cpp:306
+#: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
