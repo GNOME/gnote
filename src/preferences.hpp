@@ -74,7 +74,7 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_INT(search_window_splitter_pos)
     GNOTE_PREFERENCES_SETTING_STRING(search_sorting)
     GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
-    GNOTE_PREFERENCES_SETTING_STRING(color_scheme)
+    GNOTE_PREFERENCES_CACHING_SETTING(color_scheme, const Glib::ustring&)
 
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
 
@@ -98,6 +98,7 @@ namespace gnote {
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;
 
     Glib::ustring m_custom_font_face;
+    Glib::ustring m_color_scheme;
 
     Glib::ustring m_desktop_gnome_clock_format;
     Glib::ustring m_desktop_gnome_font;

@@ -127,6 +127,7 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR, int);
     SETUP_CACHED_KEY(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE, string);
+    SETUP_CACHED_KEY(m_schema_gnote, color_scheme, COLOR_SCHEME, string);
 
     SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_clock_format, DESKTOP_GNOME_CLOCK_FORMAT, string);
 
@@ -150,7 +151,7 @@ namespace gnote {
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_splitter_pos, SEARCH_WINDOW_SPLITTER_POS)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, search_sorting, SEARCH_SORTING)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, use_client_side_decorations, USE_CLIENT_SIDE_DECORATIONS)
-  DEFINE_GETTER_SETTER_STRING(m_schema_gnote, color_scheme, COLOR_SCHEME)
+  DEFINE_CACHING_SETTER_STRING(m_schema_gnote, color_scheme, COLOR_SCHEME)
 
   DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
