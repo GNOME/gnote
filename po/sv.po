@@ -9,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2024-01-29 21:13+0000\n"
-"PO-Revision-Date: 2024-01-29 22:15+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
+"POT-Creation-Date: 2024-03-03 21:01+0000\n"
+"PO-Revision-Date: 2024-03-03 22:02+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:97 src/recentchanges.cpp:120
+#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -346,22 +346,34 @@ msgstr ""
 "kommaseparerad lista av skrivbordsmiljöer där Gnote ska rita dekorationer "
 "själv. Kräver omstart av programmet."
 
-#: data/org.gnome.gnote.gschema.xml:148
+#: data/org.gnome.gnote.gschema.xml:141
+msgid "Preferred color scheme to use"
+msgstr "Föredraget färgschema att använda"
+
+#: data/org.gnome.gnote.gschema.xml:142
+msgid ""
+"The theme variant to use. Possible values are empty string to follow the "
+"system, 'dark' and 'light'."
+msgstr ""
+"Temavarianten att använda. Möjliga värden är tom sträng för att följa "
+"systemet, ”dark” (mörk) och ”light” (ljus)."
+
+#: data/org.gnome.gnote.gschema.xml:153
 msgid "HTML Export Last Directory"
 msgstr "HTML-exportera senaste katalogen"
 
-#: data/org.gnome.gnote.gschema.xml:149
+#: data/org.gnome.gnote.gschema.xml:154
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Senaste katalogen som en anteckning exporterades till med insticksmodulen "
 "”Exportera till HTML”."
 
-#: data/org.gnome.gnote.gschema.xml:153
+#: data/org.gnome.gnote.gschema.xml:158
 msgid "HTML Export Linked Notes"
 msgstr "HTML-exportera länkade anteckningar"
 
-#: data/org.gnome.gnote.gschema.xml:154
+#: data/org.gnome.gnote.gschema.xml:159
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -369,11 +381,11 @@ msgstr ""
 "Senaste inställningen för kryssrutan ”Exportera länkade anteckningar” i "
 "insticksmodulen ”Exportera till HTML”."
 
-#: data/org.gnome.gnote.gschema.xml:158
+#: data/org.gnome.gnote.gschema.xml:163
 msgid "HTML Export All Linked Notes"
 msgstr "HTML-exportera alla länkade anteckningar"
 
-#: data/org.gnome.gnote.gschema.xml:159
+#: data/org.gnome.gnote.gschema.xml:164
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -386,11 +398,11 @@ msgstr ""
 "anteckningar” och används för att ange huruvida alla anteckningar (rekursivt "
 "hittade) ska inkluderas vid en HTML-exportering."
 
-#: data/org.gnome.gnote.gschema.xml:165
+#: data/org.gnome.gnote.gschema.xml:170
 msgid "Synchronization Client ID"
 msgstr "ID för synkroniseringsklient"
 
-#: data/org.gnome.gnote.gschema.xml:166
+#: data/org.gnome.gnote.gschema.xml:171
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -398,11 +410,11 @@ msgstr ""
 "Unik identifierare för den här Gnote-klienten, används vid kommunikation med "
 "en synkroniseringsserver."
 
-#: data/org.gnome.gnote.gschema.xml:170
+#: data/org.gnome.gnote.gschema.xml:175
 msgid "Synchronization Local Server Path"
 msgstr "Lokal serversökväg för synkronisering"
 
-#: data/org.gnome.gnote.gschema.xml:171
+#: data/org.gnome.gnote.gschema.xml:176
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -410,11 +422,11 @@ msgstr ""
 "Sökväg till synkroniseringsservern när tilläggstjänsten för synkronisering "
 "av filsystem används."
 
-#: data/org.gnome.gnote.gschema.xml:175
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Selected Synchronization Service Addin"
 msgstr "Valt tilläggstjänst för synkronisering"
 
-#: data/org.gnome.gnote.gschema.xml:176
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -422,11 +434,11 @@ msgstr ""
 "Unik identifierare för den för närvarande konfigurerade tilläggstjänsten för "
 "synkronisering av anteckningar."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Sparat beteende för synkroniseringskonflikter för anteckningar"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -440,11 +452,11 @@ msgstr ""
 "indikerar att användaren önskar att bli tillfrågad när en konflikt uppstår, "
 "så att användaren kan hantera konflikten från fall till fall."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Tidsgräns överskreds för automatisk bakgrundssynkronisering"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -457,19 +469,19 @@ msgstr ""
 "inaktiverad. Det lägsta tillåtna positiva värdet är 5. Värdet anges i "
 "minuter."
 
-#: data/org.gnome.gnote.gschema.xml:193
+#: data/org.gnome.gnote.gschema.xml:198
 msgid "Online directory URI"
 msgstr "URI för nätkatalog"
 
-#: data/org.gnome.gnote.gschema.xml:194
+#: data/org.gnome.gnote.gschema.xml:199
 msgid "URI to online directory where notes are synchronized to."
 msgstr "URI till nätkatalog som anteckningar synkroniseras till."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Accept SSL Certificates"
 msgstr "Acceptera SSL-certifikat"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -477,27 +489,27 @@ msgstr ""
 "Använd wdfs-flaggan ”-ac” för att acceptera SSL-certifikat utan att "
 "tillfråga användaren."
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:210
 msgid "Share URL"
 msgstr "Utdelnings-URL"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:211
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL till WebDAV-utdelning som anteckningar synkroniseras till."
 
-#: data/org.gnome.gnote.gschema.xml:210
+#: data/org.gnome.gnote.gschema.xml:215
 msgid "Share username"
 msgstr "Användarnamn för utdelning"
 
-#: data/org.gnome.gnote.gschema.xml:211
+#: data/org.gnome.gnote.gschema.xml:216
 msgid "Username to access WebDAV share."
 msgstr "Användarnamn för att komma åt WebDAV-utdelning."
 
-#: data/org.gnome.gnote.gschema.xml:217
+#: data/org.gnome.gnote.gschema.xml:222
 msgid "Timestamp format"
 msgstr "Format för tidsstämpel"
 
-#: data/org.gnome.gnote.gschema.xml:218
+#: data/org.gnome.gnote.gschema.xml:223
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -505,11 +517,11 @@ msgstr ""
 "Datumformatet som används för tidsstämpeln. Den följer formatet för "
 "strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:224
+#: data/org.gnome.gnote.gschema.xml:229
 msgid "Time between checks"
 msgstr "Tid mellan kontroller"
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -850,7 +862,6 @@ msgid "_Cancel"
 msgstr "A_vbryt"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:276
-#: src/searchnoteswidget.cpp:915
 msgid "_Open"
 msgstr "Ö_ppna"
 
@@ -887,7 +898,6 @@ msgstr "Om du tar bort en ikon försvinner den för alltid."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
 #: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
-#: src/searchnoteswidget.cpp:917
 msgid "_Delete"
 msgstr "_Ta bort"
 
@@ -1288,7 +1298,6 @@ msgstr ""
 "underavsnitt så kommer innehållsförteckningen visas i en meny."
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
-#| msgid "Aurimas Černius"
 msgid "Aurimas Černius, Luc Pionchon"
 msgstr "Aurimas Černius, Luc Pionchon"
 
@@ -1395,22 +1404,22 @@ msgstr "Synkronisera Gnote-anteckningar till en WebDAV-URL."
 msgid "Exception thrown when creating note: %s"
 msgstr "Undantag kastat vid skapande av anteckning: %s"
 
-#: src/gnote.cpp:208
+#: src/gnote.cpp:223
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Ingen D-Bus-anslutning tillgänglig, skalsökning och fjärrkontroll kommer "
 "inte att fungera."
 
-#: src/gnote.cpp:240
+#: src/gnote.cpp:255
 msgid "Failed to get shortcuts window!"
 msgstr "Misslyckades med att hämta genvägsfönster!"
 
-#: src/gnote.cpp:254
+#: src/gnote.cpp:269
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: src/gnote.cpp:260
+#: src/gnote.cpp:275
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -1422,7 +1431,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gnote.cpp:269
+#: src/gnote.cpp:284
 msgid ""
 "Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1434,76 +1443,76 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:288
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: src/gnote.cpp:275
+#: src/gnote.cpp:290
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: src/gnote.cpp:470
+#: src/gnote.cpp:485
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: src/gnote.cpp:471
+#: src/gnote.cpp:486
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:487
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: src/gnote.cpp:472
+#: src/gnote.cpp:487
 msgid "path"
 msgstr "sökväg"
 
-#: src/gnote.cpp:473
+#: src/gnote.cpp:488
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: src/gnote.cpp:473 src/gnote.cpp:478
+#: src/gnote.cpp:488 src/gnote.cpp:493
 msgid "text"
 msgstr "text"
 
-#: src/gnote.cpp:474
+#: src/gnote.cpp:489
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:490
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: src/gnote.cpp:475
+#: src/gnote.cpp:490
 msgid "title"
 msgstr "titel"
 
-#: src/gnote.cpp:476
+#: src/gnote.cpp:491
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: src/gnote.cpp:476
+#: src/gnote.cpp:491
 msgid "title/url"
 msgstr "titel/url"
 
-#: src/gnote.cpp:477
+#: src/gnote.cpp:492
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: src/gnote.cpp:478
+#: src/gnote.cpp:493
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: src/gnote.cpp:482
+#: src/gnote.cpp:497
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: src/gnote.cpp:482
+#: src/gnote.cpp:497
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:666
+#: src/gnote.cpp:681
 msgid "Version %1"
 msgstr "Version %1"
 
@@ -2172,36 +2181,36 @@ msgstr "Upphovsman:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: src/recentchanges.cpp:64
+#: src/recentchanges.cpp:66
 msgid "Close"
 msgstr "Stäng"
 
-#: src/recentchanges.cpp:280
+#: src/recentchanges.cpp:281
 msgid "Create New Note"
 msgstr "Skapa ny anteckning"
 
-#: src/recentchanges.cpp:303
+#: src/recentchanges.cpp:304
 msgid "Search"
 msgstr "Sök"
 
-#: src/recentchanges.cpp:380
+#: src/recentchanges.cpp:382
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Överordnad till inbäddningsruta är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:412
+#: src/recentchanges.cpp:407
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Överordnad till sökfält är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:705
+#: src/recentchanges.cpp:737
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Försök att ta en komponent till förgrunden, som inte är inbäddad i fönstret"
 
-#: src/recentchanges.cpp:712
+#: src/recentchanges.cpp:744
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Försök att ta en komponent till förgrunden, som inte är Gtk::Widget"
 
-#: src/recentchanges.cpp:912
+#: src/recentchanges.cpp:944
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
@@ -2221,15 +2230,15 @@ msgid_plural "%1 matches"
 msgstr[0] "%1 träff"
 msgstr[1] "%1 träffar"
 
-#: src/searchnoteswidget.cpp:555
+#: src/searchnoteswidget.cpp:548
 msgid "Note"
 msgstr "Anteckning"
 
-#: src/searchnoteswidget.cpp:567
+#: src/searchnoteswidget.cpp:560
 msgid "Modified"
 msgstr "Ändrad"
 
-#: src/searchnoteswidget.cpp:743
+#: src/searchnoteswidget.cpp:732
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2237,38 +2246,30 @@ msgstr ""
 "Inga resultat hittades i markerat anteckningsblock.\n"
 "Klicka här för att söka igenom alla anteckningar."
 
-#: src/searchnoteswidget.cpp:747
+#: src/searchnoteswidget.cpp:736
 msgid "Click here to search across all notebooks"
 msgstr "Klicka här för att söka igenom alla anteckningsblock"
 
-#: src/searchnoteswidget.cpp:762
+#: src/searchnoteswidget.cpp:751
 msgid "Matches"
 msgstr "Träffar"
 
-#: src/searchnoteswidget.cpp:914
-msgid "_New"
-msgstr "_Ny"
-
-#: src/searchnoteswidget.cpp:916
-msgid "Open In New _Window"
-msgstr "Öppna i _nytt fönster"
-
-#: src/searchnoteswidget.cpp:1020 src/searchnoteswidget.cpp:1033
-#: src/searchnoteswidget.cpp:1044
+#: src/searchnoteswidget.cpp:1003 src/searchnoteswidget.cpp:1016
+#: src/searchnoteswidget.cpp:1027
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Misslyckades med att tolka inställning för söksortering (Värde: %s):"
 
-#: src/searchnoteswidget.cpp:1021
+#: src/searchnoteswidget.cpp:1004
 msgid "Expected format 'column:order'"
 msgstr "Förväntat format 'kolumn:ordning'"
 
-#: src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:1017
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Okänd kolumn %s"
 
-#: src/searchnoteswidget.cpp:1045
+#: src/searchnoteswidget.cpp:1028
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Okänd ordning %s"
@@ -2452,47 +2453,47 @@ msgstr "Detaljer"
 msgid "Status"
 msgstr "Status"
 
-#: src/synchronization/syncdialog.cpp:461
+#: src/synchronization/syncdialog.cpp:463
 msgid "Acquiring sync lock..."
 msgstr "Tar över synkroniseringslås…"
 
-#: src/synchronization/syncdialog.cpp:464
+#: src/synchronization/syncdialog.cpp:466
 msgid "Committing changes..."
 msgstr "Verkställer ändringar…"
 
-#: src/synchronization/syncdialog.cpp:467
+#: src/synchronization/syncdialog.cpp:469
 msgid "Synchronizing Notes"
 msgstr "Synkroniserar anteckningar"
 
-#: src/synchronization/syncdialog.cpp:468
+#: src/synchronization/syncdialog.cpp:470
 msgid "Synchronizing your notes..."
 msgstr "Synkroniserar dina anteckningar…"
 
-#: src/synchronization/syncdialog.cpp:469
+#: src/synchronization/syncdialog.cpp:471
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Det här kan ta en stund, luta dig tillbaka och njut!"
 
-#: src/synchronization/syncdialog.cpp:471
+#: src/synchronization/syncdialog.cpp:473
 msgid "Connecting to the server..."
 msgstr "Ansluter till servern…"
 
-#: src/synchronization/syncdialog.cpp:477
+#: src/synchronization/syncdialog.cpp:479
 msgid "Deleting notes off of the server..."
 msgstr "Tar bort anteckningar från servern…"
 
-#: src/synchronization/syncdialog.cpp:481
+#: src/synchronization/syncdialog.cpp:483
 msgid "Downloading new/updated notes..."
 msgstr "Hämtar nya/uppdaterade anteckningar…"
 
-#: src/synchronization/syncdialog.cpp:493
+#: src/synchronization/syncdialog.cpp:495
 msgid "Server Locked"
 msgstr "Servern är låst"
 
-#: src/synchronization/syncdialog.cpp:494
+#: src/synchronization/syncdialog.cpp:496
 msgid "Server is locked"
 msgstr "Servern är låst"
 
-#: src/synchronization/syncdialog.cpp:495
+#: src/synchronization/syncdialog.cpp:497
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2500,107 +2501,107 @@ msgstr ""
 "En av dina andra datorer synkroniserar för tillfället.  Vänta 2 minuter och "
 "försök igen."
 
-#: src/synchronization/syncdialog.cpp:499
+#: src/synchronization/syncdialog.cpp:501
 msgid "Preparing to download updates from server..."
 msgstr "Förbereder att hämta uppdateringar från servern…"
 
-#: src/synchronization/syncdialog.cpp:502
+#: src/synchronization/syncdialog.cpp:504
 msgid "Preparing to upload updates to server..."
 msgstr "Förbereder för att skicka upp uppdateringar till servern…"
 
-#: src/synchronization/syncdialog.cpp:505
+#: src/synchronization/syncdialog.cpp:507
 msgid "Uploading notes to server..."
 msgstr "Skickar upp anteckningar till servern…"
 
-#: src/synchronization/syncdialog.cpp:508
+#: src/synchronization/syncdialog.cpp:510
 msgid "Synchronization Failed"
 msgstr "Synkroniseringen misslyckades"
 
-#: src/synchronization/syncdialog.cpp:509
+#: src/synchronization/syncdialog.cpp:511
 msgid "Failed to synchronize"
 msgstr "Misslyckades med att synkronisera"
 
-#: src/synchronization/syncdialog.cpp:510
+#: src/synchronization/syncdialog.cpp:512
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Kunde inte synkronisera anteckningar.  Kontrollera detaljerna nedan och "
 "försök igen."
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:518
 msgid "Synchronization Complete"
 msgstr "Synkroniseringen är färdig"
 
-#: src/synchronization/syncdialog.cpp:517
+#: src/synchronization/syncdialog.cpp:519
 msgid "Synchronization is complete"
 msgstr "Synkroniseringen är färdig"
 
-#: src/synchronization/syncdialog.cpp:518
+#: src/synchronization/syncdialog.cpp:520
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
 msgstr[0] "%1 anteckning uppdaterad."
 msgstr[1] "%1 anteckningar uppdaterade."
 
-#: src/synchronization/syncdialog.cpp:519
+#: src/synchronization/syncdialog.cpp:521
 msgid "Your notes are now up to date."
 msgstr "Dina anteckningar är nu uppdaterade."
 
-#: src/synchronization/syncdialog.cpp:524
+#: src/synchronization/syncdialog.cpp:526
 msgid "Synchronization Canceled"
 msgstr "Synkroniseringen avbröts"
 
-#: src/synchronization/syncdialog.cpp:525
+#: src/synchronization/syncdialog.cpp:527
 msgid "Synchronization was canceled"
 msgstr "Synkroniseringen har avbrutits"
 
-#: src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:528
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Du avbröt synkroniseringen.  Du kan stänga fönstret nu."
 
-#: src/synchronization/syncdialog.cpp:530
+#: src/synchronization/syncdialog.cpp:532
 msgid "Synchronization Not Configured"
 msgstr "Synkronisering är inte konfigurerad"
 
-#: src/synchronization/syncdialog.cpp:531
+#: src/synchronization/syncdialog.cpp:533
 msgid "Synchronization is not configured"
 msgstr "Synkronisering är inte konfigurerad"
 
-#: src/synchronization/syncdialog.cpp:532
+#: src/synchronization/syncdialog.cpp:534
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Konfigurera synkronisering i inställningsdialogrutan."
 
-#: src/synchronization/syncdialog.cpp:536
+#: src/synchronization/syncdialog.cpp:538
 msgid "Synchronization Service Error"
 msgstr "Fel i synkroniseringstjänsten"
 
-#: src/synchronization/syncdialog.cpp:537
+#: src/synchronization/syncdialog.cpp:539
 msgid "Service error"
 msgstr "Fel i tjänst"
 
-#: src/synchronization/syncdialog.cpp:538
+#: src/synchronization/syncdialog.cpp:540
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Fel vid anslutning till synkroniseringstjänsten.  Försök igen."
 
-#: src/synchronization/syncdialog.cpp:552
+#: src/synchronization/syncdialog.cpp:554
 msgid "Deleted locally"
 msgstr "Borttagen lokalt"
 
-#: src/synchronization/syncdialog.cpp:555
+#: src/synchronization/syncdialog.cpp:557
 msgid "Deleted from server"
 msgstr "Borttagen från servern"
 
-#: src/synchronization/syncdialog.cpp:558
+#: src/synchronization/syncdialog.cpp:560
 msgid "Updated"
 msgstr "Uppdaterad"
 
-#: src/synchronization/syncdialog.cpp:561
+#: src/synchronization/syncdialog.cpp:563
 msgid "Added"
 msgstr "Tillagd"
 
-#: src/synchronization/syncdialog.cpp:564
+#: src/synchronization/syncdialog.cpp:566
 msgid "Uploaded changes to server"
 msgstr "Skickade upp ändringar till servern"
 
-#: src/synchronization/syncdialog.cpp:567
+#: src/synchronization/syncdialog.cpp:569
 msgid "Uploaded new note to server"
 msgstr "Skickade upp ny anteckning till servern"
 
@@ -2721,7 +2722,7 @@ msgid "(Untitled %1)"
 msgstr "(Namnlös %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:224
+#: src/watchers.cpp:230
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2729,13 +2730,19 @@ msgstr ""
 "En anteckning med titeln <b>%1</b> finns redan. Välj ett annat namn för "
 "denna anteckning innan du fortsätter."
 
-#: src/watchers.cpp:239
+#: src/watchers.cpp:245
 msgid "Note title taken"
 msgstr "Anteckningstiteln är upptagen"
 
-#: src/watchers.cpp:306
+#: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
+
+#~ msgid "_New"
+#~ msgstr "_Ny"
+
+#~ msgid "Open In New _Window"
+#~ msgstr "Öppna i _nytt fönster"
 
 #~ msgid "Luc Pionchon"
 #~ msgstr "Luc Pionchon"
