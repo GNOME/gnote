@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -241,27 +241,23 @@ namespace {
       bullet_peditor->setup();
 
       // Custom font...
-
-      auto font_box = Gtk::make_managed<Gtk::Grid>();
       check = make_check_button(_("Use custom _font"));
       check->set_hexpand(true);
-      font_box->attach(*check, 0, 0, 1, 1);
+      options_list->attach(*check, 0, options_list_row, 1, 1);
       font_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_custom_font, *check);
       font_peditor->setup();
 
       font_button = manage(make_font_button());
       font_button->set_sensitive(check->get_active());
       font_button->set_hexpand(true);
-      font_box->attach(*font_button, 1, 0, 1, 1);
-      options_list->attach(*font_box, 0, options_list_row++, 1, 1);
+      options_list->attach(*font_button, 1, options_list_row++, 1, 1);
 
       font_peditor->add_guard(font_button);
 
       // Note renaming behavior
-      auto rename_behavior_box = Gtk::make_managed<Gtk::Grid>();
       label = make_label(_("When renaming a linked note: "));
       label->set_hexpand(true);
-      rename_behavior_box->attach(*label, 0, 0, 1, 1);
+      options_list->attach(*label, 0, options_list_row, 1, 1);
       std::vector<Glib::ustring> rename_opts;
       rename_opts.emplace_back(_("Ask me what to do"));
       rename_opts.emplace_back(_("Never rename links"));
@@ -284,23 +280,20 @@ namespace {
         }
       });
       m_rename_behavior_combo->set_hexpand(true);
-      rename_behavior_box->attach(*m_rename_behavior_combo, 1, 0, 1, 1);
-      options_list->attach(*rename_behavior_box, 0, options_list_row++, 1, 1);
+      options_list->attach(*m_rename_behavior_combo, 1, options_list_row++, 1, 1);
 
       // New Note Template
-      auto template_note_grid = Gtk::make_managed<Gtk::Grid>();
       // TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
       label = make_label(_("New Note Template"));
       set_widget_tooltip(*label, _("Use the new note template to specify the text "
                                    "that should be used when creating a new note."));
       label->set_hexpand(true);
-      template_note_grid->attach(*label, 0, 0, 1, 1);
+      options_list->attach(*label, 0, options_list_row, 1, 1);
       
       Gtk::Button *open_template_button = Gtk::make_managed<Gtk::Button>(_("Open New Note Template"));
       open_template_button->signal_clicked().connect(
         sigc::mem_fun(*this, &PreferencesDialog::open_template_button_clicked));
-      template_note_grid->attach(*open_template_button, 1, 0, 1, 1);
-      options_list->attach(*template_note_grid, 0, options_list_row++, 1, 1);
+      options_list->attach(*open_template_button, 1, options_list_row++, 1, 1);
 
       return options_list;
     }
