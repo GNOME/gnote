@@ -113,6 +113,9 @@ const Glib::ustring SYNC_FUSE_WDFS_USERNAME = "username";
 
 namespace gnote {
 
+  const char *Preferences::COLOR_SCHEME_DARK_VAL = "dark";
+  const char *Preferences::COLOR_SCHEME_LIGHT_VAL = "light";
+
   void Preferences::init()
   {
     m_schema_gnote = Gio::Settings::create(SCHEMA_GNOTE);

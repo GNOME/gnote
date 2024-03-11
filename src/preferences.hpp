@@ -55,6 +55,9 @@ namespace gnote {
   class Preferences 
   {
   public:
+    static const char *COLOR_SCHEME_DARK_VAL;
+    static const char *COLOR_SCHEME_LIGHT_VAL;
+
     Preferences() {}
     void init();
 

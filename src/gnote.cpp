@@ -291,10 +291,10 @@ namespace gnote {
   {
     auto scheme = m_preferences.color_scheme();
     auto color_scheme = ADW_COLOR_SCHEME_DEFAULT;
-    if(scheme == "dark") {
+    if(scheme == Preferences::COLOR_SCHEME_DARK_VAL) {
       color_scheme = ADW_COLOR_SCHEME_FORCE_DARK;
     }
-    else if(scheme == "light") {
+    else if(scheme == Preferences::COLOR_SCHEME_LIGHT_VAL) {
       color_scheme = ADW_COLOR_SCHEME_FORCE_LIGHT;
     }
 
