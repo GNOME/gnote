@@ -101,6 +101,49 @@ namespace {
     AddinInfo m_addin_info;
     Glib::ustring m_id;
   };
+
+
+  class ColorSchemeItem
+    : public Glib::Object
+  {
+  public:
+    static Glib::RefPtr<ColorSchemeItem> create(Glib::ustring &&label, Glib::ustring &&value)
+      {
+        return Glib::make_refptr_for_instance(new ColorSchemeItem(std::move(label), std::move(value)));
+      }
+
+    const Glib::ustring label;
+    const Glib::ustring value;
+  private:
+    ColorSchemeItem(Glib::ustring &&label, Glib::ustring &&value)
+      : label(std::move(label))
+      , value(std::move(value))
+      {}
+  };
+
+  Glib::RefPtr<Gtk::Expression<Glib::ustring>> make_color_scheme_label_expr()
+  {
+    return Gtk::ClosureExpression<Glib::ustring>::create([](const Glib::RefPtr<Glib::ObjectBase> &obj) -> Glib::ustring {
+      if(auto item = std::dynamic_pointer_cast<ColorSchemeItem>(obj)) {
+        return item->label;
+      }
+
+      ERR_OUT("Object is not ColorSchemeItem. This is a bug, please report it!");
+      return "";
+    });
+  }
+
+  guint color_scheme_item_idx(const Glib::RefPtr<Gio::ListStore<ColorSchemeItem>> &model, const Glib::ustring &value)
+  {
+    const auto count = model->get_n_items();
+    for(guint i = 0; i < count; ++i) {
+      if(value == model->get_item(i)->value) {
+        return i;
+      }
+    }
+
+    return 0;
+  }
 }
 
 
@@ -281,6 +324,25 @@ namespace {
       });
       m_rename_behavior_combo->set_hexpand(true);
       options_list->attach(*m_rename_behavior_combo, 1, options_list_row++, 1, 1);
+
+      // Color scheme
+      label = make_label(_("Color Scheme: "));
+      options_list->attach(*label, 0, options_list_row, 1, 1);
+      auto color_scheme_model = Gio::ListStore<ColorSchemeItem>::create();
+      // TRANSLATORS: Option to follow the system color scheme setting
+      color_scheme_model->append(ColorSchemeItem::create(_("Follow the System"), ""));
+      // TRANSLATORS: Option to use dark variant of the theme
+      color_scheme_model->append(ColorSchemeItem::create(_("Dark"), Preferences::COLOR_SCHEME_DARK_VAL));
+      // TRANSLATORS: Option to use light variant of the theme
+      color_scheme_model->append(ColorSchemeItem::create(_("Light"), Preferences::COLOR_SCHEME_LIGHT_VAL));
+      auto color_scheme = Gtk::make_managed<Gtk::DropDown>(color_scheme_model, make_color_scheme_label_expr());
+      color_scheme->set_selected(color_scheme_item_idx(color_scheme_model, m_gnote.preferences().color_scheme()));
+      color_scheme->property_selected().signal_changed().connect([color_scheme, &gnote=m_gnote] {
+        if(auto item = std::dynamic_pointer_cast<ColorSchemeItem>(color_scheme->get_selected_item())) {
+          gnote.preferences().color_scheme(item->value);
+        }
+      });
+      options_list->attach(*color_scheme, 1, options_list_row++, 1, 1);
 
       // New Note Template
       // TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
