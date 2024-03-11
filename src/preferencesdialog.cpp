@@ -312,16 +312,7 @@ namespace {
         m_gnote.preferences().note_rename_behavior(rename_behavior);
       }
       m_rename_behavior_combo->set_selected(rename_behavior);
-      m_rename_behavior_combo->signal_state_flags_changed().connect([this](Gtk::StateFlags prev_flags) {
-        auto was_active = (Gtk::StateFlags::ACTIVE == (prev_flags & Gtk::StateFlags::ACTIVE));
-        auto now_active = (Gtk::StateFlags::ACTIVE == (m_rename_behavior_combo->get_state_flags() & Gtk::StateFlags::ACTIVE));
-        if(!now_active && was_active) {
-          auto on_deactivate = [](gpointer data) {
-            static_cast<PreferencesDialog*>(data)->on_rename_behavior_changed();
-          };
-          g_timeout_add_once(1, on_deactivate, this);
-        }
-      });
+      m_rename_behavior_combo->property_selected().signal_changed().connect(sigc::mem_fun(*this, &PreferencesDialog::on_rename_behavior_changed));
       m_rename_behavior_combo->set_hexpand(true);
       options_list->attach(*m_rename_behavior_combo, 1, options_list_row++, 1, 1);
 
