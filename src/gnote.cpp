@@ -274,7 +274,7 @@ namespace gnote {
                            "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
                            "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
     about->set_comments(_("A simple and easy to use desktop note-taking application."));
-    about->set_website("http://live.gnome.org/Gnote");
+    about->set_website("https://wiki.gnome.org/Apps/Gnote");
     about->set_website_label(_("Homepage"));
     about->set_authors(authors);
     about->set_documenters(documenters);
