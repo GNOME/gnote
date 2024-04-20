@@ -294,7 +294,8 @@ namespace gnote {
     add(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
-    tag->property_background() = "green";
+    tag->property_background() = "#57e389"; // libadwaita green_2
+    tag->property_foreground() = "#241f31"; // libadwaita dark_4
     tag->set_can_serialize(false);
     tag->set_save_type(META);
     add(tag);
