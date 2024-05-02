@@ -8,22 +8,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-10-05 15:36+0000\n"
-"PO-Revision-Date: 2022-12-21 00:52+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
+"POT-Creation-Date: 2024-03-11 20:07+0000\n"
+"PO-Revision-Date: 2024-05-02 17:48+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:88 src/recentchanges.cpp:116
+#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -37,19 +37,15 @@ msgid ""
 "allows you to capture your ideas, link them together using WikiWiki-style "
 "links, group together in notebooks and some extra features for everyday use."
 msgstr ""
-"Program Gnote je enostaven program za zapisovanje opomnikov in sporočilc "
-"okolja GNOME. Omogoča hitro zapisovanje zamisli, povezovanje zamisli s "
-"pomočjo povezav, združevanje in skupinjenje in druge zanimive možnosti."
+"Gnote je enostaven program za zapisovanje opomnikov in sporočilc okolja "
+"GNOME. Omogoča hitro zapisovanje zamisli, povezovanje zamisli s pomočjo "
+"povezav, združevanje in skupinjenje in druge zanimive možnosti."
 
 #: data/org.gnome.Gnote.appdata.xml.in:13
 msgid "Notes can be printed or exported as HTML documents."
-msgstr ""
+msgstr "Opombe lahko natisnete ali izvozite kot dokumente HTML."
 
 #: data/org.gnome.Gnote.appdata.xml.in:14
-#, fuzzy
-#| msgid ""
-#| "Gnote also supports synchronization to make it possible to use on "
-#| "multiple devices."
 msgid ""
 "Gnote also supports synchronization, making it simple to use it on multiple "
 "devices."
@@ -327,11 +323,11 @@ msgstr "Opuščeno, nima nobenega učinka."
 
 #: data/org.gnome.gnote.gschema.xml:127
 msgid "This setting is deprecated and its value is ignored"
-msgstr ""
+msgstr "Ta nastavitev je zastarela in njena vrednost je prezrta"
 
 #: data/org.gnome.gnote.gschema.xml:136
 msgid "Use client side window decorations"
-msgstr ""
+msgstr "Uporabi okraske oken na strani odjemalca"
 
 #: data/org.gnome.gnote.gschema.xml:137
 msgid ""
@@ -340,22 +336,38 @@ msgid ""
 "window manager, or a comma separated list of desktop environments, where "
 "Gnote should draw decorations itself. Requires application restart."
 msgstr ""
+"Ali naj Gnote nariše naslovno vrstico okna ali jo prepusti upravitelju oken. "
+"Možne vrednosti so »omogočeno«, da jih nariše, »onemogočeno«, da jih pustite "
+"upravitelju oken, ali seznam namiznih okolij, ločenih z vejico, kjer bi "
+"Gnote moral sam narisati okraske. Zahteva vnovični zagon programa."
 
-#: data/org.gnome.gnote.gschema.xml:148
+#: data/org.gnome.gnote.gschema.xml:141
+msgid "Preferred color scheme to use"
+msgstr "Prednostna barvna shema za uporabo"
+
+#: data/org.gnome.gnote.gschema.xml:142
+msgid ""
+"The theme variant to use. Possible values are empty string to follow the "
+"system, 'dark' and 'light'."
+msgstr ""
+"Različica teme za uporabo. Možne vrednosti so prazen niz, ki sledi sistemu, "
+"»dark« in »light«."
+
+#: data/org.gnome.gnote.gschema.xml:153
 msgid "HTML Export Last Directory"
 msgstr "HTML izvoz zadnje mape"
 
-#: data/org.gnome.gnote.gschema.xml:149
+#: data/org.gnome.gnote.gschema.xml:154
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Zadnja mapa v katero so bila izvožena sporočilca z vstavkom izvoz v HTML."
 
-#: data/org.gnome.gnote.gschema.xml:153
+#: data/org.gnome.gnote.gschema.xml:158
 msgid "HTML Export Linked Notes"
 msgstr "HTML izvoz povezanih zapiskov"
 
-#: data/org.gnome.gnote.gschema.xml:154
+#: data/org.gnome.gnote.gschema.xml:159
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -363,11 +375,11 @@ msgstr ""
 "Zadnja nastavitev za potrditveno polje 'Izvozi povezana sporočilca' v "
 "vstavku izvoz v HTML."
 
-#: data/org.gnome.gnote.gschema.xml:158
+#: data/org.gnome.gnote.gschema.xml:163
 msgid "HTML Export All Linked Notes"
 msgstr "HTML izvoz vseh povezanih sporočilc"
 
-#: data/org.gnome.gnote.gschema.xml:159
+#: data/org.gnome.gnote.gschema.xml:164
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -379,15 +391,11 @@ msgstr ""
 "'HTML izvoz povezanih sporočilc' in se uporablja za določanje ali bi morala "
 "biti vsa sporočila (najdena rekurzivno) vključena med izvozom v HTML."
 
-#: data/org.gnome.gnote.gschema.xml:165
+#: data/org.gnome.gnote.gschema.xml:170
 msgid "Synchronization Client ID"
 msgstr "ID odjemalca usklajevanja"
 
-#: data/org.gnome.gnote.gschema.xml:166
-#, fuzzy
-#| msgid ""
-#| "Unique identifier for this Gnote client, used when communicating with a "
-#| "sychronization server."
+#: data/org.gnome.gnote.gschema.xml:171
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -395,11 +403,11 @@ msgstr ""
 "Enoznačno določilo za ta odjemalec Gnote, uporabljeno ob komunikaciji z "
 "uskladitvenim strežnikom."
 
-#: data/org.gnome.gnote.gschema.xml:170
+#: data/org.gnome.gnote.gschema.xml:175
 msgid "Synchronization Local Server Path"
 msgstr "Pot krajevnega uskladitvenega strežnika"
 
-#: data/org.gnome.gnote.gschema.xml:171
+#: data/org.gnome.gnote.gschema.xml:176
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -407,11 +415,11 @@ msgstr ""
 "Pot do uskladitvenega strežnika ob uporabi vstavka storitve usklajevanja "
 "datotečnega sistema."
 
-#: data/org.gnome.gnote.gschema.xml:175
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Selected Synchronization Service Addin"
 msgstr "Vstavek uskladitvene storitve je izbran"
 
-#: data/org.gnome.gnote.gschema.xml:176
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -419,11 +427,11 @@ msgstr ""
 "Enoznačno določilo za trenutno nastavljen vstavek storitve uskladitve "
 "sporočilc. "
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Shranjeno obnašanje sporov usklajevanja sporočilc"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -436,11 +444,11 @@ msgstr ""
 "notranje oštevilčene. Vrednost 0 določi, da je uporabnik vedno obveščen o "
 "napaki in ima možnost vsako težavo reševati posebej."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Zakasnitev samodejnega usklajevanja v ozadju"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -451,21 +459,19 @@ msgstr ""
 "v ozadju. Vrednosti pod 1 onemogočijo samodejno usklajevanje. Najnižja "
 "sprejemljiva vrednost je 5 minut."
 
-#: data/org.gnome.gnote.gschema.xml:193
+#: data/org.gnome.gnote.gschema.xml:198
 msgid "Online directory URI"
-msgstr ""
+msgstr "URI spletne mape"
 
-#: data/org.gnome.gnote.gschema.xml:194
-#, fuzzy
-#| msgid "WebDAV share URL where notes are synchronized to."
+#: data/org.gnome.gnote.gschema.xml:199
 msgid "URI to online directory where notes are synchronized to."
-msgstr "Naslov URL WebDAV za usklajevanje sporočilc."
+msgstr "Naslov URL spletne mape za usklajevanje sporočilc."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Accept SSL Certificates"
 msgstr "Sprejmi potrdila SSL"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -473,37 +479,37 @@ msgstr ""
 "Uporabite wdfs možnost \"-ac\" za sprejem potrdil SSL brez vprašanj "
 "uporabniku."
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:210
 msgid "Share URL"
 msgstr "Naslova URL souporabe"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:211
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Naslov URL WebDAV za usklajevanje sporočilc."
 
-#: data/org.gnome.gnote.gschema.xml:210
+#: data/org.gnome.gnote.gschema.xml:215
 msgid "Share username"
 msgstr "Uporabniško ime souporabe"
 
-#: data/org.gnome.gnote.gschema.xml:211
+#: data/org.gnome.gnote.gschema.xml:216
 msgid "Username to access WebDAV share."
 msgstr "Uporabniško ime za dostop do WebDAV"
 
-#: data/org.gnome.gnote.gschema.xml:217
+#: data/org.gnome.gnote.gschema.xml:222
 msgid "Timestamp format"
 msgstr "Oblika časovnega žiga"
 
-#: data/org.gnome.gnote.gschema.xml:218
+#: data/org.gnome.gnote.gschema.xml:223
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "Oblika datuma v časovnem žigu. Sledi obliki strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:224
+#: data/org.gnome.gnote.gschema.xml:229
 msgid "Time between checks"
 msgstr "Čas med preverjanji"
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -534,7 +540,7 @@ msgstr "Tipke za bližnjice"
 #: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open actions menu"
-msgstr ""
+msgstr "Odpri meni dejanj"
 
 #: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
@@ -567,214 +573,199 @@ msgid "Display search bar"
 msgstr "Prikaži iskalno vrstico"
 
 #: data/shortcuts-gnote.ui:80
-#, fuzzy
-#| msgid "Select None"
 msgctxt "shortcut window"
 msgid "Select next match"
-msgstr "Odstrani izbor"
+msgstr "Izberi naslednji zadetek"
 
 #: data/shortcuts-gnote.ui:87
 msgctxt "shortcut window"
 msgid "Select previous match"
-msgstr ""
+msgstr "Izberi prejšnji zadetek"
 
 #: data/shortcuts-gnote.ui:95
-#, fuzzy
-#| msgid "Note Title"
 msgctxt "shortcut window"
 msgid "Notes list"
-msgstr "Naslov sporočilca"
+msgstr "Seznam sporočilc"
 
 #: data/shortcuts-gnote.ui:100
-#, fuzzy
-#| msgid "Create _new note"
 msgctxt "shortcut window"
 msgid "Create new note"
-msgstr "Ustvari _novo sporočilce"
+msgstr "Ustvari novo sporočilce"
 
 #: data/shortcuts-gnote.ui:107
-#, fuzzy
-#| msgid "_Open Template Note"
 msgctxt "shortcut window"
 msgid "Open selected note"
-msgstr "_Odpri predlogo sporočilc"
+msgstr "Odpri izbrano sporočilce"
 
 #: data/shortcuts-gnote.ui:114
-#, fuzzy
-#| msgid "Open notes in new window"
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
-msgstr "Odpri sporočilca v novem oknu"
+msgstr "Odpri izbrano sporočilce v novem oknu"
 
 #: data/shortcuts-gnote.ui:121
-#, fuzzy
-#| msgid "Delete this note"
 msgctxt "shortcut window"
 msgid "Delete selected note"
-msgstr "Izbriši to sporočilce"
+msgstr "Izbriši izbrano sporočilce"
 
 #: data/shortcuts-gnote.ui:132
-#, fuzzy
-#| msgid "New _Window"
 msgctxt "shortcut window"
-msgid "Note Window"
-msgstr "Novo _okno"
+msgid "Note View"
+msgstr "Pogled sporočilc"
 
 #: data/shortcuts-gnote.ui:155
-#, fuzzy
-#| msgid "Open notes in new window"
 msgctxt "shortcut window"
 msgid "Open note actions menu"
-msgstr "Odpri sporočilca v novem oknu"
+msgstr "Odpri meni dejanj sporočilca"
 
-#: data/shortcuts-gnote.ui:184
+#: data/shortcuts-gnote.ui:183
+msgctxt "shortcut window"
+msgid "Close current tab"
+msgstr "Zapri trenutni zavihek"
+
+#: data/shortcuts-gnote.ui:191
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Urejanje"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Razveljavi zadnje urejanje"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Ponovi zadnje urejanje"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:210
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
-msgstr ""
+msgstr "Ustvari povezavo do sporočilca v izbranem besedilu"
 
-#: data/shortcuts-gnote.ui:211
+#: data/shortcuts-gnote.ui:218
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Oblikovanje"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Preklopi krepko"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Preklopi ležeče"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Preklopi prečrtano"
 
-#: data/shortcuts-gnote.ui:237
-#, fuzzy
-#| msgid "_Highlight"
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle highlight"
-msgstr "_Poudarjeno"
-
-#: data/shortcuts-gnote.ui:244
-#, fuzzy
-#| msgid "Fixed Width"
-msgctxt "shortcut window"
-msgid "Toggle fixed width"
-msgstr "Stalna širina"
+msgstr "Preklopi poudarjeno"
 
 #: data/shortcuts-gnote.ui:251
+msgctxt "shortcut window"
+msgid "Toggle fixed width"
+msgstr "Preklopi enakomerno širino"
+
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Preklopi podčrtovanje"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Povečaj velikost pisave"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Zmanjšaj velikost pisave"
 
-#: data/shortcuts-gnote.ui:272
-msgctxt "shortcut window"
-msgid "Enable bullets/increase indent for line with selection"
-msgstr ""
-
 #: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
-msgid "Decrease indent/disable bullets for current line"
-msgstr ""
+msgid "Enable bullets/increase indent for line with selection"
+msgstr "Omogoči oznake/povečanje zamika za vrstico z izborom"
 
-#: src/actionmanager.cpp:127
+#: data/shortcuts-gnote.ui:286
+msgctxt "shortcut window"
+msgid "Decrease indent/disable bullets for current line"
+msgstr "Zmanjšaj zamik/onemogoči oznake za trenutno vrstico"
+
+#: src/actionmanager.cpp:130
 msgid "_New Note"
 msgstr "_Novo sporočilce"
 
-#: src/actionmanager.cpp:128
+#: src/actionmanager.cpp:131
 msgid "New _Window"
 msgstr "Novo _okno"
 
-#: src/actionmanager.cpp:129 src/preferencesdialog.cpp:623
+#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:609
 msgid "_Preferences"
 msgstr "_Možnosti"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:133
 msgid "_Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:134
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: src/actionmanager.cpp:132
+#: src/actionmanager.cpp:135
 msgid "_About Gnote"
 msgstr "_O Gnote"
 
-#: src/addininfo.cpp:71
+#: src/addininfo.cpp:72
 msgid "Failed to load plugin information!"
 msgstr "Nalaganje podatkov o vstavku je spodletelo!"
 
-#: src/addininfo.cpp:145
+#: src/addininfo.cpp:140
 #, c-format
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Neskladen vstavek %s: pričakovan je %s, prejet pa %s"
 
-#: src/addinmanager.cpp:147
+#: src/addinmanager.cpp:134
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Podatki o vstavku %s že naloženi"
 
-#: src/addinmanager.cpp:154
+#: src/addinmanager.cpp:141
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s ne omogoča %s"
 
-#: src/addinmanager.cpp:169
+#: src/addinmanager.cpp:156
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Vstavek %s je že nameščen"
 
-#: src/addinmanager.cpp:187
+#: src/addinmanager.cpp:175
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Manjkajo podatki o vstavku %s"
 
-#: src/addinmanager.cpp:200
+#: src/addinmanager.cpp:188
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Vstavek %s ni nameščen"
 
-#: src/addinmanager.cpp:236
+#: src/addinmanager.cpp:220
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Modula %s za vstavek %s ni mogoče najti"
 
-#: src/addinmanager.cpp:240
+#: src/addinmanager.cpp:224
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Nalaganje podatkov o vstavku %s je spodletelo: %s"
 
-#: src/addinmanager.cpp:366
+#: src/addinmanager.cpp:351
 msgid "Trying to load addins when they are already loaded"
 msgstr "Poskus nalaganja vstavkov, ki so že naloženi"
 
@@ -792,19 +783,13 @@ msgstr ""
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere in projekt Tomboy"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:75
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:76
 msgid "What links here?"
 msgstr "Kaj se povezuje sem?"
 
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:96
+#: src/plugins/backlinks/backlinksnoteaddin.cpp:91
 msgid "(none)"
 msgstr "(brez)"
-
-#: src/plugins/backlinks/backlinksnoteaddin.cpp:101
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:157
-#: src/notebooks/notebooknoteaddin.cpp:167
-msgid "_Back"
-msgstr "_Nazaj"
 
 #: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid "Bugzilla Links"
@@ -824,11 +809,10 @@ msgstr ""
 #: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
 #: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
 #: src/plugins/printnotes/printnotes.desktop.in.in:6
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:6
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere in projekt Tomboy"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:64
+#: src/plugins/bugzilla/bugzillapreferences.cpp:117
 msgid ""
 "You can use any bugzilla just by dragging links into notes.  If you want a "
 "special icon for certain hosts, add them here."
@@ -837,76 +821,74 @@ msgstr ""
 "primeru, da želite imeti posebno ikono za določene gostitelje, jih dodajte "
 "tukaj."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:81
+#: src/plugins/bugzilla/bugzillapreferences.cpp:146
 msgid "Host Name"
 msgstr "Ime gostitelja"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:94
+#: src/plugins/bugzilla/bugzillapreferences.cpp:152
 msgid "Icon"
 msgstr "Ikona"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:113
+#: src/plugins/bugzilla/bugzillapreferences.cpp:168
 msgid "_Add"
 msgstr "_Dodaj"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:117
+#: src/plugins/bugzilla/bugzillapreferences.cpp:172
 msgid "_Remove"
 msgstr "_Odstrani"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:225
+#: src/plugins/bugzilla/bugzillapreferences.cpp:274
 msgid "Select an icon..."
 msgstr "Izberi ikono ..."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:227
-#: src/plugins/bugzilla/bugzillapreferences.cpp:370
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/plugins/bugzilla/bugzillapreferences.cpp:275
+#: src/plugins/bugzilla/bugzillapreferences.cpp:415
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:358 src/note.cpp:71 src/utils.cpp:368
-#: src/utils.cpp:375
+#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
+#: src/utils.cpp:329
 msgid "_Cancel"
 msgstr "Pre_kliči"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:228
-#: src/searchnoteswidget.cpp:1302
+#: src/plugins/bugzilla/bugzillapreferences.cpp:276
 msgid "_Open"
 msgstr "_Odpri"
 
 #. Extra Widget
-#: src/plugins/bugzilla/bugzillapreferences.cpp:240
+#: src/plugins/bugzilla/bugzillapreferences.cpp:287
 msgid "_Host name:"
 msgstr "_Ime gostitelja:"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:274
-msgid "Host name invalid"
-msgstr "Ime gostitelja je neveljavno"
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:275
-msgid "You must specify a valid Bugzilla host name to use with this icon."
-msgstr "Navesti morate veljavno ime Bugzilla gostitelja za uporabo s to ikono."
-
-#: src/plugins/bugzilla/bugzillapreferences.cpp:294
+#: src/plugins/bugzilla/bugzillapreferences.cpp:317
 msgid "Error saving icon"
 msgstr "Napaka med shranjevanjem ikone"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:295
+#: src/plugins/bugzilla/bugzillapreferences.cpp:318
 msgid "Could not save the icon file."
 msgstr "Ni mogoče shraniti datoteke ikone."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:367
+#: src/plugins/bugzilla/bugzillapreferences.cpp:333
+msgid "Host name invalid"
+msgstr "Ime gostitelja je neveljavno"
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:334
+msgid "You must specify a valid Bugzilla host name to use with this icon."
+msgstr "Navesti morate veljavno ime Bugzilla gostitelja za uporabo s to ikono."
+
+#: src/plugins/bugzilla/bugzillapreferences.cpp:412
 msgid "Really remove this icon?"
 msgstr "Ali naj se ta ikona zares odstrani?"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:368
+#: src/plugins/bugzilla/bugzillapreferences.cpp:413
 msgid "If you remove an icon it is permanently lost."
 msgstr "V primeru, da ikono odstranite, bo trajno izgubljena."
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:376
-#: src/notebooks/notebookmanager.cpp:364 src/note.cpp:77
-#: src/searchnoteswidget.cpp:1311 src/searchnoteswidget.cpp:1352
+#: src/plugins/bugzilla/bugzillapreferences.cpp:419
+#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
 msgid "_Delete"
 msgstr "_Izbriši"
 
-#: src/plugins/bugzilla/bugzillapreferences.cpp:388
+#: src/plugins/bugzilla/bugzillapreferences.cpp:433
 #, c-format
 msgid "Error removing icon %s: %s"
 msgstr "Napaka med odstranjevanjem ikone %s: %s"
@@ -937,8 +919,6 @@ msgid "Failed to create GTG interface from XML: %s"
 msgstr "Ustvarjanje vmesnika GTG iz XML je spodletelo: %s"
 
 #: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:105
-#, fuzzy
-#| msgid "Failed to create D_Bus proxy for GTG"
 msgid "Failed to create D-Bus proxy for GTG"
 msgstr "Ustvarjanje posredništva D_Bus za GTG je spodletelo"
 
@@ -959,70 +939,69 @@ msgstr "Izvozi posamezna sporočilca v HTML."
 msgid "Destination for HTML Export"
 msgstr "Cilj za izvoz HTML"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:41
 msgid "Export linked notes"
 msgstr "Izvozi povezana sporočilca"
 
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:43
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Include all other linked notes"
 msgstr "Vključi vsa ostala povezana sporočilca"
 
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
-#: src/plugins/exporttohtml/exporttohtmldialog.cpp:47
-#: src/preferencesdialog.cpp:547
+#: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
+#: src/preferencesdialog.cpp:539
 msgid "_Save"
 msgstr "_Shrani"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:83
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:82
 msgid "Export to HTML…"
 msgstr "Izvozi v HTML ..."
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:122
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
 #, c-format
 msgid "Could not open exported note in a web browser: %s"
 msgstr "Izvoženega sporočilca ni mogoče odpreti v spletnem brskalniku: %s"
 
 #. TRANSLATORS: %1%: boost format placeholder for the path
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:127
-#, fuzzy
-#| msgid "Your note was exported to \"%1%\"."
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:131
 msgid "Your note was exported to \"%1\"."
-msgstr "Vaše sporočilce je bilo izvoženo v \"%1%\"."
+msgstr "Vaše sporočilce je bilo izvoženo v »%1«."
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:136
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:140
 msgid "Note exported successfully"
 msgstr "Sporočilce je bilo uspešno izvoženo"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:150
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:158
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:155
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:163
 #, c-format
 msgid "Could not export: %s"
 msgstr "Ni mogoče izvoziti: %s"
 
-#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:161
+#: src/plugins/exporttohtml/exporttohtmlnoteaddin.cpp:166
 msgid "Could not save the file \"%1\""
 msgstr "Datoteke »%1« ni bilo mogoče shraniti"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:103
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
 msgid "_Folder Path:"
 msgstr "_Pot mape:"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:107
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:118
 msgid "Select Synchronization Folder..."
 msgstr "Izbor mape usklajevanja ..."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:129
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:153
 msgid "Folder path field is empty."
 msgstr "Polje poti mape je prazno."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:136
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:160
 #: src/synchronization/gvfssyncservice.cpp:76
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "Navedena pot mape ne obstaja. Program Gnote je ne more ustvariti."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:200
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:224
 msgid "Local Folder"
 msgstr "Krajevna mapa"
 
@@ -1047,34 +1026,26 @@ msgstr "Stalna širina"
 msgid "Adds fixed-width font style."
 msgstr "Doda obliko pisave s stalno širino."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:57
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
 msgid "Fixed Wid_th"
 msgstr "Stalna širi_na"
 
 #: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
-#, fuzzy
-#| msgid "Local Directory Sync Service Plugin"
 msgid "Online Directory Sync Service Plugin"
-msgstr "Vstavek storitve za usklajevanje krajevne mape"
+msgstr "Vstavek storitve za usklajevanje spletne mape"
 
 #: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
-#, fuzzy
-#| msgid "Synchronize Gnote Notes to a local file system path"
 msgid "Synchronize Gnote Notes to an online directory"
-msgstr "Uskladi sporočilca Gnote s krajevnim datotečnim sistemom"
+msgstr "Uskladi sporočilca Gnote s spletno mapo"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
-#, fuzzy
-#| msgid "Failed to update note format: %s"
 msgid "Failed to mount the folder"
-msgstr "Neuspela posodobitev oblike sporočilca: %s"
+msgstr "Mape ni bilo mogoče priklopiti"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
-#, fuzzy
-#| msgid "_Folder Path:"
 msgid "Folder _URI:"
-msgstr "_Pot mape:"
+msgstr "_URI mape:"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
 msgid "Example: google-drive://name.surname@gmail.com/notes"
@@ -1084,15 +1055,15 @@ msgstr "Primer: google-drive://ime.priimek@gmail.com/notes"
 msgid "Please, register your account in Online Accounts"
 msgstr "Prosimo, registrirajte svoj račun v spletnih računih"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
 msgid "The URI is empty"
 msgstr "URI je prazen"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:134
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "URI field is empty."
 msgstr "Polje URI je prazno."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:176
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
 msgstr "Spletna mapa"
 
@@ -1106,20 +1077,21 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Vstavi trenutni datum in čas na položaj kazalke."
 
 #. Label
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:76
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:91
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Izberite eno od določenih oblik ali uporabite obliko po meri."
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:84
+#. Use Selected Format
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:97
 msgid "Use _Selected Format"
 msgstr "Uporabi _izbrano obliko"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:114
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:122
 msgid "_Use Custom Format"
 msgstr "_Uporabi obliko po meri"
 
 #. TRANSLATORS: first %s is file name, second is error
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:227
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:225
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error reading %s: %s"
 msgstr ""
@@ -1127,26 +1099,19 @@ msgstr ""
 "branjem %s: %s"
 
 #. TRANSLATORS: %s is file
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:254
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:252
 #, c-format
 msgid "NoteDirectoryWatcher: Error reading note title from %s"
 msgstr "NoteDirectoryWatcher - napaka med branjem naslova sporočilca iz %s"
 
-#. TRANSLATORS: %s is file
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:262
-#, c-format
-msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
-msgstr ""
-"NoteDirectoryWatcher - neznana med branjem ustvarjanju sporočilca iz %s"
-
 #. TRANSLATORS: first %s is file, second is error
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:268
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:262
 #, c-format
 msgid "NoteDirectoryWatcher: Error creating note from %s: %s"
 msgstr "NoteDirectoryWatcher - napaka med ustvarjanjem sporočilca iz %s: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:281
+#: src/plugins/notedirectorywatcher/notedirectorywatcherapplicationaddin.cpp:275
 #, c-format
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
@@ -1169,32 +1134,32 @@ msgstr "Aurimas Černius in izvorni avtorji programa Tomboy"
 msgid "_Directory check interval:"
 msgstr "_Razmik preverjanja mape:"
 
-#: src/plugins/noteoftheday/noteoftheday.cpp:33
+#: src/plugins/noteoftheday/noteoftheday.cpp:32
 msgid "Today: Template"
 msgstr "Danes: Predloga"
 
-#: src/plugins/noteoftheday/noteoftheday.cpp:35
+#: src/plugins/noteoftheday/noteoftheday.cpp:34
 msgid "Today: "
 msgstr "Danes:"
 
 #. TRANSLATORS: first %s is note title, second is error
 #. TRANSLATORS: first %s is template note title, second is error
-#: src/plugins/noteoftheday/noteoftheday.cpp:49
-#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:70
+#: src/plugins/noteoftheday/noteoftheday.cpp:47
+#: src/plugins/noteoftheday/noteofthedaypreferences.cpp:69
 #, c-format
 msgid "NoteOfTheDay could not create %s: %s"
 msgstr "S predmetom NoteOfTheDay ni mogoče ustvariti %s: %s"
 
-#: src/plugins/noteoftheday/noteoftheday.cpp:150
+#: src/plugins/noteoftheday/noteoftheday.cpp:143
 msgid "Tasks"
 msgstr "Naloge"
 
-#: src/plugins/noteoftheday/noteoftheday.cpp:151
+#: src/plugins/noteoftheday/noteoftheday.cpp:144
 msgid "Appointments"
 msgstr "Sestanki"
 
 #. Format: "Today: Friday, July 01 2005"
-#: src/plugins/noteoftheday/noteoftheday.cpp:157
+#: src/plugins/noteoftheday/noteoftheday.cpp:150
 msgid "%A, %B %d %Y"
 msgstr "%A, %d. %m. %Y"
 
@@ -1233,20 +1198,18 @@ msgstr "Podpora tiskanju"
 msgid "Allows you to print a note."
 msgstr "Omogoča tiskanje sporočilc."
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:62
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
 msgid "Print…"
 msgstr "Natisni …"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:110
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
 msgid "Error printing note"
 msgstr "Napaka med tiskanjem sporočilca"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:273
-#, fuzzy
-#| msgid "Page %1% of %2%"
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
 msgid "Page %1 of %2"
-msgstr "Stran %1% od %2%"
+msgstr "Stran %1 od %2"
 
 #: src/plugins/readonly/readonly.desktop.in.in:4
 #: src/plugins/readonly/readonlynoteaddin.cpp:69
@@ -1262,7 +1225,7 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray in Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
 msgid "Replace title"
 msgstr "Zamenjaj naslov"
 
@@ -1288,7 +1251,7 @@ msgid "Show Statistics"
 msgstr "Pokaži statistiko"
 
 #: src/plugins/statistics/statistics.desktop.in.in:4
-#: src/plugins/statistics/statisticswidget.cpp:173
+#: src/plugins/statistics/statisticswidget.cpp:179
 msgid "Statistics"
 msgstr "Statistika"
 
@@ -1296,72 +1259,25 @@ msgstr "Statistika"
 msgid "Show various statistics about notes."
 msgstr "Pokaži različno statistiko o sporočilcih."
 
-#: src/plugins/statistics/statisticswidget.cpp:91
-msgid "Total Notes:"
-msgstr "Vseh sporočilc:"
+#: src/plugins/statistics/statisticswidget.cpp:87
+msgid "Total Notes"
+msgstr "Vseh sporočilc"
 
-#: src/plugins/statistics/statisticswidget.cpp:97
-msgid "Total Notebooks:"
-msgstr "Vseh beležnic:"
+#: src/plugins/statistics/statisticswidget.cpp:107
+msgid "Total Notebooks"
+msgstr "Vseh beležnic"
 
 #. TRANSLATORS: %1 is the format placeholder for the number of notes.
-#: src/plugins/statistics/statisticswidget.cpp:128
-#, fuzzy
-#| msgid "%1% note"
-#| msgid_plural "%1% notes"
+#: src/plugins/statistics/statisticswidget.cpp:120
 msgid "%1 note"
 msgid_plural "%1 notes"
-msgstr[0] "%1% sporočilc"
-msgstr[1] "%1% sporočilce"
-msgstr[2] "%1% sporočilci"
-msgstr[3] "%1% sporočilca"
-
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:4
-msgid "Sticky Notes Importer"
-msgstr "Uvoznik lepljivih sporočilc"
-
-#: src/plugins/stickynoteimport/stickynoteimport.desktop.in.in:5
-msgid "Import your notes from the Sticky Notes applet."
-msgstr "Uvozi vaša sporočilca iz apleta lepljivih sporočilc."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:84
-msgid "Import from Sticky Notes"
-msgstr "Uvozi iz lepljivih sporočilc"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:206
-msgid "No Sticky Notes found"
-msgstr "Lepljivih sporočilc ni bilo mogoče najti"
-
-#. %1 is a the file name
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:208
-#, fuzzy
-#| msgid "No suitable Sticky Notes file was found at \"%1%\"."
-msgid "No suitable Sticky Notes file was found at \"%1\"."
-msgstr ""
-"Datoteke z ustreznimi lepljivimi sporočilci ni bilo mogoče najti v \"%1%\"."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:216
-msgid "Sticky Notes import completed"
-msgstr "Uvoz lepljivih sporočilc je končan"
-
-#. here %1 is the number of notes imported, %2 the total number of notes.
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:218
-#, fuzzy
-#| msgid "<b>%1%</b> of <b>%2%</b> Sticky Notes were successfully imported."
-msgid "<b>%1</b> of <b>%2</b> Sticky Notes were successfully imported."
-msgstr "<b>%1%</b> od <b>%2%</b> lepljivih sporočilc je bilo uspešno uvoženih."
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:237
-msgid "Untitled"
-msgstr "Neimenovano"
-
-#: src/plugins/stickynoteimport/stickynoteimportnoteaddin.cpp:275
-msgid "Sticky Note: "
-msgstr "Lepljivo sporočilce:"
+msgstr[0] "%1 sporočilc"
+msgstr[1] "%1 sporočilce"
+msgstr[2] "%1 sporočilci"
+msgstr[3] "%1 sporočilca"
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:67
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:130
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:115
 msgid "Table of Contents"
 msgstr "Kazalo vsebine"
 
@@ -1374,32 +1290,25 @@ msgstr ""
 "pododsekov v svojem sporočilcu, kazalo vsebine bo prikazano v meniju."
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
-msgid "Luc Pionchon"
-msgstr "Luc Pionchon"
+#| msgid "Aurimas Černius"
+msgid "Aurimas Černius, Luc Pionchon"
+msgstr "Aurimas Černius, Luc Pionchon"
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:145
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:207
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:139
 msgid "Heading 1"
 msgstr "Naslov 1"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:149
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:213
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:142
 msgid "Heading 2"
 msgstr "Naslov 2"
 
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:153
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:219
+#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:145
 msgid "Table of Contents Help"
 msgstr "Pomoč za kazalo vsebine"
-
-#. no toc items, and no action entries = empty menu
-#: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:192
-msgid "(empty table of contents)"
-msgstr "(prazno kazalo vsebine)"
 
 #: src/plugins/todo/todo.desktop.in.in:4
 msgid "TODO"
@@ -1437,19 +1346,15 @@ msgstr "Doda možnost podčrtovanja besedila."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière in projekt Tomboy"
 
-#: src/plugins/underline/underlinenoteaddin.cpp:56
-msgid "_Underline"
-msgstr "_Podčrtaj"
-
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:107
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
 msgid "_URL:"
 msgstr "Naslov _URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:112
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "User_name:"
 msgstr "Uporab_niško ime:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
 msgid "_Password:"
 msgstr "_Geslo:"
 
@@ -1458,10 +1363,8 @@ msgid "WebDAV"
 msgstr "WebDAV"
 
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
-#, fuzzy
-#| msgid "Synchronization is complete"
 msgid "Synchronization destination %1 doesn't exist!"
-msgstr "Usklajevanje je uspešno končano"
+msgstr "Cilj sinhronizacije %1 ne obstaja!"
 
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
 msgid "URL, username, or password field is empty."
@@ -1469,21 +1372,15 @@ msgstr "Polje naslova URL, uporabniškega imena ali gesla je prazno."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
 #: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
-#, fuzzy
-#| msgid ""
-#| "Saving configuration to the GNOME keyring failed with the following "
-#| "message:\n"
-#| "\n"
-#| "%1%"
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
 "\n"
 "%1"
 msgstr ""
-"Neuspešno shranjevanje nastavitev v zbirko ključev GNOME:\n"
+"Neuspešno shranjevanje nastavitev v zbirko ključev GNOME s sporočilom:\n"
 "\n"
-"%1%"
+"%1"
 
 #: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
 msgid "WebDAV Sync Service Plugin"
@@ -1493,7 +1390,7 @@ msgstr "Vstavek storitve usklajevanja WebDAV"
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Usklajevanje sporočilc Gnote na naslov URL WebDAV."
 
-#: src/dbus/remotecontrol.cpp:83
+#: src/dbus/remotecontrol.cpp:80
 #, c-format
 msgid "Exception thrown when creating note: %s"
 msgstr "Izjema ob ustvarjanju sporočilca: %s"
@@ -1502,131 +1399,127 @@ msgstr "Izjema ob ustvarjanju sporočilca: %s"
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
+"Povezava D-Bus ni na voljo, iskanje v lupini in daljinski upravljalnik ne "
+"bosta delovala."
 
-#: src/gnote.cpp:244
+#: src/gnote.cpp:243
 msgid "Failed to get shortcuts window!"
-msgstr ""
+msgstr "Pridobivanje okna bližnjic ni uspelo!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:257
 msgid "and Tomboy original authors."
 msgstr "in avtorji izvirnega Tomboy"
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:263
 msgid "translator-credits"
 msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:272
 msgid ""
-"Copyright © 2010-2022 Aurimas Cernius\n"
+"Copyright © 2010-2024 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Avtorske pravice © 2010-2022 Aurimas Cernius\n"
+"Avtorske pravice © 2010-2024 Aurimas Cernius\n"
 "Avtorske pravice © 2009-2011 Debarshi Ray\n"
 "Avtorske pravice © 2009 Hubert Figuiere\n"
 "Avtorske pravice © 2004-2009 izvorni avtorji Tomboy."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:276
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Preprost in enostaven program za pisanje sporočilc. "
 
-#: src/gnote.cpp:288
+#: src/gnote.cpp:278
 msgid "Homepage"
 msgstr "Domača stran"
 
-#: src/gnote.cpp:483
+#: src/gnote.cpp:488
 msgid "Run Gnote in background."
 msgstr "Zaženi gnote v ozadju."
 
-#: src/gnote.cpp:484
+#: src/gnote.cpp:489
 msgid "Run Gnote as GNOME Shell search provider."
-msgstr ""
+msgstr "Zaženite Gnote kot ponudnika iskanja GNOME Shell."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:490
 msgid "Specify the path of the directory containing the notes."
 msgstr "Določi pot mape, ki vsebuje sporočilca."
 
-#: src/gnote.cpp:485
+#: src/gnote.cpp:490
 msgid "path"
 msgstr "pot"
 
-#: src/gnote.cpp:486
+#: src/gnote.cpp:491
 msgid "Open the search all notes window with the search text."
 msgstr "Odpre okno za iskanje vseh sporočilc z izbranim besedilom."
 
-#: src/gnote.cpp:486 src/gnote.cpp:491
+#: src/gnote.cpp:491 src/gnote.cpp:496
 msgid "text"
 msgstr "Besedilo"
 
-#: src/gnote.cpp:487
+#: src/gnote.cpp:492
 msgid "Print version information."
 msgstr "Izpiši podrobnosti o različici"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:493
 msgid "Create and display a new note, with a optional title."
 msgstr "Ustvari in prikaže novo sporočilce z naslovom po meri."
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:493
 msgid "title"
 msgstr "naslov"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:494
 msgid "Display the existing note matching title."
 msgstr "Prikaže obstoječe sporočilce, ki se sklada z naslovom."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:494
 msgid "title/url"
 msgstr "naslov/url"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:495
 msgid "Display the 'Start Here' note."
 msgstr "Prikaz sporočilca 'Začnite tukaj'."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:496
 msgid "Search and highlight text in the opened note."
 msgstr "Išče in poudari besedilo v odprtem sporočilcu."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:500
 msgid "A note taking application"
 msgstr "Program za pisanje sporočilc"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:500
 msgid "Gnote options at launch"
 msgstr "Možnosti gnote ob zagonu"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:679
+#: src/gnote.cpp:684
 msgid "Version %1"
 msgstr "Različica %1"
 
-#. TRANSLATORS: the first %s is icon name, %d is for size, last %s is error description
-#: src/iconmanager.cpp:63
-#, c-format
-msgid "Failed to load icon (%s, %d): %s"
-msgstr "Napaka med nalaganjem ikone (%s, %d): %s"
-
-#: src/noteaddin.cpp:138 src/noteaddin.cpp:152 src/noteaddin.cpp:164
+#: src/noteaddin.cpp:101
 msgid "Plugin is disposing already"
 msgstr "Vstavek je že opuščen"
 
-#: src/noteaddin.cpp:168
+#: src/noteaddin.cpp:105
 msgid "Window is not embedded"
 msgstr "Okno ni vstavljeno"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:225 src/note.cpp:355
+#: src/notebase.cpp:221 src/note.cpp:350
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Izjema med shranjevanjem sporočilca: %s"
 
 #. write failure, but not critical
-#: src/notebase.cpp:465
+#: src/notebase.cpp:461
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Neuspela posodobitev oblike sporočilca: %s"
 
-#: src/notebase.cpp:583
+#: src/notebase.cpp:579
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Napaka datotečnega sistema: %s"
@@ -1649,7 +1542,7 @@ msgstr "Ime je že zasedeno"
 msgid "C_reate"
 msgstr "U_stvari"
 
-#: src/notebooks/notebookapplicationaddin.cpp:78
+#: src/notebooks/notebookapplicationaddin.cpp:71
 msgid "New Note_book..."
 msgstr "Nova belež_ka ..."
 
@@ -1658,21 +1551,19 @@ msgstr "Nova belež_ka ..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:94
-#, fuzzy
-#| msgid "%1% Notebook Template"
+#: src/notebooks/notebook.cpp:104
 msgid "%1 Notebook Template"
-msgstr "%1% predloga beležke"
+msgstr "Predloga beležke %1"
 
-#: src/notebooks/notebook.cpp:169 src/notemanagerbase.cpp:293
+#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
 msgid "New Note"
 msgstr "Novo sporočilce"
 
-#: src/notebooks/notebookmanager.cpp:352
+#: src/notebooks/notebookmanager.cpp:282
 msgid "Really delete this notebook?"
 msgstr "Ali naj bo beležka zares izbrisana?"
 
-#: src/notebooks/notebookmanager.cpp:353
+#: src/notebooks/notebookmanager.cpp:283
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1680,72 +1571,85 @@ msgstr ""
 "Sporočilca, ki spadajo v to beležko, ne bodo izbrisana, vendar pa ne bodo "
 "več povezana s to beležko. Dejanja ni mogoče razveljaviti."
 
-#: src/notebooks/notebookmenuitem.cpp:34
-#: src/notebooks/notebooknoteaddin.cpp:153
-msgid "No notebook"
-msgstr "Ni beležke"
-
-#: src/notebooks/notebooknoteaddin.cpp:111
+#: src/notebooks/notebooknoteaddin.cpp:109
 msgid "Notebook"
 msgstr "Beležnica"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:147
+#: src/notebooks/notebooknoteaddin.cpp:144
 msgid "_New notebook..."
 msgstr "_Nova beležnica ..."
 
-#: src/notebooks/specialnotebooks.cpp:47
+#. Add the "(no notebook)" item at the top of the list
+#: src/notebooks/notebooknoteaddin.cpp:148
+msgid "No notebook"
+msgstr "Ni beležke"
+
+#: src/notebooks/notebooksview.cpp:205
+msgid "New Notebook"
+msgstr "Nova beležka"
+
+#: src/notebooks/notebooksview.cpp:209
+msgid "Rename Notebook"
+msgstr "Preimenuj beležko"
+
+#: src/notebooks/notebooksview.cpp:214
+msgid "Open Template Note"
+msgstr "Odpri predlogo sporočilc"
+
+#: src/notebooks/notebooksview.cpp:218
+msgid "Delete Notebook"
+msgstr "Izbriši beležko"
+
+#: src/notebooks/specialnotebooks.cpp:52
 msgid "All"
 msgstr "Vse"
 
-#: src/notebooks/specialnotebooks.cpp:76
+#: src/notebooks/specialnotebooks.cpp:86
 msgid "Unfiled"
 msgstr "Nerazporejeno"
 
-#: src/notebooks/specialnotebooks.cpp:107
+#: src/notebooks/specialnotebooks.cpp:122
 msgctxt "notebook"
 msgid "Important"
 msgstr "Pomembno"
 
-#: src/notebooks/specialnotebooks.cpp:134
+#: src/notebooks/specialnotebooks.cpp:154
 msgid "Active"
 msgstr "Dejavno"
 
-#: src/notebuffer.cpp:1429
+#: src/notebuffer.cpp:1398
 msgid "</list> tag mismatch"
 msgstr "neujemanje značke </list>"
 
-#: src/notebuffer.cpp:1513
+#: src/notebuffer.cpp:1482
 #, c-format
 msgid "Exception: %s"
 msgstr "Izjema: %s"
 
 #. TRANSLATORS: %1 will be replaced by note title
-#: src/note.cpp:56
+#: src/note.cpp:55
 msgid "Really delete \"%1\"?"
 msgstr "Ali res želite izbrisati »%1«?"
 
 #. TRANSLATORS: %1 is number of notes
-#: src/note.cpp:60
-#, fuzzy
-#| msgid "Really delete %1% note?"
-#| msgid_plural "Really delete %1% notes?"
+#: src/note.cpp:59
 msgid "Really delete %1 note?"
 msgid_plural "Really delete %1 notes?"
-msgstr[0] "Ali res želite izbrisati %1% sporočilc?"
-msgstr[1] "Ali res želite izbrisati %1% sporočilce?"
-msgstr[2] "Ali res želite izbrisati %1% sporočilci?"
-msgstr[3] "Ali res želite izbrisati %1% sporočilca?"
+msgstr[0] "Ali res želite izbrisati %1 sporočilc?"
+msgstr[1] "Ali res želite izbrisati %1 sporočilce?"
+msgstr[2] "Ali res želite izbrisati %1 sporočilci?"
+msgstr[3] "Ali res želite izbrisati %1 sporočilca?"
 
-#: src/note.cpp:67
+#: src/note.cpp:63
 msgid "If you delete a note it is permanently lost."
 msgstr "Izbrisana sporočilca so bila trajno izgubljena."
 
-#: src/note.cpp:102
+#: src/note.cpp:101
 msgid "Error saving note data."
 msgstr "Napaka med shranjevanjem podatkov sporočilca."
 
-#: src/note.cpp:103
+#: src/note.cpp:102
 msgid ""
 "An error occurred while saving your notes. Please check that you have "
 "sufficient disk space, and that you have appropriate rights on ~/.local/"
@@ -1755,25 +1659,21 @@ msgstr ""
 "dovolj prostora na disku in so določene ustrezna dovoljenja za pisanje v "
 "mapo ~/.local/share/gnote. Podrobnosti o napaki so zapisane v ~/.gnote.log"
 
-#: src/note.cpp:443
-#, c-format
-msgid "Error while saving: %s"
-msgstr "Napaka med shranjevanjem: %s"
-
-#: src/note.cpp:668
+#: src/note.cpp:652
 msgid "Setting text content for closed notes not supported"
 msgstr "Določanje vsebine besedila za zaprta sporočilca ni podprto"
 
+#. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:107 src/preferencesdialog.cpp:317
+#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:340
 msgid "New Note Template"
 msgstr "Nova predloga sporočilca"
 
-#: src/notemanagerbase.cpp:346
+#: src/notemanagerbase.cpp:334
 msgid "Describe your new note here."
 msgstr "Tukaj opišite svoje novo sporočilce."
 
-#: src/notemanager.cpp:114
+#: src/notemanager.cpp:115
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1802,9 +1702,9 @@ msgstr ""
 "Uporabite sporočilce \"Začnite tukaj\" za začetek organizacije vaših idej in "
 "misli.\n"
 "\n"
-"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo "
-"sporočilce\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo "
-"samodejno shranjeno.\n"
+"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo sporočilce"
+"\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo samodejno "
+"shranjeno.\n"
 "\n"
 "Sporočilca lahko organizirate s povezovanjem sorodnih sporočilc in misli "
 "skupaj!\n"
@@ -1814,7 +1714,7 @@ msgstr ""
 "link:internal> postane besedilo samodejno podčrtano. Kliknite na povezavo za "
 "odpiranje sporočilca.</note-content>"
 
-#: src/notemanager.cpp:133
+#: src/notemanager.cpp:134
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1843,59 +1743,69 @@ msgstr ""
 "povezano.</note-content> "
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:148 src/notemanager.cpp:183
+#: src/notemanager.cpp:149 src/notemanager.cpp:184
 msgid "Start Here"
 msgstr "Začnite tukaj"
 
-#: src/notemanager.cpp:152
+#: src/notemanager.cpp:153
 msgid "Using Links in Gnote"
 msgstr "Uporaba povezav v Gnote"
 
-#: src/notemanager.cpp:156
+#: src/notemanager.cpp:157
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Napaka med ustvarjanjem začetnih sporočilc: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:171
+#: src/notemanager.cpp:172
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr ""
 "Napaka med razčlenjevanjem XML sporočilca, zato bo del \"%s\" izpuščen: %s"
 
-#: src/noterenamedialog.cpp:118
+#: src/notemanager.cpp:383
+#, c-format
+msgid "Error while saving: %s"
+msgstr "Napaka med shranjevanjem: %s"
+
+#: src/notemanager.cpp:388
+#, c-format
+msgid "Did not find note with uri '%s', cannot save"
+msgstr "Ni mogoče najti sporočilca z URI »%s«, ni ga moč shraniti"
+
+#: src/noterenamedialog.cpp:140
 msgid "Rename Note Links?"
 msgstr "Preimenovanje povezav sporočilc?"
 
-#: src/noterenamedialog.cpp:123
+#: src/noterenamedialog.cpp:146
 msgid "_Don't Rename Links"
 msgstr "_Ne preimenuj povezav"
 
-#: src/noterenamedialog.cpp:124
+#: src/noterenamedialog.cpp:147
 msgid "_Rename Links"
 msgstr "_Preimenuj povezave"
 
-#: src/noterenamedialog.cpp:125
+#: src/noterenamedialog.cpp:148
 msgid "Select All"
 msgstr "Izberi vse"
 
-#: src/noterenamedialog.cpp:126
+#: src/noterenamedialog.cpp:149
 msgid "Select None"
 msgstr "Odstrani izbor"
 
-#: src/noterenamedialog.cpp:127
+#: src/noterenamedialog.cpp:150
 msgid "Always show this _window"
 msgstr "Vedno pokaži to _okno"
 
-#: src/noterenamedialog.cpp:128
+#: src/noterenamedialog.cpp:151
 msgid "Alwa_ys rename links"
 msgstr "Ve_dno preimenuj povezave"
 
-#: src/noterenamedialog.cpp:130
+#: src/noterenamedialog.cpp:152
 msgid "Never rename _links"
 msgstr "Nikoli ne preimenuj po_vezav"
 
-#: src/noterenamedialog.cpp:148
+#: src/noterenamedialog.cpp:170
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1907,11 +1817,12 @@ msgstr ""
 "\n"
 "V primeru, da povezav ne preimenujete, ne bodo vodile do ciljev."
 
-#: src/noterenamedialog.cpp:181
+#: src/noterenamedialog.cpp:185
 msgid "Rename Links"
 msgstr "Preimenuj povezave"
 
-#: src/noterenamedialog.cpp:196 src/synchronization/syncdialog.cpp:327
+#. Set up columns
+#: src/noterenamedialog.cpp:195 src/synchronization/syncdialog.cpp:334
 msgid "Note Title"
 msgstr "Naslov sporočilca"
 
@@ -1919,32 +1830,32 @@ msgstr "Naslov sporočilca"
 msgid "Ad_vanced"
 msgstr "Nap_redno"
 
-#: src/notewindow.cpp:274
+#: src/notewindow.cpp:319
 msgid "_Undo"
 msgstr "_Razveljavi"
 
-#: src/notewindow.cpp:276
+#: src/notewindow.cpp:321
 msgid "_Redo"
 msgstr "_Ponovi"
 
-#: src/notewindow.cpp:278 src/notewindow.cpp:342
+#: src/notewindow.cpp:323 src/notewindow.cpp:356
 msgid "_Link to New Note"
 msgstr "_Povezava do novega sporočilca"
 
-#: src/notewindow.cpp:280
+#: src/notewindow.cpp:325
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Pomemben"
 
-#: src/notewindow.cpp:290
+#: src/notewindow.cpp:334
 msgid "_Delete…"
 msgstr "_Izbriši …"
 
-#: src/notewindow.cpp:377
+#: src/notewindow.cpp:376
 msgid "Set properties of text"
 msgstr "Nastavi lastnosti besedila"
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:388
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1952,105 +1863,80 @@ msgstr ""
 "To sporočilce je predloga sporočilc. Določa privzeto vsebino običajnih "
 "sporočilc in ne bo prikazano v meniju sporočilc oziroma v iskalnem oknu."
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:391
 msgid "Convert to regular note"
 msgstr "Pretvori v običajno sporočilce"
 
-#: src/notewindow.cpp:397
+#: src/notewindow.cpp:394
 msgid "Save Se_lection"
 msgstr "Shrani _izbor"
 
-#: src/notewindow.cpp:401
+#: src/notewindow.cpp:398
 msgid "Save _Title"
 msgstr "Shrani _naslov"
 
-#: src/notewindow.cpp:491 src/notewindow.cpp:997
+#: src/notewindow.cpp:488 src/notewindow.cpp:598
 msgid "Cannot create note"
 msgstr "Ni mogoče ustvariti sporočilca"
 
-#: src/notewindow.cpp:767
-msgid "_Bold"
-msgstr "_Krepko"
-
-#: src/notewindow.cpp:768
-msgid "_Italic"
-msgstr "_Ležeče"
-
-#: src/notewindow.cpp:769
-msgid "_Strikeout"
-msgstr "P_rečrtano"
-
-#: src/notewindow.cpp:773
+#: src/notewindow.cpp:958
 msgid "_Highlight"
 msgstr "_Poudarjeno"
 
-#: src/notewindow.cpp:776
+#: src/notewindow.cpp:962
 msgid "_Normal"
 msgstr "_Običajna"
 
-#: src/notewindow.cpp:777
+#: src/notewindow.cpp:963
 msgid "S_mall"
 msgstr "_Majhna"
 
-#: src/notewindow.cpp:778
+#: src/notewindow.cpp:964
 msgid "_Large"
 msgstr "_Velika"
 
-#: src/notewindow.cpp:779
+#: src/notewindow.cpp:965
 msgid "Hu_ge"
 msgstr "O_gromna"
 
-#: src/notewindow.cpp:801
-msgid "⦁ Bullets"
-msgstr "⦁ Oznake"
-
-#: src/notewindow.cpp:803
-msgid "→ Increase indent"
-msgstr "→ Povečaj zamik"
-
-#: src/notewindow.cpp:805
-msgid "← Decrease indent"
-msgstr "← Zmanjšaj zamik"
-
-#: src/preferencesdialog.cpp:104
+#: src/preferencesdialog.cpp:165
 msgid "Gnote Preferences"
 msgstr "Možnosti Gnote"
 
-#: src/preferencesdialog.cpp:121
+#: src/preferencesdialog.cpp:172
 msgid "General"
 msgstr "Splošno"
 
-#: src/preferencesdialog.cpp:122
+#: src/preferencesdialog.cpp:173
 msgid "Links"
 msgstr "Povezave"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:125 src/sharp/addinstreemodel.cpp:165
+#: src/preferencesdialog.cpp:174 src/sharp/pluginsmodel.cpp:205
 msgid "Synchronization"
 msgstr "Usklajevanje"
 
-#: src/preferencesdialog.cpp:127
+#: src/preferencesdialog.cpp:175
 msgid "Plugins"
 msgstr "Vstavki"
 
-#. Ok button...
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:152 src/preferencesdialog.cpp:793
-#: src/preferencesdialog.cpp:1056 src/preferencesdialog.cpp:1273
-#: src/synchronization/syncdialog.cpp:341 src/utils.cpp:365
+#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:775
+#: src/preferencesdialog.cpp:1012 src/preferencesdialog.cpp:1219
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
 msgid "_Close"
 msgstr "_Zapri"
 
-#: src/preferencesdialog.cpp:202
+#: src/preferencesdialog.cpp:217
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Vstavek %s ni nameščen"
 
-#: src/preferencesdialog.cpp:255
+#: src/preferencesdialog.cpp:269
 msgid "_Spell check while typing"
 msgstr "Preverjaj _črkovanje med tipkanjem"
 
-#: src/preferencesdialog.cpp:256
+#: src/preferencesdialog.cpp:270
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2059,35 +1945,57 @@ msgstr ""
 "bodo prikazani v priročnem meniju."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:266
+#: src/preferencesdialog.cpp:280
 msgid "Enable auto-_bulleted lists"
 msgstr "Omogoči samodejno _vrstično označene sezname"
 
-#: src/preferencesdialog.cpp:267
+#: src/preferencesdialog.cpp:281
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Začni vrstični seznam z znakom \"-\" na začetku vrstice."
 
-#: src/preferencesdialog.cpp:275
+#. Custom font...
+#: src/preferencesdialog.cpp:287
 msgid "Use custom _font"
 msgstr "Uporabi p_isavo po meri"
 
-#: src/preferencesdialog.cpp:292
+#. Note renaming behavior
+#: src/preferencesdialog.cpp:301
 msgid "When renaming a linked note: "
 msgstr "Ob preimenovanju povezanega sporočilca:"
 
-#: src/preferencesdialog.cpp:296
+#: src/preferencesdialog.cpp:305
 msgid "Ask me what to do"
 msgstr "Vedno vprašaj za potrditev"
 
-#: src/preferencesdialog.cpp:297
+#: src/preferencesdialog.cpp:306
 msgid "Never rename links"
 msgstr "Nikoli ne preimenuj povezav"
 
-#: src/preferencesdialog.cpp:298
+#: src/preferencesdialog.cpp:307
 msgid "Always rename links"
 msgstr "Vedno preimenuj povezave"
 
-#: src/preferencesdialog.cpp:318
+#. Color scheme
+#: src/preferencesdialog.cpp:320
+msgid "Color Scheme: "
+msgstr "Barvna shema:"
+
+#. TRANSLATORS: Option to follow the system color scheme setting
+#: src/preferencesdialog.cpp:324
+msgid "Follow the System"
+msgstr "Sledi sistemu"
+
+#. TRANSLATORS: Option to use dark variant of the theme
+#: src/preferencesdialog.cpp:326
+msgid "Dark"
+msgstr "Temna"
+
+#. TRANSLATORS: Option to use light variant of the theme
+#: src/preferencesdialog.cpp:328
+msgid "Light"
+msgstr "Svetla"
+
+#: src/preferencesdialog.cpp:341
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2095,44 +2003,40 @@ msgstr ""
 "Uporabite predlogo novega sporočilca za navedbo besedila, ki naj bo "
 "uporabljeno ob ustvarjanju novega sporočilca."
 
-#: src/preferencesdialog.cpp:323
+#: src/preferencesdialog.cpp:346
 msgid "Open New Note Template"
 msgstr "Odpri predlogo novega sporočilca"
 
 #. internal links
-#: src/preferencesdialog.cpp:377
+#: src/preferencesdialog.cpp:391
 msgid "_Automatically link to notes"
 msgstr "_Samodejno poveži s sporočilci"
 
-#: src/preferencesdialog.cpp:378
+#: src/preferencesdialog.cpp:392
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Omogoči to možnost za ustvarjanje povezav, ko se besedilo sklada z naslovom "
 "sporočilca."
 
 #. URLs
-#: src/preferencesdialog.cpp:384
+#: src/preferencesdialog.cpp:398
 msgid "Create links for _URLs"
 msgstr "Ustvari povezave za naslove _URL"
 
-#: src/preferencesdialog.cpp:385
-#, fuzzy
-#| msgid ""
-#| "Enable this option to create a link for URLs. Clicking will open that URL "
-#| "with apropriate program."
+#: src/preferencesdialog.cpp:399
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
 msgstr ""
-"Izbrana možnost omogoča ustvarjanje povezav za naslove URL. S klikom na "
-"naslov odpre mesto v ustreznem programu."
+"Izbrana možnost omogoča ustvarjanje povezav za naslove URL. S klikom naslova "
+"odprete URL v ustreznem programu."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:392
+#: src/preferencesdialog.cpp:406
 msgid "Highlight _WikiWords"
 msgstr "Poudarjanje _WikiWords"
 
-#: src/preferencesdialog.cpp:393
+#: src/preferencesdialog.cpp:407
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2140,94 +2044,85 @@ msgstr ""
 "Omogočite to možnost za poudarjanje besed <b>KiImajoTakVidez</b>. S klikom "
 "na besedo bo ustvarjeno sporočilce s tem imenom."
 
-#: src/preferencesdialog.cpp:425
+#: src/preferencesdialog.cpp:428
 msgid "Ser_vice:"
 msgstr "S_toritev:"
 
-#: src/preferencesdialog.cpp:479 src/preferencesdialog.cpp:1099
-msgid "Not configurable"
-msgstr "Ni nastavljivo"
-
-#: src/preferencesdialog.cpp:504
-#, fuzzy
-#| msgid "Automatical background s_ync interval (minutes)"
+#: src/preferencesdialog.cpp:501
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Interval samo_dejnega usklajevanja v ozadju (v minutah)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:523
 msgid "_Advanced..."
 msgstr "_Napredno ..."
 
-#: src/preferencesdialog.cpp:535
+#: src/preferencesdialog.cpp:528
 msgid "Clear"
 msgstr "Počisti"
 
-#: src/preferencesdialog.cpp:576
+#: src/preferencesdialog.cpp:555 src/preferencesdialog.cpp:1033
+msgid "Not configurable"
+msgstr "Ni nastavljivo"
+
+#: src/preferencesdialog.cpp:575
 msgid "The following plugins are installed:"
 msgstr "Nameščeni so naslednji vstavki:"
 
-#. TODO: In a future version, add in an "Install Add-ins..." button
-#. TODO: In a future version, add in a "Repositories..." button
-#: src/preferencesdialog.cpp:611
+#: src/preferencesdialog.cpp:599
 msgid "_Enable"
 msgstr "_Omogoči"
 
-#: src/preferencesdialog.cpp:617
+#: src/preferencesdialog.cpp:604
 msgid "_Disable"
 msgstr "O_nemogoči"
 
-#: src/preferencesdialog.cpp:629
-#, fuzzy
-#| msgid "Formatting"
+#: src/preferencesdialog.cpp:614
 msgid "In_formation"
-msgstr "Oblikovanje"
+msgstr "In_formacije"
 
-#: src/preferencesdialog.cpp:773
+#: src/preferencesdialog.cpp:755
 msgid "Not Implemented"
 msgstr "Ni del programa"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:790
-#, fuzzy
-#| msgid "%1% Preferences"
+#: src/preferencesdialog.cpp:772
 msgid "%1 Preferences"
-msgstr "Možnosti %1%"
+msgstr "Možnosti %1"
 
-#: src/preferencesdialog.cpp:923
+#: src/preferencesdialog.cpp:868
 msgid "Choose Note Font"
 msgstr "Izberi pisavo sporočilca"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:1016
+#: src/preferencesdialog.cpp:961
 msgid "Other Synchronization Options"
 msgstr "Druge možnosti usklajevanja"
 
-#: src/preferencesdialog.cpp:1019
+#: src/preferencesdialog.cpp:964
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr ""
 "Ko je zaznan spor med krajevno in oddaljeno kopijo na strežniku usklajevanja:"
 
-#. label.Xalign = 0;
-#: src/preferencesdialog.cpp:1023
+#: src/preferencesdialog.cpp:968
 msgid "Always ask me what to do"
 msgstr "Vedno vprašaj za izbor dejanja."
 
-#: src/preferencesdialog.cpp:1027
+#: src/preferencesdialog.cpp:969
 msgid "Rename my local note"
 msgstr "Preimenuj krajevno sporočilce"
 
-#: src/preferencesdialog.cpp:1031
+#: src/preferencesdialog.cpp:971
 msgid "Replace my local note with the server's update"
 msgstr "Zamenjaj krajevno sporočilce s posodobljenim sporočilcem na strežniku."
 
-#: src/preferencesdialog.cpp:1133
+#: src/preferencesdialog.cpp:1089
 msgid "Are you sure?"
 msgstr "Ali ste prepričani?"
 
-#: src/preferencesdialog.cpp:1134
+#: src/preferencesdialog.cpp:1090
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2235,11 +2130,11 @@ msgstr ""
 "Čiščenje nastavitev usklajevanja ni priporočeno. Lahko se zgodi, da boste "
 "morali po shranjevanju novih nastavitev ponovno uskladiti vsa sporočilca."
 
-#: src/preferencesdialog.cpp:1144
+#: src/preferencesdialog.cpp:1101
 msgid "Resetting Synchronization Settings"
 msgstr "Ponastavljanje nastavitev usklajevanja"
 
-#: src/preferencesdialog.cpp:1145
+#: src/preferencesdialog.cpp:1102
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2249,11 +2144,11 @@ msgstr ""
 "usklajevanja bodo počiščene. Lahko se zgodi, da bo treba vsa sporočilca "
 "znova uskladiti z novimi nastavitvami."
 
-#: src/preferencesdialog.cpp:1220
+#: src/preferencesdialog.cpp:1164
 msgid "Connection successful"
 msgstr "Povezava je uspešno vzpostavljena"
 
-#: src/preferencesdialog.cpp:1221
+#: src/preferencesdialog.cpp:1165
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2262,96 +2157,89 @@ msgstr ""
 "zagnati usklajevanje?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1246
-#, fuzzy
-#| msgid ""
-#| "Please check your information and try again.  The log file %1% may "
-#| "contain more information about the error."
+#: src/preferencesdialog.cpp:1191
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr ""
 "Preverite podatke in poskusite znova. Več podrobnosti o napaki je mogoče "
-"najti tudi v dnevniški datoteki %1%."
+"najti tudi v dnevniški datoteki %1."
 
-#: src/preferencesdialog.cpp:1251
+#: src/preferencesdialog.cpp:1196
 msgid "Error connecting"
 msgstr "Napaka med povezovanjem"
 
-#: src/preferencesdialog.cpp:1313
+#: src/preferencesdialog.cpp:1259
 msgid "Version:"
 msgstr "Različica:"
 
-#: src/preferencesdialog.cpp:1316
+#: src/preferencesdialog.cpp:1262
 msgid "Author:"
 msgstr "Avtor:"
 
-#: src/preferencesdialog.cpp:1320
+#: src/preferencesdialog.cpp:1266
 msgid "Copyright:"
 msgstr "Avtorske pravice:"
 
-#: src/recentchanges.cpp:65
+#: src/recentchanges.cpp:66
 msgid "Close"
 msgstr "Zapri"
 
-#: src/recentchanges.cpp:257
-#, fuzzy
-#| msgid "Create _New Note"
+#: src/recentchanges.cpp:281
 msgid "Create New Note"
-msgstr "Ustvari _novo sporočilce"
+msgstr "Ustvari novo sporočilce"
 
-#: src/recentchanges.cpp:284
+#: src/recentchanges.cpp:304
 msgid "Search"
 msgstr "Poišči"
 
-#: src/recentchanges.cpp:362
+#: src/recentchanges.cpp:382
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
-msgstr ""
+msgstr "Nadrejeni vdelanega polja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:404
+#: src/recentchanges.cpp:407
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
-msgstr ""
+msgstr "Nadrejeni vnosa iskanja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:719
+#: src/recentchanges.cpp:737
 msgid "Attempt to foreground a widget, that is not embedded in the window"
-msgstr ""
+msgstr "Poskus postavljanja v ospredje pripomočka, ki ni vdelan v okno"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:744
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
-msgstr ""
+msgstr "Poskus postavljanja v ospredje pripomočka, ki ni Gtk::Widget"
 
-#: src/recentchanges.cpp:996
-msgid "Expected widget to be a sub-menu!"
-msgstr ""
-
-#: src/recentchanges.cpp:1001
-#, fuzzy
-#| msgid "Not configurable"
+#: src/recentchanges.cpp:944
 msgid "No configured actions"
-msgstr "Ni nastavljivo"
+msgstr "Ni nastavljenih dejanj"
 
 #: src/remotecontrolproxy.cpp:46 src/remotecontrolproxy.cpp:49
 #, c-format
 msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Nalaganje vmesnika D-Bus je spodletelo %s: %s"
 
-#: src/searchnoteswidget.cpp:210
-msgid "Notebooks"
-msgstr "Beležnice"
+#. TRANSLATORS: search found a match in note title
+#: src/searchnoteswidget.cpp:242
+msgid "Title match"
+msgstr "Ujemanje naslovov"
 
-#: src/searchnoteswidget.cpp:682
+#: src/searchnoteswidget.cpp:246
+msgid "%1 match"
+msgid_plural "%1 matches"
+msgstr[0] "%1 zadetkov"
+msgstr[1] "%1 zadetek"
+msgstr[2] "%1 zadetka"
+msgstr[3] "%1 zadetki"
+
+#: src/searchnoteswidget.cpp:548
 msgid "Note"
 msgstr "Sporočilce"
 
-#: src/searchnoteswidget.cpp:704
+#: src/searchnoteswidget.cpp:560
 msgid "Modified"
 msgstr "Spremenjeno"
 
-#: src/searchnoteswidget.cpp:1015
-msgid "Notes"
-msgstr "Sporočilca"
-
-#: src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:732
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2359,98 +2247,34 @@ msgstr ""
 "Ni najdenih zadetkov v izbrani beležnici.\n"
 "Kliknite tu za iskanje med vsemi beležkami."
 
-#: src/searchnoteswidget.cpp:1038
+#: src/searchnoteswidget.cpp:736
 msgid "Click here to search across all notebooks"
 msgstr "Kliknite tu za iskanje med vsemi beležkami."
 
-#: src/searchnoteswidget.cpp:1056
+#: src/searchnoteswidget.cpp:751
 msgid "Matches"
 msgstr "Zadetki"
 
-#. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:1107
-msgid "Title match"
-msgstr "Ujemanje naslovov"
-
-#: src/searchnoteswidget.cpp:1111
-#, fuzzy
-#| msgid "%1% match"
-#| msgid_plural "%1% matches"
-msgid "%1 match"
-msgid_plural "%1 matches"
-msgstr[0] "%1% zadetkov"
-msgstr[1] "%1% zadetek"
-msgstr[2] "%1% zadetka"
-msgstr[3] "%1% zadetki"
-
-#: src/searchnoteswidget.cpp:1306
-msgid "Open In New _Window"
-msgstr "Odpri v _novem oknu"
-
-#: src/searchnoteswidget.cpp:1316
-msgid "_New"
-msgstr "_Novo"
-
-#: src/searchnoteswidget.cpp:1345
-msgid "_Open Template Note"
-msgstr "_Odpri predlogo sporočilc"
-
-#: src/searchnoteswidget.cpp:1349
-msgid "Re_name..."
-msgstr "_Preimenuj ..."
-
-#: src/searchnoteswidget.cpp:1356
-msgid "_New..."
-msgstr "_Novo ..."
-
-#: src/searchnoteswidget.cpp:1473 src/searchnoteswidget.cpp:1486
-#: src/searchnoteswidget.cpp:1497
-#, fuzzy, c-format
-#| msgid "Failed to parse setting %s (Value: %s):"
+#: src/searchnoteswidget.cpp:1003 src/searchnoteswidget.cpp:1016
+#: src/searchnoteswidget.cpp:1027
+#, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
-msgstr "Napaka pri razčlenjevanju nastavitve %s (vrednost: %s):"
+msgstr ""
+"Napaka pri razčlenjevanju nastavitve iskanja/razvrščanja (vrednost: %s):"
 
-#: src/searchnoteswidget.cpp:1474
+#: src/searchnoteswidget.cpp:1004
 msgid "Expected format 'column:order'"
 msgstr "Pričakovan zapis je 'stolpec:razvrstitev'"
 
-#: src/searchnoteswidget.cpp:1487
+#: src/searchnoteswidget.cpp:1017
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nerazpoznan stolpec %s"
 
-#: src/searchnoteswidget.cpp:1498
+#: src/searchnoteswidget.cpp:1028
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nerazpoznano zaporedje %s"
-
-#: src/sharp/addinstreemodel.cpp:110
-msgid "Name"
-msgstr "Ime"
-
-#: src/sharp/addinstreemodel.cpp:122
-msgid "Version"
-msgstr "Različica"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:156
-msgid "Formatting"
-msgstr "Oblikovanje"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:159
-msgid "Desktop integration"
-msgstr "Vgrajevanje v namizje"
-
-#. TRANSLATORS: Addin category.
-#: src/sharp/addinstreemodel.cpp:162
-msgid "Tools"
-msgstr "Orodja"
-
-#. TRANSLATORS: Addin category is unknown.
-#: src/sharp/addinstreemodel.cpp:169
-msgid "Unknown"
-msgstr "Neznano"
 
 #: src/sharp/modulemanager.cpp:62
 #, c-format
@@ -2462,6 +2286,38 @@ msgstr "Napaka med nalaganjem %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Napaka med pridobivanjem simbola dynamic_module_instanciate: %s"
 
+#: src/sharp/pluginsmodel.cpp:176
+msgid "Name"
+msgstr "Ime"
+
+#: src/sharp/pluginsmodel.cpp:179
+msgid "Version"
+msgstr "Različica"
+
+#: src/sharp/pluginsmodel.cpp:181
+msgid "Category"
+msgstr "Kategorija"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:196
+msgid "Formatting"
+msgstr "Oblikovanje"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:199
+msgid "Desktop integration"
+msgstr "Vgrajevanje v namizje"
+
+#. TRANSLATORS: Addin category.
+#: src/sharp/pluginsmodel.cpp:202
+msgid "Tools"
+msgstr "Orodja"
+
+#. TRANSLATORS: Addin category is unknown.
+#: src/sharp/pluginsmodel.cpp:209
+msgid "Unknown"
+msgstr "Neznano"
+
 #: src/sharp/xmlreader.cpp:219
 #, c-format
 msgid "XML error: %s"
@@ -2472,55 +2328,44 @@ msgid "unknown parse error"
 msgstr "neznana napaka razčlenjevanja"
 
 #: src/sharp/xmlwriter.cpp:40
-#, fuzzy
-#| msgid "%1% failed"
 msgid "%1 failed"
-msgstr "%1% je spodletelo"
+msgstr "%1 je spodletelo"
 
 #: src/sharp/xsltransform.cpp:67
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Slogovna predloga je prazna. Pošljite poročilo o hrošču"
 
 #: src/synchronization/filesystemsyncserver.cpp:125
-#, fuzzy, c-format
-#| msgid "Failed to update note format: %s"
+#, c-format
 msgid "Failed to upload note: %s"
-msgstr "Neuspela posodobitev oblike sporočilca: %s"
+msgstr "Sporočilce ni bilo naloženo na strežnik: %s"
 
 #: src/synchronization/filesystemsyncserver.cpp:143
-#, fuzzy
-#| msgid "Failed to load plugin information!"
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
-msgstr[0] "Nalaganje podatkov o vstavku je spodletelo!"
-msgstr[1] "Nalaganje podatkov o vstavku je spodletelo!"
-msgstr[2] "Nalaganje podatkov o vstavku je spodletelo!"
-msgstr[3] "Nalaganje podatkov o vstavku je spodletelo!"
+msgstr[0] "%1 sporočilc ni bilo uspešno naloženih na strežnik"
+msgstr[1] "%1 sporočilce ni bilo uspešno naloženo na strežnik"
+msgstr[2] "%1 sporočilci nista bili uspešno naloženi na strežnik"
+msgstr[3] "%1 sporočilca niso bila uspešno naložena na strežnik"
 
 #: src/synchronization/filesystemsyncserver.cpp:237
-#, fuzzy, c-format
-#| msgid "Exception while saving note: %s"
+#, c-format
 msgid "Exception when finishing note copy: %s"
-msgstr "Izjema med shranjevanjem sporočilca: %s"
+msgstr "Izjema med izdelavo kopije sporočilca: %s"
 
 #: src/synchronization/filesystemsyncserver.cpp:240
-#, fuzzy
-#| msgid "Exception while saving note: %s"
 msgid "Exception when finishing note copy"
-msgstr "Izjema med shranjevanjem sporočilca: %s"
+msgstr "Izjema med izdelavo kopije sporočilca"
 
 #: src/synchronization/filesystemsyncserver.cpp:263
-#, fuzzy
-#| msgid "Failed to update note format: %s"
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
-msgstr[0] "Neuspela posodobitev oblike sporočilca: %s"
-msgstr[1] "Neuspela posodobitev oblike sporočilca: %s"
-msgstr[2] "Neuspela posodobitev oblike sporočilca: %s"
-msgstr[3] "Neuspela posodobitev oblike sporočilca: %s"
+msgstr[0] "Neuspel prenos posodobitev %1 sporočilc"
+msgstr[1] "Neuspel prenos posodobitve %1 sporočilca"
+msgstr[2] "Neuspel prenos posodobitev %1 sporočilc"
+msgstr[3] "Neuspel prenos posodobitev %1 sporočilc"
 
 #: src/synchronization/filesystemsyncserver.cpp:427
-#: src/synchronization/filesystemsyncserver.cpp:431
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2529,13 +2374,12 @@ msgstr ""
 "Izjema pri čiščenju strežnika med oddajanjem. Integriteta strežnika je v "
 "redu, lahko pa da odvečne datoteke plavajo naokoli. Napaka: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:637
-#, fuzzy, c-format
-#| msgid "Error loading %s"
+#: src/synchronization/filesystemsyncserver.cpp:633
+#, c-format
 msgid "Error updating lock: %s"
-msgstr "Napaka med nalaganjem %s"
+msgstr "Napaka pri posodabljanju zaklepanja: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:676
+#: src/synchronization/filesystemsyncserver.cpp:672
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Napaka med brisanjem starega zaklepa usklajevanja \"%s\": %s"
@@ -2553,119 +2397,109 @@ msgid "Unparsable last-sync-rev element in %s"
 msgstr "Nerazčlenljivi predmet last-sync-rev v %s"
 
 #: src/synchronization/gvfssyncservice.cpp:98
-#, fuzzy
-#| msgid "Write test failed."
 msgid "Failure writing test file"
-msgstr "Preizkus zapisovanja je spodletel."
+msgstr "Napaka pri pisanju preskusne datoteke"
 
-#: src/synchronization/gvfssyncservice.cpp:103
-msgid "Failure when checking test file contents"
-msgstr ""
-
-#: src/synchronization/gvfssyncservice.cpp:109
+#: src/synchronization/gvfssyncservice.cpp:104
 msgid "Failure when trying to remove test file"
-msgstr ""
+msgstr "Napaka pri poskusu odstranitve preskusne datoteke"
 
-#: src/synchronization/gvfssyncservice.cpp:125
+#: src/synchronization/gvfssyncservice.cpp:116
 msgid "Unknown error"
 msgstr "Neznana napaka"
 
-#: src/synchronization/syncdialog.cpp:63
+#: src/synchronization/syncdialog.cpp:93
 msgid "Note Conflict"
 msgstr "Spor sporočilc"
 
 #. Suggest renaming note by appending " (old)" to the existing title
-#: src/synchronization/syncdialog.cpp:68
+#: src/synchronization/syncdialog.cpp:98
 msgid " (old)"
 msgstr " (staro)"
 
-#: src/synchronization/syncdialog.cpp:113
+#: src/synchronization/syncdialog.cpp:138
 msgid "Rename local note:"
 msgstr "Preimenuj krajevno sporočilce:"
 
-#: src/synchronization/syncdialog.cpp:120
+#: src/synchronization/syncdialog.cpp:145
 msgid "Update links in referencing notes"
 msgstr "Posodobi povezave v sporočilcih s sklici"
 
-#: src/synchronization/syncdialog.cpp:126
+#: src/synchronization/syncdialog.cpp:151
 msgid "Overwrite local note"
 msgstr "Prepiši krajevno sporočilce"
 
-#: src/synchronization/syncdialog.cpp:130
+#: src/synchronization/syncdialog.cpp:156
 msgid "Always perform this action"
 msgstr "Vedno izvedi to dejanje"
 
-#: src/synchronization/syncdialog.cpp:133
+#: src/synchronization/syncdialog.cpp:159
 msgid "_Continue"
 msgstr "_Nadaljuj"
 
 #. Set initial dialog text
-#: src/synchronization/syncdialog.cpp:136
+#: src/synchronization/syncdialog.cpp:162
 msgid "Note conflict detected"
 msgstr "Zaznan je spor sporočilc"
 
-#: src/synchronization/syncdialog.cpp:138
-#, fuzzy
-#| msgid ""
-#| "The server version of \"%1%\" conflicts with your local note.  What do "
-#| "you want to do with your local note?"
+#: src/synchronization/syncdialog.cpp:164
 msgid ""
 "The server version of \"%1\" conflicts with your local note.  What do you "
 "want to do with your local note?"
 msgstr ""
-"Strežniška različica \"%1%\" se ne sklada z vašim krajevnim sporočilcem. Kaj "
+"Strežniška različica »%1« se ne sklada z vašim krajevnim sporočilcem. Kaj "
 "želite storiti s svojim krajevnim sporočilcem?"
 
-#. Expander containing TreeView
-#: src/synchronization/syncdialog.cpp:292
+#. Expander containing table
+#: src/synchronization/syncdialog.cpp:309
 msgid "Details"
 msgstr "Podrobnosti"
 
-#: src/synchronization/syncdialog.cpp:334
+#: src/synchronization/syncdialog.cpp:338
 msgid "Status"
 msgstr "Stanje"
 
-#: src/synchronization/syncdialog.cpp:478
+#: src/synchronization/syncdialog.cpp:463
 msgid "Acquiring sync lock..."
 msgstr "Pridobivanje zaklepa za usklajevanje ..."
 
-#: src/synchronization/syncdialog.cpp:481
+#: src/synchronization/syncdialog.cpp:466
 msgid "Committing changes..."
 msgstr "Uveljavljanje sprememb ..."
 
-#: src/synchronization/syncdialog.cpp:484
+#: src/synchronization/syncdialog.cpp:469
 msgid "Synchronizing Notes"
 msgstr "Usklajevanje sporočilc"
 
-#: src/synchronization/syncdialog.cpp:485
+#: src/synchronization/syncdialog.cpp:470
 msgid "Synchronizing your notes..."
 msgstr "Usklajevanje sporočilc ..."
 
-#: src/synchronization/syncdialog.cpp:486
+#: src/synchronization/syncdialog.cpp:471
 msgid "This may take a while, kick back and enjoy!"
 msgstr "Postopek lahko traja nekaj časa. Počakajte in uživajte!"
 
-#: src/synchronization/syncdialog.cpp:488
+#: src/synchronization/syncdialog.cpp:473
 msgid "Connecting to the server..."
 msgstr "Povezovanje s strežnikom ..."
 
-#: src/synchronization/syncdialog.cpp:494
+#: src/synchronization/syncdialog.cpp:479
 msgid "Deleting notes off of the server..."
 msgstr "Brisanje sporočilc s strežnika ..."
 
-#: src/synchronization/syncdialog.cpp:498
+#: src/synchronization/syncdialog.cpp:483
 msgid "Downloading new/updated notes..."
 msgstr "Prejemanje novih/posodobljenih sporočilc ..."
 
-#: src/synchronization/syncdialog.cpp:510
+#: src/synchronization/syncdialog.cpp:495
 msgid "Server Locked"
 msgstr "Strežnik je zaklenjen"
 
-#: src/synchronization/syncdialog.cpp:511
+#: src/synchronization/syncdialog.cpp:496
 msgid "Server is locked"
 msgstr "Strežnik je zaklenjen"
 
-#: src/synchronization/syncdialog.cpp:512
+#: src/synchronization/syncdialog.cpp:497
 msgid ""
 "One of your other computers is currently synchronizing.  Please wait 2 "
 "minutes and try again."
@@ -2673,150 +2507,145 @@ msgstr ""
 "Eden izmed vaših preostalih računalnikov je trenutno v postopku osveževanja. "
 "Počakajte nekaj minut in poskusite znova."
 
-#: src/synchronization/syncdialog.cpp:516
+#: src/synchronization/syncdialog.cpp:501
 msgid "Preparing to download updates from server..."
 msgstr "Priprava na prejem posodobitev iz strežnika ..."
 
-#: src/synchronization/syncdialog.cpp:519
+#: src/synchronization/syncdialog.cpp:504
 msgid "Preparing to upload updates to server..."
 msgstr "Priprava na pošiljanje posodobitev na strežnik ..."
 
-#: src/synchronization/syncdialog.cpp:522
+#: src/synchronization/syncdialog.cpp:507
 msgid "Uploading notes to server..."
 msgstr "Pošiljanje sporočilc na strežnik ..."
 
-#: src/synchronization/syncdialog.cpp:525
+#: src/synchronization/syncdialog.cpp:510
 msgid "Synchronization Failed"
 msgstr "Usklajevanje je spodletelo"
 
-#: src/synchronization/syncdialog.cpp:526
+#: src/synchronization/syncdialog.cpp:511
 msgid "Failed to synchronize"
 msgstr "Usklajevanje je spodletelo"
 
-#: src/synchronization/syncdialog.cpp:527
+#: src/synchronization/syncdialog.cpp:512
 msgid "Could not synchronize notes.  Check the details below and try again."
 msgstr ""
 "Sporočilc ni mogoče uskladiti. Preverite spodnje podrobnosti in poskusite "
 "znova."
 
-#: src/synchronization/syncdialog.cpp:533
+#: src/synchronization/syncdialog.cpp:518
 msgid "Synchronization Complete"
 msgstr "Usklajevanje je končano"
 
-#: src/synchronization/syncdialog.cpp:534
+#: src/synchronization/syncdialog.cpp:519
 msgid "Synchronization is complete"
 msgstr "Usklajevanje je uspešno končano"
 
-#: src/synchronization/syncdialog.cpp:535
-#, fuzzy
-#| msgid "%1% note updated."
-#| msgid_plural "%1% notes updated."
+#: src/synchronization/syncdialog.cpp:520
 msgid "%1 note updated."
 msgid_plural "%1 notes updated."
-msgstr[0] "%1% sporočilc posodobljenih."
-msgstr[1] "%1% sporočilce posodobljeno."
-msgstr[2] "%1% sporočilci posodobljeni."
-msgstr[3] "%1% sporočilca posodobljena."
+msgstr[0] "%1 sporočilc posodobljenih."
+msgstr[1] "%1 sporočilce posodobljeno."
+msgstr[2] "%1 sporočilci posodobljeni."
+msgstr[3] "%1 sporočilca posodobljena."
 
-#: src/synchronization/syncdialog.cpp:536
+#: src/synchronization/syncdialog.cpp:521
 msgid "Your notes are now up to date."
 msgstr "Vaša sporočilca so zdaj posodobljena."
 
-#: src/synchronization/syncdialog.cpp:541
+#: src/synchronization/syncdialog.cpp:526
 msgid "Synchronization Canceled"
 msgstr "Usklajevanje je preklicano"
 
-#: src/synchronization/syncdialog.cpp:542
+#: src/synchronization/syncdialog.cpp:527
 msgid "Synchronization was canceled"
 msgstr "Usklajevanje je bilo preklicano."
 
-#: src/synchronization/syncdialog.cpp:543
+#: src/synchronization/syncdialog.cpp:528
 msgid "You canceled the synchronization.  You may close the window now."
 msgstr "Preklicali ste usklajevanje. Zdaj lahko zaprete okno."
 
-#: src/synchronization/syncdialog.cpp:547
+#: src/synchronization/syncdialog.cpp:532
 msgid "Synchronization Not Configured"
 msgstr "Usklajevanje ni nastavljeno"
 
-#: src/synchronization/syncdialog.cpp:548
+#: src/synchronization/syncdialog.cpp:533
 msgid "Synchronization is not configured"
 msgstr "Usklajevanje ni nastavljeno"
 
-#: src/synchronization/syncdialog.cpp:549
+#: src/synchronization/syncdialog.cpp:534
 msgid "Please configure synchronization in the preferences dialog."
 msgstr "Nastavite usklajevanje v pogovornemu oknu možnosti."
 
-#: src/synchronization/syncdialog.cpp:553
+#: src/synchronization/syncdialog.cpp:538
 msgid "Synchronization Service Error"
 msgstr "Napaka storitve usklajevanja"
 
-#: src/synchronization/syncdialog.cpp:554
+#: src/synchronization/syncdialog.cpp:539
 msgid "Service error"
 msgstr "Napaka storitve"
 
-#: src/synchronization/syncdialog.cpp:555
+#: src/synchronization/syncdialog.cpp:540
 msgid "Error connecting to the synchronization service.  Please try again."
 msgstr "Napaka med povezovanjem s storitvijo usklajevanja. Poskusite znova."
 
-#: src/synchronization/syncdialog.cpp:569
+#: src/synchronization/syncdialog.cpp:554
 msgid "Deleted locally"
 msgstr "Izbrisano krajevno"
 
-#: src/synchronization/syncdialog.cpp:572
+#: src/synchronization/syncdialog.cpp:557
 msgid "Deleted from server"
 msgstr "Izbrisano s strežnika"
 
-#: src/synchronization/syncdialog.cpp:575
+#: src/synchronization/syncdialog.cpp:560
 msgid "Updated"
 msgstr "Posodobljeno"
 
-#: src/synchronization/syncdialog.cpp:578
+#: src/synchronization/syncdialog.cpp:563
 msgid "Added"
 msgstr "Dodano"
 
-#: src/synchronization/syncdialog.cpp:581
+#: src/synchronization/syncdialog.cpp:566
 msgid "Uploaded changes to server"
 msgstr "Spremembe so bile prenesene na strežnik"
 
-#: src/synchronization/syncdialog.cpp:584
+#: src/synchronization/syncdialog.cpp:569
 msgid "Uploaded new note to server"
 msgstr "Novo sporočilce je bilo poslano na strežnik"
 
-#: src/synchronization/syncmanager.cpp:59
+#: src/synchronization/syncmanager.cpp:58
 msgid "Synchronize Notes"
 msgstr "Uskladi sporočilca"
 
-#: src/synchronization/syncmanager.cpp:78
-#: src/synchronization/syncmanager.cpp:95
-#: src/synchronization/syncmanager.cpp:557
-#, fuzzy, c-format
-#| msgid "Remote call to %s failed"
+#: src/synchronization/syncmanager.cpp:77
+#: src/synchronization/syncmanager.cpp:94
+#: src/synchronization/syncmanager.cpp:555
+#, c-format
 msgid "Report a bug. Cast failed: %s"
-msgstr "Oddaljeni klic %s je spodletel"
+msgstr "Prijavite napako. Zasedba ni uspela: %s"
 
-#: src/synchronization/syncmanager.cpp:143
+#: src/synchronization/syncmanager.cpp:142
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Napaka čiščenja vstavka po usklajevanju: %s"
 
-#: src/synchronization/syncmanager.cpp:168
+#: src/synchronization/syncmanager.cpp:167
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Izjema pri ustvarjanju SyncServer: %s"
 
-#: src/synchronization/syncmanager.cpp:368
-#, fuzzy, c-format
-#| msgid "Synchronization failed with the following exception: %s"
-msgid "Synchronization failed with the following Glib exception: %s"
-msgstr "Usklajevanje je spodletelo z naslednjo izjemo: %s"
-
 #. top-level try
-#: src/synchronization/syncmanager.cpp:372
+#: src/synchronization/syncmanager.cpp:370
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Usklajevanje je spodletelo z naslednjo izjemo: %s"
 
-#: src/utils.cpp:98
+#: src/utils.cpp:74
+#, c-format
+msgid "Failed to show help: %s"
+msgstr "Prikaz pomoči ni uspel: %s"
+
+#: src/utils.cpp:75
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2824,88 +2653,89 @@ msgstr ""
 " \"Gnote priročnika\" ni mogoče najti. Preverite, da je namestitev uspešno "
 "končana."
 
-#: src/utils.cpp:106
+#: src/utils.cpp:81
 msgid "Help not found"
 msgstr "Pomoči ni mogoče najti"
 
-#: src/utils.cpp:138
+#: src/utils.cpp:99
+#, c-format
+msgid "Failed to open URL: %s"
+msgstr "URL ni bilo mogoče odpreti: %s"
+
+#: src/utils.cpp:115
 msgid "Cannot open location"
 msgstr "Ni mogoče odpreti mesta"
 
-#: src/utils.cpp:155
-msgid "No Date"
-msgstr "Brez datuma"
-
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:170
+#: src/utils.cpp:176
 msgid "Today, %1"
 msgstr "Danes, %1"
 
-#: src/utils.cpp:171
+#: src/utils.cpp:177
 msgid "Today"
 msgstr "Danes"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:177
-msgid "Yesterday, %1"
-msgstr "Včeraj, %1"
-
-#: src/utils.cpp:178
-msgid "Yesterday"
-msgstr "Včeraj"
-
-#. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:184
+#: src/utils.cpp:182
 msgid "Tomorrow, %1"
 msgstr "Jutri, %1"
 
-#: src/utils.cpp:185
+#: src/utils.cpp:183
 msgid "Tomorrow"
 msgstr "Jutri"
 
-#. TRANSLATORS: date in current year.
+#. TRANSLATORS: argument %1 is time.
+#: src/utils.cpp:188
+msgid "Yesterday, %1"
+msgstr "Včeraj, %1"
+
 #: src/utils.cpp:189
+msgid "Yesterday"
+msgstr "Včeraj"
+
+#. TRANSLATORS: date in current year.
+#: src/utils.cpp:193
 msgid "%b %d"
 msgstr "%d. %b"
 
-#. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:192 src/utils.cpp:201
-msgid "%1, %2"
-msgstr "%1, %2"
-
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:197
 msgid "%b %d %Y"
 msgstr "%d. %b %Y"
 
-#: src/utils.cpp:362 src/utils.cpp:376
+#. TRANSLATORS: argument %1 is date, %2 is time.
+#: src/utils.cpp:202
+msgid "%1, %2"
+msgstr "%1, %2"
+
+#: src/utils.cpp:213
+msgid "No Date"
+msgstr "Brez datuma"
+
+#: src/utils.cpp:316 src/utils.cpp:330
 msgid "_OK"
 msgstr "V _redu"
 
-#: src/utils.cpp:371
+#: src/utils.cpp:325
 msgid "_No"
 msgstr "_Ne"
 
-#: src/utils.cpp:372
+#: src/utils.cpp:326
 msgid "_Yes"
 msgstr "_Da"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: src/watchers.cpp:198
+#: src/watchers.cpp:191
 msgid "(Untitled %1)"
 msgstr "(Neimenovano %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
 #: src/watchers.cpp:230
-#, fuzzy
-#| msgid ""
-#| "A note with the title <b>%1%</b> already exists. Please choose another "
-#| "name for this note before continuing."
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr ""
-"Sporočilce z naslovom <b>%1%</b> že obstaja. Pred nadaljevanjem izberite "
+"Sporočilce z naslovom <b>%1</b> že obstaja. Pred nadaljevanjem izberite "
 "drugo ime za to sporočilce."
 
 #: src/watchers.cpp:245
@@ -2915,11 +2745,3 @@ msgstr "Naslov sporočilca je že uporabljen"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Preveri črkovanje"
-
-#: src/watchers.cpp:705
-msgid "_Copy Link Address"
-msgstr "_Kopiraj mesto povezave"
-
-#: src/watchers.cpp:711
-msgid "_Open Link"
-msgstr "_Odpri povezavo"
