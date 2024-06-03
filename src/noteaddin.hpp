@@ -68,6 +68,9 @@ public:
   /// </summary>
   virtual void on_note_opened () = 0;
 
+  virtual void on_note_foregrounded() {}
+  virtual void on_note_backgrounded() {}
+
   virtual std::vector<PopoverWidget> get_actions_popover_widgets() const;
   void register_main_window_action_callback(const Glib::ustring & action, sigc::slot<void(const Glib::VariantBase&)> && callback);
 

@@ -46,6 +46,11 @@ namespace gnote {
        * opening already opened notes. */
       window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_foregrounded));
       window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_backgrounded));
+
+      // if already foreground, trigger that too
+      if(window->host()->is_foreground(*window)) {
+        on_foregrounded();
+      }
     }
   }
 
@@ -85,6 +90,8 @@ namespace gnote {
         ERR_OUT("Action %s not found!", callback.first.c_str());
       }
     }
+
+    on_note_foregrounded();
   }
 
   void NoteAddin::on_backgrounded()
@@ -93,6 +100,7 @@ namespace gnote {
       cid.disconnect();
     }
     m_action_callbacks_cids.clear();
+    on_note_backgrounded();
   }
 
   Gtk::Window *NoteAddin::get_host_window() const
