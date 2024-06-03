@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016,2019,2023 Aurimas Cernius
+ * Copyright (C) 2013,2016,2019,2023-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -59,8 +59,6 @@ void ReadOnlyNoteAddin::shutdown()
 
 void ReadOnlyNoteAddin::on_note_opened()
 {
-  get_window()->signal_foregrounded.connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_foreground));
-  get_window()->signal_backgrounded.connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_background));
 }
 
 std::vector<gnote::PopoverWidget> ReadOnlyNoteAddin::get_actions_popover_widgets() const
@@ -71,7 +69,7 @@ std::vector<gnote::PopoverWidget> ReadOnlyNoteAddin::get_actions_popover_widgets
   return widgets;
 }
 
-void ReadOnlyNoteAddin::on_foreground()
+void ReadOnlyNoteAddin::on_note_foregrounded()
 {
   auto action = get_window()->host()->find_action("readonly-toggle");
   gnote::ITagManager & m = manager().tag_manager();
@@ -82,7 +80,7 @@ void ReadOnlyNoteAddin::on_foreground()
   action->change_state(Glib::Variant<bool>::create(get_note().contains_tag(ro_tag)));
 }
 
-void ReadOnlyNoteAddin::on_background()
+void ReadOnlyNoteAddin::on_note_backgrounded()
 {
   m_readonly_toggle_cid.disconnect();
 }

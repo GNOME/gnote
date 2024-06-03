@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016,2019 Aurimas Cernius
+ * Copyright (C) 2013,2016,2019,2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,8 +50,8 @@ public:
 private:
   ReadOnlyNoteAddin();
   void on_menu_item_toggled(const Glib::VariantBase & state);
-  void on_foreground();
-  void on_background();
+  void on_note_foregrounded() override;
+  void on_note_backgrounded() override;
 
   sigc::connection m_readonly_toggle_cid;
 };
