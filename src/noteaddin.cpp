@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2016,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2012-2016,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,8 +44,8 @@ namespace gnote {
       on_note_opened();
       /* Connect these two signals here, because signal_opened won't emit for
        * opening already opened notes. */
-      window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
-      window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
+      window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_foregrounded));
+      window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_backgrounded));
     }
   }
 
@@ -65,11 +65,11 @@ namespace gnote {
     on_note_opened();
     NoteWindow * window = get_window();
 
-    window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_foregrounded));
-    window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_note_backgrounded));
+    window->signal_foregrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_foregrounded));
+    window->signal_backgrounded.connect(sigc::mem_fun(*this, &NoteAddin::on_backgrounded));
   }
 
-  void NoteAddin::on_note_foregrounded()
+  void NoteAddin::on_foregrounded()
   {
     auto host = get_window()->host();
     if(!host) {
@@ -87,7 +87,7 @@ namespace gnote {
     }
   }
 
-  void NoteAddin::on_note_backgrounded()
+  void NoteAddin::on_backgrounded()
   {
     for(auto cid : m_action_callbacks_cids) {
       cid.disconnect();

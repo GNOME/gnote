@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2016,2019,2021-2023 Aurimas Cernius
+ * Copyright (C) 2012-2016,2019,2021-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -103,8 +103,8 @@ public:
     }
   void on_note_opened_event(Note & );
 private:
-  void on_note_foregrounded();
-  void on_note_backgrounded();
+  void on_foregrounded();
+  void on_backgrounded();
 
   Note::Ptr                     m_note;
   sigc::connection              m_note_opened_cid;
