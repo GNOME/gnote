@@ -190,6 +190,7 @@ namespace gnote {
         break;
       case Format::CURRENT_YEAR:
         /* TRANSLATORS: date in current year. */
+        /* xgettext:no-c-format */
         pretty_str = sharp::date_time_to_string(date, _("%b %d")); // "MMMM d"
         goto DATE_AND_TIME;
       case Format::OTHER_YEAR:
