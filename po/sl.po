@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-03-11 20:07+0000\n"
-"PO-Revision-Date: 2024-05-02 17:48+0200\n"
+"POT-Creation-Date: 2024-06-02 19:52+0000\n"
+"PO-Revision-Date: 2024-06-08 16:48+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -1290,7 +1290,6 @@ msgstr ""
 "pododsekov v svojem sporočilcu, kazalo vsebine bo prikazano v meniju."
 
 #: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
-#| msgid "Aurimas Černius"
 msgid "Aurimas Černius, Luc Pionchon"
 msgstr "Aurimas Černius, Luc Pionchon"
 
@@ -1315,8 +1314,8 @@ msgid "TODO"
 msgstr "TODO"
 
 #: src/plugins/todo/todo.desktop.in.in:5
-msgid "Highlight FIXME, TODO and XXX patterns in notes."
-msgstr "Poudari vzorce opomb FIXME, TODO in XXX."
+msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
+msgstr "V opombah poudari vzorce FIXME:, TODO: in XXX:."
 
 #: src/plugins/todo/todo.desktop.in.in:6
 msgid "Aurimas Černius, Romain Tartière"
@@ -2695,6 +2694,8 @@ msgstr "Včeraj"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:193
+#, fuzzy, c-format
+#| msgid "%b %d"
 msgid "%b %d"
 msgstr "%d. %b"
 
