@@ -208,7 +208,7 @@ private:
   bool is_note_title_available(const Glib::ustring & renamedTitle)
     {
       return std::find(m_note_update_titles.begin(), m_note_update_titles.end(), renamedTitle) == m_note_update_titles.end()
-             && m_note_manager.find(renamedTitle);
+             && m_note_manager.find(renamedTitle).has_value() == false;
     }
   void radio_toggled()
     {
