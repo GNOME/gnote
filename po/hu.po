@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-03-11 20:07+0000\n"
-"PO-Revision-Date: 2024-05-19 12:02+0200\n"
+"POT-Creation-Date: 2024-06-02 19:52+0000\n"
+"PO-Revision-Date: 2024-06-28 16:34+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -1332,8 +1332,9 @@ msgid "TODO"
 msgstr "TODO"
 
 #: src/plugins/todo/todo.desktop.in.in:5
-msgid "Highlight FIXME, TODO and XXX patterns in notes."
-msgstr "A FIXME, TODO és XXX minták kiemelése a jegyzetekben."
+#| msgid "Highlight FIXME, TODO and XXX patterns in notes."
+msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
+msgstr "A FIXME:, TODO: és XXX: minták kiemelése a jegyzetekben."
 
 #: src/plugins/todo/todo.desktop.in.in:6
 msgid "Aurimas Černius, Romain Tartière"
@@ -2717,8 +2718,10 @@ msgstr "Tegnap"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:193
+#, c-format
+#| msgid "%b %d"
 msgid "%b %d"
-msgstr "%b. %e."
+msgstr "%b. %-d."
 
 #. TRANSLATORS: date in other than current year.
 #: src/utils.cpp:197
@@ -2766,3 +2769,4 @@ msgstr "A jegyzet neve foglalt"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
+
