@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-03-11 20:07+0000\n"
-"PO-Revision-Date: 2024-03-12 16:17+1000\n"
+"POT-Creation-Date: 2024-06-02 19:52+0000\n"
+"PO-Revision-Date: 2024-06-21 23:19+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -1329,8 +1329,8 @@ msgid "TODO"
 msgstr "TODO"
 
 #: src/plugins/todo/todo.desktop.in.in:5
-msgid "Highlight FIXME, TODO and XXX patterns in notes."
-msgstr "Подсвечивать FIXME, TODO и XXX шаблоны в заметках."
+msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
+msgstr "Подсвечивать FIXME:, TODO: и XXX: шаблоны в заметках."
 
 #: src/plugins/todo/todo.desktop.in.in:6
 msgid "Aurimas Černius, Romain Tartière"
@@ -2000,7 +2000,7 @@ msgstr "Всегда переименовывать ссылки"
 #. Color scheme
 #: src/preferencesdialog.cpp:320
 msgid "Color Scheme: "
-msgstr "Цветовая схема:"
+msgstr "Цветовая схема: "
 
 #. TRANSLATORS: Option to follow the system color scheme setting
 #: src/preferencesdialog.cpp:324
@@ -2715,6 +2715,7 @@ msgstr "Вчера"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:193
+#, c-format
 msgid "%b %d"
 msgstr "%b %d"
 
