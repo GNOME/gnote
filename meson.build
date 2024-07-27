@@ -1,5 +1,5 @@
 project('gnote', 'cpp',
-  version: '46.1',
+  version: '46.2',
   meson_version: '>=0.59.0',
   default_options: ['cpp_std=c++17'],
 )
