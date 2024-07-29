@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-03-11 20:07+0000\n"
-"PO-Revision-Date: 2024-03-12 17:33+0300\n"
+"POT-Creation-Date: 2024-06-02 19:52+0000\n"
+"PO-Revision-Date: 2024-06-25 13:23+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.3\n"
 "X-POOTLE-MTIME: 1421955849.000000\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -1320,9 +1320,10 @@ msgstr "İçindekiler Yardımı"
 msgid "TODO"
 msgstr "YAPILACAK"
 
+# Büyük harfle yazılan kısımlar çevrilmemeli. Yerelleştirmeyi desteklemiyor.
 #: src/plugins/todo/todo.desktop.in.in:5
-msgid "Highlight FIXME, TODO and XXX patterns in notes."
-msgstr "Notlardaki DÜZELT, YAPILACAK ve XXX kalıplarını vurgulayın."
+msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
+msgstr "Notlardaki FIXME:, TODO: ve XXX: kalıplarını vurgula."
 
 #: src/plugins/todo/todo.desktop.in.in:6
 msgid "Aurimas Černius, Romain Tartière"
@@ -2688,6 +2689,7 @@ msgstr "Dün"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:193
+#, c-format
 msgid "%b %d"
 msgstr "%b %d"
 
