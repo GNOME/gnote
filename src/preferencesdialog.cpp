@@ -1229,6 +1229,7 @@ namespace {
     info_label->set_use_markup(true);
     info_label->set_use_underline(false);
     info_label->property_wrap() = true;
+    info_label->set_max_width_chars(60);
     info_label->set_hexpand(true);
     info_label->set_vexpand(true);
 

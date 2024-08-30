@@ -303,6 +303,8 @@ namespace gnote {
         label->set_justify(Gtk::Justification::LEFT);
         label->set_halign(Gtk::Align::START);
         label->set_valign(Gtk::Align::CENTER);
+        label->set_wrap(TRUE);
+        label->set_max_width_chars(60);
         label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
       }
       
