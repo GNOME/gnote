@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-03-11 20:07+0000\n"
-"PO-Revision-Date: 2024-03-14 12:28+0100\n"
+"POT-Creation-Date: 2024-09-03 00:35+0000\n"
+"PO-Revision-Date: 2024-09-10 18:36+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
@@ -862,8 +862,8 @@ msgstr "Výběr ikony…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
-#: src/utils.cpp:329
+#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:323
+#: src/utils.cpp:330
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -1234,7 +1234,7 @@ msgid "Page %1 of %2"
 msgstr "Strana %1 z %2"
 
 #: src/plugins/readonly/readonly.desktop.in.in:4
-#: src/plugins/readonly/readonlynoteaddin.cpp:69
+#: src/plugins/readonly/readonlynoteaddin.cpp:67
 msgid "Read Only"
 msgstr "Jen ke čtení"
 
@@ -1335,8 +1335,8 @@ msgid "TODO"
 msgstr "TODO"
 
 #: src/plugins/todo/todo.desktop.in.in:5
-msgid "Highlight FIXME, TODO and XXX patterns in notes."
-msgstr "Zvýrazňuje v poznámkách značky FIXME, TODO a XXX."
+msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
+msgstr "Zvýrazňuje v poznámkách značky FIXME:, TODO: a XXX:."
 
 #: src/plugins/todo/todo.desktop.in.in:6
 msgid "Aurimas Černius, Romain Tartière"
@@ -1526,11 +1526,11 @@ msgstr "Volby Gnote při spouštění"
 msgid "Version %1"
 msgstr "Verze %1"
 
-#: src/noteaddin.cpp:101
+#: src/noteaddin.cpp:109
 msgid "Plugin is disposing already"
 msgstr "Zásuvný modul byl již zlikvidován"
 
-#: src/noteaddin.cpp:105
+#: src/noteaddin.cpp:113
 msgid "Window is not embedded"
 msgstr "Okno není vloženo"
 
@@ -1946,7 +1946,7 @@ msgstr "Zásuvné moduly"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:775
 #: src/preferencesdialog.cpp:1012 src/preferencesdialog.cpp:1219
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:320
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -2713,33 +2713,34 @@ msgid "Yesterday"
 msgstr "Včera"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:193
+#: src/utils.cpp:194
+#, no-c-format
 msgid "%b %d"
 msgstr "%d. %B"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:197
+#: src/utils.cpp:198
 msgid "%b %d %Y"
 msgstr "%d. %B %Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:202
+#: src/utils.cpp:203
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:213
+#: src/utils.cpp:214
 msgid "No Date"
 msgstr "Žádný termín"
 
-#: src/utils.cpp:316 src/utils.cpp:330
+#: src/utils.cpp:317 src/utils.cpp:331
 msgid "_OK"
 msgstr "_Budiž"
 
-#: src/utils.cpp:325
+#: src/utils.cpp:326
 msgid "_No"
 msgstr "_Ne"
 
-#: src/utils.cpp:326
+#: src/utils.cpp:327
 msgid "_Yes"
 msgstr "_Ano"
 
