@@ -43,6 +43,7 @@ namespace sync {
   {
   public:
     SyncManager(IGnote &, NoteManagerBase &);
+    virtual ~SyncManager();
     void init();
     virtual void reset_client() override;
     virtual void perform_synchronization(const SyncUI::Ptr & sync_ui) override;
@@ -81,11 +82,14 @@ namespace sync {
     NoteManagerBase & note_mgr();
     void get_synchronized_xml_bits(const Glib::ustring & noteXml, Glib::ustring & title, Glib::ustring & tags, Glib::ustring & content);
     void abort_sync(SyncServer *server);
+    void sync_checker_thread();
+    void on_sync_checker_finished(bool need_update);
 
     IGnote & m_gnote;
     NoteManagerBase & m_note_manager;
     SyncState m_state;
     std::thread *m_sync_thread;
+    std::unique_ptr<std::thread> m_sync_checker_thread;
     SyncTitleConflictResolution m_conflict_resolution;
     utils::InterruptableTimeout m_autosync_timer;
     int m_autosync_timeout_pref_minutes;

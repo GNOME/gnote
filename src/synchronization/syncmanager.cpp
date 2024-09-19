@@ -48,6 +48,13 @@ namespace sync {
   {
   }
 
+  SyncManager::~SyncManager()
+  {
+    if (m_sync_checker_thread) {
+      m_sync_checker_thread->join();
+      m_sync_checker_thread.reset();
+    }
+  }
 
   void SyncManager::init()
   {
@@ -449,11 +456,14 @@ namespace sync {
   }
 
 
-  void SyncManager::background_sync_checker()
+  void SyncManager::sync_checker_thread()
   {
+    bool need_update = false;
+
     m_last_background_check = Glib::DateTime::create_now_utc();
     m_current_autosync_timeout_minutes = m_autosync_timeout_pref_minutes;
-    if(m_sync_thread != NULL) {
+    if(m_sync_thread) {
+      utils::main_context_invoke([this, need_update]() { on_sync_checker_finished(need_update); });
       return;
     }
     SyncServiceAddin *addin = get_configured_sync_service();
@@ -469,6 +479,7 @@ namespace sync {
       catch(std::exception & e) {
         DBG_OUT("Exception while creating SyncServer: %s\n", e.what());
         addin->post_sync_cleanup();// TODO: Needed?
+        utils::main_context_invoke([this, need_update]() { on_sync_checker_finished(need_update); });
         return;
         // TODO: Figure out a clever way to get the specific error up to the GUI
       }
@@ -494,6 +505,7 @@ namespace sync {
         // TODO: A libnotify bubble might be nice
         DBG_OUT("Error connecting to server");
         addin->post_sync_cleanup();
+        utils::main_context_invoke([this, need_update]() { on_sync_checker_finished(need_update); });
         return;
       }
 
@@ -502,13 +514,40 @@ namespace sync {
       if(client_has_updates || server_has_updates) {
         DBG_OUT("Detected that sync would be a good idea now");
         // TODO: Check that it's safe to sync, block other sync UIs
-        perform_synchronization(SilentUI::create(m_gnote, note_mgr()));
+	need_update = true;
       }
     }
+
+    utils::main_context_invoke([this, need_update]() { on_sync_checker_finished(need_update); });
 
     return;
   }
 
+
+  void SyncManager::on_sync_checker_finished(bool need_update)
+  {
+    if (m_sync_checker_thread) {
+      m_sync_checker_thread->join();
+      m_sync_checker_thread.reset();
+    }
+
+    if (need_update) {
+      perform_synchronization(SilentUI::create(m_gnote, note_mgr()));
+    }
+  }
+
+
+  void SyncManager::background_sync_checker()
+  {
+    if(m_sync_checker_thread) {
+      // A synchronization checker thread is already running
+      DBG_OUT("A sync checker thread is already running");
+      return;
+    }
+
+    DBG_OUT("Creating sync checker thread");
+    m_sync_checker_thread.reset(new std::thread([this] { sync_checker_thread(); }));
+  }
 
   void SyncManager::set_state(SyncState new_state)
   {
