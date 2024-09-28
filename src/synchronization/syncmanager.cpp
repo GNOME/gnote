@@ -44,7 +44,6 @@ namespace sync {
     : m_gnote(g)
     , m_note_manager(m)
     , m_state(IDLE)
-    , m_sync_thread(NULL)
   {
   }
 
@@ -116,7 +115,7 @@ namespace sync {
 
   void SyncManager::perform_synchronization(const SyncUI::Ptr & sync_ui)
   {
-    if(m_sync_thread != NULL) {
+    if(m_sync_thread) {
       // A synchronization thread is already running
       // TODO: Start new sync if existing dlg is for finished sync
       DBG_OUT("A synchronization thread is already running");
@@ -126,7 +125,7 @@ namespace sync {
 
     m_sync_ui = sync_ui;
     DBG_OUT("Creating synchronization thread");
-    m_sync_thread = new std::thread([this] { synchronization_thread(); });
+    m_sync_thread.reset(new std::thread([this] { synchronization_thread(); }));
     m_sync_thread->detach();
   }
 
@@ -139,7 +138,6 @@ namespace sync {
       finally(SyncManager & m) : manager(m), addin(NULL){}
       ~finally()
       {
-        manager.m_sync_thread = NULL;
         try {
           if(addin) {
             addin->post_sync_cleanup();
@@ -148,6 +146,8 @@ namespace sync {
         catch(std::exception & e) {
           ERR_OUT(_("Error cleaning up addin after synchronization: %s"), e.what());
         }
+        auto &m = manager;
+        utils::main_context_invoke([&m] { m.m_sync_thread.reset(); });
       }
     } f(*this);
     std::unique_ptr<SyncServer> server;
@@ -410,7 +410,7 @@ namespace sync {
     // Note changed, iff a sync is coming up we kill the
     // timer to avoid interupting the user (we want to
     // make sure not to sync more often than the user's pref)
-    if(m_sync_thread == NULL) {
+    if(!m_sync_thread) {
       Glib::TimeSpan time_since_last_check = Glib::DateTime::create_now_utc().difference(m_last_background_check);
       if(sharp::time_span_total_minutes(time_since_last_check) > m_autosync_timeout_pref_minutes - 1) {
         DBG_OUT("Note edited...killing autosync timer until next save or delete event");
@@ -443,7 +443,7 @@ namespace sync {
 
   void SyncManager::handle_note_saved_or_deleted(NoteBase &)
   {
-    if(m_sync_thread == NULL && m_autosync_timeout_pref_minutes > 0) {
+    if(!m_sync_thread && m_autosync_timeout_pref_minutes > 0) {
       DBG_OUT("Note saved or deleted...restarting sync timer");
       m_last_background_check = Glib::DateTime::create_now_utc();
       // Perform a sync one minute after setting change
