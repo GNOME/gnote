@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -157,7 +157,6 @@ namespace sync {
         set_state(NO_CONFIGURED_SYNC_SERVICE);
         DBG_OUT("GetConfiguredSyncService is null");
         set_state(IDLE);
-        m_sync_thread = NULL;
         return;
       }
 
@@ -173,7 +172,6 @@ namespace sync {
         set_state(SYNC_SERVER_CREATION_FAILED);
         ERR_OUT(_("Exception while creating SyncServer: %s"), e.what());
         set_state(IDLE);
-        m_sync_thread = NULL;
         f.addin->post_sync_cleanup();// TODO: Needed?
         return;
         // TODO: Figure out a clever way to get the specific error up to the GUI
@@ -188,7 +186,6 @@ namespace sync {
         set_state(LOCKED);
         DBG_OUT("Server locked, try again later");
         set_state(IDLE);
-        m_sync_thread = NULL;
         f.addin->post_sync_cleanup();
         return;
       }
