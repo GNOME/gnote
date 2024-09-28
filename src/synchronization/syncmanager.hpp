@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017-2021,2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017-2021,2023-2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -88,7 +88,7 @@ namespace sync {
     IGnote & m_gnote;
     NoteManagerBase & m_note_manager;
     SyncState m_state;
-    std::thread *m_sync_thread;
+    mutable std::unique_ptr<std::thread> m_sync_thread;
     std::unique_ptr<std::thread> m_sync_checker_thread;
     SyncTitleConflictResolution m_conflict_resolution;
     utils::InterruptableTimeout m_autosync_timer;
