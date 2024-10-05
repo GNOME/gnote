@@ -254,6 +254,7 @@ namespace gnote {
     authors.push_back("Debarshi Ray <debarshir@src.gnome.org>");
     authors.push_back("Hubert Figuiere <hub@figuiere.net>");
     authors.push_back("Iain Nicol <iainn@src.gnome.org>");
+    authors.push_back("Kevin Joly <kevin.joly@posteo.net>");
     authors.push_back(_("and Tomboy original authors."));
     
     std::vector<Glib::ustring> documenters;
