@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2022,2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -31,28 +31,9 @@
 
 namespace gnote {
 
-  namespace {
-    int compare_tags_sort_func(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
-    {
-      Tag::Ptr tag_a;
-      a->get_value(0, tag_a);
-      Tag::Ptr tag_b;
-      b->get_value(0, tag_b);
-
-      if (!tag_a || !tag_b)
-        return 0;
-
-      return strcmp(tag_a->normalized_name().c_str(), 
-                    tag_b->normalized_name().c_str());
-    }
-  }
-
   TagManager::TagManager()
     :  m_tags(Gtk::ListStore::create(m_columns))
-    ,  m_sorted_tags(Gtk::TreeModelSort::create(m_tags))
   {
-    m_sorted_tags->set_sort_func (0, sigc::ptr_fun(&compare_tags_sort_func));
-    m_sorted_tags->set_sort_column(0, Gtk::SortType::ASCENDING);
     
   }
 

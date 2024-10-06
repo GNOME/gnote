@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2021-2022,2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -48,10 +48,6 @@ public:
   virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
   virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) override;
   virtual void remove_tag(const Tag::Ptr & tag) override;
-  Glib::RefPtr<Gtk::TreeModel> get_tags() const
-    {
-      return m_sorted_tags;
-    }
   virtual std::vector<Tag::Ptr> all_tags() const override;
 private:
   class ColumnRecord
@@ -66,7 +62,6 @@ private:
   };
   ColumnRecord                     m_columns;
   Glib::RefPtr<Gtk::ListStore>     m_tags;
-  Glib::RefPtr<Gtk::TreeModelSort> m_sorted_tags;
   // The key for this dictionary is Tag.Name.ToLower ().
   typedef std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> TagMap;
   TagMap                           m_tag_map;
