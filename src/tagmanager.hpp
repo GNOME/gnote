@@ -28,9 +28,6 @@
 #include <mutex>
 #include <sigc++/signal.h>
 
-#include <gtkmm/liststore.h>
-#include <gtkmm/treemodelsort.h>
-
 #include "itagmanager.hpp"
 #include "tag.hpp"
 
@@ -50,21 +47,7 @@ public:
   virtual void remove_tag(const Tag::Ptr & tag) override;
   virtual std::vector<Tag::Ptr> all_tags() const override;
 private:
-  class ColumnRecord
-    : public Gtk::TreeModelColumnRecord
-  {
-  public:
-    ColumnRecord()
-      {
-        add(m_tag);
-      }
-    Gtk::TreeModelColumn<Tag::Ptr> m_tag;
-  };
-  ColumnRecord                     m_columns;
-  Glib::RefPtr<Gtk::ListStore>     m_tags;
-  // The key for this dictionary is Tag.Name.ToLower ().
-  typedef std::map<Glib::ustring, Gtk::TreeIter<Gtk::TreeRow>> TagMap;
-  TagMap                           m_tag_map;
+  std::vector<Tag::Ptr> m_tags;
   typedef std::map<Glib::ustring, Tag::Ptr> InternalMap;
   InternalMap                      m_internal_tags;
   mutable std::mutex               m_locker;

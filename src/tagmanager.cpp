@@ -32,9 +32,7 @@
 namespace gnote {
 
   TagManager::TagManager()
-    :  m_tags(Gtk::ListStore::create(m_columns))
   {
-    
   }
 
 
@@ -61,10 +59,11 @@ namespace gnote {
       }
       return Tag::Ptr();
     }
-    auto iter = m_tag_map.find(normalized_tag_name);
-    if (iter != m_tag_map.end()) {
-      Gtk::TreeIter tree_iter = iter->second;
-      return (*tree_iter)[m_columns.m_tag];
+
+    for(auto &tag : m_tags) {
+      if(tag->normalized_name() == normalized_tag_name) {
+        return tag;
+      }
     }
 
     return Tag::Ptr();
@@ -96,7 +95,6 @@ namespace gnote {
         return t;
       }
     }
-    Gtk::TreeIter<Gtk::TreeRow> iter;
     Tag::Ptr tag = get_tag (normalized_tag_name);
     if (!tag) {
       std::lock_guard<std::mutex> lock(m_locker);
@@ -104,9 +102,7 @@ namespace gnote {
       tag = get_tag (normalized_tag_name);
       if (!tag) {
         tag = std::make_shared<Tag>(sharp::string_trim(tag_name));
-        iter = m_tags->append ();
-        (*iter)[m_columns.m_tag] = tag;
-        m_tag_map [tag->normalized_name()] = iter;
+        m_tags.push_back(tag);
       }
     }
 
@@ -158,47 +154,30 @@ namespace gnote {
 
       m_internal_tags.erase(tag->normalized_name());
     }
-    auto map_iter = m_tag_map.find(tag->normalized_name());
-    if (map_iter != m_tag_map.end()) {
-      std::lock_guard<std::mutex> lock(m_locker);
 
-      map_iter = m_tag_map.find(tag->normalized_name());
-      if (map_iter != m_tag_map.end()) {
-        Gtk::TreeIter iter = map_iter->second;
-        if (!m_tags->erase(iter)) {
-          DBG_OUT("TagManager: Removed tag: %s", tag->normalized_name().c_str());
-        } 
-        else { 
-          // FIXME: For some really weird reason, this block actually gets called sometimes!
-          DBG_OUT("TagManager: Call to remove tag from ListStore failed: %s", tag->normalized_name().c_str());
-        }
+    std::lock_guard<std::mutex> lock(m_locker);
 
-        m_tag_map.erase(map_iter);
-        DBG_OUT("Removed TreeIter from tag_map: %s", tag->normalized_name().c_str());
+    auto iter = std::find(m_tags.begin(), m_tags.end(), tag);
+    if(iter != m_tags.end()) {
+      m_tags.erase(iter);
+      DBG_OUT("TagManager: Removed tag: %s", tag->normalized_name().c_str());
+    }
+    else {
+      // FIXME: For some really weird reason, this block actually gets called sometimes!
+      DBG_OUT("TagManager: Call to remove tag from ListStore failed: %s", tag->normalized_name().c_str());
+    }
 
-        auto notes = tag->get_notes();
-        for(NoteBase *note_iter : notes) {
-          note_iter->remove_tag(tag);
-        }
-      }
+    auto notes = tag->get_notes();
+    for(NoteBase *note_iter : notes) {
+      note_iter->remove_tag(tag);
     }
   }
   
   std::vector<Tag::Ptr> TagManager::all_tags() const
   {
-    std::vector<Tag::Ptr> tags;
-
     // Add in the system tags first
-    tags = sharp::map_get_values(m_internal_tags);
-
-    // Now all the other tags
-    for(TagMap::const_iterator iter = m_tag_map.begin();
-        iter != m_tag_map.end(); ++iter) {
-      Tag::Ptr tag;
-      iter->second->get_value(0, tag);      
-      tags.push_back(tag);
-    }
-
+    std::vector<Tag::Ptr> tags = sharp::map_get_values(m_internal_tags);
+    tags.insert(tags.end(), m_tags.begin(), m_tags.end());
     return tags;
   }
 
