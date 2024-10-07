@@ -169,7 +169,7 @@ namespace gnote {
 
     auto notes = tag->get_notes();
     for(NoteBase *note_iter : notes) {
-      note_iter->remove_tag(tag);
+      note_iter->remove_tag(*tag);
     }
   }
   
