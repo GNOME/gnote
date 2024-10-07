@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -205,7 +205,7 @@ bool ActiveNotesNotebook::empty()
   for(const auto & note_uri : m_notes) {
     if(auto note_ref = m_note_manager.find_by_uri(note_uri)) {
       const NoteBase & note = note_ref.value();
-      if(!note.contains_tag(templ_tag)) {
+      if(!note.contains_tag(*templ_tag)) {
         return false;
       }
     }

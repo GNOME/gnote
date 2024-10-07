@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019,2023 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019,2023-2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -110,7 +110,7 @@ private:
         gnote::ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       m_note_manager.for_each([&notebooks, template_tag](gnote::NoteBase & note) {
         for(auto & nb : notebooks) {
-          if(note.contains_tag(nb.first.get().get_tag()) && !note.contains_tag(template_tag)) {
+          if(note.contains_tag(*nb.first.get().get_tag()) && !note.contains_tag(*template_tag)) {
             ++nb.second;
           }
         }

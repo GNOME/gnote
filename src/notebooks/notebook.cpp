@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,7 @@ namespace notebooks {
     if(tag == NULL) {
       return false;
     }
-    return note.contains_tag(tag);
+    return note.contains_tag(*tag);
   }
 
   Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special)
@@ -128,7 +128,7 @@ namespace notebooks {
     }
     auto notes = templ_tag->get_notes();
     for(NoteBase *n : notes) {
-      if(n->contains_tag(notebook_tag)) {
+      if(n->contains_tag(*notebook_tag)) {
         return Note::ORef(std::ref(*static_cast<Note*>(n)));
       }
     }
@@ -197,7 +197,7 @@ namespace notebooks {
   /// </returns>
   bool Notebook::contains_note(const Note & note, bool include_system)
   {
-    bool contains = note.contains_tag(m_tag);
+    bool contains = note.contains_tag(*m_tag);
     if(!contains || include_system) {
       return contains;
     }

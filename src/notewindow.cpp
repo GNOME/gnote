@@ -392,11 +392,11 @@ namespace gnote {
     untemplateButton->signal_clicked().connect(sigc::mem_fun(*this, &NoteWindow::on_untemplate_button_click));
 
     m_save_selection_check_button = manage(new Gtk::CheckButton(_("Save Se_lection"), true));
-    m_save_selection_check_button->set_active(m_note.contains_tag(m_template_save_selection_tag));
+    m_save_selection_check_button->set_active(m_note.contains_tag(*m_template_save_selection_tag));
     m_save_selection_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_selection_check_button_toggled));
 
     m_save_title_check_button = manage(new Gtk::CheckButton(_("Save _Title"), true));
-    m_save_title_check_button->set_active(m_note.contains_tag(m_template_save_title_tag));
+    m_save_title_check_button->set_active(m_note.contains_tag(*m_template_save_title_tag));
     m_save_title_check_button->signal_toggled().connect(sigc::mem_fun(*this, &NoteWindow::on_save_title_check_button_toggled));
 
     bar->attach(*infoLabel, 0, 0, 1, 1);
@@ -404,7 +404,7 @@ namespace gnote {
     bar->attach(*m_save_selection_check_button, 0, 2, 1, 1);
     bar->attach(*m_save_title_check_button, 0, 3, 1, 1);
 
-    if(!m_note.contains_tag(m_template_tag)) {
+    if(!m_note.contains_tag(*m_template_tag)) {
       bar->hide();
     }
 

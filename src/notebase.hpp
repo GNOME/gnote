@@ -224,7 +224,7 @@ public:
   virtual void delete_note();
   void add_tag(const Tag::Ptr &);
   virtual void remove_tag(Tag &);
-  bool contains_tag(const Tag::Ptr &) const;
+  bool contains_tag(const Tag &) const;
 
   const Glib::ustring & file_path() const
     {

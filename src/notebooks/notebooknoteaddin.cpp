@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2016,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2016,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -105,7 +105,7 @@ namespace notebooks {
   std::vector<gnote::PopoverWidget> NotebookNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
-    if(!get_note().contains_tag(get_template_tag())) {
+    if(!get_note().contains_tag(*get_template_tag())) {
       auto notebook_button = Gio::MenuItem::create(_("Notebook"), make_menu());
       widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
     }

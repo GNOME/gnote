@@ -292,7 +292,7 @@ namespace gnote {
     Glib::RefPtr<Gtk::TextBuffer> buffer = new_note.get_buffer();
     Gtk::TextIter cursor, selection;
     Tag::Ptr template_save_selection = m_tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
-    if(template_note.contains_tag(template_save_selection)) {
+    if(template_note.contains_tag(*template_save_selection)) {
       Glib::ustring template_title = template_note.get_title();
       int cursor_pos = template_note.data().cursor_position();
       int selection_bound = template_note.data().selection_bound_position();

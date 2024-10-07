@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -248,7 +248,7 @@ NoteBase & NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_
 NoteBase & NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase & template_note, Glib::ustring && guid)
 {
   Tag::Ptr template_save_title = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
-  if(template_note.contains_tag(template_save_title)) {
+  if(template_note.contains_tag(*template_save_title)) {
     title = get_unique_name(template_note.get_title());
   }
 

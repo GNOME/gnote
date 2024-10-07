@@ -77,7 +77,7 @@ void ReadOnlyNoteAddin::on_note_foregrounded()
 
   m_readonly_toggle_cid = action->signal_change_state()
     .connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_menu_item_toggled));
-  action->change_state(Glib::Variant<bool>::create(get_note().contains_tag(ro_tag)));
+  action->change_state(Glib::Variant<bool>::create(get_note().contains_tag(*ro_tag)));
 }
 
 void ReadOnlyNoteAddin::on_note_backgrounded()

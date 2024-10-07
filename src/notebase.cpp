@@ -288,13 +288,10 @@ void NoteBase::remove_tag(Tag & tag)
   queue_save(OTHER_DATA_CHANGED);
 }
 
-bool NoteBase::contains_tag(const Tag::Ptr & tag) const
+bool NoteBase::contains_tag(const Tag &tag) const
 {
-  if(!tag) {
-    return false;
-  }
   const NoteData::TagMap & thetags(data_synchronizer().data().tags());
-  return (thetags.find(tag->normalized_name()) != thetags.end());
+  return (thetags.find(tag.normalized_name()) != thetags.end());
 }
 
 Glib::ustring NoteBase::get_complete_note_xml()

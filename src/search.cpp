@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2023 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2023-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ namespace gnote {
 
     m_manager.for_each([this, &temp_matches, template_tag, selected_notebook, case_sensitive, words=std::move(words), encoded_words=std::move(encoded_words)](NoteBase & note) {
       // Skip template notes
-      if(note.contains_tag(template_tag)) {
+      if(note.contains_tag(*template_tag)) {
         return;
       }
         
