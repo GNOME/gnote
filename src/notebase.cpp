@@ -288,13 +288,6 @@ void NoteBase::remove_tag(Tag & tag)
   queue_save(OTHER_DATA_CHANGED);
 }
 
-void NoteBase::remove_tag(const Tag::Ptr & tag)
-{
-  if(!tag)
-    throw sharp::Exception("Note.RemoveTag () called with a null tag.");
-  remove_tag(*tag);
-}
-
 bool NoteBase::contains_tag(const Tag::Ptr & tag) const
 {
   if(!tag) {

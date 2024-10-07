@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -224,7 +224,6 @@ public:
   virtual void delete_note();
   void add_tag(const Tag::Ptr &);
   virtual void remove_tag(Tag &);
-  void remove_tag(const Tag::Ptr &);
   bool contains_tag(const Tag::Ptr &) const;
 
   const Glib::ustring & file_path() const
