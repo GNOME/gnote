@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -244,7 +244,7 @@ void NoteBase::delete_note()
   // remove_tag modifies map, so always iterate from start
   NoteData::TagMap & thetags(data_synchronizer().data().tags());
   for(NoteData::TagMap::const_iterator iter = thetags.begin(); iter != thetags.end(); iter = thetags.begin()) {
-    remove_tag(iter->second);
+    remove_tag(*iter->second);
   }
 }
 
@@ -388,7 +388,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
 
   for(Tag::Ptr & iter : tag_list) {
     if(std::find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
-      remove_tag(iter);
+      remove_tag(*iter);
     }
   }
   for(Tag::Ptr & iter : new_tags) {
