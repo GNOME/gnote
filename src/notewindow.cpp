@@ -417,7 +417,7 @@ namespace gnote {
 
   void NoteWindow::on_untemplate_button_click()
   {
-    m_note.remove_tag(m_template_tag);
+    m_note.remove_tag(*m_template_tag);
   }
 
 
@@ -427,7 +427,7 @@ namespace gnote {
       m_note.add_tag(m_template_save_selection_tag);
     }
     else {
-      m_note.remove_tag(m_template_save_selection_tag);
+      m_note.remove_tag(*m_template_save_selection_tag);
     }
   }
 
@@ -438,7 +438,7 @@ namespace gnote {
       m_note.add_tag(m_template_save_title_tag);
     }
     else {
-      m_note.remove_tag(m_template_save_title_tag);
+      m_note.remove_tag(*m_template_save_title_tag);
     }
   }
 
