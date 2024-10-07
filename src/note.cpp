@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -303,7 +303,7 @@ namespace gnote {
     // Remove the note from all the tags
     for(NoteData::TagMap::const_iterator iter = m_data.data().tags().begin();
         iter != m_data.data().tags().end(); ++iter) {
-      remove_tag(iter->second);
+      remove_tag(*iter->second);
     }
 
     if (m_window) {
