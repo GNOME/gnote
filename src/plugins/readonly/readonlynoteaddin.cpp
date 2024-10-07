@@ -99,7 +99,7 @@ void ReadOnlyNoteAddin::on_menu_item_toggled(const Glib::VariantBase & state)
   }
   else {
     note.enabled(true);
-    note.remove_tag(ro_tag);
+    note.remove_tag(*ro_tag);
   }
 }
 
