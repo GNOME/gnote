@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2016-2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016-2017,2019-2020,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -282,7 +282,7 @@ bool RemoteControl::RemoveTagFromNote(const Glib::ustring& uri,
 {
   return m_manager.find_by_uri(uri, [this, &tag_name](NoteBase & note) {
     if(auto tag = m_manager.tag_manager().get_tag(tag_name)) {
-      note.remove_tag(tag);
+      note.remove_tag(*tag);
     }
   });
 }
