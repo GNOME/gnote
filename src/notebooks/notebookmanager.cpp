@@ -148,7 +148,7 @@ namespace gnote {
         notes = tag->get_notes();
       }
       for(NoteBase *note : notes) {
-        note->remove_tag(tag);
+        note->remove_tag(*tag);
         signal_note_removed_from_notebook(*static_cast<Note*>(note), notebook);
       }
 
@@ -345,7 +345,7 @@ namespace gnote {
 
       if(currentNotebook) {
         Notebook & nb = currentNotebook.value();
-        note.remove_tag(nb.get_tag());
+        note.remove_tag(*nb.get_tag());
         signal_note_removed_from_notebook(note, nb);
       }
 
