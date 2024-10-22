@@ -24,6 +24,7 @@
 
 #include <map>
 #include <optional>
+#include <unordered_set>
 #include <vector>
 
 #include <glibmm/object.h>
@@ -31,6 +32,7 @@
 #include <sigc++/signal.h>
 
 #include "tag.hpp"
+#include "base/hash.hpp"
 #include "sharp/datetime.hpp"
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
@@ -44,7 +46,7 @@ class NoteManagerBase;
 class NoteData
 {
 public:
-  typedef std::map<Glib::ustring, Tag::Ptr> TagMap;
+  typedef std::unordered_set<Glib::ustring, Hash<Glib::ustring>> TagSet;
 
   static const int s_noPosition;
 
@@ -127,11 +129,11 @@ public:
     {
       return m_height;
     }
-  const TagMap & tags() const
+  const TagSet& tags() const
     {
       return m_tags;
     }
-  TagMap & tags()
+  TagSet& tags()
     {
       return m_tags;
     }
@@ -150,7 +152,7 @@ private:
   int               m_selection_bound_pos;
   int               m_width, m_height;
 
-  TagMap m_tags;
+  TagSet m_tags;
 };
 
 

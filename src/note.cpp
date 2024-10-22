@@ -258,7 +258,9 @@ namespace gnote {
     , m_tag_table(NULL)
   {
     for(const auto & iter : m_data.data().tags()) {
-      add_tag(iter.second);
+      if(auto tag = _manager.tag_manager().get_tag(iter)) {
+        add_tag(tag);
+      }
     }
   }
 
@@ -301,9 +303,11 @@ namespace gnote {
     m_is_deleting = true;
     
     // Remove the note from all the tags
-    for(NoteData::TagMap::const_iterator iter = m_data.data().tags().begin();
-        iter != m_data.data().tags().end(); ++iter) {
-      remove_tag(*iter->second);
+    auto thetags = m_data.data().tags();
+    for(const auto &iter : thetags) {
+      if(auto tag = manager().tag_manager().get_tag(iter)) {
+        remove_tag(*tag);
+      }
     }
 
     if (m_window) {
@@ -430,26 +434,31 @@ namespace gnote {
 
   void Note::remove_tag(Tag & tag)
   {
-    Glib::ustring tag_name = tag.normalized_name();
-    NoteData::TagMap & thetags(m_data.data().tags());
-    NoteData::TagMap::iterator iter;
+    const Glib::ustring tag_name = tag.normalized_name();
+    auto &thetags = m_data.data().tags();
+    Tag::Ptr iter;
 
     // if we are deleting the note, no need to check for the tag, we 
     // know it is there.
     if(!m_is_deleting) {
-      iter = thetags.find(tag_name);
-      if (iter == thetags.end())  {
-        return;
+      auto t = thetags.find(tag_name);
+      if(t != thetags.end()) {
+        if(auto tg = manager().tag_manager().get_tag(*t)) {
+          iter = tg;
+        }
       }
     }
 
+    if(!iter) {
+      return;
+    }
     signal_tag_removing(*this, tag);
 
     // don't erase the tag if we are deleting the note. 
     // This will invalidate the iterator.
     // see bug 579839.
     if(!m_is_deleting) {
-      thetags.erase(iter);
+      thetags.erase(tag_name);
     }
     tag.remove_note(*this);
 

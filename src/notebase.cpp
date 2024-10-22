@@ -242,9 +242,12 @@ void NoteBase::delete_note()
 {
   // Remove the note from all the tags
   // remove_tag modifies map, so always iterate from start
-  NoteData::TagMap & thetags(data_synchronizer().data().tags());
-  for(NoteData::TagMap::const_iterator iter = thetags.begin(); iter != thetags.end(); iter = thetags.begin()) {
-    remove_tag(*iter->second);
+  auto thetags = data_synchronizer().data().tags();
+  auto &tag_manager = m_manager.tag_manager();
+  for(auto &thetag : thetags) {
+    if(Tag::Ptr tag = tag_manager.get_tag(thetag)) {
+      remove_tag(*tag);
+    }
   }
 }
 
@@ -255,31 +258,38 @@ void NoteBase::add_tag(const Tag::Ptr & tag)
   }
   tag->add_note(*this);
 
-  NoteData::TagMap & thetags(data_synchronizer().data().tags());
-  if(thetags.find(tag->normalized_name()) == thetags.end()) {
-    thetags[tag->normalized_name()] = tag;
-
-    signal_tag_added(*this, tag);
-
-    DBG_OUT ("Tag added, queueing save");
-    queue_save(OTHER_DATA_CHANGED);
+  auto &thetags = data_synchronizer().data().tags();
+  if(thetags.find(tag->normalized_name()) != thetags.end()) {
+    return;
   }
+
+  thetags.insert(tag->normalized_name());
+
+  signal_tag_added(*this, tag);
+
+  DBG_OUT ("Tag added, queueing save");
+  queue_save(OTHER_DATA_CHANGED);
 }
 
 void NoteBase::remove_tag(Tag & tag)
 {
   Glib::ustring tag_name = tag.normalized_name();
-  NoteData::TagMap & thetags(data_synchronizer().data().tags());
-  NoteData::TagMap::iterator iter;
+  auto & thetags(data_synchronizer().data().tags());
+  Tag::Ptr iter;
 
-  iter = thetags.find(tag_name);
-  if(iter == thetags.end())  {
+  auto t = thetags.find(tag_name);
+  if(t != thetags.end()) {
+    if(auto tg = manager().tag_manager().get_tag(*t)) {
+      iter = tg;
+    }
+  }
+  if(!iter) {
     return;
   }
 
   signal_tag_removing(*this, tag);
 
-  thetags.erase(iter);
+  thetags.erase(tag_name);
   tag.remove_note(*this);
 
   signal_tag_removed(*this, tag_name);
@@ -290,8 +300,9 @@ void NoteBase::remove_tag(Tag & tag)
 
 bool NoteBase::contains_tag(const Tag &tag) const
 {
-  const NoteData::TagMap & thetags(data_synchronizer().data().tags());
-  return (thetags.find(tag.normalized_name()) != thetags.end());
+  const auto tag_name = tag.normalized_name();
+  const auto &tags = data_synchronizer().data().tags();
+  return tags.find(tag_name) != tags.end();
 }
 
 Glib::ustring NoteBase::get_complete_note_xml()
@@ -391,7 +402,14 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
 
 std::vector<Tag::Ptr> NoteBase::get_tags() const
 {
-  return sharp::map_get_values(data_synchronizer().data().tags());
+  std::vector<Tag::Ptr> ret;
+  for(const auto &tag_name : data_synchronizer().data().tags()) {
+    if(auto tag = manager().tag_manager().get_tag(tag_name)) {
+      ret.push_back(tag);
+    }
+  }
+
+  return ret;
 }
 
 const NoteData & NoteBase::data() const
@@ -508,7 +526,7 @@ void NoteArchiver::_read(sharp::XmlReader & xml, NoteData & data, Glib::ustring 
           std::vector<Glib::ustring> tag_strings = NoteBase::parse_tags(doc2->children);
           for(const Glib::ustring & tag_str : tag_strings) {
             Tag::Ptr tag = m_manager.tag_manager().get_or_create_tag(tag_str);
-            data.tags()[tag->normalized_name()] = tag;
+            data.tags().insert(tag->normalized_name());
           }
           xmlFreeDoc(doc2);
         }
@@ -620,10 +638,9 @@ void NoteArchiver::write(sharp::XmlWriter & xml, const NoteData & data)
 
   if(data.tags().size() > 0) {
     xml.write_start_element("", "tags", "");
-    for(NoteData::TagMap::const_iterator iter = data.tags().begin();
-        iter != data.tags().end(); ++iter) {
+    for(const auto & tag_name : data.tags()) {
       xml.write_start_element("", "tag", "");
-      xml.write_string(iter->second->name());
+      xml.write_string(tag_name);
       xml.write_end_element();
     }
     xml.write_end_element();

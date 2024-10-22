@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2021,2023 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021,2023-2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -74,7 +74,7 @@ namespace sync {
     bool basically_equal_to(NoteBase & existing_note);
   private:
     Glib::ustring get_inner_content(const Glib::ustring & full_content_element) const;
-    bool compare_tags(const std::map<Glib::ustring, Tag::Ptr> set1, const std::map<Glib::ustring, Tag::Ptr> set2) const;
+    bool compare_tags(const NoteData::TagSet &set1, const NoteData::TagSet &set2) const;
   };
 
 }
