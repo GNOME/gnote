@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -292,7 +292,7 @@ namespace gnote {
     virtual void on_note_opened() override;
 
   private:
-    void on_tag_added(const NoteBase&, const Tag::Ptr&);
+    void on_tag_added(const NoteBase&, const Tag&);
     void on_tag_removing(const NoteBase&, const Tag &);
     void on_tag_removed(const NoteBase&, const Glib::ustring&);
 

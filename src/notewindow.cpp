@@ -58,7 +58,7 @@ namespace gnote {
     , m_enabled(true)
   {
     ITagManager & tag_manager = note.manager().tag_manager();
-    m_template_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    m_template_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG)->normalized_name();
     m_template_save_selection_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG);
     m_template_save_title_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
 
@@ -404,8 +404,10 @@ namespace gnote {
     bar->attach(*m_save_selection_check_button, 0, 2, 1, 1);
     bar->attach(*m_save_title_check_button, 0, 3, 1, 1);
 
-    if(!m_note.contains_tag(*m_template_tag)) {
-      bar->hide();
+    if(auto template_tag = m_note.manager().tag_manager().get_tag(m_template_tag)) {
+      if(!m_note.contains_tag(*template_tag)) {
+        bar->hide();
+      }
     }
 
     m_note.signal_tag_added.connect(sigc::mem_fun(*this, &NoteWindow::on_note_tag_added));
@@ -417,7 +419,9 @@ namespace gnote {
 
   void NoteWindow::on_untemplate_button_click()
   {
-    m_note.remove_tag(*m_template_tag);
+    if(auto template_tag = m_note.manager().tag_manager().get_tag(m_template_tag)) {
+      m_note.remove_tag(*template_tag);
+    }
   }
 
 
@@ -443,9 +447,9 @@ namespace gnote {
   }
 
 
-  void NoteWindow::on_note_tag_added(const NoteBase&, const Tag::Ptr & tag)
+  void NoteWindow::on_note_tag_added(const NoteBase&, const Tag &tag)
   {
-    if(tag == m_template_tag) {
+    if(tag.normalized_name() == m_template_tag) {
       m_template_widget->show();
     }
   }
@@ -453,7 +457,7 @@ namespace gnote {
 
   void NoteWindow::on_note_tag_removed(const NoteBase&, const Glib::ustring & tag)
   {
-    if(tag == m_template_tag->normalized_name()) {
+    if(tag == m_template_tag) {
       m_template_widget->hide();
     }
   }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2021-2023 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2021-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -150,7 +150,7 @@ private:
   void on_untemplate_button_click();
   void on_save_selection_check_button_toggled();
   void on_save_title_check_button_toggled();
-  void on_note_tag_added(const NoteBase&, const Tag::Ptr&);
+  void on_note_tag_added(const NoteBase&, const Tag&);
   void on_note_tag_removed(const NoteBase&, const Glib::ustring&);
   void link_button_clicked();
   bool open_help_activate(Gtk::Widget&, const Glib::VariantBase&);
@@ -192,7 +192,7 @@ private:
   std::vector<sigc::connection> m_signal_cids;
   bool                         m_enabled;
 
-  Tag::Ptr m_template_tag;
+  Glib::ustring m_template_tag;
   Tag::Ptr m_template_save_selection_tag;
   Tag::Ptr m_template_save_title_tag;
 };

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019,2021-2023 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019,2021-2024 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -91,17 +91,17 @@ namespace gnote {
     }
 
 
-    void NotebookApplicationAddin::on_tag_added(const NoteBase & note, const Tag::Ptr& tag)
+    void NotebookApplicationAddin::on_tag_added(const NoteBase & note, const Tag &tag)
     {
       NotebookManager & manager = ignote().notebook_manager();
 
       Glib::ustring megaPrefix(Tag::SYSTEM_TAG_PREFIX);
       megaPrefix += Notebook::NOTEBOOK_TAG_PREFIX;
-      if (!tag->is_system() || !Glib::str_has_prefix(tag->name(), megaPrefix)) {
+      if(!tag.is_system() || !Glib::str_has_prefix(tag.name(), megaPrefix)) {
         return;
       }
 
-      Glib::ustring notebookName = sharp::string_substring(tag->name(), megaPrefix.size());
+      Glib::ustring notebookName = sharp::string_substring(tag.name(), megaPrefix.size());
 
       auto & notebook = manager.get_or_create_notebook(notebookName);
 

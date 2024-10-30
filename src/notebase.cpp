@@ -265,7 +265,7 @@ void NoteBase::add_tag(const Tag::Ptr & tag)
 
   thetags.insert(tag->normalized_name());
 
-  signal_tag_added(*this, tag);
+  signal_tag_added(*this, *tag);
 
   DBG_OUT ("Tag added, queueing save");
   queue_save(OTHER_DATA_CHANGED);

@@ -1286,9 +1286,9 @@ namespace gnote {
   }
 
 #ifdef DEBUG
-  void NoteTagsWatcher::on_tag_added(const NoteBase& DBG(note), const Tag::Ptr& DBG(tag))
+  void NoteTagsWatcher::on_tag_added(const NoteBase& DBG(note), const Tag& DBG(tag))
   {
-    DBG_OUT ("Tag added to %s: %s", note.get_title().c_str(), tag->name().c_str());
+    DBG_OUT ("Tag added to %s: %s", note.get_title().c_str(), tag.name().c_str());
   }
 
 
