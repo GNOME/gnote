@@ -447,11 +447,11 @@ namespace gnote {
           iter = tg;
         }
       }
+      else {
+        return;
+      }
     }
 
-    if(!iter) {
-      return;
-    }
     signal_tag_removing(*this, tag);
 
     // don't erase the tag if we are deleting the note. 
