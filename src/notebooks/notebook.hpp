@@ -72,7 +72,7 @@ protected:
 
   NoteManagerBase & m_note_manager;
 private:
-  static Tag::Ptr s_template_tag;
+  static Glib::ustring s_template_tag;
 
   Notebook(NoteManagerBase &, const Tag&);
   Notebook(const Notebook &);

@@ -32,16 +32,18 @@ namespace notebooks {
 
 
   const char * Notebook::NOTEBOOK_TAG_PREFIX = "notebook:";
-  Tag::Ptr Notebook::s_template_tag;
+  Glib::ustring Notebook::s_template_tag;
 
   Tag::Ptr Notebook::template_tag() const
   {
-    if(s_template_tag == NULL) {
-      s_template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
-        ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    auto &tag_manager = m_note_manager.tag_manager();
+    if(s_template_tag.empty()) {
+      auto tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+      s_template_tag = tag->normalized_name();
+      return tag;
     }
 
-    return s_template_tag;
+    return tag_manager.get_tag(s_template_tag);
   }
 
   bool Notebook::is_template_note(const Note & note)
