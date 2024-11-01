@@ -74,7 +74,7 @@ protected:
 private:
   static Tag::Ptr s_template_tag;
 
-  Notebook(NoteManagerBase &, const Tag::Ptr &);
+  Notebook(NoteManagerBase &, const Tag&);
   Notebook(const Notebook &);
   Notebook & operator=(const Notebook &);
   Glib::ustring m_name;

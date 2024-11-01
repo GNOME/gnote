@@ -60,7 +60,7 @@ namespace notebooks {
 
   Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Tag::Ptr& tag)
   {
-    return Glib::make_refptr_for_instance(new Notebook(manager, tag));
+    return Glib::make_refptr_for_instance(new Notebook(manager, *tag));
   }
 
   Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, bool is_special)
@@ -77,16 +77,15 @@ namespace notebooks {
     }
   }
 
-  Notebook::Notebook(NoteManagerBase & manager, const Tag::Ptr & notebookTag)
+  Notebook::Notebook(NoteManagerBase & manager, const Tag &notebook_tag)
     : m_note_manager(manager)
   {
   // Parse the notebook name from the tag name
     Glib::ustring systemNotebookPrefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
       + NOTEBOOK_TAG_PREFIX;
-    Glib::ustring notebookName = sharp::string_substring(notebookTag->name(),
-                                                       systemNotebookPrefix.length());
+    Glib::ustring notebookName = sharp::string_substring(notebook_tag.name(), systemNotebookPrefix.length());
     set_name(notebookName);
-    m_tag = notebookTag->normalized_name();
+    m_tag = notebook_tag.normalized_name();
   }
 
   void Notebook::set_name(const Glib::ustring & value)
