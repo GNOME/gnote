@@ -169,7 +169,7 @@ namespace gnote {
     {
       std::vector<Tag::Ptr> tags = note.get_tags();
       for(auto & tag : tags) {
-        if(auto notebook = get_notebook_from_tag(tag)) {
+        if(auto notebook = get_notebook_from_tag(*tag)) {
           return notebook;
         }
       }
@@ -188,9 +188,9 @@ namespace gnote {
     /// <returns>
     /// A <see cref="Notebook"/>
     /// </returns>
-    Notebook::ORef NotebookManager::get_notebook_from_tag(const Tag::Ptr &tag)
+    Notebook::ORef NotebookManager::get_notebook_from_tag(const Tag &tag)
     {
-      if (!is_notebook_tag (tag)) {
+      if (!is_notebook_tag(tag)) {
         return Notebook::ORef();
       }
       
@@ -198,8 +198,7 @@ namespace gnote {
       // the name of the notebook and then look it up.
       Glib::ustring systemNotebookPrefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
         + Notebook::NOTEBOOK_TAG_PREFIX;
-      Glib::ustring notebookName = sharp::string_substring(tag->name(),
-                                                         systemNotebookPrefix.size());
+      Glib::ustring notebookName = sharp::string_substring(tag.name(), systemNotebookPrefix.size());
       
       return get_notebook(notebookName);
     }
@@ -215,9 +214,9 @@ namespace gnote {
     /// <returns>
     /// A <see cref="System.Boolean"/>
     /// </returns>
-    bool NotebookManager::is_notebook_tag(const Tag::Ptr & tag)
+    bool NotebookManager::is_notebook_tag(const Tag & tag)
     {
-      Glib::ustring fullTagName = tag->name();
+      Glib::ustring fullTagName = tag.name();
       return Glib::str_has_prefix(fullTagName,
                                   Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
                                   + Notebook::NOTEBOOK_TAG_PREFIX);

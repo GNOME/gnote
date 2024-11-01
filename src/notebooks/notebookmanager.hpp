@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2012-2015,2017,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -70,8 +70,8 @@ public:
   bool add_notebook(Notebook::Ptr &&);
   void delete_notebook(Notebook &);
   Notebook::ORef get_notebook_from_note(const NoteBase&);
-  Notebook::ORef get_notebook_from_tag(const Tag::Ptr &);
-  static bool is_notebook_tag(const Tag::Ptr &);
+  Notebook::ORef get_notebook_from_tag(const Tag&);
+  static bool is_notebook_tag(const Tag&);
   void prompt_create_new_notebook(IGnote &, Gtk::Window &, std::function<void(Notebook::ORef)> on_complete = {});
   void prompt_create_new_notebook(IGnote &, Gtk::Window &, std::vector<NoteBase::Ref> && notes_to_add,
     std::function<void(Notebook::ORef)> on_complete = {});
