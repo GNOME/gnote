@@ -73,7 +73,7 @@ namespace notebooks {
     else {
       set_name(name);
       m_tag = manager.tag_manager().get_or_create_system_tag(
-        Glib::ustring(NOTEBOOK_TAG_PREFIX) + name);
+        Glib::ustring(NOTEBOOK_TAG_PREFIX) + name)->normalized_name();
     }
   }
 
@@ -86,7 +86,7 @@ namespace notebooks {
     Glib::ustring notebookName = sharp::string_substring(notebookTag->name(),
                                                        systemNotebookPrefix.length());
     set_name(notebookName);
-    m_tag = notebookTag;
+    m_tag = notebookTag->normalized_name();
   }
 
   void Notebook::set_name(const Glib::ustring & value)
@@ -114,8 +114,8 @@ namespace notebooks {
 
 
   Tag::Ptr Notebook::get_tag() const
-  { 
-    return m_tag; 
+  {
+    return m_note_manager.tag_manager().get_tag(m_tag); 
   }
 
 
@@ -147,7 +147,7 @@ namespace notebooks {
 
     Glib::ustring title = m_default_template_note_title;
     if(m_note_manager.find(title)) {
-      auto tag_notes = m_tag->get_notes();
+      auto tag_notes = get_tag()->get_notes();
       title = m_note_manager.get_unique_name(title);
     }
     auto content = NoteManager::get_note_template_content(title);
@@ -181,7 +181,7 @@ namespace notebooks {
     auto & note = m_note_manager.create_note_from_template(std::move(temp_title), note_template);
 
     // Add the notebook tag
-    note.add_tag(m_tag);
+    note.add_tag(get_tag());
 
     return static_cast<Note&>(note);
   }
@@ -197,7 +197,7 @@ namespace notebooks {
   /// </returns>
   bool Notebook::contains_note(const Note & note, bool include_system)
   {
-    bool contains = note.contains_tag(*m_tag);
+    bool contains = note.contains_tag(*get_tag());
     if(!contains || include_system) {
       return contains;
     }
