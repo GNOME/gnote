@@ -53,9 +53,9 @@ gnote::Tag::Ptr TagManager::get_or_create_system_tag(const Glib::ustring & name)
   return get_or_create_tag("SYSTEM:" + name);
 }
 
-void TagManager::remove_tag(const gnote::Tag::Ptr & tag)
+void TagManager::remove_tag(gnote::Tag &tag)
 {
-  auto iter = std::find(m_tags.begin(), m_tags.end(), tag);
+  auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag](const gnote::Tag::Ptr &t) { return t.get() == &tag; });
   if(iter != m_tags.end()) {
     m_tags.erase(iter);
   }

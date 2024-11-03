@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019,2021 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2021,2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ public:
   virtual Tag::Ptr get_or_create_tag(const Glib::ustring &) = 0;
   virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const = 0;
   virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) = 0;
-  virtual void remove_tag(const Tag::Ptr & tag) = 0;
+  virtual void remove_tag(Tag &tag) = 0;
   virtual std::vector<Tag::Ptr> all_tags() const = 0;
 };
 

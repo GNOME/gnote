@@ -1304,7 +1304,7 @@ namespace gnote {
     Tag::Ptr tag = manager().tag_manager().get_tag(tag_name);
     DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);
     if (tag && tag->popularity() == 0) {
-      manager().tag_manager().remove_tag(tag);
+      manager().tag_manager().remove_tag(*tag);
     }
   }
 

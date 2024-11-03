@@ -144,32 +144,27 @@ namespace gnote {
     // This will remove the tag from every note that is currently tagged
     // and from the main list of tags.
     // </summary>
-  void TagManager::remove_tag (const Tag::Ptr & tag)
+  void TagManager::remove_tag(Tag &tag)
   {
-    if (!tag)
-      throw sharp::Exception ("TagManager.RemoveTag () called with a null tag");
-
-    if(tag->is_property() || tag->is_system()){
-      std::lock_guard<std::mutex> lock(m_locker);
-
-      m_internal_tags.erase(tag->normalized_name());
+    auto tag_name = tag.normalized_name();
+    std::lock_guard<std::mutex> lock(m_locker);
+    if(tag.is_property() || tag.is_system()) {
+      m_internal_tags.erase(tag_name);
     }
 
-    std::lock_guard<std::mutex> lock(m_locker);
-
-    auto iter = std::find(m_tags.begin(), m_tags.end(), tag);
+    auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag](const Tag::Ptr &t) { return t.get() == &tag; });
     if(iter != m_tags.end()) {
       m_tags.erase(iter);
-      DBG_OUT("TagManager: Removed tag: %s", tag->normalized_name().c_str());
+      DBG_OUT("TagManager: Removed tag: %s", tag_name.c_str());
     }
     else {
       // FIXME: For some really weird reason, this block actually gets called sometimes!
-      DBG_OUT("TagManager: Call to remove tag from ListStore failed: %s", tag->normalized_name().c_str());
+      DBG_OUT("TagManager: Call to remove tag from ListStore failed: %s", tag_name.c_str());
     }
 
-    auto notes = tag->get_notes();
+    auto notes = tag.get_notes();
     for(NoteBase *note_iter : notes) {
-      note_iter->remove_tag(*tag);
+      note_iter->remove_tag(tag);
     }
   }
   
