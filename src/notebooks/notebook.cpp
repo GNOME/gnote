@@ -60,9 +60,9 @@ namespace notebooks {
     return Glib::make_refptr_for_instance(new Notebook(manager, name, is_special));
   }
 
-  Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Tag::Ptr& tag)
+  Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Tag &tag)
   {
-    return Glib::make_refptr_for_instance(new Notebook(manager, *tag));
+    return Glib::make_refptr_for_instance(new Notebook(manager, tag));
   }
 
   Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, bool is_special)

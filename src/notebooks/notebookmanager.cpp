@@ -373,7 +373,7 @@ namespace gnote {
                                      + Notebook::NOTEBOOK_TAG_PREFIX)) {
           continue;
         }
-        Notebook::Ptr notebook = Notebook::create(m_note_manager, tag);
+        Notebook::Ptr notebook = Notebook::create(m_note_manager, *tag);
         m_all_notebooks.push_back(notebook);
       }
     }

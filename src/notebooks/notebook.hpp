@@ -45,7 +45,7 @@ public:
   static const char * NOTEBOOK_TAG_PREFIX;
 
   static Ptr create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special = false);
-  static Ptr create(NoteManagerBase& manager, const Tag::Ptr& tag);
+  static Ptr create(NoteManagerBase& manager, const Tag &tag);
   Glib::ustring get_name() const
     { return m_name; }
   void set_name(const Glib::ustring &);
