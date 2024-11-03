@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017-2019 Aurimas Cernius
+ * Copyright (C) 2014,2017-2019,2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ public:
   virtual void remove_tag(const gnote::Tag::Ptr & tag) override;
   virtual std::vector<gnote::Tag::Ptr> all_tags() const override;
 private:
-  std::map<Glib::ustring, gnote::Tag::Ptr> m_tags;
+  std::vector<gnote::Tag::Ptr> m_tags;
 };
 
 }

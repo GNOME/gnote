@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017-2020,2022 Aurimas Cernius
+ * Copyright (C) 2014,2017-2020,2022,2024 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,27 +18,28 @@
  */
 
 
+#include <algorithm>
+
 #include "testtagmanager.hpp"
 
 namespace test {
 
 gnote::Tag::Ptr TagManager::get_tag(const Glib::ustring & tag_name) const
 {
-  auto iter = m_tags.find(tag_name);
+  auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag_name](const gnote::Tag::Ptr &tag) { return tag->name() == tag_name; });
   if(iter != m_tags.end()) {
-    return iter->second;
+    return *iter;
   }
   return gnote::Tag::Ptr();
 }
 
 gnote::Tag::Ptr TagManager::get_or_create_tag(const Glib::ustring & tag_name)
 {
-  auto iter = m_tags.find(tag_name);
-  if(iter != m_tags.end()) {
-    return iter->second;
+  if(auto tag = get_tag(tag_name)) {
+    return tag;
   }
   gnote::Tag::Ptr tag = gnote::Tag::Ptr(new gnote::Tag(Glib::ustring(tag_name)));
-  m_tags[tag_name] = tag;
+  m_tags.push_back(tag);
   return tag;
 }
 
@@ -54,21 +55,15 @@ gnote::Tag::Ptr TagManager::get_or_create_system_tag(const Glib::ustring & name)
 
 void TagManager::remove_tag(const gnote::Tag::Ptr & tag)
 {
-  for(auto iter = m_tags.begin(); iter != m_tags.end(); ++iter) {
-    if(iter->second == tag) {
-      m_tags.erase(iter);
-      break;
-    }
+  auto iter = std::find(m_tags.begin(), m_tags.end(), tag);
+  if(iter != m_tags.end()) {
+    m_tags.erase(iter);
   }
 }
 
 std::vector<gnote::Tag::Ptr> TagManager::all_tags() const
 {
-  std::vector<gnote::Tag::Ptr> list;
-  for(auto iter = m_tags.begin(); iter != m_tags.end(); ++iter) {
-    list.push_back(iter->second);
-  }
-  return list;
+  return m_tags;
 }
 
 }
