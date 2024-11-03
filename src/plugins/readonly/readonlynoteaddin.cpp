@@ -95,7 +95,7 @@ void ReadOnlyNoteAddin::on_menu_item_toggled(const Glib::VariantBase & state)
   auto & note = get_note();
   if(read_only) {
     note.enabled(false);
-    note.add_tag(ro_tag);
+    note.add_tag(*ro_tag);
   }
   else {
     note.enabled(true);
