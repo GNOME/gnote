@@ -105,7 +105,7 @@ namespace gnote {
         // Make sure the template note has the notebook tag.
         // Since it's possible for the template note to already
         // exist, we need to make sure it gets tagged.
-        template_note.add_tag(notebook->get_tag());
+        template_note.add_tag(*notebook->get_tag());
         signal_note_added_to_notebook(template_note, *notebook);
 //      }
 
@@ -351,8 +351,9 @@ namespace gnote {
       // Only attempt to add the notebook tag when this
       // menu item is not the "No notebook" menu item.
       if(notebook) {
-        note.add_tag(notebook.value().get().get_tag());
-        signal_note_added_to_notebook(note, notebook.value());
+        Notebook &nb = notebook.value();
+        note.add_tag(*nb.get_tag());
+        signal_note_added_to_notebook(note, nb);
       }
 
       return true;

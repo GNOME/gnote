@@ -251,21 +251,19 @@ void NoteBase::delete_note()
   }
 }
 
-void NoteBase::add_tag(const Tag::Ptr & tag)
+void NoteBase::add_tag(Tag &tag)
 {
-  if(!tag) {
-    throw sharp::Exception ("note::add_tag() called with a NULL tag.");
-  }
-  tag->add_note(*this);
+  tag.add_note(*this);
 
   auto &thetags = data_synchronizer().data().tags();
-  if(thetags.find(tag->normalized_name()) != thetags.end()) {
+  auto tag_name = tag.normalized_name();
+  if(thetags.find(tag_name) != thetags.end()) {
     return;
   }
 
-  thetags.insert(tag->normalized_name());
+  thetags.insert(tag_name);
 
-  signal_tag_added(*this, *tag);
+  signal_tag_added(*this, tag);
 
   DBG_OUT ("Tag added, queueing save");
   queue_save(OTHER_DATA_CHANGED);
@@ -393,7 +391,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
     }
   }
   for(Tag::Ptr & iter : new_tags) {
-    add_tag(iter);
+    add_tag(*iter);
   }
     
   // Allow method caller to specify ChangeType (mostly needed by sync)

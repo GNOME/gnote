@@ -224,7 +224,7 @@ public:
   void rename_links(const Glib::ustring & old_title, const NoteBase & renamed);
   void remove_links(const Glib::ustring & old_title, const NoteBase & renamed);
   virtual void delete_note();
-  void add_tag(const Tag::Ptr &);
+  void add_tag(Tag&);
   virtual void remove_tag(Tag &);
   bool contains_tag(const Tag &) const;
 

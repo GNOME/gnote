@@ -359,7 +359,7 @@ NoteBase & NoteManagerBase::get_or_create_template_note()
 
   // Flag this as a template note
   Tag::Ptr template_tag = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-  template_note.add_tag(template_tag);
+  template_note.add_tag(*template_tag);
 
   template_note.queue_save(CONTENT_CHANGED);
   return template_note;

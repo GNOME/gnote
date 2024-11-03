@@ -259,7 +259,7 @@ namespace gnote {
   {
     for(const auto & iter : m_data.data().tags()) {
       if(auto tag = _manager.tag_manager().get_tag(iter)) {
-        add_tag(tag);
+        add_tag(*tag);
       }
     }
   }

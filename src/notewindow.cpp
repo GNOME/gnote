@@ -428,7 +428,7 @@ namespace gnote {
   void NoteWindow::on_save_selection_check_button_toggled()
   {
     if(m_save_selection_check_button->get_active()) {
-      m_note.add_tag(m_template_save_selection_tag);
+      m_note.add_tag(*m_template_save_selection_tag);
     }
     else {
       m_note.remove_tag(*m_template_save_selection_tag);
@@ -439,7 +439,7 @@ namespace gnote {
   void NoteWindow::on_save_title_check_button_toggled()
   {
     if(m_save_title_check_button->get_active()) {
-      m_note.add_tag(m_template_save_title_tag);
+      m_note.add_tag(*m_template_save_title_tag);
     }
     else {
       m_note.remove_tag(*m_template_save_title_tag);

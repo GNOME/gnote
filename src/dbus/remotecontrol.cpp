@@ -61,7 +61,7 @@ namespace gnote {
   {
     return m_manager.find_by_uri(uri, [this, &tag_name](NoteBase & note) {
       auto tag = m_manager.tag_manager().get_or_create_tag(tag_name);
-      note.add_tag(tag);
+      note.add_tag(*tag);
     });
   }
 

@@ -160,13 +160,13 @@ namespace notebooks {
 
     // Flag this as a template note
     Tag::Ptr templ_tag = template_tag();
-    note.add_tag(templ_tag);
+    note.add_tag(*templ_tag);
 
     // Add on the notebook system tag so Tomboy
     // will persist the tag/notebook across sessions
     // if no other notes are added to the notebook.
     Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
-    note.add_tag(notebook_tag);
+    note.add_tag(*notebook_tag);
 
     note.queue_save(CONTENT_CHANGED);
 
@@ -182,7 +182,7 @@ namespace notebooks {
     auto & note = m_note_manager.create_note_from_template(std::move(temp_title), note_template);
 
     // Add the notebook tag
-    note.add_tag(get_tag());
+    note.add_tag(*get_tag());
 
     return static_cast<Note&>(note);
   }
