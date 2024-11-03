@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019-2020,2022-2024 Aurimas Cernius
  * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -51,7 +51,7 @@ gnote::NoteBase::ORef NoteOfTheDay::create(gnote::NoteManagerBase & manager, con
   }
 
   // Automatically tag all new Note of the Day notes
-  notd.value().get().add_tag(manager.tag_manager().get_or_create_system_tag("NoteOfTheDay"));
+  notd.value().get().add_tag(*manager.tag_manager().get_or_create_system_tag("NoteOfTheDay"));
 
   return notd;
 }
