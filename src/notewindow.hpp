@@ -176,6 +176,7 @@ private:
   bool decrease_font_clicked(Gtk::Widget&, const Glib::VariantBase&);
   void undo_changed();
   Tag &template_save_selection_tag();
+  Tag &template_save_title_tag();
 
   Note                        & m_note;
   IGnote                      & m_gnote;
@@ -195,7 +196,7 @@ private:
 
   Glib::ustring m_template_tag;
   Glib::ustring m_template_save_selection_tag;
-  Tag::Ptr m_template_save_title_tag;
+  Glib::ustring m_template_save_title_tag;
 };
 
 
