@@ -81,7 +81,7 @@ private:
   void make_recent_notes_view();
   void select_notes(const std::vector<Note::Ref> &);
   bool filter_by_search(const Note &);
-  bool filter_by_tag(const Note &, const Tag::Ptr &);
+  bool filter_by_tag(const Note &, const Tag&);
   void on_row_activated(guint idx);
   void on_selection_changed(guint, guint);
   bool on_treeview_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);

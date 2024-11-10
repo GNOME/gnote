@@ -509,7 +509,7 @@ bool SearchNotesWidget::filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> & it
   bool passes_tag_filter = true; // no selected notebook
   if(auto notebook = m_notebooks_view->get_selected_notebook()) {
     if(auto tag = notebook.value().get().get_tag()) {
-      passes_tag_filter = filter_by_tag(*note, tag);
+      passes_tag_filter = filter_by_tag(*note, *tag);
     }
   }
 
@@ -621,10 +621,10 @@ bool SearchNotesWidget::filter_by_search(const Note & note)
   return m_current_matches.find(note.uri()) != m_current_matches.end();
 }
 
-bool SearchNotesWidget::filter_by_tag(const Note & note, const Tag::Ptr & tag)
+bool SearchNotesWidget::filter_by_tag(const Note & note, const Tag &tag)
 {
   for(auto & t : note.get_tags()) {
-    if(tag == t) {
+    if(&tag == t.get()) {
       return true;
     }
   }
