@@ -489,46 +489,6 @@ std::vector<Note::Ref> SearchNotesWidget::get_selected_notes()
   return selected_notes;
 }
 
-bool SearchNotesWidget::filter_notes(const Gtk::TreeIter<Gtk::TreeConstRow> & iter)
-{
-  Note::Ptr note = (*iter)[m_column_types.note];
-  if(!note) {
-    return false;
-  }
-
-  auto selected_notebook = m_notebooks_view->get_selected_notebook();
-  if(!selected_notebook || !selected_notebook.value().get().contains_note(*note)) {
-    return false;
-  }
-
-  bool passes_search_filter = filter_by_search(*note);
-  if(passes_search_filter == false) {
-    return false; // don't waste time checking tags if it's already false
-  }
-
-  bool passes_tag_filter = true; // no selected notebook
-  if(auto notebook = m_notebooks_view->get_selected_notebook()) {
-    if(auto tag = notebook.value().get().get_tag()) {
-      passes_tag_filter = filter_by_tag(*note, *tag);
-    }
-  }
-
-  // Must pass both filters to appear in the list
-  return passes_tag_filter && passes_search_filter;
-}
-
-int SearchNotesWidget::compare_titles(const Gtk::TreeIter<Gtk::TreeConstRow> & a, const Gtk::TreeIter<Gtk::TreeConstRow> & b)
-{
-  Glib::ustring title_a = (*a)[m_column_types.title];
-  Glib::ustring title_b = (*b)[m_column_types.title];
-
-  if(title_a.empty() || title_b.empty()) {
-    return -1;
-  }
-
-  return title_a.lowercase().compare(title_b.lowercase());
-}
-
 void SearchNotesWidget::make_recent_notes_view()
 {
   m_notes_view = Gtk::make_managed<Gtk::ColumnView>();
@@ -619,17 +579,6 @@ bool SearchNotesWidget::filter_by_search(const Note & note)
   }
 
   return m_current_matches.find(note.uri()) != m_current_matches.end();
-}
-
-bool SearchNotesWidget::filter_by_tag(const Note & note, const Tag &tag)
-{
-  for(auto & t : note.get_tags()) {
-    if(&tag == t.get()) {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 void SearchNotesWidget::on_row_activated(guint idx)
