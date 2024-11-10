@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2016,2019,2022 Aurimas Cernius
+ * Copyright (C) 2011-2016,2019,2022,2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,7 @@ namespace notebooks {
   {
   public:
     static NoteAddin * create();
-    Tag::Ptr get_template_tag() const;
+    Tag &get_template_tag() const;
     virtual void initialize() override;
     virtual void shutdown() override;
     virtual void on_note_opened() override;
@@ -54,7 +54,6 @@ namespace notebooks {
 
     sigc::connection          m_new_notebook_cid;
     sigc::connection          m_move_to_notebook_cid;
-    static Tag::Ptr           s_templateTag;
   };
 
 }

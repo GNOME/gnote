@@ -37,14 +37,9 @@
 namespace gnote {
 namespace notebooks {
 
-  Tag::Ptr           NotebookNoteAddin::s_templateTag;
-
-  Tag::Ptr NotebookNoteAddin::get_template_tag() const
+  Tag &NotebookNoteAddin::get_template_tag() const
   {
-    if(!s_templateTag) {
-      s_templateTag = manager().tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-    }
-    return s_templateTag;
+    return *manager().tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
   }
   
 
@@ -105,7 +100,7 @@ namespace notebooks {
   std::vector<gnote::PopoverWidget> NotebookNoteAddin::get_actions_popover_widgets() const
   {
     auto widgets = NoteAddin::get_actions_popover_widgets();
-    if(!get_note().contains_tag(*get_template_tag())) {
+    if(!get_note().contains_tag(get_template_tag())) {
       auto notebook_button = Gio::MenuItem::create(_("Notebook"), make_menu());
       widgets.push_back(gnote::PopoverWidget(gnote::NOTE_SECTION_CUSTOM_SECTIONS, gnote::NOTEBOOK_ORDER, notebook_button));
     }
