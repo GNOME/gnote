@@ -70,7 +70,6 @@ private:
   void restore_matches_window();
   Gtk::Widget *make_notebooks_pane();
   void save_position();
-  void rename_notebook(const notebooks::Notebook& old_notebook, const Glib::ustring& new_name);
   void on_notebook_selection_changed(const notebooks::Notebook & notebook);
   void on_notebook_list_changed();
   void update_results();

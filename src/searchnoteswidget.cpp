@@ -416,19 +416,6 @@ void SearchNotesWidget::save_position()
   m_gnote.preferences().search_window_height(height);
 }
 
-void SearchNotesWidget::rename_notebook(const notebooks::Notebook& old_notebook, const Glib::ustring& new_name)
-{
-  notebooks::NotebookManager & notebook_manager = m_gnote.notebook_manager();
-  auto & new_notebook = notebook_manager.get_or_create_notebook(new_name);
-  DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook.get_name().c_str(), new_name.c_str());
-  auto notes = old_notebook.get_tag()->get_notes();
-  for(NoteBase *note : notes) {
-    notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
-  }
-  notebook_manager.delete_notebook(const_cast<notebooks::Notebook&>(old_notebook));
-  m_notebooks_view->select_notebook(new_notebook);
-}
-
 void SearchNotesWidget::on_notebook_selection_changed(const notebooks::Notebook & notebook)
 {
   restore_matches_window();
