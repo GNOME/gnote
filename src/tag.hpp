@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019,2022,2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 
 #include <map>
 #include <memory>
+#include <optional>
 #include <vector>
 
 #include <glibmm/ustring.h>
@@ -44,6 +45,7 @@ namespace gnote {
   class Tag 
   {
   public:
+    typedef std::optional<std::reference_wrapper<Tag>> ORef;
     typedef std::shared_ptr<Tag> Ptr;
     static const char * SYSTEM_TAG_PREFIX;
 
