@@ -148,7 +148,6 @@ namespace notebooks {
 
     Glib::ustring title = m_default_template_note_title;
     if(m_note_manager.find(title)) {
-      auto tag_notes = get_tag()->get_notes();
       title = m_note_manager.get_unique_name(title);
     }
     auto content = NoteManager::get_note_template_content(title);
