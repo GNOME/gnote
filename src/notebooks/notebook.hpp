@@ -50,7 +50,8 @@ public:
     { return m_name; }
   void set_name(const Glib::ustring &);
   virtual Glib::ustring get_normalized_name() const;
-  virtual Tag::Ptr    get_tag() const;
+  [[nodiscard]]
+  virtual Tag::ORef get_tag() const;
   Note::ORef find_template_note() const;
   virtual Note & get_template_note() const;
   Note & create_notebook_note();

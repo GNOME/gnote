@@ -114,9 +114,13 @@ namespace notebooks {
   }
 
 
-  Tag::Ptr Notebook::get_tag() const
+  Tag::ORef Notebook::get_tag() const
   {
-    return m_note_manager.tag_manager().get_tag(m_tag); 
+    if(auto tag = m_note_manager.tag_manager().get_tag(m_tag)) {
+      return Tag::ORef(std::ref(*tag));
+    }
+
+    return Tag::ORef();
   }
 
 

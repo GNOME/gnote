@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,7 +50,7 @@ protected:
     : Notebook(m, s, true)
     {
     }
-  Tag::Ptr get_tag() const override;
+  Tag::ORef get_tag() const override;
   Note & get_template_note() const override;
 };
 

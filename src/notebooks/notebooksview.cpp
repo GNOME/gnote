@@ -372,9 +372,11 @@ namespace gnote {
       NotebookManager & notebook_manager = m_note_manager.notebook_manager();
       auto & new_notebook = notebook_manager.get_or_create_notebook(new_name);
       DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook.get_name().c_str(), new_name.c_str());
-      auto notes = old_notebook.get_tag()->get_notes();
-      for(NoteBase *note : notes) {
-        notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
+      if(auto t = old_notebook.get_tag()) {
+        Tag &tag = t.value();
+        for(NoteBase *note : tag.get_notes()) {
+          notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
+        }
       }
       notebook_manager.delete_notebook(const_cast<Notebook&>(old_notebook));
       select_notebook(new_notebook);

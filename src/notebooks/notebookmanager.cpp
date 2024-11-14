@@ -138,18 +138,17 @@ namespace gnote {
         return;
       }
 
-      Tag::Ptr tag = notebook.get_tag();
+      auto tag = notebook.get_tag();
       Notebook::Ptr keep_alive = *iter;
       m_all_notebooks.erase(iter);
 
       // Remove the notebook tag from every note that's in the notebook
-      std::vector<NoteBase*> notes;
       if(tag) {
-        notes = tag->get_notes();
-      }
-      for(NoteBase *note : notes) {
-        note->remove_tag(*tag);
-        signal_note_removed_from_notebook(*static_cast<Note*>(note), notebook);
+        Tag &t = tag.value();
+        for(NoteBase *note : t.get_notes()) {
+          note->remove_tag(t);
+          signal_note_removed_from_notebook(*static_cast<Note*>(note), notebook);
+        }
       }
 
       signal_notebook_list_changed();

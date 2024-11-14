@@ -32,9 +32,9 @@ namespace gnote {
 namespace notebooks {
 
 
-Tag::Ptr SpecialNotebook::get_tag() const
+Tag::ORef SpecialNotebook::get_tag() const
 {
-  return Tag::Ptr();
+  return Tag::ORef();
 }
 
 Note & SpecialNotebook::get_template_note() const
