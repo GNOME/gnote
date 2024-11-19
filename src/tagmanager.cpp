@@ -168,11 +168,18 @@ namespace gnote {
     }
   }
   
-  std::vector<Tag::Ptr> TagManager::all_tags() const
+  std::vector<Tag::Ref> TagManager::all_tags() const
   {
     // Add in the system tags first
-    std::vector<Tag::Ptr> tags = sharp::map_get_values(m_internal_tags);
-    tags.insert(tags.end(), m_tags.begin(), m_tags.end());
+    auto internal_tags = sharp::map_get_values(m_internal_tags);
+    std::vector<Tag::Ref> tags;
+    tags.reserve(internal_tags.size() + m_tags.size());
+    for(auto &tag : internal_tags) {
+      tags.emplace_back(*tag);
+    }
+    for(auto &tag : m_tags) {
+      tags.emplace_back(*tag);
+    }
     return tags;
   }
 

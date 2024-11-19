@@ -45,7 +45,7 @@ public:
   virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
   virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) override;
   void remove_tag(Tag &tag) override;
-  virtual std::vector<Tag::Ptr> all_tags() const override;
+  std::vector<Tag::Ref> all_tags() const override;
 private:
   std::vector<Tag::Ptr> m_tags;
   typedef std::map<Glib::ustring, Tag::Ptr> InternalMap;

@@ -40,7 +40,8 @@ public:
   virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const = 0;
   virtual Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) = 0;
   virtual void remove_tag(Tag &tag) = 0;
-  virtual std::vector<Tag::Ptr> all_tags() const = 0;
+  [[nodiscard]]
+  virtual std::vector<Tag::Ref> all_tags() const = 0;
 };
 
 }

@@ -365,15 +365,13 @@ namespace gnote {
     {
       Gtk::TreeIter<Gtk::TreeRow> iter;
       auto tags = m_note_manager.tag_manager().all_tags();
-      for(const auto & tag : tags) {
+      auto prefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX) + Notebook::NOTEBOOK_TAG_PREFIX;
+      for(const Tag &tag : tags) {
         // Skip over tags that aren't notebooks
-        if (!tag->is_system()
-            || !Glib::str_has_prefix(tag->name(),
-                                     Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
-                                     + Notebook::NOTEBOOK_TAG_PREFIX)) {
+        if(!tag.is_system() || !Glib::str_has_prefix(tag.name(), prefix)) {
           continue;
         }
-        Notebook::Ptr notebook = Notebook::create(m_note_manager, *tag);
+        Notebook::Ptr notebook = Notebook::create(m_note_manager, tag);
         m_all_notebooks.push_back(notebook);
       }
     }
