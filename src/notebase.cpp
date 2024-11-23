@@ -339,7 +339,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
 
   // Remove tags now, since a note with no tags has
   // no "tags" element in the XML
-  std::vector<Tag::Ptr> new_tags;
+  std::vector<Tag::Ref> new_tags;
   Glib::ustring name;
 
   while(xml.read()) {
@@ -367,7 +367,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
           std::vector<Glib::ustring> tag_strings = parse_tags(doc2->children);
           for(const Glib::ustring & tag_str : tag_strings) {
             Tag::Ptr tag = m_manager.tag_manager().get_or_create_tag(tag_str);
-            new_tags.push_back(tag);
+            new_tags.emplace_back(*tag);
           }
           xmlFreeDoc(doc2);
         }
@@ -386,12 +386,12 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
   std::vector<Tag::Ptr> tag_list = get_tags();
 
   for(Tag::Ptr & iter : tag_list) {
-    if(std::find(new_tags.begin(), new_tags.end(), iter) == new_tags.end()) {
+    if(std::any_of(new_tags.begin(), new_tags.end(), [&iter](const Tag::Ref &tag) { return iter.get() == &tag.get(); })) {
       remove_tag(*iter);
     }
   }
-  for(Tag::Ptr & iter : new_tags) {
-    add_tag(*iter);
+  for(Tag &tag : new_tags) {
+    add_tag(tag);
   }
     
   // Allow method caller to specify ChangeType (mostly needed by sync)
