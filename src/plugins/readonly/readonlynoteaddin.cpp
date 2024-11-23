@@ -73,11 +73,11 @@ void ReadOnlyNoteAddin::on_note_foregrounded()
 {
   auto action = get_window()->host()->find_action("readonly-toggle");
   gnote::ITagManager & m = manager().tag_manager();
-  const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
+  const auto &ro_tag = m.get_or_create_system_tag("read-only");
 
   m_readonly_toggle_cid = action->signal_change_state()
     .connect(sigc::mem_fun(*this, &ReadOnlyNoteAddin::on_menu_item_toggled));
-  action->change_state(Glib::Variant<bool>::create(get_note().contains_tag(*ro_tag)));
+  action->change_state(Glib::Variant<bool>::create(get_note().contains_tag(ro_tag)));
 }
 
 void ReadOnlyNoteAddin::on_note_backgrounded()
@@ -88,18 +88,18 @@ void ReadOnlyNoteAddin::on_note_backgrounded()
 void ReadOnlyNoteAddin::on_menu_item_toggled(const Glib::VariantBase & state)
 {
   gnote::ITagManager & m = manager().tag_manager();
-  const gnote::Tag::Ptr ro_tag = m.get_or_create_system_tag("read-only");
+  auto &ro_tag = m.get_or_create_system_tag("read-only");
   bool read_only = Glib::VariantBase::cast_dynamic<Glib::Variant<bool>>(state).get();
   auto action = get_window()->host()->find_action("readonly-toggle");
   action->set_state(state);
   auto & note = get_note();
   if(read_only) {
     note.enabled(false);
-    note.add_tag(*ro_tag);
+    note.add_tag(ro_tag);
   }
   else {
     note.enabled(true);
-    note.remove_tag(*ro_tag);
+    note.remove_tag(ro_tag);
   }
 }
 

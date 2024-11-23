@@ -32,7 +32,7 @@ public:
   virtual gnote::Tag::Ptr get_tag(const Glib::ustring & tag_name) const override;
   virtual gnote::Tag::Ptr get_or_create_tag(const Glib::ustring &) override;
   virtual gnote::Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
-  virtual gnote::Tag::Ptr get_or_create_system_tag(const Glib::ustring & name) override;
+  gnote::Tag &get_or_create_system_tag(const Glib::ustring & name) override;
   void remove_tag(gnote::Tag &tag) override;
   std::vector<gnote::Tag::Ref> all_tags() const override;
 private:

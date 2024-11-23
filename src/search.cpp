@@ -52,11 +52,11 @@ namespace gnote {
     Results temp_matches;
       
       // Skip over notes that are template notes
-    Tag::Ptr template_tag = m_manager.tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    auto &template_tag = m_manager.tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
 
     m_manager.for_each([this, &temp_matches, template_tag, selected_notebook, case_sensitive, words=std::move(words), encoded_words=std::move(encoded_words)](NoteBase & note) {
       // Skip template notes
-      if(note.contains_tag(*template_tag)) {
+      if(note.contains_tag(template_tag)) {
         return;
       }
         

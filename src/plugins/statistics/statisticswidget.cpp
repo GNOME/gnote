@@ -106,11 +106,11 @@ private:
       m_gnote.notebook_manager().get_notebooks([&notebooks](const gnote::notebooks::Notebook::Ptr& nb) { notebooks[*nb] = 0; });
       m_model->append(StatisticsRecord::create({_("Total Notebooks"), TO_STRING(notebooks.size())}));
 
-      gnote::Tag::Ptr template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
+      auto &template_tag = m_note_manager.tag_manager().get_or_create_system_tag(
         gnote::ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       m_note_manager.for_each([&notebooks, template_tag](gnote::NoteBase & note) {
         for(auto & nb : notebooks) {
-          if(note.contains_tag(*nb.first.get().get_tag()) && !note.contains_tag(*template_tag)) {
+          if(note.contains_tag(*nb.first.get().get_tag()) && !note.contains_tag(template_tag)) {
             ++nb.second;
           }
         }

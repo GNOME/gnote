@@ -39,7 +39,7 @@ namespace notebooks {
 
   Tag &NotebookNoteAddin::get_template_tag() const
   {
-    return *manager().tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+    return manager().tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
   }
   
 

@@ -39,9 +39,9 @@ namespace notebooks {
   {
     auto &tag_manager = m_note_manager.tag_manager();
     if(s_template_tag.empty()) {
-      auto tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-      s_template_tag = tag->normalized_name();
-      return *tag;
+      auto &tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+      s_template_tag = tag.normalized_name();
+      return tag;
     }
 
     if(auto tag = tag_manager.get_tag(s_template_tag)) {
@@ -79,7 +79,7 @@ namespace notebooks {
     else {
       set_name(name);
       m_tag = manager.tag_manager().get_or_create_system_tag(
-        Glib::ustring(NOTEBOOK_TAG_PREFIX) + name)->normalized_name();
+        Glib::ustring(NOTEBOOK_TAG_PREFIX) + name).normalized_name();
     }
   }
 
@@ -176,8 +176,7 @@ namespace notebooks {
     // Add on the notebook system tag so Tomboy
     // will persist the tag/notebook across sessions
     // if no other notes are added to the notebook.
-    Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
-    note.add_tag(*notebook_tag);
+    note.add_tag(m_note_manager.tag_manager().get_or_create_system_tag(NOTEBOOK_TAG_PREFIX + get_name()));
 
     note.queue_save(CONTENT_CHANGED);
 

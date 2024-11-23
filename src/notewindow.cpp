@@ -58,9 +58,9 @@ namespace gnote {
     , m_enabled(true)
   {
     ITagManager & tag_manager = note.manager().tag_manager();
-    m_template_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG)->normalized_name();
-    m_template_save_selection_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG)->normalized_name();
-    m_template_save_title_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG)->normalized_name();
+    m_template_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG).normalized_name();
+    m_template_save_selection_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_SELECTION_SYSTEM_TAG).normalized_name();
+    m_template_save_title_tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG).normalized_name();
 
     set_hexpand(true);
     set_vexpand(true);

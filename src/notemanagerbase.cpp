@@ -247,8 +247,8 @@ NoteBase & NoteManagerBase::create(Glib::ustring && title, Glib::ustring && xml_
 // the template note.
 NoteBase & NoteManagerBase::create_note_from_template(Glib::ustring && title, const NoteBase & template_note, Glib::ustring && guid)
 {
-  Tag::Ptr template_save_title = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
-  if(template_note.contains_tag(*template_save_title)) {
+  auto &template_save_title = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SAVE_TITLE_SYSTEM_TAG);
+  if(template_note.contains_tag(template_save_title)) {
     title = get_unique_name(template_note.get_title());
   }
 
@@ -358,8 +358,8 @@ NoteBase & NoteManagerBase::get_or_create_template_note()
   auto & template_note = create(std::move(title), std::move(content));
 
   // Flag this as a template note
-  Tag::Ptr template_tag = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
-  template_note.add_tag(*template_tag);
+  auto &template_tag = tag_manager().get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
+  template_note.add_tag(template_tag);
 
   template_note.queue_save(CONTENT_CHANGED);
   return template_note;

@@ -51,7 +51,7 @@ gnote::NoteBase::ORef NoteOfTheDay::create(gnote::NoteManagerBase & manager, con
   }
 
   // Automatically tag all new Note of the Day notes
-  notd.value().get().add_tag(*manager.tag_manager().get_or_create_system_tag("NoteOfTheDay"));
+  notd.value().get().add_tag(manager.tag_manager().get_or_create_system_tag("NoteOfTheDay"));
 
   return notd;
 }
