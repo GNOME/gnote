@@ -366,8 +366,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
         if(doc2) {
           std::vector<Glib::ustring> tag_strings = parse_tags(doc2->children);
           for(const Glib::ustring & tag_str : tag_strings) {
-            Tag::Ptr tag = m_manager.tag_manager().get_or_create_tag(tag_str);
-            new_tags.emplace_back(*tag);
+            new_tags.emplace_back(m_manager.tag_manager().get_or_create_tag(tag_str));
           }
           xmlFreeDoc(doc2);
         }
@@ -523,8 +522,8 @@ void NoteArchiver::_read(sharp::XmlReader & xml, NoteData & data, Glib::ustring 
         if(doc2) {
           std::vector<Glib::ustring> tag_strings = NoteBase::parse_tags(doc2->children);
           for(const Glib::ustring & tag_str : tag_strings) {
-            Tag::Ptr tag = m_manager.tag_manager().get_or_create_tag(tag_str);
-            data.tags().insert(tag->normalized_name());
+            Tag &tag = m_manager.tag_manager().get_or_create_tag(tag_str);
+            data.tags().insert(tag.normalized_name());
           }
           xmlFreeDoc(doc2);
         }

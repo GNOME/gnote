@@ -41,7 +41,7 @@ public:
   TagManager();
 
   virtual Tag::Ptr get_tag(const Glib::ustring & tag_name) const override;
-  virtual Tag::Ptr get_or_create_tag(const Glib::ustring &) override;
+  Tag &get_or_create_tag(const Glib::ustring &) override;
   virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const override;
   Tag &get_or_create_system_tag(const Glib::ustring & name) override;
   void remove_tag(Tag &tag) override;

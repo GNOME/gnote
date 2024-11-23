@@ -60,8 +60,8 @@ namespace gnote {
   bool RemoteControl::AddTagToNote(const Glib::ustring& uri, const Glib::ustring& tag_name)
   {
     return m_manager.find_by_uri(uri, [this, &tag_name](NoteBase & note) {
-      auto tag = m_manager.tag_manager().get_or_create_tag(tag_name);
-      note.add_tag(*tag);
+      Tag &tag = m_manager.tag_manager().get_or_create_tag(tag_name);
+      note.add_tag(tag);
     });
   }
 

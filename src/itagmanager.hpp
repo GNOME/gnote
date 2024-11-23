@@ -36,7 +36,8 @@ public:
   virtual ~ITagManager();
 
   virtual Tag::Ptr get_tag(const Glib::ustring & tag_name) const = 0;
-  virtual Tag::Ptr get_or_create_tag(const Glib::ustring &) = 0;
+  [[nodiscard]]
+  virtual Tag &get_or_create_tag(const Glib::ustring &) = 0;
   virtual Tag::Ptr get_system_tag(const Glib::ustring & tag_name) const = 0;
   [[nodiscard]]
   virtual Tag &get_or_create_system_tag(const Glib::ustring & name) = 0;

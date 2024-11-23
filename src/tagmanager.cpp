@@ -72,7 +72,7 @@ namespace gnote {
   // <summary>
   // Same as GetTag () but will create a new tag if one doesn't already exist.
   // </summary>
-  Tag::Ptr TagManager::get_or_create_tag(const Glib::ustring & tag_name)
+  Tag &TagManager::get_or_create_tag(const Glib::ustring & tag_name)
   {
     if (tag_name.empty())
       throw sharp::Exception ("TagManager.GetOrCreateTag () called with a null tag name.");
@@ -87,12 +87,12 @@ namespace gnote {
       std::lock_guard<std::mutex> lock(m_locker);
       auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
-        return iter->second;
+        return *iter->second;
       }
       else {
         Tag::Ptr t(std::make_shared<Tag>(Glib::ustring(tag_name)));
         m_internal_tags [ t->normalized_name() ] = t;
-        return t;
+        return *t;
       }
     }
     Tag::Ptr tag = get_tag (normalized_tag_name);
@@ -106,7 +106,7 @@ namespace gnote {
       }
     }
 
-    return tag;
+    return *tag;
   }
     
   /// <summary>
@@ -134,9 +134,9 @@ namespace gnote {
   /// <returns>
   /// A <see cref="Tag"/>
   /// </returns>
-  Tag &TagManager::get_or_create_system_tag (const Glib::ustring & tag_name)
+  Tag &TagManager::get_or_create_system_tag(const Glib::ustring & tag_name)
   {
-    return *get_or_create_tag(Tag::SYSTEM_TAG_PREFIX + tag_name);
+    return get_or_create_tag(Tag::SYSTEM_TAG_PREFIX + tag_name);
   }
     
 

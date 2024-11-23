@@ -33,14 +33,14 @@ gnote::Tag::Ptr TagManager::get_tag(const Glib::ustring & tag_name) const
   return gnote::Tag::Ptr();
 }
 
-gnote::Tag::Ptr TagManager::get_or_create_tag(const Glib::ustring & tag_name)
+gnote::Tag &TagManager::get_or_create_tag(const Glib::ustring & tag_name)
 {
   if(auto tag = get_tag(tag_name)) {
-    return tag;
+    return *tag;
   }
   gnote::Tag::Ptr tag = gnote::Tag::Ptr(new gnote::Tag(Glib::ustring(tag_name)));
   m_tags.push_back(tag);
-  return tag;
+  return *tag;
 }
 
 gnote::Tag::Ptr TagManager::get_system_tag(const Glib::ustring & name) const
@@ -50,7 +50,7 @@ gnote::Tag::Ptr TagManager::get_system_tag(const Glib::ustring & name) const
 
 gnote::Tag &TagManager::get_or_create_system_tag(const Glib::ustring & name)
 {
-  return *get_or_create_tag("SYSTEM:" + name);
+  return get_or_create_tag("SYSTEM:" + name);
 }
 
 void TagManager::remove_tag(gnote::Tag &tag)
