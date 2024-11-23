@@ -68,7 +68,7 @@ public:
 protected:
   Notebook(NoteManagerBase &, const Glib::ustring &, bool is_special = false);
 
-  Tag::Ptr template_tag() const;
+  Tag::ORef template_tag() const;
   bool is_template_note(const Note&);
 
   NoteManagerBase & m_note_manager;

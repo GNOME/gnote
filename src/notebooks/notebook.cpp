@@ -23,6 +23,7 @@
 #include <glibmm/i18n.h>
 
 #include "sharp/string.hpp"
+#include "debug.hpp"
 #include "notemanager.hpp"
 #include "notebooks/notebook.hpp"
 #include "notebooks/notebookmanager.hpp"
@@ -34,25 +35,28 @@ namespace notebooks {
   const char * Notebook::NOTEBOOK_TAG_PREFIX = "notebook:";
   Glib::ustring Notebook::s_template_tag;
 
-  Tag::Ptr Notebook::template_tag() const
+  Tag::ORef Notebook::template_tag() const
   {
     auto &tag_manager = m_note_manager.tag_manager();
     if(s_template_tag.empty()) {
       auto tag = tag_manager.get_or_create_system_tag(ITagManager::TEMPLATE_NOTE_SYSTEM_TAG);
       s_template_tag = tag->normalized_name();
-      return tag;
+      return *tag;
     }
 
-    return tag_manager.get_tag(s_template_tag);
+    if(auto tag = tag_manager.get_tag(s_template_tag)) {
+      return *tag;
+    }
+
+    return Tag::ORef();
   }
 
   bool Notebook::is_template_note(const Note & note)
   {
-    Tag::Ptr tag = template_tag();
-    if(tag == NULL) {
-      return false;
+    if(auto tag = template_tag()) {
+      return note.contains_tag(tag.value());
     }
-    return note.contains_tag(*tag);
+    return false;
   }
 
   Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special)
@@ -126,12 +130,12 @@ namespace notebooks {
 
   Note::ORef Notebook::find_template_note() const
   {
-    Tag::Ptr templ_tag = template_tag();
+    auto templ_tag = template_tag();
     Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
     if(!templ_tag || !notebook_tag) {
       return Note::ORef();
     }
-    auto notes = templ_tag->get_notes();
+    auto notes = templ_tag.value().get().get_notes();
     for(NoteBase *n : notes) {
       if(n->contains_tag(*notebook_tag)) {
         return Note::ORef(std::ref(*static_cast<Note*>(n)));
@@ -162,8 +166,12 @@ namespace notebooks {
     buffer->select_note_body();
 
     // Flag this as a template note
-    Tag::Ptr templ_tag = template_tag();
-    note.add_tag(*templ_tag);
+    if(auto templ_tag = template_tag()) {
+      note.add_tag(templ_tag.value());
+    }
+    else {
+      ERR_OUT("No template tag available. This is a bug.");
+    }
 
     // Add on the notebook system tag so Tomboy
     // will persist the tag/notebook across sessions

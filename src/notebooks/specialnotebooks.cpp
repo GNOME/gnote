@@ -201,11 +201,16 @@ bool ActiveNotesNotebook::empty()
   }
 
   // ignore template notes
-  Tag::Ptr templ_tag = template_tag();
+  auto templ_tag = template_tag();
+  if(!templ_tag) {
+    return false;
+  }
+  Tag &tag = templ_tag.value();
+
   for(const auto & note_uri : m_notes) {
     if(auto note_ref = m_note_manager.find_by_uri(note_uri)) {
       const NoteBase & note = note_ref.value();
-      if(!note.contains_tag(*templ_tag)) {
+      if(!note.contains_tag(tag)) {
         return false;
       }
     }
