@@ -130,14 +130,19 @@ namespace notebooks {
 
   Note::ORef Notebook::find_template_note() const
   {
-    auto templ_tag = template_tag();
-    Tag::Ptr notebook_tag = m_note_manager.tag_manager().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
-    if(!templ_tag || !notebook_tag) {
+    auto template_tag = this->template_tag();
+    if(!template_tag) {
       return Note::ORef();
     }
-    auto notes = templ_tag.value().get().get_notes();
-    for(NoteBase *n : notes) {
-      if(n->contains_tag(*notebook_tag)) {
+    auto notebook_tag = m_note_manager.tag_manager().get_system_tag(NOTEBOOK_TAG_PREFIX + get_name());
+    if(!notebook_tag) {
+      return Note::ORef();
+    }
+    Tag &templ_tag = template_tag.value();
+    Tag &nb_tag = notebook_tag.value();
+
+    for(NoteBase *n : templ_tag.get_notes()) {
+      if(n->contains_tag(nb_tag)) {
         return Note::ORef(std::ref(*static_cast<Note*>(n)));
       }
     }

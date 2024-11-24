@@ -43,9 +43,12 @@ gnote::Tag &TagManager::get_or_create_tag(const Glib::ustring & tag_name)
   return *tag;
 }
 
-gnote::Tag::Ptr TagManager::get_system_tag(const Glib::ustring & name) const
+gnote::Tag::ORef TagManager::get_system_tag(const Glib::ustring & name) const
 {
-  return get_tag("SYSTEM:" + name);
+  if(auto tag = get_tag("SYSTEM:" + name)) {
+    return *tag;
+  }
+  return gnote::Tag::ORef();
 }
 
 gnote::Tag &TagManager::get_or_create_system_tag(const Glib::ustring & name)

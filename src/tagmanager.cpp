@@ -119,9 +119,12 @@ namespace gnote {
   /// <returns>
   /// A <see cref="Tag"/>
   /// </returns>
-  Tag::Ptr TagManager::get_system_tag (const Glib::ustring & tag_name) const
+  Tag::ORef TagManager::get_system_tag (const Glib::ustring & tag_name) const
   {
-    return get_tag(Tag::SYSTEM_TAG_PREFIX + tag_name);
+    if(auto tag = get_tag(Tag::SYSTEM_TAG_PREFIX + tag_name)) {
+      return *tag;
+    }
+    return Tag::ORef();
   }
     
   /// <summary>
