@@ -1301,9 +1301,9 @@ namespace gnote {
 
   void NoteTagsWatcher::on_tag_removed(const NoteBase&, const Glib::ustring& tag_name)
   {
-    Tag::Ptr tag = manager().tag_manager().get_tag(tag_name);
-    DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag->popularity() : 0);
-    if (tag && tag->popularity() == 0) {
+    auto tag = manager().tag_manager().get_tag(tag_name);
+    DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag.value().get().popularity() : 0);
+    if(tag && tag.value().get().popularity() == 0) {
       manager().tag_manager().remove_tag(*tag);
     }
   }

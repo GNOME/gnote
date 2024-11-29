@@ -245,7 +245,7 @@ void NoteBase::delete_note()
   auto thetags = data_synchronizer().data().tags();
   auto &tag_manager = m_manager.tag_manager();
   for(auto &thetag : thetags) {
-    if(Tag::Ptr tag = tag_manager.get_tag(thetag)) {
+    if(auto tag = tag_manager.get_tag(thetag)) {
       remove_tag(*tag);
     }
   }
@@ -275,12 +275,10 @@ void NoteBase::remove_tag(Tag & tag)
   auto & thetags(data_synchronizer().data().tags());
 
   {
-    Tag::Ptr iter;
+    Tag::ORef iter;
     auto t = thetags.find(tag_name);
     if(t != thetags.end()) {
-      if(auto tg = manager().tag_manager().get_tag(*t)) {
-        iter = tg;
-      }
+      iter = manager().tag_manager().get_tag(*t);
     }
     if(!iter) {
       return;

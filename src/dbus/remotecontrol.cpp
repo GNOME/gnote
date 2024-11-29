@@ -152,12 +152,12 @@ namespace gnote {
 
   std::vector<Glib::ustring> RemoteControl::GetAllNotesWithTag(const Glib::ustring& tag_name)
   {
-    Tag::Ptr tag = m_manager.tag_manager().get_tag(tag_name);
-    if (!tag)
+    auto tag = m_manager.tag_manager().get_tag(tag_name);
+    if(!tag)
       return std::vector<Glib::ustring>();
 
     std::vector<Glib::ustring> tagged_note_uris;
-    auto notes = tag->get_notes();
+    auto notes = tag.value().get().get_notes();
     for(NoteBase *iter : notes) {
       tagged_note_uris.push_back(iter->uri());
     }

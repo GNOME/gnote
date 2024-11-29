@@ -40,7 +40,7 @@ namespace gnote {
   // Return an existing tag for the specified tag name.  If no Tag exists
   // null will be returned.
   // </summary>
-  Tag::Ptr TagManager::get_tag (const Glib::ustring & tag_name) const
+  Tag::ORef TagManager::get_tag(const Glib::ustring & tag_name) const
   {
     if (tag_name.empty())
       throw sharp::Exception("TagManager.GetTag () called with a null tag name.");
@@ -55,18 +55,18 @@ namespace gnote {
       std::lock_guard<std::mutex> lock(m_locker);
       auto iter = m_internal_tags.find(normalized_tag_name);
       if(iter != m_internal_tags.end()) {
-        return iter->second;
+        return *iter->second;
       }
-      return Tag::Ptr();
+      return Tag::ORef();
     }
 
     for(auto &tag : m_tags) {
       if(tag->normalized_name() == normalized_tag_name) {
-        return tag;
+        return *tag;
       }
     }
 
-    return Tag::Ptr();
+    return Tag::ORef();
   }
   
   // <summary>
@@ -95,14 +95,15 @@ namespace gnote {
         return *t;
       }
     }
-    Tag::Ptr tag = get_tag (normalized_tag_name);
-    if (!tag) {
+    auto tag = get_tag(normalized_tag_name);
+    if(!tag) {
       std::lock_guard<std::mutex> lock(m_locker);
 
-      tag = get_tag (normalized_tag_name);
-      if (!tag) {
-        tag = std::make_shared<Tag>(sharp::string_trim(tag_name));
-        m_tags.push_back(tag);
+      tag = get_tag(normalized_tag_name);
+      if(!tag) {
+        auto tg = std::make_shared<Tag>(sharp::string_trim(tag_name));
+        tag = *tg;
+        m_tags.push_back(tg);
       }
     }
 

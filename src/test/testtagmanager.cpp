@@ -24,13 +24,13 @@
 
 namespace test {
 
-gnote::Tag::Ptr TagManager::get_tag(const Glib::ustring & tag_name) const
+gnote::Tag::ORef TagManager::get_tag(const Glib::ustring & tag_name) const
 {
   auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag_name](const gnote::Tag::Ptr &tag) { return tag->name() == tag_name; });
   if(iter != m_tags.end()) {
-    return *iter;
+    return **iter;
   }
-  return gnote::Tag::Ptr();
+  return gnote::Tag::ORef();
 }
 
 gnote::Tag &TagManager::get_or_create_tag(const Glib::ustring & tag_name)

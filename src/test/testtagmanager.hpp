@@ -29,7 +29,7 @@ class TagManager
   : public gnote::ITagManager
 {
 public:
-  virtual gnote::Tag::Ptr get_tag(const Glib::ustring & tag_name) const override;
+  gnote::Tag::ORef get_tag(const Glib::ustring & tag_name) const override;
   gnote::Tag &get_or_create_tag(const Glib::ustring &) override;
   gnote::Tag::ORef get_system_tag(const Glib::ustring & tag_name) const override;
   gnote::Tag &get_or_create_system_tag(const Glib::ustring & name) override;
