@@ -1280,8 +1280,8 @@ namespace gnote {
   {
     // FIXME: Just for kicks, spit out the current tags
     DBG_OUT ("%s tags:", get_note().get_title().c_str());
-    for(const auto & tag : get_note().get_tags()) {
-      DBG_OUT ("\t%s", tag->name().c_str());
+    for(const Tag &tag : get_note().get_tags()) {
+      DBG_OUT ("\t%s", tag.name().c_str());
     }
   }
 

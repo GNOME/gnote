@@ -240,7 +240,7 @@ public:
   virtual void set_xml_content(Glib::ustring && xml);
   virtual Glib::ustring text_content();
   void load_foreign_note_xml(const Glib::ustring & foreignNoteXml, ChangeType changeType);
-  std::vector<Tag::Ptr> get_tags() const;
+  std::vector<Tag::Ref> get_tags() const;
   const NoteData & data() const;
   NoteData & data();
 

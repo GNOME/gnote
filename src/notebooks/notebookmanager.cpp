@@ -166,9 +166,8 @@ namespace gnote {
     /// </returns>
     Notebook::ORef NotebookManager::get_notebook_from_note(const NoteBase & note)
     {
-      std::vector<Tag::Ptr> tags = note.get_tags();
-      for(auto & tag : tags) {
-        if(auto notebook = get_notebook_from_tag(*tag)) {
+      for(Tag &tag : note.get_tags()) {
+        if(auto notebook = get_notebook_from_tag(tag)) {
           return notebook;
         }
       }

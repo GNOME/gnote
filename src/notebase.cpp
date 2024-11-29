@@ -384,11 +384,11 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
 
   xml.close();
 
-  std::vector<Tag::Ptr> tag_list = get_tags();
+  auto tag_list = get_tags();
 
-  for(Tag::Ptr & iter : tag_list) {
-    if(std::any_of(new_tags.begin(), new_tags.end(), [&iter](const Tag::Ref &tag) { return iter.get() == &tag.get(); })) {
-      remove_tag(*iter);
+  for(Tag &iter : tag_list) {
+    if(std::any_of(new_tags.begin(), new_tags.end(), [&iter](const Tag::Ref &tag) { return &iter == &tag.get(); })) {
+      remove_tag(iter);
     }
   }
   for(Tag &tag : new_tags) {
@@ -399,12 +399,12 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
   queue_save(changeType);
 }
 
-std::vector<Tag::Ptr> NoteBase::get_tags() const
+std::vector<Tag::Ref> NoteBase::get_tags() const
 {
-  std::vector<Tag::Ptr> ret;
+  std::vector<Tag::Ref> ret;
   for(const auto &tag_name : data_synchronizer().data().tags()) {
     if(auto tag = manager().tag_manager().get_tag(tag_name)) {
-      ret.push_back(tag);
+      ret.push_back(*tag);
     }
   }
 

@@ -241,8 +241,8 @@ namespace gnote {
   {
     std::vector<Glib::ustring> tags;
     m_manager.find_by_uri(uri, [&tags](NoteBase & note) {
-      for(auto & tag : note.get_tags()) {
-        tags.push_back(tag->normalized_name());
+      for(Tag &tag : note.get_tags()) {
+        tags.push_back(tag.normalized_name());
       }
     });
     return tags;
