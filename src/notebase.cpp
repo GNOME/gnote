@@ -273,16 +273,18 @@ void NoteBase::remove_tag(Tag & tag)
 {
   Glib::ustring tag_name = tag.normalized_name();
   auto & thetags(data_synchronizer().data().tags());
-  Tag::Ptr iter;
 
-  auto t = thetags.find(tag_name);
-  if(t != thetags.end()) {
-    if(auto tg = manager().tag_manager().get_tag(*t)) {
-      iter = tg;
+  {
+    Tag::Ptr iter;
+    auto t = thetags.find(tag_name);
+    if(t != thetags.end()) {
+      if(auto tg = manager().tag_manager().get_tag(*t)) {
+        iter = tg;
+      }
     }
-  }
-  if(!iter) {
-    return;
+    if(!iter) {
+      return;
+    }
   }
 
   signal_tag_removing(*this, tag);
