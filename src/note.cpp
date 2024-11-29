@@ -432,42 +432,6 @@ namespace gnote {
     set_change_type(changeType);
   }
 
-  void Note::remove_tag(Tag & tag)
-  {
-    const Glib::ustring tag_name = tag.normalized_name();
-    auto &thetags = m_data.data().tags();
-    Tag::Ptr iter;
-
-    // if we are deleting the note, no need to check for the tag, we 
-    // know it is there.
-    if(!m_is_deleting) {
-      auto t = thetags.find(tag_name);
-      if(t != thetags.end()) {
-        if(auto tg = manager().tag_manager().get_tag(*t)) {
-          iter = tg;
-        }
-      }
-      else {
-        return;
-      }
-    }
-
-    signal_tag_removing(*this, tag);
-
-    // don't erase the tag if we are deleting the note. 
-    // This will invalidate the iterator.
-    // see bug 579839.
-    if(!m_is_deleting) {
-      thetags.erase(tag_name);
-    }
-    tag.remove_note(*this);
-
-    signal_tag_removed(*this, tag_name);
-
-    DBG_OUT("Tag removed, queueing save");
-    queue_save(OTHER_DATA_CHANGED);
-  }
-
   void Note::add_child_widget(Glib::RefPtr<Gtk::TextChildAnchor> && child_anchor, Gtk::Widget *widget)
   {
     m_child_widget_queue.push(ChildWidgetData(std::move(child_anchor), widget));

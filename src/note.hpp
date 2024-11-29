@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020,2022-2024 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -104,8 +104,6 @@ public:
   static Note::Ptr load(Glib::ustring &&, NoteManager &, IGnote &);
   virtual void save() override;
   virtual void queue_save(ChangeType c) override;
-  using NoteBase::remove_tag;
-  virtual void remove_tag(Tag &) override;
   void add_child_widget(Glib::RefPtr<Gtk::TextChildAnchor> && child_anchor, Gtk::Widget *widget);
 
   using NoteBase::set_title;
