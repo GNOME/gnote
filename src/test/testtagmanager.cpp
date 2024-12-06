@@ -26,7 +26,7 @@ namespace test {
 
 gnote::Tag::ORef TagManager::get_tag(const Glib::ustring & tag_name) const
 {
-  auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag_name](const gnote::Tag::Ptr &tag) { return tag->name() == tag_name; });
+  auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag_name](const TagPtr &tag) { return tag->name() == tag_name; });
   if(iter != m_tags.end()) {
     return **iter;
   }
@@ -38,9 +38,10 @@ gnote::Tag &TagManager::get_or_create_tag(const Glib::ustring & tag_name)
   if(auto tag = get_tag(tag_name)) {
     return *tag;
   }
-  gnote::Tag::Ptr tag = gnote::Tag::Ptr(new gnote::Tag(Glib::ustring(tag_name)));
-  m_tags.push_back(tag);
-  return *tag;
+  TagPtr tag(new gnote::Tag(Glib::ustring(tag_name)));
+  gnote::Tag &ret = *tag;
+  m_tags.emplace_back(std::move(tag));
+  return ret;
 }
 
 gnote::Tag::ORef TagManager::get_system_tag(const Glib::ustring & name) const
@@ -58,7 +59,7 @@ gnote::Tag &TagManager::get_or_create_system_tag(const Glib::ustring & name)
 
 void TagManager::remove_tag(gnote::Tag &tag)
 {
-  auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag](const gnote::Tag::Ptr &t) { return t.get() == &tag; });
+  auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag](const TagPtr &t) { return t.get() == &tag; });
   if(iter != m_tags.end()) {
     m_tags.erase(iter);
   }

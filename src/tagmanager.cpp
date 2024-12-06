@@ -90,9 +90,10 @@ namespace gnote {
         return *iter->second;
       }
       else {
-        Tag::Ptr t(std::make_shared<Tag>(Glib::ustring(tag_name)));
-        m_internal_tags [ t->normalized_name() ] = t;
-        return *t;
+        TagPtr t(new Tag(Glib::ustring(tag_name)));
+        Tag& ret = *t;
+        m_internal_tags[ret.normalized_name()] = std::move(t);
+        return ret;
       }
     }
     auto tag = get_tag(normalized_tag_name);
@@ -101,9 +102,9 @@ namespace gnote {
 
       tag = get_tag(normalized_tag_name);
       if(!tag) {
-        auto tg = std::make_shared<Tag>(sharp::string_trim(tag_name));
+        TagPtr tg(new Tag(sharp::string_trim(tag_name)));
         tag = *tg;
-        m_tags.push_back(tg);
+        m_tags.emplace_back(std::move(tg));
       }
     }
 
@@ -156,7 +157,7 @@ namespace gnote {
       m_internal_tags.erase(tag_name);
     }
 
-    auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag](const Tag::Ptr &t) { return t.get() == &tag; });
+    auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag](const TagPtr &t) { return t.get() == &tag; });
     if(iter != m_tags.end()) {
       m_tags.erase(iter);
       DBG_OUT("TagManager: Removed tag: %s", tag_name.c_str());
@@ -174,12 +175,11 @@ namespace gnote {
   
   std::vector<Tag::Ref> TagManager::all_tags() const
   {
-    // Add in the system tags first
-    auto internal_tags = sharp::map_get_values(m_internal_tags);
     std::vector<Tag::Ref> tags;
-    tags.reserve(internal_tags.size() + m_tags.size());
-    for(auto &tag : internal_tags) {
-      tags.emplace_back(*tag);
+    tags.reserve(m_internal_tags.size() + m_tags.size());
+    // Add in the system tags first
+    for(auto &tag : m_internal_tags) {
+      tags.emplace_back(*tag.second);
     }
     for(auto &tag : m_tags) {
       tags.emplace_back(*tag);

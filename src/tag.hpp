@@ -47,7 +47,6 @@ namespace gnote {
   public:
     typedef std::reference_wrapper<Tag> Ref;
     typedef std::optional<Ref> ORef;
-    typedef std::shared_ptr<Tag> Ptr;
     static const char * SYSTEM_TAG_PREFIX;
 
     Tag(Glib::ustring && name);

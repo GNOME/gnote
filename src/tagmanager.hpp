@@ -47,8 +47,9 @@ public:
   void remove_tag(Tag &tag) override;
   std::vector<Tag::Ref> all_tags() const override;
 private:
-  std::vector<Tag::Ptr> m_tags;
-  typedef std::map<Glib::ustring, Tag::Ptr> InternalMap;
+  typedef std::unique_ptr<Tag> TagPtr;
+  std::vector<TagPtr> m_tags;
+  typedef std::map<Glib::ustring, TagPtr> InternalMap;
   InternalMap                      m_internal_tags;
   mutable std::mutex               m_locker;
 };

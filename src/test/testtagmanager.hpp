@@ -36,7 +36,8 @@ public:
   void remove_tag(gnote::Tag &tag) override;
   std::vector<gnote::Tag::Ref> all_tags() const override;
 private:
-  std::vector<gnote::Tag::Ptr> m_tags;
+  typedef std::unique_ptr<gnote::Tag> TagPtr;
+  std::vector<TagPtr> m_tags;
 };
 
 }
