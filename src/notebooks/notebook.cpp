@@ -213,7 +213,10 @@ namespace notebooks {
   /// </returns>
   bool Notebook::contains_note(const Note & note, bool include_system)
   {
-    bool contains = note.contains_tag(*get_tag());
+    bool contains = false;
+    if(auto tag = get_tag()) {
+      contains = note.contains_tag(*tag);
+    }
     if(!contains || include_system) {
       return contains;
     }
