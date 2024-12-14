@@ -550,6 +550,7 @@ namespace {
     if(active_sync) {
       m_selected_sync_addin = &active_sync->service();
       on_sync_addin_combo_changed();
+      m_reset_sync_addin_button->set_sensitive(true);
     }
     if (m_sync_addin_prefs_widget == NULL) {
       auto l = make_label(_("Not configurable"));
