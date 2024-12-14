@@ -463,20 +463,12 @@ namespace {
       active_sync = sync_addin_store->get_item(0);
     }
 
-    m_sync_addin_combo->signal_state_flags_changed().connect([this](Gtk::StateFlags flags){
-      auto was_active = (Gtk::StateFlags::ACTIVE == (flags & Gtk::StateFlags::ACTIVE));
-      auto now_active = (Gtk::StateFlags::ACTIVE == (m_sync_addin_combo->get_state_flags() & Gtk::StateFlags::ACTIVE));
-      if(!now_active && was_active) {
-        auto check_selection_change = [](gpointer data) {
-          auto self = static_cast<PreferencesDialog*>(data);
-          auto item = std::dynamic_pointer_cast<SyncService>(self->m_sync_addin_combo->get_selected_item());
-          sync::SyncServiceAddin *new_addin = item ? &item->service() : nullptr;
-          if(new_addin != self->m_selected_sync_addin) {
-            self->m_selected_sync_addin = new_addin;
-            self->on_sync_addin_combo_changed();
-          }
-        };
-        g_timeout_add_once(1, check_selection_change, this);
+    m_sync_addin_combo->property_selected_item().signal_changed().connect([this]{
+      auto item = std::dynamic_pointer_cast<SyncService>(m_sync_addin_combo->get_selected_item());
+      sync::SyncServiceAddin *new_addin = item ? &item->service() : nullptr;
+      if(new_addin != m_selected_sync_addin) {
+        m_selected_sync_addin = new_addin;
+        on_sync_addin_combo_changed();
       }
     });
 
