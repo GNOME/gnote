@@ -1068,6 +1068,9 @@ namespace {
       m_sync_addin_combo->set_selected(GTK_INVALID_LIST_POSITION);
       m_reset_sync_addin_button->set_sensitive(false);
       m_save_sync_addin_button->set_sensitive(true);
+      if(m_sync_addin_prefs_widget) {
+        m_sync_addin_prefs_widget->set_sensitive(true);
+      }
     };
 
     Gtk::Dialog *dialog;
