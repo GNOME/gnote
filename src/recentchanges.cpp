@@ -704,6 +704,7 @@ namespace gnote {
     int idx = m_embed_book.get_current_page() + 1;
     m_embed_book.insert_page(*win, *tab_label, idx);
     m_embed_book.set_current_page(idx);
+    m_embed_book.get_page(*win)->property_reorderable() = true;
   }
 
   void NoteRecentChanges::unembed_widget(EmbeddableWidget & widget)
