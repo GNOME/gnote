@@ -302,14 +302,16 @@ public:
     }
 protected:
   NoteTagTable(Preferences &prefs)
+    : m_preferences(prefs)
     {
-      _init_common_tags(prefs);
+      _init_common_tags();
     }
 
 private:
-  void _init_common_tags(Preferences &prefs);
+  void _init_common_tags();
 
   static NoteTagTable::Ptr           s_instance;
+  Preferences &m_preferences;
   std::map<Glib::ustring, Factory>   m_tag_types;
 
   NoteTag::Ptr m_url_tag;
