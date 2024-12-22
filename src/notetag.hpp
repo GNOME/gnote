@@ -309,6 +309,8 @@ protected:
 
 private:
   void _init_common_tags();
+  void on_highlight_background_setting_changed();
+  void on_highlight_foreground_setting_changed();
 
   static NoteTagTable::Ptr           s_instance;
   Preferences &m_preferences;

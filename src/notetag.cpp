@@ -33,6 +33,19 @@
 
 namespace gnote {
 
+namespace {
+
+  void change_highlight(NoteTagTable &tag_table, const std::function<void(Gtk::TextTag &tag)> &closure)
+  {
+    if(auto tag = tag_table.lookup("highlight")) {
+      closure(*tag);
+    }
+    else {
+      ERR_OUT("Tag 'highlight' not found!");
+    }
+  }
+}
+
   NoteTag::NoteTag(Glib::ustring && tag_name, int flags)
     : Gtk::TextTag(tag_name)
     , m_element_name(std::move(tag_name))
@@ -270,6 +283,11 @@ namespace gnote {
       visited_link_color = style_ctx->get_color();
     }
 
+    m_preferences.signal_highlight_background_color_changed
+      .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_background_setting_changed));
+    m_preferences.signal_highlight_foreground_color_changed
+      .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_foreground_setting_changed));
+
     // Font stylings
 
     tag = NoteTag::create("centered", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
@@ -370,6 +388,19 @@ namespace gnote {
     m_url_tag = tag;
   }
 
+  void NoteTagTable::on_highlight_background_setting_changed()
+  {
+    change_highlight(*this, [this](Gtk::TextTag &tag) {
+      tag.property_background() = m_preferences.highlight_background_color();
+    });
+  }
+
+  void NoteTagTable::on_highlight_foreground_setting_changed()
+  {
+    change_highlight(*this, [this](Gtk::TextTag &tag) {
+      tag.property_foreground() = m_preferences.highlight_foreground_color();
+    });
+  }
 
   bool NoteTagTable::tag_is_serializable(const Glib::RefPtr<const Gtk::TextTag> & tag)
   {
