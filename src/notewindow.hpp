@@ -49,7 +49,7 @@ class NoteTextMenu
   : public Gtk::Popover
 {
 public:
-  NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);
+  NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, Preferences &prefs);
 private:
   void refresh_state(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);
   void refresh_sizing_state(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer);

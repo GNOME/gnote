@@ -266,8 +266,6 @@ namespace {
   }
 
 
-  const char *NoteTagTable::HIGHLIGHT_COLOR = "#3584e4"; // From libadwaita: @accent_bg_color
-  const char *NoteTagTable::HIGHLIGHT_TEXT_COLOR = "#ffffff"; // From libadwaita: @accent_fg_color
   NoteTagTable::Ptr NoteTagTable::s_instance;
 
   void NoteTagTable::_init_common_tags()

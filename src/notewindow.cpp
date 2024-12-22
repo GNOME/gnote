@@ -543,7 +543,7 @@ namespace gnote {
 
   void NoteWindow::on_text_button_clicked(Gtk::Widget *parent)
   {
-    auto text_menu = Gtk::make_managed<NoteTextMenu>(*this, m_note.get_buffer());
+    auto text_menu = Gtk::make_managed<NoteTextMenu>(*this, m_note.get_buffer(), m_gnote.preferences());
     text_menu->set_parent(*parent);
     utils::unparent_popover_on_close(text_menu);
     signal_build_text_menu(*text_menu);
@@ -957,7 +957,7 @@ namespace gnote {
   // Menu for font style and size, and set the active radio
   // menuitem depending on the cursor poition.
   //
-  NoteTextMenu::NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer)
+  NoteTextMenu::NoteTextMenu(EmbeddableWidget & widget, const Glib::RefPtr<NoteBuffer> & buffer, Preferences &prefs)
     : Gtk::Popover()
     {
       set_position(Gtk::PositionType::BOTTOM);
@@ -977,7 +977,7 @@ namespace gnote {
       highlight->set_has_frame(false);
       auto label = Gtk::make_managed<Gtk::Label>();
       Glib::ustring markup = Glib::ustring::compose("<span color=\"%1\" background=\"%2\">%3</span>",
-        NoteTagTable::HIGHLIGHT_TEXT_COLOR, NoteTagTable::HIGHLIGHT_COLOR, _("_Highlight"));
+        prefs.highlight_foreground_color(), prefs.highlight_background_color(), _("_Highlight"));
       label->set_markup_with_mnemonic(markup);
       highlight->set_child(*label);
 
