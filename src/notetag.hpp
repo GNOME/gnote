@@ -31,6 +31,7 @@
 #include <gtkmm/texttag.h>
 #include <gtkmm/texttagtable.h>
 
+#include "preferences.hpp"
 #include "tag.hpp"
 #include "sharp/exception.hpp"
 
@@ -253,10 +254,16 @@ public:
   static const char *HIGHLIGHT_COLOR;
   static const char *HIGHLIGHT_TEXT_COLOR;
 
-  static const NoteTagTable::Ptr & instance() 
+  static void setup_instance(Preferences &prefs)
     {
       if(!s_instance) {
-        s_instance = NoteTagTable::Ptr(new NoteTagTable);
+        s_instance = NoteTagTable::Ptr(new NoteTagTable(prefs));
+      }
+    }
+  static const NoteTagTable::Ptr & instance()
+    {
+      if(!s_instance) {
+        throw sharp::Exception("NoteTagTable not set up");
       }
       return s_instance;
     }
@@ -294,13 +301,13 @@ public:
       return m_broken_link_tag;
     }
 protected:
-  NoteTagTable()
+  NoteTagTable(Preferences &prefs)
     {
-      _init_common_tags();
+      _init_common_tags(prefs);
     }
 
 private:
-  void _init_common_tags();
+  void _init_common_tags(Preferences &prefs);
 
   static NoteTagTable::Ptr           s_instance;
   std::map<Glib::ustring, Factory>   m_tag_types;

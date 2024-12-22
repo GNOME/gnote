@@ -257,7 +257,7 @@ namespace gnote {
   const char *NoteTagTable::HIGHLIGHT_TEXT_COLOR = "#ffffff"; // From libadwaita: @accent_fg_color
   NoteTagTable::Ptr NoteTagTable::s_instance;
 
-  void NoteTagTable::_init_common_tags()
+  void NoteTagTable::_init_common_tags(Preferences &prefs)
   {
     NoteTag::Ptr tag;
     Gdk::RGBA active_link_color, visited_link_color;

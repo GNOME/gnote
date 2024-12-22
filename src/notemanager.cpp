@@ -54,6 +54,7 @@ namespace gnote {
     bool is_first_run = NoteManagerBase::init(directory, backup);
 
     m_addin_mgr = create_addin_manager ();
+    NoteTagTable::setup_instance(m_preferences);
 
     if (is_first_run) {
       std::vector<ImportAddin*> l = m_addin_mgr->get_import_addins();
