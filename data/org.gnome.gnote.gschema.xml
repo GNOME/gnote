@@ -41,6 +41,16 @@
       <summary>Custom Font Face</summary>
       <description>If enable-custom-font is true, the font name set here will be used as the font when displaying notes.</description>
     </key>
+    <key name="highlight-background-color" type="s">
+      <default>'#3584e4'</default>
+      <summary>Background color for the highlighted text</summary>
+      <description>When text is highlighted, use this color for background. A string gdk_rgba_parse() accepts.</description>
+    </key>
+    <key name="highlight-foreground-color" type="s">
+      <default>'#ffffff'</default>
+      <summary>Color for the highlighted text</summary>
+      <description>When text is highlighted, use this color for text. A string gdk_rgba_parse() accepts.</description>
+    </key>
     <key name="start-note" type="s">
       <default>''</default>
       <summary>Start Here Note</summary>

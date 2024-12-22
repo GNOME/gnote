@@ -66,6 +66,8 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(enable_url_links, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_wikiwords, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_custom_font, bool)
+    GNOTE_PREFERENCES_CACHING_SETTING(highlight_background_color, const Glib::ustring &)
+    GNOTE_PREFERENCES_CACHING_SETTING(highlight_foreground_color, const Glib::ustring &)
     GNOTE_PREFERENCES_SETTING_BOOL(enable_auto_bulleted_lists)
     GNOTE_PREFERENCES_CACHING_SETTING(note_rename_behavior, int)
     GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
@@ -101,6 +103,8 @@ namespace gnote {
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;
 
     Glib::ustring m_custom_font_face;
+    Glib::ustring m_highlight_background_color;
+    Glib::ustring m_highlight_foreground_color;
     Glib::ustring m_color_scheme;
 
     Glib::ustring m_desktop_gnome_clock_format;
