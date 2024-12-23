@@ -91,7 +91,6 @@ private:
   void on_note_renamed(const NoteBase&, const Glib::ustring&);
   void delete_note(NoteBase & note);
   void add_note(NoteBase & note);
-  void rename_note(const NoteBase & note);
 
   enum class OpenNoteMode
   {
