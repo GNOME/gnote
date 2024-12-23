@@ -75,6 +75,7 @@ class NoteBox
 {
 public:
   Gtk::Label title;
+  sigc::connection on_note_renamed_cid;
 };
 
 class NoteColumnItemFactory
@@ -91,6 +92,7 @@ private:
     {
       signal_setup().connect(sigc::mem_fun(*this, &NoteColumnItemFactory::setup));
       signal_bind().connect(sigc::mem_fun(*this, &NoteColumnItemFactory::bind));
+      signal_unbind().connect(sigc::mem_fun(*this, &NoteColumnItemFactory::unbind));
     }
 
   void setup(const Glib::RefPtr<Gtk::ListItem> & list_item)
@@ -113,7 +115,17 @@ private:
       if(auto widget = dynamic_cast<NoteBox*>(list_item->get_child())) {
         if(auto note = std::dynamic_pointer_cast<Note>(list_item->get_item())) {
           widget->title.set_label(note->get_title());
+          widget->on_note_renamed_cid = note->signal_renamed.connect([widget](const NoteBase &note, const Glib::ustring&) {
+            widget->title.set_label(note.get_title());
+          });
         }
+      }
+    }
+
+  void unbind(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      if(auto widget = dynamic_cast<NoteBox*>(list_item->get_child())) {
+        widget->on_note_renamed_cid.disconnect();
       }
     }
 };
