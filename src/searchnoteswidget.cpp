@@ -70,6 +70,13 @@ bool get_column_view_sort(const Gtk::ColumnView & view, Glib::RefPtr<const Gtk::
   return false;
 }
 
+class NoteBox
+  : public Gtk::Box
+{
+public:
+  Gtk::Label title;
+};
+
 class NoteColumnItemFactory
   : public Gtk::SignalListItemFactory
 {
@@ -88,38 +95,24 @@ private:
 
   void setup(const Glib::RefPtr<Gtk::ListItem> & list_item)
     {
-      auto box = Gtk::make_managed<Gtk::Box>();
+      auto box = Gtk::make_managed<NoteBox>();
       auto image = Gtk::make_managed<Gtk::Image>();
       image->property_icon_name() = IconManager::NOTE;
       image->set_margin_end(3);
       box->append(*image);
-      auto title = Gtk::make_managed<Gtk::Label>();
-      title->set_name(TITLE_WIDGET);
-      title->set_xalign(0.0f);
-      title->set_size_request(150);
-      title->set_ellipsize(Pango::EllipsizeMode::END);
-      box->append(*title);
+      box->title.set_name(TITLE_WIDGET);
+      box->title.set_xalign(0.0f);
+      box->title.set_size_request(150);
+      box->title.set_ellipsize(Pango::EllipsizeMode::END);
+      box->append(box->title);
       list_item->set_child(*box);
     }
 
   void bind(const Glib::RefPtr<Gtk::ListItem> & list_item)
     {
-      Gtk::Label *label = nullptr;
-      if(auto widget = dynamic_cast<Gtk::Box*>(list_item->get_child())) {
-        auto child = widget->get_last_child();
-        while(child) {
-          if(child->get_name() == TITLE_WIDGET) {
-            break;
-          }
-          child = child->get_prev_sibling();
-        }
-
-        label = dynamic_cast<Gtk::Label*>(child);
-      }
-
-      if(label) {
+      if(auto widget = dynamic_cast<NoteBox*>(list_item->get_child())) {
         if(auto note = std::dynamic_pointer_cast<Note>(list_item->get_item())) {
-          label->set_label(note->get_title());
+          widget->title.set_label(note->get_title());
         }
       }
     }
