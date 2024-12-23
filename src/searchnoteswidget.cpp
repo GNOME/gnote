@@ -798,7 +798,6 @@ void SearchNotesWidget::on_note_renamed(const NoteBase & note,
                                         const Glib::ustring &)
 {
   restore_matches_window();
-  rename_note(note);
 }
 
 void SearchNotesWidget::delete_note(NoteBase & note)
@@ -815,13 +814,6 @@ void SearchNotesWidget::add_note(NoteBase & note)
 {
   auto store = std::static_pointer_cast<Gio::ListStore<NoteBase>>(m_store);
   store->append(note.shared_from_this());
-}
-
-void SearchNotesWidget::rename_note(const NoteBase & note)
-{
-  NoteBase & n = const_cast<NoteBase&>(note);
-  delete_note(n);
-  add_note(n);
 }
 
 void SearchNotesWidget::on_open_note(OpenNoteMode mode)
