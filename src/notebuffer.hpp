@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2022,2024 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2022 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -83,6 +83,8 @@ public:
   bool is_bulleted_list_active();
   bool is_bulleted_list_active(Gtk::TextIter iter);
   bool can_make_bulleted_list();
+  bool add_tab();
+  bool remove_tab();
   bool add_new_line(bool soft_break);
   bool delete_key_handler();
   bool backspace_key_handler();
@@ -128,6 +130,8 @@ private:
   void widget_swap (const NoteTag::Ptr & tag, const Gtk::TextIter & start,
                     const Gtk::TextIter & end_iter, bool adding);
   void change_cursor_depth(bool increase);
+  typedef void (NoteBuffer::*DepthAction)(Gtk::TextIter & iter);
+  bool handle_tab(DepthAction depth_action);
 
   UndoManager           *m_undomanager;
   static const gunichar s_indent_bullets[];

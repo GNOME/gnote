@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -445,6 +445,51 @@ namespace gnote {
     }
     return false;
   }
+
+  bool NoteBuffer::handle_tab(DepthAction depth_action)
+  {
+    // if we have something selected, then tab increases ident for selected lines
+    Gtk::TextIter start, end;
+    if(get_selection_bounds(start, end)) {
+      start.set_line_offset(0);
+      for(int end_line = end.get_line(); start.get_line() <= end_line;) {
+        (*this.*depth_action)(start);
+        if(!start.forward_line()) {
+          break;
+        }
+      }
+      return true;
+    }
+    else {
+      Glib::RefPtr<Gtk::TextMark> insert_mark = get_insert();
+      Gtk::TextIter iter = get_iter_at_mark(insert_mark);
+      iter.set_line_offset(0);
+
+      DepthNoteTag::Ptr depth = find_depth_tag(iter);
+
+      // If the cursor is at a line with a depth and a tab has been
+      // inserted then we increase the indent depth of that line.
+      if (depth) {
+        (*this.*depth_action)(iter);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // Returns true if the depth of the line was increased
+  bool NoteBuffer::add_tab()
+  {
+    return handle_tab(&NoteBuffer::increase_depth);
+  }
+
+
+  // Returns true if the depth of the line was decreased
+  bool NoteBuffer::remove_tab()
+  {
+    return handle_tab(&NoteBuffer::decrease_depth);
+  }
+
 
   // Returns true if a bullet had to be removed
     // This is for the Delete key not Backspace
