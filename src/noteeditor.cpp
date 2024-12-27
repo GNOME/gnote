@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2023 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -195,11 +195,11 @@ namespace gnote {
       }
       break;
     case GDK_KEY_Tab:
-      std::static_pointer_cast<NoteBuffer>(get_buffer())->increase_cursor_depth();
+      ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->add_tab();
       scroll_to(get_buffer()->get_insert());
       return true;
     case GDK_KEY_ISO_Left_Tab:
-      std::static_pointer_cast<NoteBuffer>(get_buffer())->decrease_cursor_depth();
+      ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->remove_tab();
       scroll_to(get_buffer()->get_insert());
       return true;
     case GDK_KEY_Delete:
