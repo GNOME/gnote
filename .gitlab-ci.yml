@@ -16,12 +16,13 @@ variables:
                 yelp-tools
 
   GIT_SUBMODULE_STRATEGY: normal
+  MESON_BUILD_DIR: _build
 
 build:
   before_script:
     - dnf update -y --nogpgcheck
     - dnf install -y --nogpgcheck $DEPENDENCIES
   script:
-    - meson _build
-    - meson test -C _build
-    - ninja -C _build install
+    - meson setup "${MESON_BUILD_DIR}"
+    - meson test -C "${MESON_BUILD_DIR}"
+    - ninja -C "${MESON_BUILD_DIR}" install
