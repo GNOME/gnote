@@ -42,6 +42,9 @@ build:
 test:
   stage: test
   needs: ["build"]
+  before_script:
+    - dnf update -y --nogpgcheck
+    - dnf install -y --nogpgcheck $DEPENDENCIES
   script:
     - meson test -C "${MESON_BUILD_DIR}"
     - ninja -C "${MESON_BUILD_DIR}" install
