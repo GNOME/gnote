@@ -8,6 +8,7 @@ include:
 
 stages:
   - build
+  - test
   - release
 
 variables:
@@ -36,15 +37,17 @@ build:
     - dnf install -y --nogpgcheck $DEPENDENCIES
   script:
     - meson setup "${MESON_BUILD_DIR}"
+    - meson compile -C "${MESON_BUILD_DIR}"
+
+test:
+  stage: test
+  needs: ["build"]
+  script:
     - meson test -C "${MESON_BUILD_DIR}"
     - ninja -C "${MESON_BUILD_DIR}" install
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - "${MESON_BUILD_DIR}"
 
 build-release-tarball:
-  stage: build
+  stage: release
   before_script:
     - dnf update -y --nogpgcheck
     - dnf install -y --nogpgcheck $DEPENDENCIES
