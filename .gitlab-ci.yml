@@ -36,7 +36,7 @@ test:
     - dnf install -y --nogpgcheck $DEPENDENCIES
   script:
     - meson setup "${MESON_BUILD_DIR}"
-    - meson test -C "${MESON_BUILD_DIR}"
+    - meson dist -C "${MESON_BUILD_DIR}"
     - ninja -C "${MESON_BUILD_DIR}" install
 
 build-release-tarball:
