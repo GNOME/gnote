@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2019,2022-2024 Aurimas Cernius
+ * Copyright (C) 2013,2019,2022-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 #ifndef _NOTEBOOKSVIEW_HPP_
 #define _NOTEBOOKSVIEW_HPP_
 
-#include <gtkmm/listview.h>
+#include <gtkmm/columnview.h>
 
 namespace gnote {
 
@@ -57,7 +57,7 @@ namespace gnote {
     Gtk::Button m_rename_button;
     Gtk::Button m_delete_button;
     Gtk::Button m_open_template_note;
-    Gtk::ListView m_list;
+    Gtk::ColumnView m_list;
   };
 
   }

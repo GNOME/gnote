@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2019,2022-2024 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019,2022-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -199,8 +199,10 @@ namespace gnote {
     NotebooksView::NotebooksView(NoteManagerBase & manager, const Glib::RefPtr<Gio::ListModel> & model)
       : Gtk::Box(Gtk::Orientation::VERTICAL)
       , m_note_manager(manager)
-      , m_list(make_selection_model(model), NotebookFactory::create())
+      , m_list(make_selection_model(model))
     {
+      m_list.append_column(Gtk::ColumnViewColumn::create(_("Notebook"), NotebookFactory::create()));
+
       m_new_button.set_icon_name("list-add-symbolic");
       m_new_button.set_tooltip_text(_("New Notebook"));
       m_new_button.set_has_frame(false);
