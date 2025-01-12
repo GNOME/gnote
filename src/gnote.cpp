@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2024 Aurimas Cernius
+ * Copyright (C) 2010-2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -270,7 +270,7 @@ namespace gnote {
     about->set_program_name("Gnote");
     about->set_version(VERSION);
     about->set_logo_icon_name(IconManager::GNOTE);
-    about->set_copyright(_("Copyright \xc2\xa9 2010-2024 Aurimas Cernius\n"
+    about->set_copyright(_("Copyright \xc2\xa9 2010-2025 Aurimas Cernius\n"
                            "Copyright \xc2\xa9 2009-2011 Debarshi Ray\n"
                            "Copyright \xc2\xa9 2009 Hubert Figuiere\n"
                            "Copyright \xc2\xa9 2004-2009 the Tomboy original authors."));
