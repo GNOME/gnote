@@ -8,14 +8,14 @@
 # YunQiang Su <wzssyqa@gmail.com>, 2010.
 # Aron Xu <aronxu@gnome.org>, 2010.
 # Junping Sun <junping@nfschina.com>, 2021.
-# lumingzh <lumingzh@qq.com>, 2022-2024.
+# lumingzh <lumingzh@qq.com>, 2022-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-07-29 20:55+0000\n"
-"PO-Revision-Date: 2024-09-03 08:34+0800\n"
+"POT-Creation-Date: 2025-01-13 00:06+0000\n"
+"PO-Revision-Date: 2025-01-14 13:19+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 46.1\n"
+"X-Generator: Gtranslator 47.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
@@ -153,10 +153,30 @@ msgid ""
 msgstr "若 enable_custom_font 为真，显示便笺时将使用此处设置的字体名。"
 
 #: data/org.gnome.gnote.gschema.xml:46
+msgid "Background color for the highlighted text"
+msgstr "高亮文本的背景颜色"
+
+#: data/org.gnome.gnote.gschema.xml:47
+msgid ""
+"When text is highlighted, use this color for background. A string "
+"gdk_rgba_parse() accepts."
+msgstr "文本高亮时，使用该颜色作为背景。接受字符串 gdk_rgba_parse()。"
+
+#: data/org.gnome.gnote.gschema.xml:51
+msgid "Color for the highlighted text"
+msgstr "高亮文本的颜色"
+
+#: data/org.gnome.gnote.gschema.xml:52
+msgid ""
+"When text is highlighted, use this color for text. A string gdk_rgba_parse() "
+"accepts."
+msgstr "文本高亮时，使用该颜色作为文本颜色。接受字符串 gdk_rgba_parse()。"
+
+#: data/org.gnome.gnote.gschema.xml:56
 msgid "Start Here Note"
 msgstr "“从这里开始”便笺"
 
-#: data/org.gnome.gnote.gschema.xml:47
+#: data/org.gnome.gnote.gschema.xml:57
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -165,114 +185,114 @@ msgstr ""
 "应被视为“从这里开始”便笺的 URI，它将总显示在 Gnote 菜单的底端，并且可以用快捷"
 "键访问。"
 
-#: data/org.gnome.gnote.gschema.xml:51
+#: data/org.gnome.gnote.gschema.xml:61
 msgid "Minimum number of notes to show in menu"
 msgstr "菜单中要显示的最少便笺数"
 
-#: data/org.gnome.gnote.gschema.xml:52
+#: data/org.gnome.gnote.gschema.xml:62
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr "整数值，决定在 Gnote 菜单中显示的最少便笺数。"
 
-#: data/org.gnome.gnote.gschema.xml:56
+#: data/org.gnome.gnote.gschema.xml:66
 msgid "List of pinned notes"
 msgstr "加钉便笺列表"
 
-#: data/org.gnome.gnote.gschema.xml:57
+#: data/org.gnome.gnote.gschema.xml:67
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
 msgstr "总是出现在 Gnote 菜单中的 URI 列表，以空格分开。"
 
-#: data/org.gnome.gnote.gschema.xml:61
+#: data/org.gnome.gnote.gschema.xml:71
 msgid "Is main window maximized"
 msgstr "主窗口是否最大化"
 
-#: data/org.gnome.gnote.gschema.xml:62
+#: data/org.gnome.gnote.gschema.xml:72
 msgid "If true, Gnote window will be maximized."
 msgstr "如果为 true，Gnote 窗口将被最大化。"
 
-#: data/org.gnome.gnote.gschema.xml:66
+#: data/org.gnome.gnote.gschema.xml:76
 msgid "Saved height of Search window"
 msgstr "保存的搜索窗口高度"
 
-#: data/org.gnome.gnote.gschema.xml:67
+#: data/org.gnome.gnote.gschema.xml:77
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr "决定搜索窗口的像素高度；当 Gnote 退出时保存。"
 
-#: data/org.gnome.gnote.gschema.xml:71
+#: data/org.gnome.gnote.gschema.xml:81
 msgid "Saved width of Search window"
 msgstr "保存的搜索窗口宽度"
 
-#: data/org.gnome.gnote.gschema.xml:72
+#: data/org.gnome.gnote.gschema.xml:82
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr "决定搜索窗口的像素宽度；当 Gnote 退出时保存。"
 
-#: data/org.gnome.gnote.gschema.xml:76
+#: data/org.gnome.gnote.gschema.xml:86
 msgid "Saved splitter position of Search window splitter."
 msgstr "保存的搜索窗口分隔器的位置。"
 
-#: data/org.gnome.gnote.gschema.xml:77
+#: data/org.gnome.gnote.gschema.xml:87
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr "决定搜索窗口的分隔器位置(像素)；当 Gnote 退出时保存。"
 
-#: data/org.gnome.gnote.gschema.xml:81
+#: data/org.gnome.gnote.gschema.xml:91
 msgid "Saved sorting of the Search window."
 msgstr "保存的搜索窗口排序。"
 
-#: data/org.gnome.gnote.gschema.xml:82
+#: data/org.gnome.gnote.gschema.xml:92
 msgid "Determines Search window initial sorting."
 msgstr "决定搜索窗口初始排序。"
 
-#: data/org.gnome.gnote.gschema.xml:86
+#: data/org.gnome.gnote.gschema.xml:96
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "FUSE 挂载超时(ms)"
 
-#: data/org.gnome.gnote.gschema.xml:87
+#: data/org.gnome.gnote.gschema.xml:97
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr "当使用 FUSE 来挂载一个同步共享时，Gnote 等待回应的时间(毫秒)。"
 
-#: data/org.gnome.gnote.gschema.xml:91
+#: data/org.gnome.gnote.gschema.xml:101
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "SSHFS 远程同步文件夹"
 
-#: data/org.gnome.gnote.gschema.xml:92
+#: data/org.gnome.gnote.gschema.xml:102
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "SSH 服务器到 Gnote 同步目录的路径(可选)。"
 
-#: data/org.gnome.gnote.gschema.xml:96
+#: data/org.gnome.gnote.gschema.xml:106
 msgid "SSHFS Synchronization Server URL"
 msgstr "SSHFS 同步服务器 URL"
 
-#: data/org.gnome.gnote.gschema.xml:97
+#: data/org.gnome.gnote.gschema.xml:107
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "包含 Gnote 同步目录的 SSH 服务器 URL。"
 
-#: data/org.gnome.gnote.gschema.xml:101
+#: data/org.gnome.gnote.gschema.xml:111
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "SSHFS 远程同步用户名"
 
-#: data/org.gnome.gnote.gschema.xml:102
+#: data/org.gnome.gnote.gschema.xml:112
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr "通过 SSH 连接同步服务器时使用的用户名。"
 
-#: data/org.gnome.gnote.gschema.xml:106
+#: data/org.gnome.gnote.gschema.xml:116
 msgid "SSHFS Synchronization Server Port"
 msgstr "SSHFS 同步服务器端口"
 
-#: data/org.gnome.gnote.gschema.xml:107
+#: data/org.gnome.gnote.gschema.xml:117
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "通过 SSH 连接同步服务器时使用的端口。"
 
-#: data/org.gnome.gnote.gschema.xml:111
+#: data/org.gnome.gnote.gschema.xml:121
 msgid "Link Updating Behavior on Note Rename"
 msgstr "重命名便笺时更新链接的行为"
 
-#: data/org.gnome.gnote.gschema.xml:112
+#: data/org.gnome.gnote.gschema.xml:122
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -287,32 +307,32 @@ msgstr ""
 "提示。1 代表自动删除链接。2 代表将链接更新到新便笺名的文本，以便可以继续链接"
 "到重命名后的便笺。"
 
-#: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
-#: data/org.gnome.gnote.gschema.xml:131
+#: data/org.gnome.gnote.gschema.xml:126 data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:141
 msgid "Deprecated"
 msgstr "已废弃"
 
-#: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
+#: data/org.gnome.gnote.gschema.xml:127 data/org.gnome.gnote.gschema.xml:142
 msgid "This key is deprecated and its value is ignored."
 msgstr "该设定键已废弃且已忽略其设定值。"
 
-#: data/org.gnome.gnote.gschema.xml:121
+#: data/org.gnome.gnote.gschema.xml:131
 msgid "Use status icon, when started as an application"
 msgstr "在以应用程序方式启动时，使用状态图标"
 
-#: data/org.gnome.gnote.gschema.xml:122
+#: data/org.gnome.gnote.gschema.xml:132
 msgid "Deprecated, has no effect."
 msgstr "无效，已弃用。"
 
-#: data/org.gnome.gnote.gschema.xml:127
+#: data/org.gnome.gnote.gschema.xml:137
 msgid "This setting is deprecated and its value is ignored"
 msgstr "该设置已废弃且已忽略其设定值"
 
-#: data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:146
 msgid "Use client side window decorations"
 msgstr "使用客户端窗口装饰"
 
-#: data/org.gnome.gnote.gschema.xml:137
+#: data/org.gnome.gnote.gschema.xml:147
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
 "Possible values are 'enabled' to draw them, 'disabled' to leave them to "
@@ -323,40 +343,40 @@ msgstr ""
 "绘制它们，“disabled”来由窗口管理器决定，或应该由 Gnote 自己绘制窗口装饰的由英"
 "文逗号分隔的桌面环境列表。需要应用程序重启。"
 
-#: data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:151
 msgid "Preferred color scheme to use"
 msgstr "首选使用的配色方案"
 
-#: data/org.gnome.gnote.gschema.xml:142
+#: data/org.gnome.gnote.gschema.xml:152
 msgid ""
 "The theme variant to use. Possible values are empty string to follow the "
 "system, 'dark' and 'light'."
 msgstr "要使用的主题变种。可能的值为留空以跟随系统，“dark”和“light”。"
 
-#: data/org.gnome.gnote.gschema.xml:153
+#: data/org.gnome.gnote.gschema.xml:163
 msgid "HTML Export Last Directory"
 msgstr "上次 HTML 导出的目录"
 
-#: data/org.gnome.gnote.gschema.xml:154
+#: data/org.gnome.gnote.gschema.xml:164
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr "上次使用“导出为 HTML”插件导出便笺时的导出目录。"
 
-#: data/org.gnome.gnote.gschema.xml:158
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Linked Notes"
 msgstr "HTML 导出链接的便笺"
 
-#: data/org.gnome.gnote.gschema.xml:159
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr "“导出为 HTML”插件中“导出链接的便笺”复选框上次的选中状态。"
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export All Linked Notes"
 msgstr "HTML 导出链接的全部便笺"
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -366,41 +386,41 @@ msgstr ""
 "“导出为 HTML” 插件中“包含链接的全部便笺”的上次设置。此设置将与“HTML 导出链接"
 "的便笺”设置组合使用，用于指定在导出至 HTML 时是否应递归包含所涉及的全部便笺。"
 
-#: data/org.gnome.gnote.gschema.xml:170
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Synchronization Client ID"
 msgstr "同步客户端 ID"
 
-#: data/org.gnome.gnote.gschema.xml:171
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
 msgstr "当前 Gnote 客户端的唯一标识符，用于与同步服务器通讯。"
 
-#: data/org.gnome.gnote.gschema.xml:175
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Local Server Path"
 msgstr "本地同步服务器路径"
 
-#: data/org.gnome.gnote.gschema.xml:176
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr "使用文件系统同步服务插件时的同步服务器路径。"
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Selected Synchronization Service Addin"
 msgstr "所选的同步服务插件"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "目前已配置的便笺同步服务插件的唯一标识符。"
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "便笺同步冲突保存行为"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -411,11 +431,11 @@ msgstr ""
 "整数值，代表检测到冲突时是否总是执行特定的行为，而不是提示用户。此值将会映射"
 "到内部枚举量上。0 代表用户希望发生冲突时得到提示，以便可以逐一处理这些冲突。"
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Automatic Background Synchronization Timeout"
 msgstr "后台自动同步超时"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -425,55 +445,55 @@ msgstr ""
 "一个指定多久进行一次后台便笺同步的整数值(若配置了同步)。小于 1 的值表示禁用自"
 "动同步。可接受的最小取值为 5。单位为分钟。"
 
-#: data/org.gnome.gnote.gschema.xml:198
+#: data/org.gnome.gnote.gschema.xml:208
 msgid "Online directory URI"
 msgstr "在线目录 URI"
 
-#: data/org.gnome.gnote.gschema.xml:199
+#: data/org.gnome.gnote.gschema.xml:209
 msgid "URI to online directory where notes are synchronized to."
 msgstr "同步便笺的在线目录 URI。"
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:215
 msgid "Accept SSL Certificates"
 msgstr "接受 SSL 证书"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:216
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr "使用 wdfs 选项“-ac”让用户接受 SSL 证书时不出现提示信息。"
 
-#: data/org.gnome.gnote.gschema.xml:210
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Share URL"
 msgstr "共享 URL"
 
-#: data/org.gnome.gnote.gschema.xml:211
+#: data/org.gnome.gnote.gschema.xml:221
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "便笺同步到的 WebDAV 共享 URL。"
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share username"
 msgstr "共享用户名"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "Username to access WebDAV share."
 msgstr "访问 WebDAV 共享的用户名。"
 
-#: data/org.gnome.gnote.gschema.xml:222
+#: data/org.gnome.gnote.gschema.xml:232
 msgid "Timestamp format"
 msgstr "时间戳格式"
 
-#: data/org.gnome.gnote.gschema.xml:223
+#: data/org.gnome.gnote.gschema.xml:233
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "用于时间戳的日期格式。格式与 strftime(3) 相同。"
 
-#: data/org.gnome.gnote.gschema.xml:229
+#: data/org.gnome.gnote.gschema.xml:239
 msgid "Time between checks"
 msgstr "检查间隔"
 
-#: data/org.gnome.gnote.gschema.xml:230
+#: data/org.gnome.gnote.gschema.xml:240
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr "检查便笺目录的时间间隔（秒），最小值为 5。"
@@ -483,7 +503,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "主窗口"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:122
 msgctxt "shortcut window"
 msgid "General"
 msgstr "常规"
@@ -498,163 +518,153 @@ msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
-#: data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:134
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "打开操作菜单"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "隐藏搜索栏"
 
-#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "关闭窗口"
 
-#: data/shortcuts-gnote.ui:53
-msgctxt "shortcut window"
-msgid "Go to next tab"
-msgstr "转到下一个标签页"
-
-#: data/shortcuts-gnote.ui:60
-msgctxt "shortcut window"
-msgid "Go to previous tab"
-msgstr "转到上一个标签页"
-
-#: data/shortcuts-gnote.ui:68
+#: data/shortcuts-gnote.ui:54
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "搜索栏"
 
-#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
+#: data/shortcuts-gnote.ui:59 data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "显示搜索栏"
 
-#: data/shortcuts-gnote.ui:80
+#: data/shortcuts-gnote.ui:66
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "选择下一个匹配项"
 
-#: data/shortcuts-gnote.ui:87
+#: data/shortcuts-gnote.ui:73
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "选择上一个匹配项"
 
-#: data/shortcuts-gnote.ui:95
+#: data/shortcuts-gnote.ui:81
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "便笺列表"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:86
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "创建新便笺"
 
-#: data/shortcuts-gnote.ui:107
+#: data/shortcuts-gnote.ui:93
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "打开选中便笺"
 
-#: data/shortcuts-gnote.ui:114
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "在新窗口打开选中便笺"
 
-#: data/shortcuts-gnote.ui:121
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "删除选中便笺"
 
-#: data/shortcuts-gnote.ui:132
+#: data/shortcuts-gnote.ui:118
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "便笺视图"
 
-#: data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "打开笔记动作菜单"
 
-#: data/shortcuts-gnote.ui:183
+#: data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Close current tab"
 msgstr "关闭当前标签页"
 
-#: data/shortcuts-gnote.ui:191
+#: data/shortcuts-gnote.ui:177
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "编辑"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:182
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "撤销上次编辑"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "重做上次编辑"
 
-#: data/shortcuts-gnote.ui:210
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "在选中文本上创建到便笺的链接"
 
-#: data/shortcuts-gnote.ui:218
+#: data/shortcuts-gnote.ui:204
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "格式化"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:209
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "切换粗体"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "切换斜体"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "切换删除线"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "切换高亮"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "切换等宽"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "切换下划线"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "增大字号"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "减小字号"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "选中的文本行启用项目符号或增加缩进"
 
-#: data/shortcuts-gnote.ui:286
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "当前行减少缩进或禁用项目符号"
@@ -667,7 +677,7 @@ msgstr "新建便笺(_N)"
 msgid "New _Window"
 msgstr "新建窗口(_W)"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:609
+#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:602
 msgid "_Preferences"
 msgstr "首选项(_P)"
 
@@ -804,8 +814,8 @@ msgstr "选择图标..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
-#: src/utils.cpp:329
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
+#: src/utils.cpp:332
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -843,7 +853,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "如果您删除了图标，其内容将永久丢失。"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:289 src/note.cpp:69
 msgid "_Delete"
 msgstr "删除(_D)"
 
@@ -909,7 +919,7 @@ msgstr "包含链接的全部其它便笺"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:539
+#: src/preferencesdialog.cpp:531
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -1352,101 +1362,101 @@ msgstr "没有可用的 D-Bus 连接，shell 搜索和远程控制功能将不�
 msgid "Failed to get shortcuts window!"
 msgstr "获取快捷键窗口失败！"
 
-#: src/gnote.cpp:257
+#: src/gnote.cpp:258
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: src/gnote.cpp:263
+#: src/gnote.cpp:264
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@gmail.com>, 2005-2008\n"
 "Ray Wang <wanglei1123@gmail.com>, 2009\n"
 "Aron Xu <aronmalache@163.com>, 2009\n"
 "YunQiang Su <wzssyqa@gmail.com>, 2010\n"
-"lumingzh <lumingzh@qq.com>, 2023-2024"
+"lumingzh <lumingzh@qq.com>, 2023-2025"
 
-#: src/gnote.cpp:272
+#: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2024 Aurimas Cernius\n"
+"Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"版权所有 © 2010-2024 Aurimas Cernius\n"
+"版权所有 © 2010-2025 Aurimas Cernius\n"
 "版权所有 © 2009-2011 Debarshi Ray\n"
 "版权所有 © 2009 Hubert Figuiere\n"
 "版权所有 © 2004-2009 Tomboy 原作者们。"
 
-#: src/gnote.cpp:276
+#: src/gnote.cpp:277
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: src/gnote.cpp:278
+#: src/gnote.cpp:279
 msgid "Homepage"
 msgstr "主页"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:489
 msgid "Run Gnote in background."
 msgstr "后台运行 Gnote。"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:490
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "path"
 msgstr "路径"
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:492
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口。"
 
-#: src/gnote.cpp:491 src/gnote.cpp:496
+#: src/gnote.cpp:492 src/gnote.cpp:497
 msgid "text"
 msgstr "文本"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:493
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一条带有可选标题的新便笺。"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "title"
 msgstr "标题"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "Display the existing note matching title."
 msgstr "显示匹配标题的现有便笺。"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "title/url"
 msgstr "标题/url"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:496
 msgid "Display the 'Start Here' note."
 msgstr "显示“从这里开始”便笺。"
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:497
 msgid "Search and highlight text in the opened note."
 msgstr "在开启的便笺中搜索文本（高亮显示）。"
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "A note taking application"
 msgstr "一个记便笺应用程序"
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:684
+#: src/gnote.cpp:685
 msgid "Version %1"
 msgstr "版本 %1"
 
@@ -1459,18 +1469,18 @@ msgid "Window is not embedded"
 msgstr "窗口未被嵌入"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:221 src/note.cpp:350
+#: src/notebase.cpp:221 src/note.cpp:354
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "保存便笺时异常：%s"
 
 #. write failure, but not critical
-#: src/notebase.cpp:461
+#: src/notebase.cpp:466
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "更新便笺格式失败：%s"
 
-#: src/notebase.cpp:579
+#: src/notebase.cpp:584
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "文件系统错误：%s"
@@ -1502,52 +1512,52 @@ msgstr "新建便笺本(_B)..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:104
+#: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr "%1 便笺本模板"
 
-#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
+#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
 msgid "New Note"
 msgstr "新建便笺"
 
-#: src/notebooks/notebookmanager.cpp:282
+#: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
 msgstr "真的要删除此便笺本？"
 
-#: src/notebooks/notebookmanager.cpp:283
+#: src/notebooks/notebookmanager.cpp:280
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
 msgstr ""
 "属于此便笺本的便笺不会被删除，但它们将不再属于此便笺本。此动作不可撤消。"
 
-#: src/notebooks/notebooknoteaddin.cpp:109
+#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:204
 msgid "Notebook"
 msgstr "便笺本"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:144
+#: src/notebooks/notebooknoteaddin.cpp:139
 msgid "_New notebook..."
 msgstr "新建便笺本(_N)..."
 
 #. Add the "(no notebook)" item at the top of the list
-#: src/notebooks/notebooknoteaddin.cpp:148
+#: src/notebooks/notebooknoteaddin.cpp:143
 msgid "No notebook"
 msgstr "没有便笺本"
 
-#: src/notebooks/notebooksview.cpp:205
+#: src/notebooks/notebooksview.cpp:207
 msgid "New Notebook"
 msgstr "新建便笺本"
 
-#: src/notebooks/notebooksview.cpp:209
+#: src/notebooks/notebooksview.cpp:211
 msgid "Rename Notebook"
 msgstr "重命名便笺本"
 
-#: src/notebooks/notebooksview.cpp:214
+#: src/notebooks/notebooksview.cpp:216
 msgid "Open Template Note"
 msgstr "打开模板便笺"
 
-#: src/notebooks/notebooksview.cpp:218
+#: src/notebooks/notebooksview.cpp:220
 msgid "Delete Notebook"
 msgstr "删除便笺本"
 
@@ -1605,7 +1615,7 @@ msgstr ""
 "保存您的便笺时发生了错误。请检查您是否有足够的磁盘空间，以及您在 ~/.local/"
 "share/gnote 是否有足够的权限。错误细节可在 ~/.gnote.log 中找到。"
 
-#: src/note.cpp:652
+#: src/note.cpp:625
 msgid "Setting text content for closed notes not supported"
 msgstr "不支持为关闭的便笺设置文本内容"
 
@@ -1619,7 +1629,7 @@ msgstr "新建便笺模板"
 msgid "Describe your new note here."
 msgstr "在此描述您的新便笺。"
 
-#: src/notemanager.cpp:115
+#: src/notemanager.cpp:116
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1656,7 +1666,7 @@ msgstr ""
 "笺。您是否已经注意到，我们每次输入<link:internal>在 Gnote 中使用链接</link:"
 "internal>的时候，都会自动加下划线？单击链接即可打开该便笺。</note-content>"
 
-#: src/notemanager.cpp:134
+#: src/notemanager.cpp:135
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1684,31 +1694,31 @@ msgstr ""
 "</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:149 src/notemanager.cpp:184
+#: src/notemanager.cpp:150 src/notemanager.cpp:185
 msgid "Start Here"
 msgstr "从这里开始"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:154
 msgid "Using Links in Gnote"
 msgstr "在 Gnote 中使用链接"
 
-#: src/notemanager.cpp:157
+#: src/notemanager.cpp:158
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "创建启动便笺出错：%s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:172
+#: src/notemanager.cpp:173
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "解析便笺 XML 失败，跳过“%s”: %s"
 
-#: src/notemanager.cpp:383
+#: src/notemanager.cpp:384
 #, c-format
 msgid "Error while saving: %s"
 msgstr "保存时出错：%s"
 
-#: src/notemanager.cpp:388
+#: src/notemanager.cpp:389
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "未通过 URI“%s”找到便笺，无法保存"
@@ -1815,27 +1825,27 @@ msgstr "保存所选(_L)"
 msgid "Save _Title"
 msgstr "保存标题(_T)"
 
-#: src/notewindow.cpp:488 src/notewindow.cpp:598
+#: src/notewindow.cpp:492 src/notewindow.cpp:602
 msgid "Cannot create note"
 msgstr "无法创建便笺"
 
-#: src/notewindow.cpp:958
+#: src/notewindow.cpp:980
 msgid "_Highlight"
 msgstr "高亮(_H)"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:984
 msgid "_Normal"
 msgstr "普通(_N)"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:985
 msgid "S_mall"
 msgstr "小(_M)"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:986
 msgid "_Large"
 msgstr "大(_L)"
 
-#: src/notewindow.cpp:965
+#: src/notewindow.cpp:987
 msgid "Hu_ge"
 msgstr "巨大(_G)"
 
@@ -1861,9 +1871,9 @@ msgid "Plugins"
 msgstr "插件"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:775
-#: src/preferencesdialog.cpp:1012 src/preferencesdialog.cpp:1219
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
+#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
+#: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -1979,90 +1989,90 @@ msgstr ""
 msgid "Ser_vice:"
 msgstr "服务(_V)："
 
-#: src/preferencesdialog.cpp:501
+#: src/preferencesdialog.cpp:493
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "后台自动同步时间间隔 - 分钟(_Y)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:523
+#: src/preferencesdialog.cpp:515
 msgid "_Advanced..."
 msgstr "高级(_A)..."
 
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:520
 msgid "Clear"
 msgstr "清除"
 
-#: src/preferencesdialog.cpp:555 src/preferencesdialog.cpp:1033
+#: src/preferencesdialog.cpp:548 src/preferencesdialog.cpp:1026
 msgid "Not configurable"
 msgstr "不可配置"
 
-#: src/preferencesdialog.cpp:575
+#: src/preferencesdialog.cpp:568
 msgid "The following plugins are installed:"
 msgstr "已安装如下插件："
 
-#: src/preferencesdialog.cpp:599
+#: src/preferencesdialog.cpp:592
 msgid "_Enable"
 msgstr "启用(_E)"
 
-#: src/preferencesdialog.cpp:604
+#: src/preferencesdialog.cpp:597
 msgid "_Disable"
 msgstr "禁用(_D)"
 
-#: src/preferencesdialog.cpp:614
+#: src/preferencesdialog.cpp:607
 msgid "In_formation"
 msgstr "信息(_F)"
 
-#: src/preferencesdialog.cpp:755
+#: src/preferencesdialog.cpp:748
 msgid "Not Implemented"
 msgstr "尚未实现"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:772
+#: src/preferencesdialog.cpp:765
 msgid "%1 Preferences"
 msgstr "%1 首选项"
 
-#: src/preferencesdialog.cpp:868
+#: src/preferencesdialog.cpp:861
 msgid "Choose Note Font"
 msgstr "选择便笺字体"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:961
+#: src/preferencesdialog.cpp:954
 msgid "Other Synchronization Options"
 msgstr "其他的同步选项"
 
-#: src/preferencesdialog.cpp:964
+#: src/preferencesdialog.cpp:957
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr "当检测到本地便笺和配置的同步服务器上的便笺之间有冲突时："
 
-#: src/preferencesdialog.cpp:968
+#: src/preferencesdialog.cpp:961
 msgid "Always ask me what to do"
 msgstr "总是询问我怎么做"
 
-#: src/preferencesdialog.cpp:969
+#: src/preferencesdialog.cpp:962
 msgid "Rename my local note"
 msgstr "重命名我的本地便笺"
 
-#: src/preferencesdialog.cpp:971
+#: src/preferencesdialog.cpp:964
 msgid "Replace my local note with the server's update"
 msgstr "使用服务器上的更新覆盖我本地的便笺"
 
-#: src/preferencesdialog.cpp:1089
+#: src/preferencesdialog.cpp:1085
 msgid "Are you sure?"
 msgstr "您确定吗？"
 
-#: src/preferencesdialog.cpp:1090
+#: src/preferencesdialog.cpp:1086
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
 msgstr "不推荐您清除同步设置。当保存新设置时，可能会强制您再次同步所有的便笺。"
 
-#: src/preferencesdialog.cpp:1101
+#: src/preferencesdialog.cpp:1097
 msgid "Resetting Synchronization Settings"
 msgstr "重置同步设置"
 
-#: src/preferencesdialog.cpp:1102
+#: src/preferencesdialog.cpp:1098
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2071,36 +2081,36 @@ msgstr ""
 "您已经禁用了配置的同步服务。您的同步设置将被清除。当您保存新设置时，可能得再"
 "次同步所有便笺。"
 
-#: src/preferencesdialog.cpp:1164
+#: src/preferencesdialog.cpp:1160
 msgid "Connection successful"
 msgstr "连接成功"
 
-#: src/preferencesdialog.cpp:1165
+#: src/preferencesdialog.cpp:1161
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote 已准备同步您的便笺。您希望现在就同步它们吗？"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1191
+#: src/preferencesdialog.cpp:1187
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr "请检查您的信息并重试。日志文件 %1 可能包含了该错误的更多信息。"
 
-#: src/preferencesdialog.cpp:1196
+#: src/preferencesdialog.cpp:1192
 msgid "Error connecting"
 msgstr "连接出错"
 
-#: src/preferencesdialog.cpp:1259
+#: src/preferencesdialog.cpp:1256
 msgid "Version:"
 msgstr "版本："
 
-#: src/preferencesdialog.cpp:1262
+#: src/preferencesdialog.cpp:1259
 msgid "Author:"
 msgstr "作者："
 
-#: src/preferencesdialog.cpp:1266
+#: src/preferencesdialog.cpp:1263
 msgid "Copyright:"
 msgstr "版权所有："
 
@@ -2124,15 +2134,15 @@ msgstr "embed box 的上一级不是 Gtk::Grid，请报告程序问题！"
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "搜索条目的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:737
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "尝试前置一个未内嵌在窗口中的部件"
 
-#: src/recentchanges.cpp:744
+#: src/recentchanges.cpp:745
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "尝试前置一个不是 Gtk::Widget 的部件"
 
-#: src/recentchanges.cpp:944
+#: src/recentchanges.cpp:945
 msgid "No configured actions"
 msgstr "未配置操作"
 
@@ -2142,24 +2152,24 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr "加载 D-Bus 接口 %s 失败：%s"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:242
+#: src/searchnoteswidget.cpp:247
 msgid "Title match"
 msgstr "标题匹配"
 
-#: src/searchnoteswidget.cpp:246
+#: src/searchnoteswidget.cpp:251
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 个匹配项"
 
-#: src/searchnoteswidget.cpp:548
+#: src/searchnoteswidget.cpp:500
 msgid "Note"
 msgstr "便笺"
 
-#: src/searchnoteswidget.cpp:560
+#: src/searchnoteswidget.cpp:512
 msgid "Modified"
 msgstr "已修改"
 
-#: src/searchnoteswidget.cpp:732
+#: src/searchnoteswidget.cpp:673
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2167,30 +2177,30 @@ msgstr ""
 "在选定的便笺本中未发现结果。\n"
 "点击此处搜索全部便笺。"
 
-#: src/searchnoteswidget.cpp:736
+#: src/searchnoteswidget.cpp:677
 msgid "Click here to search across all notebooks"
 msgstr "点击此处搜索全部便笺本"
 
-#: src/searchnoteswidget.cpp:751
+#: src/searchnoteswidget.cpp:692
 msgid "Matches"
 msgstr "匹配项"
 
-#: src/searchnoteswidget.cpp:1003 src/searchnoteswidget.cpp:1016
-#: src/searchnoteswidget.cpp:1027
+#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
+#: src/searchnoteswidget.cpp:960
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "解析搜索排序设置失败（值：%s）："
 
-#: src/searchnoteswidget.cpp:1004
+#: src/searchnoteswidget.cpp:937
 msgid "Expected format 'column:order'"
 msgstr "期望的格式“column:order”"
 
-#: src/searchnoteswidget.cpp:1017
+#: src/searchnoteswidget.cpp:950
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "未识别的列 %s"
 
-#: src/searchnoteswidget.cpp:1028
+#: src/searchnoteswidget.cpp:961
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "不可识别的排序 %s"
@@ -2517,29 +2527,29 @@ msgstr "已上传更改到服务器"
 msgid "Uploaded new note to server"
 msgstr "已上传新便笺到服务器"
 
-#: src/synchronization/syncmanager.cpp:58
+#: src/synchronization/syncmanager.cpp:64
 msgid "Synchronize Notes"
 msgstr "同步便笺"
 
-#: src/synchronization/syncmanager.cpp:77
-#: src/synchronization/syncmanager.cpp:94
-#: src/synchronization/syncmanager.cpp:555
+#: src/synchronization/syncmanager.cpp:83
+#: src/synchronization/syncmanager.cpp:100
+#: src/synchronization/syncmanager.cpp:591
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "报告缺陷。类型转换失败：%s"
 
-#: src/synchronization/syncmanager.cpp:142
+#: src/synchronization/syncmanager.cpp:147
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "同步后清理插件出错：%s"
 
-#: src/synchronization/syncmanager.cpp:167
+#: src/synchronization/syncmanager.cpp:173
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "创建 SyncServer 时异常：%s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:370
+#: src/synchronization/syncmanager.cpp:374
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "同步因以下异常失败：%s"
@@ -2596,34 +2606,34 @@ msgid "Yesterday"
 msgstr "昨天"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:193
-#, c-format
+#: src/utils.cpp:194
+#, no-c-format
 msgid "%b %d"
 msgstr "%b%d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:197
+#: src/utils.cpp:198
 msgid "%b %d %Y"
 msgstr "%Y年%m月%d日"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:202
+#: src/utils.cpp:203
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:213
+#: src/utils.cpp:214
 msgid "No Date"
 msgstr "没有日期"
 
-#: src/utils.cpp:316 src/utils.cpp:330
+#: src/utils.cpp:319 src/utils.cpp:333
 msgid "_OK"
 msgstr "确定(_O)"
 
-#: src/utils.cpp:325
+#: src/utils.cpp:328
 msgid "_No"
 msgstr "否(_N)"
 
-#: src/utils.cpp:326
+#: src/utils.cpp:329
 msgid "_Yes"
 msgstr "是(_Y)"
 
@@ -2646,6 +2656,14 @@ msgstr "便笺标题已被使用"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "检查拼写"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to next tab"
+#~ msgstr "转到下一个标签页"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to previous tab"
+#~ msgstr "转到上一个标签页"
 
 #~ msgid "Luc Pionchon"
 #~ msgstr "Luc Pionchon"
