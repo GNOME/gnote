@@ -4,23 +4,24 @@
 #
 # Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2009-2011.
 # Matej Urbančič <mateju@svn.gnome.org>, 2012-2014.
+# Martin Srebotnjak <miles@filmsi.net>, 2024,2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-09-22 20:06+0000\n"
-"PO-Revision-Date: 2024-05-02 17:55+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
+"POT-Creation-Date: 2025-01-13 11:20+0000\n"
+"PO-Revision-Date: 2025-01-17 10:40+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:101 src/recentchanges.cpp:129
@@ -1749,9 +1750,9 @@ msgstr ""
 "Uporabite sporočilce \"Začnite tukaj\" za začetek organizacije vaših idej in "
 "misli.\n"
 "\n"
-"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo sporočilce"
-"\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo samodejno "
-"shranjeno.\n"
+"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo "
+"sporočilce\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo "
+"samodejno shranjeno.\n"
 "\n"
 "Sporočilca lahko organizirate s povezovanjem sorodnih sporočilc in misli "
 "skupaj!\n"
@@ -2769,8 +2770,9 @@ msgstr "Jutri"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:189
+#, c-format
 msgid "%b %d"
-msgstr "%d. %b"
+msgstr "%b-%d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
 #: src/utils.cpp:192 src/utils.cpp:201
