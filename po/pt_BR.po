@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation for gnote.
-# Copyright (C) 2023 gnote's COPYRIGHT HOLDER
+# Copyright (C) 2025 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 # Marco de Freitas <marcodefreitas@gmail.com>, 2009.
 # Taylon Silmer <taylonsilva@gmail.com>, 2009.
@@ -7,24 +7,24 @@
 # Júnior Pires <juniorpiresupe@gmail.com>, 2013.
 # Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020.
 # Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2022.
 # Enrico Nicoletto <hiko@duck.com>, 2013-2014, 2020-2021, 2023.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-09-23 12:00+0000\n"
-"PO-Revision-Date: 2024-09-23 08:58-0300\n"
-"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
+"POT-Creation-Date: 2025-01-17 10:34+0000\n"
+"PO-Revision-Date: 2025-01-20 22:58-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 46.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 47.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -166,10 +166,34 @@ msgstr ""
 "usado como a fonte de exibição das notas."
 
 #: data/org.gnome.gnote.gschema.xml:46
+msgid "Background color for the highlighted text"
+msgstr "Cor de fundo para o texto realçado"
+
+#: data/org.gnome.gnote.gschema.xml:47
+msgid ""
+"When text is highlighted, use this color for background. A string "
+"gdk_rgba_parse() accepts."
+msgstr ""
+"Quando o texto está realçado, usa esta core para o fundo. Uma string "
+"gdk_rgba_parse() aceita."
+
+#: data/org.gnome.gnote.gschema.xml:51
+msgid "Color for the highlighted text"
+msgstr "Cor para o texto realçado"
+
+#: data/org.gnome.gnote.gschema.xml:52
+msgid ""
+"When text is highlighted, use this color for text. A string gdk_rgba_parse() "
+"accepts."
+msgstr ""
+"Quando o texto é realçado, usa esta cor para o texto. Uma string "
+"gdk_rgba_parse() aceita."
+
+#: data/org.gnome.gnote.gschema.xml:56
 msgid "Start Here Note"
 msgstr "Nota “Comece aqui”"
 
-#: data/org.gnome.gnote.gschema.xml:47
+#: data/org.gnome.gnote.gschema.xml:57
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -179,11 +203,11 @@ msgstr ""
 "colocada no topo do menu de notas do Gnote e também é acessível via tecla de "
 "atalho."
 
-#: data/org.gnome.gnote.gschema.xml:51
+#: data/org.gnome.gnote.gschema.xml:61
 msgid "Minimum number of notes to show in menu"
 msgstr "Número mínimo de notas a serem mostradas no menu"
 
-#: data/org.gnome.gnote.gschema.xml:52
+#: data/org.gnome.gnote.gschema.xml:62
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
@@ -191,11 +215,11 @@ msgstr ""
 "Inteiro que determina o número mínimo de notas a serem exibidas no menu de "
 "notas do Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:56
+#: data/org.gnome.gnote.gschema.xml:66
 msgid "List of pinned notes"
 msgstr "Lista de notas fixadas"
 
-#: data/org.gnome.gnote.gschema.xml:57
+#: data/org.gnome.gnote.gschema.xml:67
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -203,58 +227,58 @@ msgstr ""
 "Uma lista separada por espaços em branco de URIs de notas que devem sempre "
 "aparecer no menu de notas do Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:61
+#: data/org.gnome.gnote.gschema.xml:71
 msgid "Is main window maximized"
 msgstr "Se a janela principal está maximizada"
 
-#: data/org.gnome.gnote.gschema.xml:62
+#: data/org.gnome.gnote.gschema.xml:72
 msgid "If true, Gnote window will be maximized."
 msgstr "Se verdadeiro, a janela do Gnote será maximizada."
 
-#: data/org.gnome.gnote.gschema.xml:66
+#: data/org.gnome.gnote.gschema.xml:76
 msgid "Saved height of Search window"
 msgstr "Altura salva da janela “Pesquisar”"
 
-#: data/org.gnome.gnote.gschema.xml:67
+#: data/org.gnome.gnote.gschema.xml:77
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
 "Determina a altura em pixel da janela “Pesquisar”; armazenada na saída do "
 "Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:71
+#: data/org.gnome.gnote.gschema.xml:81
 msgid "Saved width of Search window"
 msgstr "Largura salva da janela “Pesquisar”"
 
-#: data/org.gnome.gnote.gschema.xml:72
+#: data/org.gnome.gnote.gschema.xml:82
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 "Determina a largura em pixel da janela “Pesquisar”; armazenada na saída do "
 "Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:76
+#: data/org.gnome.gnote.gschema.xml:86
 msgid "Saved splitter position of Search window splitter."
 msgstr "Posição do separador de divisor de janela de pesquisa salvo."
 
-#: data/org.gnome.gnote.gschema.xml:77
+#: data/org.gnome.gnote.gschema.xml:87
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 "Determina a posição do separador de janela de pesquisa em pixels; armazenado "
 "na saída do Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:81
+#: data/org.gnome.gnote.gschema.xml:91
 msgid "Saved sorting of the Search window."
 msgstr "Ordenação salva da janela “Pesquisar”."
 
-#: data/org.gnome.gnote.gschema.xml:82
+#: data/org.gnome.gnote.gschema.xml:92
 msgid "Determines Search window initial sorting."
 msgstr "Determina a ordenação inicial da janela “Pesquisar”."
 
-#: data/org.gnome.gnote.gschema.xml:86
+#: data/org.gnome.gnote.gschema.xml:96
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "Tempo de espera de montagem FUSE (ms)"
 
-#: data/org.gnome.gnote.gschema.xml:87
+#: data/org.gnome.gnote.gschema.xml:97
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -262,47 +286,47 @@ msgstr ""
 "Tempo (em milissegundos) que o Gnote deve aguardar por uma resposta ao usar "
 "o FUSE para montar um compartilhamento de sincronização."
 
-#: data/org.gnome.gnote.gschema.xml:91
+#: data/org.gnome.gnote.gschema.xml:101
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "Pasta de sincronização remota SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:92
+#: data/org.gnome.gnote.gschema.xml:102
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr ""
 "Caminho no servidor SSH para o diretório de sincronização do Gnote "
 "(opcional)."
 
-#: data/org.gnome.gnote.gschema.xml:96
+#: data/org.gnome.gnote.gschema.xml:106
 msgid "SSHFS Synchronization Server URL"
 msgstr "URL do servidor de sincronização SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:97
+#: data/org.gnome.gnote.gschema.xml:107
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "URL do servidor SSH que contém o diretório de sincronização do Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:101
+#: data/org.gnome.gnote.gschema.xml:111
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "Nome de usuário de sincronização remota SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:102
+#: data/org.gnome.gnote.gschema.xml:112
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Nome de usuário usado ao conectar ao servidor de sincronização via SSH."
 
-#: data/org.gnome.gnote.gschema.xml:106
+#: data/org.gnome.gnote.gschema.xml:116
 msgid "SSHFS Synchronization Server Port"
 msgstr "Porta do servidor de sincronização remota SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:107
+#: data/org.gnome.gnote.gschema.xml:117
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr ""
 "A porta selecionada ao se conectar ao servidor de sincronização via SSH."
 
-#: data/org.gnome.gnote.gschema.xml:111
+#: data/org.gnome.gnote.gschema.xml:121
 msgid "Link Updating Behavior on Note Rename"
 msgstr "Atualizando comportamento do vínculo ao renomear nota"
 
-#: data/org.gnome.gnote.gschema.xml:112
+#: data/org.gnome.gnote.gschema.xml:122
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -321,32 +345,32 @@ msgstr ""
 "vínculo deve ser atualizado para o novo nome da nota e que irá continuar "
 "apontando para a nota renomeada."
 
-#: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
-#: data/org.gnome.gnote.gschema.xml:131
+#: data/org.gnome.gnote.gschema.xml:126 data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:141
 msgid "Deprecated"
 msgstr "Descontinuada"
 
-#: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
+#: data/org.gnome.gnote.gschema.xml:127 data/org.gnome.gnote.gschema.xml:142
 msgid "This key is deprecated and its value is ignored."
 msgstr "Esta chave foi descontinuada e seu valor é ignorado."
 
-#: data/org.gnome.gnote.gschema.xml:121
+#: data/org.gnome.gnote.gschema.xml:131
 msgid "Use status icon, when started as an application"
 msgstr "Usa o ícone de status, quando começar como um aplicativo"
 
-#: data/org.gnome.gnote.gschema.xml:122
+#: data/org.gnome.gnote.gschema.xml:132
 msgid "Deprecated, has no effect."
 msgstr "Descontinuada, não possui efeito."
 
-#: data/org.gnome.gnote.gschema.xml:127
+#: data/org.gnome.gnote.gschema.xml:137
 msgid "This setting is deprecated and its value is ignored"
 msgstr "Esta configuração foi descontinuada e seu valor é ignorado"
 
-#: data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:146
 msgid "Use client side window decorations"
 msgstr "Usar as decorações de janela do cliente"
 
-#: data/org.gnome.gnote.gschema.xml:137
+#: data/org.gnome.gnote.gschema.xml:147
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
 "Possible values are 'enabled' to draw them, 'disabled' to leave them to "
@@ -359,11 +383,11 @@ msgstr ""
 "separados a lista de ambientes de desktop, onde Gnote deve desenhar "
 "decorações em si. Requer a reinicialização do aplicativo."
 
-#: data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:151
 msgid "Preferred color scheme to use"
 msgstr "Esquema de cor preferido para usar"
 
-#: data/org.gnome.gnote.gschema.xml:142
+#: data/org.gnome.gnote.gschema.xml:152
 msgid ""
 "The theme variant to use. Possible values are empty string to follow the "
 "system, 'dark' and 'light'."
@@ -371,22 +395,22 @@ msgstr ""
 "A variante do tema para usar. Possíveis valores são cadeia vazia para seguir "
 "o sistema, 'escuro' e 'claro'."
 
-#: data/org.gnome.gnote.gschema.xml:153
+#: data/org.gnome.gnote.gschema.xml:163
 msgid "HTML Export Last Directory"
 msgstr "Exportar o último diretório para HTML"
 
-#: data/org.gnome.gnote.gschema.xml:154
+#: data/org.gnome.gnote.gschema.xml:164
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "O último diretório para onde foi exportada uma nota utilizando o plug-in "
 "Exportar para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:158
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Linked Notes"
 msgstr "Exportar as notas vinculadas para HTML"
 
-#: data/org.gnome.gnote.gschema.xml:159
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -394,11 +418,11 @@ msgstr ""
 "O último estado da caixa de seleção “Exportar notas vinculadas” no plug-in "
 "de exportação para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export All Linked Notes"
 msgstr "Exportar todas as notas vinculadas para HTML"
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -411,11 +435,11 @@ msgstr ""
 "todas as notas (localizadas recursivamente) devem ser incluídas durante a "
 "exportação para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:170
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Synchronization Client ID"
 msgstr "ID do cliente de sincronização"
 
-#: data/org.gnome.gnote.gschema.xml:171
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -423,11 +447,11 @@ msgstr ""
 "Um identificador único para este cliente Gnote, usado na comunicação com um "
 "servidor de sincronização."
 
-#: data/org.gnome.gnote.gschema.xml:175
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Local Server Path"
 msgstr "Caminho do servidor local de sincronização"
 
-#: data/org.gnome.gnote.gschema.xml:176
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -435,11 +459,11 @@ msgstr ""
 "Caminho para o servidor de sincronização a usar quando o plug-in de "
 "sincronização de sistema de arquivos estiver em uso."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Selected Synchronization Service Addin"
 msgstr "Plug-in do serviço de sincronização selecionado"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -447,11 +471,11 @@ msgstr ""
 "Um identificador único para o plug-in do serviço de sincronização de nota "
 "configurado atualmente."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Comportamento salvo de conflito de sincronização de nota"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -465,11 +489,11 @@ msgstr ""
 "deseja ser perguntado quando ocorrer um conflito, de forma que ele possa "
 "lidar caso a caso com as situações de conflito."
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Tempo limite de sincronização automática em segundo plano"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -481,19 +505,19 @@ msgstr ""
 "Qualquer valor inferior a 1 indica que a sincronização automática está "
 "desabilitada. O menor valor positivo aceito é 5. O valor é em minutos."
 
-#: data/org.gnome.gnote.gschema.xml:198
+#: data/org.gnome.gnote.gschema.xml:208
 msgid "Online directory URI"
 msgstr "URI de diretório online"
 
-#: data/org.gnome.gnote.gschema.xml:199
+#: data/org.gnome.gnote.gschema.xml:209
 msgid "URI to online directory where notes are synchronized to."
 msgstr "URL de diretório online para onde as notas são sincronizadas."
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:215
 msgid "Accept SSL Certificates"
 msgstr "Aceitar certificados SSL"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:216
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -501,27 +525,27 @@ msgstr ""
 "Usa a opção wdfs “-ac” para aceitar certificados SSL sem perguntar ao "
 "usuário."
 
-#: data/org.gnome.gnote.gschema.xml:210
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Share URL"
 msgstr "URL de compartilhamento"
 
-#: data/org.gnome.gnote.gschema.xml:211
+#: data/org.gnome.gnote.gschema.xml:221
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL de compartilhamento WebDav para onde as notas são sincronizadas."
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share username"
 msgstr "Nome de usuário de compartilhamento"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "Username to access WebDAV share."
 msgstr "Nome do usuário para acessar o compartilhamento WebDav."
 
-#: data/org.gnome.gnote.gschema.xml:222
+#: data/org.gnome.gnote.gschema.xml:232
 msgid "Timestamp format"
 msgstr "Formato de data e hora"
 
-#: data/org.gnome.gnote.gschema.xml:223
+#: data/org.gnome.gnote.gschema.xml:233
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -529,11 +553,11 @@ msgstr ""
 "O formato de data que é utilizado para a data e hora. Segue o formato do "
 "strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:229
+#: data/org.gnome.gnote.gschema.xml:239
 msgid "Time between checks"
 msgstr "Tempo entre as verificações"
 
-#: data/org.gnome.gnote.gschema.xml:230
+#: data/org.gnome.gnote.gschema.xml:240
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -545,7 +569,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Nova janela"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:122
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Geral"
@@ -560,163 +584,153 @@ msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "Atalhos"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
-#: data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:134
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "Abre o menu de ação"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Oculta a barra de pesquisa"
 
-#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Fecha a janela"
 
-#: data/shortcuts-gnote.ui:53
-msgctxt "shortcut window"
-msgid "Go to next tab"
-msgstr "Vai para a próxima aba"
-
-#: data/shortcuts-gnote.ui:60
-msgctxt "shortcut window"
-msgid "Go to previous tab"
-msgstr "Vai para a aba anterior"
-
-#: data/shortcuts-gnote.ui:68
+#: data/shortcuts-gnote.ui:54
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Barra de pesquisa"
 
-#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
+#: data/shortcuts-gnote.ui:59 data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "Exibe a barra de pesquisa"
 
-#: data/shortcuts-gnote.ui:80
+#: data/shortcuts-gnote.ui:66
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Seleciona a próxima combinação"
 
-#: data/shortcuts-gnote.ui:87
+#: data/shortcuts-gnote.ui:73
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "Seleciona a combinação anterior"
 
-#: data/shortcuts-gnote.ui:95
+#: data/shortcuts-gnote.ui:81
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Lista de notas"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:86
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Cria uma nova nota"
 
-#: data/shortcuts-gnote.ui:107
+#: data/shortcuts-gnote.ui:93
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Abre a nota selecionada"
 
-#: data/shortcuts-gnote.ui:114
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Abre a nota selecionada em uma nova janela"
 
-#: data/shortcuts-gnote.ui:121
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Exclui a nota selecionada"
 
-#: data/shortcuts-gnote.ui:132
+#: data/shortcuts-gnote.ui:118
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "Visualização de nota"
 
-#: data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Abre o menu de ações da nota"
 
-#: data/shortcuts-gnote.ui:183
+#: data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Close current tab"
 msgstr "Fecha a aba atual"
 
-#: data/shortcuts-gnote.ui:191
+#: data/shortcuts-gnote.ui:177
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Edição"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:182
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Desfaz a última edição"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Refaz a última edição"
 
-#: data/shortcuts-gnote.ui:210
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Cria um link para a nota no texto selecionado"
 
-#: data/shortcuts-gnote.ui:218
+#: data/shortcuts-gnote.ui:204
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Formatação"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:209
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Ativa o negrito"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Ativa o itálico"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Ativa o tachado"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Ativa o realce"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Ativa a largura fixa"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Ativa o sublinhado"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Aumenta o tamanho da fonte"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Diminui o tamanho da fonte"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Habilita marcadores/aumenta o recuo para linha com seleção"
 
-#: data/shortcuts-gnote.ui:286
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Diminui o recuo/desabilita marcadores para a linha atual"
@@ -729,7 +743,7 @@ msgstr "_Nova nota"
 msgid "New _Window"
 msgstr "Nova _janela"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:609
+#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:602
 msgid "_Preferences"
 msgstr "_Preferências"
 
@@ -868,7 +882,7 @@ msgstr "Selecione um ícone…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:325
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
 #: src/utils.cpp:332
 msgid "_Cancel"
 msgstr "_Cancelar"
@@ -909,7 +923,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Se você remover um ícone ele estará permanentemente perdido."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:289 src/note.cpp:69
 msgid "_Delete"
 msgstr "E_xcluir"
 
@@ -975,7 +989,7 @@ msgstr "Incluir todas as notas vinculadas"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:539
+#: src/preferencesdialog.cpp:531
 msgid "_Save"
 msgstr "_Salvar"
 
@@ -1429,11 +1443,11 @@ msgstr ""
 msgid "Failed to get shortcuts window!"
 msgstr "Falha ao obter janela de atalhos!"
 
-#: src/gnote.cpp:257
+#: src/gnote.cpp:258
 msgid "and Tomboy original authors."
 msgstr "e os autores originais do Tomboy."
 
-#: src/gnote.cpp:263
+#: src/gnote.cpp:264
 msgid "translator-credits"
 msgstr ""
 "Marco de Freitas <marcodefreitas@gmail.com>, 2009\n"
@@ -1445,88 +1459,88 @@ msgstr ""
 "Matheus Barbosa <mdpb.matheus@gmail.com>, 2022.\n"
 "Juliano de Souza Camargo <julianosc@pm.me>"
 
-#: src/gnote.cpp:272
+#: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2024 Aurimas Cernius\n"
+"Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2024 Aurimas Cernius\n"
+"Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 autores originais do Tomboy."
 
-#: src/gnote.cpp:276
+#: src/gnote.cpp:277
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Um aplicativo simples e fácil de usar para tomar notas."
 
-#: src/gnote.cpp:278
+#: src/gnote.cpp:279
 msgid "Homepage"
 msgstr "Página do projeto"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:489
 msgid "Run Gnote in background."
 msgstr "Executar o Gnote em segundo plano."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:490
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Executa o Gnote como provedor de pesquisa do GNOME Shell."
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "Specify the path of the directory containing the notes."
 msgstr "Especifica o caminho do diretório que contém as notas."
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "path"
 msgstr "caminho"
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:492
 msgid "Open the search all notes window with the search text."
 msgstr "Abre a janela “pesquisar em todas as notas” com o texto de pesquisa."
 
-#: src/gnote.cpp:491 src/gnote.cpp:496
+#: src/gnote.cpp:492 src/gnote.cpp:497
 msgid "text"
 msgstr "texto"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:493
 msgid "Print version information."
 msgstr "Imprime informações da versão."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "Create and display a new note, with a optional title."
 msgstr "Cria e exibe uma nova nota, com um título opcional."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "title"
 msgstr "título"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "Display the existing note matching title."
 msgstr "Exibe a nota correspondente ao título."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "title/url"
 msgstr "título/url"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:496
 msgid "Display the 'Start Here' note."
 msgstr "Exibe a nota “Comece aqui”."
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:497
 msgid "Search and highlight text in the opened note."
 msgstr "Pesquisa e destaca o texto na nota aberta."
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "A note taking application"
 msgstr "Um aplicativo para tomar notas"
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "Gnote options at launch"
 msgstr "Opções do Gnote na inicialização"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:684
+#: src/gnote.cpp:685
 msgid "Version %1"
 msgstr "Versão %1"
 
@@ -1539,18 +1553,18 @@ msgid "Window is not embedded"
 msgstr "A janela não está embutida"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:221 src/note.cpp:350
+#: src/notebase.cpp:221 src/note.cpp:354
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Exceção ao salvar a nota: %s"
 
 #. write failure, but not critical
-#: src/notebase.cpp:461
+#: src/notebase.cpp:466
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Falha ao atualizar o formato da nota: %s"
 
-#: src/notebase.cpp:579
+#: src/notebase.cpp:584
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Erro de sistema de arquivos: %s"
@@ -1582,19 +1596,19 @@ msgstr "Novo ca_tálogo de notas…"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:104
+#: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr "Modelo do catálogo de notas %1"
 
-#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
+#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
 msgid "New Note"
 msgstr "Nova nota"
 
-#: src/notebooks/notebookmanager.cpp:282
+#: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
 msgstr "Deseja realmente excluir este catálogo de notas?"
 
-#: src/notebooks/notebookmanager.cpp:283
+#: src/notebooks/notebookmanager.cpp:280
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1602,33 +1616,33 @@ msgstr ""
 "As notas que pertencem a este catálogo de notas não serão excluídas, mas não "
 "serão mais associadas a ele. Esta ação não pode ser desfeita."
 
-#: src/notebooks/notebooknoteaddin.cpp:109
+#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:204
 msgid "Notebook"
 msgstr "Catálogo de notas"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:144
+#: src/notebooks/notebooknoteaddin.cpp:139
 msgid "_New notebook..."
 msgstr "_Novo catálogo de notas…"
 
 #. Add the "(no notebook)" item at the top of the list
-#: src/notebooks/notebooknoteaddin.cpp:148
+#: src/notebooks/notebooknoteaddin.cpp:143
 msgid "No notebook"
 msgstr "Nenhum catálogo de notas"
 
-#: src/notebooks/notebooksview.cpp:205
+#: src/notebooks/notebooksview.cpp:207
 msgid "New Notebook"
 msgstr "Novo catálogo de notas"
 
-#: src/notebooks/notebooksview.cpp:209
+#: src/notebooks/notebooksview.cpp:211
 msgid "Rename Notebook"
 msgstr "Renomear catálogo de notas"
 
-#: src/notebooks/notebooksview.cpp:214
+#: src/notebooks/notebooksview.cpp:216
 msgid "Open Template Note"
 msgstr "Abrir modelo de nota"
 
-#: src/notebooks/notebooksview.cpp:218
+#: src/notebooks/notebooksview.cpp:220
 msgid "Delete Notebook"
 msgstr "Remover catálogo de notas"
 
@@ -1688,7 +1702,7 @@ msgstr ""
 "espaço em disco suficiente e que tenha permissões sobre ~/.local/share/"
 "gnote. Detalhes do erro podem ser localizados em ~/.gnote.log."
 
-#: src/note.cpp:652
+#: src/note.cpp:625
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
@@ -1702,7 +1716,7 @@ msgstr "Novo modelo de nota"
 msgid "Describe your new note here."
 msgstr "Descreva sua nova nota aqui."
 
-#: src/notemanager.cpp:115
+#: src/notemanager.cpp:116
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1718,8 +1732,8 @@ msgid ""
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
 "\n"
-"We've created a note called <link:internal>Using Links in Gnote</link:"
-"internal>.  Notice how each time we type <link:internal>Using Links in "
+"We've created a note called <link:internal>Using Links in Gnote</"
+"link:internal>.  Notice how each time we type <link:internal>Using Links in "
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
@@ -1737,12 +1751,12 @@ msgstr ""
 "\n"
 "Em seguida, organize as notas criadas ao associar ideias relacionadas!\n"
 "\n"
-"Nós criamos uma nota chamada <link:internal>Utilizando links no Gnote</link:"
-"internal>. Viu que cada vez que digitamos <link:internal>Utilizando links no "
-"Gnote</link:internal> ele automaticamente fica sublinhado? Clique no link "
-"para abrir a nota.</note-content>"
+"Nós criamos uma nota chamada <link:internal>Utilizando links no Gnote</"
+"link:internal>. Viu que cada vez que digitamos <link:internal>Utilizando "
+"links no Gnote</link:internal> ele automaticamente fica sublinhado? Clique "
+"no link para abrir a nota.</note-content>"
 
-#: src/notemanager.cpp:134
+#: src/notemanager.cpp:135
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1771,31 +1785,31 @@ msgstr ""
 "será automaticamente estabelecido para você.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:149 src/notemanager.cpp:184
+#: src/notemanager.cpp:150 src/notemanager.cpp:185
 msgid "Start Here"
 msgstr "Comece aqui"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:154
 msgid "Using Links in Gnote"
 msgstr "Utilizando links no Gnote"
 
-#: src/notemanager.cpp:157
+#: src/notemanager.cpp:158
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Erro ao criar as notas iniciais: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:172
+#: src/notemanager.cpp:173
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Erro na análise do XML da nota, ignorando “%s”: %s"
 
-#: src/notemanager.cpp:383
+#: src/notemanager.cpp:384
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Erro ao salvar: %s"
 
-#: src/notemanager.cpp:388
+#: src/notemanager.cpp:389
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "Não pôde encontrar nota com uri '%s', não se pode salvar"
@@ -1902,27 +1916,27 @@ msgstr "Salvar se_leção"
 msgid "Save _Title"
 msgstr "Salvar _título"
 
-#: src/notewindow.cpp:488 src/notewindow.cpp:598
+#: src/notewindow.cpp:492 src/notewindow.cpp:602
 msgid "Cannot create note"
 msgstr "Não foi possível criar a nota"
 
-#: src/notewindow.cpp:958
+#: src/notewindow.cpp:980
 msgid "_Highlight"
 msgstr "_Destacar"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:984
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:985
 msgid "S_mall"
 msgstr "_Pequeno"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:986
 msgid "_Large"
 msgstr "_Grande"
 
-#: src/notewindow.cpp:965
+#: src/notewindow.cpp:987
 msgid "Hu_ge"
 msgstr "Enor_me"
 
@@ -1948,8 +1962,8 @@ msgid "Plugins"
 msgstr "Plug-ins"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:775
-#: src/preferencesdialog.cpp:1012 src/preferencesdialog.cpp:1219
+#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
+#: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
 #: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
 msgid "_Close"
 msgstr "_Fechar"
@@ -2076,58 +2090,58 @@ msgstr ""
 msgid "Ser_vice:"
 msgstr "Ser_viço:"
 
-#: src/preferencesdialog.cpp:501
+#: src/preferencesdialog.cpp:493
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Intervalo de sin_cronização automática em segundo plano (minutos)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:523
+#: src/preferencesdialog.cpp:515
 msgid "_Advanced..."
 msgstr "_Avançado…"
 
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:520
 msgid "Clear"
 msgstr "Limpar"
 
-#: src/preferencesdialog.cpp:555 src/preferencesdialog.cpp:1033
+#: src/preferencesdialog.cpp:548 src/preferencesdialog.cpp:1026
 msgid "Not configurable"
 msgstr "Não configurável"
 
-#: src/preferencesdialog.cpp:575
+#: src/preferencesdialog.cpp:568
 msgid "The following plugins are installed:"
 msgstr "Os seguintes plug-ins estão instalados:"
 
-#: src/preferencesdialog.cpp:599
+#: src/preferencesdialog.cpp:592
 msgid "_Enable"
 msgstr "_Habilitar"
 
-#: src/preferencesdialog.cpp:604
+#: src/preferencesdialog.cpp:597
 msgid "_Disable"
 msgstr "_Desabilitar"
 
-#: src/preferencesdialog.cpp:614
+#: src/preferencesdialog.cpp:607
 msgid "In_formation"
 msgstr "In_formatação"
 
-#: src/preferencesdialog.cpp:755
+#: src/preferencesdialog.cpp:748
 msgid "Not Implemented"
 msgstr "Não implementado"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:772
+#: src/preferencesdialog.cpp:765
 msgid "%1 Preferences"
 msgstr "Preferências de %1"
 
-#: src/preferencesdialog.cpp:868
+#: src/preferencesdialog.cpp:861
 msgid "Choose Note Font"
 msgstr "Escolha a fonte das notas"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:961
+#: src/preferencesdialog.cpp:954
 msgid "Other Synchronization Options"
 msgstr "Outras opções de sincronização"
 
-#: src/preferencesdialog.cpp:964
+#: src/preferencesdialog.cpp:957
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2135,23 +2149,23 @@ msgstr ""
 "Quando for detectado um conflito entre uma nota local e no servidor de "
 "sincronização configurados:"
 
-#: src/preferencesdialog.cpp:968
+#: src/preferencesdialog.cpp:961
 msgid "Always ask me what to do"
 msgstr "Pergunte-me sempre o que fazer"
 
-#: src/preferencesdialog.cpp:969
+#: src/preferencesdialog.cpp:962
 msgid "Rename my local note"
 msgstr "Renomear minha nota local"
 
-#: src/preferencesdialog.cpp:971
+#: src/preferencesdialog.cpp:964
 msgid "Replace my local note with the server's update"
 msgstr "Substituir minha nota local com a atualização do servidor"
 
-#: src/preferencesdialog.cpp:1089
+#: src/preferencesdialog.cpp:1085
 msgid "Are you sure?"
 msgstr "Tem certeza?"
 
-#: src/preferencesdialog.cpp:1090
+#: src/preferencesdialog.cpp:1086
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2160,11 +2174,11 @@ msgstr ""
 "forçado para sincronizar todas as notas novamente quando você salva as novas "
 "configurações."
 
-#: src/preferencesdialog.cpp:1101
+#: src/preferencesdialog.cpp:1097
 msgid "Resetting Synchronization Settings"
 msgstr "Redefinir as configurações de sincronização"
 
-#: src/preferencesdialog.cpp:1102
+#: src/preferencesdialog.cpp:1098
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2174,11 +2188,11 @@ msgstr ""
 "de sincronização serão apagadas agora. Você pode ser forçado a sincronizar "
 "todas as suas notas novamente quando salvar novas configurações."
 
-#: src/preferencesdialog.cpp:1164
+#: src/preferencesdialog.cpp:1160
 msgid "Connection successful"
 msgstr "Conexão realizada com sucesso"
 
-#: src/preferencesdialog.cpp:1165
+#: src/preferencesdialog.cpp:1161
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2186,7 +2200,7 @@ msgstr ""
 "Gnote está pronto a sincronizar suas notas. Gostaria de sincronizá-las agora?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1191
+#: src/preferencesdialog.cpp:1187
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2194,19 +2208,19 @@ msgstr ""
 "Por favor, verifique suas informações e tente novamente.  O arquivo de log "
 "%1 pode conter mais informações sobre o erro."
 
-#: src/preferencesdialog.cpp:1196
+#: src/preferencesdialog.cpp:1192
 msgid "Error connecting"
 msgstr "Erro ao conectar"
 
-#: src/preferencesdialog.cpp:1260
+#: src/preferencesdialog.cpp:1256
 msgid "Version:"
 msgstr "Versão:"
 
-#: src/preferencesdialog.cpp:1263
+#: src/preferencesdialog.cpp:1259
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/preferencesdialog.cpp:1267
+#: src/preferencesdialog.cpp:1263
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -2231,18 +2245,18 @@ msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:737
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não está incorporado "
 "na janela"
 
-#: src/recentchanges.cpp:744
+#: src/recentchanges.cpp:745
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não é Gtk::Widget"
 
-#: src/recentchanges.cpp:944
+#: src/recentchanges.cpp:945
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2252,25 +2266,25 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Falha ao carregar a interface D-Bus %s: %s"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:242
+#: src/searchnoteswidget.cpp:247
 msgid "Title match"
 msgstr "Correspondência de título"
 
-#: src/searchnoteswidget.cpp:246
+#: src/searchnoteswidget.cpp:251
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 ocorrência"
 msgstr[1] "%1 ocorrências"
 
-#: src/searchnoteswidget.cpp:548
+#: src/searchnoteswidget.cpp:500
 msgid "Note"
 msgstr "Nota"
 
-#: src/searchnoteswidget.cpp:560
+#: src/searchnoteswidget.cpp:512
 msgid "Modified"
 msgstr "Modificado"
 
-#: src/searchnoteswidget.cpp:732
+#: src/searchnoteswidget.cpp:673
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2278,30 +2292,30 @@ msgstr ""
 "Nenhum resultado encontrado no bloco de anotações selecionado.\n"
 "Clique aqui para pesquisar em todas as notas."
 
-#: src/searchnoteswidget.cpp:736
+#: src/searchnoteswidget.cpp:677
 msgid "Click here to search across all notebooks"
 msgstr "Clique aqui para pesquisar em todos os blocos de notas"
 
-#: src/searchnoteswidget.cpp:751
+#: src/searchnoteswidget.cpp:692
 msgid "Matches"
 msgstr "Ocorrências"
 
-#: src/searchnoteswidget.cpp:1003 src/searchnoteswidget.cpp:1016
-#: src/searchnoteswidget.cpp:1027
+#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
+#: src/searchnoteswidget.cpp:960
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Falha ao analisar configurações de pesquisa-ordenação (valor: %s):"
 
-#: src/searchnoteswidget.cpp:1004
+#: src/searchnoteswidget.cpp:937
 msgid "Expected format 'column:order'"
 msgstr "Formato esperado “coluna:ordem”"
 
-#: src/searchnoteswidget.cpp:1017
+#: src/searchnoteswidget.cpp:950
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Coluna %s não reconhecida"
 
-#: src/searchnoteswidget.cpp:1028
+#: src/searchnoteswidget.cpp:961
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ordem %s não reconhecida"
@@ -2639,29 +2653,29 @@ msgstr "Alterações enviadas para o servidor"
 msgid "Uploaded new note to server"
 msgstr "Nova nota enviada ao servidor"
 
-#: src/synchronization/syncmanager.cpp:58
+#: src/synchronization/syncmanager.cpp:64
 msgid "Synchronize Notes"
 msgstr "Sincronizar as notas"
 
-#: src/synchronization/syncmanager.cpp:77
-#: src/synchronization/syncmanager.cpp:94
-#: src/synchronization/syncmanager.cpp:555
+#: src/synchronization/syncmanager.cpp:83
+#: src/synchronization/syncmanager.cpp:100
+#: src/synchronization/syncmanager.cpp:591
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Relate um erro. Chamada falhou: %s"
 
-#: src/synchronization/syncmanager.cpp:142
+#: src/synchronization/syncmanager.cpp:147
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Erro ao limpar o plug-in após a sincronização: %s"
 
-#: src/synchronization/syncmanager.cpp:167
+#: src/synchronization/syncmanager.cpp:173
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Exceção ao criar um servidor de sincronização: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:370
+#: src/synchronization/syncmanager.cpp:374
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sincronização falhou com a seguinte exceção: %s"
@@ -2772,6 +2786,14 @@ msgstr "Este título de nota já existe"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Verificar ortografia"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to next tab"
+#~ msgstr "Vai para a próxima aba"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to previous tab"
+#~ msgstr "Vai para a aba anterior"
 
 #~ msgid "_Back"
 #~ msgstr "_Voltar"
