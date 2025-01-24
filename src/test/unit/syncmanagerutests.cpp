@@ -36,20 +36,6 @@
 using namespace gnote;
 
 
-void remove_dir(const Glib::ustring dir)
-{
-  auto subitems = sharp::directory_get_directories(dir);
-  for(auto subdir : subitems) {
-    remove_dir(subdir);
-  }
-  subitems = sharp::directory_get_files(dir);
-  for(auto file : subitems) {
-    g_remove(file.c_str());
-  }
-  g_rmdir(dir.c_str());
-}
-
-
 SUITE(SyncManagerTests)
 {
   struct Fixture
@@ -97,8 +83,8 @@ SUITE(SyncManagerTests)
 
     ~Fixture()
     {
-      remove_dir(tempdir1);
-      remove_dir(tempdir2);
+      test::remove_dir(tempdir1);
+      test::remove_dir(tempdir2);
     }
 
     Glib::ustring make_temp_dir()

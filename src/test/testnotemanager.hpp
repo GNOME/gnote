@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2019-2020,2022 Aurimas Cernius
+ * Copyright (C) 2014,2019-2020,2022,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,8 +22,9 @@
 #include "notebooks/notebookmanager.hpp"
 #include "test/testtagmanager.hpp"
 
-
 namespace test {
+
+void remove_dir(const Glib::ustring &dir);
 
 class NoteManager
   : public gnote::NoteManagerBase

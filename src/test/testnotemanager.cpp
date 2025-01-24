@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2014,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2014,2017,2019-2020,2022-2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,15 +17,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <glib/gstdio.h>
+
+#include "sharp/directory.hpp"
 #include "testnote.hpp"
 #include "testnotemanager.hpp"
 
 
-// defined in syncmanagerutests.cpp
-void remove_dir(const Glib::ustring dir);
-
-
 namespace test {
+
+void remove_dir(const Glib::ustring &dir)
+{
+  auto subitems = sharp::directory_get_directories(dir);
+  for(auto subdir : subitems) {
+    remove_dir(subdir);
+  }
+  subitems = sharp::directory_get_files(dir);
+  for(auto file : subitems) {
+    g_remove(file.c_str());
+  }
+  g_rmdir(dir.c_str());
+}
+
 
 Glib::ustring NoteManager::test_notes_dir()
 {
