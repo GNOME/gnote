@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2017-2020,2022-2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,8 +63,8 @@ SUITE(SyncManagerTests)
     Glib::ustring manifest2;
     test::Gnote gnote1;
     test::Gnote gnote2;
-    test::NoteManager *manager1;
-    test::NoteManager *manager2;
+    std::unique_ptr<test::NoteManager> manager1;
+    std::unique_ptr<test::NoteManager> manager2;
     test::SyncManager *sync_manager1;
     test::SyncManager *sync_manager2;
     std::vector<Glib::ustring> files;
@@ -80,13 +80,13 @@ SUITE(SyncManagerTests)
       manifest1 = tempdir1 + "/manifest.xml";
       manifest2 = tempdir2 + "/manifest.xml";
 
-      manager1 = new test::NoteManager(notesdir1, gnote1);
+      manager1.reset(new test::NoteManager(notesdir1, gnote1));
       gnote1.notebook_manager(&manager1->notebook_manager());
       create_note(*manager1, "note1", "content1");
       create_note(*manager1, "note2", "content2");
       create_note(*manager1, "note3", "content3");
 
-      manager2 = new test::NoteManager(notesdir2, gnote2);
+      manager2.reset(new test::NoteManager(notesdir2, gnote2));
       gnote2.notebook_manager(&manager2->notebook_manager());
 
       sync_manager1 = new test::SyncManager(gnote1, *manager1, syncdir);
@@ -97,8 +97,6 @@ SUITE(SyncManagerTests)
 
     ~Fixture()
     {
-      delete manager1;
-      delete manager2;
       remove_dir(tempdir1);
       remove_dir(tempdir2);
     }
