@@ -65,8 +65,8 @@ SUITE(SyncManagerTests)
     test::Gnote gnote2;
     std::unique_ptr<test::NoteManager> manager1;
     std::unique_ptr<test::NoteManager> manager2;
-    test::SyncManager *sync_manager1;
-    test::SyncManager *sync_manager2;
+    std::unique_ptr<test::SyncManager> sync_manager1;
+    std::unique_ptr<test::SyncManager> sync_manager2;
     std::vector<Glib::ustring> files;
 
     Fixture()
@@ -89,10 +89,10 @@ SUITE(SyncManagerTests)
       manager2.reset(new test::NoteManager(notesdir2, gnote2));
       gnote2.notebook_manager(&manager2->notebook_manager());
 
-      sync_manager1 = new test::SyncManager(gnote1, *manager1, syncdir);
-      gnote1.sync_manager(sync_manager1);
-      sync_manager2 = new test::SyncManager(gnote2, *manager2, syncdir);
-      gnote2.sync_manager(sync_manager2);
+      sync_manager1.reset(new test::SyncManager(gnote1, *manager1, syncdir));
+      gnote1.sync_manager(sync_manager1.get());
+      sync_manager2.reset(new test::SyncManager(gnote2, *manager2, syncdir));
+      gnote2.sync_manager(sync_manager2.get());
     }
 
     ~Fixture()
