@@ -202,6 +202,13 @@ SUITE(SyncManagerTests)
     auto files = get_notes_in_dir(syncednotesdir);
     REQUIRE CHECK_EQUAL(1, files.size());
     CHECK(find_note_in_files(files, "note4"));
+
+    CHECK_EQUAL(3, synchronizer.note_manager().note_count());
+    create_note(synchronizer.note_manager(), "note5", "content5");
+    synchronizer.perform_sync();
+    files = get_notes_in_dir(synchronizer.notes_dir());
+    CHECK_EQUAL(5, files.size());
+    CHECK_EQUAL(5, synchronizer.note_manager().note_count());
   }
 
   TEST_FIXTURE(Fixture2, download_new_notes_from_server)
