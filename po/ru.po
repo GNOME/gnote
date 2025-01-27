@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-06-02 19:52+0000\n"
-"PO-Revision-Date: 2024-06-21 23:19+1000\n"
+"POT-Creation-Date: 2025-01-17 10:34+0000\n"
+"PO-Revision-Date: 2025-01-17 21:15+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -166,10 +166,34 @@ msgstr ""
 "отображения заметок будет использовано указанное здесь название шрифта."
 
 #: data/org.gnome.gnote.gschema.xml:46
+msgid "Background color for the highlighted text"
+msgstr "Цвет фона для выделенного текста"
+
+#: data/org.gnome.gnote.gschema.xml:47
+msgid ""
+"When text is highlighted, use this color for background. A string "
+"gdk_rgba_parse() accepts."
+msgstr ""
+"Использовать этот цвет для фона выделенного текста. Строка, которая "
+"принимает gdk_rgba_parse()."
+
+#: data/org.gnome.gnote.gschema.xml:51
+msgid "Color for the highlighted text"
+msgstr "Цвет выделенного текста"
+
+#: data/org.gnome.gnote.gschema.xml:52
+msgid ""
+"When text is highlighted, use this color for text. A string gdk_rgba_parse() "
+"accepts."
+msgstr ""
+"Использовать этот цвет для выделения текста. Строка, которая принимает "
+"gdk_rgba_parse()."
+
+#: data/org.gnome.gnote.gschema.xml:56
 msgid "Start Here Note"
 msgstr "Первая заметка"
 
-#: data/org.gnome.gnote.gschema.xml:47
+#: data/org.gnome.gnote.gschema.xml:57
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -179,11 +203,11 @@ msgstr ""
 "всегда помещается внизу меню заметок Gnote и доступна через комбинацию "
 "клавиш."
 
-#: data/org.gnome.gnote.gschema.xml:51
+#: data/org.gnome.gnote.gschema.xml:61
 msgid "Minimum number of notes to show in menu"
 msgstr "Минимальное количество заметок в меню"
 
-#: data/org.gnome.gnote.gschema.xml:52
+#: data/org.gnome.gnote.gschema.xml:62
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
@@ -191,11 +215,11 @@ msgstr ""
 "Число, определяющее минимальное количество заметок, которые должны "
 "показываться в меню заметок Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:56
+#: data/org.gnome.gnote.gschema.xml:66
 msgid "List of pinned notes"
 msgstr "Список прикреплённых заметок"
 
-#: data/org.gnome.gnote.gschema.xml:57
+#: data/org.gnome.gnote.gschema.xml:67
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -203,56 +227,56 @@ msgstr ""
 "Разделённый пробелами список идентификаторов (URI) заметок, которые должны "
 "быть всегда видны в меню заметок Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:61
+#: data/org.gnome.gnote.gschema.xml:71
 msgid "Is main window maximized"
 msgstr "Имеет ли главное окно максимальный размер"
 
-#: data/org.gnome.gnote.gschema.xml:62
+#: data/org.gnome.gnote.gschema.xml:72
 msgid "If true, Gnote window will be maximized."
 msgstr "Если установлено, окно Gnote будет иметь максимальный размер."
 
-#: data/org.gnome.gnote.gschema.xml:66
+#: data/org.gnome.gnote.gschema.xml:76
 msgid "Saved height of Search window"
 msgstr "Сохранённое значение высоты окна поиска"
 
-#: data/org.gnome.gnote.gschema.xml:67
+#: data/org.gnome.gnote.gschema.xml:77
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
 "Определяет высоту окна поиска в пикселах; сохраняется по закрытию Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:71
+#: data/org.gnome.gnote.gschema.xml:81
 msgid "Saved width of Search window"
 msgstr "Сохранённое значение ширины окна поиска"
 
-#: data/org.gnome.gnote.gschema.xml:72
+#: data/org.gnome.gnote.gschema.xml:82
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 "Определяет ширину окна поиска в пикселах; сохраняется по закрытию Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:76
+#: data/org.gnome.gnote.gschema.xml:86
 msgid "Saved splitter position of Search window splitter."
 msgstr "Сохранённое положение разделителя в окне поиска."
 
-#: data/org.gnome.gnote.gschema.xml:77
+#: data/org.gnome.gnote.gschema.xml:87
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 "Определяет положение разделителя окна поиска в пикселах; сохраняется при "
 "закрытии Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:81
+#: data/org.gnome.gnote.gschema.xml:91
 msgid "Saved sorting of the Search window."
 msgstr "Сохранённая сортировка окна поиска."
 
-#: data/org.gnome.gnote.gschema.xml:82
+#: data/org.gnome.gnote.gschema.xml:92
 msgid "Determines Search window initial sorting."
 msgstr "Определяет начальную сортировку окна поиска."
 
-#: data/org.gnome.gnote.gschema.xml:86
+#: data/org.gnome.gnote.gschema.xml:96
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "Таймаут подключения FUSE (мс)"
 
-#: data/org.gnome.gnote.gschema.xml:87
+#: data/org.gnome.gnote.gschema.xml:97
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -260,45 +284,45 @@ msgstr ""
 "Время (в милисекундах), в течение которого Gnote должен ждать ответа при "
 "использовании FUSE для монтирования совместной синхронизации."
 
-#: data/org.gnome.gnote.gschema.xml:91
+#: data/org.gnome.gnote.gschema.xml:101
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "Папка удалённой SSHFS-синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:92
+#: data/org.gnome.gnote.gschema.xml:102
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Путь до каталога синхронизации Gnote на сервере SSH (не обязательно)."
 
-#: data/org.gnome.gnote.gschema.xml:96
+#: data/org.gnome.gnote.gschema.xml:106
 msgid "SSHFS Synchronization Server URL"
 msgstr "Адрес сервера SSHFS-синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:97
+#: data/org.gnome.gnote.gschema.xml:107
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "URL сервера SSH, содержащего директорию Gnote для синхронизации."
 
-#: data/org.gnome.gnote.gschema.xml:101
+#: data/org.gnome.gnote.gschema.xml:111
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "Имя пользователя для удалённой SSHFS-синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:102
+#: data/org.gnome.gnote.gschema.xml:112
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Имя пользователя, необходимое для соединения с сервером синхронизации через "
 "SSH."
 
-#: data/org.gnome.gnote.gschema.xml:106
+#: data/org.gnome.gnote.gschema.xml:116
 msgid "SSHFS Synchronization Server Port"
 msgstr "Порт сервера SSHFS-синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:107
+#: data/org.gnome.gnote.gschema.xml:117
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "Порт для соединения с сервером синхронизации через SSH."
 
-#: data/org.gnome.gnote.gschema.xml:111
+#: data/org.gnome.gnote.gschema.xml:121
 msgid "Link Updating Behavior on Note Rename"
 msgstr "Поведение при обновлении ссылок и переименовании заметок"
 
-#: data/org.gnome.gnote.gschema.xml:112
+#: data/org.gnome.gnote.gschema.xml:122
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -317,32 +341,32 @@ msgstr ""
 "ссылки будет преобразован в новое название заметки, таким образом сохранится "
 "ссылка на переименованную заметку."
 
-#: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
-#: data/org.gnome.gnote.gschema.xml:131
+#: data/org.gnome.gnote.gschema.xml:126 data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:141
 msgid "Deprecated"
 msgstr "Устарело"
 
-#: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
+#: data/org.gnome.gnote.gschema.xml:127 data/org.gnome.gnote.gschema.xml:142
 msgid "This key is deprecated and its value is ignored."
 msgstr "Этот ключ устарел, и его значение игнорируется."
 
-#: data/org.gnome.gnote.gschema.xml:121
+#: data/org.gnome.gnote.gschema.xml:131
 msgid "Use status icon, when started as an application"
 msgstr "Использовать значок состояния при запуске как приложения"
 
-#: data/org.gnome.gnote.gschema.xml:122
+#: data/org.gnome.gnote.gschema.xml:132
 msgid "Deprecated, has no effect."
 msgstr "Устарело, не выполняет какие-либо действия."
 
-#: data/org.gnome.gnote.gschema.xml:127
+#: data/org.gnome.gnote.gschema.xml:137
 msgid "This setting is deprecated and its value is ignored"
 msgstr "Этот параметр устарел, и его значение игнорируется"
 
-#: data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:146
 msgid "Use client side window decorations"
 msgstr "Использовать декорации на стороне окна (CSD)"
 
-#: data/org.gnome.gnote.gschema.xml:137
+#: data/org.gnome.gnote.gschema.xml:147
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
 "Possible values are 'enabled' to draw them, 'disabled' to leave them to "
@@ -355,11 +379,11 @@ msgstr ""
 "список окружений рабочего стола, где Gnote должен сам рисовать декорации. "
 "Требуется перезапуск приложения."
 
-#: data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:151
 msgid "Preferred color scheme to use"
 msgstr "Предпочтительная для использования цветовая схема"
 
-#: data/org.gnome.gnote.gschema.xml:142
+#: data/org.gnome.gnote.gschema.xml:152
 msgid ""
 "The theme variant to use. Possible values are empty string to follow the "
 "system, 'dark' and 'light'."
@@ -367,22 +391,22 @@ msgstr ""
 "Вариант темы, который следует использовать. Возможные значения: пустая "
 "строка (для использования системой темы), «dark» и «light»."
 
-#: data/org.gnome.gnote.gschema.xml:153
+#: data/org.gnome.gnote.gschema.xml:163
 msgid "HTML Export Last Directory"
 msgstr "Последний каталог экспорта в HTML"
 
-#: data/org.gnome.gnote.gschema.xml:154
+#: data/org.gnome.gnote.gschema.xml:164
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Последний каталог, в который экспортировались заметки с помощью модуля "
 "экспорта в HTML."
 
-#: data/org.gnome.gnote.gschema.xml:158
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Linked Notes"
 msgstr "Включать связанные заметки при экспорте в HTML"
 
-#: data/org.gnome.gnote.gschema.xml:159
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -390,11 +414,11 @@ msgstr ""
 "Последнее значение в поле «Экспортировать связанные заметки» в модуле "
 "экспорта в HTML."
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export All Linked Notes"
 msgstr "Включать все связанные заметки при экспорте в HTML"
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -406,11 +430,11 @@ msgstr ""
 "связанные заметки при экспорте в HTML» для того, чтобы определить, нужно ли "
 "включать все заметки (найденные рекурсивно) при экспорте в HTML."
 
-#: data/org.gnome.gnote.gschema.xml:170
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Synchronization Client ID"
 msgstr "ID клиента синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:171
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -418,22 +442,22 @@ msgstr ""
 "Уникальный идентификатор данного клиента Gnote, используемый для связи с "
 "сервером синхронизации."
 
-#: data/org.gnome.gnote.gschema.xml:175
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Local Server Path"
 msgstr "Путь к локальному серверу для синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:176
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr ""
 "Путь к серверу синхронизации при использовании модуля службы синхронизации."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Selected Synchronization Service Addin"
 msgstr "Выбранный модуль службы синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -441,11 +465,11 @@ msgstr ""
 "Уникальный идентификатор для текущего настроенного модуля службы "
 "синхронизации."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Сохранённое поведение при конфликте синхронизации заметки"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -459,11 +483,11 @@ msgstr ""
 "подтверждения, таким образом пользователь может обрабатывать каждую "
 "конфликтную ситуацию в отдельности."
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Таймаут автоматической фоновой синхронизации"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -475,19 +499,19 @@ msgstr ""
 "меньше «1», отключает автоматическую синхронизацию. Минимально допустимое "
 "положительное значение — «5». Значение указывается в минутах."
 
-#: data/org.gnome.gnote.gschema.xml:198
+#: data/org.gnome.gnote.gschema.xml:208
 msgid "Online directory URI"
 msgstr "URI сетевого каталога"
 
-#: data/org.gnome.gnote.gschema.xml:199
+#: data/org.gnome.gnote.gschema.xml:209
 msgid "URI to online directory where notes are synchronized to."
 msgstr "URL сетевого каталога, с которым выполняется синхронизация."
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:215
 msgid "Accept SSL Certificates"
 msgstr "Принять сертификаты SSL"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:216
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -495,27 +519,27 @@ msgstr ""
 "Используйте параметр wdfs «-ac», чтобы принять сертификаты SSL без участия "
 "пользователя."
 
-#: data/org.gnome.gnote.gschema.xml:210
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Share URL"
 msgstr "URL ресурса"
 
-#: data/org.gnome.gnote.gschema.xml:211
+#: data/org.gnome.gnote.gschema.xml:221
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL ресурса WebDAV, с котором выполняется синхронизация."
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share username"
 msgstr "Имя пользователя"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "Username to access WebDAV share."
 msgstr "Имя пользователя для доступа к ресурсу WebDAV."
 
-#: data/org.gnome.gnote.gschema.xml:222
+#: data/org.gnome.gnote.gschema.xml:232
 msgid "Timestamp format"
 msgstr "Формат метки времени"
 
-#: data/org.gnome.gnote.gschema.xml:223
+#: data/org.gnome.gnote.gschema.xml:233
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -523,11 +547,11 @@ msgstr ""
 "Формат даты, который используется для пометки времени. Он следует за "
 "форматом времени(3)."
 
-#: data/org.gnome.gnote.gschema.xml:229
+#: data/org.gnome.gnote.gschema.xml:239
 msgid "Time between checks"
 msgstr "Время между проверками"
 
-#: data/org.gnome.gnote.gschema.xml:230
+#: data/org.gnome.gnote.gschema.xml:240
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -539,7 +563,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Основное окно"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:122
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Общие"
@@ -554,163 +578,153 @@ msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "Комбинации клавиш"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
-#: data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:134
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "Открыть меню действий"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Закрыть панель поиска"
 
-#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Закрыть окно"
 
-#: data/shortcuts-gnote.ui:53
-msgctxt "shortcut window"
-msgid "Go to next tab"
-msgstr "Перейти на следующую вкладку"
-
-#: data/shortcuts-gnote.ui:60
-msgctxt "shortcut window"
-msgid "Go to previous tab"
-msgstr "Перейти на предыдущую вкладку"
-
-#: data/shortcuts-gnote.ui:68
+#: data/shortcuts-gnote.ui:54
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Панель поиска"
 
-#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
+#: data/shortcuts-gnote.ui:59 data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "Показать панель поиска"
 
-#: data/shortcuts-gnote.ui:80
+#: data/shortcuts-gnote.ui:66
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Выделить следующее совпадение"
 
-#: data/shortcuts-gnote.ui:87
+#: data/shortcuts-gnote.ui:73
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "Выделить предыдущее совпадение"
 
-#: data/shortcuts-gnote.ui:95
+#: data/shortcuts-gnote.ui:81
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Список заметок"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:86
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Создать новую заметку"
 
-#: data/shortcuts-gnote.ui:107
+#: data/shortcuts-gnote.ui:93
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Открыть выделенную заметку"
 
-#: data/shortcuts-gnote.ui:114
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Открыть выделенную заметку в новом окне"
 
-#: data/shortcuts-gnote.ui:121
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Удалить выделенную заметку"
 
-#: data/shortcuts-gnote.ui:132
+#: data/shortcuts-gnote.ui:118
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "Просмотр заметки"
 
-#: data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Открыть меню действий с заметками"
 
-#: data/shortcuts-gnote.ui:183
+#: data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Close current tab"
 msgstr "Закрыть текущую вкладку"
 
-#: data/shortcuts-gnote.ui:191
+#: data/shortcuts-gnote.ui:177
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Правка"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:182
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Отменить последнее изменение"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Повторить последнее изменение"
 
-#: data/shortcuts-gnote.ui:210
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Создать ссылку на выделенный текст"
 
-#: data/shortcuts-gnote.ui:218
+#: data/shortcuts-gnote.ui:204
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Форматирование"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:209
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Переключить на жирный шрифт"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Переключить на накланенный шрифт"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Переключить на зачёркнутый шрифт"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Переключить подсветку текста"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Переключить фиксированную ширину"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Переключить подчёркнутый шрифт"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Увеличить размер шрифта"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Уменьшить размер шрифта"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Включить маркеры/увеличить отступ для строки с выделением"
 
-#: data/shortcuts-gnote.ui:286
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Уменьшить отступ/отключить маркеры для текущей строки"
@@ -723,7 +737,7 @@ msgstr "Со_здать заметку"
 msgid "New _Window"
 msgstr "Создать _окно"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:609
+#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:602
 msgid "_Preferences"
 msgstr "_Параметры"
 
@@ -861,8 +875,8 @@ msgstr "Выбрать значок..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
-#: src/utils.cpp:329
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
+#: src/utils.cpp:332
 msgid "_Cancel"
 msgstr "_Отменить"
 
@@ -902,7 +916,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Если удалить значок, он будет утерян навсегда."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:289 src/note.cpp:69
 msgid "_Delete"
 msgstr "У_далить"
 
@@ -968,7 +982,7 @@ msgstr "Включить все прочие связанные заметки"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:539
+#: src/preferencesdialog.cpp:531
 msgid "_Save"
 msgstr "_Сохранить"
 
@@ -1226,7 +1240,7 @@ msgid "Page %1 of %2"
 msgstr "Страница %1 из %2"
 
 #: src/plugins/readonly/readonly.desktop.in.in:4
-#: src/plugins/readonly/readonlynoteaddin.cpp:69
+#: src/plugins/readonly/readonlynoteaddin.cpp:67
 msgid "Read Only"
 msgstr "Только для чтения"
 
@@ -1420,11 +1434,11 @@ msgstr ""
 msgid "Failed to get shortcuts window!"
 msgstr "Не удалось открыть окно комбинаций клавиш!"
 
-#: src/gnote.cpp:257
+#: src/gnote.cpp:258
 msgid "and Tomboy original authors."
 msgstr "и авторы Tomboy."
 
-#: src/gnote.cpp:263
+#: src/gnote.cpp:264
 msgid "translator-credits"
 msgstr ""
 "Дмитрий Костенко <bis0n@mail.ru>\n"
@@ -1434,114 +1448,114 @@ msgstr ""
 "Urmas <davian818@gmail.com>, 2011\n"
 "Yuri Myasoedov <omerta13@yandex.ru>, 2012\n"
 "Артемий Судаков <finziyr@yandex.ru>, 2020\n"
-"Ser82-png <asvmail.as@gmail.com>, 2022-2024"
+"Ser82-png <asvmail.as@gmail.com>, 2022-2025"
 
-#: src/gnote.cpp:272
+#: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2024 Aurimas Cernius\n"
+"Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Авторские права © 2010-2024 Aurimas Cernius\n"
+"Авторские права © 2010-2025 Aurimas Cernius\n"
 "Авторские права © 2009-2011 Debarshi Ray\n"
 "Авторские права © 2009 Hubert Figuiere\n"
 "Авторские права © 2004-2009 авторы Tomboy."
 
-#: src/gnote.cpp:276
+#: src/gnote.cpp:277
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Простое, лёгкое в использовании приложение для ведения заметок."
 
-#: src/gnote.cpp:278
+#: src/gnote.cpp:279
 msgid "Homepage"
 msgstr "Домашняя страница"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:489
 msgid "Run Gnote in background."
 msgstr "Запустить Gnote в фоне."
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:490
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запустить Gnote как провайдер поиска оболочки GNOME."
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "Specify the path of the directory containing the notes."
 msgstr "Указать путь к каталогу с заметками."
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "path"
 msgstr "путь"
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:492
 msgid "Open the search all notes window with the search text."
 msgstr "Открыть окно поиска по всем заметкам с помощью текста поиска."
 
-#: src/gnote.cpp:491 src/gnote.cpp:496
+#: src/gnote.cpp:492 src/gnote.cpp:497
 msgid "text"
 msgstr "текст"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:493
 msgid "Print version information."
 msgstr "Вывести информацию о версии."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "Create and display a new note, with a optional title."
 msgstr "Создать и показать новую заметку с произвольным заголовком."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "title"
 msgstr "заголовок"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "Display the existing note matching title."
 msgstr "Показать существующую заметку с соответствующим заголовком."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "title/url"
 msgstr "заголовок/ссылка"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:496
 msgid "Display the 'Start Here' note."
 msgstr "Показывать самую первую заметку."
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:497
 msgid "Search and highlight text in the opened note."
 msgstr "Искать и выделить текст в открытой заметке."
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "A note taking application"
 msgstr "Программа для ведения заметок"
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "Gnote options at launch"
 msgstr "Параметры Gnote при запуске"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:684
+#: src/gnote.cpp:685
 msgid "Version %1"
 msgstr "Версия %1"
 
-#: src/noteaddin.cpp:101
+#: src/noteaddin.cpp:109
 msgid "Plugin is disposing already"
 msgstr "Модуль уже удаляется"
 
-#: src/noteaddin.cpp:105
+#: src/noteaddin.cpp:113
 msgid "Window is not embedded"
 msgstr "Окно не встроено"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:221 src/note.cpp:350
+#: src/notebase.cpp:221 src/note.cpp:354
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Исключение во время сохранения заметки: %s"
 
 #. write failure, but not critical
-#: src/notebase.cpp:461
+#: src/notebase.cpp:466
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Не удалось обновить формат заметки: %s"
 
-#: src/notebase.cpp:579
+#: src/notebase.cpp:584
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Ошибка файловой системы: %s"
@@ -1573,19 +1587,19 @@ msgstr "_Создать блокнот..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:104
+#: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr "Шаблон для блокнота %1"
 
-#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
+#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
 msgid "New Note"
 msgstr "Создать заметку"
 
-#: src/notebooks/notebookmanager.cpp:282
+#: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
 msgstr "Действительно удалить этот блокнот?"
 
-#: src/notebooks/notebookmanager.cpp:283
+#: src/notebooks/notebookmanager.cpp:280
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1593,33 +1607,33 @@ msgstr ""
 "Заметки, принадлежащие к этому блокноту, не будут удалены, но они больше не "
 "будут связаны с этим блокнотом. Это действие нельзя отменить."
 
-#: src/notebooks/notebooknoteaddin.cpp:109
+#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:204
 msgid "Notebook"
 msgstr "Блокнот"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:144
+#: src/notebooks/notebooknoteaddin.cpp:139
 msgid "_New notebook..."
 msgstr "_Создать блокнот..."
 
 #. Add the "(no notebook)" item at the top of the list
-#: src/notebooks/notebooknoteaddin.cpp:148
+#: src/notebooks/notebooknoteaddin.cpp:143
 msgid "No notebook"
 msgstr "Нет блокнотов"
 
-#: src/notebooks/notebooksview.cpp:205
+#: src/notebooks/notebooksview.cpp:207
 msgid "New Notebook"
 msgstr "Новый блокнот"
 
-#: src/notebooks/notebooksview.cpp:209
+#: src/notebooks/notebooksview.cpp:211
 msgid "Rename Notebook"
 msgstr "Переименовать блокнот"
 
-#: src/notebooks/notebooksview.cpp:214
+#: src/notebooks/notebooksview.cpp:216
 msgid "Open Template Note"
 msgstr "Открыть шаблон заметки"
 
-#: src/notebooks/notebooksview.cpp:218
+#: src/notebooks/notebooksview.cpp:220
 msgid "Delete Notebook"
 msgstr "Удалить блокнот"
 
@@ -1680,7 +1694,7 @@ msgstr ""
 "свободного места на диске, а также верны ли права доступа к каталогу ~/."
 "local/share/gnote. Подробности об ошибке находятся в файле ~/.gnote.log."
 
-#: src/note.cpp:652
+#: src/note.cpp:625
 msgid "Setting text content for closed notes not supported"
 msgstr "Настройка содержимого тектста для закрытых заметок не поддерживается"
 
@@ -1694,7 +1708,7 @@ msgstr "Шаблон новой заметки"
 msgid "Describe your new note here."
 msgstr "Опишите здесь новую заметку."
 
-#: src/notemanager.cpp:115
+#: src/notemanager.cpp:116
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1735,7 +1749,7 @@ msgstr ""
 "автоматически подчёркивается. Щёлкните ссылку для открытия заметки.</note-"
 "content>"
 
-#: src/notemanager.cpp:134
+#: src/notemanager.cpp:135
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1765,31 +1779,31 @@ msgstr ""
 "заметки, то автоматически возникнет ссылка на неё.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:149 src/notemanager.cpp:184
+#: src/notemanager.cpp:150 src/notemanager.cpp:185
 msgid "Start Here"
 msgstr "Первая заметка"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:154
 msgid "Using Links in Gnote"
 msgstr "Использование ссылок в Gnote"
 
-#: src/notemanager.cpp:157
+#: src/notemanager.cpp:158
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Ошибка в начале создания заметки: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:172
+#: src/notemanager.cpp:173
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Ошибка сравнения XML заметки, пропуск «%s»: %s"
 
-#: src/notemanager.cpp:383
+#: src/notemanager.cpp:384
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Ошибка при сохранении: %s"
 
-#: src/notemanager.cpp:388
+#: src/notemanager.cpp:389
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "Не удалось найти заметку с URL «%s». Сохранение невозможно"
@@ -1897,27 +1911,27 @@ msgstr "Сохранить вы_деление"
 msgid "Save _Title"
 msgstr "Сохранить _заголовок"
 
-#: src/notewindow.cpp:488 src/notewindow.cpp:598
+#: src/notewindow.cpp:492 src/notewindow.cpp:602
 msgid "Cannot create note"
 msgstr "Не удалось создать заметку"
 
-#: src/notewindow.cpp:958
+#: src/notewindow.cpp:980
 msgid "_Highlight"
 msgstr "_Выделенный"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:984
 msgid "_Normal"
 msgstr "_Нормальный"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:985
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:986
 msgid "_Large"
 msgstr "_Большой"
 
-#: src/notewindow.cpp:965
+#: src/notewindow.cpp:987
 msgid "Hu_ge"
 msgstr "_Огромный"
 
@@ -1943,9 +1957,9 @@ msgid "Plugins"
 msgstr "Модули"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:775
-#: src/preferencesdialog.cpp:1012 src/preferencesdialog.cpp:1219
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
+#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
+#: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
 msgid "_Close"
 msgstr "_Закрыть"
 
@@ -2071,58 +2085,58 @@ msgstr ""
 msgid "Ser_vice:"
 msgstr "Слу_жба:"
 
-#: src/preferencesdialog.cpp:501
+#: src/preferencesdialog.cpp:493
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Таймаут автоматической фоновой _синхронизации (в минутах)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:523
+#: src/preferencesdialog.cpp:515
 msgid "_Advanced..."
 msgstr "Про_чие параметры..."
 
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:520
 msgid "Clear"
 msgstr "Очищать"
 
-#: src/preferencesdialog.cpp:555 src/preferencesdialog.cpp:1033
+#: src/preferencesdialog.cpp:548 src/preferencesdialog.cpp:1026
 msgid "Not configurable"
 msgstr "Нет изменяемых параметров"
 
-#: src/preferencesdialog.cpp:575
+#: src/preferencesdialog.cpp:568
 msgid "The following plugins are installed:"
 msgstr "Установлены следующие модули:"
 
-#: src/preferencesdialog.cpp:599
+#: src/preferencesdialog.cpp:592
 msgid "_Enable"
 msgstr "_Включить"
 
-#: src/preferencesdialog.cpp:604
+#: src/preferencesdialog.cpp:597
 msgid "_Disable"
 msgstr "От_ключить"
 
-#: src/preferencesdialog.cpp:614
+#: src/preferencesdialog.cpp:607
 msgid "In_formation"
 msgstr "_Информация"
 
-#: src/preferencesdialog.cpp:755
+#: src/preferencesdialog.cpp:748
 msgid "Not Implemented"
 msgstr "Не реализовано"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:772
+#: src/preferencesdialog.cpp:765
 msgid "%1 Preferences"
 msgstr "Параметры %1"
 
-#: src/preferencesdialog.cpp:868
+#: src/preferencesdialog.cpp:861
 msgid "Choose Note Font"
 msgstr "Выбрать шрифт заметки"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:961
+#: src/preferencesdialog.cpp:954
 msgid "Other Synchronization Options"
 msgstr "Другие параметры синхронизации"
 
-#: src/preferencesdialog.cpp:964
+#: src/preferencesdialog.cpp:957
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2130,23 +2144,23 @@ msgstr ""
 "При возникновении конфликтов между локальной заметкой и заметкой на сервере "
 "синхронизации:"
 
-#: src/preferencesdialog.cpp:968
+#: src/preferencesdialog.cpp:961
 msgid "Always ask me what to do"
 msgstr "Всегда спрашивать меня, что делать"
 
-#: src/preferencesdialog.cpp:969
+#: src/preferencesdialog.cpp:962
 msgid "Rename my local note"
 msgstr "Переименовывать локальную заметку"
 
-#: src/preferencesdialog.cpp:971
+#: src/preferencesdialog.cpp:964
 msgid "Replace my local note with the server's update"
 msgstr "Заменять локальную заметку заметкой с сервера"
 
-#: src/preferencesdialog.cpp:1089
+#: src/preferencesdialog.cpp:1085
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-#: src/preferencesdialog.cpp:1090
+#: src/preferencesdialog.cpp:1086
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2154,11 +2168,11 @@ msgstr ""
 "Не рекомендуется очищать параметры синхронизации. Возможно, вам потребуется "
 "снова синхронизировать все заметки, когда вы сохраните новые параметры."
 
-#: src/preferencesdialog.cpp:1101
+#: src/preferencesdialog.cpp:1097
 msgid "Resetting Synchronization Settings"
 msgstr "Установка новых параметров синхронизации"
 
-#: src/preferencesdialog.cpp:1102
+#: src/preferencesdialog.cpp:1098
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2168,18 +2182,18 @@ msgstr ""
 "будут очищены.  Возможно, вам снова придется синхронизировать все свои "
 "заметки при сохранении новых настроек."
 
-#: src/preferencesdialog.cpp:1164
+#: src/preferencesdialog.cpp:1160
 msgid "Connection successful"
 msgstr "Подключение установлено"
 
-#: src/preferencesdialog.cpp:1165
+#: src/preferencesdialog.cpp:1161
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote готов к синхронизации заметок. Выполнить синхронизацию сейчас?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1191
+#: src/preferencesdialog.cpp:1187
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2187,19 +2201,19 @@ msgstr ""
 "Проверьте информацию и попробуйте ещё раз.  Файл журнала %1 может содержать "
 "дополнительную информацию об ошибке."
 
-#: src/preferencesdialog.cpp:1196
+#: src/preferencesdialog.cpp:1192
 msgid "Error connecting"
 msgstr "Ошибка подключения"
 
-#: src/preferencesdialog.cpp:1259
+#: src/preferencesdialog.cpp:1256
 msgid "Version:"
 msgstr "Версия:"
 
-#: src/preferencesdialog.cpp:1262
+#: src/preferencesdialog.cpp:1259
 msgid "Author:"
 msgstr "Автор:"
 
-#: src/preferencesdialog.cpp:1266
+#: src/preferencesdialog.cpp:1263
 msgid "Copyright:"
 msgstr "Авторские права:"
 
@@ -2226,16 +2240,16 @@ msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент поиска не Gtk::Grid. Пожалуйста, сообщите об ошибке!"
 
-#: src/recentchanges.cpp:737
+#: src/recentchanges.cpp:738
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Попытка вывести на передний план виджет, не встроенный в окно"
 
-#: src/recentchanges.cpp:744
+#: src/recentchanges.cpp:745
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Попытка вывести на передний план виджет, который не является Gtk::Widget"
 
-#: src/recentchanges.cpp:944
+#: src/recentchanges.cpp:945
 msgid "No configured actions"
 msgstr "Нет изменяемых параметров"
 
@@ -2245,26 +2259,26 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr "Не удалось загрузить интерфейс D-Bus %s: %s"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:242
+#: src/searchnoteswidget.cpp:247
 msgid "Title match"
 msgstr "Совпадение названия"
 
-#: src/searchnoteswidget.cpp:246
+#: src/searchnoteswidget.cpp:251
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 совпадение"
 msgstr[1] "%1% совпадения"
 msgstr[2] "%1% совпадений"
 
-#: src/searchnoteswidget.cpp:548
+#: src/searchnoteswidget.cpp:500
 msgid "Note"
 msgstr "Заметка"
 
-#: src/searchnoteswidget.cpp:560
+#: src/searchnoteswidget.cpp:512
 msgid "Modified"
 msgstr "Изменено"
 
-#: src/searchnoteswidget.cpp:732
+#: src/searchnoteswidget.cpp:673
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2272,31 +2286,31 @@ msgstr ""
 "Нет совпадений в текущем блокноте.\n"
 "Щёлкните здесь для поиска во всех блокнотах."
 
-#: src/searchnoteswidget.cpp:736
+#: src/searchnoteswidget.cpp:677
 msgid "Click here to search across all notebooks"
 msgstr "Щёлкните для поиска во всех блокнотах"
 
-#: src/searchnoteswidget.cpp:751
+#: src/searchnoteswidget.cpp:692
 msgid "Matches"
 msgstr "Совпадения"
 
-#: src/searchnoteswidget.cpp:1003 src/searchnoteswidget.cpp:1016
-#: src/searchnoteswidget.cpp:1027
+#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
+#: src/searchnoteswidget.cpp:960
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr ""
 "Не удалось проанализировать настройку поиска-сортировки (значение: %s):"
 
-#: src/searchnoteswidget.cpp:1004
+#: src/searchnoteswidget.cpp:937
 msgid "Expected format 'column:order'"
 msgstr "Ожидаемый формат - «столбик:позиция»"
 
-#: src/searchnoteswidget.cpp:1017
+#: src/searchnoteswidget.cpp:950
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нераспознанный столбик %s"
 
-#: src/searchnoteswidget.cpp:1028
+#: src/searchnoteswidget.cpp:961
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нераспознаваемая позиция %s"
@@ -2633,29 +2647,29 @@ msgstr "Изменения загружены на сервер"
 msgid "Uploaded new note to server"
 msgstr "Новая заметка загружена на сервер"
 
-#: src/synchronization/syncmanager.cpp:58
+#: src/synchronization/syncmanager.cpp:64
 msgid "Synchronize Notes"
 msgstr "Синхронизировать заметки"
 
-#: src/synchronization/syncmanager.cpp:77
-#: src/synchronization/syncmanager.cpp:94
-#: src/synchronization/syncmanager.cpp:555
+#: src/synchronization/syncmanager.cpp:83
+#: src/synchronization/syncmanager.cpp:100
+#: src/synchronization/syncmanager.cpp:591
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Сообщить об ошибке. Ошибка при вызове: %s"
 
-#: src/synchronization/syncmanager.cpp:142
+#: src/synchronization/syncmanager.cpp:147
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Ошибка чистки после синхронизации дополнения: %s"
 
-#: src/synchronization/syncmanager.cpp:167
+#: src/synchronization/syncmanager.cpp:173
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "Исключение при создании сервера синхронизации: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:370
+#: src/synchronization/syncmanager.cpp:374
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Сбой со следующими исключениями: %s"
@@ -2714,34 +2728,34 @@ msgid "Yesterday"
 msgstr "Вчера"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:193
-#, c-format
+#: src/utils.cpp:194
+#, no-c-format
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:197
+#: src/utils.cpp:198
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:202
+#: src/utils.cpp:203
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:213
+#: src/utils.cpp:214
 msgid "No Date"
 msgstr "Без даты"
 
-#: src/utils.cpp:316 src/utils.cpp:330
+#: src/utils.cpp:319 src/utils.cpp:333
 msgid "_OK"
 msgstr "_ОК"
 
-#: src/utils.cpp:325
+#: src/utils.cpp:328
 msgid "_No"
 msgstr "_Нет"
 
-#: src/utils.cpp:326
+#: src/utils.cpp:329
 msgid "_Yes"
 msgstr "_Да"
 
@@ -2766,6 +2780,14 @@ msgstr "Название уже используется"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Проверка офрографии"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to next tab"
+#~ msgstr "Перейти на следующую вкладку"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to previous tab"
+#~ msgstr "Перейти на предыдущую вкладку"
 
 #~ msgid "Luc Pionchon"
 #~ msgstr "Luc Pionchon"
