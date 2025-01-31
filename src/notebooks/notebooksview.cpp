@@ -201,7 +201,9 @@ namespace gnote {
       , m_note_manager(manager)
       , m_list(make_selection_model(model))
     {
-      m_list.append_column(Gtk::ColumnViewColumn::create(_("Notebook"), NotebookFactory::create()));
+      auto column = Gtk::ColumnViewColumn::create(_("Notebook"), NotebookFactory::create());
+      column->set_expand(true);
+      m_list.append_column(column);
 
       m_new_button.set_icon_name("list-add-symbolic");
       m_new_button.set_tooltip_text(_("New Notebook"));
