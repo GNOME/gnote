@@ -84,6 +84,7 @@ namespace fixedwidth {
 
   void FixedWidthNoteAddin::on_note_foregrounded()
   {
+    m_menu_item_cid.disconnect();  // just in caes, don't subscribe twice
     m_menu_item_cid = get_window()->host()->find_action("fixedwidth-enable")->signal_change_state()
       .connect(sigc::mem_fun(*this, &FixedWidthNoteAddin::on_menu_item_state_changed));
   }
