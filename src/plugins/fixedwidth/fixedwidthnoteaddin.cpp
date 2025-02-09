@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016,2023 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016,2023,2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2006 Ryan Lortie <desrt@desrt.ca>
@@ -52,7 +52,7 @@ namespace fixedwidth {
     // If a tag of this name already exists, don't install.
     auto tag_table = get_note().get_tag_table();
     if(!tag_table->lookup("monospace")) {
-      auto tag = std::make_shared<FixedWidthTag>();
+      auto tag = Glib::make_refptr_for_instance(new FixedWidthTag);
       m_tag = tag;
       tag_table->add(std::move(tag));
   }
