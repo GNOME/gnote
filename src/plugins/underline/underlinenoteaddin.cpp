@@ -79,6 +79,7 @@ namespace underline {
 
   void UnderlineNoteAddin::on_note_foregrounded()
   {
+    m_on_underline_clicked_cid.disconnect(); // just in case, prevent subscribing twice
     m_on_underline_clicked_cid = get_window()->host()->find_action("underline-enable")->signal_change_state()
       .connect(sigc::mem_fun(*this, &UnderlineNoteAddin::on_underline_clicked));
   }
