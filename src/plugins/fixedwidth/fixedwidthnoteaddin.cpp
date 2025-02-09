@@ -72,10 +72,6 @@ namespace fixedwidth {
   void FixedWidthNoteAddin::on_note_opened()
   {
     gnote::NoteWindow *note_window = get_window();
-    note_window->signal_foregrounded.connect(
-      sigc::mem_fun(*this, &FixedWidthNoteAddin::on_note_foregrounded));
-    note_window->signal_backgrounded.connect(
-      sigc::mem_fun(*this, &FixedWidthNoteAddin::on_note_backgrounded));
     note_window->signal_build_text_menu
       .connect(sigc::mem_fun(*this, &FixedWidthNoteAddin::add_menu_item));
 

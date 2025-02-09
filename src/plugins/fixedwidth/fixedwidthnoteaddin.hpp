@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016,2019,2023 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016,2019,2023,2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2006 Ryan Lortie <desrt@desrt.ca>
@@ -60,8 +60,8 @@ namespace fixedwidth {
     virtual void shutdown() override;
     virtual void on_note_opened() override;
   private:
-    void on_note_foregrounded();
-    void on_note_backgrounded();
+    void on_note_foregrounded() override;
+    void on_note_backgrounded() override;
     void on_menu_item_state_changed(const Glib::VariantBase & state);
     void add_menu_item(gnote::NoteTextMenu & menu);
 
