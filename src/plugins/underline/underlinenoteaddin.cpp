@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016,2023 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016,2023,2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2009 Mark Wakim <markwakim@gmail.com>
@@ -68,10 +68,6 @@ namespace underline {
   void UnderlineNoteAddin::on_note_opened()
   {
     gnote::NoteWindow *note_window = get_window();
-    note_window->signal_foregrounded.connect(
-      sigc::mem_fun(*this, &UnderlineNoteAddin::on_note_foregrounded));
-    note_window->signal_backgrounded.connect(
-      sigc::mem_fun(*this, &UnderlineNoteAddin::on_note_backgrounded));
     note_window->signal_build_text_menu
       .connect(sigc::mem_fun(*this, &UnderlineNoteAddin::add_menu_item));
 

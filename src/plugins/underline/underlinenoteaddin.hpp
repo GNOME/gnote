@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2016,2019,2023 Aurimas Cernius
+ * Copyright (C) 2010,2013,2016,2019,2023,2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * Original C# file
  * (C) 2009 Mark Wakim <markwakim@gmail.com>
@@ -56,8 +56,8 @@ namespace underline {
     virtual void shutdown() override;
     virtual void on_note_opened() override;
   private:
-    void on_note_foregrounded();
-    void on_note_backgrounded();
+    void on_note_foregrounded() override;
+    void on_note_backgrounded() override;
     void add_menu_item(gnote::NoteTextMenu & menu);
     void on_underline_clicked(const Glib::VariantBase & state);
     void on_underline_pressed();
