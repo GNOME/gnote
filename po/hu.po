@@ -1,5 +1,5 @@
 # Hungarian translation for gnote.
-# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2025 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnote package.
 #
 # Gabor Torok <gabo at linuxportal dot hu>, 2004.
@@ -8,21 +8,21 @@
 # Balint Laza <laza at szentkoronaradio dot com>, 2008.
 # István Nyitrai <sianis at gmail dot com>, 2009.
 # Lukács Bence <lukacs.bence1 at gmail dot com>, 2012.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2025.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2022-07-31 19:42+0000\n"
-"PO-Revision-Date: 2022-08-30 01:18+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
+"POT-Creation-Date: 2025-02-13 01:47+0000\n"
+"PO-Revision-Date: 2025-03-04 07:16+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -540,7 +540,6 @@ msgid "Show help"
 msgstr "Súgó megjelenítése"
 
 #: data/shortcuts-gnote.ui:25
-#| msgid "_Shortcuts"
 msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
@@ -567,8 +566,6 @@ msgid "Go to next tab"
 msgstr "Ugrás a következő lapra"
 
 #: data/shortcuts-gnote.ui:60
-#| msgctxt "shortcut window"
-#| msgid "Select previous match"
 msgctxt "shortcut window"
 msgid "Go to previous tab"
 msgstr "Ugrás az előző lapra"
@@ -1867,8 +1864,9 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"Átnevezi a hivatkozásokat más jegyzetekben erről: „<span underline=\"single"
-"\">%1</span>” erre: „<span underline=\"single\">%2</span>”?\n"
+"Átnevezi a hivatkozásokat más jegyzetekben erről: „<span "
+"underline=\"single\">%1</span>” erre: „<span underline=\"single\">%2</"
+"span>”?\n"
 "\n"
 "Ha nem nevezi át a hivatkozásokat, akkor azok nem fognak semmire sem "
 "hivatkozni."
@@ -2785,8 +2783,10 @@ msgstr "Holnap"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:189
+#, c-format
+#| msgid "%b %d"
 msgid "%b %d"
-msgstr "%b. %e."
+msgstr "%b. %-d."
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
 #: src/utils.cpp:192 src/utils.cpp:201
@@ -2838,3 +2838,4 @@ msgstr "Hivatkozás cí_mének másolása"
 #: src/watchers.cpp:711
 msgid "_Open Link"
 msgstr "_Hivatkozás megnyitása"
+
