@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2024 Aurimas Cernius
+ * Copyright (C) 2010-2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -272,16 +272,6 @@ namespace gnote {
 
   void NoteRecentChanges::make_header_bar()
   {
-    Gtk::Grid *left_box = manage(new Gtk::Grid);
-    left_box->set_orientation(Gtk::Orientation::HORIZONTAL);
-    left_box->set_valign(Gtk::Align::CENTER);
-
-    auto new_note_button = manage(new Gtk::Button);
-    new_note_button->set_image_from_icon_name("list-add-symbolic");
-    new_note_button->set_tooltip_text(_("Create New Note"));
-    new_note_button->signal_clicked().connect(sigc::mem_fun(*m_search_notes_widget, &SearchNotesWidget::new_note));
-    left_box->attach(*new_note_button, 0, 0, 1, 1);
-
     m_embedded_toolbar.set_margin_start(6);
     m_embedded_toolbar.set_halign(Gtk::Align::START);
     m_embedded_toolbar.set_valign(Gtk::Align::CENTER);
@@ -322,7 +312,6 @@ namespace gnote {
 
     if(use_client_side_decorations(m_preferences)) {
       Gtk::HeaderBar *header_bar = manage(new Gtk::HeaderBar);
-      header_bar->pack_start(*left_box);
       header_bar->pack_end(*right_box);
       header_bar->pack_end(m_embedded_toolbar);
       m_header_bar = header_bar;
@@ -333,8 +322,6 @@ namespace gnote {
       header_bar->set_margin_end(5);
       header_bar->set_margin_top(5);
       header_bar->set_margin_bottom(5);
-      header_bar->attach(*left_box, 0, 0, 1, 1);
-      left_box->set_hexpand(true);
       header_bar->attach(m_embedded_toolbar, 2, 0, 1, 1);
       header_bar->attach(*right_box, 3, 0, 1, 1);
       m_header_bar = header_bar;
