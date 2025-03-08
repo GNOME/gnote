@@ -139,6 +139,7 @@ private:
   Glib::RefPtr<Gtk::EventControllerKey> m_notes_widget_key_ctrl;
   RecentSearchColumnTypes m_find_combo_columns;
   Gtk::Box m_notes_pane;
+  Gtk::Button m_delete_note_button;
   Gtk::ScrolledWindow m_matches_window;
   std::shared_ptr<Gtk::Grid> m_no_matches_box;
   notebooks::NotebooksView *m_notebooks_view;

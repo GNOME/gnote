@@ -285,7 +285,12 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   new_note_button->set_tooltip_text(_("New Note"));
   new_note_button->set_has_frame(false);
   new_note_button->signal_clicked().connect(sigc::mem_fun(*this, &SearchNotesWidget::new_note));
+  m_delete_note_button.set_icon_name("edit-delete-symbolic");
+  m_delete_note_button.set_tooltip_text(_("Delete Note"));
+  m_delete_note_button.set_has_frame(false);
+  m_delete_note_button.signal_clicked().connect(sigc::mem_fun(*this, &SearchNotesWidget::delete_selected_notes));
   actions->append(*new_note_button);
+  actions->append(m_delete_note_button);
   m_notes_pane.append(*actions);
   set_end_child(m_notes_pane);
 
@@ -608,6 +613,7 @@ void SearchNotesWidget::on_selection_changed(guint, guint)
     }
     if(auto action = win->find_action("delete-selected-notes")) {
       action->set_enabled(enabled);
+      m_delete_note_button.set_sensitive(enabled);
     }
   }
 }
