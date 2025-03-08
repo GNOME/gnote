@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -138,6 +138,7 @@ private:
 
   Glib::RefPtr<Gtk::EventControllerKey> m_notes_widget_key_ctrl;
   RecentSearchColumnTypes m_find_combo_columns;
+  Gtk::Box m_notes_pane;
   Gtk::ScrolledWindow m_matches_window;
   std::shared_ptr<Gtk::Grid> m_no_matches_box;
   notebooks::NotebooksView *m_notebooks_view;

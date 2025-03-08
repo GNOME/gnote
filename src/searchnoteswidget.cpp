@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -262,7 +262,8 @@ private:
 
 
 SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
-  : m_gnote(g)
+  : m_notes_pane(Gtk::Orientation::VERTICAL)
+  , m_gnote(g)
   , m_manager(m)
   , m_clickX(0), m_clickY(0)
   , m_matches_column(NULL)
@@ -277,13 +278,24 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
 
   set_position(150);
   set_start_child(*notebooksPane);
-  set_end_child(m_matches_window);
+  m_notes_pane.append(m_matches_window);
+  auto actions = Gtk::make_managed<Gtk::Box>();
+  auto new_note_button = Gtk::make_managed<Gtk::Button>();
+  new_note_button->set_icon_name("list-add-symbolic");
+  new_note_button->set_tooltip_text(_("New Note"));
+  new_note_button->set_has_frame(false);
+  new_note_button->signal_clicked().connect(sigc::mem_fun(*this, &SearchNotesWidget::new_note));
+  actions->append(*new_note_button);
+  m_notes_pane.append(*actions);
+  set_end_child(m_notes_pane);
 
   make_recent_notes_view();
 
   m_matches_window.property_hscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   m_matches_window.property_vscrollbar_policy() = Gtk::PolicyType::AUTOMATIC;
   m_matches_window.set_child(*m_notes_view);
+  m_matches_window.set_expand(true);
+
 
   // Update on changes to notes
   m.signal_note_deleted.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_deleted));
@@ -381,7 +393,7 @@ void SearchNotesWidget::perform_search()
 void SearchNotesWidget::restore_matches_window()
 {
   if(m_no_matches_box && get_end_child() == m_no_matches_box.get()) {
-    set_end_child(m_matches_window);
+    set_end_child(m_notes_pane);
   }
 }
 
