@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-01-13 00:06+0000\n"
-"PO-Revision-Date: 2025-01-14 13:19+0800\n"
+"POT-Creation-Date: 2025-03-08 21:27+0000\n"
+"PO-Revision-Date: 2025-03-09 11:36+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -995,7 +995,7 @@ msgstr "等宽"
 msgid "Adds fixed-width font style."
 msgstr "添加等宽字体样式。"
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
 msgid "Fixed Wid_th"
 msgstr "等宽(_T)"
 
@@ -1517,6 +1517,7 @@ msgid "%1 Notebook Template"
 msgstr "%1 便笺本模板"
 
 #: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
+#: src/searchnoteswidget.cpp:285
 msgid "New Note"
 msgstr "新建便笺"
 
@@ -1545,19 +1546,19 @@ msgstr "新建便笺本(_N)..."
 msgid "No notebook"
 msgstr "没有便笺本"
 
-#: src/notebooks/notebooksview.cpp:207
+#: src/notebooks/notebooksview.cpp:209
 msgid "New Notebook"
 msgstr "新建便笺本"
 
-#: src/notebooks/notebooksview.cpp:211
+#: src/notebooks/notebooksview.cpp:213
 msgid "Rename Notebook"
 msgstr "重命名便笺本"
 
-#: src/notebooks/notebooksview.cpp:216
+#: src/notebooks/notebooksview.cpp:218
 msgid "Open Template Note"
 msgstr "打开模板便笺"
 
-#: src/notebooks/notebooksview.cpp:220
+#: src/notebooks/notebooksview.cpp:222
 msgid "Delete Notebook"
 msgstr "删除便笺本"
 
@@ -2118,31 +2119,27 @@ msgstr "版权所有："
 msgid "Close"
 msgstr "关闭"
 
-#: src/recentchanges.cpp:281
-msgid "Create New Note"
-msgstr "创建新便笺"
-
-#: src/recentchanges.cpp:304
+#: src/recentchanges.cpp:294
 msgid "Search"
 msgstr "搜索"
 
-#: src/recentchanges.cpp:382
+#: src/recentchanges.cpp:369
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "embed box 的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:407
+#: src/recentchanges.cpp:394
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "搜索条目的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:725
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "尝试前置一个未内嵌在窗口中的部件"
 
-#: src/recentchanges.cpp:745
+#: src/recentchanges.cpp:732
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "尝试前置一个不是 Gtk::Widget 的部件"
 
-#: src/recentchanges.cpp:945
+#: src/recentchanges.cpp:932
 msgid "No configured actions"
 msgstr "未配置操作"
 
@@ -2161,15 +2158,19 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 个匹配项"
 
-#: src/searchnoteswidget.cpp:500
+#: src/searchnoteswidget.cpp:289
+msgid "Delete Note"
+msgstr "删除笔记"
+
+#: src/searchnoteswidget.cpp:517
 msgid "Note"
 msgstr "便笺"
 
-#: src/searchnoteswidget.cpp:512
+#: src/searchnoteswidget.cpp:529
 msgid "Modified"
 msgstr "已修改"
 
-#: src/searchnoteswidget.cpp:673
+#: src/searchnoteswidget.cpp:691
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2177,30 +2178,30 @@ msgstr ""
 "在选定的便笺本中未发现结果。\n"
 "点击此处搜索全部便笺。"
 
-#: src/searchnoteswidget.cpp:677
+#: src/searchnoteswidget.cpp:695
 msgid "Click here to search across all notebooks"
 msgstr "点击此处搜索全部便笺本"
 
-#: src/searchnoteswidget.cpp:692
+#: src/searchnoteswidget.cpp:710
 msgid "Matches"
 msgstr "匹配项"
 
-#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
-#: src/searchnoteswidget.cpp:960
+#: src/searchnoteswidget.cpp:954 src/searchnoteswidget.cpp:967
+#: src/searchnoteswidget.cpp:978
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "解析搜索排序设置失败（值：%s）："
 
-#: src/searchnoteswidget.cpp:937
+#: src/searchnoteswidget.cpp:955
 msgid "Expected format 'column:order'"
 msgstr "期望的格式“column:order”"
 
-#: src/searchnoteswidget.cpp:950
+#: src/searchnoteswidget.cpp:968
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "未识别的列 %s"
 
-#: src/searchnoteswidget.cpp:961
+#: src/searchnoteswidget.cpp:979
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "不可识别的排序 %s"
@@ -2656,6 +2657,9 @@ msgstr "便笺标题已被使用"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "检查拼写"
+
+#~ msgid "Create New Note"
+#~ msgstr "创建新便笺"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Go to next tab"
