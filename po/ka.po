@@ -1,14 +1,14 @@
 # Georgian translation for gnote.
-# Copyright (C) 2024 gnote's COPYRIGHT HOLDER
+# Copyright (C) 2024 gnote's authors
 # This file is distributed under the same license as the gnote package.
-# Ekaterine Papava <papava.e@gtu.ge>, 2024.
+# Ekaterine Papava <papava.e@gtu.ge>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2024-03-23 19:11+0000\n"
-"PO-Revision-Date: 2024-03-24 06:00+0100\n"
+"POT-Creation-Date: 2025-03-08 21:27+0000\n"
+"PO-Revision-Date: 2025-03-09 04:40+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
@@ -136,124 +136,144 @@ msgid ""
 msgstr ""
 
 #: data/org.gnome.gnote.gschema.xml:46
+msgid "Background color for the highlighted text"
+msgstr ""
+
+#: data/org.gnome.gnote.gschema.xml:47
+msgid ""
+"When text is highlighted, use this color for background. A string "
+"gdk_rgba_parse() accepts."
+msgstr ""
+
+#: data/org.gnome.gnote.gschema.xml:51
+msgid "Color for the highlighted text"
+msgstr ""
+
+#: data/org.gnome.gnote.gschema.xml:52
+msgid ""
+"When text is highlighted, use this color for text. A string gdk_rgba_parse() "
+"accepts."
+msgstr ""
+
+#: data/org.gnome.gnote.gschema.xml:56
 msgid "Start Here Note"
 msgstr "დაიწყეთ შენიშვნის წერა აქ"
 
-#: data/org.gnome.gnote.gschema.xml:47
+#: data/org.gnome.gnote.gschema.xml:57
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
 "accessible by hotkey."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:51
+#: data/org.gnome.gnote.gschema.xml:61
 msgid "Minimum number of notes to show in menu"
 msgstr "მენიუში ნაჩვენები შენიშვნების მინიმალური რაოდენობა"
 
-#: data/org.gnome.gnote.gschema.xml:52
+#: data/org.gnome.gnote.gschema.xml:62
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:56
+#: data/org.gnome.gnote.gschema.xml:66
 msgid "List of pinned notes"
 msgstr "მიმაგრებული შენიშვნების სია"
 
-#: data/org.gnome.gnote.gschema.xml:57
+#: data/org.gnome.gnote.gschema.xml:67
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:61
+#: data/org.gnome.gnote.gschema.xml:71
 msgid "Is main window maximized"
 msgstr "არის თუ არა მთავარი ფანჯარა მთელ ეკრანზე"
 
-#: data/org.gnome.gnote.gschema.xml:62
+#: data/org.gnome.gnote.gschema.xml:72
 msgid "If true, Gnote window will be maximized."
 msgstr "თუ ჭეშმარიტია, Gnote-ის ფანჯარა მთელ ეკრანზე იქნება გაშლილი."
 
-#: data/org.gnome.gnote.gschema.xml:66
+#: data/org.gnome.gnote.gschema.xml:76
 msgid "Saved height of Search window"
 msgstr "ძებნის ფანჯრის შენახული სიმაღლე"
 
-#: data/org.gnome.gnote.gschema.xml:67
+#: data/org.gnome.gnote.gschema.xml:77
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:71
+#: data/org.gnome.gnote.gschema.xml:81
 msgid "Saved width of Search window"
 msgstr "ძებნის ფანჯრის შენახული სიგანე"
 
-#: data/org.gnome.gnote.gschema.xml:72
+#: data/org.gnome.gnote.gschema.xml:82
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:76
+#: data/org.gnome.gnote.gschema.xml:86
 msgid "Saved splitter position of Search window splitter."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:77
+#: data/org.gnome.gnote.gschema.xml:87
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:81
+#: data/org.gnome.gnote.gschema.xml:91
 msgid "Saved sorting of the Search window."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:82
+#: data/org.gnome.gnote.gschema.xml:92
 msgid "Determines Search window initial sorting."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:86
+#: data/org.gnome.gnote.gschema.xml:96
 msgid "FUSE Mounting Timeout (ms)"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:87
+#: data/org.gnome.gnote.gschema.xml:97
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:91
+#: data/org.gnome.gnote.gschema.xml:101
 msgid "SSHFS Remote Synchronization Folder"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:92
+#: data/org.gnome.gnote.gschema.xml:102
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:96
+#: data/org.gnome.gnote.gschema.xml:106
 msgid "SSHFS Synchronization Server URL"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:97
+#: data/org.gnome.gnote.gschema.xml:107
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:101
+#: data/org.gnome.gnote.gschema.xml:111
 msgid "SSHFS Remote Synchronization User Name"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:102
+#: data/org.gnome.gnote.gschema.xml:112
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:106
+#: data/org.gnome.gnote.gschema.xml:116
 msgid "SSHFS Synchronization Server Port"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:107
+#: data/org.gnome.gnote.gschema.xml:117
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:111
+#: data/org.gnome.gnote.gschema.xml:121
 msgid "Link Updating Behavior on Note Rename"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:112
+#: data/org.gnome.gnote.gschema.xml:122
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -264,32 +284,32 @@ msgid ""
 "will continue linking to the renamed note."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:116 data/org.gnome.gnote.gschema.xml:126
-#: data/org.gnome.gnote.gschema.xml:131
+#: data/org.gnome.gnote.gschema.xml:126 data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:141
 msgid "Deprecated"
 msgstr "მოძველებულია"
 
-#: data/org.gnome.gnote.gschema.xml:117 data/org.gnome.gnote.gschema.xml:132
+#: data/org.gnome.gnote.gschema.xml:127 data/org.gnome.gnote.gschema.xml:142
 msgid "This key is deprecated and its value is ignored."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:121
+#: data/org.gnome.gnote.gschema.xml:131
 msgid "Use status icon, when started as an application"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:122
+#: data/org.gnome.gnote.gschema.xml:132
 msgid "Deprecated, has no effect."
 msgstr "მოძველებულია. ეფექტი არ აქვს."
 
-#: data/org.gnome.gnote.gschema.xml:127
+#: data/org.gnome.gnote.gschema.xml:137
 msgid "This setting is deprecated and its value is ignored"
 msgstr "ეს პარამეტრი მოძველებულია და მისი მნიშვნელობა გამოტოვებულია"
 
-#: data/org.gnome.gnote.gschema.xml:136
+#: data/org.gnome.gnote.gschema.xml:146
 msgid "Use client side window decorations"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:137
+#: data/org.gnome.gnote.gschema.xml:147
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
 "Possible values are 'enabled' to draw them, 'disabled' to leave them to "
@@ -297,40 +317,40 @@ msgid ""
 "Gnote should draw decorations itself. Requires application restart."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:151
 msgid "Preferred color scheme to use"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:142
+#: data/org.gnome.gnote.gschema.xml:152
 msgid ""
 "The theme variant to use. Possible values are empty string to follow the "
 "system, 'dark' and 'light'."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:153
+#: data/org.gnome.gnote.gschema.xml:163
 msgid "HTML Export Last Directory"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:154
+#: data/org.gnome.gnote.gschema.xml:164
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:158
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Linked Notes"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:159
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export All Linked Notes"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -338,41 +358,41 @@ msgid ""
 "recursively) should be included during an export to HTML."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:170
+#: data/org.gnome.gnote.gschema.xml:180
 msgid "Synchronization Client ID"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:171
+#: data/org.gnome.gnote.gschema.xml:181
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:175
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Local Server Path"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:176
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Selected Synchronization Service Addin"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -381,11 +401,11 @@ msgid ""
 "conflict situation on a case-by-case basis."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Automatic Background Synchronization Timeout"
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -393,55 +413,55 @@ msgid ""
 "minutes."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:198
+#: data/org.gnome.gnote.gschema.xml:208
 msgid "Online directory URI"
 msgstr "ინტერნეტ-კატალოგის URI"
 
-#: data/org.gnome.gnote.gschema.xml:199
+#: data/org.gnome.gnote.gschema.xml:209
 msgid "URI to online directory where notes are synchronized to."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:215
 msgid "Accept SSL Certificates"
 msgstr "SSL სერტიფიკატების მიღება"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:216
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:210
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Share URL"
 msgstr "გაზიარების ბმული"
 
-#: data/org.gnome.gnote.gschema.xml:211
+#: data/org.gnome.gnote.gschema.xml:221
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share username"
 msgstr "გაზიარების მომხმარებლის სახელი"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "Username to access WebDAV share."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:222
+#: data/org.gnome.gnote.gschema.xml:232
 msgid "Timestamp format"
 msgstr "დროის შტამპის ფორმატი"
 
-#: data/org.gnome.gnote.gschema.xml:223
+#: data/org.gnome.gnote.gschema.xml:233
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 
-#: data/org.gnome.gnote.gschema.xml:229
+#: data/org.gnome.gnote.gschema.xml:239
 msgid "Time between checks"
 msgstr "დრო შემოწმებებს შორის"
 
-#: data/org.gnome.gnote.gschema.xml:230
+#: data/org.gnome.gnote.gschema.xml:240
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -451,7 +471,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "მთავარი ფანჯარა"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:136
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:122
 msgctxt "shortcut window"
 msgid "General"
 msgstr "მთავარი"
@@ -466,163 +486,153 @@ msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "მალსახმობები"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:141
-#: data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:127
+#: data/shortcuts-gnote.ui:134
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "ქმედებების მენიუს გახსნა"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:169
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "ძებნის პანელის დამალვა"
 
-#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:176
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "ფანჯრის დახურვა"
 
-#: data/shortcuts-gnote.ui:53
-msgctxt "shortcut window"
-msgid "Go to next tab"
-msgstr "შემდეგი ჩანართზე გადასვლა"
-
-#: data/shortcuts-gnote.ui:60
-msgctxt "shortcut window"
-msgid "Go to previous tab"
-msgstr "წინა ჩანართზე გადასვლა"
-
-#: data/shortcuts-gnote.ui:68
+#: data/shortcuts-gnote.ui:54
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "ძებნის ზოლი"
 
-#: data/shortcuts-gnote.ui:73 data/shortcuts-gnote.ui:162
+#: data/shortcuts-gnote.ui:59 data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "ძებნის პანელის ჩვენება"
 
-#: data/shortcuts-gnote.ui:80
+#: data/shortcuts-gnote.ui:66
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "შემდეგი დამთხვევის მონიშვნა"
 
-#: data/shortcuts-gnote.ui:87
+#: data/shortcuts-gnote.ui:73
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "წინა დამთხვევის მონიშვნა"
 
-#: data/shortcuts-gnote.ui:95
+#: data/shortcuts-gnote.ui:81
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "შენიშვნების სია"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:86
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "ახალი სანიშნის შექმნა"
 
-#: data/shortcuts-gnote.ui:107
+#: data/shortcuts-gnote.ui:93
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "მონიშნული შენიშვნის გახსნა"
 
-#: data/shortcuts-gnote.ui:114
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "მონიშნული შენიშვნის გახსნა ახალ ფანჯარაში"
 
-#: data/shortcuts-gnote.ui:121
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "მონიშნული შენიშვნის წაშლა"
 
-#: data/shortcuts-gnote.ui:132
+#: data/shortcuts-gnote.ui:118
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "შენიშვნის ხედი"
 
-#: data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "შენიშვნის გახსნის ქმედებების მენიუ"
 
-#: data/shortcuts-gnote.ui:183
+#: data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Close current tab"
 msgstr "მიმდინარე ჩანართის დახურვა"
 
-#: data/shortcuts-gnote.ui:191
+#: data/shortcuts-gnote.ui:177
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "ჩასწორება"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:182
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "ბოლო ჩასწორების გაუქმება"
 
-#: data/shortcuts-gnote.ui:203
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "ბოლო ჩასწორების გამეორება"
 
-#: data/shortcuts-gnote.ui:210
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "შექმნის ბმულს შენიშვნამდე მონიშნულ ტექსტზე"
 
-#: data/shortcuts-gnote.ui:218
+#: data/shortcuts-gnote.ui:204
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "ფორმატირება"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:209
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "სქელობის გადართვა"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "კურსივის გადართვა"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "ხაზგადასმულობის გადართვა"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "გამოკვეთის გადართვა"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "ფიქსირებული სიგანის გადართვა"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "ხაზგასმის გადართვა"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "ფონტის ზომის გაზრდა"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "ფონტის ზომის შემცირება"
 
-#: data/shortcuts-gnote.ui:279
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr ""
 
-#: data/shortcuts-gnote.ui:286
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr ""
@@ -635,7 +645,7 @@ msgstr "ახალი შენიშვ_ნა"
 msgid "New _Window"
 msgstr "ახალი ფანჯარა"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:609
+#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:602
 msgid "_Preferences"
 msgstr "_მორგება"
 
@@ -768,8 +778,8 @@ msgstr "აირჩიეთ ხატულა..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:288 src/note.cpp:65 src/utils.cpp:322
-#: src/utils.cpp:329
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
+#: src/utils.cpp:332
 msgid "_Cancel"
 msgstr "&გაუქმება"
 
@@ -807,7 +817,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "ხატულის წაშლა შეუქცევადია."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:292 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:289 src/note.cpp:69
 msgid "_Delete"
 msgstr "_წაშლა"
 
@@ -873,7 +883,7 @@ msgstr ""
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:539
+#: src/preferencesdialog.cpp:531
 msgid "_Save"
 msgstr "შ_ეინახე"
 
@@ -949,7 +959,7 @@ msgstr "ფიქსირებული სიგანე"
 msgid "Adds fixed-width font style."
 msgstr ""
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
 msgid "Fixed Wid_th"
 msgstr ""
 
@@ -984,7 +994,7 @@ msgstr "URI ცარიელია"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
 msgid "URI field is empty."
-msgstr "URI-ის ველი ცარიელია"
+msgstr "URI-ის ველი ცარიელია."
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
 msgid "Online Folder"
@@ -1127,7 +1137,7 @@ msgid "Page %1 of %2"
 msgstr "გვერდი %1 %2-დან"
 
 #: src/plugins/readonly/readonly.desktop.in.in:4
-#: src/plugins/readonly/readonlynoteaddin.cpp:69
+#: src/plugins/readonly/readonlynoteaddin.cpp:67
 msgid "Read Only"
 msgstr "მხოლოდ კითხვისთვის"
 
@@ -1146,7 +1156,7 @@ msgstr "სათაურის ჩანაცვლება"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:5
 msgid "Replace title with selection."
-msgstr "სათაურის ჩანაცვლება მონიშნულით"
+msgstr "სათაურის ჩანაცვლება მონიშნულით."
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:6
 msgid "Pierre-Yves Luyten"
@@ -1224,7 +1234,7 @@ msgid "TODO"
 msgstr "განრიგის სია"
 
 #: src/plugins/todo/todo.desktop.in.in:5
-msgid "Highlight FIXME, TODO and XXX patterns in notes."
+msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
 msgstr ""
 
 #: src/plugins/todo/todo.desktop.in.in:6
@@ -1310,123 +1320,123 @@ msgstr ""
 msgid "Failed to get shortcuts window!"
 msgstr ""
 
-#: src/gnote.cpp:257
+#: src/gnote.cpp:258
 msgid "and Tomboy original authors."
 msgstr ""
 
-#: src/gnote.cpp:263
+#: src/gnote.cpp:264
 msgid "translator-credits"
 msgstr "მთარგმნელის შესახებ"
 
-#: src/gnote.cpp:272
+#: src/gnote.cpp:273
 msgid ""
-"Copyright © 2010-2024 Aurimas Cernius\n"
+"Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
 
-#: src/gnote.cpp:276
+#: src/gnote.cpp:277
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 
-#: src/gnote.cpp:278
+#: src/gnote.cpp:279
 msgid "Homepage"
 msgstr "Homepage"
 
-#: src/gnote.cpp:488
+#: src/gnote.cpp:489
 msgid "Run Gnote in background."
 msgstr ""
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:490
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr ""
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "Specify the path of the directory containing the notes."
 msgstr ""
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:491
 msgid "path"
 msgstr "ბილიკი"
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:492
 msgid "Open the search all notes window with the search text."
 msgstr ""
 
-#: src/gnote.cpp:491 src/gnote.cpp:496
+#: src/gnote.cpp:492 src/gnote.cpp:497
 msgid "text"
 msgstr "ტექსტი"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:493
 msgid "Print version information."
 msgstr "ვერსიის ინფორმაციის გამოტანა."
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "Create and display a new note, with a optional title."
 msgstr ""
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:494
 msgid "title"
 msgstr "სათაური"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "Display the existing note matching title."
 msgstr ""
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:495
 msgid "title/url"
 msgstr "სათაური/url"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:496
 msgid "Display the 'Start Here' note."
 msgstr ""
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:497
 msgid "Search and highlight text in the opened note."
 msgstr ""
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "A note taking application"
 msgstr ""
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:501
 msgid "Gnote options at launch"
 msgstr ""
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:684
+#: src/gnote.cpp:685
 msgid "Version %1"
 msgstr "ვერსია %1"
 
-#: src/noteaddin.cpp:101
+#: src/noteaddin.cpp:109
 msgid "Plugin is disposing already"
 msgstr ""
 
-#: src/noteaddin.cpp:105
+#: src/noteaddin.cpp:113
 msgid "Window is not embedded"
 msgstr ""
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:221 src/note.cpp:350
+#: src/notebase.cpp:221 src/note.cpp:354
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr ""
 
 #. write failure, but not critical
-#: src/notebase.cpp:461
+#: src/notebase.cpp:466
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr ""
 
-#: src/notebase.cpp:579
+#: src/notebase.cpp:584
 #, c-format
 msgid "Filesystem error: %s"
 msgstr ""
 
 #: src/notebooks/createnotebookdialog.cpp:38
 msgid "Create Notebook"
-msgstr ""
+msgstr "წიგნაკის შექმნა"
 
 #: src/notebooks/createnotebookdialog.cpp:43
 msgid "N_otebook name:"
@@ -1451,51 +1461,52 @@ msgstr ""
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:104
+#: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr ""
 
-#: src/notebooks/notebook.cpp:180 src/notemanagerbase.cpp:282
+#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
+#: src/searchnoteswidget.cpp:285
 msgid "New Note"
 msgstr "ახალი ჩანაწერი"
 
-#: src/notebooks/notebookmanager.cpp:282
+#: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
 msgstr ""
 
-#: src/notebooks/notebookmanager.cpp:283
+#: src/notebooks/notebookmanager.cpp:280
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
 msgstr ""
 
-#: src/notebooks/notebooknoteaddin.cpp:109
+#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:204
 msgid "Notebook"
 msgstr "ნოუთბუქი"
 
 #. Add new notebook item
-#: src/notebooks/notebooknoteaddin.cpp:144
+#: src/notebooks/notebooknoteaddin.cpp:139
 msgid "_New notebook..."
 msgstr ""
 
 #. Add the "(no notebook)" item at the top of the list
-#: src/notebooks/notebooknoteaddin.cpp:148
+#: src/notebooks/notebooknoteaddin.cpp:143
 msgid "No notebook"
 msgstr ""
 
-#: src/notebooks/notebooksview.cpp:205
-msgid "New Notebook"
-msgstr ""
-
 #: src/notebooks/notebooksview.cpp:209
+msgid "New Notebook"
+msgstr "ახალი წიგნაკი"
+
+#: src/notebooks/notebooksview.cpp:213
 msgid "Rename Notebook"
 msgstr ""
 
-#: src/notebooks/notebooksview.cpp:214
+#: src/notebooks/notebooksview.cpp:218
 msgid "Open Template Note"
 msgstr ""
 
-#: src/notebooks/notebooksview.cpp:218
+#: src/notebooks/notebooksview.cpp:222
 msgid "Delete Notebook"
 msgstr "წიგნაკის წაშლა"
 
@@ -1551,7 +1562,7 @@ msgid ""
 "share/gnote. Error details can be found in ~/.gnote.log."
 msgstr ""
 
-#: src/note.cpp:652
+#: src/note.cpp:625
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 
@@ -1565,7 +1576,7 @@ msgstr ""
 msgid "Describe your new note here."
 msgstr ""
 
-#: src/notemanager.cpp:115
+#: src/notemanager.cpp:116
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1587,7 +1598,7 @@ msgid ""
 "to open the note.</note-content>"
 msgstr ""
 
-#: src/notemanager.cpp:134
+#: src/notemanager.cpp:135
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1604,31 +1615,31 @@ msgid ""
 msgstr ""
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:149 src/notemanager.cpp:184
+#: src/notemanager.cpp:150 src/notemanager.cpp:185
 msgid "Start Here"
 msgstr "დაიწყე აქ"
 
-#: src/notemanager.cpp:153
+#: src/notemanager.cpp:154
 msgid "Using Links in Gnote"
 msgstr ""
 
-#: src/notemanager.cpp:157
+#: src/notemanager.cpp:158
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr ""
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:172
+#: src/notemanager.cpp:173
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr ""
 
-#: src/notemanager.cpp:383
+#: src/notemanager.cpp:384
 #, c-format
 msgid "Error while saving: %s"
 msgstr "შეცდომა შენახვისას: %s"
 
-#: src/notemanager.cpp:388
+#: src/notemanager.cpp:389
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr ""
@@ -1729,27 +1740,27 @@ msgstr ""
 msgid "Save _Title"
 msgstr "სა_თაურის შენახვა"
 
-#: src/notewindow.cpp:488 src/notewindow.cpp:598
+#: src/notewindow.cpp:492 src/notewindow.cpp:602
 msgid "Cannot create note"
 msgstr "შენიშვნის შექმნა შეუძლებელია"
 
-#: src/notewindow.cpp:958
+#: src/notewindow.cpp:980
 msgid "_Highlight"
 msgstr "_მარკერი"
 
-#: src/notewindow.cpp:962
+#: src/notewindow.cpp:984
 msgid "_Normal"
 msgstr "_ნორმალური"
 
-#: src/notewindow.cpp:963
+#: src/notewindow.cpp:985
 msgid "S_mall"
 msgstr "_პატარა"
 
-#: src/notewindow.cpp:964
+#: src/notewindow.cpp:986
 msgid "_Large"
 msgstr "_დიდი"
 
-#: src/notewindow.cpp:965
+#: src/notewindow.cpp:987
 msgid "Hu_ge"
 msgstr "_უზარმაზარი"
 
@@ -1775,9 +1786,9 @@ msgid "Plugins"
 msgstr "დამატებები"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:775
-#: src/preferencesdialog.cpp:1012 src/preferencesdialog.cpp:1219
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:319
+#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
+#: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
 msgid "_Close"
 msgstr "_დახურვა"
 
@@ -1892,126 +1903,126 @@ msgstr ""
 msgid "Ser_vice:"
 msgstr "სერ_ვისი:"
 
-#: src/preferencesdialog.cpp:501
+#: src/preferencesdialog.cpp:493
 msgid "Automatic background s_ync interval (minutes)"
 msgstr ""
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:523
+#: src/preferencesdialog.cpp:515
 msgid "_Advanced..."
 msgstr "დ_ამატებითი..."
 
-#: src/preferencesdialog.cpp:528
+#: src/preferencesdialog.cpp:520
 msgid "Clear"
 msgstr "გაწმენდა"
 
-#: src/preferencesdialog.cpp:555 src/preferencesdialog.cpp:1033
+#: src/preferencesdialog.cpp:548 src/preferencesdialog.cpp:1026
 msgid "Not configurable"
 msgstr "მორგებადი არაა"
 
-#: src/preferencesdialog.cpp:575
+#: src/preferencesdialog.cpp:568
 msgid "The following plugins are installed:"
 msgstr "დაყენებულია შემდეგი დამატებები:"
 
-#: src/preferencesdialog.cpp:599
+#: src/preferencesdialog.cpp:592
 msgid "_Enable"
 msgstr "_ჩართვა"
 
-#: src/preferencesdialog.cpp:604
+#: src/preferencesdialog.cpp:597
 msgid "_Disable"
 msgstr "_გამორთვა"
 
-#: src/preferencesdialog.cpp:614
+#: src/preferencesdialog.cpp:607
 msgid "In_formation"
 msgstr "ინ_ფორმაცია"
 
-#: src/preferencesdialog.cpp:755
+#: src/preferencesdialog.cpp:748
 msgid "Not Implemented"
 msgstr "ჯერ არაა იმპლემენტირებული"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:772
+#: src/preferencesdialog.cpp:765
 msgid "%1 Preferences"
 msgstr "%1-ის მორგება"
 
-#: src/preferencesdialog.cpp:868
+#: src/preferencesdialog.cpp:861
 msgid "Choose Note Font"
 msgstr "აირჩიეთ შენიშვნის ფონტი"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:961
+#: src/preferencesdialog.cpp:954
 msgid "Other Synchronization Options"
-msgstr "სხვა სინქრონიზაციის პარამეტრები."
+msgstr "სხვა სინქრონიზაციის პარამეტრები"
 
-#: src/preferencesdialog.cpp:964
+#: src/preferencesdialog.cpp:957
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr ""
 
-#: src/preferencesdialog.cpp:968
+#: src/preferencesdialog.cpp:961
 msgid "Always ask me what to do"
 msgstr "მკითხე, რა ვქნა"
 
-#: src/preferencesdialog.cpp:969
+#: src/preferencesdialog.cpp:962
 msgid "Rename my local note"
 msgstr "ჩემი ლოკალური შენიშვნის სახელის გადარქმევა"
 
-#: src/preferencesdialog.cpp:971
+#: src/preferencesdialog.cpp:964
 msgid "Replace my local note with the server's update"
 msgstr ""
 
-#: src/preferencesdialog.cpp:1089
+#: src/preferencesdialog.cpp:1085
 msgid "Are you sure?"
 msgstr "დარწმუნებული ბრძანდებით?"
 
-#: src/preferencesdialog.cpp:1090
+#: src/preferencesdialog.cpp:1086
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
 msgstr ""
 
-#: src/preferencesdialog.cpp:1101
+#: src/preferencesdialog.cpp:1097
 msgid "Resetting Synchronization Settings"
 msgstr ""
 
-#: src/preferencesdialog.cpp:1102
+#: src/preferencesdialog.cpp:1098
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
 "synchronize all of your notes again when you save new settings."
 msgstr ""
 
-#: src/preferencesdialog.cpp:1164
+#: src/preferencesdialog.cpp:1160
 msgid "Connection successful"
 msgstr "შეერთება წარმატებულია"
 
-#: src/preferencesdialog.cpp:1165
+#: src/preferencesdialog.cpp:1161
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr ""
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1191
+#: src/preferencesdialog.cpp:1187
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr ""
 
-#: src/preferencesdialog.cpp:1196
+#: src/preferencesdialog.cpp:1192
 msgid "Error connecting"
 msgstr "შეერთების შეცდომა"
 
-#: src/preferencesdialog.cpp:1259
+#: src/preferencesdialog.cpp:1256
 msgid "Version:"
 msgstr "ვერსია:"
 
-#: src/preferencesdialog.cpp:1262
+#: src/preferencesdialog.cpp:1259
 msgid "Author:"
 msgstr "ავტორი:"
 
-#: src/preferencesdialog.cpp:1266
+#: src/preferencesdialog.cpp:1263
 msgid "Copyright:"
 msgstr "უფლებები:"
 
@@ -2019,31 +2030,27 @@ msgstr "უფლებები:"
 msgid "Close"
 msgstr "დახურვა"
 
-#: src/recentchanges.cpp:281
-msgid "Create New Note"
-msgstr "ახალი შენიშვნის შექმნა"
-
-#: src/recentchanges.cpp:304
+#: src/recentchanges.cpp:294
 msgid "Search"
 msgstr "ძებნა"
 
-#: src/recentchanges.cpp:382
+#: src/recentchanges.cpp:369
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 
-#: src/recentchanges.cpp:407
+#: src/recentchanges.cpp:394
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 
-#: src/recentchanges.cpp:737
+#: src/recentchanges.cpp:725
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 
-#: src/recentchanges.cpp:744
+#: src/recentchanges.cpp:732
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 
-#: src/recentchanges.cpp:944
+#: src/recentchanges.cpp:932
 msgid "No configured actions"
 msgstr "მორგებული ქმედებების გარეშე"
 
@@ -2053,53 +2060,57 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr ""
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:242
+#: src/searchnoteswidget.cpp:247
 msgid "Title match"
 msgstr "სათაურის დამთხვევა"
 
-#: src/searchnoteswidget.cpp:246
+#: src/searchnoteswidget.cpp:251
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 ემთხვევა"
 
-#: src/searchnoteswidget.cpp:548
+#: src/searchnoteswidget.cpp:289
+msgid "Delete Note"
+msgstr "შენიშვნის წაშლა"
+
+#: src/searchnoteswidget.cpp:517
 msgid "Note"
 msgstr "შენიშვნა"
 
-#: src/searchnoteswidget.cpp:560
+#: src/searchnoteswidget.cpp:529
 msgid "Modified"
 msgstr "შეცვლილია"
 
-#: src/searchnoteswidget.cpp:732
+#: src/searchnoteswidget.cpp:691
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
 msgstr ""
 
-#: src/searchnoteswidget.cpp:736
+#: src/searchnoteswidget.cpp:695
 msgid "Click here to search across all notebooks"
 msgstr ""
 
-#: src/searchnoteswidget.cpp:751
+#: src/searchnoteswidget.cpp:710
 msgid "Matches"
 msgstr "დამთხვევები"
 
-#: src/searchnoteswidget.cpp:1003 src/searchnoteswidget.cpp:1016
-#: src/searchnoteswidget.cpp:1027
+#: src/searchnoteswidget.cpp:954 src/searchnoteswidget.cpp:967
+#: src/searchnoteswidget.cpp:978
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr ""
 
-#: src/searchnoteswidget.cpp:1004
+#: src/searchnoteswidget.cpp:955
 msgid "Expected format 'column:order'"
 msgstr ""
 
-#: src/searchnoteswidget.cpp:1017
+#: src/searchnoteswidget.cpp:968
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "უცნობი სვეტი %s"
 
-#: src/searchnoteswidget.cpp:1028
+#: src/searchnoteswidget.cpp:979
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "უცნობი მიმდევრობა %s"
@@ -2364,7 +2375,7 @@ msgstr[0] "%1 შენიშვნა განახლდა."
 
 #: src/synchronization/syncdialog.cpp:521
 msgid "Your notes are now up to date."
-msgstr "თქვენი შენიშვნები ახლა განახლებულია"
+msgstr "თქვენი შენიშვნები ახლა განახლებულია."
 
 #: src/synchronization/syncdialog.cpp:526
 msgid "Synchronization Canceled"
@@ -2426,29 +2437,29 @@ msgstr "ცვლილებები აიტვირთა სერვე�
 msgid "Uploaded new note to server"
 msgstr "ახალი შენიშვნა აიტვირთა სერვერზე"
 
-#: src/synchronization/syncmanager.cpp:58
+#: src/synchronization/syncmanager.cpp:64
 msgid "Synchronize Notes"
 msgstr "შენიშვნების სინქრონიზაცია"
 
-#: src/synchronization/syncmanager.cpp:77
-#: src/synchronization/syncmanager.cpp:94
-#: src/synchronization/syncmanager.cpp:555
+#: src/synchronization/syncmanager.cpp:83
+#: src/synchronization/syncmanager.cpp:100
+#: src/synchronization/syncmanager.cpp:591
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr ""
 
-#: src/synchronization/syncmanager.cpp:142
+#: src/synchronization/syncmanager.cpp:147
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr ""
 
-#: src/synchronization/syncmanager.cpp:167
+#: src/synchronization/syncmanager.cpp:173
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr ""
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:370
+#: src/synchronization/syncmanager.cpp:374
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr ""
@@ -2505,33 +2516,34 @@ msgid "Yesterday"
 msgstr "გუშინ"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:193
+#: src/utils.cpp:194
+#, no-c-format
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:197
+#: src/utils.cpp:198
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:202
+#: src/utils.cpp:203
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:213
+#: src/utils.cpp:214
 msgid "No Date"
 msgstr "თარიღის გარეშე"
 
-#: src/utils.cpp:316 src/utils.cpp:330
+#: src/utils.cpp:319 src/utils.cpp:333
 msgid "_OK"
 msgstr "_დიახ"
 
-#: src/utils.cpp:325
+#: src/utils.cpp:328
 msgid "_No"
 msgstr "_არა"
 
-#: src/utils.cpp:326
+#: src/utils.cpp:329
 msgid "_Yes"
 msgstr "_დიახ"
 
@@ -2554,3 +2566,14 @@ msgstr ""
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "მართლწერის შემოწმება"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to next tab"
+#~ msgstr "შემდეგი ჩანართზე გადასვლა"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Go to previous tab"
+#~ msgstr "წინა ჩანართზე გადასვლა"
+
+#~ msgid "Create New Note"
+#~ msgstr "ახალი შენიშვნის შექმნა"
