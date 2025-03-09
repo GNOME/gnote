@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -268,21 +268,18 @@ namespace gnote {
                                        Gtk::ButtonsType btn_type, const Glib::ustring & header,
                                        const Glib::ustring & msg)
       : Gtk::Dialog("", false, true)
+      , m_extra_widget_vbox(nullptr)
       , m_extra_widget(NULL)
     {
-      set_margin(5);
       set_resizable(false);
-
-      get_content_area()->set_spacing(12);
 
       Gtk::Grid *hbox = Gtk::make_managed<Gtk::Grid>();
       hbox->set_column_spacing(12);
-      hbox->set_margin(5);
+      hbox->set_margin(12);
       int hbox_col = 0;
       get_content_area()->append(*hbox);
 
       Gtk::Grid *label_vbox = Gtk::make_managed<Gtk::Grid>();
-      label_vbox->show();
       int label_vbox_row = 0;
       label_vbox->set_hexpand(true);
       hbox->attach(*label_vbox, hbox_col++, 0, 1, 1);
@@ -307,10 +304,6 @@ namespace gnote {
         label->set_max_width_chars(60);
         label_vbox->attach(*label, 0, label_vbox_row++, 1, 1);
       }
-      
-      m_extra_widget_vbox = Gtk::make_managed<Gtk::Grid>();
-      m_extra_widget_vbox->set_margin_start(12);
-      label_vbox->attach(*m_extra_widget_vbox, 0, label_vbox_row++, 1, 1);
 
       switch(btn_type) {
       case Gtk::ButtonsType::NONE:
@@ -364,6 +357,15 @@ namespace gnote {
     {
       if (m_extra_widget) {
           m_extra_widget_vbox->remove(*m_extra_widget);
+      }
+
+      if(value && m_extra_widget_vbox == nullptr) {
+        m_extra_widget_vbox = Gtk::make_managed<Gtk::Grid>();
+        if(auto hbox = get_content_area()->get_first_child()) {
+          if(auto label_vbox = dynamic_cast<Gtk::Grid*>(hbox->get_first_child())) {
+            label_vbox->attach_next_to(*m_extra_widget_vbox, Gtk::PositionType::BOTTOM, 1, 1);
+          }
+        }
       }
 
       m_extra_widget = value;
