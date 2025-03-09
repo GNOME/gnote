@@ -10,18 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-01-14 05:21+0000\n"
-"PO-Revision-Date: 2025-01-17 11:33+0100\n"
+"POT-Creation-Date: 2025-03-08 21:27+0000\n"
+"PO-Revision-Date: 2025-03-09 10:13+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
@@ -1041,7 +1041,7 @@ msgstr "Stalna širina"
 msgid "Adds fixed-width font style."
 msgstr "Doda obliko pisave s stalno širino."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
 msgid "Fixed Wid_th"
 msgstr "Stalna širi_na"
 
@@ -1570,6 +1570,7 @@ msgid "%1 Notebook Template"
 msgstr "Predloga beležke %1"
 
 #: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
+#: src/searchnoteswidget.cpp:285
 msgid "New Note"
 msgstr "Novo sporočilce"
 
@@ -1599,19 +1600,19 @@ msgstr "_Nova beležnica ..."
 msgid "No notebook"
 msgstr "Ni beležke"
 
-#: src/notebooks/notebooksview.cpp:207
+#: src/notebooks/notebooksview.cpp:209
 msgid "New Notebook"
 msgstr "Nova beležka"
 
-#: src/notebooks/notebooksview.cpp:211
+#: src/notebooks/notebooksview.cpp:213
 msgid "Rename Notebook"
 msgstr "Preimenuj beležko"
 
-#: src/notebooks/notebooksview.cpp:216
+#: src/notebooks/notebooksview.cpp:218
 msgid "Open Template Note"
 msgstr "Odpri predlogo sporočilc"
 
-#: src/notebooks/notebooksview.cpp:220
+#: src/notebooks/notebooksview.cpp:222
 msgid "Delete Notebook"
 msgstr "Izbriši beležko"
 
@@ -1716,9 +1717,9 @@ msgstr ""
 "Uporabite sporočilce \"Začnite tukaj\" za začetek organizacije vaših idej in "
 "misli.\n"
 "\n"
-"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo "
-"sporočilce\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo "
-"samodejno shranjeno.\n"
+"Ustvarite lahko nova sporočilca z izbiro predmeta \"Ustvari novo sporočilce"
+"\" v meniju Gnote v vašemu pultu GNOME. Vaše sporočilce bo samodejno "
+"shranjeno.\n"
 "\n"
 "Sporočilca lahko organizirate s povezovanjem sorodnih sporočilc in misli "
 "skupaj!\n"
@@ -2199,31 +2200,27 @@ msgstr "Avtorske pravice:"
 msgid "Close"
 msgstr "Zapri"
 
-#: src/recentchanges.cpp:281
-msgid "Create New Note"
-msgstr "Ustvari novo sporočilce"
-
-#: src/recentchanges.cpp:304
+#: src/recentchanges.cpp:294
 msgid "Search"
 msgstr "Poišči"
 
-#: src/recentchanges.cpp:382
+#: src/recentchanges.cpp:369
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Nadrejeni vdelanega polja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:407
+#: src/recentchanges.cpp:394
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Nadrejeni vnosa iskanja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:725
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni vdelan v okno"
 
-#: src/recentchanges.cpp:745
+#: src/recentchanges.cpp:732
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni Gtk::Widget"
 
-#: src/recentchanges.cpp:945
+#: src/recentchanges.cpp:932
 msgid "No configured actions"
 msgstr "Ni nastavljenih dejanj"
 
@@ -2245,15 +2242,19 @@ msgstr[1] "%1 zadetek"
 msgstr[2] "%1 zadetka"
 msgstr[3] "%1 zadetki"
 
-#: src/searchnoteswidget.cpp:500
+#: src/searchnoteswidget.cpp:289
+msgid "Delete Note"
+msgstr "Izbriši zapisek"
+
+#: src/searchnoteswidget.cpp:517
 msgid "Note"
 msgstr "Sporočilce"
 
-#: src/searchnoteswidget.cpp:512
+#: src/searchnoteswidget.cpp:529
 msgid "Modified"
 msgstr "Spremenjeno"
 
-#: src/searchnoteswidget.cpp:673
+#: src/searchnoteswidget.cpp:691
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2261,31 +2262,31 @@ msgstr ""
 "Ni najdenih zadetkov v izbrani beležnici.\n"
 "Kliknite tu za iskanje med vsemi beležkami."
 
-#: src/searchnoteswidget.cpp:677
+#: src/searchnoteswidget.cpp:695
 msgid "Click here to search across all notebooks"
 msgstr "Kliknite tu za iskanje med vsemi beležkami."
 
-#: src/searchnoteswidget.cpp:692
+#: src/searchnoteswidget.cpp:710
 msgid "Matches"
 msgstr "Zadetki"
 
-#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
-#: src/searchnoteswidget.cpp:960
+#: src/searchnoteswidget.cpp:954 src/searchnoteswidget.cpp:967
+#: src/searchnoteswidget.cpp:978
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr ""
 "Napaka pri razčlenjevanju nastavitve iskanja/razvrščanja (vrednost: %s):"
 
-#: src/searchnoteswidget.cpp:937
+#: src/searchnoteswidget.cpp:955
 msgid "Expected format 'column:order'"
 msgstr "Pričakovan zapis je 'stolpec:razvrstitev'"
 
-#: src/searchnoteswidget.cpp:950
+#: src/searchnoteswidget.cpp:968
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Nerazpoznan stolpec %s"
 
-#: src/searchnoteswidget.cpp:961
+#: src/searchnoteswidget.cpp:979
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Nerazpoznano zaporedje %s"
