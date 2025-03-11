@@ -10,20 +10,21 @@
 # Enrico Nicoletto <hiko@duck.com>, 2013-2014, 2020-2021, 2023.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013-2025.
+# Álvaro Burns <>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-01-17 10:34+0000\n"
-"PO-Revision-Date: 2025-01-20 22:58-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2025-03-09 21:31+0000\n"
+"PO-Revision-Date: 2025-03-08 19:13-0300\n"
+"Last-Translator: Álvaro Burns <>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 47.1\n"
 "X-Project-Style: gnome\n"
 
@@ -882,8 +883,8 @@ msgstr "Selecione um ícone…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
-#: src/utils.cpp:332
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:318
+#: src/utils.cpp:325
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -1066,7 +1067,7 @@ msgstr "Largura fixa"
 msgid "Adds fixed-width font style."
 msgstr "Adiciona o estilo de fonte de largura fixa."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
 msgid "Fixed Wid_th"
 msgstr "_Largura fixa"
 
@@ -1601,6 +1602,7 @@ msgid "%1 Notebook Template"
 msgstr "Modelo do catálogo de notas %1"
 
 #: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
+#: src/searchnoteswidget.cpp:285
 msgid "New Note"
 msgstr "Nova nota"
 
@@ -1630,19 +1632,19 @@ msgstr "_Novo catálogo de notas…"
 msgid "No notebook"
 msgstr "Nenhum catálogo de notas"
 
-#: src/notebooks/notebooksview.cpp:207
+#: src/notebooks/notebooksview.cpp:209
 msgid "New Notebook"
 msgstr "Novo catálogo de notas"
 
-#: src/notebooks/notebooksview.cpp:211
+#: src/notebooks/notebooksview.cpp:213
 msgid "Rename Notebook"
 msgstr "Renomear catálogo de notas"
 
-#: src/notebooks/notebooksview.cpp:216
+#: src/notebooks/notebooksview.cpp:218
 msgid "Open Template Note"
 msgstr "Abrir modelo de nota"
 
-#: src/notebooks/notebooksview.cpp:220
+#: src/notebooks/notebooksview.cpp:222
 msgid "Delete Notebook"
 msgstr "Remover catálogo de notas"
 
@@ -1732,8 +1734,8 @@ msgid ""
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
 "\n"
-"We've created a note called <link:internal>Using Links in Gnote</"
-"link:internal>.  Notice how each time we type <link:internal>Using Links in "
+"We've created a note called <link:internal>Using Links in Gnote</link:"
+"internal>.  Notice how each time we type <link:internal>Using Links in "
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
@@ -1751,10 +1753,10 @@ msgstr ""
 "\n"
 "Em seguida, organize as notas criadas ao associar ideias relacionadas!\n"
 "\n"
-"Nós criamos uma nota chamada <link:internal>Utilizando links no Gnote</"
-"link:internal>. Viu que cada vez que digitamos <link:internal>Utilizando "
-"links no Gnote</link:internal> ele automaticamente fica sublinhado? Clique "
-"no link para abrir a nota.</note-content>"
+"Nós criamos uma nota chamada <link:internal>Utilizando links no Gnote</link:"
+"internal>. Viu que cada vez que digitamos <link:internal>Utilizando links no "
+"Gnote</link:internal> ele automaticamente fica sublinhado? Clique no link "
+"para abrir a nota.</note-content>"
 
 #: src/notemanager.cpp:135
 msgid ""
@@ -1964,7 +1966,7 @@ msgstr "Plug-ins"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
 #: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:315
 msgid "_Close"
 msgstr "_Fechar"
 
@@ -2228,35 +2230,31 @@ msgstr "Copyright:"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/recentchanges.cpp:281
-msgid "Create New Note"
-msgstr "Criar nova nota"
-
-#: src/recentchanges.cpp:304
+#: src/recentchanges.cpp:294
 msgid "Search"
 msgstr "Pesquisar"
 
-#: src/recentchanges.cpp:382
+#: src/recentchanges.cpp:369
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "O pai da caixa embutida não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:407
+#: src/recentchanges.cpp:394
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:725
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não está incorporado "
 "na janela"
 
-#: src/recentchanges.cpp:745
+#: src/recentchanges.cpp:732
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não é Gtk::Widget"
 
-#: src/recentchanges.cpp:945
+#: src/recentchanges.cpp:932
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2276,15 +2274,19 @@ msgid_plural "%1 matches"
 msgstr[0] "%1 ocorrência"
 msgstr[1] "%1 ocorrências"
 
-#: src/searchnoteswidget.cpp:500
+#: src/searchnoteswidget.cpp:289
+msgid "Delete Note"
+msgstr "Remover nota"
+
+#: src/searchnoteswidget.cpp:517
 msgid "Note"
 msgstr "Nota"
 
-#: src/searchnoteswidget.cpp:512
+#: src/searchnoteswidget.cpp:529
 msgid "Modified"
 msgstr "Modificado"
 
-#: src/searchnoteswidget.cpp:673
+#: src/searchnoteswidget.cpp:691
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2292,30 +2294,30 @@ msgstr ""
 "Nenhum resultado encontrado no bloco de anotações selecionado.\n"
 "Clique aqui para pesquisar em todas as notas."
 
-#: src/searchnoteswidget.cpp:677
+#: src/searchnoteswidget.cpp:695
 msgid "Click here to search across all notebooks"
 msgstr "Clique aqui para pesquisar em todos os blocos de notas"
 
-#: src/searchnoteswidget.cpp:692
+#: src/searchnoteswidget.cpp:710
 msgid "Matches"
 msgstr "Ocorrências"
 
-#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
-#: src/searchnoteswidget.cpp:960
+#: src/searchnoteswidget.cpp:954 src/searchnoteswidget.cpp:967
+#: src/searchnoteswidget.cpp:978
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Falha ao analisar configurações de pesquisa-ordenação (valor: %s):"
 
-#: src/searchnoteswidget.cpp:937
+#: src/searchnoteswidget.cpp:955
 msgid "Expected format 'column:order'"
 msgstr "Formato esperado “coluna:ordem”"
 
-#: src/searchnoteswidget.cpp:950
+#: src/searchnoteswidget.cpp:968
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Coluna %s não reconhecida"
 
-#: src/searchnoteswidget.cpp:961
+#: src/searchnoteswidget.cpp:979
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ordem %s não reconhecida"
@@ -2753,15 +2755,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "Sem data"
 
-#: src/utils.cpp:319 src/utils.cpp:333
+#: src/utils.cpp:312 src/utils.cpp:326
 msgid "_OK"
 msgstr "_OK"
 
-#: src/utils.cpp:328
+#: src/utils.cpp:321
 msgid "_No"
 msgstr "_Não"
 
-#: src/utils.cpp:329
+#: src/utils.cpp:322
 msgid "_Yes"
 msgstr "_Sim"
 
@@ -2786,6 +2788,9 @@ msgstr "Este título de nota já existe"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Verificar ortografia"
+
+#~ msgid "Create New Note"
+#~ msgstr "Criar nova nota"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Go to next tab"
