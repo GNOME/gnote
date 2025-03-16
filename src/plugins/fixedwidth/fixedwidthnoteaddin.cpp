@@ -123,6 +123,8 @@ namespace fixedwidth {
       return;
     }
 
+    get_window()->host()->find_action("fixedwidth-enable")->set_state(Glib::Variant<bool>::create(get_buffer()->is_active_tag("monospace")));
+
     auto button = Gtk::make_managed<Gtk::ToggleButton>();
     button->set_action_name("win.fixedwidth-enable");
     button->set_has_frame(false);
