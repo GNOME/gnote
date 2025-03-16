@@ -124,6 +124,8 @@ namespace underline {
      return;
     }
 
+    get_window()->host()->find_action("underline-enable")->set_state(Glib::Variant<bool>::create(get_buffer()->is_active_tag("underline")));
+
     auto button = Gtk::make_managed<Gtk::ToggleButton>();
     button->set_action_name("win.underline-enable");
     button->set_icon_name("format-text-underline-symbolic");
