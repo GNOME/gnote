@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-02-13 01:48+0000\n"
-"PO-Revision-Date: 2025-02-21 22:41+0200\n"
+"POT-Creation-Date: 2025-03-16 20:38+0000\n"
+"PO-Revision-Date: 2025-03-22 21:40+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -866,8 +866,8 @@ msgstr "Pasirinkite piktogramą..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
-#: src/utils.cpp:332
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:318
+#: src/utils.cpp:325
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
@@ -1048,7 +1048,7 @@ msgstr "Fiksuoto pločio"
 msgid "Adds fixed-width font style."
 msgstr "Įterpia fiksuoto pločio šrifto stilių."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:133
 msgid "Fixed Wid_th"
 msgstr "_Fiksuoto pločio"
 
@@ -1576,6 +1576,7 @@ msgid "%1 Notebook Template"
 msgstr "%1 užrašinės šablonas"
 
 #: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
+#: src/searchnoteswidget.cpp:285
 msgid "New Note"
 msgstr "Naujas raštelis"
 
@@ -1941,7 +1942,7 @@ msgstr "Įskiepiai"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
 #: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:315
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -2205,31 +2206,27 @@ msgstr "Autorinės teisės:"
 msgid "Close"
 msgstr "Užverti"
 
-#: src/recentchanges.cpp:281
-msgid "Create New Note"
-msgstr "Sukurti naują raštelį"
-
-#: src/recentchanges.cpp:304
+#: src/recentchanges.cpp:294
 msgid "Search"
 msgstr "Ieškoti"
 
-#: src/recentchanges.cpp:382
+#: src/recentchanges.cpp:369
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Įdėtos dėžutės tėvas nėra Gtk::Grid, praneškite apie klaidą!"
 
-#: src/recentchanges.cpp:407
+#: src/recentchanges.cpp:394
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Paieškos lauko tėvas nėra Gtk::Grid, praneškite apie klaidą!"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:725
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Bandoma įkelti į priekinį planą valdiklį, kuris nėra įtaisytas lange"
 
-#: src/recentchanges.cpp:745
+#: src/recentchanges.cpp:732
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Bandoma įkelti į priekinį planą valdiklį, kuris nėra Gtk::Widget"
 
-#: src/recentchanges.cpp:945
+#: src/recentchanges.cpp:932
 msgid "No configured actions"
 msgstr "Nėra sukonfigūruotų veiksmų"
 
@@ -2250,15 +2247,19 @@ msgstr[0] "%1 atitikmuo"
 msgstr[1] "%1 atitikmenys"
 msgstr[2] "%1 atitikmenų"
 
-#: src/searchnoteswidget.cpp:500
+#: src/searchnoteswidget.cpp:289
+msgid "Delete Note"
+msgstr "Ištrinti raštelį"
+
+#: src/searchnoteswidget.cpp:517
 msgid "Note"
 msgstr "Raštelis"
 
-#: src/searchnoteswidget.cpp:512
+#: src/searchnoteswidget.cpp:529
 msgid "Modified"
 msgstr "Pakeistas"
 
-#: src/searchnoteswidget.cpp:673
+#: src/searchnoteswidget.cpp:691
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2266,30 +2267,30 @@ msgstr ""
 "Pasirinktoje užrašinėje rezultatų nerasta.\n"
 "Spauskite čia paieškai visuose rašteliuose."
 
-#: src/searchnoteswidget.cpp:677
+#: src/searchnoteswidget.cpp:695
 msgid "Click here to search across all notebooks"
 msgstr "Spauskite čia paieškai visuose rašteliuose"
 
-#: src/searchnoteswidget.cpp:692
+#: src/searchnoteswidget.cpp:710
 msgid "Matches"
 msgstr "Atitikmenys"
 
-#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
-#: src/searchnoteswidget.cpp:960
+#: src/searchnoteswidget.cpp:954 src/searchnoteswidget.cpp:967
+#: src/searchnoteswidget.cpp:978
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Nepavyko perskaityti nustatymo search-sorting (vertė: %s):"
 
-#: src/searchnoteswidget.cpp:937
+#: src/searchnoteswidget.cpp:955
 msgid "Expected format 'column:order'"
 msgstr "Tikėtasi formato „stulpelis:tvarka“"
 
-#: src/searchnoteswidget.cpp:950
+#: src/searchnoteswidget.cpp:968
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Neatpažintas stulpelis %s"
 
-#: src/searchnoteswidget.cpp:961
+#: src/searchnoteswidget.cpp:979
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Neatpažinta tvarka %s"
@@ -2727,15 +2728,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "Nėra datos"
 
-#: src/utils.cpp:319 src/utils.cpp:333
+#: src/utils.cpp:312 src/utils.cpp:326
 msgid "_OK"
 msgstr "_Gerai"
 
-#: src/utils.cpp:328
+#: src/utils.cpp:321
 msgid "_No"
 msgstr "_Ne"
 
-#: src/utils.cpp:329
+#: src/utils.cpp:322
 msgid "_Yes"
 msgstr "_Taip"
 
@@ -2760,6 +2761,9 @@ msgstr "Raštelio pavadinimas užimtas"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Tikrinti rašybą"
+
+#~ msgid "Create New Note"
+#~ msgstr "Sukurti naują raštelį"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Go to next tab"
