@@ -1,17 +1,17 @@
 # gnote's Portuguese translation.
-# Copyright © 2006, 2007, 2008, 2009 gnote
+# Copyright © 2006-2025 gnote
 # This file is distributed under the same license as the gnote package.
 # Duarte Loreto <happyguy_pt@hotmail.com>, 2006, 2007, 2008, 2009.
 # Pedro Albuquerque <palbuquerque73@gmail.com>, 2015.
 # Tiago Santos <tiagofsantos81@sapo.pt> 2014 - 2016.
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020, 2021, 2022, 2023.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020, 2021, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.28\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues\n"
-"POT-Creation-Date: 2023-03-29 15:08+0000\n"
-"PO-Revision-Date: 2023-05-09 14:02+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
+"POT-Creation-Date: 2025-03-10 22:34+0000\n"
+"PO-Revision-Date: 2025-03-29 15:21+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -19,10 +19,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:88 src/recentchanges.cpp:116
+#: src/recentchanges.cpp:101 src/recentchanges.cpp:129
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -2235,43 +2235,43 @@ msgstr "Autor:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: src/recentchanges.cpp:65
+#: src/recentchanges.cpp:67
 msgid "Close"
 msgstr "Fechar"
 
-#: src/recentchanges.cpp:257
+#: src/recentchanges.cpp:271
 msgid "Create New Note"
 msgstr "Criar nova nota"
 
-#: src/recentchanges.cpp:284
+#: src/recentchanges.cpp:298
 msgid "Search"
 msgstr "Procurar"
 
-#: src/recentchanges.cpp:362
+#: src/recentchanges.cpp:376
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "O pai da caixa embutida não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:404
+#: src/recentchanges.cpp:418
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:731
+#: src/recentchanges.cpp:745
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não está incorporado "
 "na janela"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:752
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não é Gtk::Widget"
 
-#: src/recentchanges.cpp:1008
+#: src/recentchanges.cpp:1022
 msgid "Expected widget to be a sub-menu!"
 msgstr "Era esperado que widget fosse um submenu!"
 
-#: src/recentchanges.cpp:1013
+#: src/recentchanges.cpp:1027
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2776,8 +2776,10 @@ msgstr "Amanhã"
 
 #. TRANSLATORS: date in current year.
 #: src/utils.cpp:189
+#, c-format
+#| msgid "%b %d"
 msgid "%b %d"
-msgstr "%d de %b"
+msgstr "%b %d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
 #: src/utils.cpp:192 src/utils.cpp:201
