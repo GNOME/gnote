@@ -4,16 +4,16 @@
 #
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
 # Muhammet Kara <muhammetk@gmail.com>, 2011-2021.
-# Sabri Ünal <libreajans@gmail.com>, 2023, 2024.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017-2024.
+# Sabri Ünal <yakushabb@gmail.com>, 2023, 2024.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2017-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-02-02 20:38+0000\n"
-"PO-Revision-Date: 2025-02-03 21:23+0300\n"
-"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"POT-Creation-Date: 2025-03-30 07:49+0000\n"
+"PO-Revision-Date: 2025-04-03 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -869,8 +869,8 @@ msgstr "Simge seç..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
-#: src/utils.cpp:332
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:318
+#: src/utils.cpp:325
 msgid "_Cancel"
 msgstr "İ_ptal"
 
@@ -1051,7 +1051,7 @@ msgstr "Sabit Genişlik"
 msgid "Adds fixed-width font style."
 msgstr "Sabit genişlikli yazı tipi biçemi ekler."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:134
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:133
 msgid "Fixed Wid_th"
 msgstr "_Sabit Genişlik"
 
@@ -1435,8 +1435,8 @@ msgstr "ve Tomboy’un özgün yazarları."
 #: src/gnote.cpp:264
 msgid "translator-credits"
 msgstr ""
-"Muhammet Kara <muhammetk@gmail.com>\n"
-"Emin Tufan Çetin <etcetin@gmail.com>"
+"Emin Tufan Çetin <etcetin@gmail.com>\n"
+"Muhammet Kara <muhammetk@gmail.com>"
 
 #: src/gnote.cpp:273
 msgid ""
@@ -1580,6 +1580,7 @@ msgid "%1 Notebook Template"
 msgstr "%1 Not Defteri Şablonu"
 
 #: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
+#: src/searchnoteswidget.cpp:285
 msgid "New Note"
 msgstr "Yeni Not"
 
@@ -1944,7 +1945,7 @@ msgstr "Eklentiler"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
 #: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:315
 msgid "_Close"
 msgstr "_Kapat"
 
@@ -2207,31 +2208,27 @@ msgstr "Telif Hakkı:"
 msgid "Close"
 msgstr "Kapat"
 
-#: src/recentchanges.cpp:281
-msgid "Create New Note"
-msgstr "Yeni Not Oluştur"
-
-#: src/recentchanges.cpp:304
+#: src/recentchanges.cpp:294
 msgid "Search"
 msgstr "Ara"
 
-#: src/recentchanges.cpp:382
+#: src/recentchanges.cpp:369
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Gömü kutusunun ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:407
+#: src/recentchanges.cpp:394
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Arama girdisinin ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:738
+#: src/recentchanges.cpp:725
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Pencereye gömülü olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:745
+#: src/recentchanges.cpp:732
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Gtk::Widget olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:945
+#: src/recentchanges.cpp:932
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
@@ -2250,15 +2247,19 @@ msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 eşleşme"
 
-#: src/searchnoteswidget.cpp:500
+#: src/searchnoteswidget.cpp:289
+msgid "Delete Note"
+msgstr "Notu Sil"
+
+#: src/searchnoteswidget.cpp:517
 msgid "Note"
 msgstr "Not"
 
-#: src/searchnoteswidget.cpp:512
+#: src/searchnoteswidget.cpp:529
 msgid "Modified"
 msgstr "Değiştirildi"
 
-#: src/searchnoteswidget.cpp:673
+#: src/searchnoteswidget.cpp:691
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2266,30 +2267,30 @@ msgstr ""
 "Seçilen not defterinde sonuç bulunamadı.\n"
 "Tüm notlarda aramak için buraya tıklayın."
 
-#: src/searchnoteswidget.cpp:677
+#: src/searchnoteswidget.cpp:695
 msgid "Click here to search across all notebooks"
 msgstr "Tüm not defterlerinde aramak için buraya tıkla"
 
-#: src/searchnoteswidget.cpp:692
+#: src/searchnoteswidget.cpp:710
 msgid "Matches"
 msgstr "Eşleşmeler"
 
-#: src/searchnoteswidget.cpp:936 src/searchnoteswidget.cpp:949
-#: src/searchnoteswidget.cpp:960
+#: src/searchnoteswidget.cpp:954 src/searchnoteswidget.cpp:967
+#: src/searchnoteswidget.cpp:978
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "search-sorting ayarı ayrıştırılamadı (Değer: %s):"
 
-#: src/searchnoteswidget.cpp:937
+#: src/searchnoteswidget.cpp:955
 msgid "Expected format 'column:order'"
 msgstr "Beklenen biçim 'sütun:sıra'"
 
-#: src/searchnoteswidget.cpp:950
+#: src/searchnoteswidget.cpp:968
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Tanımlanamayan sütun %s"
 
-#: src/searchnoteswidget.cpp:961
+#: src/searchnoteswidget.cpp:979
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Tanımlanamayan sıra %s"
@@ -2721,15 +2722,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "Tarih Yok"
 
-#: src/utils.cpp:319 src/utils.cpp:333
+#: src/utils.cpp:312 src/utils.cpp:326
 msgid "_OK"
 msgstr "_Tamam"
 
-#: src/utils.cpp:328
+#: src/utils.cpp:321
 msgid "_No"
 msgstr "_Hayır"
 
-#: src/utils.cpp:329
+#: src/utils.cpp:322
 msgid "_Yes"
 msgstr "_Evet"
 
@@ -2754,6 +2755,9 @@ msgstr "Not başlığı alındı"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Yazım denetimi"
+
+#~ msgid "Create New Note"
+#~ msgstr "Yeni Not Oluştur"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Go to next tab"
