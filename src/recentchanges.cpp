@@ -472,6 +472,7 @@ namespace gnote {
       focus = false;
     }
     m_search_box->show();
+    m_search_entry->select_region(0, -1);
     if(focus) {
       m_search_entry->grab_focus();
     }
