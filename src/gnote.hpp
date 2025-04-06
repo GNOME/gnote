@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2019,2021-2024 Aurimas Cernius
+ * Copyright (C) 2010-2019,2021-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
