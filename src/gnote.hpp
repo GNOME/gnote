@@ -173,7 +173,7 @@ private:
   void add_app_actions(const std::vector<Glib::RefPtr<Gio::SimpleAction> > & actions);
   void on_new_window_action(const Glib::VariantBase&);
   void on_new_note_app_action(const Glib::VariantBase&);
-  void on_show_help_shortcust_action(const Glib::VariantBase&);
+  void on_show_help_shortcuts_action(const Glib::VariantBase&);
   void on_color_scheme_pref_changed();
   MainWindow *get_active_window();
   void register_object();

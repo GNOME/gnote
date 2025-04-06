@@ -235,7 +235,7 @@ namespace gnote {
     utils::show_help("gnote", "", get_main_window());
   }
 
-  void Gnote::on_show_help_shortcust_action(const Glib::VariantBase&)
+  void Gnote::on_show_help_shortcuts_action(const Glib::VariantBase&)
   {
     Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file(DATADIR"/gnote/shortcuts-gnote.ui");
     auto win = builder->get_widget<Gtk::ShortcutsWindow >("shortcuts-gnote");
@@ -244,6 +244,7 @@ namespace gnote {
       return;
     }
 
+    win->set_transient_for(get_main_window());
     manage(win)->show();
   }
 
@@ -408,7 +409,7 @@ namespace gnote {
       sigc::mem_fun(*this, &Gnote::on_show_preferences_action));
     m_action_manager.get_app_action("sync-notes")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::open_note_sync_window));
     m_action_manager.get_app_action("help-contents")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_action));
-    m_action_manager.get_app_action("help-shortcuts")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_shortcust_action));
+    m_action_manager.get_app_action("help-shortcuts")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_help_shortcuts_action));
     m_action_manager.get_app_action("about")->signal_activate().connect(sigc::mem_fun(*this, &Gnote::on_show_about_action));
 
     add_app_actions(m_action_manager.get_app_actions());
