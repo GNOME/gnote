@@ -134,7 +134,12 @@ namespace gnote {
         cmdline.execute();
       }
       else if(!(cmdline.background() || cmdline.shell_search())) {
-        new_main_window().present();
+        if(cmdline.do_new_window()) {
+          new_main_window().present();
+        }
+        else {
+          get_main_window().present();
+        }
       }
     }
 
@@ -481,6 +486,7 @@ namespace gnote {
     , m_do_search(false)
     , m_show_version(false)
     , m_do_new_note(false)
+    , m_do_new_window(false)
     , m_open_note(NULL)
     , m_open_start_here(false)
     , m_highlight_search(NULL)
@@ -493,6 +499,7 @@ namespace gnote {
         { "search", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Open the search all notes window with the search text."), _("text") },
         { "version", 0, 0, G_OPTION_ARG_NONE, &m_show_version, _("Print version information."), NULL },
         { "new-note", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Create and display a new note, with a optional title."), _("title") },
+        { "new-window", 0, 0, G_OPTION_ARG_NONE, &m_do_new_window, _("Open a new window."), NULL },
         { "open-note", 0, 0, G_OPTION_ARG_STRING, &m_open_note, _("Display the existing note matching title."), _("title/url") },
         { "start-here", 0, 0, G_OPTION_ARG_NONE, &m_open_start_here, _("Display the 'Start Here' note."), NULL },
         { "highlight-search", 0, 0, G_OPTION_ARG_STRING, &m_highlight_search, _("Search and highlight text in the opened note."), _("text") },

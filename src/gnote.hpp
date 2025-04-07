@@ -67,6 +67,10 @@ public:
     {
       return m_shell_search;
     }
+  bool do_new_window()
+    {
+      return m_do_new_window;
+    }
   void parse(int &argc, gchar ** & argv);
 
   static gboolean parse_func(const gchar *option_name,
@@ -93,6 +97,7 @@ private:
   bool        m_show_version;
   bool        m_do_new_note;
   Glib::ustring m_new_note_name;
+  bool        m_do_new_window;
   gchar*      m_open_note;
   bool        m_open_start_here;
   gchar*      m_highlight_search;

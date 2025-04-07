@@ -13,3 +13,12 @@ DBusActivatable=true
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Utility;
+Actions=new-window;new-note;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=gnote --new-window
+
+[Desktop Action new-note]
+Name=New Note
+Exec=gnote --new-note
