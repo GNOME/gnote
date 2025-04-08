@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-03-08 21:27+0000\n"
-"PO-Revision-Date: 2025-03-09 10:13+0100\n"
+"POT-Creation-Date: 2025-04-07 20:05+0000\n"
+"PO-Revision-Date: 2025-04-08 09:10+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -66,6 +66,15 @@ msgstr "Zapisovalnik sporočilc"
 #: data/org.gnome.Gnote.desktop.in:7
 msgid "notes;idea;link;organize;"
 msgstr "sporočilce;sporočilca;zamisel;ideja;povezava;organizacija;urejanje;"
+
+#: data/org.gnome.Gnote.desktop.in:20
+msgid "New Window"
+msgstr "Novo okno"
+
+#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
+#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:285
+msgid "New Note"
+msgstr "Novo sporočilce"
 
 #: data/org.gnome.gnote.gschema.xml:6
 msgid "Enable spellchecking"
@@ -860,8 +869,8 @@ msgstr "Izberi ikono ..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
-#: src/utils.cpp:332
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:318
+#: src/utils.cpp:325
 msgid "_Cancel"
 msgstr "Pre_kliči"
 
@@ -1041,7 +1050,7 @@ msgstr "Stalna širina"
 msgid "Adds fixed-width font style."
 msgstr "Doda obliko pisave s stalno širino."
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:133
 msgid "Fixed Wid_th"
 msgstr "Stalna širi_na"
 
@@ -1409,26 +1418,26 @@ msgstr "Usklajevanje sporočilc Gnote na naslov URL WebDAV."
 msgid "Exception thrown when creating note: %s"
 msgstr "Izjema ob ustvarjanju sporočilca: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:216
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Povezava D-Bus ni na voljo, iskanje v lupini in daljinski upravljalnik ne "
 "bosta delovala."
 
-#: src/gnote.cpp:243
+#: src/gnote.cpp:248
 msgid "Failed to get shortcuts window!"
 msgstr "Pridobivanje okna bližnjic ni uspelo!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:264
 msgid "and Tomboy original authors."
 msgstr "in avtorji izvirnega Tomboy"
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:270
 msgid "translator-credits"
 msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:279
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1440,76 +1449,80 @@ msgstr ""
 "Avtorske pravice © 2009 Hubert Figuiere\n"
 "Avtorske pravice © 2004-2009 izvorni avtorji Tomboy."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:283
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Preprost in enostaven program za pisanje sporočilc. "
 
-#: src/gnote.cpp:279
+#: src/gnote.cpp:285
 msgid "Homepage"
 msgstr "Domača stran"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:496
 msgid "Run Gnote in background."
 msgstr "Zaženi gnote v ozadju."
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:497
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Zaženite Gnote kot ponudnika iskanja GNOME Shell."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "Specify the path of the directory containing the notes."
 msgstr "Določi pot mape, ki vsebuje sporočilca."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "path"
 msgstr "pot"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:499
 msgid "Open the search all notes window with the search text."
 msgstr "Odpre okno za iskanje vseh sporočilc z izbranim besedilom."
 
-#: src/gnote.cpp:492 src/gnote.cpp:497
+#: src/gnote.cpp:499 src/gnote.cpp:505
 msgid "text"
 msgstr "Besedilo"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:500
 msgid "Print version information."
 msgstr "Izpiši podrobnosti o različici"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "Create and display a new note, with a optional title."
 msgstr "Ustvari in prikaže novo sporočilce z naslovom po meri."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "title"
 msgstr "naslov"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:502
+msgid "Open a new window."
+msgstr "Odprite novo okno."
+
+#: src/gnote.cpp:503
 msgid "Display the existing note matching title."
 msgstr "Prikaže obstoječe sporočilce, ki se sklada z naslovom."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:503
 msgid "title/url"
 msgstr "naslov/url"
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:504
 msgid "Display the 'Start Here' note."
 msgstr "Prikaz sporočilca 'Začnite tukaj'."
 
-#: src/gnote.cpp:497
+#: src/gnote.cpp:505
 msgid "Search and highlight text in the opened note."
 msgstr "Išče in poudari besedilo v odprtem sporočilcu."
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "A note taking application"
 msgstr "Program za pisanje sporočilc"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "Gnote options at launch"
 msgstr "Možnosti gnote ob zagonu"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:685
+#: src/gnote.cpp:693
 msgid "Version %1"
 msgstr "Različica %1"
 
@@ -1568,11 +1581,6 @@ msgstr "Nova belež_ka ..."
 #: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr "Predloga beležke %1"
-
-#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
-#: src/searchnoteswidget.cpp:285
-msgid "New Note"
-msgstr "Novo sporočilce"
 
 #: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
@@ -1938,7 +1946,7 @@ msgstr "Vstavki"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
 #: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:315
 msgid "_Close"
 msgstr "_Zapri"
 
@@ -2212,15 +2220,15 @@ msgstr "Nadrejeni vdelanega polja ni Gtk::Grid, prijavite napako!"
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Nadrejeni vnosa iskanja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:725
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni vdelan v okno"
 
-#: src/recentchanges.cpp:732
+#: src/recentchanges.cpp:733
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni Gtk::Widget"
 
-#: src/recentchanges.cpp:932
+#: src/recentchanges.cpp:933
 msgid "No configured actions"
 msgstr "Ni nastavljenih dejanj"
 
@@ -2728,15 +2736,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "Brez datuma"
 
-#: src/utils.cpp:319 src/utils.cpp:333
+#: src/utils.cpp:312 src/utils.cpp:326
 msgid "_OK"
 msgstr "V _redu"
 
-#: src/utils.cpp:328
+#: src/utils.cpp:321
 msgid "_No"
 msgstr "_Ne"
 
-#: src/utils.cpp:329
+#: src/utils.cpp:322
 msgid "_Yes"
 msgstr "_Da"
 
