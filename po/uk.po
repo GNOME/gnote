@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-03-10 22:34+0000\n"
-"PO-Revision-Date: 2025-03-11 23:05+0200\n"
+"POT-Creation-Date: 2025-04-07 20:05+0000\n"
+"PO-Revision-Date: 2025-04-08 16:02+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -65,6 +65,16 @@ msgid "notes;idea;link;organize;"
 msgstr ""
 "notes;idea;link;organize;нотатки;нотатка;ідея;посилання;упорядкування;"
 "організація;"
+
+#: data/org.gnome.Gnote.desktop.in:20
+#| msgid "New _Window"
+msgid "New Window"
+msgstr "Створити вікно"
+
+#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
+#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:285
+msgid "New Note"
+msgstr "Створити нотатку"
 
 #: data/org.gnome.gnote.gschema.xml:6
 msgid "Enable spellchecking"
@@ -1051,7 +1061,7 @@ msgstr "Фіксована ширина"
 msgid "Adds fixed-width font style."
 msgstr "Додавати моноширинний стиль тексту"
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:133
 msgid "Fixed Wid_th"
 msgstr "_Фіксована ширина"
 
@@ -1422,28 +1432,28 @@ msgstr "Синхронізувати нотатки Gnote з адресою WebD
 msgid "Exception thrown when creating note: %s"
 msgstr "Виключення під час створення нотатки: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:216
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Немає доступного з'єднання D-Bus. Пошук оболонки і віддалене керування не "
 "працюватимуть."
 
-#: src/gnote.cpp:243
+#: src/gnote.cpp:248
 msgid "Failed to get shortcuts window!"
 msgstr "Не вдалося отримати вікно клавіатурних скорочень!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:264
 msgid "and Tomboy original authors."
 msgstr "й автори Tomboy."
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:270
 msgid "translator-credits"
 msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:279
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1455,76 +1465,81 @@ msgstr ""
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:283
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Проста програма створення нотаток."
 
-#: src/gnote.cpp:279
+#: src/gnote.cpp:285
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:496
 msgid "Run Gnote in background."
 msgstr "Запустити Gnote на тлі."
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:497
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запускати Gnote як надавач даних пошуку GNOME Shell."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "Specify the path of the directory containing the notes."
 msgstr "Вкажіть шлях до каталогу із нотатками."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "path"
 msgstr "шлях"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:499
 msgid "Open the search all notes window with the search text."
 msgstr "Відкрити вікно пошуку в усіх нотатках за допомогою тексту пошуку."
 
-#: src/gnote.cpp:492 src/gnote.cpp:497
+#: src/gnote.cpp:499 src/gnote.cpp:505
 msgid "text"
 msgstr "Текст"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:500
 msgid "Print version information."
 msgstr "Показати інформацію про версію."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "Create and display a new note, with a optional title."
 msgstr "Створити та показати нову нотатку з довільним заголовком."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "title"
 msgstr "заголовок"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:502
+#| msgid "Open notes in new window"
+msgid "Open a new window."
+msgstr "Відкрити нове вікно."
+
+#: src/gnote.cpp:503
 msgid "Display the existing note matching title."
 msgstr "Показати наявну нотатку з відповідним заголовком."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:503
 msgid "title/url"
 msgstr "Заголовок/посилання"
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:504
 msgid "Display the 'Start Here' note."
 msgstr "Показувати першу нотатку"
 
-#: src/gnote.cpp:497
+#: src/gnote.cpp:505
 msgid "Search and highlight text in the opened note."
 msgstr "Шукати та виділити текст у відкритій нотатці."
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "A note taking application"
 msgstr "Програма для роботи з нотатками"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "Gnote options at launch"
 msgstr "Параметри Gnote під час запуску"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:685
+#: src/gnote.cpp:693
 msgid "Version %1"
 msgstr "Версія %1"
 
@@ -1583,11 +1598,6 @@ msgstr "С_творити записник…"
 #: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr "Шаблон записника %1"
-
-#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
-#: src/searchnoteswidget.cpp:285
-msgid "New Note"
-msgstr "Створити нотатку"
 
 #: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
@@ -2236,16 +2246,16 @@ msgstr ""
 "Батьківським елементом запису для пошуку не є Gtk::Grid. Будь ласка, "
 "повідомте розробникам про цю ваду!"
 
-#: src/recentchanges.cpp:725
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Спроба вивести на передній план віджет, який не вбудовано до вікна"
 
-#: src/recentchanges.cpp:732
+#: src/recentchanges.cpp:733
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Спроба вивести на передній план віджет, який не є віджетом Gtk::Widget"
 
-#: src/recentchanges.cpp:932
+#: src/recentchanges.cpp:933
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
@@ -2268,7 +2278,6 @@ msgstr[2] "%1 відповідностей"
 msgstr[3] "%1 відповідність"
 
 #: src/searchnoteswidget.cpp:289
-#| msgid "Delete Notebook"
 msgid "Delete Note"
 msgstr "Вилучити нотатку"
 
@@ -2914,9 +2923,6 @@ msgstr "Перевірка правопису"
 #~ msgid "If enabled, an opened note can be closed by hitting the escape key."
 #~ msgstr ""
 #~ "Якщо увімкнено, відкриту позначку можна закрити натисканням клавіші Esc."
-
-#~ msgid "Open notes in new window"
-#~ msgstr "Відкрити нотатки у новому вікні"
 
 #~ msgid ""
 #~ "Open notes in new window instead of replacing active content of the same "
