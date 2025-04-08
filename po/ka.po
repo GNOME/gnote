@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-03-08 21:27+0000\n"
-"PO-Revision-Date: 2025-03-09 04:40+0100\n"
+"POT-Creation-Date: 2025-04-07 20:05+0000\n"
+"PO-Revision-Date: 2025-04-08 04:40+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -56,6 +56,15 @@ msgstr "შენიშვნების ამღები"
 #: data/org.gnome.Gnote.desktop.in:7
 msgid "notes;idea;link;organize;"
 msgstr "notes;idea;link;organize;იდეები;ჩანაწერები;ბმული;"
+
+#: data/org.gnome.Gnote.desktop.in:20
+msgid "New Window"
+msgstr "ახალი ფანჯარა"
+
+#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
+#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:285
+msgid "New Note"
+msgstr "ახალი ჩანაწერი"
 
 #: data/org.gnome.gnote.gschema.xml:6
 msgid "Enable spellchecking"
@@ -778,8 +787,8 @@ msgstr "აირჩიეთ ხატულა..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
-#: src/utils.cpp:332
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:318
+#: src/utils.cpp:325
 msgid "_Cancel"
 msgstr "&გაუქმება"
 
@@ -959,7 +968,7 @@ msgstr "ფიქსირებული სიგანე"
 msgid "Adds fixed-width font style."
 msgstr ""
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:133
 msgid "Fixed Wid_th"
 msgstr ""
 
@@ -1311,24 +1320,24 @@ msgstr ""
 msgid "Exception thrown when creating note: %s"
 msgstr ""
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:216
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 
-#: src/gnote.cpp:243
+#: src/gnote.cpp:248
 msgid "Failed to get shortcuts window!"
 msgstr ""
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:264
 msgid "and Tomboy original authors."
 msgstr ""
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:270
 msgid "translator-credits"
 msgstr "მთარგმნელის შესახებ"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:279
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1336,76 +1345,80 @@ msgid ""
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:283
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 
-#: src/gnote.cpp:279
+#: src/gnote.cpp:285
 msgid "Homepage"
 msgstr "Homepage"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:496
 msgid "Run Gnote in background."
 msgstr ""
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:497
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr ""
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "Specify the path of the directory containing the notes."
 msgstr ""
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "path"
 msgstr "ბილიკი"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:499
 msgid "Open the search all notes window with the search text."
 msgstr ""
 
-#: src/gnote.cpp:492 src/gnote.cpp:497
+#: src/gnote.cpp:499 src/gnote.cpp:505
 msgid "text"
 msgstr "ტექსტი"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:500
 msgid "Print version information."
 msgstr "ვერსიის ინფორმაციის გამოტანა."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "Create and display a new note, with a optional title."
 msgstr ""
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "title"
 msgstr "სათაური"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:502
+msgid "Open a new window."
+msgstr "ახალ ფანჯრის გახსნა."
+
+#: src/gnote.cpp:503
 msgid "Display the existing note matching title."
 msgstr ""
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:503
 msgid "title/url"
 msgstr "სათაური/url"
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:504
 msgid "Display the 'Start Here' note."
 msgstr ""
 
-#: src/gnote.cpp:497
+#: src/gnote.cpp:505
 msgid "Search and highlight text in the opened note."
 msgstr ""
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "A note taking application"
 msgstr ""
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "Gnote options at launch"
 msgstr ""
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:685
+#: src/gnote.cpp:693
 msgid "Version %1"
 msgstr "ვერსია %1"
 
@@ -1464,11 +1477,6 @@ msgstr ""
 #: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr ""
-
-#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
-#: src/searchnoteswidget.cpp:285
-msgid "New Note"
-msgstr "ახალი ჩანაწერი"
 
 #: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
@@ -1788,7 +1796,7 @@ msgstr "დამატებები"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
 #: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:315
 msgid "_Close"
 msgstr "_დახურვა"
 
@@ -2042,15 +2050,15 @@ msgstr ""
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 
-#: src/recentchanges.cpp:725
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 
-#: src/recentchanges.cpp:732
+#: src/recentchanges.cpp:733
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 
-#: src/recentchanges.cpp:932
+#: src/recentchanges.cpp:933
 msgid "No configured actions"
 msgstr "მორგებული ქმედებების გარეშე"
 
@@ -2535,15 +2543,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "თარიღის გარეშე"
 
-#: src/utils.cpp:319 src/utils.cpp:333
+#: src/utils.cpp:312 src/utils.cpp:326
 msgid "_OK"
 msgstr "_დიახ"
 
-#: src/utils.cpp:328
+#: src/utils.cpp:321
 msgid "_No"
 msgstr "_არა"
 
-#: src/utils.cpp:329
+#: src/utils.cpp:322
 msgid "_Yes"
 msgstr "_დიახ"
 
