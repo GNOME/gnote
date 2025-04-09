@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-03-08 21:27+0000\n"
-"PO-Revision-Date: 2025-03-09 11:36+0800\n"
+"POT-Creation-Date: 2025-04-07 20:05+0000\n"
+"PO-Revision-Date: 2025-04-09 18:21+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
@@ -66,6 +66,15 @@ msgstr "记事本"
 #: data/org.gnome.Gnote.desktop.in:7
 msgid "notes;idea;link;organize;"
 msgstr "notes;idea;link;organize;便笺;笔记;思想;点子;想法;组织;"
+
+#: data/org.gnome.Gnote.desktop.in:20
+msgid "New Window"
+msgstr "新建窗口"
+
+#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
+#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:285
+msgid "New Note"
+msgstr "新建便笺"
 
 #: data/org.gnome.gnote.gschema.xml:6
 msgid "Enable spellchecking"
@@ -814,8 +823,8 @@ msgstr "选择图标..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:325
-#: src/utils.cpp:332
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:318
+#: src/utils.cpp:325
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -995,7 +1004,7 @@ msgstr "等宽"
 msgid "Adds fixed-width font style."
 msgstr "添加等宽字体样式。"
 
-#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:131
+#: src/plugins/fixedwidth/fixedwidthnoteaddin.cpp:133
 msgid "Fixed Wid_th"
 msgstr "等宽(_T)"
 
@@ -1353,20 +1362,20 @@ msgstr "将 Gnote 便笺同步到 WebDAV URL。"
 msgid "Exception thrown when creating note: %s"
 msgstr "创建便笺时异常：%s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:216
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr "没有可用的 D-Bus 连接，shell 搜索和远程控制功能将不可用。"
 
-#: src/gnote.cpp:243
+#: src/gnote.cpp:248
 msgid "Failed to get shortcuts window!"
 msgstr "获取快捷键窗口失败！"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:264
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:270
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@gmail.com>, 2005-2008\n"
@@ -1375,7 +1384,7 @@ msgstr ""
 "YunQiang Su <wzssyqa@gmail.com>, 2010\n"
 "lumingzh <lumingzh@qq.com>, 2023-2025"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:279
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1387,76 +1396,80 @@ msgstr ""
 "版权所有 © 2009 Hubert Figuiere\n"
 "版权所有 © 2004-2009 Tomboy 原作者们。"
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:283
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: src/gnote.cpp:279
+#: src/gnote.cpp:285
 msgid "Homepage"
 msgstr "主页"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:496
 msgid "Run Gnote in background."
 msgstr "后台运行 Gnote。"
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:497
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "path"
 msgstr "路径"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:499
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口。"
 
-#: src/gnote.cpp:492 src/gnote.cpp:497
+#: src/gnote.cpp:499 src/gnote.cpp:505
 msgid "text"
 msgstr "文本"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:500
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一条带有可选标题的新便笺。"
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "title"
 msgstr "标题"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:502
+msgid "Open a new window."
+msgstr "打开一个新窗口。"
+
+#: src/gnote.cpp:503
 msgid "Display the existing note matching title."
 msgstr "显示匹配标题的现有便笺。"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:503
 msgid "title/url"
 msgstr "标题/url"
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:504
 msgid "Display the 'Start Here' note."
 msgstr "显示“从这里开始”便笺。"
 
-#: src/gnote.cpp:497
+#: src/gnote.cpp:505
 msgid "Search and highlight text in the opened note."
 msgstr "在开启的便笺中搜索文本（高亮显示）。"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "A note taking application"
 msgstr "一个记便笺应用程序"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:685
+#: src/gnote.cpp:693
 msgid "Version %1"
 msgstr "版本 %1"
 
@@ -1515,11 +1528,6 @@ msgstr "新建便笺本(_B)..."
 #: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr "%1 便笺本模板"
-
-#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
-#: src/searchnoteswidget.cpp:285
-msgid "New Note"
-msgstr "新建便笺"
 
 #: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
@@ -1874,7 +1882,7 @@ msgstr "插件"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
 #: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:322
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:315
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -2131,15 +2139,15 @@ msgstr "embed box 的上一级不是 Gtk::Grid，请报告程序问题！"
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "搜索条目的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:725
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "尝试前置一个未内嵌在窗口中的部件"
 
-#: src/recentchanges.cpp:732
+#: src/recentchanges.cpp:733
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "尝试前置一个不是 Gtk::Widget 的部件"
 
-#: src/recentchanges.cpp:932
+#: src/recentchanges.cpp:933
 msgid "No configured actions"
 msgstr "未配置操作"
 
@@ -2626,15 +2634,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "没有日期"
 
-#: src/utils.cpp:319 src/utils.cpp:333
+#: src/utils.cpp:312 src/utils.cpp:326
 msgid "_OK"
 msgstr "确定(_O)"
 
-#: src/utils.cpp:328
+#: src/utils.cpp:321
 msgid "_No"
 msgstr "否(_N)"
 
-#: src/utils.cpp:329
+#: src/utils.cpp:322
 msgid "_Yes"
 msgstr "是(_Y)"
 
@@ -2778,9 +2786,6 @@ msgstr "检查拼写"
 
 #~ msgid "If enabled, an opened note can be closed by hitting the escape key."
 #~ msgstr "如果启用此选项，则可用 Esc 键关闭打开的便笺。"
-
-#~ msgid "Open notes in new window"
-#~ msgstr "在新窗口打开便笺"
 
 #~ msgid ""
 #~ "Open notes in new window instead of replacing active content of the same "
