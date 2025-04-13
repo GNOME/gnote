@@ -47,6 +47,12 @@ A summary of options are included below.
 .B \-\-background
 Run Gnote in background.
 .TP
+.B \-\-help
+Show summary of options.
+.TP
+.B \-\-highlight-search TEXT
+Search and highlight TEXT in the opened note.
+.TP
 .B \-\-note-path PATH
 Specify the path of the directory containing the notes.
 .TP
@@ -56,48 +62,28 @@ Create and display a new note.
 .B \-\-new-note TITLE
 Create and display a new note with the title given.
 .TP
+.B \-\-new-window
+Open a new window.
+.TP
 .B \-\-open-note TITLE/URL
 Display the existing note matching TITLE or URL.
 .TP
 .B \-\-search
 Open the search all notes window with the search text.
 .TP
+.B \-\-shell-search
+Run Gnote as GNOME Shell search provider.
+.TP
 .B \-\-start-here
 Display the "Start Here" note.
-.TP
-.B \-\-highlight-search TEXT
-Search and highlight TEXT in the opened note.
-.TP
-.B \-\-help	
-Show summary of options.
 .TP
 .B \-\-version
 Show version of program.
 
 .SH "GSETTINGS SETTINGS"
 Gnote has several preference settings stored in GSettings.  Changes
-to Settings are applied instantly to any running Gnote instance. A
-summary of the GConf settings and their purpose are described below.
-.TP
-.B org.gnome.gnote.global-keybindings
-A GSettings schema for key bindings. Keys are listed below.
-.TP
-.B open-start-here
-Global X keybinding for displaying the "Start Here" note.
-The default keybinding is <Alt>F11.
-.TP
-.B show-note-menu
-Global X keybinding for displaying the Gnote applet's note menu.
-The default keybinding is <Alt>F12.
-.TP
-.B create-new-note
-Global X keybinding for creating and displaying a new note.
-.TP
-.B open-recent-changes
-Global X keybinding for opening the recent changes dialog.
-.TP
-.B open-search
-Global X keybinding for opening the note search dialog.
+to Settings are applied instantly to any running Gnote instance. You
+can use DConf-Editor to view all settings and see their descriptions.
 
 .SH "SEE ALSO"
 .I https://wiki.gnome.org/Apps/Gnote
