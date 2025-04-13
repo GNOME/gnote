@@ -3,24 +3,24 @@
 # This file is distributed under the same license as the gnote package.
 #
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
-# Muhammet Kara <muhammetk@gmail.com>, 2011-2021.
 # Sabri Ünal <yakushabb@gmail.com>, 2023, 2024.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2017-2025.
+# Muhammet Kara <muhammetk@gmail.com>, 2011-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-03-30 07:49+0000\n"
-"PO-Revision-Date: 2025-04-03 08:00+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2025-04-11 03:23+0000\n"
+"PO-Revision-Date: 2025-04-13 23:29+0300\n"
+"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Gtranslator 47.1\n"
 "X-POOTLE-MTIME: 1421955849.000000\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
@@ -67,6 +67,15 @@ msgstr "Not Tutucu"
 #: data/org.gnome.Gnote.desktop.in:7
 msgid "notes;idea;link;organize;"
 msgstr "notlar;fikir;bağlantı;düzenle;organizasyon;"
+
+#: data/org.gnome.Gnote.desktop.in:20
+msgid "New Window"
+msgstr "Yeni Pencere"
+
+#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
+#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:285
+msgid "New Note"
+msgstr "Yeni Not"
 
 #: data/org.gnome.gnote.gschema.xml:6
 msgid "Enable spellchecking"
@@ -1417,28 +1426,28 @@ msgstr "Gnote Notlarını WebDAV adresine eşzamanla."
 msgid "Exception thrown when creating note: %s"
 msgstr "Not oluşturulurken olağandışı durum oluştu: %s"
 
-#: src/gnote.cpp:211
+#: src/gnote.cpp:216
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Kullanılabilir D-Bus bağlantısı yok. Kabuk araması ve uzaktan denetim "
 "çalışmayacaktır."
 
-#: src/gnote.cpp:243
+#: src/gnote.cpp:248
 msgid "Failed to get shortcuts window!"
 msgstr "Kısayollar penceresi alınamadı!"
 
-#: src/gnote.cpp:258
+#: src/gnote.cpp:264
 msgid "and Tomboy original authors."
 msgstr "ve Tomboy’un özgün yazarları."
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:270
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Muhammet Kara <muhammetk@gmail.com>"
 
-#: src/gnote.cpp:273
+#: src/gnote.cpp:279
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1450,76 +1459,80 @@ msgstr ""
 "Telif Hakkı © 2009 Hubert Figuiere\n"
 "Telif Hakkı © 2004-2009 Tomboy özgün yazarları."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:283
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Basit ve kullanışlı not alma uygulaması."
 
-#: src/gnote.cpp:279
+#: src/gnote.cpp:285
 msgid "Homepage"
 msgstr "Web Sitesi"
 
-#: src/gnote.cpp:489
+#: src/gnote.cpp:496
 msgid "Run Gnote in background."
 msgstr "Gnote uygulamasını arkaplanda çalıştır."
 
-#: src/gnote.cpp:490
+#: src/gnote.cpp:497
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "GNOME Kabuk arama sağlayıcısı olarak Gnote çalıştırın."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "Specify the path of the directory containing the notes."
 msgstr "Notları içeren dizin yolunu belirtin."
 
-#: src/gnote.cpp:491
+#: src/gnote.cpp:498
 msgid "path"
 msgstr "yol"
 
-#: src/gnote.cpp:492
+#: src/gnote.cpp:499
 msgid "Open the search all notes window with the search text."
 msgstr "Arama metni ile tüm notları ara penceresini aç."
 
-#: src/gnote.cpp:492 src/gnote.cpp:497
+#: src/gnote.cpp:499 src/gnote.cpp:505
 msgid "text"
 msgstr "metin"
 
-#: src/gnote.cpp:493
+#: src/gnote.cpp:500
 msgid "Print version information."
 msgstr "Sürüm bilgisini yazdır."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "Create and display a new note, with a optional title."
 msgstr "İsteğe bağlı başlıkla yeni not oluştur ve görüntüle."
 
-#: src/gnote.cpp:494
+#: src/gnote.cpp:501
 msgid "title"
 msgstr "başlık"
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:502
+msgid "Open a new window."
+msgstr "Yeni bir pencere aç."
+
+#: src/gnote.cpp:503
 msgid "Display the existing note matching title."
 msgstr "Başlık ile eşleşen notu göster."
 
-#: src/gnote.cpp:495
+#: src/gnote.cpp:503
 msgid "title/url"
 msgstr "başlık/url"
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:504
 msgid "Display the 'Start Here' note."
 msgstr "'Buradan Başla' notunu görüntüle."
 
-#: src/gnote.cpp:497
+#: src/gnote.cpp:505
 msgid "Search and highlight text in the opened note."
 msgstr "Açılan not içindeki metni ara ve vurgula."
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "A note taking application"
 msgstr "Not alma uygulaması"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:509
 msgid "Gnote options at launch"
 msgstr "Başlangıçtaki Gnote seçenekleri"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:685
+#: src/gnote.cpp:693
 msgid "Version %1"
 msgstr "Sürüm %1"
 
@@ -1578,11 +1591,6 @@ msgstr "Yeni _Not Defteri..."
 #: src/notebooks/notebook.cpp:109
 msgid "%1 Notebook Template"
 msgstr "%1 Not Defteri Şablonu"
-
-#: src/notebooks/notebook.cpp:196 src/notemanagerbase.cpp:282
-#: src/searchnoteswidget.cpp:285
-msgid "New Note"
-msgstr "Yeni Not"
 
 #: src/notebooks/notebookmanager.cpp:279
 msgid "Really delete this notebook?"
@@ -2220,15 +2228,15 @@ msgstr "Gömü kutusunun ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Arama girdisinin ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:725
+#: src/recentchanges.cpp:726
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Pencereye gömülü olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:732
+#: src/recentchanges.cpp:733
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Gtk::Widget olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:932
+#: src/recentchanges.cpp:933
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
@@ -2769,9 +2777,6 @@ msgstr "Yazım denetimi"
 
 #~ msgid "_New"
 #~ msgstr "_Yeni"
-
-#~ msgid "Open In New _Window"
-#~ msgstr "Yeni _Pencerede Aç"
 
 #~ msgid "Luc Pionchon"
 #~ msgstr "Luc Pionchon"
