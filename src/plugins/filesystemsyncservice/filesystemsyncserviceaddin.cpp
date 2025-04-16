@@ -116,6 +116,7 @@ Gtk::Widget *FileSystemSyncServiceAddin::create_preferences_control(Gtk::Window 
   }
   m_path_button->signal_clicked().connect([this, &parent, requiredPrefChanged] {
     auto dlg = Gtk::FileChooserNative::create(_("Select Synchronization Folder..."), Gtk::FileChooser::Action::SELECT_FOLDER);
+    dlg->set_modal(true);
     dlg->set_transient_for(parent);
     Glib::ustring syncPath;
     if(get_config_settings(syncPath)) {
