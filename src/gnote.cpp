@@ -311,6 +311,8 @@ namespace gnote {
     NoteRecentChanges *win = new NoteRecentChanges(*this, default_note_manager());
     win->signal_hide().connect([this, win]() { on_main_window_closed(win); });
     add_window(*win);
+    auto group = Gtk::WindowGroup::create();
+    group->add_window(*win);
     return *win;
   }
 
