@@ -223,6 +223,7 @@ namespace gnote {
   {
     if(!m_prefsdlg) {
       m_prefsdlg = std::make_unique<PreferencesDialog>(*this, default_note_manager());
+      m_prefsdlg->set_modal(true);
       m_prefsdlg->set_transient_for(get_main_window());
       m_prefsdlg->signal_response().connect(
         sigc::mem_fun(*this, &Gnote::on_preferences_response));
@@ -283,6 +284,7 @@ namespace gnote {
     about->set_translator_credits(translators);
     MainWindow & recent_changes = get_main_window();
     if(recent_changes.get_visible()) {
+      about->set_modal(true);
       about->set_transient_for(recent_changes);
       recent_changes.present();
     }
