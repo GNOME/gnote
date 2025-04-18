@@ -160,11 +160,10 @@ namespace {
     , m_addin_manager(note_manager.get_addin_manager())
     , m_note_manager(note_manager)
   {
-    set_margin(5);
     set_resizable(true);
     set_title(_("Gnote Preferences"));
 
-    get_content_area()->set_spacing(5);
+    get_content_area()->get_parent()->set_margin(5);
 
     Gtk::Notebook *notebook = Gtk::make_managed<Gtk::Notebook>();
     notebook->set_margin(5);
