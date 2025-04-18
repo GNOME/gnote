@@ -328,6 +328,7 @@ namespace gnote {
       }
 
       if (parent){
+        set_modal(true);
         set_transient_for(*parent);
       }
 

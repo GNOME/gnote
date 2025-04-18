@@ -1213,6 +1213,7 @@ namespace {
   {
     property_destroy_with_parent() = true;
     add_button(_("_Close"), Gtk::ResponseType::CLOSE);
+    set_modal(true);
     
     // TODO: Change this icon to be an addin/package icon
     Gtk::Image *icon = Gtk::make_managed<Gtk::Image>();
