@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2020,2022-2024 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020,2022-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -171,7 +171,7 @@ private:
   void process_child_widget_queue();
   void process_rename_link_update(const Glib::ustring & old_title);
   void process_rename_link_update_end(int response, Gtk::Dialog *dialog,
-                                      const Glib::ustring & old_title, const Note & self);
+                                      const Glib::ustring & old_title);
   void on_note_window_embedded();
   void on_note_window_foregrounded();
 

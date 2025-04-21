@@ -490,8 +490,9 @@ namespace gnote {
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, *this, m_gnote);
         dlg->signal_response().connect([this, dlg, old_title, self_uri=uri(), end_rename](int response) {
+          // ensure captured this is still valid
           manager().find_by_uri(self_uri, [this, response, dlg, old_title, end_rename](NoteBase & note) {
-            process_rename_link_update_end(response, dlg, old_title, static_cast<Note&>(note));
+            process_rename_link_update_end(response, dlg, old_title);
             end_rename();
           });
         });
@@ -501,14 +502,14 @@ namespace gnote {
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
         for(NoteBase & note : linking_notes) {
           note.remove_links(old_title, *this);
-          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *this);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title);
         }
         end_rename();
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
         for(NoteBase & note : linking_notes) {
           note.rename_links(old_title, *this);
-          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *this);
+          process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title);
         }
         end_rename();
       }
@@ -519,7 +520,7 @@ namespace gnote {
   }
 
   void Note::process_rename_link_update_end(int response, Gtk::Dialog *dialog,
-                                            const Glib::ustring & old_title, const Note & self)
+                                            const Glib::ustring & old_title)
   {
     if(auto dlg = dynamic_cast<NoteRenameDialog*>(dialog)) {
       const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
@@ -532,12 +533,12 @@ namespace gnote {
 
       for(const auto & item : notes) {
         bool rename = item.second && response == Gtk::ResponseType::YES;
-        manager().find_by_uri(item.first, [this, rename, &old_title, &self](NoteBase & note) {
+        manager().find_by_uri(item.first, [this, rename, &old_title](NoteBase & note) {
           if(rename) {
             note.rename_links(old_title, *this);
           }
           else {
-            note.remove_links(old_title, self);
+            note.remove_links(old_title, *this);
           }
         });
       }
