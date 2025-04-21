@@ -479,14 +479,20 @@ namespace gnote {
   {
     std::vector<NoteBase::Ref> linking_notes(manager().get_notes_linking_to(old_title));
 
+    auto end_rename = [this, old_title] {
+      signal_renamed(*this, old_title);
+      queue_save(CONTENT_CHANGED);
+    };
+
     if (!linking_notes.empty()) {
       const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, *this, m_gnote);
-        dlg->signal_response().connect([this, dlg, old_title, self_uri=uri()](int response) {
-          manager().find_by_uri(self_uri, [this, response, dlg, old_title](NoteBase & note) {
+        dlg->signal_response().connect([this, dlg, old_title, self_uri=uri(), end_rename](int response) {
+          manager().find_by_uri(self_uri, [this, response, dlg, old_title, end_rename](NoteBase & note) {
             process_rename_link_update_end(response, dlg, old_title, static_cast<Note&>(note));
+            end_rename();
           });
         });
         dlg->present();
@@ -497,17 +503,18 @@ namespace gnote {
           note.remove_links(old_title, *this);
           process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *this);
         }
+        end_rename();
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
         for(NoteBase & note : linking_notes) {
           note.rename_links(old_title, *this);
           process_rename_link_update_end(Gtk::ResponseType::NO, NULL, old_title, *this);
         }
+        end_rename();
       }
     }
     else {
-      signal_renamed(*this, old_title);
-      queue_save(CONTENT_CHANGED);
+      end_rename();
     }
   }
 
@@ -536,9 +543,6 @@ namespace gnote {
       }
       get_window()->editor()->set_editable(true);
     }
-
-    signal_renamed(*this, old_title);
-    queue_save(CONTENT_CHANGED);
   }
 
 
