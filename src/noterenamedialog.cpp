@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019,2021-2023 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019,2021-2023,2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -151,6 +151,7 @@ NoteRenameDialog::NoteRenameDialog(const std::vector<NoteBase::Ref> & notes,
   , m_always_rename_radio(_("Alwa_ys rename links"), true)
   , m_never_rename_radio(_("Never rename _links"), true)
 {
+  set_modal(true);
   set_default_response(Gtk::ResponseType::CANCEL);
   set_margin(10);
 
