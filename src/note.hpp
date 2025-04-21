@@ -170,8 +170,6 @@ private:
   void on_window_destroyed();
   void process_child_widget_queue();
   void process_rename_link_update(const Glib::ustring & old_title);
-  void process_rename_link_update_end(int response, Gtk::Dialog *dialog,
-                                      const Glib::ustring & old_title);
   void on_note_window_embedded();
   void on_note_window_foregrounded();
 
