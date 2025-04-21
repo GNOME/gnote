@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -514,8 +514,7 @@ namespace gnote {
   void Note::process_rename_link_update_end(int response, Gtk::Dialog *dialog,
                                             const Glib::ustring & old_title, const Note & self)
   {
-    if(dialog) {
-      NoteRenameDialog *dlg = static_cast<NoteRenameDialog*>(dialog);
+    if(auto dlg = dynamic_cast<NoteRenameDialog*>(dialog)) {
       const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
       if(Gtk::ResponseType::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
         m_gnote.preferences().note_rename_behavior(selected_behavior);
