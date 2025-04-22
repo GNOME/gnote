@@ -495,7 +495,6 @@ namespace gnote {
           }
 
           const auto notes = dlg->get_notes();
-          delete dialog;
 
           for(const auto & item : notes) {
             bool rename = item.second && response == Gtk::ResponseType::YES;
@@ -509,11 +508,13 @@ namespace gnote {
             });
           }
           get_window()->editor()->set_editable(true);
+          // must be at the end, because closing causes reponse with cancel
+          dlg->close();
         }
       };
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
-        NoteRenameDialog *dlg = new NoteRenameDialog(linking_notes, old_title, *this, m_gnote);
+        NoteRenameDialog *dlg = manage(new NoteRenameDialog(linking_notes, old_title, *this, m_gnote));
         dlg->signal_response().connect([this, dlg, self_uri=uri(), process_rename_link_update_end, end_rename](int response) {
           // ensure captured this is still valid
           manager().find_by_uri(self_uri, [this, response, dlg, process_rename_link_update_end, end_rename](NoteBase & note) {
