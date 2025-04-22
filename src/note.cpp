@@ -487,14 +487,14 @@ namespace gnote {
     if (!linking_notes.empty()) {
       const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());
 
-      auto process_rename_link_update_end = [this, old_title](int response, Gtk::Dialog *dialog) {
-        if(auto dlg = dynamic_cast<NoteRenameDialog*>(dialog)) {
-          const NoteRenameBehavior selected_behavior = dlg->get_selected_behavior();
+      auto process_rename_link_update_end = [this, old_title](int response, NoteRenameDialog *dialog) {
+        if(dialog) {
+          const NoteRenameBehavior selected_behavior = dialog->get_selected_behavior();
           if(Gtk::ResponseType::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
             m_gnote.preferences().note_rename_behavior(selected_behavior);
           }
 
-          const auto notes = dlg->get_notes();
+          const auto notes = dialog->get_notes();
 
           for(const auto & item : notes) {
             bool rename = item.second && response == Gtk::ResponseType::YES;
@@ -509,7 +509,7 @@ namespace gnote {
           }
           get_window()->editor()->set_editable(true);
           // must be at the end, because closing causes reponse with cancel
-          dlg->close();
+          dialog->close();
         }
       };
 
