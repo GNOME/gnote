@@ -487,42 +487,40 @@ namespace gnote {
     if (!linking_notes.empty()) {
       const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());
 
-      auto process_rename_link_update_end = [this, old_title](int response, NoteRenameDialog *dialog) {
-        if(dialog) {
-          const NoteRenameBehavior selected_behavior = dialog->get_selected_behavior();
-          if(Gtk::ResponseType::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
-            m_gnote.preferences().note_rename_behavior(selected_behavior);
-          }
-
-          const auto notes = dialog->get_notes();
-
-          for(const auto & item : notes) {
-            bool rename = item.second && response == Gtk::ResponseType::YES;
-            manager().find_by_uri(item.first, [this, rename, &old_title](NoteBase & note) {
-              if(rename) {
-                note.rename_links(old_title, *this);
-              }
-              else {
-                note.remove_links(old_title, *this);
-              }
-            });
-          }
-          get_window()->editor()->set_editable(true);
-          // must be at the end, because closing causes reponse with cancel
-          dialog->close();
+      auto process_rename_link_update_end = [this, old_title](int response, NoteRenameDialog &dialog) {
+        const NoteRenameBehavior selected_behavior = dialog.get_selected_behavior();
+        if(Gtk::ResponseType::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
+          m_gnote.preferences().note_rename_behavior(selected_behavior);
         }
+
+        const auto notes = dialog.get_notes();
+
+        for(const auto & item : notes) {
+          bool rename = item.second && response == Gtk::ResponseType::YES;
+          manager().find_by_uri(item.first, [this, rename, &old_title](NoteBase & note) {
+            if(rename) {
+              note.rename_links(old_title, *this);
+            }
+            else {
+              note.remove_links(old_title, *this);
+            }
+          });
+        }
+        get_window()->editor()->set_editable(true);
+        // must be at the end, because closing causes reponse with cancel
+        dialog.close();
       };
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
-        NoteRenameDialog *dlg = manage(new NoteRenameDialog(linking_notes, old_title, *this, m_gnote));
-        dlg->signal_response().connect([this, dlg, self_uri=uri(), process_rename_link_update_end, end_rename](int response) {
+        auto &dlg = *manage(new NoteRenameDialog(linking_notes, old_title, *this, m_gnote));
+        dlg.signal_response().connect([this, &dlg, self_uri=uri(), process_rename_link_update_end, end_rename](int response) {
           // ensure captured this is still valid
-          manager().find_by_uri(self_uri, [this, response, dlg, process_rename_link_update_end, end_rename](NoteBase & note) {
+          manager().find_by_uri(self_uri, [this, response, &dlg, process_rename_link_update_end, end_rename](NoteBase & note) {
             process_rename_link_update_end(response, dlg);
             end_rename();
           });
         });
-        dlg->present();
+        dlg.present();
         get_window()->editor()->set_editable(false);
       }
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
