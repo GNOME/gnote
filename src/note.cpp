@@ -527,14 +527,12 @@ namespace gnote {
       else if (NOTE_RENAME_ALWAYS_REMOVE_LINKS == behavior) {
         for(NoteBase & note : linking_notes) {
           note.remove_links(old_title, *this);
-          process_rename_link_update_end(Gtk::ResponseType::NO, nullptr);
         }
         end_rename();
       }
       else if (NOTE_RENAME_ALWAYS_RENAME_LINKS == behavior) {
         for(NoteBase & note : linking_notes) {
           note.rename_links(old_title, *this);
-          process_rename_link_update_end(Gtk::ResponseType::NO, nullptr);
         }
         end_rename();
       }
