@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2022-2023,2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -69,10 +69,16 @@ private:
 };
 
 class NoteRenameDialog
-  : public Gtk::Dialog
+  : public Gtk::Window
 {
 public:
   typedef std::map<Glib::ustring, bool> Map;
+  enum class Response
+  {
+    RENAME,
+    DONT_RENAME,
+    CANCEL,
+  };
 
   NoteRenameDialog(const std::vector<NoteBase::Ref> & notes,
                    const Glib::ustring & old_title,
@@ -81,8 +87,11 @@ public:
   Map get_notes() const;
   NoteRenameBehavior get_selected_behavior() const;
 
+  sigc::signal<void(Response)> signal_response;
 private:
-
+  bool on_close();
+  void on_rename_clicked();
+  void on_dont_rename_clicked();
   void on_advanced_expander_changed(bool expanded);
   void on_always_rename_clicked();
   void on_always_show_dlg_clicked();
@@ -92,6 +101,7 @@ private:
 
   IGnote & m_gnote;
   NoteManagerBase & m_manager;
+  Response m_response{Response::CANCEL};
   Glib::RefPtr<Gio::ListStore<NoteRenameRecord>> m_notes_model;
   Gtk::Button m_dont_rename_button;
   Gtk::Button m_rename_button;

@@ -487,16 +487,16 @@ namespace gnote {
     if (!linking_notes.empty()) {
       const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());
 
-      auto process_rename_link_update_end = [this, old_title](int response, NoteRenameDialog &dialog) {
+      auto process_rename_link_update_end = [this, old_title](NoteRenameDialog::Response response, NoteRenameDialog &dialog) {
         const NoteRenameBehavior selected_behavior = dialog.get_selected_behavior();
-        if(Gtk::ResponseType::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
+        if(NoteRenameDialog::Response::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
           m_gnote.preferences().note_rename_behavior(selected_behavior);
         }
 
         const auto notes = dialog.get_notes();
 
         for(const auto & item : notes) {
-          bool rename = item.second && response == Gtk::ResponseType::YES;
+          bool rename = item.second && response == NoteRenameDialog::Response::RENAME;
           manager().find_by_uri(item.first, [this, rename, &old_title](NoteBase & note) {
             if(rename) {
               note.rename_links(old_title, *this);
@@ -513,7 +513,7 @@ namespace gnote {
 
       if (NOTE_RENAME_ALWAYS_SHOW_DIALOG == behavior) {
         auto &dlg = *manage(new NoteRenameDialog(linking_notes, old_title, *this, m_gnote));
-        dlg.signal_response().connect([this, &dlg, self_uri=uri(), process_rename_link_update_end, end_rename](int response) {
+        dlg.signal_response.connect([this, &dlg, process_rename_link_update_end, end_rename, self_uri=uri()](NoteRenameDialog::Response response) {
           // ensure captured this is still valid
           manager().find_by_uri(self_uri, [this, response, &dlg, process_rename_link_update_end, end_rename](NoteBase & note) {
             process_rename_link_update_end(response, dlg);

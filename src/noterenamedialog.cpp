@@ -137,10 +137,7 @@ NoteRenameDialog::NoteRenameDialog(const std::vector<NoteBase::Ref> & notes,
                                    const Glib::ustring & old_title,
                                    Note & renamed_note,
                                    IGnote & g)
-  : Gtk::Dialog(_("Rename Note Links?"),
-                *dynamic_cast<Gtk::Window*>(renamed_note.get_window()->host()),
-                false)
-  , m_gnote(g)
+  : m_gnote(g)
   , m_manager(renamed_note.manager())
   , m_notes_model(Gio::ListStore<NoteRenameRecord>::create())
   , m_dont_rename_button(_("_Don't Rename Links"), true)
@@ -151,14 +148,24 @@ NoteRenameDialog::NoteRenameDialog(const std::vector<NoteBase::Ref> & notes,
   , m_always_rename_radio(_("Alwa_ys rename links"), true)
   , m_never_rename_radio(_("Never rename _links"), true)
 {
+  set_title(_("Rename Note Links?"));
   set_modal(true);
-  set_default_response(Gtk::ResponseType::CANCEL);
+  set_transient_for(*dynamic_cast<Gtk::Window*>(renamed_note.get_window()->host()));
   set_margin(10);
 
-  Gtk::Box *const vbox = get_content_area();
+  signal_close_request().connect(sigc::mem_fun(*this, &NoteRenameDialog::on_close), false);
+  auto shortcuts = Gtk::ShortcutController::create();
+  auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Escape);
+  auto action = Gtk::CallbackAction::create([](Gtk::Widget &widget, const Glib::VariantBase&) {
+    static_cast<Gtk::Window&>(widget).close();
+    return true;
+  });
+  auto shortcut = Gtk::Shortcut::create(trigger, action);
+  shortcuts->add_shortcut(shortcut);
+  add_controller(shortcuts);
 
-  add_action_widget(m_rename_button, Gtk::ResponseType::YES);
-  add_action_widget(m_dont_rename_button, Gtk::ResponseType::NO);
+  auto vbox = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::VERTICAL);
+  set_child(*vbox);
 
   for(const NoteBase & note : notes) {
     m_notes_model->append(NoteRenameRecord::create(note, true));
@@ -264,7 +271,37 @@ NoteRenameDialog::NoteRenameDialog(const std::vector<NoteBase::Ref> & notes,
                     &NoteRenameDialog::on_advanced_expander_changed),
       advanced_expander->property_expanded().get_value()));
 
+  auto actions = Gtk::make_managed<Gtk::Box>();
+  actions->set_spacing(10);
+  actions->set_margin(10);
+  actions->set_halign(Gtk::Align::END);
+  actions->set_baseline_position(Gtk::BaselinePosition::CENTER);
+  actions->append(m_rename_button);
+  actions->append(m_dont_rename_button);
+  vbox->append(*actions);
+
+  m_rename_button.signal_clicked().connect(sigc::mem_fun(*this, &NoteRenameDialog::on_rename_clicked));
+  m_dont_rename_button.signal_clicked().connect(sigc::mem_fun(*this, &NoteRenameDialog::on_dont_rename_clicked));
+
   set_focus(m_dont_rename_button);
+}
+
+bool NoteRenameDialog::on_close()
+{
+  signal_response(m_response);
+  return false;
+}
+
+void NoteRenameDialog::on_rename_clicked()
+{
+  m_response = Response::RENAME;
+  close();
+}
+
+void NoteRenameDialog::on_dont_rename_clicked()
+{
+  m_response = Response::DONT_RENAME;
+  close();
 }
 
 NoteRenameDialog::Map NoteRenameDialog::get_notes() const
