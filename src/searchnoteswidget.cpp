@@ -132,8 +132,33 @@ private:
 
 const Glib::ustring NoteColumnItemFactory::TITLE_WIDGET = "note-title";
 
+
+class NoteChangeLabel
+  : public Gtk::Label
+{
+public:
+  explicit NoteChangeLabel(Preferences &prefs)
+    : m_preferences(prefs)
+    {
+    }
+
+  void set_text(NoteBase &note)
+    {
+      Gtk::Label::set_text(utils::get_pretty_print_date(note.change_date(), true, m_preferences));
+    }
+
+  void on_note_saved(NoteBase &note)
+    {
+      set_text(note);
+    }
+
+  sigc::connection saved_cid;
+private:
+  Preferences &m_preferences;
+};
+
 class ChangeColumnFactory
-  : public utils::LabelFactory
+  : public Gtk::SignalListItemFactory
 {
 public:
   static Glib::RefPtr<ChangeColumnFactory> create(Preferences & preferences)
@@ -144,14 +169,47 @@ private:
   ChangeColumnFactory(Preferences & prefs)
     : m_preferences(prefs)
     {
+      signal_setup().connect(sigc::mem_fun(*this, &ChangeColumnFactory::setup));
+      signal_bind().connect(sigc::mem_fun(*this, &ChangeColumnFactory::bind));
+      signal_unbind().connect(sigc::mem_fun(*this, &ChangeColumnFactory::unbind));
     }
 
-  Glib::ustring get_text(Gtk::ListItem & item) override
+  void setup(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      auto label = Gtk::make_managed<NoteChangeLabel>(m_preferences);
+      label->set_halign(Gtk::Align::START);
+      list_item->set_child(*label);
+    }
+
+  void bind(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      auto &label = get_label(*list_item);
+      auto &note = get_note(*list_item);
+      label.set_text(note);
+      label.saved_cid = note.signal_saved.connect(sigc::mem_fun(label, &NoteChangeLabel::on_note_saved));
+    }
+
+  void unbind(const Glib::RefPtr<Gtk::ListItem> & list_item)
+    {
+      get_label(*list_item).saved_cid.disconnect();
+    }
+
+  NoteChangeLabel &get_label(Gtk::ListItem &item)
+    {
+      if(auto label = dynamic_cast<NoteChangeLabel*>(item.get_child())) {
+        return *label;
+      }
+
+      throw std::runtime_error("Expected child to be label");
+    }
+
+  Note &get_note(Gtk::ListItem &item)
     {
       if(auto note = std::dynamic_pointer_cast<Note>(item.get_item())) {
-        return utils::get_pretty_print_date(note->change_date(), true, m_preferences);
+        return *note;
       }
-      return Glib::ustring();
+
+      throw std::runtime_error("Expected to get Note");
     }
 
   Preferences & m_preferences;
