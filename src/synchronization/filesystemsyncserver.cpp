@@ -105,7 +105,20 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
   for(NoteBase &iter : notes) {
     uploads.emplace_back(iter);
   }
-  unsigned failures = upload_notes(uploads, cancel_op);
+
+  unsigned failures = 0;
+  do {
+    unsigned fails = upload_notes(uploads, cancel_op);
+    if(fails > 0) {
+      bool no_progress = fails == failures;
+      failures = fails;
+      if(no_progress) {
+        break;
+      }
+    }
+  }
+  while(failures > 0);
+
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
   }
@@ -128,6 +141,7 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
       --uploads_remain;
       continue;
     }
+    upload.result = UploadResult::NOT_STARTED;
     auto file_path = upload.note.get().file_path();
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
     auto local_note = Gio::File::create_for_path(file_path);
@@ -154,10 +168,14 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
     }, cancel_op);
   }
 
+  unsigned failure_margin = notes.size() / 4;
+  if(failure_margin < 10) {
+    failure_margin = 10;
+  }
   std::unique_lock<std::mutex> lock(upload_lock);
   while(uploads_remain > 0) {
     upload_finished.wait(lock);
-    if(failures > 0) {
+    if(failures > failure_margin) {
       cancel_op->cancel();
     }
   }
