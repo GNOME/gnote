@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2023 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 
 
 #include <algorithm>
+#include <atomic>
 #include <condition_variable>
 #include <stdexcept>
 
@@ -99,49 +100,69 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
   mkdir_p(m_new_revision_path);
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
   m_updated_notes.reserve(notes.size());
-  std::mutex notes_lock;
-  std::condition_variable all_uploaded;
+  std::vector<NoteUpload> uploads;
   auto cancel_op = Gio::Cancellable::create();
-  unsigned failures = 0;
-  unsigned total = notes.size();
-  for(const NoteBase & iter : notes) {
-    auto file_path = iter.file_path();
+  for(NoteBase &iter : notes) {
+    uploads.emplace_back(iter);
+  }
+  unsigned failures = upload_notes(uploads, cancel_op);
+  if(failures > 0) {
+    throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
+  }
+  else {
+    for(auto &upload : uploads) {
+      m_updated_notes.emplace_back(std::move(upload.result_path));
+    }
+  }
+}
+
+
+unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
+{
+  std::atomic<unsigned> uploads_remain(notes.size());
+  std::atomic<unsigned> failures(0);
+  std::mutex upload_lock;
+  std::condition_variable upload_finished;
+  for(auto &upload : notes) {
+    if(upload.result == UploadResult::SUCCESS) {
+      --uploads_remain;
+      continue;
+    }
+    auto file_path = upload.note.get().file_path();
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
     auto local_note = Gio::File::create_for_path(file_path);
-    local_note->copy_async(server_note, [this, &notes_lock, &all_uploaded, &total, &failures, local_note, file_path = std::move(file_path)]
+    local_note->copy_async(server_note, [&upload, &upload_lock, &upload_finished, &uploads_remain, &failures, local_note, file_path = std::move(file_path)]
                                         (Glib::RefPtr<Gio::AsyncResult> & result) {
       try {
         if(local_note->copy_finish(result)) {
           auto path = sharp::file_basename(file_path);
-          std::unique_lock<std::mutex> lock(notes_lock);
-          m_updated_notes.emplace_back(std::move(path));
-          if(--total == 0) {
-            all_uploaded.notify_one();
-          }
-          return;
+          upload.result = UploadResult::SUCCESS;
+          upload.result_path = std::move(path);
+        }
+        else {
+          upload.result = UploadResult::FAILURE;
         }
       }
       catch (std::exception & e) {
         ERR_OUT(_("Failed to upload note: %s"), e.what());
       }
 
-      std::unique_lock<std::mutex> lock(notes_lock);
-      ++failures;
-      --total;
-      all_uploaded.notify_one();
+      if(--uploads_remain == 0) {
+        std::unique_lock<std::mutex> lock(upload_lock);
+        upload_finished.notify_one();
+      }
     }, cancel_op);
   }
 
-  std::unique_lock<std::mutex> lock(notes_lock);
-  while(total > 0) {
-    all_uploaded.wait(lock);
+  std::unique_lock<std::mutex> lock(upload_lock);
+  while(uploads_remain > 0) {
+    upload_finished.wait(lock);
     if(failures > 0) {
       cancel_op->cancel();
     }
   }
-  if(failures > 0) {
-    throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
-  }
+
+  return failures;
 }
 
 

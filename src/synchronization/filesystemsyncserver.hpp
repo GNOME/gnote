@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2023 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,6 +51,25 @@ protected:
   virtual void mkdir_p(const Glib::RefPtr<Gio::File> & path);
 private:
   void common_ctor();
+
+  enum class UploadResult
+  {
+    NOT_STARTED,
+    SUCCESS,
+    FAILURE,
+  };
+  struct NoteUpload
+  {
+    explicit NoteUpload(NoteBase::Ref note)
+      : note(note)
+      , result(UploadResult::NOT_STARTED)
+    {}
+
+    NoteBase::Ref note;
+    UploadResult result;
+    Glib::ustring result_path;
+  };
+  unsigned upload_notes(std::vector<NoteUpload> & notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op);
 
   Glib::RefPtr<Gio::File> get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);
