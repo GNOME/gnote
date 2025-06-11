@@ -137,11 +137,11 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
   std::mutex upload_lock;
   std::condition_variable upload_finished;
   for(auto &upload : notes) {
-    if(upload.result == UploadResult::SUCCESS) {
+    if(upload.result == TransferResult::SUCCESS) {
       --uploads_remain;
       continue;
     }
-    upload.result = UploadResult::NOT_STARTED;
+    upload.result = TransferResult::NOT_STARTED;
     auto file_path = upload.note.get().file_path();
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
     auto local_note = Gio::File::create_for_path(file_path);
@@ -150,11 +150,11 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
       try {
         if(local_note->copy_finish(result)) {
           auto path = sharp::file_basename(file_path);
-          upload.result = UploadResult::SUCCESS;
+          upload.result = TransferResult::SUCCESS;
           upload.result_path = std::move(path);
         }
         else {
-          upload.result = UploadResult::FAILURE;
+          upload.result = TransferResult::FAILURE;
         }
       }
       catch (std::exception & e) {

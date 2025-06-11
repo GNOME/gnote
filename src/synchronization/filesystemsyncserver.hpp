@@ -52,7 +52,7 @@ protected:
 private:
   void common_ctor();
 
-  enum class UploadResult
+  enum class TransferResult
   {
     NOT_STARTED,
     SUCCESS,
@@ -62,11 +62,11 @@ private:
   {
     explicit NoteUpload(NoteBase::Ref note)
       : note(note)
-      , result(UploadResult::NOT_STARTED)
+      , result(TransferResult::NOT_STARTED)
     {}
 
     NoteBase::Ref note;
-    UploadResult result;
+    TransferResult result;
     Glib::ustring result_path;
   };
   unsigned upload_notes(std::vector<NoteUpload> & notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op);
