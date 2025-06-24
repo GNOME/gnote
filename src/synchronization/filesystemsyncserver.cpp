@@ -155,13 +155,16 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
         }
         else {
           upload.result = TransferResult::FAILURE;
+          ++failures;
         }
       }
       catch (std::exception & e) {
         ERR_OUT(_("Failed to upload note: %s"), e.what());
+        upload.result = TransferResult::FAILURE;
+        ++failures;
       }
 
-      if(--uploads_remain == 0) {
+      if(--uploads_remain == 0 || upload.result == TransferResult::FAILURE) {
         std::unique_lock<std::mutex> lock(upload_lock);
         upload_finished.notify_one();
       }
