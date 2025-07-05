@@ -220,10 +220,7 @@ bool FileSystemSyncServer::updates_available_since(int revision)
 
 std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since(int revision)
 {
-  std::mutex note_updates_lock;
-  std::condition_variable note_updates_done;
   std::map<Glib::ustring, NoteUpdate> noteUpdates;
-  unsigned failures = 0;
 
   Glib::ustring tempPath = Glib::build_filename(m_cache_path, "sync_temp");
   if(!sharp::directory_exists(tempPath)) {
@@ -240,6 +237,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     catch(...) {}
   }
 
+  std::vector<NoteDownload> downloads;
   xmlDocPtr xml_doc = NULL;
   if(is_valid_xml_file(m_manifest_path, &xml_doc)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
@@ -248,64 +246,102 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
     DBG_OUT("get_note_updates_since xpath returned %d nodes", int(noteNodes.size()));
     if(noteNodes.size() > 0) {
-      auto cancel_op = Gio::Cancellable::create();
+      std::unordered_set<Glib::ustring, Hash<Glib::ustring>> updates;
       for(auto & node : noteNodes) {
         Glib::ustring note_id = sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@id"));
         int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@rev")));
-        if(noteUpdates.find(note_id) == noteUpdates.end()) {
-          // Copy the file from the server to the temp directory
-          auto revDir = get_revision_dir_path(rev);
-          auto serverNotePath = revDir->get_child(note_id + ".note");
-          Glib::ustring noteTempPath = Glib::build_filename(tempPath, note_id + ".note");
-          auto dest = Gio::File::create_for_path(noteTempPath);
-          serverNotePath->copy_async(dest,
-            [serverNotePath, &note_updates_lock, &note_updates_done, &noteUpdates, &failures, noteTempPath = std::move(noteTempPath), note_id = std::move(note_id), rev, total = noteNodes.size()]
-            (Glib::RefPtr<Gio::AsyncResult> & result) {
-              try {
-                if(serverNotePath->copy_finish(result)) {
-                  // Get the title, contents, etc.
-                  Glib::ustring noteTitle;
-                  Glib::ustring noteXml = sharp::file_read_all_text(noteTempPath);
-                  NoteUpdate update(noteXml, noteTitle, note_id, rev);
-                  std::unique_lock<std::mutex> lock(note_updates_lock);
-                  noteUpdates.insert(std::make_pair(note_id, update));
-                  if(noteUpdates.size() + failures >= total) {
-                    note_updates_done.notify_one();
-                  }
-                  return; // all done, error handling below
-                }
-              }
-              catch(std::exception & e) {
-                ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
-              }
-              catch(...) {
-                ERR_OUT(_("Exception when finishing note copy"));
-              }
-
-              std::unique_lock<std::mutex> lock(note_updates_lock);
-              ++failures;
-              note_updates_done.notify_one();
-            }, cancel_op);
+        if(updates.find(note_id) == updates.end()) {
+          updates.insert(note_id);
+          downloads.emplace_back(rev, std::move(note_id));
         }
-      }
-
-      std::unique_lock<std::mutex> lock(note_updates_lock);
-      while(noteUpdates.size() + failures < noteNodes.size()) {
-        if(failures > 0 && !cancel_op->is_cancelled()) {
-          cancel_op->cancel();
-        }
-        note_updates_done.wait(lock);
       }
     }
 
     xmlFreeDoc(xml_doc);
   }
 
+  auto cancel_op = Gio::Cancellable::create();
+  unsigned failures = 0;
+  do {
+    unsigned fails = download_notes(downloads, tempPath, cancel_op);
+    if(fails > 0) {
+      bool no_progress = fails == failures;
+      failures = fails;
+      if(no_progress) {
+        break;
+      }
+    }
+  }
+  while(failures > 0);
+
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to download %1 note update", "Failed to download %1 note updates", failures), failures));
   }
+
+  for(const auto &downloaded : downloads) {
+    Glib::ustring note_xml = sharp::file_read_all_text(downloaded.result_path);
+    NoteUpdate update(note_xml, Glib::ustring(), downloaded.note_id, downloaded.revision);
+    noteUpdates.insert(std::make_pair(downloaded.note_id, update));
+  }
+
   DBG_OUT("get_note_updates_since (%d) returning: %d", revision, int(noteUpdates.size()));
   return noteUpdates;
+}
+
+
+unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, const Glib::ustring &temp_path, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
+{
+  std::mutex note_updates_lock;
+  std::condition_variable note_updates_done;
+  std::atomic<unsigned> remaining(notes.size());
+  std::atomic<unsigned> failures(0);
+
+  for(auto & download : notes) {
+    // Copy the file from the server to the temp directory
+    auto revDir = get_revision_dir_path(download.revision);
+    auto serverNotePath = revDir->get_child(download.note_id + ".note");
+    Glib::ustring noteTempPath = Glib::build_filename(temp_path, download.note_id + ".note");
+    auto dest = Gio::File::create_for_path(noteTempPath);
+    serverNotePath->copy_async(dest,
+      [&download, serverNotePath, &note_updates_lock, &remaining, &failures, &note_updates_done, noteTempPath = std::move(noteTempPath)]
+      (Glib::RefPtr<Gio::AsyncResult> & result) {
+        try {
+          if(serverNotePath->copy_finish(result)) {
+            download.result = TransferResult::SUCCESS;
+            download.result_path = noteTempPath;
+          }
+        }
+        catch(std::exception & e) {
+          ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
+          download.result = TransferResult::FAILURE;
+          ++failures;
+        }
+        catch(...) {
+          ERR_OUT(_("Exception when finishing note copy"));
+          download.result = TransferResult::FAILURE;
+          ++failures;
+        }
+
+        if(--remaining == 0 || download.result == TransferResult::FAILURE) {
+          std::unique_lock<std::mutex> lock(note_updates_lock);
+          note_updates_done.notify_one();
+        }
+      }, cancel_op);
+  }
+
+  unsigned failure_margin = notes.size() / 4;
+  if(failure_margin < 10) {
+    failure_margin = 10;
+  }
+  std::unique_lock<std::mutex> lock(note_updates_lock);
+  while(remaining > 0) {
+    note_updates_done.wait(lock);
+    if(failures > failure_margin) {
+      cancel_op->cancel();
+    }
+  }
+
+  return failures;
 }
 
 
