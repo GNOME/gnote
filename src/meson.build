@@ -1,4 +1,5 @@
 libgnote_sources = [
+  'base/monitor.cpp',
   'gnome_keyring/ring.cpp',
   'sharp/datetime.cpp',
   'sharp/dynamicmodule.cpp',
