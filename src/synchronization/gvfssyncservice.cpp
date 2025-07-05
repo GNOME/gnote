@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2023 Aurimas Cernius
+ * Copyright (C) 2019-2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,13 +18,12 @@
  */
 
 
-#include <condition_variable>
-
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 
 #include "debug.hpp"
 #include "gvfssyncservice.hpp"
+#include "base/monitor.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
 
@@ -149,11 +148,10 @@ bool GvfsSyncService::mount_async(const Glib::RefPtr<Gio::File> & path, const st
 bool GvfsSyncService::mount_sync(const Glib::RefPtr<Gio::File> & path, const Glib::RefPtr<Gio::MountOperation> & op)
 {
   bool ret = true, done = false;
-  std::mutex mutex;
-  std::condition_variable cond;
-  std::unique_lock<std::mutex> lock(mutex);
-  if(mount_async(path, [&ret, &mutex, &cond, &done](bool result, const Glib::ustring&) {
-       std::unique_lock<std::mutex> lock(mutex);
+  Monitor cond;
+  Monitor::Lock lock(cond);
+  if(mount_async(path, [&ret, &cond, &done](bool result, const Glib::ustring&) {
+       Monitor::Lock lock(cond);
        ret = result;
        done = true;
        cond.notify_one();
@@ -192,11 +190,10 @@ void GvfsSyncService::unmount_sync()
     return;
   }
 
-  std::mutex mutex;
-  std::condition_variable cond;
-  std::unique_lock<std::mutex> lock(mutex);
-  unmount_async([this, &mutex, &cond]{
-    std::unique_lock<std::mutex> lock(mutex);
+  Monitor cond;
+  Monitor::Lock lock(cond);
+  unmount_async([this, &cond]{
+    Monitor::Lock lock(cond);
     cond.notify_one();
     m_mount.reset();
   });
