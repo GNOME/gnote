@@ -20,7 +20,6 @@
 
 #include <algorithm>
 #include <atomic>
-#include <condition_variable>
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
@@ -29,6 +28,7 @@
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
 #include "preferences.hpp"
+#include "base/monitor.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
 #include "sharp/uuid.hpp"
@@ -134,8 +134,7 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
 {
   std::atomic<unsigned> uploads_remain(notes.size());
   std::atomic<unsigned> failures(0);
-  std::mutex upload_lock;
-  std::condition_variable upload_finished;
+  Monitor upload_finished;
   for(auto &upload : notes) {
     if(upload.result == TransferResult::SUCCESS) {
       --uploads_remain;
@@ -145,7 +144,7 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
     auto file_path = upload.note.get().file_path();
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
     auto local_note = Gio::File::create_for_path(file_path);
-    local_note->copy_async(server_note, [&upload, &upload_lock, &upload_finished, &uploads_remain, &failures, local_note, file_path = std::move(file_path)]
+    local_note->copy_async(server_note, [&upload, &upload_finished, &uploads_remain, &failures, local_note, file_path = std::move(file_path)]
                                         (Glib::RefPtr<Gio::AsyncResult> & result) {
       try {
         if(local_note->copy_finish(result)) {
@@ -165,7 +164,7 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
       }
 
       if(--uploads_remain == 0 || upload.result == TransferResult::FAILURE) {
-        std::unique_lock<std::mutex> lock(upload_lock);
+        Monitor::Lock lock(upload_finished);
         upload_finished.notify_one();
       }
     }, cancel_op);
@@ -175,7 +174,7 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
   if(failure_margin < 10) {
     failure_margin = 10;
   }
-  std::unique_lock<std::mutex> lock(upload_lock);
+  Monitor::Lock lock(upload_finished);
   while(uploads_remain > 0) {
     upload_finished.wait(lock);
     if(failures > failure_margin) {
@@ -291,8 +290,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
 
 unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, const Glib::ustring &temp_path, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
 {
-  std::mutex note_updates_lock;
-  std::condition_variable note_updates_done;
+  Monitor note_updates_done;
   std::atomic<unsigned> remaining(notes.size());
   std::atomic<unsigned> failures(0);
 
@@ -303,7 +301,7 @@ unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, 
     Glib::ustring noteTempPath = Glib::build_filename(temp_path, download.note_id + ".note");
     auto dest = Gio::File::create_for_path(noteTempPath);
     serverNotePath->copy_async(dest,
-      [&download, serverNotePath, &note_updates_lock, &remaining, &failures, &note_updates_done, noteTempPath = std::move(noteTempPath)]
+      [&download, serverNotePath, &remaining, &failures, &note_updates_done, noteTempPath = std::move(noteTempPath)]
       (Glib::RefPtr<Gio::AsyncResult> & result) {
         try {
           if(serverNotePath->copy_finish(result)) {
@@ -323,7 +321,7 @@ unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, 
         }
 
         if(--remaining == 0 || download.result == TransferResult::FAILURE) {
-          std::unique_lock<std::mutex> lock(note_updates_lock);
+          Monitor::Lock lock(note_updates_done);
           note_updates_done.notify_one();
         }
       }, cancel_op);
@@ -333,7 +331,7 @@ unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, 
   if(failure_margin < 10) {
     failure_margin = 10;
   }
-  std::unique_lock<std::mutex> lock(note_updates_lock);
+  Monitor::Lock lock(note_updates_done);
   while(remaining > 0) {
     note_updates_done.wait(lock);
     if(failures > failure_margin) {
