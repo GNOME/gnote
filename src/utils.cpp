@@ -25,13 +25,13 @@
 #endif
 
 #include <algorithm>
-#include <condition_variable>
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
 #include <gtkmm/label.h>
 #include <gtkmm/urilauncher.h>
 
+#include "base/monitor.hpp"
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 #include "sharp/string.hpp"
@@ -226,14 +226,13 @@ namespace gnote {
 
     void main_context_call(const sigc::slot<void()> & slot)
     {
-      std::mutex mutex;
-      std::condition_variable cond;
+      Monitor cond;
       bool executed = false;
       std::exception_ptr ex;
 
-      std::unique_lock<std::mutex> lock(mutex);
-      main_context_invoke([slot, &cond, &mutex, &executed, &ex]() {
-        std::unique_lock<std::mutex> lock(mutex);
+      Monitor::Lock lock(cond);
+      main_context_invoke([slot, &cond, &executed, &ex]() {
+        Monitor::Lock lock(cond);
         try {
           slot();
         }
