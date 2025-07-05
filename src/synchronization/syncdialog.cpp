@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016,2017,2019-2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -578,9 +578,8 @@ void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
   int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
-  std::mutex wait_mutex;
-  std::condition_variable wait;
-  std::unique_lock lock(wait_mutex);
+  Monitor wait;
+  Monitor::Lock lock(wait);
   bool completed = false;
 
   // This event handler will be called by the synchronization thread
@@ -590,15 +589,15 @@ void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
   auto local_conflict_note = localConflictNote.uri();
   auto & manager = localConflictNote.manager();
   utils::main_context_invoke(
-    [this, &manager, local_conflict_note, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait_mutex, &wait, &completed]() {
+    [this, &manager, local_conflict_note, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait, &completed]() {
       if(auto note = manager.find_by_uri(local_conflict_note)) {
         note_conflict_detected_(static_cast<Note&>(note.value().get()), remoteNote, noteUpdateTitles,
                                 static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
-                                OVERWRITE_EXISTING, wait_mutex, wait, completed
+                                OVERWRITE_EXISTING, wait, completed
         );
       }
       else {
-        std::unique_lock lock(wait_mutex);
+        Monitor::Lock lock(wait);
         wait.notify_one();
       }
     });
@@ -615,8 +614,7 @@ void SyncDialog::note_conflict_detected_(
   const std::vector<Glib::ustring> & noteUpdateTitles,
   SyncTitleConflictResolution savedBehavior,
   SyncTitleConflictResolution resolution,
-  std::mutex &wait_mutex,
-  std::condition_variable &wait,
+  Monitor &wait,
   bool & completed)
 {
   bool noteSyncBitsMatch = m_gnote.sync_manager().synchronized_note_xml_matches(
@@ -628,7 +626,7 @@ void SyncDialog::note_conflict_detected_(
     auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(localConflictNote, noteUpdateTitles);
     auto local_conflict_note = localConflictNote.uri();
     conflictDlg->signal_response()
-      .connect([this, conflictDlg, local_conflict_note, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait_mutex, &wait, &completed](int resp) {
+      .connect([this, conflictDlg, local_conflict_note, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait, &completed](int resp) {
       auto response = static_cast<Gtk::ResponseType>(resp);
       conflict_dialog_response(
         conflictDlg,
@@ -640,14 +638,14 @@ void SyncDialog::note_conflict_detected_(
         response
       );
 
-      std::unique_lock lock(wait_mutex);
+      Monitor::Lock lock(wait);
       completed = true;
       wait.notify_one();
     });
     conflictDlg->show();
   }
   else {
-    std::unique_lock lock(wait_mutex);
+    Monitor::Lock lock(wait);
     completed = true;
     wait.notify_one();
   }

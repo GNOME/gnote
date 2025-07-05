@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020,2022-2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,8 +22,6 @@
 #define _SYNCHRONIZATION_SYNCDIALOG_HPP_
 
 
-#include <condition_variable>
-
 #include <giomm/liststore.h>
 #include <gtkmm/dialog.h>
 #include <gtkmm/expander.h>
@@ -32,6 +30,7 @@
 #include <gtkmm/progressbar.h>
 
 #include "syncui.hpp"
+#include "base/monitor.hpp"
 
 
 namespace gnote {
@@ -67,8 +66,7 @@ namespace sync {
                                  const std::vector<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,
                                  SyncTitleConflictResolution resolution,
-                                 std::mutex &wait_mutex,
-                                 std::condition_variable &wait,
+                                 Monitor &wait,
                                  bool & completed);
     void conflict_dialog_response(
       Gtk::Dialog *dialog,
