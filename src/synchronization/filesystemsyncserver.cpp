@@ -145,12 +145,10 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
     upload.result = TransferResult::NOT_STARTED;
     auto file_path = upload.note.get().file_path();
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
-    auto local_note = Gio::File::create_for_path(file_path);
-    local_note->copy_async(server_note, [&upload, &upload_finished, &uploads_remain, &failures, file_path = std::move(file_path)]
+    upload.source->copy_async(server_note, [&upload, &upload_finished, &uploads_remain, &failures, file_path = std::move(file_path)]
                                         (Glib::RefPtr<Gio::AsyncResult> & result) {
       try {
-        auto local_note = std::dynamic_pointer_cast<Gio::File>(result->get_source_object_base());
-        if(local_note && local_note->copy_finish(result)) {
+        if(upload.source->copy_finish(result)) {
           auto path = sharp::file_basename(file_path);
           upload.result = TransferResult::SUCCESS;
           upload.result_path = std::move(path);
@@ -254,8 +252,8 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
         int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@rev")));
         if(updates.find(note_id) == updates.end()) {
           updates.insert(note_id);
-          auto revDir = get_revision_dir_path(rev);
-          auto server_note = revDir->get_child(note_id + ".note");
+          auto rev_dir = get_revision_dir_path(rev);
+          auto server_note = rev_dir->get_child(note_id + ".note");
           downloads.emplace_back(server_note, rev, std::move(note_id));
         }
       }
@@ -301,11 +299,9 @@ unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, 
 
   for(auto & download : notes) {
     // Copy the file from the server to the temp directory
-    auto revDir = get_revision_dir_path(download.revision);
-    auto serverNotePath = revDir->get_child(download.note_id + ".note");
     Glib::ustring noteTempPath = Glib::build_filename(temp_path, download.note_id + ".note");
     auto dest = Gio::File::create_for_path(noteTempPath);
-    serverNotePath->copy_async(dest,
+    download.source->copy_async(dest,
       [&download, &remaining, &failures, &note_updates_done, noteTempPath = std::move(noteTempPath)]
       (Glib::RefPtr<Gio::AsyncResult> & result) {
         try {
