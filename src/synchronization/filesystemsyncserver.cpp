@@ -265,7 +265,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
   auto cancel_op = Gio::Cancellable::create();
   unsigned failures = 0;
   do {
-    unsigned fails = download_notes(downloads, temp_path, cancel_op);
+    unsigned fails = download_notes(downloads, cancel_op);
     if(fails > 0) {
       bool no_progress = fails == failures;
       failures = fails;
@@ -291,7 +291,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
 }
 
 
-unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, const Glib::ustring &temp_path, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
+unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
 {
   Monitor note_updates_done;
   std::atomic<unsigned> remaining(notes.size());
