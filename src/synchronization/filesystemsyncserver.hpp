@@ -68,10 +68,11 @@ private:
   struct NoteDownload
     : NoteTransfer
   {
-    NoteDownload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, int revision, Glib::ustring &&note_id)
+    NoteDownload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, int revision, Glib::ustring &&note_id, Glib::ustring &&result_path)
       : NoteTransfer(src, dest)
       , revision(revision)
       , note_id(std::move(note_id))
+      , result_path(std::move(result_path))
     {}
 
     int revision;

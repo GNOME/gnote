@@ -258,7 +258,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
           // Copy the file from the server to the temp directory
           Glib::ustring note_temp_path = Glib::build_filename(temp_path, note_id + ".note");
           auto dest = Gio::File::create_for_path(note_temp_path);
-          downloads.emplace_back(server_note, dest, rev, std::move(note_id));
+          downloads.emplace_back(server_note, dest, rev, std::move(note_id), std::move(note_temp_path));
         }
       }
     }
@@ -302,17 +302,12 @@ unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, 
   std::atomic<unsigned> failures(0);
 
   for(auto & download : notes) {
-    // Copy the file from the server to the temp directory
-    Glib::ustring noteTempPath = Glib::build_filename(temp_path, download.note_id + ".note");
-    auto dest = Gio::File::create_for_path(noteTempPath);
-    download.source->copy_async(dest,
-      [&download, &remaining, &failures, &note_updates_done, noteTempPath = std::move(noteTempPath)]
+    download.source->copy_async(download.destination,
+      [&download, &remaining, &failures, &note_updates_done]
       (Glib::RefPtr<Gio::AsyncResult> & result) {
         try {
-          auto server_note = std::dynamic_pointer_cast<Gio::File>(result->get_source_object_base());
-          if(server_note && server_note->copy_finish(result)) {
+          if(download.source->copy_finish(result)) {
             download.result = TransferResult::SUCCESS;
-            download.result_path = noteTempPath;
           }
           else {
             download.result = TransferResult::FAILURE;
