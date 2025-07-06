@@ -34,12 +34,14 @@ enum class TransferResult
 
 struct NoteTransfer
 {
-  NoteTransfer(const Glib::RefPtr<Gio::File> &src)
+  NoteTransfer(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest)
     : source(src)
+    , destination(dest)
     , result(TransferResult::NOT_STARTED)
   {}
 
   Glib::RefPtr<Gio::File> source;
+  Glib::RefPtr<Gio::File> destination;
   TransferResult result;
 };
 

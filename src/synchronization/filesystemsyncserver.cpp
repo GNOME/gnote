@@ -105,7 +105,8 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
   for(NoteBase &iter : notes) {
     auto file_path = iter.file_path();
     auto local_note = Gio::File::create_for_path(file_path);
-    uploads.emplace_back(local_note, iter);
+    auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
+    uploads.emplace_back(local_note, server_note, iter);
   }
 
   unsigned failures = 0;
@@ -222,14 +223,14 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
 {
   std::map<Glib::ustring, NoteUpdate> noteUpdates;
 
-  Glib::ustring tempPath = Glib::build_filename(m_cache_path, "sync_temp");
-  if(!sharp::directory_exists(tempPath)) {
-    sharp::directory_create(tempPath);
+  Glib::ustring temp_path = Glib::build_filename(m_cache_path, "sync_temp");
+  if(!sharp::directory_exists(temp_path)) {
+    sharp::directory_create(temp_path);
   }
   else {
     // Empty the temp dir
     try {
-      std::vector<Glib::ustring> files = sharp::directory_get_files(tempPath);
+      std::vector<Glib::ustring> files = sharp::directory_get_files(temp_path);
       for(auto & iter : files) {
         sharp::file_delete(iter);
       }
@@ -254,7 +255,10 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
           updates.insert(note_id);
           auto rev_dir = get_revision_dir_path(rev);
           auto server_note = rev_dir->get_child(note_id + ".note");
-          downloads.emplace_back(server_note, rev, std::move(note_id));
+          // Copy the file from the server to the temp directory
+          Glib::ustring note_temp_path = Glib::build_filename(temp_path, note_id + ".note");
+          auto dest = Gio::File::create_for_path(note_temp_path);
+          downloads.emplace_back(server_note, dest, rev, std::move(note_id));
         }
       }
     }
@@ -265,7 +269,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
   auto cancel_op = Gio::Cancellable::create();
   unsigned failures = 0;
   do {
-    unsigned fails = download_notes(downloads, tempPath, cancel_op);
+    unsigned fails = download_notes(downloads, temp_path, cancel_op);
     if(fails > 0) {
       bool no_progress = fails == failures;
       failures = fails;
