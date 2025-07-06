@@ -144,10 +144,11 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
     auto file_path = upload.note.get().file_path();
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
     auto local_note = Gio::File::create_for_path(file_path);
-    local_note->copy_async(server_note, [&upload, &upload_finished, &uploads_remain, &failures, local_note, file_path = std::move(file_path)]
+    local_note->copy_async(server_note, [&upload, &upload_finished, &uploads_remain, &failures, file_path = std::move(file_path)]
                                         (Glib::RefPtr<Gio::AsyncResult> & result) {
       try {
-        if(local_note->copy_finish(result)) {
+        auto local_note = std::dynamic_pointer_cast<Gio::File>(result->get_source_object_base());
+        if(local_note && local_note->copy_finish(result)) {
           auto path = sharp::file_basename(file_path);
           upload.result = TransferResult::SUCCESS;
           upload.result_path = std::move(path);
@@ -301,10 +302,11 @@ unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, 
     Glib::ustring noteTempPath = Glib::build_filename(temp_path, download.note_id + ".note");
     auto dest = Gio::File::create_for_path(noteTempPath);
     serverNotePath->copy_async(dest,
-      [&download, serverNotePath, &remaining, &failures, &note_updates_done, noteTempPath = std::move(noteTempPath)]
+      [&download, &remaining, &failures, &note_updates_done, noteTempPath = std::move(noteTempPath)]
       (Glib::RefPtr<Gio::AsyncResult> & result) {
         try {
-          if(serverNotePath->copy_finish(result)) {
+          auto server_note = std::dynamic_pointer_cast<Gio::File>(result->get_source_object_base());
+          if(server_note && server_note->copy_finish(result)) {
             download.result = TransferResult::SUCCESS;
             download.result_path = noteTempPath;
           }
