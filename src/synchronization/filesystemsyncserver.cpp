@@ -106,7 +106,7 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
     auto file_path = iter.file_path();
     auto local_note = Gio::File::create_for_path(file_path);
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
-    uploads.emplace_back(local_note, server_note, iter);
+    uploads.emplace_back(local_note, server_note, iter, sharp::file_basename(file_path));
   }
 
   unsigned failures = 0;
@@ -144,14 +144,11 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
       continue;
     }
     upload.result = TransferResult::NOT_STARTED;
-    auto file_path = upload.note.get().file_path();
-    upload.source->copy_async(upload.destination, [&upload, &upload_finished, &uploads_remain, &failures, file_path = std::move(file_path)]
+    upload.source->copy_async(upload.destination, [&upload, &upload_finished, &uploads_remain, &failures]
                                         (Glib::RefPtr<Gio::AsyncResult> & result) {
       try {
         if(upload.source->copy_finish(result)) {
-          auto path = sharp::file_basename(file_path);
           upload.result = TransferResult::SUCCESS;
-          upload.result_path = std::move(path);
         }
         else {
           upload.result = TransferResult::FAILURE;

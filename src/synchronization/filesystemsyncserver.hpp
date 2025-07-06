@@ -56,9 +56,10 @@ private:
   struct NoteUpload
     : NoteTransfer
   {
-    NoteUpload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, NoteBase::Ref note)
+    NoteUpload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, NoteBase::Ref note, Glib::ustring &&result_path)
       : NoteTransfer(src, dest)
       , note(note)
+      , result_path(std::move(result_path))
     {}
 
     NoteBase::Ref note;
