@@ -17,6 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _MONITOR_HPP_
+#define _MONITOR_HPP_
+
 #include <condition_variable>
 
 
@@ -45,4 +48,6 @@ private:
 };
 
 }
+
+#endif
 
