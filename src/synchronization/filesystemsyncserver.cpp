@@ -310,6 +310,10 @@ unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, 
             download.result = TransferResult::SUCCESS;
             download.result_path = noteTempPath;
           }
+          else {
+            download.result = TransferResult::FAILURE;
+            ++failures;
+          }
         }
         catch(std::exception & e) {
           ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
