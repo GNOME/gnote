@@ -145,8 +145,7 @@ unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, con
     }
     upload.result = TransferResult::NOT_STARTED;
     auto file_path = upload.note.get().file_path();
-    auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
-    upload.source->copy_async(server_note, [&upload, &upload_finished, &uploads_remain, &failures, file_path = std::move(file_path)]
+    upload.source->copy_async(upload.destination, [&upload, &upload_finished, &uploads_remain, &failures, file_path = std::move(file_path)]
                                         (Glib::RefPtr<Gio::AsyncResult> & result) {
       try {
         if(upload.source->copy_finish(result)) {
