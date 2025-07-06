@@ -103,7 +103,9 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
   std::vector<NoteUpload> uploads;
   auto cancel_op = Gio::Cancellable::create();
   for(NoteBase &iter : notes) {
-    uploads.emplace_back(iter);
+    auto file_path = iter.file_path();
+    auto local_note = Gio::File::create_for_path(file_path);
+    uploads.emplace_back(local_note, iter);
   }
 
   unsigned failures = 0;
@@ -252,7 +254,9 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
         int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@rev")));
         if(updates.find(note_id) == updates.end()) {
           updates.insert(note_id);
-          downloads.emplace_back(rev, std::move(note_id));
+          auto revDir = get_revision_dir_path(rev);
+          auto server_note = revDir->get_child(note_id + ".note");
+          downloads.emplace_back(server_note, rev, std::move(note_id));
         }
       }
     }

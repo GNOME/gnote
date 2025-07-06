@@ -21,6 +21,7 @@
 #ifndef _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 #define _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 
+#include "gvfstransfer.hpp"
 #include "isyncmanager.hpp"
 #include "utils.hpp"
 #include "sharp/datetime.hpp"
@@ -52,33 +53,27 @@ protected:
 private:
   void common_ctor();
 
-  enum class TransferResult
-  {
-    NOT_STARTED,
-    SUCCESS,
-    FAILURE,
-  };
   struct NoteUpload
+    : NoteTransfer
   {
-    explicit NoteUpload(NoteBase::Ref note)
-      : note(note)
-      , result(TransferResult::NOT_STARTED)
+    NoteUpload(const Glib::RefPtr<Gio::File> &src, NoteBase::Ref note)
+      : NoteTransfer(src)
+      , note(note)
     {}
 
     NoteBase::Ref note;
-    TransferResult result;
     Glib::ustring result_path;
   };
   unsigned upload_notes(std::vector<NoteUpload> & notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op);
   struct NoteDownload
+    : NoteTransfer
   {
-    NoteDownload(int revision, Glib::ustring &&note_id)
-      : result(TransferResult::NOT_STARTED)
+    NoteDownload(const Glib::RefPtr<Gio::File> &src, int revision, Glib::ustring &&note_id)
+      : NoteTransfer(src)
       , revision(revision)
       , note_id(std::move(note_id))
     {}
 
-    TransferResult result;
     int revision;
     Glib::ustring note_id;
     Glib::ustring result_path;
