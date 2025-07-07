@@ -69,9 +69,9 @@ struct NoteDownload
     , result_path(std::move(result_path))
   {}
 
-  int revision;
-  Glib::ustring note_id;
-  Glib::ustring result_path;
+  const int revision;
+  const Glib::ustring note_id;
+  const Glib::ustring result_path;
 };
 
 }
