@@ -61,6 +61,7 @@ libgnote_sources = [
   'notebooks/specialnotebooks.cpp',
   'synchronization/filesystemsyncserver.cpp',
   'synchronization/gvfssyncservice.cpp',
+  'synchronization/gvfstransfer.cpp',
   'synchronization/isyncmanager.cpp',
   'synchronization/syncui.cpp',
   'synchronization/syncutils.cpp',

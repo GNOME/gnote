@@ -53,35 +53,8 @@ struct FileTransfer
 class GvfsTransferBase
 {
 protected:
-  static TransferResult finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result)
-  {
-    try {
-      if(source->copy_finish(result)) {
-        return TransferResult::SUCCESS;
-      }
-      else {
-        //ERR_OUT(_("Failed to copy file"));
-      }
-    }
-    catch(std::exception & e) {
-      //ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
-    }
-    catch(...) {
-      //ERR_OUT(_("Exception when finishing note copy"));
-    }
-
-    return TransferResult::FAILURE;
-  }
-
-  static unsigned calculate_failure_margin(std::size_t transfers)
-  {
-    unsigned failure_margin = transfers / 4;
-    if(failure_margin < 10) {
-      failure_margin = 10;
-    }
-
-    return failure_margin;
-  }
+  static TransferResult finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result);
+  static unsigned calculate_failure_margin(std::size_t transfers);
 };
 
 template <typename TransferT>
