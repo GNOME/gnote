@@ -99,7 +99,6 @@ public:
 private:
   unsigned try_file_transfer(std::vector<TransferT> &transfers)
   {
-    Monitor finished;
     std::atomic<unsigned> remaining(transfers.size());
     std::atomic<unsigned> failures(0);
 
@@ -109,7 +108,7 @@ private:
         continue;
       }
       transfer.result = TransferResult::NOT_STARTED;
-      transfer.source->copy_async(transfer.destination, [&transfer, &finished, &remaining, &failures](Glib::RefPtr<Gio::AsyncResult> &result) {
+      transfer.source->copy_async(transfer.destination, [this, &transfer, &remaining, &failures](Glib::RefPtr<Gio::AsyncResult> &result) {
         bool success = finish_single_transfer(transfer.source, result);
         if(success) {
           transfer.result = TransferResult::SUCCESS;
@@ -120,8 +119,8 @@ private:
         }
 
         if(--remaining == 0 || !success) {
-          Monitor::Lock lock(finished);
-          finished.notify_one();
+          Monitor::Lock lock(m_finished);
+          m_finished.notify_one();
         }
       }, m_cancel_op);
     }
@@ -131,9 +130,9 @@ private:
       failure_margin = 10;
     }
 
-    Monitor::Lock lock(finished);
+    Monitor::Lock lock(m_finished);
     while(remaining > 0) {
-      finished.wait(lock);
+      m_finished.wait(lock);
       if(failures > failure_margin) {
         m_cancel_op->cancel();
       }
@@ -143,6 +142,7 @@ private:
   }
 
   const Glib::RefPtr<Gio::Cancellable> m_cancel_op = Gio::Cancellable::create();
+  Monitor m_finished;
 };
 
 }
