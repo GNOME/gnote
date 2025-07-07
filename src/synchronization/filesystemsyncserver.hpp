@@ -21,7 +21,6 @@
 #ifndef _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 #define _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 
-#include "gvfstransfer.hpp"
 #include "isyncmanager.hpp"
 #include "utils.hpp"
 #include "sharp/datetime.hpp"
@@ -52,33 +51,6 @@ protected:
   virtual void mkdir_p(const Glib::RefPtr<Gio::File> & path);
 private:
   void common_ctor();
-
-  struct NoteUpload
-    : FileTransfer
-  {
-    NoteUpload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, NoteBase::Ref note, Glib::ustring &&result_path)
-      : FileTransfer(src, dest)
-      , note(note)
-      , result_path(std::move(result_path))
-    {}
-
-    NoteBase::Ref note;
-    Glib::ustring result_path;
-  };
-  struct NoteDownload
-    : FileTransfer
-  {
-    NoteDownload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, int revision, Glib::ustring &&note_id, Glib::ustring &&result_path)
-      : FileTransfer(src, dest)
-      , revision(revision)
-      , note_id(std::move(note_id))
-      , result_path(std::move(result_path))
-    {}
-
-    int revision;
-    Glib::ustring note_id;
-    Glib::ustring result_path;
-  };
 
   Glib::RefPtr<Gio::File> get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);

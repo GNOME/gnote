@@ -26,6 +26,7 @@
 
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
+#include "gvfstransfer.hpp"
 #include "preferences.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
@@ -46,6 +47,34 @@ int str_to_int(const Glib::ustring & s)
     return 0;
   }
 }
+
+struct NoteUpload
+  : gnote::sync::FileTransfer
+{
+  NoteUpload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, gnote::NoteBase::Ref note, Glib::ustring &&result_path)
+    : FileTransfer(src, dest)
+    , note(note)
+    , result_path(std::move(result_path))
+  {}
+
+  gnote::NoteBase::Ref note;
+  Glib::ustring result_path;
+};
+
+struct NoteDownload
+  : gnote::sync::FileTransfer
+{
+  NoteDownload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, int revision, Glib::ustring &&note_id, Glib::ustring &&result_path)
+    : FileTransfer(src, dest)
+    , revision(revision)
+    , note_id(std::move(note_id))
+    , result_path(std::move(result_path))
+  {}
+
+  int revision;
+  Glib::ustring note_id;
+  Glib::ustring result_path;
+};
 
 }
 
