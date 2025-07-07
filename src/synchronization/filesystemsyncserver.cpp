@@ -51,14 +51,12 @@ int str_to_int(const Glib::ustring & s)
 struct NoteUpload
   : gnote::sync::FileTransfer
 {
-  NoteUpload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, gnote::NoteBase::Ref note, Glib::ustring &&result_path)
+  NoteUpload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, Glib::ustring &&result_path)
     : FileTransfer(src, dest)
-    , note(note)
     , result_path(std::move(result_path))
   {}
 
-  gnote::NoteBase::Ref note;
-  Glib::ustring result_path;
+  const Glib::ustring result_path;
 };
 
 struct NoteDownload
@@ -133,7 +131,7 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
     auto file_path = iter.file_path();
     auto local_note = Gio::File::create_for_path(file_path);
     auto server_note = m_new_revision_path->get_child(sharp::file_filename(file_path));
-    uploads.emplace_back(local_note, server_note, iter, sharp::file_basename(file_path));
+    uploads.emplace_back(local_note, server_note, sharp::file_basename(file_path));
   }
 
   GvfsTransfer<NoteUpload> file_transfer;
