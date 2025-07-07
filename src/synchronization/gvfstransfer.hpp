@@ -50,8 +50,33 @@ struct FileTransfer
   TransferResult result;
 };
 
+class GvfsTransferBase
+{
+protected:
+  static bool finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result)
+  {
+    try {
+      if(source->copy_finish(result)) {
+        return true;
+      }
+      else {
+        //ERR_OUT(_("Failed to copy file"));
+      }
+    }
+    catch(std::exception & e) {
+      //ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
+    }
+    catch(...) {
+      //ERR_OUT(_("Exception when finishing note copy"));
+    }
+
+    return false;
+  }
+};
+
 template <typename TransferT>
 class GvfsTransfer
+  : public GvfsTransferBase
 {
 public:
   unsigned try_file_transfer(std::vector<TransferT> &transfers, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
@@ -67,28 +92,16 @@ public:
       }
       transfer.result = TransferResult::NOT_STARTED;
       transfer.source->copy_async(transfer.destination, [&transfer, &finished, &remaining, &failures](Glib::RefPtr<Gio::AsyncResult> &result) {
-        try {
-          if(transfer.source->copy_finish(result)) {
-            transfer.result = TransferResult::SUCCESS;
-          }
-          else {
-            //ERR_OUT(_("Failed to copy file"));
-            transfer.result = TransferResult::FAILURE;
-            ++failures;
-          }
+        bool success = finish_single_transfer(transfer.source, result);
+        if(success) {
+          transfer.result = TransferResult::SUCCESS;
         }
-        catch(std::exception & e) {
-          //ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
-          transfer.result = TransferResult::FAILURE;
-          ++failures;
-        }
-        catch(...) {
-          //ERR_OUT(_("Exception when finishing note copy"));
+        else {
           transfer.result = TransferResult::FAILURE;
           ++failures;
         }
 
-        if(--remaining == 0 || transfer.result == TransferResult::FAILURE) {
+        if(--remaining == 0 || !success) {
           Monitor::Lock lock(finished);
           finished.notify_one();
         }
