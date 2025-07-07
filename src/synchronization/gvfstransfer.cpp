@@ -17,6 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <glibmm/i18n.h>
+
+#include "debug.hpp"
 #include "gvfstransfer.hpp"
 
 
@@ -30,14 +33,14 @@ TransferResult GvfsTransferBase::finish_single_transfer(const Glib::RefPtr<Gio::
       return TransferResult::SUCCESS;
     }
     else {
-      //ERR_OUT(_("Failed to copy file"));
+      ERR_OUT(_("Failed to copy file"));
     }
   }
   catch(std::exception & e) {
-    //ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
+    ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
   }
   catch(...) {
-    //ERR_OUT(_("Exception when finishing note copy"));
+    ERR_OUT(_("Exception when finishing note copy"));
   }
 
   return TransferResult::FAILURE;
