@@ -93,7 +93,7 @@ public:
         }
       }
     }
-    while(failures > 0);
+    while(failures > 0 && !cancel_op->is_cancelled());
 
     return failures;
   }
