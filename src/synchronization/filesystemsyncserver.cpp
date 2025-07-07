@@ -19,7 +19,6 @@
 
 
 #include <algorithm>
-#include <atomic>
 #include <stdexcept>
 
 #include <glibmm/i18n.h>
@@ -28,7 +27,6 @@
 #include "debug.hpp"
 #include "filesystemsyncserver.hpp"
 #include "preferences.hpp"
-#include "base/monitor.hpp"
 #include "sharp/directory.hpp"
 #include "sharp/files.hpp"
 #include "sharp/uuid.hpp"
@@ -109,9 +107,10 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
     uploads.emplace_back(local_note, server_note, iter, sharp::file_basename(file_path));
   }
 
+  GvfsTransfer<NoteUpload> file_transfer;
   unsigned failures = 0;
   do {
-    unsigned fails = upload_notes(uploads, cancel_op);
+    unsigned fails = file_transfer.try_file_transfer(uploads, cancel_op);
     if(fails > 0) {
       bool no_progress = fails == failures;
       failures = fails;
@@ -130,57 +129,6 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
       m_updated_notes.emplace_back(std::move(upload.result_path));
     }
   }
-}
-
-
-unsigned FileSystemSyncServer::upload_notes(std::vector<NoteUpload> & notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
-{
-  std::atomic<unsigned> uploads_remain(notes.size());
-  std::atomic<unsigned> failures(0);
-  Monitor upload_finished;
-  for(auto &upload : notes) {
-    if(upload.result == TransferResult::SUCCESS) {
-      --uploads_remain;
-      continue;
-    }
-    upload.result = TransferResult::NOT_STARTED;
-    upload.source->copy_async(upload.destination, [&upload, &upload_finished, &uploads_remain, &failures]
-                                        (Glib::RefPtr<Gio::AsyncResult> & result) {
-      try {
-        if(upload.source->copy_finish(result)) {
-          upload.result = TransferResult::SUCCESS;
-        }
-        else {
-          upload.result = TransferResult::FAILURE;
-          ++failures;
-        }
-      }
-      catch (std::exception & e) {
-        ERR_OUT(_("Failed to upload note: %s"), e.what());
-        upload.result = TransferResult::FAILURE;
-        ++failures;
-      }
-
-      if(--uploads_remain == 0 || upload.result == TransferResult::FAILURE) {
-        Monitor::Lock lock(upload_finished);
-        upload_finished.notify_one();
-      }
-    }, cancel_op);
-  }
-
-  unsigned failure_margin = notes.size() / 4;
-  if(failure_margin < 10) {
-    failure_margin = 10;
-  }
-  Monitor::Lock lock(upload_finished);
-  while(uploads_remain > 0) {
-    upload_finished.wait(lock);
-    if(failures > failure_margin) {
-      cancel_op->cancel();
-    }
-  }
-
-  return failures;
 }
 
 

@@ -65,7 +65,6 @@ private:
     NoteBase::Ref note;
     Glib::ustring result_path;
   };
-  unsigned upload_notes(std::vector<NoteUpload> & notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op);
   struct NoteDownload
     : FileTransfer
   {

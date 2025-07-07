@@ -20,7 +20,12 @@
 #ifndef _SYNCHRONIZATION_GVFSTRANSFER_HPP_
 #define _SYNCHRONIZATION_GVFSTRANSFER_HPP_
 
+#include <atomic>
+
 #include <giomm/file.h>
+
+#include "base/monitor.hpp"
+
 
 namespace gnote {
 namespace sync {
@@ -43,6 +48,62 @@ struct FileTransfer
   Glib::RefPtr<Gio::File> source;
   Glib::RefPtr<Gio::File> destination;
   TransferResult result;
+};
+
+template <typename TransferT>
+class GvfsTransfer
+{
+public:
+  unsigned try_file_transfer(std::vector<TransferT> &transfers, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
+  {
+    Monitor finished;
+    std::atomic<unsigned> remaining(transfers.size());
+    std::atomic<unsigned> failures(0);
+
+    for(FileTransfer &transfer : transfers) {
+      if(transfer.result == TransferResult::SUCCESS) {
+        --remaining;
+        continue;
+      }
+      transfer.result = TransferResult::NOT_STARTED;
+      transfer.source->copy_async(transfer.destination, [&transfer, &finished, &remaining, &failures](Glib::RefPtr<Gio::AsyncResult> &result) {
+        try {
+          if(transfer.source->copy_finish(result)) {
+            transfer.result = TransferResult::SUCCESS;
+          }
+          else {
+            transfer.result = TransferResult::FAILURE;
+            ++failures;
+          }
+        }
+        catch(std::exception & e) {
+          //ERR_OUT(_("Failed to upload note: %s"), e.what());
+          transfer.result = TransferResult::FAILURE;
+          ++failures;
+        }
+
+        if(--remaining == 0 || transfer.result == TransferResult::FAILURE) {
+          Monitor::Lock lock(finished);
+          finished.notify_one();
+        }
+      }, cancel_op);
+    }
+
+    unsigned failure_margin = transfers.size() / 4;
+    if(failure_margin < 10) {
+      failure_margin = 10;
+    }
+
+    Monitor::Lock lock(finished);
+    while(remaining > 0) {
+      finished.wait(lock);
+      if(failures > failure_margin) {
+        cancel_op->cancel();
+      }
+    }
+
+    return failures;
+  }
 };
 
 }
