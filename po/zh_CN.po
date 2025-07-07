@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-04-07 20:05+0000\n"
-"PO-Revision-Date: 2025-04-09 18:21+0800\n"
+"POT-Creation-Date: 2025-07-07 21:03+0000\n"
+"PO-Revision-Date: 2025-07-08 07:53+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -72,7 +72,7 @@ msgid "New Window"
 msgstr "新建窗口"
 
 #: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:285
+#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "新建便笺"
 
@@ -686,7 +686,7 @@ msgstr "新建便笺(_N)"
 msgid "New _Window"
 msgstr "新建窗口(_W)"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:602
+#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:601
 msgid "_Preferences"
 msgstr "首选项(_P)"
 
@@ -823,8 +823,8 @@ msgstr "选择图标..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:318
-#: src/utils.cpp:325
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:317
+#: src/utils.cpp:324
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -928,7 +928,7 @@ msgstr "包含链接的全部其它便笺"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:531
+#: src/preferencesdialog.cpp:530
 msgid "_Save"
 msgstr "保存(_S)"
 
@@ -969,17 +969,17 @@ msgstr "文件夹路径(_F)："
 msgid "Select Synchronization Folder..."
 msgstr "选择同步文件夹..."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:153
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:154
 msgid "Folder path field is empty."
 msgstr "文件夹路径字段为空。"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:160
-#: src/synchronization/gvfssyncservice.cpp:76
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:161
+#: src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "指定的文件夹路径不存在，Gnote 无法创建便笺。"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:224
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:225
 msgid "Local Folder"
 msgstr "本地文件夹"
 
@@ -1367,15 +1367,15 @@ msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr "没有可用的 D-Bus 连接，shell 搜索和远程控制功能将不可用。"
 
-#: src/gnote.cpp:248
+#: src/gnote.cpp:249
 msgid "Failed to get shortcuts window!"
 msgstr "获取快捷键窗口失败！"
 
-#: src/gnote.cpp:264
+#: src/gnote.cpp:265
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: src/gnote.cpp:270
+#: src/gnote.cpp:271
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@gmail.com>, 2005-2008\n"
@@ -1384,7 +1384,7 @@ msgstr ""
 "YunQiang Su <wzssyqa@gmail.com>, 2010\n"
 "lumingzh <lumingzh@qq.com>, 2023-2025"
 
-#: src/gnote.cpp:279
+#: src/gnote.cpp:280
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1396,80 +1396,80 @@ msgstr ""
 "版权所有 © 2009 Hubert Figuiere\n"
 "版权所有 © 2004-2009 Tomboy 原作者们。"
 
-#: src/gnote.cpp:283
+#: src/gnote.cpp:284
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: src/gnote.cpp:285
+#: src/gnote.cpp:286
 msgid "Homepage"
 msgstr "主页"
 
-#: src/gnote.cpp:496
+#: src/gnote.cpp:500
 msgid "Run Gnote in background."
 msgstr "后台运行 Gnote。"
 
-#: src/gnote.cpp:497
+#: src/gnote.cpp:501
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
 
-#: src/gnote.cpp:498
+#: src/gnote.cpp:502
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: src/gnote.cpp:498
+#: src/gnote.cpp:502
 msgid "path"
 msgstr "路径"
 
-#: src/gnote.cpp:499
+#: src/gnote.cpp:503
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口。"
 
-#: src/gnote.cpp:499 src/gnote.cpp:505
+#: src/gnote.cpp:503 src/gnote.cpp:509
 msgid "text"
 msgstr "文本"
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:504
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:505
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一条带有可选标题的新便笺。"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:505
 msgid "title"
 msgstr "标题"
 
-#: src/gnote.cpp:502
+#: src/gnote.cpp:506
 msgid "Open a new window."
 msgstr "打开一个新窗口。"
 
-#: src/gnote.cpp:503
+#: src/gnote.cpp:507
 msgid "Display the existing note matching title."
 msgstr "显示匹配标题的现有便笺。"
 
-#: src/gnote.cpp:503
+#: src/gnote.cpp:507
 msgid "title/url"
 msgstr "标题/url"
 
-#: src/gnote.cpp:504
+#: src/gnote.cpp:508
 msgid "Display the 'Start Here' note."
 msgstr "显示“从这里开始”便笺。"
 
-#: src/gnote.cpp:505
+#: src/gnote.cpp:509
 msgid "Search and highlight text in the opened note."
 msgstr "在开启的便笺中搜索文本（高亮显示）。"
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:513
 msgid "A note taking application"
 msgstr "一个记便笺应用程序"
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:513
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:693
+#: src/gnote.cpp:697
 msgid "Version %1"
 msgstr "版本 %1"
 
@@ -1624,13 +1624,13 @@ msgstr ""
 "保存您的便笺时发生了错误。请检查您是否有足够的磁盘空间，以及您在 ~/.local/"
 "share/gnote 是否有足够的权限。错误细节可在 ~/.gnote.log 中找到。"
 
-#: src/note.cpp:625
+#: src/note.cpp:624
 msgid "Setting text content for closed notes not supported"
 msgstr "不支持为关闭的便笺设置文本内容"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:340
+#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "新建便笺模板"
 
@@ -1732,39 +1732,39 @@ msgstr "保存时出错：%s"
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "未通过 URI“%s”找到便笺，无法保存"
 
-#: src/noterenamedialog.cpp:140
-msgid "Rename Note Links?"
-msgstr "重命名便笺链接吗？"
-
-#: src/noterenamedialog.cpp:146
+#: src/noterenamedialog.cpp:143
 msgid "_Don't Rename Links"
 msgstr "不重命名链接(_D)"
 
-#: src/noterenamedialog.cpp:147
+#: src/noterenamedialog.cpp:144
 msgid "_Rename Links"
 msgstr "重命名链接(_R)"
 
-#: src/noterenamedialog.cpp:148
+#: src/noterenamedialog.cpp:145
 msgid "Select All"
 msgstr "全选"
 
-#: src/noterenamedialog.cpp:149
+#: src/noterenamedialog.cpp:146
 msgid "Select None"
 msgstr "全部不选"
 
-#: src/noterenamedialog.cpp:150
+#: src/noterenamedialog.cpp:147
 msgid "Always show this _window"
 msgstr "总是显示此窗口(_W)"
 
-#: src/noterenamedialog.cpp:151
+#: src/noterenamedialog.cpp:148
 msgid "Alwa_ys rename links"
 msgstr "总是重命名链接(_Y)"
 
-#: src/noterenamedialog.cpp:152
+#: src/noterenamedialog.cpp:149
 msgid "Never rename _links"
 msgstr "决不重命名链接(_L)"
 
-#: src/noterenamedialog.cpp:170
+#: src/noterenamedialog.cpp:151
+msgid "Rename Note Links?"
+msgstr "重命名便笺链接吗？"
+
+#: src/noterenamedialog.cpp:178
 msgid ""
 "Rename links in other notes from \"<span underline=\"single\">%1</span>\" to "
 "\"<span underline=\"single\">%2</span>\"?\n"
@@ -1776,16 +1776,16 @@ msgstr ""
 "\n"
 "如果不想重命名这些链接，它们将成为死链。"
 
-#: src/noterenamedialog.cpp:185
+#: src/noterenamedialog.cpp:193
 msgid "Rename Links"
 msgstr "重命名链接"
 
 #. Set up columns
-#: src/noterenamedialog.cpp:195 src/synchronization/syncdialog.cpp:334
+#: src/noterenamedialog.cpp:203 src/synchronization/syncdialog.cpp:334
 msgid "Note Title"
 msgstr "便笺标题"
 
-#: src/noterenamedialog.cpp:233
+#: src/noterenamedialog.cpp:241
 msgid "Ad_vanced"
 msgstr "高级(_V)"
 
@@ -1858,230 +1858,230 @@ msgstr "大(_L)"
 msgid "Hu_ge"
 msgstr "巨大(_G)"
 
-#: src/preferencesdialog.cpp:165
+#: src/preferencesdialog.cpp:164
 msgid "Gnote Preferences"
 msgstr "Gnote 首选项"
 
-#: src/preferencesdialog.cpp:172
+#: src/preferencesdialog.cpp:171
 msgid "General"
 msgstr "常规"
 
-#: src/preferencesdialog.cpp:173
+#: src/preferencesdialog.cpp:172
 msgid "Links"
 msgstr "链接"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:174 src/sharp/pluginsmodel.cpp:205
+#: src/preferencesdialog.cpp:173 src/sharp/pluginsmodel.cpp:205
 msgid "Synchronization"
 msgstr "同步"
 
-#: src/preferencesdialog.cpp:175
+#: src/preferencesdialog.cpp:174
 msgid "Plugins"
 msgstr "插件"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:179 src/preferencesdialog.cpp:768
-#: src/preferencesdialog.cpp:1005 src/preferencesdialog.cpp:1215
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:315
+#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
+#: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:314
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: src/preferencesdialog.cpp:217
+#: src/preferencesdialog.cpp:216
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "插件 %s 不存在"
 
-#: src/preferencesdialog.cpp:269
+#: src/preferencesdialog.cpp:268
 msgid "_Spell check while typing"
 msgstr "输入时检查拼写(_S)"
 
-#: src/preferencesdialog.cpp:270
+#: src/preferencesdialog.cpp:269
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
 msgstr "拼错的单词将以红色显示，而纠正拼写错误的建议将显示在右键菜单中。"
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:280
+#: src/preferencesdialog.cpp:279
 msgid "Enable auto-_bulleted lists"
 msgstr "允许对列表自动编号(_B)"
 
-#: src/preferencesdialog.cpp:281
+#: src/preferencesdialog.cpp:280
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "通过使用“-”为行首，开始新的着重符号列表。"
 
 #. Custom font...
-#: src/preferencesdialog.cpp:287
+#: src/preferencesdialog.cpp:286
 msgid "Use custom _font"
 msgstr "使用自定义字体(_F)"
 
 #. Note renaming behavior
-#: src/preferencesdialog.cpp:301
+#: src/preferencesdialog.cpp:300
 msgid "When renaming a linked note: "
 msgstr "重命名有链接的便笺时： "
 
-#: src/preferencesdialog.cpp:305
+#: src/preferencesdialog.cpp:304
 msgid "Ask me what to do"
 msgstr "询问我怎么做"
 
-#: src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:305
 msgid "Never rename links"
 msgstr "不重命名链接"
 
-#: src/preferencesdialog.cpp:307
+#: src/preferencesdialog.cpp:306
 msgid "Always rename links"
 msgstr "总是重命名链接"
 
 #. Color scheme
-#: src/preferencesdialog.cpp:320
+#: src/preferencesdialog.cpp:319
 msgid "Color Scheme: "
 msgstr "配色方案："
 
 #. TRANSLATORS: Option to follow the system color scheme setting
-#: src/preferencesdialog.cpp:324
+#: src/preferencesdialog.cpp:323
 msgid "Follow the System"
 msgstr "跟随系统"
 
 #. TRANSLATORS: Option to use dark variant of the theme
-#: src/preferencesdialog.cpp:326
+#: src/preferencesdialog.cpp:325
 msgid "Dark"
 msgstr "暗色"
 
 #. TRANSLATORS: Option to use light variant of the theme
-#: src/preferencesdialog.cpp:328
+#: src/preferencesdialog.cpp:327
 msgid "Light"
 msgstr "亮色"
 
-#: src/preferencesdialog.cpp:341
+#: src/preferencesdialog.cpp:340
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "创建新的便笺时使用新的便笺模板来设定应使用的文字。"
 
-#: src/preferencesdialog.cpp:346
+#: src/preferencesdialog.cpp:345
 msgid "Open New Note Template"
 msgstr "打开新的便笺模板"
 
 #. internal links
-#: src/preferencesdialog.cpp:391
+#: src/preferencesdialog.cpp:390
 msgid "_Automatically link to notes"
 msgstr "自动链接到便笺(_A)"
 
-#: src/preferencesdialog.cpp:392
+#: src/preferencesdialog.cpp:391
 msgid "Enable this option to create a link when text matches note title."
 msgstr "启动此选项将会在文本匹配便笺标题时创建链接。"
 
 #. URLs
-#: src/preferencesdialog.cpp:398
+#: src/preferencesdialog.cpp:397
 msgid "Create links for _URLs"
 msgstr "为 _URL 创建链接"
 
-#: src/preferencesdialog.cpp:399
+#: src/preferencesdialog.cpp:398
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
 msgstr "启用此选项将会为 URL 创建链接。点击后将使用适当的程序打开。"
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:406
+#: src/preferencesdialog.cpp:405
 msgid "Highlight _WikiWords"
 msgstr "高亮 _WikiWords"
 
-#: src/preferencesdialog.cpp:407
+#: src/preferencesdialog.cpp:406
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
 msgstr ""
 "启用此选项将高亮类似 <b>WikiWords</b> 的单词。单击此单词将以该名称创建便笺。"
 
-#: src/preferencesdialog.cpp:428
+#: src/preferencesdialog.cpp:427
 msgid "Ser_vice:"
 msgstr "服务(_V)："
 
-#: src/preferencesdialog.cpp:493
+#: src/preferencesdialog.cpp:492
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "后台自动同步时间间隔 - 分钟(_Y)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:515
+#: src/preferencesdialog.cpp:514
 msgid "_Advanced..."
 msgstr "高级(_A)..."
 
-#: src/preferencesdialog.cpp:520
+#: src/preferencesdialog.cpp:519
 msgid "Clear"
 msgstr "清除"
 
-#: src/preferencesdialog.cpp:548 src/preferencesdialog.cpp:1026
+#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1025
 msgid "Not configurable"
 msgstr "不可配置"
 
-#: src/preferencesdialog.cpp:568
+#: src/preferencesdialog.cpp:567
 msgid "The following plugins are installed:"
 msgstr "已安装如下插件："
 
-#: src/preferencesdialog.cpp:592
+#: src/preferencesdialog.cpp:591
 msgid "_Enable"
 msgstr "启用(_E)"
 
-#: src/preferencesdialog.cpp:597
+#: src/preferencesdialog.cpp:596
 msgid "_Disable"
 msgstr "禁用(_D)"
 
-#: src/preferencesdialog.cpp:607
+#: src/preferencesdialog.cpp:606
 msgid "In_formation"
 msgstr "信息(_F)"
 
-#: src/preferencesdialog.cpp:748
+#: src/preferencesdialog.cpp:747
 msgid "Not Implemented"
 msgstr "尚未实现"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:765
+#: src/preferencesdialog.cpp:764
 msgid "%1 Preferences"
 msgstr "%1 首选项"
 
-#: src/preferencesdialog.cpp:861
+#: src/preferencesdialog.cpp:860
 msgid "Choose Note Font"
 msgstr "选择便笺字体"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:954
+#: src/preferencesdialog.cpp:953
 msgid "Other Synchronization Options"
 msgstr "其他的同步选项"
 
-#: src/preferencesdialog.cpp:957
+#: src/preferencesdialog.cpp:956
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr "当检测到本地便笺和配置的同步服务器上的便笺之间有冲突时："
 
-#: src/preferencesdialog.cpp:961
+#: src/preferencesdialog.cpp:960
 msgid "Always ask me what to do"
 msgstr "总是询问我怎么做"
 
-#: src/preferencesdialog.cpp:962
+#: src/preferencesdialog.cpp:961
 msgid "Rename my local note"
 msgstr "重命名我的本地便笺"
 
-#: src/preferencesdialog.cpp:964
+#: src/preferencesdialog.cpp:963
 msgid "Replace my local note with the server's update"
 msgstr "使用服务器上的更新覆盖我本地的便笺"
 
-#: src/preferencesdialog.cpp:1085
+#: src/preferencesdialog.cpp:1084
 msgid "Are you sure?"
 msgstr "您确定吗？"
 
-#: src/preferencesdialog.cpp:1086
+#: src/preferencesdialog.cpp:1085
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
 msgstr "不推荐您清除同步设置。当保存新设置时，可能会强制您再次同步所有的便笺。"
 
-#: src/preferencesdialog.cpp:1097
+#: src/preferencesdialog.cpp:1096
 msgid "Resetting Synchronization Settings"
 msgstr "重置同步设置"
 
-#: src/preferencesdialog.cpp:1098
+#: src/preferencesdialog.cpp:1097
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2090,24 +2090,24 @@ msgstr ""
 "您已经禁用了配置的同步服务。您的同步设置将被清除。当您保存新设置时，可能得再"
 "次同步所有便笺。"
 
-#: src/preferencesdialog.cpp:1160
+#: src/preferencesdialog.cpp:1159
 msgid "Connection successful"
 msgstr "连接成功"
 
-#: src/preferencesdialog.cpp:1161
+#: src/preferencesdialog.cpp:1160
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote 已准备同步您的便笺。您希望现在就同步它们吗？"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1187
+#: src/preferencesdialog.cpp:1186
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr "请检查您的信息并重试。日志文件 %1 可能包含了该错误的更多信息。"
 
-#: src/preferencesdialog.cpp:1192
+#: src/preferencesdialog.cpp:1191
 msgid "Error connecting"
 msgstr "连接出错"
 
@@ -2157,28 +2157,28 @@ msgid "Failed to load D-Bus interface %s: %s"
 msgstr "加载 D-Bus 接口 %s 失败：%s"
 
 #. TRANSLATORS: search found a match in note title
-#: src/searchnoteswidget.cpp:247
+#: src/searchnoteswidget.cpp:305
 msgid "Title match"
 msgstr "标题匹配"
 
-#: src/searchnoteswidget.cpp:251
+#: src/searchnoteswidget.cpp:309
 msgid "%1 match"
 msgid_plural "%1 matches"
 msgstr[0] "%1 个匹配项"
 
-#: src/searchnoteswidget.cpp:289
+#: src/searchnoteswidget.cpp:347
 msgid "Delete Note"
 msgstr "删除笔记"
 
-#: src/searchnoteswidget.cpp:517
+#: src/searchnoteswidget.cpp:575
 msgid "Note"
 msgstr "便笺"
 
-#: src/searchnoteswidget.cpp:529
+#: src/searchnoteswidget.cpp:587
 msgid "Modified"
 msgstr "已修改"
 
-#: src/searchnoteswidget.cpp:691
+#: src/searchnoteswidget.cpp:749
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2186,30 +2186,30 @@ msgstr ""
 "在选定的便笺本中未发现结果。\n"
 "点击此处搜索全部便笺。"
 
-#: src/searchnoteswidget.cpp:695
+#: src/searchnoteswidget.cpp:753
 msgid "Click here to search across all notebooks"
 msgstr "点击此处搜索全部便笺本"
 
-#: src/searchnoteswidget.cpp:710
+#: src/searchnoteswidget.cpp:768
 msgid "Matches"
 msgstr "匹配项"
 
-#: src/searchnoteswidget.cpp:954 src/searchnoteswidget.cpp:967
-#: src/searchnoteswidget.cpp:978
+#: src/searchnoteswidget.cpp:1012 src/searchnoteswidget.cpp:1025
+#: src/searchnoteswidget.cpp:1036
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "解析搜索排序设置失败（值：%s）："
 
-#: src/searchnoteswidget.cpp:955
+#: src/searchnoteswidget.cpp:1013
 msgid "Expected format 'column:order'"
 msgstr "期望的格式“column:order”"
 
-#: src/searchnoteswidget.cpp:968
+#: src/searchnoteswidget.cpp:1026
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "未识别的列 %s"
 
-#: src/searchnoteswidget.cpp:979
+#: src/searchnoteswidget.cpp:1037
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "不可识别的排序 %s"
@@ -2273,31 +2273,17 @@ msgstr "%1 已失败"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "没有样式表，请报告 bug"
 
-#: src/synchronization/filesystemsyncserver.cpp:125
-#, c-format
-msgid "Failed to upload note: %s"
-msgstr "上传便笺失败：%s"
-
-#: src/synchronization/filesystemsyncserver.cpp:143
+#: src/synchronization/filesystemsyncserver.cpp:139
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "上传 %1 便笺失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:237
-#, c-format
-msgid "Exception when finishing note copy: %s"
-msgstr "复制便笺时异常：%s"
-
-#: src/synchronization/filesystemsyncserver.cpp:240
-msgid "Exception when finishing note copy"
-msgstr "复制便笺时异常"
-
-#: src/synchronization/filesystemsyncserver.cpp:263
+#: src/synchronization/filesystemsyncserver.cpp:231
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "下载 %1 便笺更新失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:427
+#: src/synchronization/filesystemsyncserver.cpp:402
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2306,12 +2292,12 @@ msgstr ""
 "提交时服务器清理异常。服务器完整性没有问题但是可能会遗留一些文件。错误为："
 "%s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:633
+#: src/synchronization/filesystemsyncserver.cpp:608
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "更新锁时出错: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:672
+#: src/synchronization/filesystemsyncserver.cpp:647
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "删除旧的同步锁“%s”时出错：%s"
@@ -2328,17 +2314,30 @@ msgstr "%s 中不可解析的 last-sync-date 元素"
 msgid "Unparsable last-sync-rev element in %s"
 msgstr "%s 中不可解析的 last-sync-rev 元素"
 
-#: src/synchronization/gvfssyncservice.cpp:98
+#: src/synchronization/gvfssyncservice.cpp:97
 msgid "Failure writing test file"
 msgstr "写入测试文件失败"
 
-#: src/synchronization/gvfssyncservice.cpp:104
+#: src/synchronization/gvfssyncservice.cpp:103
 msgid "Failure when trying to remove test file"
 msgstr "尝试删除测试文件时失败"
 
-#: src/synchronization/gvfssyncservice.cpp:116
+#: src/synchronization/gvfssyncservice.cpp:115
 msgid "Unknown error"
 msgstr "未知错误"
+
+#: src/synchronization/gvfstransfer.cpp:36
+msgid "Failed to copy file"
+msgstr "复制文件失败"
+
+#: src/synchronization/gvfstransfer.cpp:40
+#, c-format
+msgid "Exception when finishing note copy: %s"
+msgstr "复制便笺时异常：%s"
+
+#: src/synchronization/gvfstransfer.cpp:43
+msgid "Exception when finishing note copy"
+msgstr "复制便笺时异常"
 
 #: src/synchronization/syncdialog.cpp:93
 msgid "Note Conflict"
@@ -2634,15 +2633,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "没有日期"
 
-#: src/utils.cpp:312 src/utils.cpp:326
+#: src/utils.cpp:311 src/utils.cpp:325
 msgid "_OK"
 msgstr "确定(_O)"
 
-#: src/utils.cpp:321
+#: src/utils.cpp:320
 msgid "_No"
 msgstr "否(_N)"
 
-#: src/utils.cpp:322
+#: src/utils.cpp:321
 msgid "_Yes"
 msgstr "是(_Y)"
 
@@ -2665,6 +2664,10 @@ msgstr "便笺标题已被使用"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "检查拼写"
+
+#, c-format
+#~ msgid "Failed to upload note: %s"
+#~ msgstr "上传便笺失败：%s"
 
 #~ msgid "Create New Note"
 #~ msgstr "创建新便笺"
