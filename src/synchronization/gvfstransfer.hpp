@@ -53,11 +53,11 @@ struct FileTransfer
 class GvfsTransferBase
 {
 protected:
-  static bool finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result)
+  static TransferResult finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result)
   {
     try {
       if(source->copy_finish(result)) {
-        return true;
+        return TransferResult::SUCCESS;
       }
       else {
         //ERR_OUT(_("Failed to copy file"));
@@ -70,7 +70,7 @@ protected:
       //ERR_OUT(_("Exception when finishing note copy"));
     }
 
-    return false;
+    return TransferResult::FAILURE;
   }
 };
 
@@ -113,16 +113,12 @@ private:
       }
       transfer.result = TransferResult::NOT_STARTED;
       transfer.source->copy_async(transfer.destination, [this, &transfer, &remaining, &failures](Glib::RefPtr<Gio::AsyncResult> &result) {
-        bool success = finish_single_transfer(transfer.source, result);
-        if(success) {
-          transfer.result = TransferResult::SUCCESS;
-        }
-        else {
-          transfer.result = TransferResult::FAILURE;
+        transfer.result = finish_single_transfer(transfer.source, result);
+        if(transfer.result == TransferResult::FAILURE) {
           ++failures;
         }
 
-        if(--remaining == 0 || !success) {
+        if(--remaining == 0 || transfer.result == TransferResult::FAILURE) {
           Monitor::Lock lock(m_finished);
           m_finished.notify_one();
         }
