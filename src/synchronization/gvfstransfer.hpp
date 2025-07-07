@@ -81,10 +81,9 @@ class GvfsTransfer
 public:
   unsigned transfer(std::vector<TransferT> &transfers)
   {
-    auto cancel_op = Gio::Cancellable::create();
     unsigned failures = 0;
     do {
-      unsigned fails = try_file_transfer(transfers, cancel_op);
+      unsigned fails = try_file_transfer(transfers);
       if(fails > 0) {
         bool no_progress = fails == failures;
         failures = fails;
@@ -93,12 +92,12 @@ public:
         }
       }
     }
-    while(failures > 0 && !cancel_op->is_cancelled());
+    while(failures > 0 && !m_cancel_op->is_cancelled());
 
     return failures;
   }
 private:
-  unsigned try_file_transfer(std::vector<TransferT> &transfers, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
+  unsigned try_file_transfer(std::vector<TransferT> &transfers)
   {
     Monitor finished;
     std::atomic<unsigned> remaining(transfers.size());
@@ -124,7 +123,7 @@ private:
           Monitor::Lock lock(finished);
           finished.notify_one();
         }
-      }, cancel_op);
+      }, m_cancel_op);
     }
 
     unsigned failure_margin = transfers.size() / 4;
@@ -136,12 +135,14 @@ private:
     while(remaining > 0) {
       finished.wait(lock);
       if(failures > failure_margin) {
-        cancel_op->cancel();
+        m_cancel_op->cancel();
       }
     }
 
     return failures;
   }
+
+  const Glib::RefPtr<Gio::Cancellable> m_cancel_op = Gio::Cancellable::create();
 };
 
 }
