@@ -72,6 +72,16 @@ protected:
 
     return TransferResult::FAILURE;
   }
+
+  static unsigned calculate_failure_margin(std::size_t transfers)
+  {
+    unsigned failure_margin = transfers / 4;
+    if(failure_margin < 10) {
+      failure_margin = 10;
+    }
+
+    return failure_margin;
+  }
 };
 
 template <typename TransferT>
@@ -81,6 +91,7 @@ class GvfsTransfer
 public:
   explicit GvfsTransfer(std::vector<TransferT> &transfers)
     : m_transfers(transfers)
+    , m_failure_margin(calculate_failure_margin(transfers.size()))
   {}
 
   unsigned transfer()
@@ -125,15 +136,10 @@ private:
       }, m_cancel_op);
     }
 
-    unsigned failure_margin = m_transfers.size() / 4;
-    if(failure_margin < 10) {
-      failure_margin = 10;
-    }
-
     Monitor::Lock lock(m_finished);
     while(remaining > 0) {
       m_finished.wait(lock);
-      if(failures > failure_margin) {
+      if(failures > m_failure_margin) {
         m_cancel_op->cancel();
       }
     }
@@ -142,6 +148,7 @@ private:
   }
 
   std::vector<TransferT> &m_transfers;
+  const unsigned m_failure_margin;
   const Glib::RefPtr<Gio::Cancellable> m_cancel_op = Gio::Cancellable::create();
   Monitor m_finished;
 };
