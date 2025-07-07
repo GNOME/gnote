@@ -79,6 +79,25 @@ class GvfsTransfer
   : public GvfsTransferBase
 {
 public:
+  unsigned transfer(std::vector<TransferT> &transfers)
+  {
+    auto cancel_op = Gio::Cancellable::create();
+    unsigned failures = 0;
+    do {
+      unsigned fails = try_file_transfer(transfers, cancel_op);
+      if(fails > 0) {
+        bool no_progress = fails == failures;
+        failures = fails;
+        if(no_progress) {
+          break;
+        }
+      }
+    }
+    while(failures > 0);
+
+    return failures;
+  }
+private:
   unsigned try_file_transfer(std::vector<TransferT> &transfers, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
   {
     Monitor finished;

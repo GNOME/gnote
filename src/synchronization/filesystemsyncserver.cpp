@@ -126,7 +126,6 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
   DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
   m_updated_notes.reserve(notes.size());
   std::vector<NoteUpload> uploads;
-  auto cancel_op = Gio::Cancellable::create();
   for(NoteBase &iter : notes) {
     auto file_path = iter.file_path();
     auto local_note = Gio::File::create_for_path(file_path);
@@ -135,19 +134,7 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
   }
 
   GvfsTransfer<NoteUpload> file_transfer;
-  unsigned failures = 0;
-  do {
-    unsigned fails = file_transfer.try_file_transfer(uploads, cancel_op);
-    if(fails > 0) {
-      bool no_progress = fails == failures;
-      failures = fails;
-      if(no_progress) {
-        break;
-      }
-    }
-  }
-  while(failures > 0);
-
+  auto failures = file_transfer.transfer(uploads);
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
   }
@@ -238,19 +225,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
   }
 
   GvfsTransfer<NoteDownload> file_transfers;
-  auto cancel_op = Gio::Cancellable::create();
-  unsigned failures = 0;
-  do {
-    unsigned fails = file_transfers.try_file_transfer(downloads, cancel_op);
-    if(fails > 0) {
-      bool no_progress = fails == failures;
-      failures = fails;
-      if(no_progress) {
-        break;
-      }
-    }
-  }
-  while(failures > 0);
+  auto failures = file_transfers.transfer(downloads);
 
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to download %1 note update", "Failed to download %1 note updates", failures), failures));
