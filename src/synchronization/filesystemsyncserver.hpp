@@ -54,10 +54,10 @@ private:
   void common_ctor();
 
   struct NoteUpload
-    : NoteTransfer
+    : FileTransfer
   {
     NoteUpload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, NoteBase::Ref note, Glib::ustring &&result_path)
-      : NoteTransfer(src, dest)
+      : FileTransfer(src, dest)
       , note(note)
       , result_path(std::move(result_path))
     {}
@@ -67,10 +67,10 @@ private:
   };
   unsigned upload_notes(std::vector<NoteUpload> & notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op);
   struct NoteDownload
-    : NoteTransfer
+    : FileTransfer
   {
     NoteDownload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, int revision, Glib::ustring &&note_id, Glib::ustring &&result_path)
-      : NoteTransfer(src, dest)
+      : FileTransfer(src, dest)
       , revision(revision)
       , note_id(std::move(note_id))
       , result_path(std::move(result_path))

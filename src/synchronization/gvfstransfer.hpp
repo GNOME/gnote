@@ -32,9 +32,9 @@ enum class TransferResult
   FAILURE,
 };
 
-struct NoteTransfer
+struct FileTransfer
 {
-  NoteTransfer(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest)
+  FileTransfer(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest)
     : source(src)
     , destination(dest)
     , result(TransferResult::NOT_STARTED)
