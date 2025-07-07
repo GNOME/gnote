@@ -72,12 +72,18 @@ public:
             transfer.result = TransferResult::SUCCESS;
           }
           else {
+            //ERR_OUT(_("Failed to copy file"));
             transfer.result = TransferResult::FAILURE;
             ++failures;
           }
         }
         catch(std::exception & e) {
-          //ERR_OUT(_("Failed to upload note: %s"), e.what());
+          //ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
+          transfer.result = TransferResult::FAILURE;
+          ++failures;
+        }
+        catch(...) {
+          //ERR_OUT(_("Exception when finishing note copy"));
           transfer.result = TransferResult::FAILURE;
           ++failures;
         }

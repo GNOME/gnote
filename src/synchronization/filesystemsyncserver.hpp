@@ -79,7 +79,6 @@ private:
     Glib::ustring note_id;
     Glib::ustring result_path;
   };
-  unsigned download_notes(std::vector<NoteDownload> &notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op);
 
   Glib::RefPtr<Gio::File> get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);

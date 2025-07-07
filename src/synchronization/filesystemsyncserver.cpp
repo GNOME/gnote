@@ -210,10 +210,11 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     xmlFreeDoc(xml_doc);
   }
 
+  GvfsTransfer<NoteDownload> file_transfers;
   auto cancel_op = Gio::Cancellable::create();
   unsigned failures = 0;
   do {
-    unsigned fails = download_notes(downloads, cancel_op);
+    unsigned fails = file_transfers.try_file_transfer(downloads, cancel_op);
     if(fails > 0) {
       bool no_progress = fails == failures;
       failures = fails;
@@ -236,59 +237,6 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
 
   DBG_OUT("get_note_updates_since (%d) returning: %d", revision, int(noteUpdates.size()));
   return noteUpdates;
-}
-
-
-unsigned FileSystemSyncServer::download_notes(std::vector<NoteDownload> &notes, const Glib::RefPtr<Gio::Cancellable> &cancel_op)
-{
-  Monitor note_updates_done;
-  std::atomic<unsigned> remaining(notes.size());
-  std::atomic<unsigned> failures(0);
-
-  for(auto & download : notes) {
-    download.source->copy_async(download.destination,
-      [&download, &remaining, &failures, &note_updates_done]
-      (Glib::RefPtr<Gio::AsyncResult> & result) {
-        try {
-          if(download.source->copy_finish(result)) {
-            download.result = TransferResult::SUCCESS;
-          }
-          else {
-            download.result = TransferResult::FAILURE;
-            ++failures;
-          }
-        }
-        catch(std::exception & e) {
-          ERR_OUT(_("Exception when finishing note copy: %s"), e.what());
-          download.result = TransferResult::FAILURE;
-          ++failures;
-        }
-        catch(...) {
-          ERR_OUT(_("Exception when finishing note copy"));
-          download.result = TransferResult::FAILURE;
-          ++failures;
-        }
-
-        if(--remaining == 0 || download.result == TransferResult::FAILURE) {
-          Monitor::Lock lock(note_updates_done);
-          note_updates_done.notify_one();
-        }
-      }, cancel_op);
-  }
-
-  unsigned failure_margin = notes.size() / 4;
-  if(failure_margin < 10) {
-    failure_margin = 10;
-  }
-  Monitor::Lock lock(note_updates_done);
-  while(remaining > 0) {
-    note_updates_done.wait(lock);
-    if(failures > failure_margin) {
-      cancel_op->cancel();
-    }
-  }
-
-  return failures;
 }
 
 
