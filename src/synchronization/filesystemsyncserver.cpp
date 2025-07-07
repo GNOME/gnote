@@ -133,8 +133,8 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
     uploads.emplace_back(local_note, server_note, sharp::file_basename(file_path));
   }
 
-  GvfsTransfer<NoteUpload> file_transfer;
-  auto failures = file_transfer.transfer(uploads);
+  GvfsTransfer file_transfer(uploads);
+  const auto failures = file_transfer.transfer();
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
   }
@@ -224,8 +224,8 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     xmlFreeDoc(xml_doc);
   }
 
-  GvfsTransfer<NoteDownload> file_transfers;
-  auto failures = file_transfers.transfer(downloads);
+  GvfsTransfer file_transfers(downloads);
+  const auto failures = file_transfers.transfer();
 
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to download %1 note update", "Failed to download %1 note updates", failures), failures));

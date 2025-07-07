@@ -79,11 +79,15 @@ class GvfsTransfer
   : public GvfsTransferBase
 {
 public:
-  unsigned transfer(std::vector<TransferT> &transfers)
+  explicit GvfsTransfer(std::vector<TransferT> &transfers)
+    : m_transfers(transfers)
+  {}
+
+  unsigned transfer()
   {
     unsigned failures = 0;
     do {
-      unsigned fails = try_file_transfer(transfers);
+      unsigned fails = try_file_transfer();
       if(fails > 0) {
         bool no_progress = fails == failures;
         failures = fails;
@@ -97,12 +101,12 @@ public:
     return failures;
   }
 private:
-  unsigned try_file_transfer(std::vector<TransferT> &transfers)
+  unsigned try_file_transfer()
   {
-    std::atomic<unsigned> remaining(transfers.size());
+    std::atomic<unsigned> remaining(m_transfers.size());
     std::atomic<unsigned> failures(0);
 
-    for(FileTransfer &transfer : transfers) {
+    for(FileTransfer &transfer : m_transfers) {
       if(transfer.result == TransferResult::SUCCESS) {
         --remaining;
         continue;
@@ -125,7 +129,7 @@ private:
       }, m_cancel_op);
     }
 
-    unsigned failure_margin = transfers.size() / 4;
+    unsigned failure_margin = m_transfers.size() / 4;
     if(failure_margin < 10) {
       failure_margin = 10;
     }
@@ -141,6 +145,7 @@ private:
     return failures;
   }
 
+  std::vector<TransferT> &m_transfers;
   const Glib::RefPtr<Gio::Cancellable> m_cancel_op = Gio::Cancellable::create();
   Monitor m_finished;
 };
