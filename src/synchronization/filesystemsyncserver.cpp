@@ -62,6 +62,12 @@ struct NoteUpload
 struct NoteDownload
   : gnote::sync::FileTransfer
 {
+  explicit NoteDownload(const Glib::ustring &note_id)
+    : FileTransfer({}, {})
+    , revision(-1)
+    , note_id(note_id)
+  {}
+
   NoteDownload(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest, int revision, Glib::ustring &&note_id, Glib::ustring &&result_path)
     : FileTransfer(src, dest)
     , revision(revision)
@@ -73,6 +79,28 @@ struct NoteDownload
   const Glib::ustring note_id;
   const Glib::ustring result_path;
 };
+
+class NoteDownloadHash
+{
+public:
+  std::size_t operator()(const NoteDownload & d) const noexcept
+  {
+    return m_hash(d.note_id);
+  }
+private:
+  gnote::Hash<Glib::ustring> m_hash;
+};
+
+class NoteDownloadIdEqual
+{
+public:
+  bool operator()(const NoteDownload &x, const NoteDownload &y) const noexcept
+  {
+    return x.note_id == y.note_id;
+  }
+};
+
+typedef std::unordered_set<NoteDownload, NoteDownloadHash, NoteDownloadIdEqual> NoteDownloadSet;
 
 }
 
@@ -196,7 +224,7 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     catch(...) {}
   }
 
-  std::vector<NoteDownload> downloads;
+  NoteDownloadSet downloads;
   xmlDocPtr xml_doc = NULL;
   if(is_valid_xml_file(m_manifest_path, &xml_doc)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
@@ -205,18 +233,16 @@ std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
     DBG_OUT("get_note_updates_since xpath returned %d nodes", int(noteNodes.size()));
     if(noteNodes.size() > 0) {
-      std::unordered_set<Glib::ustring, Hash<Glib::ustring>> updates;
       for(auto & node : noteNodes) {
         Glib::ustring note_id = sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@id"));
         int rev = str_to_int(sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@rev")));
-        if(updates.find(note_id) == updates.end()) {
-          updates.insert(note_id);
+        if(downloads.find(NoteDownload(note_id)) == downloads.end()) {
           auto rev_dir = get_revision_dir_path(rev);
           auto server_note = rev_dir->get_child(note_id + ".note");
           // Copy the file from the server to the temp directory
           Glib::ustring note_temp_path = Glib::build_filename(temp_path, note_id + ".note");
           auto dest = Gio::File::create_for_path(note_temp_path);
-          downloads.emplace_back(server_note, dest, rev, std::move(note_id), std::move(note_temp_path));
+          downloads.emplace(server_note, dest, rev, std::move(note_id), std::move(note_temp_path));
         }
       }
     }
