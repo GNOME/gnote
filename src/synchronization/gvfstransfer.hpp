@@ -47,7 +47,7 @@ struct FileTransfer
 
   Glib::RefPtr<Gio::File> source;
   Glib::RefPtr<Gio::File> destination;
-  TransferResult result;
+  mutable TransferResult result;
 };
 
 class GvfsTransferBase
@@ -57,12 +57,12 @@ protected:
   static unsigned calculate_failure_margin(std::size_t transfers);
 };
 
-template <typename TransferT>
+template <typename ContainerT>
 class GvfsTransfer
   : public GvfsTransferBase
 {
 public:
-  explicit GvfsTransfer(std::vector<TransferT> &transfers)
+  explicit GvfsTransfer(const ContainerT &transfers)
     : m_transfers(transfers)
     , m_failure_margin(calculate_failure_margin(transfers.size()))
   {}
@@ -90,7 +90,7 @@ private:
     std::atomic<unsigned> remaining(m_transfers.size());
     std::atomic<unsigned> failures(0);
 
-    for(FileTransfer &transfer : m_transfers) {
+    for(const FileTransfer &transfer : m_transfers) {
       if(transfer.result == TransferResult::SUCCESS) {
         --remaining;
         continue;
@@ -120,7 +120,7 @@ private:
     return failures;
   }
 
-  std::vector<TransferT> &m_transfers;
+  const ContainerT &m_transfers;
   const unsigned m_failure_margin;
   const Glib::RefPtr<Gio::Cancellable> m_cancel_op = Gio::Cancellable::create();
   Monitor m_finished;
