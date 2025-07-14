@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016-2017,2019,2021,2023-2024 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016-2017,2019,2021,2023-2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,14 +49,14 @@ namespace sync {
   }
 
 
-  bool NoteUpdate::basically_equal_to(NoteBase & existing_note)
+  bool NoteUpdate::basically_equal_to(const NoteBase &existing_note) const
   {
     // NOTE: This would be so much easier if NoteUpdate
     //       was not just a container for a big XML string
     sharp::XmlReader xml;
     xml.load_buffer(m_xml_content);
     NoteData *data = new NoteData(Glib::ustring(m_uuid));
-    existing_note.manager().note_archiver().read(xml, *data);
+    const_cast<NoteManagerBase&>(existing_note.manager()).note_archiver().read(xml, *data);
     std::unique_ptr<NoteData> update_data(data);
     xml.close();
 
