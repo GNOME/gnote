@@ -189,8 +189,8 @@ namespace sync {
         return;
       }
       DBG_OUT("8");
-      int latestServerRevision = server->latest_revision();
-      int newRevision = latestServerRevision + 1;
+      const auto latest_server_revision = server->latest_revision();
+      int newRevision = latest_server_revision + 1;
 
       // If the server has been wiped or reinitialized by another client
       // for some reason, our local manifest is inaccurate and could misguide
