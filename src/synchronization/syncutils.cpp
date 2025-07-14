@@ -55,18 +55,17 @@ namespace sync {
     //       was not just a container for a big XML string
     sharp::XmlReader xml;
     xml.load_buffer(m_xml_content);
-    NoteData *data = new NoteData(Glib::ustring(m_uuid));
-    const_cast<NoteManagerBase&>(existing_note.manager()).note_archiver().read(xml, *data);
-    std::unique_ptr<NoteData> update_data(data);
+    NoteData update_data{Glib::ustring(m_uuid)};
+    const_cast<NoteManagerBase&>(existing_note.manager()).note_archiver().read(xml, update_data);
     xml.close();
 
     // NOTE: Mostly a hack to ignore missing version attributes
     Glib::ustring existing_inner_content = get_inner_content(existing_note.data().text());
-    Glib::ustring update_inner_content = get_inner_content(update_data->text());
+    Glib::ustring update_inner_content = get_inner_content(update_data.text());
 
     return existing_inner_content == update_inner_content &&
-           existing_note.data().title() == update_data->title() &&
-           compare_tags(existing_note.data().tags(), update_data->tags());
+           existing_note.data().title() == update_data.title() &&
+           compare_tags(existing_note.data().tags(), update_data.tags());
            // TODO: Compare open-on-startup, pinned
   }
 
