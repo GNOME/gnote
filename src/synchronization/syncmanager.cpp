@@ -196,10 +196,10 @@ namespace sync {
       // for some reason, our local manifest is inaccurate and could misguide
       // sync into erroneously deleting local notes, etc.  We reset the client
       // to prevent this situation.
-      Glib::ustring serverId = server->id();
-      if(m_client->associated_server_id() != serverId) {
+      const Glib::ustring server_id = server->id();
+      if(m_client->associated_server_id() != server_id) {
         m_client->reset();
-        m_client->associated_server_id(serverId);
+        m_client->associated_server_id(server_id);
       }
 
       m_client->begin_synchronization();
