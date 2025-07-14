@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -172,7 +172,6 @@ namespace sync {
         set_state(SYNC_SERVER_CREATION_FAILED);
         ERR_OUT(_("Exception while creating SyncServer: %s"), e.what());
         set_state(IDLE);
-        f.addin->post_sync_cleanup();// TODO: Needed?
         return;
         // TODO: Figure out a clever way to get the specific error up to the GUI
       }
