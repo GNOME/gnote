@@ -190,7 +190,7 @@ namespace sync {
       }
       DBG_OUT("8");
       const auto latest_server_revision = server->latest_revision();
-      int newRevision = latest_server_revision + 1;
+      const int new_revision = latest_server_revision + 1;
 
       // If the server has been wiped or reinitialized by another client
       // for some reason, our local manifest is inaccurate and could misguide
@@ -349,7 +349,7 @@ namespace sync {
         // Apply this revision number to all new/modified notes since last sync
         // TODO: Is this the best place to do this (after successful server commit)
         for(NoteBase & iter : new_or_modified_notes) {
-          m_client->set_revision(iter, newRevision);
+          m_client->set_revision(iter, new_revision);
         }
         set_state(SUCCEEDED);
       }
@@ -358,7 +358,7 @@ namespace sync {
         // TODO: Figure out a way to let the GUI know what exactly failed
       }
 
-      // This should be equivalent to newRevision
+      // This should be equivalent to new_revision
       m_client->last_synchronized_revision(server->latest_revision());
 
       m_client->last_sync_date(Glib::DateTime::create_now_utc());
