@@ -207,13 +207,13 @@ namespace sync {
 
       // Handle notes modified or added on server
       DBG_OUT("Sync: GetNoteUpdatesSince rev %d", m_client->last_synchronized_revision());
-      std::map<Glib::ustring, NoteUpdate> noteUpdates = server->get_note_updates_since(m_client->last_synchronized_revision());
-      DBG_OUT("Sync: %d updates since rev %d", int(noteUpdates.size()), m_client->last_synchronized_revision());
+      const auto note_updates = server->get_note_updates_since(m_client->last_synchronized_revision());
+      DBG_OUT("Sync: %zu updates since rev %d", note_updates.size(), m_client->last_synchronized_revision());
 
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
       std::vector<Glib::ustring> noteUpdateTitles;
-      for(auto & iter : noteUpdates) {
+      for(auto & iter : note_updates) {
         if(iter.second.m_title != "") {
           noteUpdateTitles.push_back(iter.second.m_title);
         }
@@ -224,7 +224,7 @@ namespace sync {
       // TODO: Lots of searching here and in the next foreach...
       //       Want this stuff to happen all at once first, but
       //       maybe there's a way to store this info and pass it on?
-      for(auto & iter : noteUpdates) {
+      for(auto & iter : note_updates) {
         if(find_note_by_uuid(iter.second.m_uuid)) {
           auto existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote && !iter.second.basically_equal_to(existingNote.value())) {
@@ -236,13 +236,13 @@ namespace sync {
         }
       }
 
-      if(noteUpdates.size() > 0)
+      if(note_updates.size() > 0)
         set_state(DOWNLOADING);
 
       // TODO: Figure out why GUI doesn't always update smoothly
 
       // Process updates from the server; the bread and butter of sync!
-      for(auto & iter : noteUpdates) {
+      for(auto & iter : note_updates) {
         auto existing_note = find_note_by_uuid(iter.second.m_uuid);
 
         if(!existing_note) {
