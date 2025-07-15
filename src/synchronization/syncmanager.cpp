@@ -317,11 +317,11 @@ namespace sync {
       }
 
       // Handle notes deleted on client
-      std::vector<Glib::ustring> locallyDeletedUUIDs;
+      std::vector<Glib::ustring> locally_deleted_uuids;
       auto all_note_uuids = server->get_all_note_uuids();
       for(auto & iter : all_note_uuids) {
         if(!find_note_by_uuid(iter)) {
-          locallyDeletedUUIDs.push_back(iter);
+          locally_deleted_uuids.push_back(iter);
           if(m_sync_ui != 0) {
             Glib::ustring deletedTitle = iter;
             auto deleted_note_titles = m_client->deleted_note_titles();
@@ -332,9 +332,9 @@ namespace sync {
           }
         }
       }
-      if(locallyDeletedUUIDs.size() > 0) {
+      if(locally_deleted_uuids.size() > 0) {
         set_state(DELETE_SERVER_NOTES);
-        server->delete_notes(locallyDeletedUUIDs);
+        server->delete_notes(locally_deleted_uuids);
       }
 
       set_state(COMMITTING_CHANGES);
