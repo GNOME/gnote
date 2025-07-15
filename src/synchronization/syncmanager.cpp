@@ -226,11 +226,11 @@ namespace sync {
       //       maybe there's a way to store this info and pass it on?
       for(auto & iter : note_updates) {
         if(find_note_by_uuid(iter.second.m_uuid)) {
-          auto existingNote = note_mgr().find(iter.second.m_title);
-          if(existingNote && !iter.second.basically_equal_to(existingNote.value())) {
+          auto existing_note = note_mgr().find(iter.second.m_title);
+          if(existing_note && !iter.second.basically_equal_to(existing_note.value())) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(existingNote.value(), iter.second, note_update_titles);
+              m_sync_ui->note_conflict_detected(existing_note.value(), iter.second, note_update_titles);
             }
           }
         }
