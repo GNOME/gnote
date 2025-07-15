@@ -273,8 +273,8 @@ namespace sync {
               m_sync_ui->note_conflict_detected(existing, iter.second, note_update_titles);
             }
 
-            if(auto existingNote = find_note_by_uuid(iter.second.m_uuid)) {
-              update_note_in_main_thread(existingNote.value(), iter.second);
+            if(auto existing_note = find_note_by_uuid(iter.second.m_uuid)) {
+              update_note_in_main_thread(existing_note.value(), iter.second);
             }
             else {
               // Note has been deleted or okay'd for overwrite
