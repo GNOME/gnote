@@ -212,10 +212,10 @@ namespace sync {
 
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
-      std::vector<Glib::ustring> noteUpdateTitles;
+      std::vector<Glib::ustring> note_update_titles;
       for(auto & iter : note_updates) {
         if(iter.second.m_title != "") {
-          noteUpdateTitles.push_back(iter.second.m_title);
+          note_update_titles.push_back(iter.second.m_title);
         }
       }
 
@@ -230,7 +230,7 @@ namespace sync {
           if(existingNote && !iter.second.basically_equal_to(existingNote.value())) {
             DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(existingNote.value(), iter.second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(existingNote.value(), iter.second, note_update_titles);
             }
           }
         }
@@ -270,7 +270,7 @@ namespace sync {
             DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter.second.m_title.c_str());
             // Note already exists locally, but has been modified since last sync; prompt user
             if(m_sync_ui != 0) {
-              m_sync_ui->note_conflict_detected(existing, iter.second, noteUpdateTitles);
+              m_sync_ui->note_conflict_detected(existing, iter.second, note_update_titles);
             }
 
             if(auto existingNote = find_note_by_uuid(iter.second.m_uuid)) {
