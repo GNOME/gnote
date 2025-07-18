@@ -155,18 +155,18 @@ namespace sync {
       f.addin = get_configured_sync_service();
       if(f.addin == NULL) {
         set_state(NO_CONFIGURED_SYNC_SERVICE);
-        DBG_OUT("GetConfiguredSyncService is null");
+        DBG_OUT("get_configured_sync_service is null");
         set_state(IDLE);
         return;
       }
 
-      DBG_OUT("SyncThread using SyncServiceAddin: %s", f.addin->name().c_str());
+      DBG_OUT("synchronization_thread using SyncServiceAddin: %s", f.addin->name().c_str());
 
       set_state(CONNECTING);
       try {
         server.reset(f.addin->create_sync_server());
         if(server == NULL)
-          throw std::logic_error("addin.CreateSyncServer () returned null");
+          throw std::logic_error("addin.create_sync_server() returned NULL");
       }
       catch(std::exception & e) {
         set_state(SYNC_SERVER_CREATION_FAILED);
@@ -206,7 +206,7 @@ namespace sync {
       set_state(PREPARE_DOWNLOAD);
 
       // Handle notes modified or added on server
-      DBG_OUT("Sync: GetNoteUpdatesSince rev %d", m_client->last_synchronized_revision());
+      DBG_OUT("Sync: get_note_updates_since rev %d", m_client->last_synchronized_revision());
       const auto note_updates = server->get_note_updates_since(m_client->last_synchronized_revision());
       DBG_OUT("Sync: %zu updates since rev %d", note_updates.size(), m_client->last_synchronized_revision());
 
