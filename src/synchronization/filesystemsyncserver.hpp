@@ -40,7 +40,7 @@ public:
   virtual bool commit_sync_transaction() override;
   virtual bool cancel_sync_transaction() override;
   virtual std::vector<Glib::ustring> get_all_note_uuids() override;
-  virtual std::map<Glib::ustring, NoteUpdate> get_note_updates_since(int revision) override;
+  NoteUpdatesMap get_note_updates_since(int revision) override;
   virtual void delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs) override;
   void upload_notes(const std::vector<NoteBase::Ref> & notes) override;
   virtual int latest_revision() override; // NOTE: Only reliable during a transaction

@@ -205,9 +205,9 @@ bool FileSystemSyncServer::updates_available_since(int revision)
 }
 
 
-std::map<Glib::ustring, NoteUpdate> FileSystemSyncServer::get_note_updates_since(int revision)
+SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revision)
 {
-  std::map<Glib::ustring, NoteUpdate> noteUpdates;
+  SyncServer::NoteUpdatesMap noteUpdates;
 
   Glib::ustring temp_path = Glib::build_filename(m_cache_path, "sync_temp");
   if(!sharp::directory_exists(temp_path)) {
