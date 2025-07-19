@@ -213,6 +213,7 @@ namespace sync {
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
       std::vector<Glib::ustring> note_update_titles;
+      note_update_titles.reserve(note_updates.size());
       for(auto & iter : note_updates) {
         if(iter.second.m_title != "") {
           note_update_titles.push_back(iter.second.m_title);
