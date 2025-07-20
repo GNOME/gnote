@@ -226,25 +226,22 @@ namespace gnote {
 
     void main_context_call(const sigc::slot<void()> & slot)
     {
-      Monitor cond;
-      bool executed = false;
+      CompletionMonitor cond;
       std::exception_ptr ex;
 
-      Monitor::Lock lock(cond);
-      main_context_invoke([slot, &cond, &executed, &ex]() {
-        Monitor::Lock lock(cond);
-        try {
-          slot();
-        }
-        catch(...) {
-          ex = std::current_exception();
-        }
-        executed = true;
-        cond.notify_one();
-      });
-      while(!executed) {
-        cond.wait(lock);
+      {
+        CompletionMonitor::WaitLock lock(cond);
+        main_context_invoke([slot, &cond, &ex]() {
+          CompletionMonitor::NotifyLock lock(cond);
+          try {
+            slot();
+          }
+          catch(...) {
+            ex = std::current_exception();
+          }
+        });
       }
+
       if(ex) {
         std::rethrow_exception(ex);
       }
