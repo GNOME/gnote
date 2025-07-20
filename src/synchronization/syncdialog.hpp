@@ -66,8 +66,7 @@ namespace sync {
                                  const std::vector<Glib::ustring> & noteUpdateTitles,
                                  SyncTitleConflictResolution savedBehavior,
                                  SyncTitleConflictResolution resolution,
-                                 Monitor &wait,
-                                 bool & completed);
+                                 CompletionMonitor &wait);
     void conflict_dialog_response(
       Gtk::Dialog *dialog,
       const Glib::ustring & localConflictNote,

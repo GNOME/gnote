@@ -578,33 +578,27 @@ void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
   int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
-  Monitor wait;
-  Monitor::Lock lock(wait);
-  bool completed = false;
+  CompletionMonitor wait;
+  {
+    CompletionMonitor::WaitLock lock(wait);
 
-  // This event handler will be called by the synchronization thread
-  // so we have to use the delegate here to manipulate the GUI.
-  // To be consistent, any exceptions in the delgate will be caught
-  // and then rethrown in the synchronization thread.
-  auto local_conflict_note = localConflictNote.uri();
-  auto & manager = localConflictNote.manager();
-  utils::main_context_invoke(
-    [this, &manager, local_conflict_note, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait, &completed]() {
-      if(auto note = manager.find_by_uri(local_conflict_note)) {
-        note_conflict_detected_(static_cast<Note&>(note.value().get()), remoteNote, noteUpdateTitles,
-                                static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
-                                OVERWRITE_EXISTING, wait, completed
-        );
-      }
-      else {
-        Monitor::Lock lock(wait);
-        completed = true;
-        wait.notify_one();
-      }
+    // This event handler will be called by the synchronization thread
+    // so we have to use the delegate here to manipulate the GUI.
+    // To be consistent, any exceptions in the delgate will be caught
+    // and then rethrown in the synchronization thread.
+    auto local_conflict_note = localConflictNote.uri();
+    auto & manager = localConflictNote.manager();
+    utils::main_context_invoke(
+      [this, &manager, local_conflict_note, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait]() {
+        if(auto note = manager.find_by_uri(local_conflict_note)) {
+          note_conflict_detected_(static_cast<Note&>(note.value().get()), remoteNote, noteUpdateTitles,
+                                  static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
+                                  OVERWRITE_EXISTING, wait);
+        }
+        else {
+          CompletionMonitor::NotifyLock{wait};
+        }
     });
-
-  while(!completed) {
-    wait.wait(lock);
   }
 }
 
@@ -615,8 +609,7 @@ void SyncDialog::note_conflict_detected_(
   const std::vector<Glib::ustring> & noteUpdateTitles,
   SyncTitleConflictResolution savedBehavior,
   SyncTitleConflictResolution resolution,
-  Monitor &wait,
-  bool & completed)
+  CompletionMonitor &wait)
 {
   bool noteSyncBitsMatch = m_gnote.sync_manager().synchronized_note_xml_matches(
     localConflictNote.get_complete_note_xml(), remoteNote.m_xml_content);
@@ -627,7 +620,7 @@ void SyncDialog::note_conflict_detected_(
     auto conflictDlg = Gtk::make_managed<SyncTitleConflictDialog>(localConflictNote, noteUpdateTitles);
     auto local_conflict_note = localConflictNote.uri();
     conflictDlg->signal_response()
-      .connect([this, conflictDlg, local_conflict_note, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait, &completed](int resp) {
+      .connect([this, conflictDlg, local_conflict_note, remoteNote, savedBehavior, resolution, noteSyncBitsMatch, &wait](int resp) {
       auto response = static_cast<Gtk::ResponseType>(resp);
       conflict_dialog_response(
         conflictDlg,
@@ -639,16 +632,12 @@ void SyncDialog::note_conflict_detected_(
         response
       );
 
-      Monitor::Lock lock(wait);
-      completed = true;
-      wait.notify_one();
+      CompletionMonitor::NotifyLock{wait};
     });
     conflictDlg->show();
   }
   else {
-    Monitor::Lock lock(wait);
-    completed = true;
-    wait.notify_one();
+    CompletionMonitor::NotifyLock{wait};
   }
 }
 
