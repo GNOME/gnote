@@ -187,15 +187,13 @@ void GvfsSyncService::unmount_sync()
     return;
   }
 
-  Monitor cond;
-  Monitor::Lock lock(cond);
-  unmount_async([this, &cond]{
-    Monitor::Lock lock(cond);
-    cond.notify_one();
-    m_mount.reset();
-  });
-  while(m_mount) {
-    cond.wait(lock);
+  CompletionMonitor cond;
+  {
+    CompletionMonitor::WaitLock lock(cond);
+    unmount_async([this, &cond]{
+      CompletionMonitor::NotifyLock lock(cond);
+      m_mount.reset();
+    });
   }
 }
 
