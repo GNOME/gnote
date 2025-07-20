@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2016,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2012-2014,2016,2017,2019-2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -599,6 +599,7 @@ void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
       }
       else {
         std::unique_lock lock(wait_mutex);
+        completed = true;
         wait.notify_one();
       }
     });
