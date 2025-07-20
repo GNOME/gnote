@@ -147,21 +147,18 @@ bool GvfsSyncService::mount_async(const Glib::RefPtr<Gio::File> & path, const st
 
 bool GvfsSyncService::mount_sync(const Glib::RefPtr<Gio::File> & path, const Glib::RefPtr<Gio::MountOperation> & op)
 {
-  bool ret = true, done = false;
-  Monitor cond;
-  Monitor::Lock lock(cond);
-  if(mount_async(path, [&ret, &cond, &done](bool result, const Glib::ustring&) {
-       Monitor::Lock lock(cond);
-       ret = result;
-       done = true;
-       cond.notify_one();
-     }, op)) {
-    return true;
+  bool ret = true;
+  CompletionMonitor cond;
+  {
+    CompletionMonitor::WaitLock lock(cond);
+    if(mount_async(path, [&ret, &cond](bool result, const Glib::ustring&) {
+         CompletionMonitor::NotifyLock lock(cond);
+         ret = result;
+       }, op)) {
+      return true;
+    }
   }
 
-  while(!done) {
-    cond.wait(lock);
-  }
   return ret;
 }
 
