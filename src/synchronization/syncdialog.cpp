@@ -598,6 +598,7 @@ void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
       }
       else {
         Monitor::Lock lock(wait);
+        completed = true;
         wait.notify_one();
       }
     });
