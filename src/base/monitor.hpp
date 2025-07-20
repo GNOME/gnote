@@ -47,6 +47,36 @@ private:
   std::condition_variable m_cond;
 };
 
+
+class CompletionMonitor
+{
+public:
+  class WaitLock
+  {
+  public:
+    explicit WaitLock(CompletionMonitor &monitor);
+    ~WaitLock();
+  private:
+    CompletionMonitor &m_monitor;
+    Monitor::Lock m_lock;
+  };
+
+  class NotifyLock
+  {
+  public:
+    explicit NotifyLock(CompletionMonitor &monitor);
+    ~NotifyLock();
+  private:
+    CompletionMonitor &m_monitor;
+    Monitor::Lock m_lock;
+  };
+private:
+  void check_monitor();
+
+  Monitor m_monitor;
+  bool m_completed{false};
+};
+
 }
 
 #endif

@@ -17,6 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <stdexcept>
+
+#include "debug.hpp"
 #include "monitor.hpp"
 
 
@@ -35,6 +38,41 @@ void Monitor::notify_one()
 void Monitor::notify_all()
 {
   m_cond.notify_all();
+}
+
+
+CompletionMonitor::WaitLock::WaitLock(CompletionMonitor &monitor)
+  : m_monitor(monitor)
+  , m_lock(monitor.m_monitor)
+{
+}
+
+CompletionMonitor::WaitLock::~WaitLock()
+{
+  while(!m_monitor.m_completed) {
+    m_monitor.m_monitor.wait(m_lock);
+  }
+}
+
+CompletionMonitor::NotifyLock::NotifyLock(CompletionMonitor &monitor)
+  : m_monitor(monitor)
+  , m_lock(monitor.m_monitor)
+{
+  monitor.check_monitor();
+}
+
+CompletionMonitor::NotifyLock::~NotifyLock()
+{
+  m_monitor.m_completed = true;
+  m_monitor.m_monitor.notify_all();
+}
+
+void CompletionMonitor::check_monitor()
+{
+  DBG_ASSERT(!m_completed, "CompletionMonitor already completed");
+  if(m_completed) {
+    throw std::logic_error("CompletionMonitor already completed");
+  }
 }
 
 }
