@@ -44,6 +44,7 @@ public:
 class SyncClient
 {
 public:
+  typedef std::unordered_map<Glib::ustring, Glib::ustring, Hash<Glib::ustring>> DeletedTitlesMap;
   virtual ~SyncClient();
 
   virtual int last_synchronized_revision() const = 0;
@@ -52,7 +53,7 @@ public:
   virtual void last_sync_date(const Glib::DateTime &) = 0;
   virtual int get_revision(const NoteBase &note) const = 0;
   virtual void set_revision(const NoteBase & note, int revision) = 0;
-  virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() = 0;
+  virtual const DeletedTitlesMap &deleted_note_titles() const = 0;
   virtual void reset() = 0;
   virtual const Glib::ustring &associated_server_id() const = 0;
   virtual void associated_server_id(const Glib::ustring &) = 0;

@@ -46,7 +46,7 @@ namespace sync {
     void last_synchronized_revision(int) override;
     int get_revision(const NoteBase &note) const override;
     void set_revision(const NoteBase &note, int revision) override;
-    virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() override
+    const DeletedTitlesMap &deleted_note_titles() const override
       {
         return m_deleted_notes;
       }
@@ -77,7 +77,7 @@ namespace sync {
     int m_last_sync_rev;
     Glib::ustring m_server_id;
     std::map<Glib::ustring, int> m_file_revisions;
-    std::map<Glib::ustring, Glib::ustring> m_deleted_notes;
+    DeletedTitlesMap  m_deleted_notes;
     bool m_synchronizing;
   };
 

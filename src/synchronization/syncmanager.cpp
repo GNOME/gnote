@@ -336,9 +336,10 @@ namespace {
           locally_deleted_uuids.push_back(iter);
           if(m_sync_ui != 0) {
             Glib::ustring deletedTitle = iter;
-            auto deleted_note_titles = m_client->deleted_note_titles();
-            if(deleted_note_titles.find(iter) != deleted_note_titles.end()) {
-              deletedTitle = deleted_note_titles[iter];
+            auto &deleted_note_titles = m_client->deleted_note_titles();
+            auto deleted_note = deleted_note_titles.find(iter);
+            if(deleted_note != deleted_note_titles.end()) {
+              deletedTitle = deleted_note->second;
             }
             m_sync_ui->note_synchronized_th(deletedTitle, DELETE_FROM_SERVER);
           }
