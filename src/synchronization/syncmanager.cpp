@@ -40,6 +40,23 @@
 namespace gnote {
 namespace sync {
 
+namespace {
+
+  std::vector<Glib::ustring> get_updated_note_titles(const SyncServer::NoteUpdatesMap &note_updates)
+  {
+    std::vector<Glib::ustring> titles;
+    titles.reserve(note_updates.size());
+    for(auto & iter : note_updates) {
+      if(iter.second.m_title != "") {
+        titles.push_back(iter.second.m_title);
+      }
+    }
+
+    return titles;
+  }
+
+}
+
   SyncManager::SyncManager(IGnote & g, NoteManagerBase & m)
     : m_gnote(g)
     , m_note_manager(m)
@@ -212,13 +229,7 @@ namespace sync {
 
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
-      std::vector<Glib::ustring> note_update_titles;
-      note_update_titles.reserve(note_updates.size());
-      for(auto & iter : note_updates) {
-        if(iter.second.m_title != "") {
-          note_update_titles.push_back(iter.second.m_title);
-        }
-      }
+      const std::vector<Glib::ustring> note_update_titles{get_updated_note_titles(note_updates)};
 
       // First, check for new local notes that might have title conflicts
       // with the updates coming from the server.  Prompt the user if necessary.
