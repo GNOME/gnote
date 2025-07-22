@@ -335,13 +335,13 @@ namespace {
         if(!find_note_by_uuid(iter)) {
           locally_deleted_uuids.push_back(iter);
           if(m_sync_ui != 0) {
-            Glib::ustring deletedTitle = iter;
+            Glib::ustring deleted_title = iter;
             auto &deleted_note_titles = m_client->deleted_note_titles();
             auto deleted_note = deleted_note_titles.find(iter);
             if(deleted_note != deleted_note_titles.end()) {
-              deletedTitle = deleted_note->second;
+              deleted_title = deleted_note->second;
             }
-            m_sync_ui->note_synchronized_th(deletedTitle, DELETE_FROM_SERVER);
+            m_sync_ui->note_synchronized_th(deleted_title, DELETE_FROM_SERVER);
           }
         }
       }
