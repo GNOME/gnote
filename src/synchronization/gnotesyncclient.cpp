@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020,2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020,2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -249,7 +249,7 @@ namespace sync {
   }
 
 
-  int GnoteSyncClient::get_revision(const NoteBase & note)
+  int GnoteSyncClient::get_revision(const NoteBase &note) const
   {
     Glib::ustring note_guid = note.id();
     auto iter = m_file_revisions.find(note_guid);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2020,2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2020,2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,31 +34,31 @@ namespace sync {
     static SyncClient *create(NoteManagerBase &);
     GnoteSyncClient();
 
-    virtual Glib::DateTime last_sync_date() override
+    const Glib::DateTime &last_sync_date() const override
       {
         return m_last_sync_date;
       }
-    virtual void last_sync_date(const Glib::DateTime &) override;
-    virtual int last_synchronized_revision() override
+    void last_sync_date(const Glib::DateTime &) override;
+    int last_synchronized_revision() const override
       {
         return m_last_sync_rev;
       }
-    virtual void last_synchronized_revision(int) override;
-    int get_revision(const NoteBase & note) override;
-    void set_revision(const NoteBase & note, int revision) override;
+    void last_synchronized_revision(int) override;
+    int get_revision(const NoteBase &note) const override;
+    void set_revision(const NoteBase &note, int revision) override;
     virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() override
       {
         return m_deleted_notes;
       }
-    virtual void reset() override;
-    virtual Glib::ustring associated_server_id() override
+    void reset() override;
+    const Glib::ustring &associated_server_id() const override
       {
         return m_server_id;
       }
-    virtual void associated_server_id(const Glib::ustring &) override;
-    virtual void begin_synchronization() override;
-    virtual void end_synchronization() override;
-    virtual void cancel_synchronization() override;
+    void associated_server_id(const Glib::ustring &) override;
+    void begin_synchronization() override;
+    void end_synchronization() override;
+    void cancel_synchronization() override;
   protected:
     void init(NoteManagerBase &);
     void parse(const Glib::ustring & manifest_path);

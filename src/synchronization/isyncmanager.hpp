@@ -46,15 +46,15 @@ class SyncClient
 public:
   virtual ~SyncClient();
 
-  virtual int last_synchronized_revision() = 0;
+  virtual int last_synchronized_revision() const = 0;
   virtual void last_synchronized_revision(int) = 0;
-  virtual Glib::DateTime last_sync_date() = 0;
+  virtual const Glib::DateTime &last_sync_date() const = 0;
   virtual void last_sync_date(const Glib::DateTime &) = 0;
-  virtual int get_revision(const NoteBase & note) = 0;
+  virtual int get_revision(const NoteBase &note) const = 0;
   virtual void set_revision(const NoteBase & note, int revision) = 0;
   virtual std::map<Glib::ustring, Glib::ustring> deleted_note_titles() = 0;
   virtual void reset() = 0;
-  virtual Glib::ustring associated_server_id() = 0;
+  virtual const Glib::ustring &associated_server_id() const = 0;
   virtual void associated_server_id(const Glib::ustring &) = 0;
   virtual void begin_synchronization() = 0;
   virtual void end_synchronization() = 0;
