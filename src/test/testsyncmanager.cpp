@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2020,2023 Aurimas Cernius
+ * Copyright (C) 2017-2020,2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,10 +46,6 @@ void SyncManager::perform_synchronization(const gnote::sync::SyncUI::Ptr & sync_
 {
   m_sync_ui = sync_ui;
   synchronization_thread();
-}
-
-void SyncManager::resolve_conflict(gnote::sync::SyncTitleConflictResolution /*resolution*/)
-{
 }
 
 bool SyncManager::synchronized_note_xml_matches(const Glib::ustring & /*noteXml1*/, const Glib::ustring & /*noteXml2*/)

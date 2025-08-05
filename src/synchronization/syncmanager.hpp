@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017-2021,2023-2024 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017-2021,2023-2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,6 @@ namespace sync {
     virtual void reset_client() override;
     virtual void perform_synchronization(const SyncUI::Ptr & sync_ui) override;
     void synchronization_thread();
-    virtual void resolve_conflict(SyncTitleConflictResolution resolution) override;
     virtual bool synchronized_note_xml_matches(const Glib::ustring & noteXml1, const Glib::ustring & noteXml2) override;
     virtual SyncState state() const override
       {
@@ -90,7 +89,6 @@ namespace sync {
     SyncState m_state;
     mutable std::unique_ptr<std::thread> m_sync_thread;
     std::unique_ptr<std::thread> m_sync_checker_thread;
-    SyncTitleConflictResolution m_conflict_resolution;
     utils::InterruptableTimeout m_autosync_timer;
     int m_autosync_timeout_pref_minutes;
     int m_current_autosync_timeout_minutes;

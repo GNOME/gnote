@@ -69,7 +69,6 @@ public:
 
   virtual void reset_client() = 0;
   virtual void perform_synchronization(const SyncUI::Ptr & sync_ui) = 0;
-  virtual void resolve_conflict(SyncTitleConflictResolution resolution) = 0;
   virtual bool synchronized_note_xml_matches(const Glib::ustring & noteXml1, const Glib::ustring & noteXml2) = 0;
   virtual SyncState state() const = 0;
 };

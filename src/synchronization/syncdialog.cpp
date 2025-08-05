@@ -699,9 +699,6 @@ void SyncDialog::conflict_dialog_response(
   m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(savedBehavior));
 
   conflictDlg->hide();
-
-  // Let the SyncManager continue
-  m_gnote.sync_manager().resolve_conflict(/*localConflictNote, */resolution);
 }
 
 

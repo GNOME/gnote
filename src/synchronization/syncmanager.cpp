@@ -403,14 +403,6 @@ namespace {
   }
 
 
-  void SyncManager::resolve_conflict(SyncTitleConflictResolution resolution)
-  {
-    if(m_sync_thread) {
-      m_conflict_resolution = resolution;
-    }
-  }
-
-
   void SyncManager::handle_note_buffer_changed(NoteBase &)
   {
     // Note changed, iff a sync is coming up we kill the

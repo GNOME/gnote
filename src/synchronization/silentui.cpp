@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019,2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019,2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -84,7 +84,6 @@ namespace sync {
     if(localConflictNote.id() != remoteNote.m_uuid) {
       m_manager.delete_note(localConflictNote);
     }
-    m_gnote.sync_manager().resolve_conflict(OVERWRITE_EXISTING);
   }
 
 
