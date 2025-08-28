@@ -153,29 +153,9 @@ namespace gnote {
     auto controller = Gtk::EventControllerKey::create();
     controller->signal_key_pressed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_key_pressed), true);
     add_controller(controller);
+    register_shortcuts();
 
     g.signal_quit.connect(sigc::mem_fun(*this, &NoteRecentChanges::close_window));// to save size/pos
-
-    {
-      auto shortcuts = Gtk::ShortcutController::create();
-      auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_W, Gdk::ModifierType::CONTROL_MASK);
-      auto action = Gtk::NamedAction::create("win.close-tab");
-      auto shortcut = Gtk::Shortcut::create(trigger, action);
-      shortcuts->add_shortcut(shortcut);
-      action = Gtk::NamedAction::create("win.close-window");
-      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Q, Gdk::ModifierType::CONTROL_MASK);
-      shortcut = Gtk::Shortcut::create(trigger, action);
-      shortcuts->add_shortcut(shortcut);
-      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_question, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
-      action = Gtk::NamedAction::create("app.help-shortcuts");
-      shortcut = Gtk::Shortcut::create(trigger, action);
-      shortcuts->add_shortcut(shortcut);
-      add_controller(shortcuts);
-      action = Gtk::NamedAction::create("app.new-note");
-      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_N, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
-      shortcut = Gtk::Shortcut::create(trigger, action);
-      shortcuts->add_shortcut(shortcut);
-    }
   }
 
 
@@ -227,6 +207,29 @@ namespace gnote {
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::callbacks_changed));
 
     register_callbacks();
+  }
+
+  void NoteRecentChanges::register_shortcuts()
+  {
+    auto shortcuts = Gtk::ShortcutController::create();
+    auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_W, Gdk::ModifierType::CONTROL_MASK);
+    auto action = Gtk::NamedAction::create("win.close-tab");
+    auto shortcut = Gtk::Shortcut::create(trigger, action);
+    shortcuts->add_shortcut(shortcut);
+    action = Gtk::NamedAction::create("win.close-window");
+    trigger = Gtk::KeyvalTrigger::create(GDK_KEY_Q, Gdk::ModifierType::CONTROL_MASK);
+    shortcut = Gtk::Shortcut::create(trigger, action);
+    shortcuts->add_shortcut(shortcut);
+    trigger = Gtk::KeyvalTrigger::create(GDK_KEY_question, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
+    action = Gtk::NamedAction::create("app.help-shortcuts");
+    shortcut = Gtk::Shortcut::create(trigger, action);
+    shortcuts->add_shortcut(shortcut);
+    action = Gtk::NamedAction::create("app.new-note");
+    trigger = Gtk::KeyvalTrigger::create(GDK_KEY_N, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
+    shortcut = Gtk::Shortcut::create(trigger, action);
+    shortcuts->add_shortcut(shortcut);
+
+    add_controller(shortcuts);
   }
 
   void NoteRecentChanges::callbacks_changed()

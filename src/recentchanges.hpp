@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2025 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -99,6 +99,7 @@ private:
   void add_action(const MainWindowAction::Ptr & action);
   bool present_active(Note & note);
   void register_actions();
+  void register_shortcuts();
   void callbacks_changed();
   void register_callbacks();
   void unregister_callbacks();
