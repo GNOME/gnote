@@ -229,6 +229,16 @@ namespace gnote {
     shortcut = Gtk::Shortcut::create(trigger, action);
     shortcuts->add_shortcut(shortcut);
 
+    for(int i = 0; i < 9; ++i) {
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_1 + i, Gdk::ModifierType::ALT_MASK);
+      auto act = Gtk::CallbackAction::create([this, i](Gtk::Widget&, const Glib::VariantBase&){
+        m_embed_book.set_current_page(i);
+        return true;
+      });
+      shortcut = Gtk::Shortcut::create(trigger, act);
+      shortcuts->add_shortcut(shortcut);
+    }
+
     add_controller(shortcuts);
   }
 
