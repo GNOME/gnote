@@ -257,7 +257,7 @@ namespace gnote {
   void Gnote::on_show_about_action(const Glib::VariantBase&)
   {
     std::vector<Glib::ustring> authors;
-    authors.push_back("Aurimas Černius <aurisc4@gmail.com>");
+    authors.push_back("Aurimas Černius <aurimas.cernius@mailo.com>");
     authors.push_back("Debarshi Ray <debarshir@src.gnome.org>");
     authors.push_back("Hubert Figuiere <hub@figuiere.net>");
     authors.push_back("Iain Nicol <iainn@src.gnome.org>");
@@ -266,7 +266,7 @@ namespace gnote {
     
     std::vector<Glib::ustring> documenters;
     documenters.push_back("Pierre-Yves Luyten <py@luyten.fr>");
-    documenters.push_back("Aurimas Černius <aurisc4@gmail.com>");
+    documenters.push_back("Aurimas Černius <aurimas.cernius@mailo.com>");
 
     Glib::ustring translators(_("translator-credits"));
     if (translators == "translator-credits")
