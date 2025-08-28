@@ -237,6 +237,10 @@ namespace gnote {
       });
       shortcut = Gtk::Shortcut::create(trigger, act);
       shortcuts->add_shortcut(shortcut);
+
+      trigger = Gtk::KeyvalTrigger::create(GDK_KEY_KP_1 + i, Gdk::ModifierType::ALT_MASK);
+      shortcut = Gtk::Shortcut::create(trigger, act);
+      shortcuts->add_shortcut(shortcut);
     }
 
     add_controller(shortcuts);
