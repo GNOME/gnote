@@ -256,17 +256,23 @@ namespace gnote {
 
   void Gnote::on_show_about_action(const Glib::VariantBase&)
   {
-    std::vector<Glib::ustring> authors;
-    authors.push_back("Aurimas Černius <aurimas.cernius@mailo.com>");
-    authors.push_back("Debarshi Ray <debarshir@src.gnome.org>");
-    authors.push_back("Hubert Figuiere <hub@figuiere.net>");
-    authors.push_back("Iain Nicol <iainn@src.gnome.org>");
-    authors.push_back("Kevin Joly <kevin.joly@posteo.net>");
-    authors.push_back(_("and Tomboy original authors."));
+    std::vector<Glib::ustring> authors = {
+      "Aurimas Černius <aurimas.cernius@mailo.com>",
+      "Debarshi Ray <debarshir@src.gnome.org>",
+      "Hubert Figuiere <hub@figuiere.net>",
+      _("and Tomboy original authors."),
+    };
+
+    std::vector<Glib::ustring> contributors = {
+      "Iain Nicol <iainn@src.gnome.org>",
+      "Kevin Joly <kevin.joly@posteo.net>",
+      "Balló György <ballogyor@gmail.com>",
+    };
     
-    std::vector<Glib::ustring> documenters;
-    documenters.push_back("Pierre-Yves Luyten <py@luyten.fr>");
-    documenters.push_back("Aurimas Černius <aurimas.cernius@mailo.com>");
+    std::vector<Glib::ustring> documenters = {
+      "Pierre-Yves Luyten <py@luyten.fr>",
+      "Aurimas Černius <aurimas.cernius@mailo.com>",
+    };
 
     Glib::ustring translators(_("translator-credits"));
     if (translators == "translator-credits")
@@ -287,6 +293,7 @@ namespace gnote {
     about->set_authors(authors);
     about->set_documenters(documenters);
     about->set_translator_credits(translators);
+    about->add_credit_section(_("Contributors"), contributors);
     MainWindow & recent_changes = get_main_window();
     if(recent_changes.get_visible()) {
       about->set_modal(true);
