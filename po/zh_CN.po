@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-07-07 21:03+0000\n"
-"PO-Revision-Date: 2025-07-08 07:53+0800\n"
+"POT-Creation-Date: 2025-09-02 20:47+0000\n"
+"PO-Revision-Date: 2025-09-03 16:48+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 48.0\n"
 
-#: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
+#: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
 msgid "Gnote"
 msgstr "Gnote"
@@ -54,24 +54,24 @@ msgid ""
 "devices."
 msgstr "Gnote 也支持同步，在多个设备上使用更简便。"
 
-#: data/org.gnome.Gnote.desktop.in:4
+#: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "记录便笺，汇集想法，保持井然有序"
 
-#: data/org.gnome.Gnote.desktop.in:5
+#: data/org.gnome.Gnote.desktop.in:4
 msgid "Note-taker"
 msgstr "记事本"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Gnote.desktop.in:7
+#: data/org.gnome.Gnote.desktop.in:6
 msgid "notes;idea;link;organize;"
 msgstr "notes;idea;link;organize;便笺;笔记;思想;点子;想法;组织;"
 
-#: data/org.gnome.Gnote.desktop.in:20
+#: data/org.gnome.Gnote.desktop.in:19
 msgid "New Window"
 msgstr "新建窗口"
 
-#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
 #: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "新建便笺"
@@ -512,7 +512,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "主窗口"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:122
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:129
 msgctxt "shortcut window"
 msgid "General"
 msgstr "常规"
@@ -527,153 +527,158 @@ msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:127
-#: data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "打开操作菜单"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "隐藏搜索栏"
 
-#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:162
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "关闭窗口"
 
-#: data/shortcuts-gnote.ui:54
+#: data/shortcuts-gnote.ui:53
+msgctxt "shortcut window"
+msgid "Open tab 1 (up to 9)"
+msgstr "打开标签页 1（上至 9）"
+
+#: data/shortcuts-gnote.ui:61
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "搜索栏"
 
-#: data/shortcuts-gnote.ui:59 data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:66 data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "显示搜索栏"
 
-#: data/shortcuts-gnote.ui:66
+#: data/shortcuts-gnote.ui:73
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "选择下一个匹配项"
 
-#: data/shortcuts-gnote.ui:73
+#: data/shortcuts-gnote.ui:80
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "选择上一个匹配项"
 
-#: data/shortcuts-gnote.ui:81
+#: data/shortcuts-gnote.ui:88
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "便笺列表"
 
-#: data/shortcuts-gnote.ui:86
+#: data/shortcuts-gnote.ui:93
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "创建新便笺"
 
-#: data/shortcuts-gnote.ui:93
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "打开选中便笺"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "在新窗口打开选中便笺"
 
-#: data/shortcuts-gnote.ui:107
+#: data/shortcuts-gnote.ui:114
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "删除选中便笺"
 
-#: data/shortcuts-gnote.ui:118
+#: data/shortcuts-gnote.ui:125
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "便笺视图"
 
-#: data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "打开笔记动作菜单"
 
-#: data/shortcuts-gnote.ui:169
+#: data/shortcuts-gnote.ui:176
 msgctxt "shortcut window"
 msgid "Close current tab"
 msgstr "关闭当前标签页"
 
-#: data/shortcuts-gnote.ui:177
+#: data/shortcuts-gnote.ui:184
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "编辑"
 
-#: data/shortcuts-gnote.ui:182
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "撤销上次编辑"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "重做上次编辑"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "在选中文本上创建到便笺的链接"
 
-#: data/shortcuts-gnote.ui:204
+#: data/shortcuts-gnote.ui:211
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "格式化"
 
-#: data/shortcuts-gnote.ui:209
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "切换粗体"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "切换斜体"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "切换删除线"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "切换高亮"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "切换等宽"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "切换下划线"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "增大字号"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "减小字号"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "选中的文本行启用项目符号或增加缩进"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "当前行减少缩进或禁用项目符号"
@@ -750,16 +755,16 @@ msgstr "无法为 %s 加载插件信息：%s"
 msgid "Trying to load addins when they are already loaded"
 msgstr "插件已经加载了的情况下尝试加载插件"
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:4
+#: src/plugins/backlinks/backlinks.desktop.in.in:3
 msgid "Backlinks"
 msgstr "反向链接"
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:5
+#: src/plugins/backlinks/backlinks.desktop.in.in:4
 msgid "See which notes link to the one you're currently viewing."
 msgstr "查看哪些便笺链接到了您当前查看的这条便笺。"
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:6
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:6
+#: src/plugins/backlinks/backlinks.desktop.in.in:5
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere 和 Tomboy 项目"
 
@@ -771,11 +776,11 @@ msgstr "这里链接了什么？"
 msgid "(none)"
 msgstr "（无）"
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:3
 msgid "Bugzilla Links"
 msgstr "Bugzilla 链接"
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -784,10 +789,10 @@ msgstr ""
 "允许您将 Bugzilla URL 地址直接从浏览器拖拽至 Gnote 便笺中。Bug 号码将与一个"
 "小 bug 图标一起插入。"
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:6
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
-#: src/plugins/printnotes/printnotes.desktop.in.in:6
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
+#: src/plugins/printnotes/printnotes.desktop.in.in:5
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere 和 Tomboy 项目"
 
@@ -823,8 +828,8 @@ msgstr "选择图标..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:317
-#: src/utils.cpp:324
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:314
+#: src/utils.cpp:321
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -871,19 +876,19 @@ msgstr "删除(_D)"
 msgid "Error removing icon %s: %s"
 msgstr "移除图标 %s 时出错：%s"
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:3
 #: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:78
 msgid "Export to Getting Things GNOME"
 msgstr "导出到 Getting Things GNOME"
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
 msgid "Exports individual notes as Getting Things GNOME tasks"
 msgstr "将独立便笺导出为 Getting Things GNOME 任务"
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:6
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:6
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:6
-#: src/plugins/statistics/statistics.desktop.in.in:6
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
+#: src/plugins/statistics/statistics.desktop.in.in:5
 msgid "Aurimas Černius"
 msgstr "Aurimas Černius"
 
@@ -905,11 +910,11 @@ msgstr "为 GTG 创建 D-Bus 代理失败"
 msgid "Failed to call GTG: %s"
 msgstr "调用 GTG 失败：%s"
 
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:3
 msgid "Export to HTML"
 msgstr "导出为 HTML"
 
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
 msgid "Exports individual notes to HTML."
 msgstr "将单个便笺导出为 HTML。"
 
@@ -983,24 +988,24 @@ msgstr "指定的文件夹路径不存在，Gnote 无法创建便笺。"
 msgid "Local Folder"
 msgstr "本地文件夹"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:3
 msgid "Local Directory Sync Service Plugin"
 msgstr "本地目录同步服务插件"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "将 Gnote 便笺同步到一个本地文件系统路径"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:6
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:6
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
 msgid "Aurimas Černius and the Tomboy Project"
 msgstr "Aurimas Černius  和 Tomboy 项目"
 
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:3
 msgid "Fixed Width"
 msgstr "等宽"
 
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
 msgid "Adds fixed-width font style."
 msgstr "添加等宽字体样式。"
 
@@ -1008,11 +1013,11 @@ msgstr "添加等宽字体样式。"
 msgid "Fixed Wid_th"
 msgstr "等宽(_T)"
 
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:3
 msgid "Online Directory Sync Service Plugin"
 msgstr "在线目录同步服务插件"
 
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "将 Gnote 便笺同步到在线目录"
 
@@ -1046,12 +1051,12 @@ msgstr "URI 字段为空。"
 msgid "Online Folder"
 msgstr "在线文件夹"
 
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:3
 #: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "插入时间戳"
 
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
 msgid "Inserts current date and time at the cursor position."
 msgstr "在光标出插入当前日期和时间。"
 
@@ -1093,15 +1098,15 @@ msgstr "NoteDirectoryWatcher：从 %s 创建便笺出错：%s"
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr "NoteDirectoryWatcher：更新异常退出，解析 %s 出错：%s"
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:3
 msgid "Note Directory Watcher"
 msgstr "便笺目录监视器"
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr "监视 Gnote 便笺目录获取便笺更改。"
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:6
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius 和 Tomboy 原作者"
 
@@ -1138,16 +1143,16 @@ msgstr "约会"
 msgid "%A, %B %d %Y"
 msgstr "%Y年%m月%d日%A"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:3
 msgid "Note of the Day"
 msgstr "今日便笺"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr "自动创建一个“今日”便笺，以便容易接合每天的想法"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:6
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray 和 Tomboy 项目"
 
@@ -1162,11 +1167,11 @@ msgid ""
 msgstr ""
 "修改<span weight=\"bold\">今天：模板</span>便笺以便自定义新的今天便笺文本。"
 
-#: src/plugins/printnotes/printnotes.desktop.in.in:4
+#: src/plugins/printnotes/printnotes.desktop.in.in:3
 msgid "Printing Support"
 msgstr "打印支持"
 
-#: src/plugins/printnotes/printnotes.desktop.in.in:5
+#: src/plugins/printnotes/printnotes.desktop.in.in:4
 msgid "Allows you to print a note."
 msgstr "允许您打印便笺。"
 
@@ -1183,38 +1188,38 @@ msgstr "打印便笺时出错"
 msgid "Page %1 of %2"
 msgstr "第 %1 页，共 %2 页"
 
-#: src/plugins/readonly/readonly.desktop.in.in:4
+#: src/plugins/readonly/readonly.desktop.in.in:3
 #: src/plugins/readonly/readonlynoteaddin.cpp:67
 msgid "Read Only"
 msgstr "只读"
 
-#: src/plugins/readonly/readonly.desktop.in.in:5
+#: src/plugins/readonly/readonly.desktop.in.in:4
 msgid "Mark certain notes as read only"
 msgstr "将特定便笺标记为只读"
 
-#: src/plugins/readonly/readonly.desktop.in.in:6
+#: src/plugins/readonly/readonly.desktop.in.in:5
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray 和 Arief Bayu Purwanto"
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:3
 #: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
 msgid "Replace title"
 msgstr "替换标题"
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
 msgid "Replace title with selection."
 msgstr "用选中部分替换便笺标题。"
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:6
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:3
 msgid "Special Notes"
 msgstr "特殊便笺"
 
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
 msgid "Show special notes, that are otherwise hidden"
 msgstr "显示特定的便笺，其他的隐藏"
 
@@ -1222,12 +1227,12 @@ msgstr "显示特定的便笺，其他的隐藏"
 msgid "Show Statistics"
 msgstr "显示统计"
 
-#: src/plugins/statistics/statistics.desktop.in.in:4
+#: src/plugins/statistics/statistics.desktop.in.in:3
 #: src/plugins/statistics/statisticswidget.cpp:179
 msgid "Statistics"
 msgstr "统计"
 
-#: src/plugins/statistics/statistics.desktop.in.in:5
+#: src/plugins/statistics/statistics.desktop.in.in:4
 msgid "Show various statistics about notes."
 msgstr "显示关于便笺的多种统计信息。"
 
@@ -1245,23 +1250,23 @@ msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 条便笺"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:3
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:115
 msgid "Table of Contents"
 msgstr "目录"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
 msgid ""
 "Navigate long structured notes. Set section and subsection headings in your "
 "note, and the Table of Contents will show in a menu."
 msgstr ""
 "在长结构便笺中导航。在便笺中设置章节和子章节标题，然后将在菜单中显示目录。"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
 msgid "Aurimas Černius, Luc Pionchon"
 msgstr "Aurimas Černius、Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:10
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
@@ -1277,39 +1282,39 @@ msgstr "标题 2"
 msgid "Table of Contents Help"
 msgstr "帮助文档目录"
 
-#: src/plugins/todo/todo.desktop.in.in:4
+#: src/plugins/todo/todo.desktop.in.in:3
 msgid "TODO"
 msgstr "TODO"
 
-#: src/plugins/todo/todo.desktop.in.in:5
+#: src/plugins/todo/todo.desktop.in.in:4
 msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
 msgstr "在便笺中高亮 FIXME：、TODO：和 XXX：模式。"
 
-#: src/plugins/todo/todo.desktop.in.in:6
+#: src/plugins/todo/todo.desktop.in.in:5
 msgid "Aurimas Černius, Romain Tartière"
 msgstr "Aurimas Černius、Romain Tartière"
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:3
 msgid "Tomboy Importer"
 msgstr "Tomboy 导入器"
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
 msgid "Import your notes from Tomboy."
 msgstr "从 Tomboy 中导入便笺。"
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:6
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: src/plugins/underline/underline.desktop.in.in:4
+#: src/plugins/underline/underline.desktop.in.in:3
 msgid "Underline"
 msgstr "下划线"
 
-#: src/plugins/underline/underline.desktop.in.in:5
+#: src/plugins/underline/underline.desktop.in.in:4
 msgid "Adds ability to underline text."
 msgstr "添加“文本下划线”功能。"
 
-#: src/plugins/underline/underline.desktop.in.in:6
+#: src/plugins/underline/underline.desktop.in.in:5
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière 和 Tomboy 项目"
 
@@ -1349,11 +1354,11 @@ msgstr ""
 "\n"
 "%1"
 
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:3
 msgid "WebDAV Sync Service Plugin"
 msgstr "WebDAV 同步服务插件"
 
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "将 Gnote 便笺同步到 WebDAV URL。"
 
@@ -1371,11 +1376,11 @@ msgstr "没有可用的 D-Bus 连接，shell 搜索和远程控制功能将不�
 msgid "Failed to get shortcuts window!"
 msgstr "获取快捷键窗口失败！"
 
-#: src/gnote.cpp:265
+#: src/gnote.cpp:263
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:277
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@gmail.com>, 2005-2008\n"
@@ -1384,7 +1389,7 @@ msgstr ""
 "YunQiang Su <wzssyqa@gmail.com>, 2010\n"
 "lumingzh <lumingzh@qq.com>, 2023-2025"
 
-#: src/gnote.cpp:280
+#: src/gnote.cpp:286
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1396,80 +1401,84 @@ msgstr ""
 "版权所有 © 2009 Hubert Figuiere\n"
 "版权所有 © 2004-2009 Tomboy 原作者们。"
 
-#: src/gnote.cpp:284
+#: src/gnote.cpp:290
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: src/gnote.cpp:286
+#: src/gnote.cpp:292
 msgid "Homepage"
 msgstr "主页"
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:296
+msgid "Contributors"
+msgstr "贡献者"
+
+#: src/gnote.cpp:507
 msgid "Run Gnote in background."
 msgstr "后台运行 Gnote。"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:508
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
 
-#: src/gnote.cpp:502
+#: src/gnote.cpp:509
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: src/gnote.cpp:502
+#: src/gnote.cpp:509
 msgid "path"
 msgstr "路径"
 
-#: src/gnote.cpp:503
+#: src/gnote.cpp:510
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口。"
 
-#: src/gnote.cpp:503 src/gnote.cpp:509
+#: src/gnote.cpp:510 src/gnote.cpp:516
 msgid "text"
 msgstr "文本"
 
-#: src/gnote.cpp:504
+#: src/gnote.cpp:511
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: src/gnote.cpp:505
+#: src/gnote.cpp:512
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一条带有可选标题的新便笺。"
 
-#: src/gnote.cpp:505
+#: src/gnote.cpp:512
 msgid "title"
 msgstr "标题"
 
-#: src/gnote.cpp:506
+#: src/gnote.cpp:513
 msgid "Open a new window."
 msgstr "打开一个新窗口。"
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:514
 msgid "Display the existing note matching title."
 msgstr "显示匹配标题的现有便笺。"
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:514
 msgid "title/url"
 msgstr "标题/url"
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:515
 msgid "Display the 'Start Here' note."
 msgstr "显示“从这里开始”便笺。"
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:516
 msgid "Search and highlight text in the opened note."
 msgstr "在开启的便笺中搜索文本（高亮显示）。"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:520
 msgid "A note taking application"
 msgstr "一个记便笺应用程序"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:520
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:697
+#: src/gnote.cpp:704
 msgid "Version %1"
 msgstr "版本 %1"
 
@@ -1882,7 +1891,7 @@ msgstr "插件"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:314
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:311
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -2127,27 +2136,27 @@ msgstr "版权所有："
 msgid "Close"
 msgstr "关闭"
 
-#: src/recentchanges.cpp:294
+#: src/recentchanges.cpp:311
 msgid "Search"
 msgstr "搜索"
 
-#: src/recentchanges.cpp:369
+#: src/recentchanges.cpp:386
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "embed box 的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:394
+#: src/recentchanges.cpp:411
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "搜索条目的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:743
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "尝试前置一个未内嵌在窗口中的部件"
 
-#: src/recentchanges.cpp:733
+#: src/recentchanges.cpp:750
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "尝试前置一个不是 Gtk::Widget 的部件"
 
-#: src/recentchanges.cpp:933
+#: src/recentchanges.cpp:950
 msgid "No configured actions"
 msgstr "未配置操作"
 
@@ -2273,17 +2282,17 @@ msgstr "%1 已失败"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "没有样式表，请报告 bug"
 
-#: src/synchronization/filesystemsyncserver.cpp:139
+#: src/synchronization/filesystemsyncserver.cpp:167
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "上传 %1 便笺失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:231
+#: src/synchronization/filesystemsyncserver.cpp:257
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "下载 %1 便笺更新失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:402
+#: src/synchronization/filesystemsyncserver.cpp:428
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2292,12 +2301,12 @@ msgstr ""
 "提交时服务器清理异常。服务器完整性没有问题但是可能会遗留一些文件。错误为："
 "%s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:608
+#: src/synchronization/filesystemsyncserver.cpp:634
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "更新锁时出错: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:647
+#: src/synchronization/filesystemsyncserver.cpp:673
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "删除旧的同步锁“%s”时出错：%s"
@@ -2535,29 +2544,29 @@ msgstr "已上传更改到服务器"
 msgid "Uploaded new note to server"
 msgstr "已上传新便笺到服务器"
 
-#: src/synchronization/syncmanager.cpp:64
+#: src/synchronization/syncmanager.cpp:81
 msgid "Synchronize Notes"
 msgstr "同步便笺"
 
-#: src/synchronization/syncmanager.cpp:83
 #: src/synchronization/syncmanager.cpp:100
-#: src/synchronization/syncmanager.cpp:591
+#: src/synchronization/syncmanager.cpp:117
+#: src/synchronization/syncmanager.cpp:589
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "报告缺陷。类型转换失败：%s"
 
-#: src/synchronization/syncmanager.cpp:147
+#: src/synchronization/syncmanager.cpp:164
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "同步后清理插件出错：%s"
 
-#: src/synchronization/syncmanager.cpp:173
+#: src/synchronization/syncmanager.cpp:190
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "创建 SyncServer 时异常：%s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:374
+#: src/synchronization/syncmanager.cpp:380
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "同步因以下异常失败：%s"
@@ -2633,15 +2642,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "没有日期"
 
-#: src/utils.cpp:311 src/utils.cpp:325
+#: src/utils.cpp:308 src/utils.cpp:322
 msgid "_OK"
 msgstr "确定(_O)"
 
-#: src/utils.cpp:320
+#: src/utils.cpp:317
 msgid "_No"
 msgstr "否(_N)"
 
-#: src/utils.cpp:321
+#: src/utils.cpp:318
 msgid "_Yes"
 msgstr "是(_Y)"
 
