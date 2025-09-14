@@ -85,6 +85,8 @@ namespace gnote {
     } 
     else {
       load_notes ();
+      auto keep_backups_since = Glib::DateTime::create_now_utc().add_days(-30);
+      delete_old_backups(backup, keep_backups_since);
     }
 
     m_notebook_manager.init();
