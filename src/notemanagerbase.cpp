@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@
  */
 
 
+#include <glib/gstdio.h>
 #include <glibmm/i18n.h>
 #include <glibmm/miscutils.h>
 
@@ -92,6 +93,20 @@ NoteManagerBase::~NoteManagerBase()
 {
   if(m_trie_controller) {
     delete m_trie_controller;
+  }
+}
+
+void NoteManagerBase::delete_old_backups(const Glib::ustring &backup, const Glib::DateTime &keep_since)
+{
+  auto backups = sharp::directory_get_files(backup);
+  const auto keep = keep_since.to_unix();
+
+  for(const auto &file : backups) {
+    GStatBuf sb;
+    g_stat(file.c_str(), &sb);
+    if(sb.st_mtime < keep) {
+      sharp::file_delete(file);
+    }
   }
 }
 

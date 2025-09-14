@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -140,6 +140,8 @@ public:
   NoteBase::RenamedHandler signal_note_renamed;
   NoteBase::SavedHandler signal_note_saved;
 protected:
+  static void delete_old_backups(const Glib::ustring &backup, const Glib::DateTime &keep_since);
+
   bool init(const Glib::ustring & directory, const Glib::ustring & backup);
   virtual void post_load();
   virtual void migrate_notes(const Glib::ustring & old_note_dir);
