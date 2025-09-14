@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017,2019-2020,2023 Aurimas Cernius
+ * Copyright (C) 2017,2019-2020,2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,11 @@
  */
 
 
+#include <utime.h>
+#include <glib/gstdio.h>
 #include <UnitTest++/UnitTest++.h>
 
+#include "sharp/directory.hpp"
 #include "test/testgnote.hpp"
 #include "test/testnotemanager.hpp"
 
@@ -37,7 +40,7 @@ SUITE(NoteManager)
       g.notebook_manager(&manager.notebook_manager());
     }
 
-    Glib::ustring make_notes_dir()
+    static Glib::ustring make_notes_dir()
     {
       char notes_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
       char *notes_dir = g_mkdtemp(notes_dir_tmpl);
@@ -186,6 +189,37 @@ SUITE(NoteManager)
     CHECK_EQUAL("93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.id());
     CHECK_EQUAL("note://gnote/93b3f3ef-9eea-4cdc-9f78-76af1629987a", note.uri());
     CHECK_EQUAL(1, manager.note_count());
+  }
+
+  TEST(delete_old_backups)
+  {
+    auto dir = Fixture::make_notes_dir();
+    auto current_time = Glib::DateTime::create_now_utc();
+    auto modified = current_time.add_days(-50).to_unix();
+    for(unsigned i = 0; i < 10; ++i) {
+      auto file_name = Glib::ustring::compose("%1/file%2.txt", dir, i);
+      auto file = fopen(file_name.c_str(), "w");
+      fprintf(file, "test %u", i);
+      fclose(file);
+
+      if(i & 1) {
+        utimbuf utb { modified, modified };
+        g_utime(file_name.c_str(), &utb);
+      }
+    }
+
+    auto files = sharp::directory_get_files(dir);
+    CHECK_EQUAL(10, files.size());
+
+    auto old = current_time.add_days(-5);
+    test::NoteManager::delete_old_backups(dir, old);
+
+    files = sharp::directory_get_files(dir);
+    CHECK_EQUAL(5, files.size());
+    std::sort(files.begin(), files.end());
+    for(unsigned i = 0, j = 0; i < 10; i += 2, ++j) {
+      CHECK_EQUAL(Glib::ustring::compose("%1/file%2.txt", dir.c_str(), i), files[j]);
+    }
   }
 }
 

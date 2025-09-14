@@ -51,6 +51,8 @@ public:
     {
       return m_tag_manager;
     }
+
+  using gnote::NoteManagerBase::delete_old_backups;
 protected:
   virtual gnote::NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) override;
   gnote::NoteBase::Ptr note_load(Glib::ustring && file_name) override;
