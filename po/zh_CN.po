@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-09-02 20:47+0000\n"
-"PO-Revision-Date: 2025-09-03 16:48+0800\n"
+"POT-Creation-Date: 2025-09-20 22:10+0000\n"
+"PO-Revision-Date: 2025-09-21 07:41+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 49.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
@@ -72,7 +72,7 @@ msgid "New Window"
 msgstr "新建窗口"
 
 #: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
+#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "新建便笺"
 
@@ -1405,80 +1405,87 @@ msgstr ""
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
-#: src/gnote.cpp:292
+#. TRANSLATORS:
+#. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
+#.
+#: src/gnote.cpp:294
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/wiki/wiki/main.md"
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/blob/wiki/wiki/main.md"
+
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "主页"
 
-#: src/gnote.cpp:296
+#: src/gnote.cpp:299
 msgid "Contributors"
 msgstr "贡献者"
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:510
 msgid "Run Gnote in background."
 msgstr "后台运行 Gnote。"
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:511
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "路径"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口。"
 
-#: src/gnote.cpp:510 src/gnote.cpp:516
+#: src/gnote.cpp:513 src/gnote.cpp:519
 msgid "text"
 msgstr "文本"
 
-#: src/gnote.cpp:511
+#: src/gnote.cpp:514
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一条带有可选标题的新便笺。"
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "title"
 msgstr "标题"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:516
 msgid "Open a new window."
 msgstr "打开一个新窗口。"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "Display the existing note matching title."
 msgstr "显示匹配标题的现有便笺。"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "title/url"
 msgstr "标题/url"
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:518
 msgid "Display the 'Start Here' note."
 msgstr "显示“从这里开始”便笺。"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:519
 msgid "Search and highlight text in the opened note."
 msgstr "在开启的便笺中搜索文本（高亮显示）。"
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "A note taking application"
 msgstr "一个记便笺应用程序"
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:704
+#: src/gnote.cpp:707
 msgid "Version %1"
 msgstr "版本 %1"
 
@@ -1639,15 +1646,15 @@ msgstr "不支持为关闭的便笺设置文本内容"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "新建便笺模板"
 
-#: src/notemanagerbase.cpp:334
+#: src/notemanagerbase.cpp:349
 msgid "Describe your new note here."
 msgstr "在此描述您的新便笺。"
 
-#: src/notemanager.cpp:116
+#: src/notemanager.cpp:118
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1663,8 +1670,8 @@ msgid ""
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
 "\n"
-"We've created a note called <link:internal>Using Links in Gnote</link:"
-"internal>.  Notice how each time we type <link:internal>Using Links in "
+"We've created a note called <link:internal>Using Links in Gnote</"
+"link:internal>.  Notice how each time we type <link:internal>Using Links in "
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
@@ -1675,16 +1682,17 @@ msgstr ""
 "\n"
 "使用“从这里开始”便笺可以帮助您组织思路。\n"
 "\n"
-"如果您想要创建一则新便笺，可以从 GNOME 面板的Gnote 便笺菜单中选择“创建新便"
-"笺”命令。您所创建的便笺将会自动保存。\n"
+"如果您想要创建一则新便笺，可以从 GNOME 面板的Gnote 便笺菜单中选择“创建新便笺”"
+"命令。您所创建的便笺将会自动保存。\n"
 "\n"
 "此外，您还可以在相关的便笺之间创建链接！\n"
 "\n"
 "我们也创建了一则称为<link:internal>在 Gnote 中使用链接</link:internal>的便"
-"笺。您是否已经注意到，我们每次输入<link:internal>在 Gnote 中使用链接</link:"
-"internal>的时候，都会自动加下划线？单击链接即可打开该便笺。</note-content>"
+"笺。您是否已经注意到，我们每次输入<link:internal>在 Gnote 中使用链接</"
+"link:internal>的时候，都会自动加下划线？单击链接即可打开该便笺。</note-"
+"content>"
 
-#: src/notemanager.cpp:135
+#: src/notemanager.cpp:137
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1712,31 +1720,31 @@ msgstr ""
 "</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:150 src/notemanager.cpp:185
+#: src/notemanager.cpp:152 src/notemanager.cpp:187
 msgid "Start Here"
 msgstr "从这里开始"
 
-#: src/notemanager.cpp:154
+#: src/notemanager.cpp:156
 msgid "Using Links in Gnote"
 msgstr "在 Gnote 中使用链接"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:160
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "创建启动便笺出错：%s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:175
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "解析便笺 XML 失败，跳过“%s”: %s"
 
-#: src/notemanager.cpp:384
+#: src/notemanager.cpp:386
 #, c-format
 msgid "Error while saving: %s"
 msgstr "保存时出错：%s"
 
-#: src/notemanager.cpp:389
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "未通过 URI“%s”找到便笺，无法保存"
@@ -2883,10 +2891,10 @@ msgstr "检查拼写"
 #~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
-#~ "创建并显示新便笺的全局按键组合。其格式类似于“&lt;Control&gt;a”或者“&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1”。该分析程序的格式相当自由并允许大小写或者缩写，"
-#~ "如“&lt;Ctl&gt;”和“&lt;Ctrl&gt;”。如果将该选项设置为特殊字符串“disabled”，"
-#~ "那么此操作将没有按键组合。"
+#~ "创建并显示新便笺的全局按键组合。其格式类似于“&lt;Control&gt;a”或"
+#~ "者“&lt;Shift&gt;&lt;Alt&gt;F1”。该分析程序的格式相当自由并允许大小写或者缩"
+#~ "写，如“&lt;Ctl&gt;”和“&lt;Ctrl&gt;”。如果将该选项设置为特殊字符"
+#~ "串“disabled”，那么此操作将没有按键组合。"
 
 #~ msgid "Open Search Dialog"
 #~ msgstr "打开搜索对话框"
@@ -2899,10 +2907,10 @@ msgstr "检查拼写"
 #~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
-#~ "打开便笺搜索对话框的全局按键组合。其格式类似于“&lt;Control&gt;a”或者“&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1”。该分析程序的格式相当自由并允许大小写或者缩写，"
-#~ "如“&lt;Ctl&gt;”和“&lt;Ctrl&gt;”。如果将该选项设置为特殊字符串“disabled”，"
-#~ "那么此操作将没有按键组合。"
+#~ "打开便笺搜索对话框的全局按键组合。其格式类似于“&lt;Control&gt;a”或"
+#~ "者“&lt;Shift&gt;&lt;Alt&gt;F1”。该分析程序的格式相当自由并允许大小写或者缩"
+#~ "写，如“&lt;Ctl&gt;”和“&lt;Ctrl&gt;”。如果将该选项设置为特殊字符"
+#~ "串“disabled”，那么此操作将没有按键组合。"
 
 #~ msgid "Open Recent Changes"
 #~ msgstr "打开最近的更改"
@@ -2915,10 +2923,10 @@ msgstr "检查拼写"
 #~ "the option to the special string \"disabled\", then there will be no "
 #~ "keybinding for this action."
 #~ msgstr ""
-#~ "打开最近更改对话框的全局按键组合。其格式类似于“&lt;Control&gt;a”或者“&lt;"
-#~ "Shift&gt;&lt;Alt&gt;F1”。该分析程序的格式相当自由并允许大小写或者缩写，"
-#~ "如“&lt;Ctl&gt;”和“&lt;Ctrl&gt;”。如果将该选项设置为特殊字符串“disabled”，"
-#~ "那么此操作将没有按键组合。"
+#~ "打开最近更改对话框的全局按键组合。其格式类似于“&lt;Control&gt;a”或"
+#~ "者“&lt;Shift&gt;&lt;Alt&gt;F1”。该分析程序的格式相当自由并允许大小写或者缩"
+#~ "写，如“&lt;Ctl&gt;”和“&lt;Ctrl&gt;”。如果将该选项设置为特殊字符"
+#~ "串“disabled”，那么此操作将没有按键组合。"
 
 #~ msgid "_Quit"
 #~ msgstr "退出(_Q)"
@@ -3033,11 +3041,11 @@ msgstr "检查拼写"
 
 #~ msgid ""
 #~ "Hotkeys allow you to quickly access your notes from anywhere with a "
-#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
-#~ "Alt&gt;N</b>"
+#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, "
+#~ "<b>&lt;Alt&gt;N</b>"
 #~ msgstr ""
-#~ "热键允许随时随地访问您的便笺。热键示例：<b>&lt;Control&gt;&lt;Shift&gt;"
-#~ "F11</b>，<b>&lt;Alt&gt;N</b>"
+#~ "热键允许随时随地访问您的便笺。热键示例："
+#~ "<b>&lt;Control&gt;&lt;Shift&gt;F11</b>，<b>&lt;Alt&gt;N</b>"
 
 #~ msgid "Show notes _menu"
 #~ msgstr "显示便笺菜单(_M)"
