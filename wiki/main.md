@@ -33,3 +33,7 @@ Submit issue in [Gitlab](https://gitlab.gnome.org/GNOME/gnote/issues).
 
 Fork Gnote git repository and create a pull request.
 
+## Getting help
+
+Use tag `Gnote` for your question in GNOME [Discourse](https://discourse.gnome.org/).
+
