@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-09-03 08:49+0000\n"
-"PO-Revision-Date: 2025-09-03 18:32+0300\n"
+"POT-Creation-Date: 2025-09-20 23:42+0000\n"
+"PO-Revision-Date: 2025-09-21 19:31+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -71,7 +71,7 @@ msgid "New Window"
 msgstr "Створити вікно"
 
 #: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
+#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Створити нотатку"
 
@@ -1473,80 +1473,87 @@ msgstr ""
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Проста програма створення нотаток."
 
-#: src/gnote.cpp:292
+#. TRANSLATORS:
+#. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
+#.
+#: src/gnote.cpp:294
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/wiki/wiki/main.md"
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/blob/wiki/wiki/main.md"
+
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: src/gnote.cpp:296
+#: src/gnote.cpp:299
 msgid "Contributors"
 msgstr "Учасники розробки"
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:510
 msgid "Run Gnote in background."
 msgstr "Запустити Gnote на тлі."
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:511
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Запускати Gnote як надавач даних пошуку GNOME Shell."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr "Вкажіть шлях до каталогу із нотатками."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "шлях"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr "Відкрити вікно пошуку в усіх нотатках за допомогою тексту пошуку."
 
-#: src/gnote.cpp:510 src/gnote.cpp:516
+#: src/gnote.cpp:513 src/gnote.cpp:519
 msgid "text"
 msgstr "Текст"
 
-#: src/gnote.cpp:511
+#: src/gnote.cpp:514
 msgid "Print version information."
 msgstr "Показати інформацію про версію."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "Create and display a new note, with a optional title."
 msgstr "Створити та показати нову нотатку з довільним заголовком."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "title"
 msgstr "заголовок"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:516
 msgid "Open a new window."
 msgstr "Відкрити нове вікно."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "Display the existing note matching title."
 msgstr "Показати наявну нотатку з відповідним заголовком."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "title/url"
 msgstr "Заголовок/посилання"
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:518
 msgid "Display the 'Start Here' note."
 msgstr "Показувати першу нотатку"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:519
 msgid "Search and highlight text in the opened note."
 msgstr "Шукати та виділити текст у відкритій нотатці."
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "A note taking application"
 msgstr "Програма для роботи з нотатками"
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "Gnote options at launch"
 msgstr "Параметри Gnote під час запуску"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:704
+#: src/gnote.cpp:707
 msgid "Version %1"
 msgstr "Версія %1"
 
@@ -1713,15 +1720,15 @@ msgstr ""
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "Шаблон нової нотатки"
 
-#: src/notemanagerbase.cpp:334
+#: src/notemanagerbase.cpp:349
 msgid "Describe your new note here."
 msgstr "Опишіть тут вашу нотатку."
 
-#: src/notemanager.cpp:116
+#: src/notemanager.cpp:118
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1762,7 +1769,7 @@ msgstr ""
 "автоматично підкреслюється. Клацніть на посланні, щоб відкрити нотатку.</"
 "note-content>"
 
-#: src/notemanager.cpp:135
+#: src/notemanager.cpp:137
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1792,31 +1799,31 @@ msgstr ""
 "автоматично виникає посилання на неї.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:150 src/notemanager.cpp:185
+#: src/notemanager.cpp:152 src/notemanager.cpp:187
 msgid "Start Here"
 msgstr "Перша нотатка"
 
-#: src/notemanager.cpp:154
+#: src/notemanager.cpp:156
 msgid "Using Links in Gnote"
 msgstr "Використання посилань у Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:160
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Помилка під час створення початкових нотаток: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:175
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Помилка під час обробки XML нотатки, пропускаємо «%s»: %s"
 
-#: src/notemanager.cpp:384
+#: src/notemanager.cpp:386
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Помилка під час спроби зберегти: %s"
 
-#: src/notemanager.cpp:389
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "Не знайдено нотатку з адресою «%s» — збереження неможливе"
