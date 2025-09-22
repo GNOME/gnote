@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-09-13 17:17+0000\n"
-"PO-Revision-Date: 2025-09-13 21:54+0300\n"
+"POT-Creation-Date: 2025-09-22 19:03+0000\n"
+"PO-Revision-Date: 2025-09-22 22:24+0300\n"
 "Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -73,7 +73,7 @@ msgid "New Window"
 msgstr "Naujas langas"
 
 #: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
+#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Naujas raštelis"
 
@@ -1463,80 +1463,87 @@ msgstr ""
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 
-#: src/gnote.cpp:292
+#. TRANSLATORS:
+#. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
+#.
+#: src/gnote.cpp:294
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
+
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "Tinklalapis"
 
-#: src/gnote.cpp:296
+#: src/gnote.cpp:299
 msgid "Contributors"
 msgstr "Pagalbininkai"
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:510
 msgid "Run Gnote in background."
 msgstr "Paleisti Gnote fone."
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:511
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Vykdyti Gnote kaip GNOME Shell paieškos tiekėją."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr "Nurodykite kelią iki aplanko su rašteliais."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "kelias"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr "Atverti paieškos visuose rašteliuose langą su ieškomu tekstu."
 
-#: src/gnote.cpp:510 src/gnote.cpp:516
+#: src/gnote.cpp:513 src/gnote.cpp:519
 msgid "text"
 msgstr "tekstas"
 
-#: src/gnote.cpp:511
+#: src/gnote.cpp:514
 msgid "Print version information."
 msgstr "Rodyti versijos informaciją."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "Create and display a new note, with a optional title."
 msgstr "Sukurti ir parodyti naują raštelį, pavadinimas nebūtinas."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "title"
 msgstr "pavadinimas"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:516
 msgid "Open a new window."
 msgstr "Atverti naujame lange."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "Display the existing note matching title."
 msgstr "Parodyti esamą raštelį su tokiu pavadinimu."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "title/url"
 msgstr "pavadinimas/url"
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:518
 msgid "Display the 'Start Here' note."
 msgstr "Rodyti raštelį „Pradėkite čia“."
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:519
 msgid "Search and highlight text in the opened note."
 msgstr "Surasti ir paryškinti tekstą atvertame raštelyje."
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "A note taking application"
 msgstr "Raštelių rašymo programa"
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "Gnote options at launch"
 msgstr "Gnote parametrai paleidžiant"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:704
+#: src/gnote.cpp:707
 msgid "Version %1"
 msgstr "Versija %1"
 
@@ -1701,15 +1708,15 @@ msgstr "Tekstinio turinio nustatymas užvertiems rašteliams nepalaikomas"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "Naujo raštelio šablonas"
 
-#: src/notemanagerbase.cpp:334
+#: src/notemanagerbase.cpp:349
 msgid "Describe your new note here."
 msgstr "Čia aprašykite naują raštelį."
 
-#: src/notemanager.cpp:116
+#: src/notemanager.cpp:118
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1749,7 +1756,7 @@ msgstr ""
 "Gnote</link:internal>, jis automatiškai pabraukiamas? Norėdami atverti "
 "raštelį, spustelėkite nuorodą.</note-content>"
 
-#: src/notemanager.cpp:135
+#: src/notemanager.cpp:137
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1779,31 +1786,31 @@ msgstr ""
 "automatiškai bus sukurta nuoroda į jį.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:150 src/notemanager.cpp:185
+#: src/notemanager.cpp:152 src/notemanager.cpp:187
 msgid "Start Here"
 msgstr "Pradėti čia"
 
-#: src/notemanager.cpp:154
+#: src/notemanager.cpp:156
 msgid "Using Links in Gnote"
 msgstr "Nuorodų naudojimas Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:160
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Klaida kuriant pradžios raštelius: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:175
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Klaida skaitant raštelio XML, praleidžiamas „%s“: %s"
 
-#: src/notemanager.cpp:384
+#: src/notemanager.cpp:386
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Klaida įrašant: %s"
 
-#: src/notemanager.cpp:389
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "Nerastas raštelis su uri „%s“, negalima įrašyti"
