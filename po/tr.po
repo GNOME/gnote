@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-07-08 19:14+0000\n"
-"PO-Revision-Date: 2025-07-13 08:00+0300\n"
+"POT-Creation-Date: 2025-10-02 16:53+0000\n"
+"PO-Revision-Date: 2025-10-05 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: Gtranslator 47.1\n"
 "X-POOTLE-MTIME: 1421955849.000000\n"
 
-#: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
+#: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
 msgid "Gnote"
 msgstr "Gnote"
@@ -55,25 +55,25 @@ msgstr ""
 "Gnote, eşzamanlamayı da desteklemesiyle, birden çok aygıtta kullanılmasını "
 "basitleştirir."
 
-#: data/org.gnome.Gnote.desktop.in:4
+#: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Not tutun, düşünceleri bağlayın, ve düzenli kalın"
 
-#: data/org.gnome.Gnote.desktop.in:5
+#: data/org.gnome.Gnote.desktop.in:4
 msgid "Note-taker"
 msgstr "Not Tutucu"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Gnote.desktop.in:7
+#: data/org.gnome.Gnote.desktop.in:6
 msgid "notes;idea;link;organize;"
 msgstr "notlar;fikir;bağlantı;düzenle;organizasyon;"
 
-#: data/org.gnome.Gnote.desktop.in:20
+#: data/org.gnome.Gnote.desktop.in:19
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
+#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Yeni Not"
 
@@ -488,7 +488,7 @@ msgstr ""
 
 #: data/org.gnome.gnote.gschema.xml:200
 msgid "Automatic Background Synchronization Timeout"
-msgstr "Kendiliğinden Arkaplan Eşzamanlama Zaman Aşımı"
+msgstr "Kendiliğinden Arka Plan Eşzamanlama Zaman Aşımı"
 
 #: data/org.gnome.gnote.gschema.xml:201
 msgid ""
@@ -498,7 +498,7 @@ msgid ""
 "minutes."
 msgstr ""
 "Notlarınızın (eşzamanlama yapılandırılmışsa) ne sıklıkla arka planda "
-"eşitleneceğini gösteren tam sayı değeri. 1’den küçük herhangi bir değer, "
+"eşzamanlanacağını gösteren tam sayı değeri. 1’den küçük herhangi bir değer, "
 "kendiliğinden eşzamanlamanın devre dışı bırakıldığını gösterir. Kabul "
 "edilebilir en küçük pozitif sayı 5’tir. Bu değer, dakika türündendir."
 
@@ -566,7 +566,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "Ana Pencere"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:122
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:129
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Genel"
@@ -581,153 +581,158 @@ msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:127
-#: data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "Eylemler menüsünü aç"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "Arama çubuğunu gizle"
 
-#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:162
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "Pencereyi kapat"
 
-#: data/shortcuts-gnote.ui:54
+#: data/shortcuts-gnote.ui:53
+msgctxt "shortcut window"
+msgid "Open tab 1 (up to 9)"
+msgstr "1. sekmeyi aç (9’a dek)"
+
+#: data/shortcuts-gnote.ui:61
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "Arama çubuğu"
 
-#: data/shortcuts-gnote.ui:59 data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:66 data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "Arama çubuğunu göster"
 
-#: data/shortcuts-gnote.ui:66
+#: data/shortcuts-gnote.ui:73
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "Sonraki eşleşimi seç"
 
-#: data/shortcuts-gnote.ui:73
+#: data/shortcuts-gnote.ui:80
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "Önceki eşleşimi seç"
 
-#: data/shortcuts-gnote.ui:81
+#: data/shortcuts-gnote.ui:88
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "Not listesi"
 
-#: data/shortcuts-gnote.ui:86
+#: data/shortcuts-gnote.ui:93
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "Yeni not oluştur"
 
-#: data/shortcuts-gnote.ui:93
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "Seçilen notu aç"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "Seçilen notu yeni pencerede aç"
 
-#: data/shortcuts-gnote.ui:107
+#: data/shortcuts-gnote.ui:114
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "Seçilen notu sil"
 
-#: data/shortcuts-gnote.ui:118
+#: data/shortcuts-gnote.ui:125
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "Not Görünümü"
 
-#: data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "Not eylemleri menüsünü aç"
 
-#: data/shortcuts-gnote.ui:169
+#: data/shortcuts-gnote.ui:176
 msgctxt "shortcut window"
 msgid "Close current tab"
 msgstr "Geçerli sekmeyi kapat"
 
-#: data/shortcuts-gnote.ui:177
+#: data/shortcuts-gnote.ui:184
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Düzenleme"
 
-#: data/shortcuts-gnote.ui:182
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "Son düzenlemeyi geri al"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "Son düzenlemeyi yinele"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "Seçilen metinde nota bağlantı oluştur"
 
-#: data/shortcuts-gnote.ui:204
+#: data/shortcuts-gnote.ui:211
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "Biçimlendirme"
 
-#: data/shortcuts-gnote.ui:209
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "Kalınlığı aç/kapat"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "Eğikliği aç/kapat"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "Üstünü çizmeyi aç/kapat"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "Vurgulamayı aç/kapat"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "Sabit genişliği aç/kapat"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "Altını çizmeyi aç/kapat"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "Yazı tipi boyutunu büyüt"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "Yazı tipi boyutunu küçült"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr "Seçimin olduğu satır için işaretleri etkinleştir/girintiyi artır"
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Geçerli satır için girintiyi azalt/işaretleri devre dışı bırak"
@@ -804,16 +809,16 @@ msgstr "%s için eklenti bilgisi yüklenemedi: %s"
 msgid "Trying to load addins when they are already loaded"
 msgstr "Zaten yüklü olan eklentileri yüklemeye çalışıyor"
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:4
+#: src/plugins/backlinks/backlinks.desktop.in.in:3
 msgid "Backlinks"
 msgstr "Geri bağlantılar"
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:5
+#: src/plugins/backlinks/backlinks.desktop.in.in:4
 msgid "See which notes link to the one you're currently viewing."
 msgstr "Şu anda incelediğiniz nota bağlı notlara bakın."
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:6
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:6
+#: src/plugins/backlinks/backlinks.desktop.in.in:5
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr "Hubert Figuiere ve Tomboy Projesi"
 
@@ -825,11 +830,11 @@ msgstr "Buraya ne bağlı?"
 msgid "(none)"
 msgstr "(hiçbiri)"
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:3
 msgid "Bugzilla Links"
 msgstr "Bugzilla Bağlantıları"
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
@@ -838,10 +843,10 @@ msgstr ""
 "Bugzilla adresini Gnote notunuza tarayıcıdan sürüklemenize izin verir.  Hata "
 "numarası yanında küçük hata simgesi ile bağlantı olarak eklenir."
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:6
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
-#: src/plugins/printnotes/printnotes.desktop.in.in:6
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
+#: src/plugins/printnotes/printnotes.desktop.in.in:5
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr "Hubert Figuiere ve Tomboy Projesi"
 
@@ -878,8 +883,8 @@ msgstr "Simge seç..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:317
-#: src/utils.cpp:324
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:314
+#: src/utils.cpp:321
 msgid "_Cancel"
 msgstr "İ_ptal"
 
@@ -927,19 +932,19 @@ msgstr "_Sil"
 msgid "Error removing icon %s: %s"
 msgstr "%s simgesi kaldırılırken hata: %s"
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:3
 #: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:78
 msgid "Export to Getting Things GNOME"
 msgstr "Getting Things GNOME’u dışa aktar"
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
 msgid "Exports individual notes as Getting Things GNOME tasks"
 msgstr "Kişisel notlarınızı Getting Things GNOME görevleri olarak dışa aktarır"
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:6
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:6
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:6
-#: src/plugins/statistics/statistics.desktop.in.in:6
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
+#: src/plugins/statistics/statistics.desktop.in.in:5
 msgid "Aurimas Černius"
 msgstr "Aurimas Černius"
 
@@ -961,11 +966,11 @@ msgstr "GTG için D-Bus vekili oluşturulamadı"
 msgid "Failed to call GTG: %s"
 msgstr "GTG çağrılamadı: %s"
 
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:3
 msgid "Export to HTML"
 msgstr "HTML olarak Dışa Aktar"
 
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
 msgid "Exports individual notes to HTML."
 msgstr "Kişisel notları HTML olarak dışa aktarır."
 
@@ -1039,24 +1044,24 @@ msgstr "Belirtilen klasör yok ve Gnote bu klasörü oluşturamadı."
 msgid "Local Folder"
 msgstr "Yerel Klasör"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:3
 msgid "Local Directory Sync Service Plugin"
 msgstr "Yerel Dizin Eşzamanlama Hizmet Eklentisi"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to a local file system path"
 msgstr "Gnote notlarını yerel dosya sistem yoluna eşzamanla"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:6
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:6
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
 msgid "Aurimas Černius and the Tomboy Project"
 msgstr "Aurimas Černius ve Tomboy Projesi"
 
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:3
 msgid "Fixed Width"
 msgstr "Sabit Genişlik"
 
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
 msgid "Adds fixed-width font style."
 msgstr "Sabit genişlikli yazı tipi biçemi ekler."
 
@@ -1064,11 +1069,11 @@ msgstr "Sabit genişlikli yazı tipi biçemi ekler."
 msgid "Fixed Wid_th"
 msgstr "_Sabit Genişlik"
 
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:3
 msgid "Online Directory Sync Service Plugin"
 msgstr "Çevrim İçi Dizin Eşzamanlama Hizmet Eklentisi"
 
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Gnote notlarını çevrim içi dizine eşzamanla"
 
@@ -1101,12 +1106,12 @@ msgstr "URI alanı boş."
 msgid "Online Folder"
 msgstr "Çevrim İçi Klasör"
 
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:3
 #: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "Zaman Etiketi Ekle"
 
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
 msgid "Inserts current date and time at the cursor position."
 msgstr "İmleç konumuna o anki tarih ve zamanı ekler."
 
@@ -1151,15 +1156,15 @@ msgstr ""
 "NoteDirectoryWatcher: Güncelleme iptal edildi, %s dosyası ayrıştırma hatası: "
 "%s"
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:3
 msgid "Note Directory Watcher"
 msgstr "Not Dizin Gözcüsü"
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr "Notlarınızdaki değişiklikler için Gnote not dizininizi izleyin."
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:6
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr "Aurimas Černius ve Tomboy asıl yazarlar"
 
@@ -1169,7 +1174,7 @@ msgstr "_Dizin denetim aralığı:"
 
 #: src/plugins/noteoftheday/noteoftheday.cpp:32
 msgid "Today: Template"
-msgstr "Bugün: Şablom"
+msgstr "Bugün: Şablon"
 
 #: src/plugins/noteoftheday/noteoftheday.cpp:34
 msgid "Today: "
@@ -1196,24 +1201,24 @@ msgstr "Randevular"
 msgid "%A, %B %d %Y"
 msgstr "%A, %B %d %Y"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:3
 msgid "Note of the Day"
 msgstr "Günün Notu"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 "Günlük düşünceleri kolayca not almak için kendiliğinden \"Bugün\" notu "
 "oluşturur"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:6
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr "Debarshi Ray ve Tomboy Projesi"
 
 #: src/plugins/noteoftheday/noteofthedaypreferences.cpp:34
 msgid "_Open Today: Template"
-msgstr "Bugün: Şablom _Aç"
+msgstr "Bugün: Şablonunu _Aç"
 
 #: src/plugins/noteoftheday/noteofthedaypreferences.cpp:35
 msgid ""
@@ -1221,15 +1226,15 @@ msgid ""
 "the text that new Today notes have."
 msgstr ""
 "Yeni Bugün notlarındaki metinleri özelleştirmek için <span "
-"weight=\"bold\">Bugün: Şablon</span> notunu değiştir."
+"weight=\"bold\">Bugün: Şablonu</span> notunu değiştir."
 
-#: src/plugins/printnotes/printnotes.desktop.in.in:4
+#: src/plugins/printnotes/printnotes.desktop.in.in:3
 msgid "Printing Support"
 msgstr "Yazdırma Desteği"
 
-#: src/plugins/printnotes/printnotes.desktop.in.in:5
+#: src/plugins/printnotes/printnotes.desktop.in.in:4
 msgid "Allows you to print a note."
-msgstr "Notu yazdırmanıza izin verir."
+msgstr "Notu yazdırmanızı sağlar."
 
 #: src/plugins/printnotes/printnotesnoteaddin.cpp:63
 msgid "Print…"
@@ -1244,53 +1249,53 @@ msgstr "Not yazdırılırken hata oluştu"
 msgid "Page %1 of %2"
 msgstr "Sayfa %1 / %2"
 
-#: src/plugins/readonly/readonly.desktop.in.in:4
+#: src/plugins/readonly/readonly.desktop.in.in:3
 #: src/plugins/readonly/readonlynoteaddin.cpp:67
 msgid "Read Only"
 msgstr "Salt Okunur"
 
-#: src/plugins/readonly/readonly.desktop.in.in:5
+#: src/plugins/readonly/readonly.desktop.in.in:4
 msgid "Mark certain notes as read only"
-msgstr "Bazı notları salt okunur işaretle"
+msgstr "Bazı notları salt okunur imle"
 
-#: src/plugins/readonly/readonly.desktop.in.in:6
+#: src/plugins/readonly/readonly.desktop.in.in:5
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray ve Arief Bayu Purwanto"
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:3
 #: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
 msgid "Replace title"
 msgstr "Başlık değiştir"
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
 msgid "Replace title with selection."
-msgstr "Seçim ile başlık değiştirin."
+msgstr "Başlığı seçimle değiştir."
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:6
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:3
 msgid "Special Notes"
 msgstr "Özel Notlar"
 
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
 msgid "Show special notes, that are otherwise hidden"
-msgstr "Gizli olanlar haricinde özel notları göster"
+msgstr "Özel notları göster, gizlidirler"
 
 #: src/plugins/statistics/statisticsapplicationaddin.cpp:70
 msgid "Show Statistics"
 msgstr "İstatistikleri Göster"
 
-#: src/plugins/statistics/statistics.desktop.in.in:4
+#: src/plugins/statistics/statistics.desktop.in.in:3
 #: src/plugins/statistics/statisticswidget.cpp:179
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#: src/plugins/statistics/statistics.desktop.in.in:5
+#: src/plugins/statistics/statistics.desktop.in.in:4
 msgid "Show various statistics about notes."
-msgstr "Notlar hakkında çeşitli istatistikler göster."
+msgstr "Notlarla ilgili türlü istatistikler göster."
 
 #: src/plugins/statistics/statisticswidget.cpp:87
 msgid "Total Notes"
@@ -1306,12 +1311,12 @@ msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 not"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:3
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:115
 msgid "Table of Contents"
 msgstr "İçindekiler"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
 msgid ""
 "Navigate long structured notes. Set section and subsection headings in your "
 "note, and the Table of Contents will show in a menu."
@@ -1319,11 +1324,11 @@ msgstr ""
 "Uzun yapılandırılmış notları gezin. Notunuza bölüm ve alt bölüm başlıkları "
 "ayarlayın, İçindekiler bunları bir menüde gösterecektir."
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
 msgid "Aurimas Černius, Luc Pionchon"
 msgstr "Aurimas Černius, Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:10
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
@@ -1339,40 +1344,40 @@ msgstr "Başlık 2"
 msgid "Table of Contents Help"
 msgstr "İçindekiler Yardımı"
 
-#: src/plugins/todo/todo.desktop.in.in:4
+#: src/plugins/todo/todo.desktop.in.in:3
 msgid "TODO"
 msgstr "YAPILACAK"
 
 # Büyük harfle yazılan kısımlar çevrilmemeli. Yerelleştirmeyi desteklemiyor.
-#: src/plugins/todo/todo.desktop.in.in:5
+#: src/plugins/todo/todo.desktop.in.in:4
 msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
 msgstr "Notlardaki FIXME:, TODO: ve XXX: kalıplarını vurgula."
 
-#: src/plugins/todo/todo.desktop.in.in:6
+#: src/plugins/todo/todo.desktop.in.in:5
 msgid "Aurimas Černius, Romain Tartière"
 msgstr "Aurimas Černius, Romain Tartière"
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:3
 msgid "Tomboy Importer"
 msgstr "Tomboy İçe Aktarıcı"
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
 msgid "Import your notes from Tomboy."
 msgstr "Tomboy’daki notlarınızı içe aktarın."
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:6
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: src/plugins/underline/underline.desktop.in.in:4
+#: src/plugins/underline/underline.desktop.in.in:3
 msgid "Underline"
-msgstr "Altını çiz"
+msgstr "Altını Çiz"
 
-#: src/plugins/underline/underline.desktop.in.in:5
+#: src/plugins/underline/underline.desktop.in.in:4
 msgid "Adds ability to underline text."
 msgstr "Metin altını çizme yeteneği ekler."
 
-#: src/plugins/underline/underline.desktop.in.in:6
+#: src/plugins/underline/underline.desktop.in.in:5
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière ve Tomboy Projesi"
 
@@ -1413,11 +1418,11 @@ msgstr ""
 "\n"
 "%1"
 
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:3
 msgid "WebDAV Sync Service Plugin"
 msgstr "WebDAV Eşzamanlama Hizmeti Eklentisi"
 
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr "Gnote Notlarını WebDAV adresine eşzamanla."
 
@@ -1437,17 +1442,17 @@ msgstr ""
 msgid "Failed to get shortcuts window!"
 msgstr "Kısayollar penceresi alınamadı!"
 
-#: src/gnote.cpp:265
+#: src/gnote.cpp:263
 msgid "and Tomboy original authors."
 msgstr "ve Tomboy’un özgün yazarları."
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:277
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Muhammet Kara <muhammetk@gmail.com>"
 
-#: src/gnote.cpp:280
+#: src/gnote.cpp:286
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1459,80 +1464,91 @@ msgstr ""
 "Telif Hakkı © 2009 Hubert Figuiere\n"
 "Telif Hakkı © 2004-2009 Tomboy özgün yazarları."
 
-#: src/gnote.cpp:284
+#: src/gnote.cpp:290
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Basit ve kullanışlı not alma uygulaması."
 
-#: src/gnote.cpp:286
+#. TRANSLATORS:
+#. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
+#.
+#: src/gnote.cpp:294
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
+
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "Web Sitesi"
 
-#: src/gnote.cpp:500
-msgid "Run Gnote in background."
-msgstr "Gnote uygulamasını arkaplanda çalıştır."
+#: src/gnote.cpp:299
+msgid "Contributors"
+msgstr "Katkıcılar"
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:510
+msgid "Run Gnote in background."
+msgstr "Gnote uygulamasını arka planda çalıştır."
+
+#: src/gnote.cpp:511
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "GNOME Kabuk arama sağlayıcısı olarak Gnote çalıştırın."
 
-#: src/gnote.cpp:502
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr "Notları içeren dizin yolunu belirtin."
 
-#: src/gnote.cpp:502
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "yol"
 
-#: src/gnote.cpp:503
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr "Arama metni ile tüm notları ara penceresini aç."
 
-#: src/gnote.cpp:503 src/gnote.cpp:509
+#: src/gnote.cpp:513 src/gnote.cpp:519
 msgid "text"
 msgstr "metin"
 
-#: src/gnote.cpp:504
+#: src/gnote.cpp:514
 msgid "Print version information."
 msgstr "Sürüm bilgisini yazdır."
 
-#: src/gnote.cpp:505
+#: src/gnote.cpp:515
 msgid "Create and display a new note, with a optional title."
 msgstr "İsteğe bağlı başlıkla yeni not oluştur ve görüntüle."
 
-#: src/gnote.cpp:505
+#: src/gnote.cpp:515
 msgid "title"
 msgstr "başlık"
 
-#: src/gnote.cpp:506
+#: src/gnote.cpp:516
 msgid "Open a new window."
 msgstr "Yeni bir pencere aç."
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:517
 msgid "Display the existing note matching title."
 msgstr "Başlık ile eşleşen notu göster."
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:517
 msgid "title/url"
 msgstr "başlık/url"
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:518
 msgid "Display the 'Start Here' note."
 msgstr "'Buradan Başla' notunu görüntüle."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:519
 msgid "Search and highlight text in the opened note."
 msgstr "Açılan not içindeki metni ara ve vurgula."
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:523
 msgid "A note taking application"
 msgstr "Not alma uygulaması"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:523
 msgid "Gnote options at launch"
 msgstr "Başlangıçtaki Gnote seçenekleri"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:697
+#: src/gnote.cpp:707
 msgid "Version %1"
 msgstr "Sürüm %1"
 
@@ -1695,15 +1711,15 @@ msgstr "Kapanmış notlar için metin içeriği ayarlama desteklenmez"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
 msgid "New Note Template"
-msgstr "Yeni Not Şablomu"
+msgstr "Yeni Not Şablonu"
 
-#: src/notemanagerbase.cpp:334
+#: src/notemanagerbase.cpp:349
 msgid "Describe your new note here."
 msgstr "Yeni notunuzu burada açıklayın."
 
-#: src/notemanager.cpp:116
+#: src/notemanager.cpp:118
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1719,8 +1735,8 @@ msgid ""
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
 "\n"
-"We've created a note called <link:internal>Using Links in Gnote</link:"
-"internal>.  Notice how each time we type <link:internal>Using Links in "
+"We've created a note called <link:internal>Using Links in Gnote</"
+"link:internal>.  Notice how each time we type <link:internal>Using Links in "
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
@@ -1744,7 +1760,7 @@ msgstr ""
 "yazdığımızda kendiliğinden altının çizili olduğunu fark ettiniz mi?  Notu "
 "açmak için bağlantıyı tıklayın.</note-content>"
 
-#: src/notemanager.cpp:135
+#: src/notemanager.cpp:137
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1773,31 +1789,31 @@ msgstr ""
 "sizin için bağlanmış olacaktır.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:150 src/notemanager.cpp:185
+#: src/notemanager.cpp:152 src/notemanager.cpp:187
 msgid "Start Here"
 msgstr "Buradan Başla"
 
-#: src/notemanager.cpp:154
+#: src/notemanager.cpp:156
 msgid "Using Links in Gnote"
 msgstr "Gnote’ta Bağlantı Kullanımı"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:160
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Not başlangıcı oluşturulurken hata: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:175
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "XML not ayrıştırma hatası, \"%s\" dosyası geçiliyor: %s"
 
-#: src/notemanager.cpp:384
+#: src/notemanager.cpp:386
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Kaydedilirken hata: %s"
 
-#: src/notemanager.cpp:389
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "'%s' URI ile not bulunamadı, kaydedilemiyor"
@@ -1828,7 +1844,7 @@ msgstr "Bağlantıları her _zaman yeniden adlandır"
 
 #: src/noterenamedialog.cpp:149
 msgid "Never rename _links"
-msgstr "_Bağlantıları hiçbir zaman yeniden adlandırma"
+msgstr "_Bağlantıları asla yeniden adlandırma"
 
 #: src/noterenamedialog.cpp:151
 msgid "Rename Note Links?"
@@ -1953,18 +1969,18 @@ msgstr "Eklentiler"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:314
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:311
 msgid "_Close"
 msgstr "_Kapat"
 
 #: src/preferencesdialog.cpp:216
 #, c-format
 msgid "Plugin %s is absent"
-msgstr "Eklenti %s yok"
+msgstr "%s eklentisi yok"
 
 #: src/preferencesdialog.cpp:268
 msgid "_Spell check while typing"
-msgstr "_Yazarken imla denetimi yap"
+msgstr "_Yazarken imlayı denetle"
 
 #: src/preferencesdialog.cpp:269
 msgid ""
@@ -1999,7 +2015,7 @@ msgstr "Ne yapılacağını bana sor"
 
 #: src/preferencesdialog.cpp:305
 msgid "Never rename links"
-msgstr "Bağlantıları hiçbir zaman yeniden adlandırma"
+msgstr "Bağlantıları asla yeniden adlandırma"
 
 #: src/preferencesdialog.cpp:306
 msgid "Always rename links"
@@ -2030,11 +2046,11 @@ msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr ""
-"Yeni not oluştururken kullanılacak metni yeni not şablomu olarak belirt."
+"Yeni not oluştururken kullanılacak metni yeni not şablonu olarak belirt."
 
 #: src/preferencesdialog.cpp:345
 msgid "Open New Note Template"
-msgstr "Yeni Not Şablomu Aç"
+msgstr "Yeni Not Şablonu Aç"
 
 #. internal links
 #: src/preferencesdialog.cpp:390
@@ -2080,7 +2096,7 @@ msgstr "_Hizmet:"
 
 #: src/preferencesdialog.cpp:492
 msgid "Automatic background s_ync interval (minutes)"
-msgstr "Kendiliğinden arkaplan e_şitleme aralığı (dakika)"
+msgstr "Kendiliğinden arka planda _eşzamanlama aralığı (dakika)"
 
 #. "Advanced..." button to bring up extra sync config dialog
 #: src/preferencesdialog.cpp:514
@@ -2139,7 +2155,7 @@ msgstr ""
 
 #: src/preferencesdialog.cpp:960
 msgid "Always ask me what to do"
-msgstr "Ne yapılacağını her zaman bana sor"
+msgstr "Ne yapılacağını hep bana sor"
 
 #: src/preferencesdialog.cpp:961
 msgid "Rename my local note"
@@ -2194,7 +2210,7 @@ msgid ""
 "more information about the error."
 msgstr ""
 "Lütfen bilgilerinizi denetleyip yeniden deneyin.  Sistem günlük dosyası %1 "
-"hata hakkında daha çok bilgi içeriyor olabilir."
+"hatayla ilgili daha çok bilgi içerebilir."
 
 #: src/preferencesdialog.cpp:1191
 msgid "Error connecting"
@@ -2216,27 +2232,27 @@ msgstr "Telif Hakkı:"
 msgid "Close"
 msgstr "Kapat"
 
-#: src/recentchanges.cpp:294
+#: src/recentchanges.cpp:311
 msgid "Search"
 msgstr "Ara"
 
-#: src/recentchanges.cpp:369
+#: src/recentchanges.cpp:386
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Gömü kutusunun ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:394
+#: src/recentchanges.cpp:411
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Arama girdisinin ebeveyni Gtk::Grid değil, lütfen hata bildirin!"
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:743
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Pencereye gömülü olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:733
+#: src/recentchanges.cpp:750
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Gtk::Widget olmayan bir programcığı ön plana almaya çalış"
 
-#: src/recentchanges.cpp:933
+#: src/recentchanges.cpp:950
 msgid "No configured actions"
 msgstr "Yapılandırılmış eylem yok"
 
@@ -2493,7 +2509,7 @@ msgstr "Notlar Eşzamanlanıyor"
 
 #: src/synchronization/syncdialog.cpp:470
 msgid "Synchronizing your notes..."
-msgstr "Notlarınız eşitleniyor..."
+msgstr "Notlarınız eşzamanlanıyor..."
 
 #: src/synchronization/syncdialog.cpp:471
 msgid "This may take a while, kick back and enjoy!"
@@ -2629,29 +2645,29 @@ msgstr "Değişiklikler sunucuya yüklendi"
 msgid "Uploaded new note to server"
 msgstr "Sunucuya yeni not yüklendi"
 
-#: src/synchronization/syncmanager.cpp:64
+#: src/synchronization/syncmanager.cpp:81
 msgid "Synchronize Notes"
 msgstr "Notları Eşzamanla"
 
-#: src/synchronization/syncmanager.cpp:83
 #: src/synchronization/syncmanager.cpp:100
-#: src/synchronization/syncmanager.cpp:591
+#: src/synchronization/syncmanager.cpp:117
+#: src/synchronization/syncmanager.cpp:589
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Hata bildir. Döküm başarısız: %s"
 
-#: src/synchronization/syncmanager.cpp:147
+#: src/synchronization/syncmanager.cpp:164
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr "Eşzamanlamadan sonra eklenti temizleme hatası: %s"
 
-#: src/synchronization/syncmanager.cpp:173
+#: src/synchronization/syncmanager.cpp:190
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr "SyncServer oluşturulurken olağandışı durum: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:374
+#: src/synchronization/syncmanager.cpp:380
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Eşzamanlama aşağıdaki aykırılıkla başarısız oldu: %s"
@@ -2729,15 +2745,15 @@ msgstr "%1, %2"
 msgid "No Date"
 msgstr "Tarih Yok"
 
-#: src/utils.cpp:311 src/utils.cpp:325
+#: src/utils.cpp:308 src/utils.cpp:322
 msgid "_OK"
 msgstr "_Tamam"
 
-#: src/utils.cpp:320
+#: src/utils.cpp:317
 msgid "_No"
 msgstr "_Hayır"
 
-#: src/utils.cpp:321
+#: src/utils.cpp:318
 msgid "_Yes"
 msgstr "_Evet"
 
@@ -2763,36 +2779,3 @@ msgstr "Not başlığı alındı"
 msgid "Check spelling"
 msgstr "Yazım denetimi"
 
-#, c-format
-#~ msgid "Failed to upload note: %s"
-#~ msgstr "Not biçimi gönderilemedi: %s"
-
-#~ msgid "Create New Note"
-#~ msgstr "Yeni Not Oluştur"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to next tab"
-#~ msgstr "Sonraki sekmeye git"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Go to previous tab"
-#~ msgstr "Önceki sekmeye git"
-
-#~ msgid "_New"
-#~ msgstr "_Yeni"
-
-#~ msgid "Luc Pionchon"
-#~ msgstr "Luc Pionchon"
-
-#~ msgid "Notebooks"
-#~ msgstr "Not Defterleri"
-
-#~ msgid "_New..."
-#~ msgstr "_Yeni..."
-
-#~ msgid "Re_name..."
-#~ msgstr "Ye_niden Adlandır..."
-
-#~ msgid "NoteDirectoryWatcher: Unknown error creating note from %s"
-#~ msgstr ""
-#~ "NoteDirectoryWatcher: %s dosyasından bilinmeyen not oluşturma hatası"
