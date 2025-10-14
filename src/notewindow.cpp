@@ -775,11 +775,11 @@ namespace gnote {
       return false;
     }
 
+    auto buffer = m_note.get_buffer();
+    Gtk::TextIter selection_start, selection_end;
+    buffer->get_selection_bounds(selection_start, selection_end);
     Match *previous_match = nullptr;
     for (auto & match : m_current_matches) {
-      Glib::RefPtr<NoteBuffer> buffer = match.buffer;
-      Gtk::TextIter selection_start, selection_end;
-      buffer->get_selection_bounds(selection_start, selection_end);
       Gtk::TextIter end = buffer->get_iter_at_mark(match.start_mark);
 
       if (end.get_offset() < selection_start.get_offset()) {
@@ -803,10 +803,10 @@ namespace gnote {
       return false;
     }
 
+    auto buffer = m_note.get_buffer();
+    Gtk::TextIter selection_start, selection_end;
+    buffer->get_selection_bounds(selection_start, selection_end);
     for (auto & match : m_current_matches) {
-      Glib::RefPtr<NoteBuffer> buffer = match.buffer;
-      Gtk::TextIter selection_start, selection_end;
-      buffer->get_selection_bounds(selection_start, selection_end);
       Gtk::TextIter start = buffer->get_iter_at_mark(match.start_mark);
 
       if (start.get_offset() >= selection_end.get_offset()) {
@@ -820,7 +820,7 @@ namespace gnote {
 
   void NoteFindHandler::jump_to_match(const Match & match)
   {
-    Glib::RefPtr<NoteBuffer> buffer(match.buffer);
+    auto buffer = m_note.get_buffer();
 
     Gtk::TextIter start = buffer->get_iter_at_mark(match.start_mark);
     Gtk::TextIter end = buffer->get_iter_at_mark(match.end_mark);
@@ -861,9 +861,8 @@ namespace gnote {
       return;
     }
 
+    auto buffer = m_note.get_buffer();
     for(auto & match : m_current_matches) {
-      Glib::RefPtr<NoteBuffer> buffer = match.buffer;
-
       if (match.highlighting != highlight) {
         Gtk::TextIter start = buffer->get_iter_at_mark(match.start_mark);
         Gtk::TextIter end = buffer->get_iter_at_mark(match.end_mark);
@@ -885,10 +884,11 @@ namespace gnote {
   {
     if (!m_current_matches.empty()) {
       highlight_matches (false /* unhighlight */);
+      auto buffer = m_note.get_buffer();
 
       for(auto & match : m_current_matches) {
-        match.buffer->delete_mark(match.start_mark);
-        match.buffer->delete_mark(match.end_mark);
+        buffer->delete_mark(match.start_mark);
+        buffer->delete_mark(match.end_mark);
       }
 
       m_current_matches.clear();
@@ -935,7 +935,6 @@ namespace gnote {
         end.forward_chars(word.length());
 
         Match match;
-        match.buffer = buffer;
         match.start_mark = buffer->create_mark(start, false);
         match.end_mark = buffer->create_mark(end, true);
         match.highlighting = false;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2021-2024 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2021-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -67,7 +67,6 @@ public:
 private:
   struct Match
   {
-    Glib::RefPtr<NoteBuffer>     buffer;
     Glib::RefPtr<Gtk::TextMark>  start_mark;
     Glib::RefPtr<Gtk::TextMark>  end_mark;
     bool                         highlighting;
