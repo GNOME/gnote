@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2024 Aurimas Cernius
+ * Copyright (C) 2011-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -771,8 +771,9 @@ namespace gnote {
 
   bool NoteFindHandler::goto_previous_result()
   {
-    if (m_current_matches.empty() || m_current_matches.size() == 0)
+    if(m_current_matches.empty()) {
       return false;
+    }
 
     Match *previous_match = nullptr;
     for (auto & match : m_current_matches) {
@@ -798,8 +799,9 @@ namespace gnote {
 
   bool NoteFindHandler::goto_next_result()
   {
-    if (m_current_matches.empty() || m_current_matches.size() == 0)
+    if(m_current_matches.empty()) {
       return false;
+    }
 
     for (auto & match : m_current_matches) {
       Glib::RefPtr<NoteBuffer> buffer = match.buffer;
