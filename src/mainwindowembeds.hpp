@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019,2021,2022 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019,2021,2022,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -78,7 +78,7 @@ class SearchableItem
 public:
   virtual ~SearchableItem() {}
   virtual void perform_search(const Glib::ustring & search_text) = 0;
-  virtual bool supports_goto_result();
+  virtual bool supports_goto_result() const;
   virtual bool goto_next_result();
   virtual bool goto_previous_result();
 };

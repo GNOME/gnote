@@ -105,7 +105,7 @@ public:
   virtual void size_internals() override;
 
   virtual void perform_search(const Glib::ustring & text) override;
-  virtual bool supports_goto_result() override;
+  bool supports_goto_result() const override;
   virtual bool goto_next_result() override;
   virtual bool goto_previous_result() override;
 
@@ -122,6 +122,10 @@ public:
   Gtk::TextView * editor() const
     {
       return m_editor;
+    }
+  const NoteFindHandler &get_find_handler() const
+    {
+      return m_find_handler;
     }
   NoteFindHandler & get_find_handler()
     {

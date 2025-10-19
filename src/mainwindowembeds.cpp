@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2021 Aurimas Cernius
+ * Copyright (C) 2013,2021,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ void EmbeddableWidget::size_internals()
 }
 
 
-bool SearchableItem::supports_goto_result()
+bool SearchableItem::supports_goto_result() const
 {
   return false;
 }
