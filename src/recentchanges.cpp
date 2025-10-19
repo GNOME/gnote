@@ -461,7 +461,7 @@ namespace gnote {
       m_search_box->hide();
       SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_foreground());
       if(searchable_widget) {
-        searchable_widget->perform_search("");
+        perform_search(*searchable_widget, "");
       }
     }
   }
@@ -511,13 +511,18 @@ namespace gnote {
         hide_find_next_prev();
       }
       if(perform_search) {
-        searchable_item->perform_search(m_search_button.get_active() ? m_search_entry->get_text() : "");
+        this->perform_search(*searchable_item, m_search_button.get_active() ? m_search_entry->get_text() : "");
       }
     }
     else {
       m_search_button.set_active(false);
       m_search_button.hide();
     }
+  }
+
+  void NoteRecentChanges::perform_search(SearchableItem &searchable_item, const Glib::ustring &search_text)
+  {
+    searchable_item.perform_search(search_text);
   }
 
   void NoteRecentChanges::present_search()
@@ -861,7 +866,7 @@ namespace gnote {
     }
 
     if(auto searchable_widget = dynamic_cast<SearchableItem*>(currently_foreground())) {
-      searchable_widget->perform_search(get_search_text());
+      perform_search(*searchable_widget, get_search_text());
     }
   }
 
