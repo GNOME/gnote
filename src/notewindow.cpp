@@ -290,7 +290,7 @@ namespace gnote {
     get_find_handler().perform_search(text);
   }
 
-  bool NoteWindow::supports_goto_result()
+  bool NoteWindow::supports_goto_result() const
   {
     return true;
   }
@@ -303,6 +303,11 @@ namespace gnote {
   bool NoteWindow::goto_previous_result()
   {
     return get_find_handler().goto_previous_result();
+  }
+
+  void NoteWindow::get_search_position(unsigned &current, unsigned &total) const
+  {
+    get_find_handler().get_search_position(current, total);
   }
 
   Gtk::Grid *NoteWindow::embeddable_toolbar()
@@ -764,6 +769,31 @@ namespace gnote {
   }
 
 
+  namespace {
+
+    class ClampMax
+    {
+    public:
+      ClampMax(unsigned &var, unsigned ceiling)
+        : m_variable(var)
+        , m_ceiling(ceiling)
+      {}
+      ~ClampMax()
+      {
+        if(m_ceiling == 0) {
+          m_variable = 0;
+          return;
+        }
+        if(m_variable >= m_ceiling) {
+          m_variable = m_ceiling - 1;
+        }
+      }
+    private:
+      unsigned &m_variable;
+      const unsigned m_ceiling;
+    };
+  }
+
   NoteFindHandler::NoteFindHandler(Note & note)
     : m_note(note)
   {
@@ -779,6 +809,8 @@ namespace gnote {
     Gtk::TextIter selection_start, selection_end;
     buffer->get_selection_bounds(selection_start, selection_end);
     Match *previous_match = nullptr;
+    m_match_idx = 0;
+    ClampMax clamp(m_match_idx, m_current_matches.size());
     for (auto & match : m_current_matches) {
       Gtk::TextIter end = buffer->get_iter_at_mark(match.start_mark);
 
@@ -788,10 +820,18 @@ namespace gnote {
       else {
         break;
       }
+
+      ++m_match_idx;
     }
+
     if(previous_match) {
+      // if found, match is larger by 1 than it should be
+      --m_match_idx;
       jump_to_match(*previous_match);
       return true;
+    }
+    else {
+      m_match_idx = 0;
     }
 
     return false;
@@ -806,6 +846,8 @@ namespace gnote {
     auto buffer = m_note.get_buffer();
     Gtk::TextIter selection_start, selection_end;
     buffer->get_selection_bounds(selection_start, selection_end);
+    m_match_idx = 0;
+    ClampMax clamp(m_match_idx, m_current_matches.size());
     for (auto & match : m_current_matches) {
       Gtk::TextIter start = buffer->get_iter_at_mark(match.start_mark);
 
@@ -813,9 +855,17 @@ namespace gnote {
         jump_to_match(match);
         return true;
       }
+
+      ++m_match_idx;
     }
 
     return false;
+  }
+
+  void NoteFindHandler::get_search_position(unsigned &current, unsigned &total) const
+  {
+    current = m_match_idx;
+    total = m_current_matches.size();
   }
 
   void NoteFindHandler::jump_to_match(const Match & match)
@@ -892,6 +942,7 @@ namespace gnote {
       }
 
       m_current_matches.clear();
+      m_match_idx = 0;
     }
   }
 

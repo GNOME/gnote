@@ -64,6 +64,7 @@ public:
   void perform_search(const Glib::ustring & text);
   bool goto_next_result();
   bool goto_previous_result();
+  void get_search_position(unsigned &current, unsigned &total) const;
 private:
   struct Match
   {
@@ -85,6 +86,7 @@ private:
 
   Note           & m_note;
   std::vector<Match> m_current_matches;
+  unsigned m_match_idx{};
 };
 
 class NoteWindow 
@@ -108,6 +110,7 @@ public:
   bool supports_goto_result() const override;
   virtual bool goto_next_result() override;
   virtual bool goto_previous_result() override;
+  void get_search_position(unsigned &current, unsigned &total) const override;
 
   // use co-variant return
   virtual Gtk::Grid *embeddable_toolbar() override;

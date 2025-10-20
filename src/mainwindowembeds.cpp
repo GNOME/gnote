@@ -68,6 +68,11 @@ bool SearchableItem::goto_previous_result()
 {
   return false;
 }
+
+void SearchableItem::get_search_position(unsigned &current, unsigned &total) const
+{
+  current = total = 0;
+}
  
 }
 

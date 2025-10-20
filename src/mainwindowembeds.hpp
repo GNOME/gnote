@@ -81,6 +81,7 @@ public:
   virtual bool supports_goto_result() const;
   virtual bool goto_next_result();
   virtual bool goto_previous_result();
+  virtual void get_search_position(unsigned &current, unsigned &total) const;
 };
 
 

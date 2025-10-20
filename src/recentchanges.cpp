@@ -471,6 +471,7 @@ namespace gnote {
     SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_foreground());
     if(searchable_widget) {
       searchable_widget->goto_next_result();
+      update_search_position(*searchable_widget);
     }
   }
 
@@ -479,6 +480,7 @@ namespace gnote {
     SearchableItem *searchable_widget = dynamic_cast<SearchableItem*>(currently_foreground());
     if(searchable_widget) {
       searchable_widget->goto_previous_result();
+      update_search_position(*searchable_widget);
     }
   }
 
@@ -523,6 +525,27 @@ namespace gnote {
   void NoteRecentChanges::perform_search(SearchableItem &searchable_item, const Glib::ustring &search_text)
   {
     searchable_item.perform_search(search_text);
+    update_search_position(searchable_item);
+  }
+
+  void NoteRecentChanges::update_search_position(SearchableItem &searchable_item)
+  {
+    if(!searchable_item.supports_goto_result()) {
+      return;
+    }
+    unsigned current = 0, total = 0;
+    searchable_item.get_search_position(current, total);
+    // 1-based for UI
+    if(total > 0) {
+      ++current;
+    }
+    DBG_OUT("New search position: %u/%u", current, total);
+
+    Gtk::Button *next, *prev;
+    if(get_find_next_prev(next, prev)) {
+      next->set_sensitive(current != total);
+      prev->set_sensitive(current > 1);
+    }
   }
 
   void NoteRecentChanges::present_search()

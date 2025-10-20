@@ -88,6 +88,7 @@ private:
   void update_toolbar(EmbeddableWidget & widget);
   void update_search_bar(EmbeddableWidget & widget, bool perform_search);
   void perform_search(SearchableItem &searchable_item, const Glib::ustring &search_text);
+  void update_search_position(SearchableItem &searchable_item);
   void on_show_window_menu();
   void on_show_embed_action_menu();
   void on_search_button_toggled();
