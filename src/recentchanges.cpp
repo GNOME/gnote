@@ -522,6 +522,7 @@ namespace gnote {
       if(searchable_item->supports_goto_result()) {
         if(m_search_box && m_search_box->get_visible()) {
           show_find_next_prev();
+          update_search_position(*searchable_item);
         }
       }
       else {
