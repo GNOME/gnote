@@ -45,6 +45,7 @@ namespace gnote {
   namespace {
     const char *MAIN_MENU_PRIMARY_ICON = "open-menu-symbolic";
     const char *MAIN_MENU_SECONDARY_ICON = "view-more-symbolic";
+    const char *LABEL_SEARCH_POSITION = "search-position";
     const char *BUTTON_FIND_NEXT = "find-next";
     const char *BUTTON_FIND_PREV = "find-prev";
 
@@ -389,7 +390,7 @@ namespace gnote {
     return false;
   }
 
-  void NoteRecentChanges::make_find_next_prev(Gtk::Button *&find_next_button, Gtk::Button *&find_prev_button)
+  void NoteRecentChanges::make_find_next_prev(Gtk::Button *&find_next_button, Gtk::Button *&find_prev_button, Gtk::Label *&position_label)
   {
     find_next_button = Gtk::make_managed<Gtk::Button>();
     find_next_button->set_name(BUTTON_FIND_NEXT);
@@ -403,7 +404,13 @@ namespace gnote {
     find_prev_button->signal_clicked()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
 
+    position_label = Gtk::make_managed<Gtk::Label>();
+    position_label->set_name(LABEL_SEARCH_POSITION);
+    position_label->set_margin_start(6);
+    position_label->set_margin_end(6);
+
     if(auto box = dynamic_cast<Gtk::Box*>(m_search_entry->get_parent())) {
+      box->append(*position_label);
       box->append(*find_next_button);
       box->append(*find_prev_button);
     }
@@ -415,26 +422,31 @@ namespace gnote {
   void NoteRecentChanges::show_find_next_prev()
   {
     Gtk::Button *find_next, *find_prev;
-    if(!get_find_next_prev(find_next, find_prev)) {
-      make_find_next_prev(find_next, find_prev);
+    Gtk::Label *search_position;
+    if(!get_find_next_prev(find_next, find_prev, search_position)) {
+      make_find_next_prev(find_next, find_prev, search_position);
     }
 
     find_next->show();
     find_prev->show();
+    search_position->show();
   }
 
   void NoteRecentChanges::hide_find_next_prev()
   {
     Gtk::Button *find_next, *find_prev;
-    if(get_find_next_prev(find_next, find_prev)) {
+    Gtk::Label *search_position;
+    if(get_find_next_prev(find_next, find_prev, search_position)) {
       find_next->hide();
       find_prev->hide();
+      search_position->hide();
     }
   }
 
-  bool NoteRecentChanges::get_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev) const
+  bool NoteRecentChanges::get_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev, Gtk::Label *&position_label) const
   {
     find_next = find_prev = nullptr;
+    position_label = nullptr;
     if(m_search_entry == nullptr) {
       return false;
     }
@@ -447,9 +459,12 @@ namespace gnote {
       else if(widget->get_name() == BUTTON_FIND_PREV) {
         find_prev = dynamic_cast<Gtk::Button*>(widget);
       }
+      else if(widget->get_name() == LABEL_SEARCH_POSITION) {
+        position_label = dynamic_cast<Gtk::Label*>(widget);
+      }
     }
 
-    return find_next != nullptr && find_prev != nullptr;
+    return find_next && find_prev && position_label;
   }
 
   void NoteRecentChanges::on_search_button_toggled()
@@ -542,9 +557,12 @@ namespace gnote {
     DBG_OUT("New search position: %u/%u", current, total);
 
     Gtk::Button *next, *prev;
-    if(get_find_next_prev(next, prev)) {
+    Gtk::Label *search_position;
+    if(get_find_next_prev(next, prev, search_position)) {
       next->set_sensitive(current != total);
       prev->set_sensitive(current > 1);
+      /* TRANSLATORS: Search position 'current/total' */
+      search_position->set_label(Glib::ustring::compose("%1/%2", current, total));
     }
   }
 

@@ -77,10 +77,10 @@ private:
   void add_shortcut(Gtk::ShortcutController & controller, guint keyval, Gdk::ModifierType modifiers = static_cast<Gdk::ModifierType>(0));
   void make_header_bar();
   bool make_search_box();
-  void make_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev);
+  void make_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev, Gtk::Label *&position_label);
   void show_find_next_prev();
   void hide_find_next_prev();
-  bool get_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev) const;
+  bool get_find_next_prev(Gtk::Button *&find_next, Gtk::Button *&find_prev, Gtk::Label *&position_label) const;
   bool on_entry_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_search_changed();
   void on_search_stopped();
