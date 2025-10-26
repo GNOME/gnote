@@ -28,6 +28,7 @@
 
 #include <glibmm/i18n.h>
 #include <glibmm/stringutils.h>
+#include <gtkmm/filelauncher.h>
 #include <gtkmm/label.h>
 #include <gtkmm/urilauncher.h>
 
@@ -86,19 +87,34 @@ namespace gnote {
     }
 
 
-    void open_url(Gtk::Window & parent, const Glib::ustring & url)
-    {
-      if(!url.empty()) {
-        DBG_OUT("Opening url '%s'...", url.c_str());
-        auto launcher = Gtk::UriLauncher::create(url);
-        launcher->launch(parent, [launcher](const Glib::RefPtr<Gio::AsyncResult> & ready) {
+    namespace {
+      template <typename Launcher>
+      void launch_file_or_uri(Launcher &launcher, Gtk::Window &parent, const Glib::ustring &path_or_uri)
+      {
+        launcher->launch(parent, [launcher, path_or_uri](const Glib::RefPtr<Gio::AsyncResult> & ready) {
           try {
             launcher->launch_finish(ready);
           }
           catch(const Glib::Error & error) {
-            ERR_OUT(_("Failed to open URL: %s"), error.what());
+            ERR_OUT(_("Failed to open '%s': %s"), path_or_uri.c_str(), error.what());
           }
         });
+      }
+    }
+
+    void open_url(Gtk::Window & parent, const Glib::ustring & url)
+    {
+      if(!url.empty()) {
+        DBG_OUT("Opening url '%s'...", url.c_str());
+        if(url.lowercase().find("file://") == 0) {
+          auto path = url.substr(7);
+          DBG_OUT("Opening file '%s'...", path.c_str());
+          auto launcher = Gtk::FileLauncher::create(Gio::File::create_for_path(path));
+          launch_file_or_uri(launcher, parent, path);
+          return;
+        }
+        auto launcher = Gtk::UriLauncher::create(url);
+        launch_file_or_uri(launcher, parent, url);
       }
     }
 
