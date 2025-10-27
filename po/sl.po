@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-10-05 19:18+0000\n"
-"PO-Revision-Date: 2025-10-05 23:34+0200\n"
+"POT-Creation-Date: 2025-10-26 23:48+0000\n"
+"PO-Revision-Date: 2025-10-27 09:53+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
-#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
+#: src/recentchanges.cpp:100 src/recentchanges.cpp:122
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -874,8 +874,8 @@ msgstr "Izberi ikono ..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:314
-#: src/utils.cpp:321
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
+#: src/utils.cpp:337
 msgid "_Cancel"
 msgstr "Pre_kliči"
 
@@ -1463,7 +1463,6 @@ msgstr "Preprost in enostaven program za pisanje sporočilc."
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
 #: src/gnote.cpp:294
-#| msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 
@@ -1871,32 +1870,32 @@ msgstr "Naslov sporočilca"
 msgid "Ad_vanced"
 msgstr "Nap_redno"
 
-#: src/notewindow.cpp:319
+#: src/notewindow.cpp:324
 msgid "_Undo"
 msgstr "_Razveljavi"
 
-#: src/notewindow.cpp:321
+#: src/notewindow.cpp:326
 msgid "_Redo"
 msgstr "_Ponovi"
 
-#: src/notewindow.cpp:323 src/notewindow.cpp:356
+#: src/notewindow.cpp:328 src/notewindow.cpp:361
 msgid "_Link to New Note"
 msgstr "_Povezava do novega sporočilca"
 
-#: src/notewindow.cpp:325
+#: src/notewindow.cpp:330
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Pomemben"
 
-#: src/notewindow.cpp:334
+#: src/notewindow.cpp:339
 msgid "_Delete…"
 msgstr "_Izbriši …"
 
-#: src/notewindow.cpp:376
+#: src/notewindow.cpp:381
 msgid "Set properties of text"
 msgstr "Nastavi lastnosti besedila"
 
-#: src/notewindow.cpp:388
+#: src/notewindow.cpp:393
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1904,39 +1903,39 @@ msgstr ""
 "To sporočilce je predloga sporočilc. Določa privzeto vsebino običajnih "
 "sporočilc in ne bo prikazano v meniju sporočilc oziroma v iskalnem oknu."
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:396
 msgid "Convert to regular note"
 msgstr "Pretvori v običajno sporočilce"
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:399
 msgid "Save Se_lection"
 msgstr "Shrani _izbor"
 
-#: src/notewindow.cpp:398
+#: src/notewindow.cpp:403
 msgid "Save _Title"
 msgstr "Shrani _naslov"
 
-#: src/notewindow.cpp:492 src/notewindow.cpp:602
+#: src/notewindow.cpp:497 src/notewindow.cpp:607
 msgid "Cannot create note"
 msgstr "Ni mogoče ustvariti sporočilca"
 
-#: src/notewindow.cpp:980
+#: src/notewindow.cpp:1032
 msgid "_Highlight"
 msgstr "_Poudarjeno"
 
-#: src/notewindow.cpp:984
+#: src/notewindow.cpp:1036
 msgid "_Normal"
 msgstr "_Običajna"
 
-#: src/notewindow.cpp:985
+#: src/notewindow.cpp:1037
 msgid "S_mall"
 msgstr "_Majhna"
 
-#: src/notewindow.cpp:986
+#: src/notewindow.cpp:1038
 msgid "_Large"
 msgstr "_Velika"
 
-#: src/notewindow.cpp:987
+#: src/notewindow.cpp:1039
 msgid "Hu_ge"
 msgstr "O_gromna"
 
@@ -1964,7 +1963,7 @@ msgstr "Vstavki"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:311
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
 msgid "_Close"
 msgstr "_Zapri"
 
@@ -2222,31 +2221,31 @@ msgstr "Avtor:"
 msgid "Copyright:"
 msgstr "Avtorske pravice:"
 
-#: src/recentchanges.cpp:66
+#: src/recentchanges.cpp:67
 msgid "Close"
 msgstr "Zapri"
 
-#: src/recentchanges.cpp:311
+#: src/recentchanges.cpp:312
 msgid "Search"
 msgstr "Poišči"
 
-#: src/recentchanges.cpp:386
+#: src/recentchanges.cpp:387
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Nadrejeni vdelanega polja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:411
+#: src/recentchanges.cpp:418
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Nadrejeni vnosa iskanja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:743
+#: src/recentchanges.cpp:790
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni vdelan v okno"
 
-#: src/recentchanges.cpp:750
+#: src/recentchanges.cpp:797
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni Gtk::Widget"
 
-#: src/recentchanges.cpp:950
+#: src/recentchanges.cpp:997
 msgid "No configured actions"
 msgstr "Ni nastavljenih dejanj"
 
@@ -2680,12 +2679,12 @@ msgstr "Izjema pri ustvarjanju SyncServer: %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Usklajevanje je spodletelo z naslednjo izjemo: %s"
 
-#: src/utils.cpp:74
+#: src/utils.cpp:75
 #, c-format
 msgid "Failed to show help: %s"
 msgstr "Prikaz pomoči ni uspel: %s"
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2693,75 +2692,75 @@ msgstr ""
 "»Priročnika Gnote« ni mogoče najti. Preverite, da je namestitev uspešno "
 "zaključena."
 
-#: src/utils.cpp:81
+#: src/utils.cpp:82
 msgid "Help not found"
 msgstr "Pomoči ni mogoče najti"
 
 #: src/utils.cpp:99
 #, c-format
-msgid "Failed to open URL: %s"
-msgstr "URL ni bilo mogoče odpreti: %s"
+msgid "Failed to open '%s': %s"
+msgstr "Ni bilo mogoče odpreti »%s«: %s"
 
-#: src/utils.cpp:115
+#: src/utils.cpp:131
 msgid "Cannot open location"
 msgstr "Ni mogoče odpreti mesta"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:176
+#: src/utils.cpp:192
 msgid "Today, %1"
 msgstr "Danes, %1"
 
-#: src/utils.cpp:177
+#: src/utils.cpp:193
 msgid "Today"
 msgstr "Danes"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:182
+#: src/utils.cpp:198
 msgid "Tomorrow, %1"
 msgstr "Jutri, %1"
 
-#: src/utils.cpp:183
+#: src/utils.cpp:199
 msgid "Tomorrow"
 msgstr "Jutri"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:188
+#: src/utils.cpp:204
 msgid "Yesterday, %1"
 msgstr "Včeraj, %1"
 
-#: src/utils.cpp:189
+#: src/utils.cpp:205
 msgid "Yesterday"
 msgstr "Včeraj"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:194
+#: src/utils.cpp:210
 #, no-c-format
 msgid "%b %d"
 msgstr "%d. %b"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:214
 msgid "%b %d %Y"
 msgstr "%d. %b %Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:203
+#: src/utils.cpp:219
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:214
+#: src/utils.cpp:230
 msgid "No Date"
 msgstr "Brez datuma"
 
-#: src/utils.cpp:308 src/utils.cpp:322
+#: src/utils.cpp:324 src/utils.cpp:338
 msgid "_OK"
 msgstr "V _redu"
 
-#: src/utils.cpp:317
+#: src/utils.cpp:333
 msgid "_No"
 msgstr "_Ne"
 
-#: src/utils.cpp:318
+#: src/utils.cpp:334
 msgid "_Yes"
 msgstr "_Da"
 
