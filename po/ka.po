@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-07-15 20:02+0000\n"
-"PO-Revision-Date: 2025-07-20 04:52+0200\n"
+"POT-Creation-Date: 2025-10-27 08:56+0000\n"
+"PO-Revision-Date: 2025-10-29 00:55+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:3
-#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
+#: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
+#: src/recentchanges.cpp:100 src/recentchanges.cpp:122
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -44,25 +44,25 @@ msgid ""
 "devices."
 msgstr ""
 
-#: data/org.gnome.Gnote.desktop.in:4
+#: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr ""
 
-#: data/org.gnome.Gnote.desktop.in:5
+#: data/org.gnome.Gnote.desktop.in:4
 msgid "Note-taker"
 msgstr "შენიშვნების ამღები"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Gnote.desktop.in:7
+#: data/org.gnome.Gnote.desktop.in:6
 msgid "notes;idea;link;organize;"
 msgstr "notes;idea;link;organize;იდეები;ჩანაწერები;ბმული;"
 
-#: data/org.gnome.Gnote.desktop.in:20
+#: data/org.gnome.Gnote.desktop.in:19
 msgid "New Window"
 msgstr "ახალი ფანჯარა"
 
-#: data/org.gnome.Gnote.desktop.in:24 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
+#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "ახალი ჩანაწერი"
 
@@ -480,7 +480,7 @@ msgctxt "shortcut window"
 msgid "Main Window"
 msgstr "მთავარი ფანჯარა"
 
-#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:122
+#: data/shortcuts-gnote.ui:13 data/shortcuts-gnote.ui:129
 msgctxt "shortcut window"
 msgid "General"
 msgstr "მთავარი"
@@ -495,153 +495,158 @@ msgctxt "shortcut window"
 msgid "Shortcuts"
 msgstr "მალსახმობები"
 
-#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:127
-#: data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:32 data/shortcuts-gnote.ui:134
+#: data/shortcuts-gnote.ui:141
 msgctxt "shortcut window"
 msgid "Open actions menu"
 msgstr "ქმედებების მენიუს გახსნა"
 
-#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:155
+#: data/shortcuts-gnote.ui:39 data/shortcuts-gnote.ui:162
 msgctxt "shortcut window"
 msgid "Hide search bar"
 msgstr "ძებნის პანელის დამალვა"
 
-#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:162
+#: data/shortcuts-gnote.ui:46 data/shortcuts-gnote.ui:169
 msgctxt "shortcut window"
 msgid "Close window"
 msgstr "ფანჯრის დახურვა"
 
-#: data/shortcuts-gnote.ui:54
+#: data/shortcuts-gnote.ui:53
+msgctxt "shortcut window"
+msgid "Open tab 1 (up to 9)"
+msgstr ""
+
+#: data/shortcuts-gnote.ui:61
 msgctxt "shortcut window"
 msgid "Search bar"
 msgstr "ძებნის ზოლი"
 
-#: data/shortcuts-gnote.ui:59 data/shortcuts-gnote.ui:148
+#: data/shortcuts-gnote.ui:66 data/shortcuts-gnote.ui:155
 msgctxt "shortcut window"
 msgid "Display search bar"
 msgstr "ძებნის პანელის ჩვენება"
 
-#: data/shortcuts-gnote.ui:66
+#: data/shortcuts-gnote.ui:73
 msgctxt "shortcut window"
 msgid "Select next match"
 msgstr "შემდეგი დამთხვევის მონიშვნა"
 
-#: data/shortcuts-gnote.ui:73
+#: data/shortcuts-gnote.ui:80
 msgctxt "shortcut window"
 msgid "Select previous match"
 msgstr "წინა დამთხვევის მონიშვნა"
 
-#: data/shortcuts-gnote.ui:81
+#: data/shortcuts-gnote.ui:88
 msgctxt "shortcut window"
 msgid "Notes list"
 msgstr "შენიშვნების სია"
 
-#: data/shortcuts-gnote.ui:86
+#: data/shortcuts-gnote.ui:93
 msgctxt "shortcut window"
 msgid "Create new note"
 msgstr "ახალი სანიშნის შექმნა"
 
-#: data/shortcuts-gnote.ui:93
+#: data/shortcuts-gnote.ui:100
 msgctxt "shortcut window"
 msgid "Open selected note"
 msgstr "მონიშნული შენიშვნის გახსნა"
 
-#: data/shortcuts-gnote.ui:100
+#: data/shortcuts-gnote.ui:107
 msgctxt "shortcut window"
 msgid "Open selected note in new window"
 msgstr "მონიშნული შენიშვნის გახსნა ახალ ფანჯარაში"
 
-#: data/shortcuts-gnote.ui:107
+#: data/shortcuts-gnote.ui:114
 msgctxt "shortcut window"
 msgid "Delete selected note"
 msgstr "მონიშნული შენიშვნის წაშლა"
 
-#: data/shortcuts-gnote.ui:118
+#: data/shortcuts-gnote.ui:125
 msgctxt "shortcut window"
 msgid "Note View"
 msgstr "შენიშვნის ხედი"
 
-#: data/shortcuts-gnote.ui:141
+#: data/shortcuts-gnote.ui:148
 msgctxt "shortcut window"
 msgid "Open note actions menu"
 msgstr "შენიშვნის გახსნის ქმედებების მენიუ"
 
-#: data/shortcuts-gnote.ui:169
+#: data/shortcuts-gnote.ui:176
 msgctxt "shortcut window"
 msgid "Close current tab"
 msgstr "მიმდინარე ჩანართის დახურვა"
 
-#: data/shortcuts-gnote.ui:177
+#: data/shortcuts-gnote.ui:184
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "ჩასწორება"
 
-#: data/shortcuts-gnote.ui:182
+#: data/shortcuts-gnote.ui:189
 msgctxt "shortcut window"
 msgid "Undo last edit"
 msgstr "ბოლო ჩასწორების გაუქმება"
 
-#: data/shortcuts-gnote.ui:189
+#: data/shortcuts-gnote.ui:196
 msgctxt "shortcut window"
 msgid "Redo last edit"
 msgstr "ბოლო ჩასწორების გამეორება"
 
-#: data/shortcuts-gnote.ui:196
+#: data/shortcuts-gnote.ui:203
 msgctxt "shortcut window"
 msgid "Create link to note on selected text"
 msgstr "შექმნის ბმულს შენიშვნამდე მონიშნულ ტექსტზე"
 
-#: data/shortcuts-gnote.ui:204
+#: data/shortcuts-gnote.ui:211
 msgctxt "shortcut window"
 msgid "Formatting"
 msgstr "ფორმატირება"
 
-#: data/shortcuts-gnote.ui:209
+#: data/shortcuts-gnote.ui:216
 msgctxt "shortcut window"
 msgid "Toggle bold"
 msgstr "სქელობის გადართვა"
 
-#: data/shortcuts-gnote.ui:216
+#: data/shortcuts-gnote.ui:223
 msgctxt "shortcut window"
 msgid "Toggle italic"
 msgstr "კურსივის გადართვა"
 
-#: data/shortcuts-gnote.ui:223
+#: data/shortcuts-gnote.ui:230
 msgctxt "shortcut window"
 msgid "Toggle strikethrough"
 msgstr "ხაზგადასმულობის გადართვა"
 
-#: data/shortcuts-gnote.ui:230
+#: data/shortcuts-gnote.ui:237
 msgctxt "shortcut window"
 msgid "Toggle highlight"
 msgstr "გამოკვეთის გადართვა"
 
-#: data/shortcuts-gnote.ui:237
+#: data/shortcuts-gnote.ui:244
 msgctxt "shortcut window"
 msgid "Toggle fixed width"
 msgstr "ფიქსირებული სიგანის გადართვა"
 
-#: data/shortcuts-gnote.ui:244
+#: data/shortcuts-gnote.ui:251
 msgctxt "shortcut window"
 msgid "Toggle underline"
 msgstr "ხაზგასმის გადართვა"
 
-#: data/shortcuts-gnote.ui:251
+#: data/shortcuts-gnote.ui:258
 msgctxt "shortcut window"
 msgid "Increase font size"
 msgstr "ფონტის ზომის გაზრდა"
 
-#: data/shortcuts-gnote.ui:258
+#: data/shortcuts-gnote.ui:265
 msgctxt "shortcut window"
 msgid "Decrease font size"
 msgstr "ფონტის ზომის შემცირება"
 
-#: data/shortcuts-gnote.ui:265
+#: data/shortcuts-gnote.ui:272
 msgctxt "shortcut window"
 msgid "Enable bullets/increase indent for line with selection"
 msgstr ""
 
-#: data/shortcuts-gnote.ui:272
+#: data/shortcuts-gnote.ui:279
 msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr ""
@@ -718,16 +723,16 @@ msgstr ""
 msgid "Trying to load addins when they are already loaded"
 msgstr ""
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:4
+#: src/plugins/backlinks/backlinks.desktop.in.in:3
 msgid "Backlinks"
 msgstr ""
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:5
+#: src/plugins/backlinks/backlinks.desktop.in.in:4
 msgid "See which notes link to the one you're currently viewing."
 msgstr ""
 
-#: src/plugins/backlinks/backlinks.desktop.in.in:6
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:6
+#: src/plugins/backlinks/backlinks.desktop.in.in:5
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
 msgid "Hubert Figuiere and Tomboy Project"
 msgstr ""
 
@@ -739,21 +744,21 @@ msgstr ""
 msgid "(none)"
 msgstr "(არცერთი)"
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:3
 msgid "Bugzilla Links"
 msgstr ""
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:4
 msgid ""
 "Allows you to drag a Bugzilla URL from your browser directly into a Gnote "
 "note.  The bug number is inserted as a link with a little bug icon next to "
 "it."
 msgstr ""
 
-#: src/plugins/bugzilla/bugzilla.desktop.in.in:6
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:6
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:6
-#: src/plugins/printnotes/printnotes.desktop.in.in:6
+#: src/plugins/bugzilla/bugzilla.desktop.in.in:5
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
+#: src/plugins/printnotes/printnotes.desktop.in.in:5
 msgid "Hubert Figuiere and the Tomboy Project"
 msgstr ""
 
@@ -787,8 +792,8 @@ msgstr "აირჩიეთ ხატულა..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:317
-#: src/utils.cpp:324
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
+#: src/utils.cpp:337
 msgid "_Cancel"
 msgstr "&გაუქმება"
 
@@ -835,19 +840,19 @@ msgstr "_წაშლა"
 msgid "Error removing icon %s: %s"
 msgstr ""
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:3
 #: src/plugins/exporttogtg/exporttogtgnoteaddin.cpp:78
 msgid "Export to Getting Things GNOME"
 msgstr ""
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:4
 msgid "Exports individual notes as Getting Things GNOME tasks"
 msgstr ""
 
-#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:6
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:6
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:6
-#: src/plugins/statistics/statistics.desktop.in.in:6
+#: src/plugins/exporttogtg/exporttogtg.desktop.in.in:5
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
+#: src/plugins/statistics/statistics.desktop.in.in:5
 msgid "Aurimas Černius"
 msgstr "Aurimas Černius"
 
@@ -869,11 +874,11 @@ msgstr ""
 msgid "Failed to call GTG: %s"
 msgstr ""
 
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:3
 msgid "Export to HTML"
 msgstr "HTML-ში გატანა"
 
-#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:5
+#: src/plugins/exporttohtml/exporttohtml.desktop.in.in:4
 msgid "Exports individual notes to HTML."
 msgstr ""
 
@@ -947,24 +952,24 @@ msgstr ""
 msgid "Local Folder"
 msgstr "ლოკალური საქაღალდე"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:3
 msgid "Local Directory Sync Service Plugin"
 msgstr ""
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to a local file system path"
 msgstr ""
 
-#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:6
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:6
+#: src/plugins/filesystemsyncservice/filesystemsyncservice.desktop.in.in:5
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
 msgid "Aurimas Černius and the Tomboy Project"
 msgstr ""
 
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:3
 msgid "Fixed Width"
 msgstr "ფიქსირებული სიგანე"
 
-#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:5
+#: src/plugins/fixedwidth/fixedwidth.desktop.in.in:4
 msgid "Adds fixed-width font style."
 msgstr ""
 
@@ -972,11 +977,11 @@ msgstr ""
 msgid "Fixed Wid_th"
 msgstr ""
 
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:3
 msgid "Online Directory Sync Service Plugin"
 msgstr ""
 
-#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:5
+#: src/plugins/gvfssyncservice/gvfssyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr ""
 
@@ -1009,12 +1014,12 @@ msgstr "URI-ის ველი ცარიელია."
 msgid "Online Folder"
 msgstr ""
 
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:3
 #: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
 msgid "Insert Timestamp"
 msgstr "დროის შტამპის ჩასმა"
 
-#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:5
+#: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:4
 msgid "Inserts current date and time at the cursor position."
 msgstr ""
 
@@ -1056,15 +1061,15 @@ msgstr ""
 msgid "NoteDirectoryWatcher: Update aborted, error parsing %s: %s"
 msgstr ""
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:3
 msgid "Note Directory Watcher"
 msgstr ""
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:4
 msgid "Watch your Gnote note directory for changes to your notes."
 msgstr ""
 
-#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:6
+#: src/plugins/notedirectorywatcher/notedirectorywatcher.desktop.in.in:5
 msgid "Aurimas Černius and Tomboy original authors"
 msgstr ""
 
@@ -1101,16 +1106,16 @@ msgstr "ჩაწერილები"
 msgid "%A, %B %d %Y"
 msgstr "%A, %B %d %Y"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:3
 msgid "Note of the Day"
 msgstr "დღის შენიშვნა"
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:4
 msgid ""
 "Automatically creates a \"Today\" note for easily jotting down daily thoughts"
 msgstr ""
 
-#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:6
+#: src/plugins/noteoftheday/noteoftheday.desktop.in.in:5
 msgid "Debarshi Ray and the Tomboy Project"
 msgstr ""
 
@@ -1124,11 +1129,11 @@ msgid ""
 "the text that new Today notes have."
 msgstr ""
 
-#: src/plugins/printnotes/printnotes.desktop.in.in:4
+#: src/plugins/printnotes/printnotes.desktop.in.in:3
 msgid "Printing Support"
 msgstr "ბეჭდვის მხარდაჭერა"
 
-#: src/plugins/printnotes/printnotes.desktop.in.in:5
+#: src/plugins/printnotes/printnotes.desktop.in.in:4
 msgid "Allows you to print a note."
 msgstr ""
 
@@ -1145,38 +1150,38 @@ msgstr "შენიშვნის დაბეჭდვის შეცდო�
 msgid "Page %1 of %2"
 msgstr "გვერდი %1 %2-დან"
 
-#: src/plugins/readonly/readonly.desktop.in.in:4
+#: src/plugins/readonly/readonly.desktop.in.in:3
 #: src/plugins/readonly/readonlynoteaddin.cpp:67
 msgid "Read Only"
 msgstr "მხოლოდ კითხვისთვის"
 
-#: src/plugins/readonly/readonly.desktop.in.in:5
+#: src/plugins/readonly/readonly.desktop.in.in:4
 msgid "Mark certain notes as read only"
 msgstr ""
 
-#: src/plugins/readonly/readonly.desktop.in.in:6
+#: src/plugins/readonly/readonly.desktop.in.in:5
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr ""
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:3
 #: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
 msgid "Replace title"
 msgstr "სათაურის ჩანაცვლება"
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:4
 msgid "Replace title with selection."
 msgstr "სათაურის ჩანაცვლება მონიშნულით."
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:6
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:5
 msgid "Pierre-Yves Luyten"
 msgstr "Pierre-Yves Luyten"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:3
 msgid "Special Notes"
 msgstr "სპეციალური შენიშვნები"
 
-#: src/plugins/specialnotes/specialnotes.desktop.in.in:5
+#: src/plugins/specialnotes/specialnotes.desktop.in.in:4
 msgid "Show special notes, that are otherwise hidden"
 msgstr "აჩვენებს სპეციალურ შენიშვნებს, რომლებიც ჩვეულებრივ დამალულია"
 
@@ -1184,12 +1189,12 @@ msgstr "აჩვენებს სპეციალურ შენიშვ�
 msgid "Show Statistics"
 msgstr "სტატისტიკების ჩვენება"
 
-#: src/plugins/statistics/statistics.desktop.in.in:4
+#: src/plugins/statistics/statistics.desktop.in.in:3
 #: src/plugins/statistics/statisticswidget.cpp:179
 msgid "Statistics"
 msgstr "სტატისტიკა"
 
-#: src/plugins/statistics/statistics.desktop.in.in:5
+#: src/plugins/statistics/statistics.desktop.in.in:4
 msgid "Show various statistics about notes."
 msgstr ""
 
@@ -1207,22 +1212,22 @@ msgid "%1 note"
 msgid_plural "%1 notes"
 msgstr[0] "%1 შენიშვნა"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:3
 #: src/plugins/tableofcontents/tableofcontentsnoteaddin.cpp:115
 msgid "Table of Contents"
 msgstr "სარჩევი"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:4
 msgid ""
 "Navigate long structured notes. Set section and subsection headings in your "
 "note, and the Table of Contents will show in a menu."
 msgstr ""
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:6
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:5
 msgid "Aurimas Černius, Luc Pionchon"
 msgstr "Aurimas Černius, Luc Pionchon"
 
-#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:11
+#: src/plugins/tableofcontents/tableofcontents.desktop.in.in:10
 msgid "© 2013 Luc Pionchon"
 msgstr "© 2013 Luc Pionchon"
 
@@ -1238,39 +1243,39 @@ msgstr "სათაური 2"
 msgid "Table of Contents Help"
 msgstr ""
 
-#: src/plugins/todo/todo.desktop.in.in:4
+#: src/plugins/todo/todo.desktop.in.in:3
 msgid "TODO"
 msgstr "განრიგის სია"
 
-#: src/plugins/todo/todo.desktop.in.in:5
+#: src/plugins/todo/todo.desktop.in.in:4
 msgid "Highlight FIXME:, TODO: and XXX: patterns in notes."
 msgstr ""
 
-#: src/plugins/todo/todo.desktop.in.in:6
+#: src/plugins/todo/todo.desktop.in.in:5
 msgid "Aurimas Černius, Romain Tartière"
 msgstr ""
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:3
 msgid "Tomboy Importer"
 msgstr "Tomboy-დან შემოტანა"
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:4
 msgid "Import your notes from Tomboy."
 msgstr "შემოიტანეთ თქვენი შენიშვნები Tomboy-დან."
 
-#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:6
+#: src/plugins/tomboyimport/tomboyimport.desktop.in.in:5
 msgid "Hubert Figuiere"
 msgstr "Hubert Figuiere"
 
-#: src/plugins/underline/underline.desktop.in.in:4
+#: src/plugins/underline/underline.desktop.in.in:3
 msgid "Underline"
 msgstr "ხაზგასმული"
 
-#: src/plugins/underline/underline.desktop.in.in:5
+#: src/plugins/underline/underline.desktop.in.in:4
 msgid "Adds ability to underline text."
 msgstr ""
 
-#: src/plugins/underline/underline.desktop.in.in:6
+#: src/plugins/underline/underline.desktop.in.in:5
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr ""
 
@@ -1307,11 +1312,11 @@ msgid ""
 "%1"
 msgstr ""
 
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:3
 msgid "WebDAV Sync Service Plugin"
 msgstr ""
 
-#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:5
+#: src/plugins/webdavsyncservice/webdavsyncservice.desktop.in.in:4
 msgid "Synchronize Gnote Notes to a WebDAV URL."
 msgstr ""
 
@@ -1329,15 +1334,15 @@ msgstr ""
 msgid "Failed to get shortcuts window!"
 msgstr ""
 
-#: src/gnote.cpp:265
+#: src/gnote.cpp:263
 msgid "and Tomboy original authors."
 msgstr ""
 
-#: src/gnote.cpp:271
+#: src/gnote.cpp:277
 msgid "translator-credits"
 msgstr "მთარგმნელის შესახებ"
 
-#: src/gnote.cpp:280
+#: src/gnote.cpp:286
 msgid ""
 "Copyright © 2010-2025 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1345,80 +1350,91 @@ msgid ""
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
 
-#: src/gnote.cpp:284
+#: src/gnote.cpp:290
 msgid "A simple and easy to use desktop note-taking application."
 msgstr ""
 
-#: src/gnote.cpp:286
+#. TRANSLATORS:
+#. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
+#.
+#: src/gnote.cpp:294
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
+msgstr ""
+
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "Homepage"
 
-#: src/gnote.cpp:500
+#: src/gnote.cpp:299
+msgid "Contributors"
+msgstr "მოხალისეები"
+
+#: src/gnote.cpp:510
 msgid "Run Gnote in background."
 msgstr ""
 
-#: src/gnote.cpp:501
+#: src/gnote.cpp:511
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr ""
 
-#: src/gnote.cpp:502
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr ""
 
-#: src/gnote.cpp:502
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "ბილიკი"
 
-#: src/gnote.cpp:503
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr ""
 
-#: src/gnote.cpp:503 src/gnote.cpp:509
+#: src/gnote.cpp:513 src/gnote.cpp:519
 msgid "text"
 msgstr "ტექსტი"
 
-#: src/gnote.cpp:504
+#: src/gnote.cpp:514
 msgid "Print version information."
 msgstr "ვერსიის ინფორმაციის გამოტანა."
 
-#: src/gnote.cpp:505
+#: src/gnote.cpp:515
 msgid "Create and display a new note, with a optional title."
 msgstr ""
 
-#: src/gnote.cpp:505
+#: src/gnote.cpp:515
 msgid "title"
 msgstr "სათაური"
 
-#: src/gnote.cpp:506
+#: src/gnote.cpp:516
 msgid "Open a new window."
 msgstr "ახალ ფანჯრის გახსნა."
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:517
 msgid "Display the existing note matching title."
 msgstr ""
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:517
 msgid "title/url"
 msgstr "სათაური/url"
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:518
 msgid "Display the 'Start Here' note."
 msgstr ""
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:519
 msgid "Search and highlight text in the opened note."
 msgstr ""
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:523
 msgid "A note taking application"
 msgstr ""
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:523
 msgid "Gnote options at launch"
 msgstr ""
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:697
+#: src/gnote.cpp:707
 msgid "Version %1"
 msgstr "ვერსია %1"
 
@@ -1576,15 +1592,15 @@ msgstr ""
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr ""
 
-#: src/notemanagerbase.cpp:334
+#: src/notemanagerbase.cpp:349
 msgid "Describe your new note here."
 msgstr ""
 
-#: src/notemanager.cpp:116
+#: src/notemanager.cpp:118
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1606,7 +1622,7 @@ msgid ""
 "to open the note.</note-content>"
 msgstr ""
 
-#: src/notemanager.cpp:135
+#: src/notemanager.cpp:137
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1623,31 +1639,31 @@ msgid ""
 msgstr ""
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:150 src/notemanager.cpp:185
+#: src/notemanager.cpp:152 src/notemanager.cpp:187
 msgid "Start Here"
 msgstr "დაიწყე აქ"
 
-#: src/notemanager.cpp:154
+#: src/notemanager.cpp:156
 msgid "Using Links in Gnote"
 msgstr ""
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:160
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr ""
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:175
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr ""
 
-#: src/notemanager.cpp:384
+#: src/notemanager.cpp:386
 #, c-format
 msgid "Error while saving: %s"
 msgstr "შეცდომა შენახვისას: %s"
 
-#: src/notemanager.cpp:389
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr ""
@@ -1705,70 +1721,70 @@ msgstr "შენიშვნის სათაური"
 msgid "Ad_vanced"
 msgstr "დ_ამატებითი"
 
-#: src/notewindow.cpp:319
+#: src/notewindow.cpp:324
 msgid "_Undo"
 msgstr "_დაბრუნება"
 
-#: src/notewindow.cpp:321
+#: src/notewindow.cpp:326
 msgid "_Redo"
 msgstr "გამეო_რება"
 
-#: src/notewindow.cpp:323 src/notewindow.cpp:356
+#: src/notewindow.cpp:328 src/notewindow.cpp:361
 msgid "_Link to New Note"
 msgstr ""
 
-#: src/notewindow.cpp:325
+#: src/notewindow.cpp:330
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "მნ_იშვნელოვანი"
 
-#: src/notewindow.cpp:334
+#: src/notewindow.cpp:339
 msgid "_Delete…"
 msgstr "_წაშლა…"
 
-#: src/notewindow.cpp:376
+#: src/notewindow.cpp:381
 msgid "Set properties of text"
 msgstr "დააყენეთ ტექსტის თვისებები"
 
-#: src/notewindow.cpp:388
+#: src/notewindow.cpp:393
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
 msgstr ""
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:396
 msgid "Convert to regular note"
 msgstr ""
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:399
 msgid "Save Se_lection"
 msgstr ""
 
-#: src/notewindow.cpp:398
+#: src/notewindow.cpp:403
 msgid "Save _Title"
 msgstr "სა_თაურის შენახვა"
 
-#: src/notewindow.cpp:492 src/notewindow.cpp:602
+#: src/notewindow.cpp:497 src/notewindow.cpp:607
 msgid "Cannot create note"
 msgstr "შენიშვნის შექმნა შეუძლებელია"
 
-#: src/notewindow.cpp:980
+#: src/notewindow.cpp:1032
 msgid "_Highlight"
 msgstr "_მარკერი"
 
-#: src/notewindow.cpp:984
+#: src/notewindow.cpp:1036
 msgid "_Normal"
 msgstr "_ნორმალური"
 
-#: src/notewindow.cpp:985
+#: src/notewindow.cpp:1037
 msgid "S_mall"
 msgstr "_პატარა"
 
-#: src/notewindow.cpp:986
+#: src/notewindow.cpp:1038
 msgid "_Large"
 msgstr "_დიდი"
 
-#: src/notewindow.cpp:987
+#: src/notewindow.cpp:1039
 msgid "Hu_ge"
 msgstr "_უზარმაზარი"
 
@@ -1796,7 +1812,7 @@ msgstr "დამატებები"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:314
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
 msgid "_Close"
 msgstr "_დახურვა"
 
@@ -2034,31 +2050,31 @@ msgstr "ავტორი:"
 msgid "Copyright:"
 msgstr "უფლებები:"
 
-#: src/recentchanges.cpp:66
+#: src/recentchanges.cpp:67
 msgid "Close"
 msgstr "დახურვა"
 
-#: src/recentchanges.cpp:294
+#: src/recentchanges.cpp:312
 msgid "Search"
 msgstr "ძებნა"
 
-#: src/recentchanges.cpp:369
+#: src/recentchanges.cpp:387
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 
-#: src/recentchanges.cpp:394
+#: src/recentchanges.cpp:418
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 
-#: src/recentchanges.cpp:726
+#: src/recentchanges.cpp:790
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 
-#: src/recentchanges.cpp:733
+#: src/recentchanges.cpp:797
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 
-#: src/recentchanges.cpp:933
+#: src/recentchanges.cpp:997
 msgid "No configured actions"
 msgstr "მორგებული ქმედებების გარეშე"
 
@@ -2444,113 +2460,113 @@ msgstr "ცვლილებები აიტვირთა სერვე�
 msgid "Uploaded new note to server"
 msgstr "ახალი შენიშვნა აიტვირთა სერვერზე"
 
-#: src/synchronization/syncmanager.cpp:64
+#: src/synchronization/syncmanager.cpp:81
 msgid "Synchronize Notes"
 msgstr "შენიშვნების სინქრონიზაცია"
 
-#: src/synchronization/syncmanager.cpp:83
 #: src/synchronization/syncmanager.cpp:100
-#: src/synchronization/syncmanager.cpp:584
+#: src/synchronization/syncmanager.cpp:117
+#: src/synchronization/syncmanager.cpp:589
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr ""
 
-#: src/synchronization/syncmanager.cpp:147
+#: src/synchronization/syncmanager.cpp:164
 #, c-format
 msgid "Error cleaning up addin after synchronization: %s"
 msgstr ""
 
-#: src/synchronization/syncmanager.cpp:173
+#: src/synchronization/syncmanager.cpp:190
 #, c-format
 msgid "Exception while creating SyncServer: %s"
 msgstr ""
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:367
+#: src/synchronization/syncmanager.cpp:380
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr ""
 
-#: src/utils.cpp:74
+#: src/utils.cpp:75
 #, c-format
 msgid "Failed to show help: %s"
 msgstr ""
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
 
-#: src/utils.cpp:81
+#: src/utils.cpp:82
 msgid "Help not found"
 msgstr "დახმარება ვერ ვიპოვე"
 
 #: src/utils.cpp:99
 #, c-format
-msgid "Failed to open URL: %s"
-msgstr ""
+msgid "Failed to open '%s': %s"
+msgstr "'%s'-ის გახსნის შეცდომა: %s"
 
-#: src/utils.cpp:115
+#: src/utils.cpp:131
 msgid "Cannot open location"
 msgstr ""
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:176
+#: src/utils.cpp:192
 msgid "Today, %1"
 msgstr "დღეს, %1"
 
-#: src/utils.cpp:177
+#: src/utils.cpp:193
 msgid "Today"
 msgstr "დღეს"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:182
+#: src/utils.cpp:198
 msgid "Tomorrow, %1"
 msgstr "ხვალ, %1"
 
-#: src/utils.cpp:183
+#: src/utils.cpp:199
 msgid "Tomorrow"
 msgstr "ხვალ"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:188
+#: src/utils.cpp:204
 msgid "Yesterday, %1"
 msgstr "გუშინ, %1"
 
-#: src/utils.cpp:189
+#: src/utils.cpp:205
 msgid "Yesterday"
 msgstr "გუშინ"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:194
+#: src/utils.cpp:210
 #, no-c-format
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:214
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:203
+#: src/utils.cpp:219
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:214
+#: src/utils.cpp:230
 msgid "No Date"
 msgstr "თარიღის გარეშე"
 
-#: src/utils.cpp:311 src/utils.cpp:325
+#: src/utils.cpp:324 src/utils.cpp:338
 msgid "_OK"
 msgstr "_დიახ"
 
-#: src/utils.cpp:320
+#: src/utils.cpp:333
 msgid "_No"
 msgstr "_არა"
 
-#: src/utils.cpp:321
+#: src/utils.cpp:334
 msgid "_Yes"
 msgstr "_დიახ"
 
