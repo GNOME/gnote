@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-10-06 00:24+0000\n"
-"PO-Revision-Date: 2025-10-07 13:40+1000\n"
+"POT-Creation-Date: 2025-11-09 18:25+0000\n"
+"PO-Revision-Date: 2025-11-23 00:17+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -28,7 +28,7 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
-#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
+#: src/recentchanges.cpp:100 src/recentchanges.cpp:122
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -889,8 +889,8 @@ msgstr "Выбрать значок..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:314
-#: src/utils.cpp:321
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
+#: src/utils.cpp:337
 msgid "_Cancel"
 msgstr "_Отменить"
 
@@ -1484,7 +1484,6 @@ msgstr "Простое, лёгкое в использовании прилож�
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
 #: src/gnote.cpp:294
-#| msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 
@@ -1891,32 +1890,32 @@ msgstr "Заголовок заметки"
 msgid "Ad_vanced"
 msgstr "_Дополнительно"
 
-#: src/notewindow.cpp:319
+#: src/notewindow.cpp:324
 msgid "_Undo"
 msgstr "_Отменить"
 
-#: src/notewindow.cpp:321
+#: src/notewindow.cpp:326
 msgid "_Redo"
 msgstr "_Повторить"
 
-#: src/notewindow.cpp:323 src/notewindow.cpp:356
+#: src/notewindow.cpp:328 src/notewindow.cpp:361
 msgid "_Link to New Note"
 msgstr "_Связать с новой заметкой"
 
-#: src/notewindow.cpp:325
+#: src/notewindow.cpp:330
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Важное"
 
-#: src/notewindow.cpp:334
+#: src/notewindow.cpp:339
 msgid "_Delete…"
 msgstr "У_далить…"
 
-#: src/notewindow.cpp:376
+#: src/notewindow.cpp:381
 msgid "Set properties of text"
 msgstr "Установить свойства текста"
 
-#: src/notewindow.cpp:388
+#: src/notewindow.cpp:393
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1925,39 +1924,39 @@ msgstr ""
 "для обычных заметок, эта заметка не будет показываться в меню заметок или "
 "окне поиска."
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:396
 msgid "Convert to regular note"
 msgstr "Преобразовать в обычную заметку"
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:399
 msgid "Save Se_lection"
 msgstr "Сохранить вы_деление"
 
-#: src/notewindow.cpp:398
+#: src/notewindow.cpp:403
 msgid "Save _Title"
 msgstr "Сохранить _заголовок"
 
-#: src/notewindow.cpp:492 src/notewindow.cpp:602
+#: src/notewindow.cpp:497 src/notewindow.cpp:607
 msgid "Cannot create note"
 msgstr "Не удалось создать заметку"
 
-#: src/notewindow.cpp:980
+#: src/notewindow.cpp:1032
 msgid "_Highlight"
 msgstr "_Выделенный"
 
-#: src/notewindow.cpp:984
+#: src/notewindow.cpp:1036
 msgid "_Normal"
 msgstr "_Нормальный"
 
-#: src/notewindow.cpp:985
+#: src/notewindow.cpp:1037
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: src/notewindow.cpp:986
+#: src/notewindow.cpp:1038
 msgid "_Large"
 msgstr "_Большой"
 
-#: src/notewindow.cpp:987
+#: src/notewindow.cpp:1039
 msgid "Hu_ge"
 msgstr "_Огромный"
 
@@ -1985,7 +1984,7 @@ msgstr "Модули"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:311
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
 msgid "_Close"
 msgstr "_Закрыть"
 
@@ -2243,35 +2242,35 @@ msgstr "Автор:"
 msgid "Copyright:"
 msgstr "Авторские права:"
 
-#: src/recentchanges.cpp:66
+#: src/recentchanges.cpp:67
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/recentchanges.cpp:311
+#: src/recentchanges.cpp:312
 msgid "Search"
 msgstr "Искать"
 
-#: src/recentchanges.cpp:386
+#: src/recentchanges.cpp:387
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент встроенного поля не Gtk::Grid. Пожалуйста, сообщите об "
 "ошибке!"
 
-#: src/recentchanges.cpp:411
+#: src/recentchanges.cpp:418
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Родительский элемент поиска не Gtk::Grid. Пожалуйста, сообщите об ошибке!"
 
-#: src/recentchanges.cpp:743
+#: src/recentchanges.cpp:790
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Попытка вывести на передний план виджет, не встроенный в окно"
 
-#: src/recentchanges.cpp:750
+#: src/recentchanges.cpp:797
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Попытка вывести на передний план виджет, который не является Gtk::Widget"
 
-#: src/recentchanges.cpp:950
+#: src/recentchanges.cpp:997
 msgid "No configured actions"
 msgstr "Нет изменяемых параметров"
 
@@ -2699,12 +2698,12 @@ msgstr "Исключение при создании сервера синхро
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Сбой со следующими исключениями: %s"
 
-#: src/utils.cpp:74
+#: src/utils.cpp:75
 #, c-format
 msgid "Failed to show help: %s"
 msgstr "Не удалось показать справку: %s"
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2712,75 +2711,75 @@ msgstr ""
 "Руководство по Gnote не найдено. Убедитесь, что установка была выполнена "
 "успешно."
 
-#: src/utils.cpp:81
+#: src/utils.cpp:82
 msgid "Help not found"
 msgstr "Справка не найдена"
 
 #: src/utils.cpp:99
 #, c-format
-msgid "Failed to open URL: %s"
-msgstr "Не удалось открыть URL: %s"
+msgid "Failed to open '%s': %s"
+msgstr "Не удалось открыть «%s»: %s"
 
-#: src/utils.cpp:115
+#: src/utils.cpp:131
 msgid "Cannot open location"
 msgstr "Не удалось открыть местоположение"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:176
+#: src/utils.cpp:192
 msgid "Today, %1"
 msgstr "Сегодня, %1"
 
-#: src/utils.cpp:177
+#: src/utils.cpp:193
 msgid "Today"
 msgstr "Сегодня"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:182
+#: src/utils.cpp:198
 msgid "Tomorrow, %1"
 msgstr "Завтра, %1"
 
-#: src/utils.cpp:183
+#: src/utils.cpp:199
 msgid "Tomorrow"
 msgstr "Завтра"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:188
+#: src/utils.cpp:204
 msgid "Yesterday, %1"
 msgstr "Вчера, %1"
 
-#: src/utils.cpp:189
+#: src/utils.cpp:205
 msgid "Yesterday"
 msgstr "Вчера"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:194
+#: src/utils.cpp:210
 #, no-c-format
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:214
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:203
+#: src/utils.cpp:219
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:214
+#: src/utils.cpp:230
 msgid "No Date"
 msgstr "Без даты"
 
-#: src/utils.cpp:308 src/utils.cpp:322
+#: src/utils.cpp:324 src/utils.cpp:338
 msgid "_OK"
 msgstr "_ОК"
 
-#: src/utils.cpp:317
+#: src/utils.cpp:333
 msgid "_No"
 msgstr "_Нет"
 
-#: src/utils.cpp:318
+#: src/utils.cpp:334
 msgid "_Yes"
 msgstr "_Да"
 
