@@ -6,7 +6,7 @@ Starting as Tomboy clone, Gnote continues with the same initial ideas and
 mostly has the same functionality. However it moved forward for the sake
 of better integration with modern GNOME desktop environment.
 
-https://wiki.gnome.org/Apps/Gnote
+https://gitlab.gnome.org/GNOME/gnote/
 
 ## Compiling
 
