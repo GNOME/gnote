@@ -291,7 +291,7 @@ namespace gnote {
     /* TRANSLATORS:
      * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
     */
-    about->set_website(_("https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"));
+    about->set_website(_("https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"));
     about->set_website_label(_("Homepage"));
     about->set_authors(authors);
     about->set_documenters(documenters);
