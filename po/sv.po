@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-09-02 20:47+0000\n"
-"PO-Revision-Date: 2025-09-02 22:59+0200\n"
+"POT-Creation-Date: 2025-12-09 00:49+0000\n"
+"PO-Revision-Date: 2025-12-26 01:09+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,10 +19,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
-#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
+#: src/recentchanges.cpp:100 src/recentchanges.cpp:122
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -70,7 +70,7 @@ msgid "New Window"
 msgstr "Nytt fönster"
 
 #: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
+#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Ny anteckning"
 
@@ -884,8 +884,8 @@ msgstr "Välj en ikon…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:314
-#: src/utils.cpp:321
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
+#: src/utils.cpp:337
 msgid "_Cancel"
 msgstr "A_vbryt"
 
@@ -1475,80 +1475,87 @@ msgstr ""
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
-#: src/gnote.cpp:292
+#. TRANSLATORS:
+#. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
+#.
+#: src/gnote.cpp:294
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/sv/home"
+
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: src/gnote.cpp:296
+#: src/gnote.cpp:299
 msgid "Contributors"
 msgstr "Bidragsgivare"
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:510
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:511
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "sökväg"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: src/gnote.cpp:510 src/gnote.cpp:516
+#: src/gnote.cpp:513 src/gnote.cpp:519
 msgid "text"
 msgstr "text"
 
-#: src/gnote.cpp:511
+#: src/gnote.cpp:514
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "title"
 msgstr "titel"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:516
 msgid "Open a new window."
 msgstr "Öppna ett nytt fönster."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "title/url"
 msgstr "titel/url"
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:518
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:519
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:704
+#: src/gnote.cpp:707
 msgid "Version %1"
 msgstr "Version %1"
 
@@ -1714,15 +1721,15 @@ msgstr "Att ställa in textinnehåll för stängda anteckningar stöds inte"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "Ny anteckningsmall"
 
-#: src/notemanagerbase.cpp:334
+#: src/notemanagerbase.cpp:349
 msgid "Describe your new note here."
 msgstr "Beskriv din nya anteckning här."
 
-#: src/notemanager.cpp:116
+#: src/notemanager.cpp:118
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1764,7 +1771,7 @@ msgstr ""
 "automatiskt understruken?  Klicka på länken för att öppna anteckningen.</"
 "note-content>"
 
-#: src/notemanager.cpp:135
+#: src/notemanager.cpp:137
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1794,31 +1801,31 @@ msgstr ""
 "kommer den automatiskt att länkas åt dig.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:150 src/notemanager.cpp:185
+#: src/notemanager.cpp:152 src/notemanager.cpp:187
 msgid "Start Here"
 msgstr "Börja här"
 
-#: src/notemanager.cpp:154
+#: src/notemanager.cpp:156
 msgid "Using Links in Gnote"
 msgstr "Användning av länkar i Gnote"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:160
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Fel vid skapande av startanteckningar: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:175
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Fel vid tolkning av antecknings-XML, hoppar över ”%s”: %s"
 
-#: src/notemanager.cpp:384
+#: src/notemanager.cpp:386
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Fel vid sparande: %s"
 
-#: src/notemanager.cpp:389
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "Hittade inte anteckning med URI ”%s”, kan inte spara"
@@ -1882,32 +1889,32 @@ msgstr "Anteckningstitel"
 msgid "Ad_vanced"
 msgstr "A_vancerat"
 
-#: src/notewindow.cpp:319
+#: src/notewindow.cpp:324
 msgid "_Undo"
 msgstr "Å_ngra"
 
-#: src/notewindow.cpp:321
+#: src/notewindow.cpp:326
 msgid "_Redo"
 msgstr "Gör _om"
 
-#: src/notewindow.cpp:323 src/notewindow.cpp:356
+#: src/notewindow.cpp:328 src/notewindow.cpp:361
 msgid "_Link to New Note"
 msgstr "_Länka till ny anteckning"
 
-#: src/notewindow.cpp:325
+#: src/notewindow.cpp:330
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "V_iktigt"
 
-#: src/notewindow.cpp:334
+#: src/notewindow.cpp:339
 msgid "_Delete…"
 msgstr "_Ta bort…"
 
-#: src/notewindow.cpp:376
+#: src/notewindow.cpp:381
 msgid "Set properties of text"
 msgstr "Ställ in textegenskaper"
 
-#: src/notewindow.cpp:388
+#: src/notewindow.cpp:393
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1916,39 +1923,39 @@ msgstr ""
 "vanliga anteckningar och kommer inte att visas i anteckningsmenyn eller "
 "sökfönster."
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:396
 msgid "Convert to regular note"
 msgstr "Konvertera till vanlig anteckning"
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:399
 msgid "Save Se_lection"
 msgstr "Spara ma_rkering"
 
-#: src/notewindow.cpp:398
+#: src/notewindow.cpp:403
 msgid "Save _Title"
 msgstr "Spara _titel"
 
-#: src/notewindow.cpp:492 src/notewindow.cpp:602
+#: src/notewindow.cpp:497 src/notewindow.cpp:607
 msgid "Cannot create note"
 msgstr "Kan inte skapa anteckning"
 
-#: src/notewindow.cpp:980
+#: src/notewindow.cpp:1032
 msgid "_Highlight"
 msgstr "_Färgmarkera"
 
-#: src/notewindow.cpp:984
+#: src/notewindow.cpp:1036
 msgid "_Normal"
 msgstr "_Normal"
 
-#: src/notewindow.cpp:985
+#: src/notewindow.cpp:1037
 msgid "S_mall"
 msgstr "_Liten"
 
-#: src/notewindow.cpp:986
+#: src/notewindow.cpp:1038
 msgid "_Large"
 msgstr "_Stor"
 
-#: src/notewindow.cpp:987
+#: src/notewindow.cpp:1039
 msgid "Hu_ge"
 msgstr "_Enorm"
 
@@ -1976,7 +1983,7 @@ msgstr "Insticksmoduler"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:311
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
 msgid "_Close"
 msgstr "S_täng"
 
@@ -2236,32 +2243,32 @@ msgstr "Upphovsman:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: src/recentchanges.cpp:66
+#: src/recentchanges.cpp:67
 msgid "Close"
 msgstr "Stäng"
 
-#: src/recentchanges.cpp:311
+#: src/recentchanges.cpp:312
 msgid "Search"
 msgstr "Sök"
 
-#: src/recentchanges.cpp:386
+#: src/recentchanges.cpp:387
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Överordnad till inbäddningsruta är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:411
+#: src/recentchanges.cpp:418
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Överordnad till sökfält är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:743
+#: src/recentchanges.cpp:790
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Försök att ta en komponent till förgrunden, som inte är inbäddad i fönstret"
 
-#: src/recentchanges.cpp:750
+#: src/recentchanges.cpp:797
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Försök att ta en komponent till förgrunden, som inte är Gtk::Widget"
 
-#: src/recentchanges.cpp:950
+#: src/recentchanges.cpp:997
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
@@ -2686,12 +2693,12 @@ msgstr "Undantag under skapande av SyncServer: %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Synkronisering misslyckades med följande undantag: %s"
 
-#: src/utils.cpp:74
+#: src/utils.cpp:75
 #, c-format
 msgid "Failed to show help: %s"
 msgstr "Misslyckades med att visa hjälp: %s"
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2699,75 +2706,75 @@ msgstr ""
 "”Handbok för Gnote-anteckningar” kunde inte hittas.  Verifiera att din "
 "installation har färdigställts korrekt."
 
-#: src/utils.cpp:81
+#: src/utils.cpp:82
 msgid "Help not found"
 msgstr "Hjälp hittades inte"
 
 #: src/utils.cpp:99
 #, c-format
-msgid "Failed to open URL: %s"
-msgstr "Misslyckades med att öppna URL: %s"
+msgid "Failed to open '%s': %s"
+msgstr "Misslyckades med att öppna ”%s”: %s"
 
-#: src/utils.cpp:115
+#: src/utils.cpp:131
 msgid "Cannot open location"
 msgstr "Kan inte öppna plats"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:176
+#: src/utils.cpp:192
 msgid "Today, %1"
 msgstr "I dag, %1"
 
-#: src/utils.cpp:177
+#: src/utils.cpp:193
 msgid "Today"
 msgstr "I dag"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:182
+#: src/utils.cpp:198
 msgid "Tomorrow, %1"
 msgstr "I morgon, %1"
 
-#: src/utils.cpp:183
+#: src/utils.cpp:199
 msgid "Tomorrow"
 msgstr "I morgon"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:188
+#: src/utils.cpp:204
 msgid "Yesterday, %1"
 msgstr "I går, %1"
 
-#: src/utils.cpp:189
+#: src/utils.cpp:205
 msgid "Yesterday"
 msgstr "I går"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:194
+#: src/utils.cpp:210
 #, no-c-format
 msgid "%b %d"
 msgstr "%d %b"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:214
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:203
+#: src/utils.cpp:219
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:214
+#: src/utils.cpp:230
 msgid "No Date"
 msgstr "Inget datum"
 
-#: src/utils.cpp:308 src/utils.cpp:322
+#: src/utils.cpp:324 src/utils.cpp:338
 msgid "_OK"
 msgstr "_OK"
 
-#: src/utils.cpp:317
+#: src/utils.cpp:333
 msgid "_No"
 msgstr "_Nej"
 
-#: src/utils.cpp:318
+#: src/utils.cpp:334
 msgid "_Yes"
 msgstr "_Ja"
 
