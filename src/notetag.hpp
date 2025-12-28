@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021-2024 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -254,7 +254,7 @@ public:
   static void setup_instance(Preferences &prefs)
     {
       if(!s_instance) {
-        s_instance = NoteTagTable::Ptr(new NoteTagTable(prefs));
+        s_instance = Glib::make_refptr_for_instance(new NoteTagTable(prefs));
       }
     }
   static const NoteTagTable::Ptr & instance()
