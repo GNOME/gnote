@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2015-2016,2022 Aurimas Cernius
+ * Copyright (C) 2015-2016,2022,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,22 +23,22 @@ namespace gnote {
 
 MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name)
 {
-  return Ptr(new MainWindowAction(std::move(name)));
+  return Glib::make_refptr_for_instance(new MainWindowAction(std::move(name)));
 }
 
 MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name, bool state)
 {
-  return Ptr(new MainWindowAction(std::move(name), state));
+  return Glib::make_refptr_for_instance(new MainWindowAction(std::move(name), state));
 }
 
 MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name, int state)
 {
-  return Ptr(new MainWindowAction(std::move(name), state));
+  return Glib::make_refptr_for_instance(new MainWindowAction(std::move(name), state));
 }
 
 MainWindowAction::Ptr MainWindowAction::create(Glib::ustring && name, Glib::ustring && state)
 {
-  return Ptr(new MainWindowAction(std::move(name), std::move(state)));
+  return Glib::make_refptr_for_instance(new MainWindowAction(std::move(name), std::move(state)));
 }
 
 MainWindowAction::MainWindowAction(Glib::ustring && name)
