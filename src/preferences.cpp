@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2021,2024 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2021,2024-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -137,6 +137,12 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_gnote, color_scheme, COLOR_SCHEME, string);
 
     SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_clock_format, DESKTOP_GNOME_CLOCK_FORMAT, string);
+    m_schema_gnome_interface->signal_changed("accent-color").connect([this](const Glib::ustring &) {
+      signal_desktop_gnome_color_scheme_changed();
+    });
+    m_schema_gnome_interface->signal_changed("color-scheme").connect([this](const Glib::ustring &) {
+      signal_desktop_gnome_color_scheme_changed();
+    });
 
     SETUP_CACHED_KEY(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN, string);
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
