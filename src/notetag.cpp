@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -271,20 +271,15 @@ namespace {
   void NoteTagTable::_init_common_tags()
   {
     NoteTag::Ptr tag;
-    Gdk::RGBA active_link_color, visited_link_color;
-    {
-      Gtk::LinkButton link;
-      auto style_ctx = link.get_style_context();
-      style_ctx->set_state(Gtk::StateFlags::LINK);
-      active_link_color = style_ctx->get_color();
-      style_ctx->set_state(Gtk::StateFlags::VISITED);
-      visited_link_color = style_ctx->get_color();
-    }
 
     m_preferences.signal_highlight_background_color_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_background_setting_changed));
     m_preferences.signal_highlight_foreground_color_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_foreground_setting_changed));
+    m_preferences.signal_desktop_gnome_accent_color_changed
+      .connect(sigc::mem_fun(*this, &NoteTagTable::on_accent_color_setting_changed));
+    m_preferences.signal_desktop_gnome_color_scheme_changed
+      .connect(sigc::mem_fun(*this, &NoteTagTable::on_accent_color_setting_changed));
 
     // Font stylings
 
@@ -317,8 +312,6 @@ namespace {
     add(tag);
 
     tag = NoteTag::create("note-title", 0);
-    tag->property_foreground_rgba().set_value(active_link_color);
-    tag->property_foreground_set() = true;
     tag->property_scale() = Pango::SCALE_XX_LARGE;
     // FiXME: Hack around extra rewrite on open
     tag->set_can_serialize(false);
@@ -336,8 +329,6 @@ namespace {
     tag = NoteTag::create("datetime", 0);
     tag->property_scale() = Pango::SCALE_SMALL;
     tag->property_style() = Pango::Style::ITALIC;
-    tag->property_foreground_rgba().set_value(visited_link_color);
-    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add(tag);
 
@@ -363,27 +354,23 @@ namespace {
 
     tag = NoteTag::create("link:broken", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
-    tag->property_foreground_rgba().set_value(visited_link_color);
-    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add(tag);
     m_broken_link_tag = tag;
 
     tag = NoteTag::create("link:internal", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
-    tag->property_foreground_rgba().set_value(active_link_color);
-    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add(tag);
     m_link_tag = tag;
 
     tag = NoteTag::create("link:url", NoteTag::CAN_ACTIVATE);
     tag->property_underline() = Pango::Underline::SINGLE;
-    tag->property_foreground_rgba().set_value(active_link_color);
-    tag->property_foreground_set() = true;
     tag->set_save_type(META);
     add(tag);
     m_url_tag = tag;
+
+    update_accent_color();
   }
 
   void NoteTagTable::on_highlight_background_setting_changed()
@@ -391,6 +378,37 @@ namespace {
     change_highlight(*this, [this](Gtk::TextTag &tag) {
       tag.property_background() = m_preferences.highlight_background_color();
     });
+  }
+
+  void NoteTagTable::on_accent_color_setting_changed()
+  {
+    // Colors don't update instantly after setting change, 100ms look enough
+    utils::timeout_add_once(100, [this] {
+      update_accent_color();
+    });
+  }
+
+  void NoteTagTable::update_accent_color()
+  {
+    Gdk::RGBA active_link_color, visited_link_color;
+    Gtk::LinkButton link;
+    auto style_ctx = link.get_style_context();
+    style_ctx->set_state(Gtk::StateFlags::LINK);
+    active_link_color = style_ctx->get_color();
+    style_ctx->set_state(Gtk::StateFlags::VISITED);
+    visited_link_color = style_ctx->get_color();
+
+    if(auto tag = lookup("note-title")) {
+      tag->property_foreground_rgba().set_value(active_link_color);
+    }
+    if(auto tag = lookup("datetime")) {
+      tag->property_foreground_rgba().set_value(visited_link_color);
+    }
+    if(auto tag = lookup("link:broken")) {
+      tag->property_foreground_rgba().set_value(visited_link_color);
+    }
+    m_link_tag->property_foreground_rgba().set_value(active_link_color);
+    m_url_tag->property_foreground_rgba().set_value(active_link_color);
   }
 
   void NoteTagTable::on_highlight_foreground_setting_changed()
