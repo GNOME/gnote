@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2022,2025 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ public:
   bool get_enable_auto_bulleted_lists() const;
   static Ptr create(const NoteTagTable::Ptr & table, Note & note, Preferences & preferences)
     {
-      return Ptr(new NoteBuffer(table, note, preferences));
+      return Glib::make_refptr_for_instance(new NoteBuffer(table, note, preferences));
     }
   ~NoteBuffer();
 
