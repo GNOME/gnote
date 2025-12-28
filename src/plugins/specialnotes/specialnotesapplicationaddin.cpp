@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019,2023 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019,2023,2025 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -89,7 +89,7 @@ void SpecialNotesApplicationAddin::initialize()
   if(!m_initialized) {
     m_initialized = true;
 
-    m_notebook = Notebook::Ptr(new SpecialNotesNotebook(note_manager()));
+    m_notebook = Glib::make_refptr_for_instance(new SpecialNotesNotebook(note_manager()));
     ignote().notebook_manager().add_notebook(Notebook::Ptr(m_notebook));
   }
 }
