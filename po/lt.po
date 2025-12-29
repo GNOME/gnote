@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-09-22 19:03+0000\n"
-"PO-Revision-Date: 2025-09-22 22:24+0300\n"
+"POT-Creation-Date: 2025-12-28 21:28+0000\n"
+"PO-Revision-Date: 2025-12-29 18:56+0200\n"
 "Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:99 src/recentchanges.cpp:121
@@ -880,8 +880,8 @@ msgstr "Pasirinkite piktogramą..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:314
-#: src/utils.cpp:321
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
+#: src/utils.cpp:337
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
@@ -1467,8 +1467,8 @@ msgstr "Paprasta ir lengvai naudojama darbalaukio užrašinė."
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
 #: src/gnote.cpp:294
-msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
-msgstr "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 
 #: src/gnote.cpp:295
 msgid "Homepage"
@@ -1965,7 +1965,7 @@ msgstr "Įskiepiai"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:311
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -2678,87 +2678,87 @@ msgstr "Kilo išskirtinė situacija kuriant SyncServer: %s"
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sinchronizacija nepavyko su šia išskirtine situacija: %s"
 
-#: src/utils.cpp:74
+#: src/utils.cpp:75
 #, c-format
 msgid "Failed to show help: %s"
 msgstr "Nepavyko parodyti žinyno: %s"
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr ""
 "„Gnote žinynas“ nerastas. Patikrinkite, ar programa buvo įdiegta sėkmingai."
 
-#: src/utils.cpp:81
+#: src/utils.cpp:82
 msgid "Help not found"
 msgstr "Žinynas nerastas"
 
 #: src/utils.cpp:99
 #, c-format
-msgid "Failed to open URL: %s"
-msgstr "Nepavyko atverti URL: %s"
+msgid "Failed to open '%s': %s"
+msgstr "Nepavyko atverti '%s': %s"
 
-#: src/utils.cpp:115
+#: src/utils.cpp:131
 msgid "Cannot open location"
 msgstr "Nepavyko atverti vietos"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:176
+#: src/utils.cpp:192
 msgid "Today, %1"
 msgstr "Šiandien: %1"
 
-#: src/utils.cpp:177
+#: src/utils.cpp:193
 msgid "Today"
 msgstr "Šiandien"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:182
+#: src/utils.cpp:198
 msgid "Tomorrow, %1"
 msgstr "Rytoj, %1"
 
-#: src/utils.cpp:183
+#: src/utils.cpp:199
 msgid "Tomorrow"
 msgstr "Rytoj"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:188
+#: src/utils.cpp:204
 msgid "Yesterday, %1"
 msgstr "Vakar, %1"
 
-#: src/utils.cpp:189
+#: src/utils.cpp:205
 msgid "Yesterday"
 msgstr "Vakar"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:194
+#: src/utils.cpp:210
 #, no-c-format
 msgid "%b %d"
 msgstr "%b %d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:214
 msgid "%b %d %Y"
 msgstr "%Y-%m-%d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:203
+#: src/utils.cpp:219
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:214
+#: src/utils.cpp:230
 msgid "No Date"
 msgstr "Nėra datos"
 
-#: src/utils.cpp:308 src/utils.cpp:322
+#: src/utils.cpp:324 src/utils.cpp:338
 msgid "_OK"
 msgstr "_Gerai"
 
-#: src/utils.cpp:317
+#: src/utils.cpp:333
 msgid "_No"
 msgstr "_Ne"
 
-#: src/utils.cpp:318
+#: src/utils.cpp:334
 msgid "_Yes"
 msgstr "_Taip"
 
