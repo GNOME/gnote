@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2019,2022 Aurimas Cernius
+ * Copyright (C) 2017-2019,2022,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 #include <glibmm/init.h>
 #include <glibmm/main.h>
 #include <giomm/init.h>
+#include <gtkmm/init.h>
 
 #include <UnitTest++/UnitTest++.h>
 
@@ -33,6 +34,7 @@ int main(int /*argc*/, char ** /*argv*/)
   setenv("LC_ALL", "en_US", 1);
   Glib::init();
   Gio::init();
+  Gtk::init_gtkmm_internals();
 
   auto main_loop = Glib::MainLoop::create();
   int ret = 0;

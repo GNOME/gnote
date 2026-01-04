@@ -17,6 +17,7 @@ test_sources = [
   'unit/notemanagerutests.cpp',
   'unit/stringutests.cpp',
   'unit/syncmanagerutests.cpp',
+  'unit/texttagenumeratortests.cpp',
   'unit/trieutests.cpp',
   'unit/uriutests.cpp',
   'unit/utiltests.cpp',
