@@ -198,10 +198,6 @@ class Preferences;
           return m_range;
         }
       bool move_next();
-      void reset()
-        {
-          m_buffer->move_mark(m_mark, m_buffer->begin());
-        }
       iterator begin();
       iterator end();
     private:
