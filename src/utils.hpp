@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -172,8 +172,27 @@ class Preferences;
     class TextTagEnumerator
     {
     public:
+      class iterator
+      {
+      public:
+        friend TextTagEnumerator;
+
+        [[nodiscard]] bool operator==(const iterator &other) const;
+        [[nodiscard]] bool operator!=(const iterator &other) const;
+        [[nodiscard]] const TextRange &operator*() const;
+        [[nodiscard]] const TextRange *operator->() const;
+        iterator &operator++();
+        [[nodiscard]] iterator operator++(int);
+      private:
+        iterator(TextTagEnumerator&, bool end);
+
+        TextTagEnumerator &m_enumerator;
+        bool m_end;
+      };
+
       TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
                         const Glib::RefPtr<Gtk::TextTag> & tag);
+      ~TextTagEnumerator();
       const TextRange & current() const
         {
           return m_range;
@@ -183,6 +202,8 @@ class Preferences;
         {
           m_buffer->move_mark(m_mark, m_buffer->begin());
         }
+      iterator begin();
+      iterator end();
     private:
       Glib::RefPtr<Gtk::TextBuffer> m_buffer;
       Glib::RefPtr<Gtk::TextTag>    m_tag;

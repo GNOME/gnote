@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -470,6 +470,7 @@ namespace gnote {
       m_end_mark = m_buffer->create_mark(_end, true);
     }
 
+
     Gtk::TextIter TextRange::start() const
     {
       return m_buffer->get_iter_at_mark(m_start_mark);
@@ -510,6 +511,47 @@ namespace gnote {
     }
 
 
+    TextTagEnumerator::iterator::iterator(TextTagEnumerator &enumerator, bool end)
+      : m_enumerator(enumerator)
+      , m_end(end)
+    {
+    }
+
+    bool TextTagEnumerator::iterator::operator==(const iterator &other) const
+    {
+      return &m_enumerator == &other.m_enumerator && m_end == other.m_end;
+    }
+
+    bool TextTagEnumerator::iterator::operator!=(const iterator &other) const
+    {
+      return !(*this == other);
+    }
+
+    const TextRange &TextTagEnumerator::iterator::operator*() const
+    {
+      return m_enumerator.current();
+    }
+
+    const TextRange *TextTagEnumerator::iterator::operator->() const
+    {
+      return &m_enumerator.current();
+    }
+
+    TextTagEnumerator::iterator &TextTagEnumerator::iterator::operator++()
+    {
+      if(!m_enumerator.move_next()) {
+        m_end = true;
+      }
+
+      return *this;
+    }
+
+    TextTagEnumerator::iterator TextTagEnumerator::iterator::operator++(int)
+    {
+      return ++(*this);
+    }
+
+
     TextTagEnumerator::TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
                                          const Glib::RefPtr<Gtk::TextTag> & tag)
       : m_buffer(buffer)
@@ -517,6 +559,13 @@ namespace gnote {
       , m_mark(buffer->create_mark(buffer->begin(), true))
       , m_range(buffer->begin(), buffer->begin())
     {
+    }
+
+    TextTagEnumerator::~TextTagEnumerator()
+    {
+      if(!m_mark->get_deleted()) {
+        m_buffer->delete_mark(m_mark);
+      }
     }
 
     bool TextTagEnumerator::move_next()
@@ -558,6 +607,32 @@ namespace gnote {
       m_buffer->move_mark(m_mark, iter);
 
       return true;
+    }
+
+    TextTagEnumerator::iterator TextTagEnumerator::begin()
+    {
+      if(m_range.start().starts_tag(m_tag)) {
+        auto end = m_range.end();
+        if(!end.ends_tag(m_tag)) {
+          if(!end.forward_to_tag_toggle(m_tag)) {
+            return iterator(*this, true);
+          }
+
+          m_range.set_end(end);
+        }
+
+        return iterator(*this, false);
+      }
+      if(move_next()) {
+        return iterator(*this, false);
+      }
+
+      return iterator(*this, true);
+    }
+
+    TextTagEnumerator::iterator TextTagEnumerator::end()
+    {
+      return iterator(*this, true);
     }
 
     
