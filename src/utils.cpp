@@ -552,40 +552,39 @@ namespace gnote {
     }
 
 
-    TextTagEnumerator::TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
-                                         const Glib::RefPtr<Gtk::TextTag> & tag)
+    TextTagEnumerator::TextTagEnumerator(Gtk::TextBuffer &buffer, const Glib::RefPtr<Gtk::TextTag> &tag)
       : m_buffer(buffer)
       , m_tag(tag)
-      , m_mark(buffer->create_mark(buffer->begin(), true))
-      , m_range(buffer->begin(), buffer->begin())
+      , m_mark(buffer.create_mark(buffer.begin(), true))
+      , m_range(buffer.begin(), buffer.begin())
     {
     }
 
     TextTagEnumerator::~TextTagEnumerator()
     {
       if(!m_mark->get_deleted()) {
-        m_buffer->delete_mark(m_mark);
+        m_buffer.delete_mark(m_mark);
       }
     }
 
     bool TextTagEnumerator::move_next()
     {
-      Gtk::TextIter iter = m_buffer->get_iter_at_mark(m_mark);
+      auto iter = m_buffer.get_iter_at_mark(m_mark);
 
-      if (iter == m_buffer->end()) {
+      if(iter == m_buffer.end()) {
         m_range.destroy();
-        m_buffer->delete_mark(m_mark);
+        m_buffer.delete_mark(m_mark);
         return false;
       }
 
       if (!iter.forward_to_tag_toggle(m_tag)) {
         m_range.destroy();
-        m_buffer->delete_mark(m_mark);
+        m_buffer.delete_mark(m_mark);
         return false;
       }
 
       if(!iter.starts_tag(m_tag)) {
-        m_buffer->move_mark(m_mark, iter);
+        m_buffer.move_mark(m_mark, iter);
         return move_next();
       }
 
@@ -593,18 +592,18 @@ namespace gnote {
 
       if (!iter.forward_to_tag_toggle(m_tag)) {
         m_range.destroy();
-        m_buffer->delete_mark(m_mark);
+        m_buffer.delete_mark(m_mark);
         return false;
       }
 
       if (!iter.ends_tag(m_tag)) {
-        m_buffer->move_mark(m_mark, iter);
+        m_buffer.move_mark(m_mark, iter);
         return move_next();
       }
 
       m_range.set_end(iter);
 
-      m_buffer->move_mark(m_mark, iter);
+      m_buffer.move_mark(m_mark, iter);
 
       return true;
     }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2024,2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -737,7 +737,7 @@ namespace gnote {
       auto buffer = static_cast<Note&>(note).get_buffer();
 
       // Turn all link:internal to link:broken for the deleted note.
-      utils::TextTagEnumerator enumerator(buffer, link_tag);
+      utils::TextTagEnumerator enumerator(*buffer, link_tag);
       while(enumerator.move_next()) {
         const utils::TextRange & range(enumerator.current());
         if(enumerator.current().text().lowercase() != old_title_lower)

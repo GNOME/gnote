@@ -190,8 +190,7 @@ class Preferences;
         bool m_end;
       };
 
-      TextTagEnumerator(const Glib::RefPtr<Gtk::TextBuffer> & buffer, 
-                        const Glib::RefPtr<Gtk::TextTag> & tag);
+      TextTagEnumerator(Gtk::TextBuffer &buffer, const Glib::RefPtr<Gtk::TextTag> &tag);
       ~TextTagEnumerator();
       const TextRange & current() const
         {
@@ -201,7 +200,7 @@ class Preferences;
       iterator begin();
       iterator end();
     private:
-      Glib::RefPtr<Gtk::TextBuffer> m_buffer;
+      Gtk::TextBuffer &m_buffer;
       Glib::RefPtr<Gtk::TextTag>    m_tag;
       Glib::RefPtr<Gtk::TextMark>   m_mark;
       TextRange                     m_range;

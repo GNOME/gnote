@@ -78,7 +78,7 @@ SUITE(TextTagEnumerator)
 
   TEST_FIXTURE(Fixture, empty_buffer_gives_no_tags)
   {
-    gnote::utils::TextTagEnumerator enumerator(buffer, bold);
+    gnote::utils::TextTagEnumerator enumerator(*buffer, bold);
     CHECK(enumerator.begin() == enumerator.end());
   }
 
@@ -86,7 +86,7 @@ SUITE(TextTagEnumerator)
   {
     buffer->set_text("Hello, World!");
 
-    gnote::utils::TextTagEnumerator enumerator(buffer, bold);
+    gnote::utils::TextTagEnumerator enumerator(*buffer, bold);
     CHECK(enumerator.begin() == enumerator.end());
   }
 
@@ -95,7 +95,7 @@ SUITE(TextTagEnumerator)
     buffer->set_text("Hello, World!");
     buffer->apply_tag(bold, buffer->begin(), buffer->end());
 
-    gnote::utils::TextTagEnumerator enumerator(buffer, bold);
+    gnote::utils::TextTagEnumerator enumerator(*buffer, bold);
     auto begin = enumerator.begin();
     CHECK(begin != enumerator.end());
     CHECK(begin->start() == buffer->begin());
@@ -108,7 +108,7 @@ SUITE(TextTagEnumerator)
     buffer->set_text("Hello, World!");
     bold_text("World");
 
-    gnote::utils::TextTagEnumerator enumerator(buffer, bold);
+    gnote::utils::TextTagEnumerator enumerator(*buffer, bold);
     auto begin = enumerator.begin();
     CHECK(begin != enumerator.end());
     CHECK_EQUAL("World", begin->text());
@@ -118,7 +118,7 @@ SUITE(TextTagEnumerator)
 
   TEST_FIXTURE(Fixture3BoldWords, with_multiple_tagged_pieces_returns_those)
   {
-    gnote::utils::TextTagEnumerator enumerator(buffer, bold);
+    gnote::utils::TextTagEnumerator enumerator(*buffer, bold);
     auto begin = enumerator.begin();
     CHECK(begin != enumerator.end());
     CHECK_EQUAL("Hello", begin->text());
@@ -136,7 +136,7 @@ SUITE(TextTagEnumerator)
   TEST_FIXTURE(Fixture3BoldWords, with_multiple_tagged_pieces_returns_those_ranged_for)
   {
     std::deque<Glib::ustring> words { "Hello", "World", "day" };
-    for(auto range : gnote::utils::TextTagEnumerator(buffer, bold)) {
+    for(auto range : gnote::utils::TextTagEnumerator(*buffer, bold)) {
       CHECK_EQUAL(words.front(), range.text());
       words.pop_front();
     }
@@ -147,7 +147,7 @@ SUITE(TextTagEnumerator)
   TEST_FIXTURE(Fixture3BoldWords, can_replace_found_ranges_when_iterating)
   {
     std::deque<Glib::ustring> replacements { "X", "YYYYY", "ZZZZZZZZ" };
-    for(auto range : gnote::utils::TextTagEnumerator(buffer, bold)) {
+    for(auto range : gnote::utils::TextTagEnumerator(*buffer, bold)) {
       auto replacement = replacements.front();
       replacements.pop_front();
 
@@ -161,7 +161,7 @@ SUITE(TextTagEnumerator)
   TEST_FIXTURE(Fixture3BoldWords, iteration_does_not_leak_marks)
   {
     test_no_mark_leaks([this] {
-      gnote::utils::TextTagEnumerator enumerator(buffer, bold);
+      gnote::utils::TextTagEnumerator enumerator(*buffer, bold);
       auto begin = enumerator.begin();
       while(begin != enumerator.end()) {
         ++begin;
@@ -172,7 +172,7 @@ SUITE(TextTagEnumerator)
   TEST_FIXTURE(Fixture3BoldWords, unfinished_iteration_and_retrieved_range_do_not_leak_marks)
   {
     test_no_mark_leaks([this] {
-      gnote::utils::TextTagEnumerator enumerator(buffer, bold);
+      gnote::utils::TextTagEnumerator enumerator(*buffer, bold);
       auto begin = enumerator.begin();
       auto range = *begin;
       CHECK_EQUAL("Hello", range.text());

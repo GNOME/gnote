@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2023,2025 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023,2025-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -754,7 +754,7 @@ namespace gnote {
   {
     NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
     if (note_tag) {
-      utils::TextTagEnumerator enumerator(m_note.get_buffer(), note_tag);
+      utils::TextTagEnumerator enumerator(*m_note.get_buffer(), note_tag);
       while(enumerator.move_next()) {
         const utils::TextRange & range(enumerator.current());
         widget_swap(note_tag, range.start(), range.end(), true);

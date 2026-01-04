@@ -1,7 +1,7 @@
  /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -561,7 +561,7 @@ namespace gnote {
     const NoteTag::Ptr link_tag = m_tag_table->get_link_tag();
 
     // Replace existing links with the new title.
-    utils::TextTagEnumerator enumerator(get_buffer(), link_tag);
+    utils::TextTagEnumerator enumerator(*get_buffer(), link_tag);
     while (enumerator.move_next()) {
       const utils::TextRange & range(enumerator.current());
       if (range.text().lowercase() != old_title_lower)
