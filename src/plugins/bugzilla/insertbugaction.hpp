@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017 Aurimas Cernius
+ * Copyright (C) 2017,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -31,13 +31,12 @@ class InsertBugAction
   : public gnote::SplitterAction
 {
 public:
-  InsertBugAction(const Gtk::TextIter & start, const Glib::ustring & id,
-                  const BugzillaLink::Ptr & tag);
-  void undo (Gtk::TextBuffer * buffer);
-  void redo (Gtk::TextBuffer * buffer);
-  void merge (EditAction * action);
-  bool can_merge (const EditAction * action) const;
-  void destroy ();
+  InsertBugAction(const Gtk::TextIter &start, const Glib::ustring &id, const BugzillaLink::Ptr &tag);
+  void undo(Gtk::TextBuffer &buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
+  void merge(EditAction &action) override;
+  bool can_merge(const EditAction &action) const override;
+  void destroy() override;
 
 private:
   BugzillaLink::Ptr m_tag;
