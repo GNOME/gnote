@@ -111,8 +111,7 @@ class InsertAction
   : public SplitterAction
 {
 public:
-  InsertAction(const Gtk::TextIter & start, const Glib::ustring & text, int length,
-               const ChopBuffer::Ptr & chop_buf);
+  InsertAction(const Gtk::TextIter &start, const Glib::ustring &text, int length, const ChopBuffer::Ptr &chop_buf);
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   void merge(EditAction &action) override;
@@ -129,8 +128,7 @@ class EraseAction
   : public SplitterAction
 {
 public:
-  EraseAction(const Gtk::TextIter & start_iter, const Gtk::TextIter & end_iter,
-               const ChopBuffer::Ptr & chop_buf);
+  EraseAction(const Gtk::TextIter &start_iter, const Gtk::TextIter &end_iter, const ChopBuffer::Ptr &chop_buf);
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   void merge(EditAction &action) override;
@@ -150,7 +148,7 @@ class TagApplyAction
   : public EditAction
 {
 public:
-  TagApplyAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter & start, const Gtk::TextIter & end);
+  TagApplyAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter &start, const Gtk::TextIter &end);
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   void merge(EditAction &action) override;
@@ -168,7 +166,7 @@ class TagRemoveAction
   : public EditAction
 {
 public:
-  TagRemoveAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter & start, const Gtk::TextIter & end);
+  TagRemoveAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter &start, const Gtk::TextIter &end);
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   void merge(EditAction &action) override;
