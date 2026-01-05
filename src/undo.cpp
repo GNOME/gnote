@@ -587,20 +587,17 @@ namespace gnote {
 
   UndoManager::~UndoManager()
   {
-    clear_action_stack(m_undo_stack);
-    clear_action_stack(m_redo_stack);
   }
   
-  void UndoManager::undo_redo(std::stack<EditAction *> & pop_from,
-                              std::stack<EditAction *> & push_to, bool is_undo)
+  void UndoManager::undo_redo(UndoStack &pop_from, UndoStack &push_to, bool is_undo)
   {
     if (!pop_from.empty()) {
       bool loop = false;
       freeze_undo();
       do {
-        EditAction *action = pop_from.top();
+        auto action = std::move(pop_from.top());
         pop_from.pop();
-        EditActionGroup *group = dynamic_cast<EditActionGroup*>(action);
+        EditActionGroup *group = dynamic_cast<EditActionGroup*>(action.get());
         if(group) {
           // in case of undo group-end is at the top, for redo it's the opposite
           loop = is_undo ? !group->is_start() : group->is_start();
@@ -608,7 +605,7 @@ namespace gnote {
 
         undo_redo_action(*action, is_undo);
 
-        push_to.push(action);
+        push_to.push(std::move(action));
 
       } while(loop);
       thaw_undo();
@@ -634,10 +631,9 @@ namespace gnote {
   }
 
   
-  void UndoManager::clear_action_stack(std::stack<EditAction *> & stack)
+  void UndoManager::clear_action_stack(UndoStack &stack)
   {
     while(!stack.empty()) {
-      delete stack.top();
       stack.pop();
     }
   }
@@ -650,11 +646,11 @@ namespace gnote {
   }
 
 
-  void UndoManager::add_undo_action(EditAction * action)
+  void UndoManager::add_undo_action(EditAction *action)
   {
     DBG_ASSERT(action, "action is NULL");
     if (m_try_merge && !m_undo_stack.empty()) {
-      EditAction *top = m_undo_stack.top();
+      auto &top = m_undo_stack.top();
 
       if(top->can_merge(*action)) {
         // Merging object should handle freeing
@@ -665,10 +661,10 @@ namespace gnote {
       }
     }
 
-    m_undo_stack.push (action);
+    m_undo_stack.push(std::unique_ptr<EditAction>(action));
 
     // Clear the redo stack
-    clear_action_stack (m_redo_stack);
+    clear_action_stack(m_redo_stack);
 
     // Try to merge new incoming actions...
     m_try_merge = true;

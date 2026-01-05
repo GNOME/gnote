@@ -246,7 +246,6 @@ public:
       --m_frozen_cnt;
     }
 
-  void undo_redo(std::stack<EditAction *> &, std::stack<EditAction *> &, bool);
   void undo_redo_action(EditAction & action, bool);
   void clear_undo_history();
   void add_undo_action(EditAction * action);
@@ -255,8 +254,10 @@ public:
     { return m_undo_changed; }
 
 private:
+  typedef std::stack<std::unique_ptr<EditAction>> UndoStack;
 
-  void clear_action_stack(std::stack<EditAction *> &);
+  void undo_redo(UndoStack&, UndoStack&, bool);
+  void clear_action_stack(UndoStack&);
   void on_insert_text(const Gtk::TextIter &, const Glib::ustring &, int);
   void on_delete_range(const Gtk::TextIter &, const Gtk::TextIter &);
   void on_tag_applied(const Glib::RefPtr<Gtk::TextTag> &,
@@ -271,8 +272,8 @@ private:
   bool m_try_merge;
   NoteBuffer &m_buffer;
   ChopBuffer::Ptr m_chop_buffer;
-  std::stack<EditAction *> m_undo_stack;
-  std::stack<EditAction *> m_redo_stack;
+  UndoStack m_undo_stack;
+  UndoStack m_redo_stack;
   sigc::signal<void()> m_undo_changed;
 };
 
