@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016-2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2013,2016-2017,2019,2022,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -222,7 +222,7 @@ public:
    *  it is assume to have a longer life than UndoManager
    *  Actually the UndoManager belong to the buffer.
    */
-  UndoManager(NoteBuffer * buffer);
+  explicit UndoManager(NoteBuffer &buffer);
   ~UndoManager();
   bool get_can_undo()
     {
@@ -272,7 +272,7 @@ private:
 
   guint m_frozen_cnt;
   bool m_try_merge;
-  NoteBuffer * m_buffer;
+  NoteBuffer &m_buffer;
   ChopBuffer::Ptr m_chop_buffer;
   std::stack<EditAction *> m_undo_stack;
   std::stack<EditAction *> m_redo_stack;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2016-2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010,2016-2017,2019,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -584,24 +584,24 @@ namespace gnote {
   }
   
 
-  UndoManager::UndoManager(NoteBuffer * buffer)
+  UndoManager::UndoManager(NoteBuffer &buffer)
     : m_frozen_cnt(0)
     , m_try_merge(false)
     , m_buffer(buffer)
-    , m_chop_buffer(new ChopBuffer(buffer->get_tag_table()))
+    , m_chop_buffer(new ChopBuffer(buffer.get_tag_table()))
   {
     
-    buffer->signal_insert_text_with_tags
+    buffer.signal_insert_text_with_tags
       .connect(sigc::mem_fun(*this, &UndoManager::on_insert_text)); // supposedly before
-    buffer->signal_new_bullet_inserted
+    buffer.signal_new_bullet_inserted
       .connect(sigc::mem_fun(*this, &UndoManager::on_bullet_inserted));
-    buffer->signal_change_text_depth
+    buffer.signal_change_text_depth
       .connect(sigc::mem_fun(*this, &UndoManager::on_change_depth));
-    buffer->signal_erase()
+    buffer.signal_erase()
       .connect(sigc::mem_fun(*this, &UndoManager::on_delete_range), false);
-    buffer->signal_apply_tag()
+    buffer.signal_apply_tag()
       .connect(sigc::mem_fun(*this, &UndoManager::on_tag_applied));
-    buffer->signal_remove_tag()
+    buffer.signal_remove_tag()
       .connect(sigc::mem_fun(*this, &UndoManager::on_tag_removed));
   }
 
@@ -650,7 +650,7 @@ namespace gnote {
       action.undo(m_buffer);
     }
     else {
-      action.redo(m_buffer);
+      action.redo(&m_buffer);
     }
   }
 
@@ -701,10 +701,9 @@ namespace gnote {
   }
 
 
-  void UndoManager::on_insert_text(const Gtk::TextIter & pos, 
-                                   const Glib::ustring & text, int)
+  void UndoManager::on_insert_text(const Gtk::TextIter &pos, const Glib::ustring &text, int)
   {
-    if (m_frozen_cnt) {
+    if(m_frozen_cnt) {
       return;
     }
 
@@ -718,32 +717,31 @@ namespace gnote {
      * add them to the InsertAction.
      */
     m_frozen_cnt++;
-    action->split(pos, m_buffer);
+    action->split(pos, &m_buffer);
     m_frozen_cnt--;
 
     add_undo_action (action);
   }
 
 
-  void UndoManager::on_delete_range(const Gtk::TextIter & start, 
-                                    const Gtk::TextIter & end)
+  void UndoManager::on_delete_range(const Gtk::TextIter &start, const Gtk::TextIter &end)
   {
-    if (m_frozen_cnt) {
+    if(m_frozen_cnt) {
       return;
     }
-    EraseAction *action = new EraseAction (start, end,
-                                           m_chop_buffer);
+
+    EraseAction *action = new EraseAction(start, end, m_chop_buffer);
     /*
      * Delete works a lot like insert here, except
      * there are two positions in the buffer that
      * may need to have their tags removed.
      */
     m_frozen_cnt++;
-    action->split (start, m_buffer);
-    action->split (end, m_buffer);
+    action->split(start, &m_buffer);
+    action->split(end, &m_buffer);
     m_frozen_cnt--;
 
-    add_undo_action (action);
+    add_undo_action(action);
   }
 
 

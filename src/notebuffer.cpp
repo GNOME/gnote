@@ -66,7 +66,7 @@ namespace gnote {
     , m_preferences(preferences)
   {
     set_enable_undo(false);  // for now use our own legacy undo
-    m_undomanager = new UndoManager(this);
+    m_undomanager = new UndoManager(*this);
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));
     signal_mark_set().connect(sigc::mem_fun(*this, &NoteBuffer::mark_set_event));
 
