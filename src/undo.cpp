@@ -197,7 +197,7 @@ namespace gnote {
     if(insert) {
       m_chop.set_end(insert->m_chop.end());
 
-      insert->m_chop.destroy ();
+      insert->m_chop.destroy();
     }
   }
 
@@ -234,10 +234,10 @@ namespace gnote {
   }
 
 
-  void InsertAction::destroy ()
+  void InsertAction::destroy()
   {
-    m_chop.erase ();
-    m_chop.destroy ();
+    m_chop.erase();
+    m_chop.destroy();
   }
 
   
@@ -297,7 +297,7 @@ namespace gnote {
       m_chop.set_end(erase->m_chop.end());
 
       // Delete the marks, leave the text
-      erase->m_chop.destroy ();
+      erase->m_chop.destroy();
     } 
     else {
       m_start = erase->m_start;
@@ -308,7 +308,7 @@ namespace gnote {
                                   erase->m_chop.end());
 
       // Delete the marks and text
-      erase->destroy ();
+      erase->destroy();
     }
   }
 
@@ -333,7 +333,7 @@ namespace gnote {
     // Don't group deletes with backspaces
     if (m_is_forward != erase->m_is_forward) {
       return false;
-  }
+    }
 
     // Group if something other than text was deleted
     // (e.g. an email image)
@@ -355,10 +355,10 @@ namespace gnote {
   }
 
 
-  void EraseAction::destroy ()
+  void EraseAction::destroy()
   {
-    m_chop.erase ();
-    m_chop.destroy ();
+    m_chop.erase();
+    m_chop.destroy();
   }
 
 
@@ -407,7 +407,7 @@ namespace gnote {
   }
 
 
-  void TagApplyAction::destroy ()
+  void TagApplyAction::destroy()
   {
   }
 
@@ -456,7 +456,7 @@ namespace gnote {
   }
 
 
-  void TagRemoveAction::destroy ()
+  void TagRemoveAction::destroy()
   {
   }
 
@@ -515,7 +515,7 @@ namespace gnote {
   }
 
 
-  void ChangeDepthAction::destroy ()
+  void ChangeDepthAction::destroy()
   {
   }
   
@@ -567,7 +567,7 @@ namespace gnote {
   }
 
 
-  void InsertBulletAction::destroy ()
+  void InsertBulletAction::destroy()
   {
   }
   
