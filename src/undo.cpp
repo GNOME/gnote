@@ -41,7 +41,7 @@ namespace gnote {
   {
   }
 
-  void EditActionGroup::merge(EditAction*)
+  void EditActionGroup::merge(EditAction&)
   {
   }
 
@@ -191,10 +191,9 @@ namespace gnote {
   }
 
 
-  void InsertAction::merge (EditAction * action)
+  void InsertAction::merge(EditAction &action)
   {
-    InsertAction * insert = dynamic_cast<InsertAction*>(action);
-    if(insert) {
+    if(auto insert = dynamic_cast<InsertAction*>(&action)) {
       m_chop.set_end(insert->m_chop.end());
 
       insert->m_chop.destroy();
@@ -288,26 +287,24 @@ namespace gnote {
   }
 
 
-  void EraseAction::merge (EditAction * action)
+  void EraseAction::merge(EditAction &action)
   {
-    EraseAction * erase = dynamic_cast<EraseAction*>(action);
-    if (m_start == erase->m_start) {
-      m_end += erase->m_end - erase->m_start;
-      m_chop.set_end(erase->m_chop.end());
+    auto &erase = dynamic_cast<EraseAction&>(action);
+    if (m_start == erase.m_start) {
+      m_end += erase.m_end - erase.m_start;
+      m_chop.set_end(erase.m_chop.end());
 
       // Delete the marks, leave the text
-      erase->m_chop.destroy();
+      erase.m_chop.destroy();
     } 
     else {
-      m_start = erase->m_start;
+      m_start = erase.m_start;
 
       Gtk::TextIter chop_start = m_chop.start();
-      m_chop.buffer()->insert(chop_start,
-                                  erase->m_chop.start(),
-                                  erase->m_chop.end());
+      m_chop.buffer()->insert(chop_start, erase.m_chop.start(), erase.m_chop.end());
 
       // Delete the marks and text
-      erase->destroy();
+      erase.destroy();
     }
   }
 
@@ -394,9 +391,9 @@ namespace gnote {
   }
 
 
-  void TagApplyAction::merge (EditAction * )
+  void TagApplyAction::merge(EditAction&)
   {
-    throw sharp::Exception ("TagApplyActions cannot be merged");
+    throw sharp::Exception("TagApplyActions cannot be merged");
   }
 
 
@@ -443,7 +440,7 @@ namespace gnote {
   }
 
 
-  void TagRemoveAction::merge (EditAction * )
+  void TagRemoveAction::merge(EditAction&)
   {
     throw sharp::Exception ("TagRemoveActions cannot be merged");
   }
@@ -502,9 +499,9 @@ namespace gnote {
   }
 
 
-  void ChangeDepthAction::merge (EditAction * )
+  void ChangeDepthAction::merge(EditAction&)
   {
-    throw sharp::Exception ("ChangeDepthActions cannot be merged");
+    throw sharp::Exception("ChangeDepthActions cannot be merged");
   }
 
 
@@ -554,9 +551,9 @@ namespace gnote {
   }
 
 
-  void InsertBulletAction::merge (EditAction * )
+  void InsertBulletAction::merge(EditAction&)
   {
-    throw sharp::Exception ("InsertBulletActions cannot be merged");
+    throw sharp::Exception("InsertBulletActions cannot be merged");
   }
 
 
@@ -667,7 +664,7 @@ namespace gnote {
       if(top->can_merge(*action)) {
         // Merging object should handle freeing
         // action's resources, if needed.
-        top->merge (action);
+        top->merge(*action);
         delete action;
         return;
       }
