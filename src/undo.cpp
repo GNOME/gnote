@@ -45,7 +45,7 @@ namespace gnote {
   {
   }
 
-  bool EditActionGroup::can_merge(const EditAction*) const
+  bool EditActionGroup::can_merge(const EditAction&) const
   {
     return false;
   }
@@ -202,31 +202,30 @@ namespace gnote {
   }
 
 
-  bool InsertAction::can_merge (const EditAction * action) const
+  bool InsertAction::can_merge(const EditAction &action) const
   {
-    const InsertAction * insert = dynamic_cast<const InsertAction*>(action);
-    if (insert == NULL) {
+    const InsertAction *insert = dynamic_cast<const InsertAction*>(&action);
+    if(insert == nullptr) {
       return false;
     }
 
     // Don't group text pastes
-    if (m_is_paste || insert->m_is_paste) {
+    if(m_is_paste || insert->m_is_paste) {
       return false;
     }
 
     // Must meet eachother
-    if (insert->m_index != (m_index + m_chop.length())) {
+    if(insert->m_index != (m_index + m_chop.length())) {
       return false;
     }
 
     // Don't group more than one line (inclusive)
-    if (m_chop.text()[0] == '\n') {
+    if(m_chop.text()[0] == '\n') {
       return false;
     }
 
     // Don't group more than one word (exclusive)
-    if ((insert->m_chop.text()[0] == ' ') 
-        || (insert->m_chop.text()[0] == '\t')) {
+    if((insert->m_chop.text()[0] == ' ') || (insert->m_chop.text()[0] == '\t')) {
       return false;
     }
 
@@ -313,41 +312,41 @@ namespace gnote {
   }
 
 
-  bool EraseAction::can_merge (const EditAction * action) const
+  bool EraseAction::can_merge(const EditAction &action) const
   {
-    const EraseAction * erase = dynamic_cast<const EraseAction *>(action);
-    if (erase == NULL) {
+    const EraseAction *erase = dynamic_cast<const EraseAction*>(&action);
+    if(erase == nullptr) {
       return false;
     }
 
     // Don't group separate text cuts
-    if (m_is_cut || erase->m_is_cut) {
+    if(m_is_cut || erase->m_is_cut) {
       return false;
     }
 
     // Must meet eachother
-    if (m_start != (m_is_forward ? erase->m_start : erase->m_end)) {
+    if(m_start != (m_is_forward ? erase->m_start : erase->m_end)) {
       return false;
     }
 
     // Don't group deletes with backspaces
-    if (m_is_forward != erase->m_is_forward) {
+    if(m_is_forward != erase->m_is_forward) {
       return false;
     }
 
     // Group if something other than text was deleted
     // (e.g. an email image)
-    if (m_chop.text().empty() || erase->m_chop.text().empty()) {
+    if(m_chop.text().empty() || erase->m_chop.text().empty()) {
       return true;
     }
 
     // Don't group more than one line (inclusive)
-    if (m_chop.text()[0] == '\n') {
+    if(m_chop.text()[0] == '\n') {
       return false;
     }
 
     // Don't group more than one word (exclusive)
-    if ((erase->m_chop.text()[0] == ' ') || (erase->m_chop.text()[0] == '\t')) {
+    if((erase->m_chop.text()[0] == ' ') || (erase->m_chop.text()[0] == '\t')) {
       return false;
     }
 
@@ -401,7 +400,7 @@ namespace gnote {
   }
 
 
-  bool TagApplyAction::can_merge (const EditAction * ) const
+  bool TagApplyAction::can_merge(const EditAction&) const
   {
     return false;
   }
@@ -450,7 +449,7 @@ namespace gnote {
   }
 
 
-  bool TagRemoveAction::can_merge (const EditAction * ) const
+  bool TagRemoveAction::can_merge(const EditAction&) const
   {
     return false;
   }
@@ -509,7 +508,7 @@ namespace gnote {
   }
 
 
-  bool ChangeDepthAction::can_merge (const EditAction * ) const
+  bool ChangeDepthAction::can_merge(const EditAction&) const
   {
     return false;
   }
@@ -561,7 +560,7 @@ namespace gnote {
   }
 
 
-  bool InsertBulletAction::can_merge (const EditAction * ) const
+  bool InsertBulletAction::can_merge(const EditAction&) const
   {
     return false;
   }
@@ -665,7 +664,7 @@ namespace gnote {
     if (m_try_merge && !m_undo_stack.empty()) {
       EditAction *top = m_undo_stack.top();
 
-      if (top->can_merge (action)) {
+      if(top->can_merge(*action)) {
         // Merging object should handle freeing
         // action's resources, if needed.
         top->merge (action);

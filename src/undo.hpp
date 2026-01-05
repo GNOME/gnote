@@ -44,7 +44,7 @@ public:
   virtual void undo(Gtk::TextBuffer &buffer) = 0;
   virtual void redo(Gtk::TextBuffer &buffer) = 0;
   virtual void merge (EditAction * action) = 0;
-  virtual bool can_merge (const EditAction * action) const = 0;
+  virtual bool can_merge(const EditAction &action) const = 0;
   virtual void destroy() = 0;
 };
 
@@ -56,7 +56,7 @@ public:
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction *action) override;
-  virtual bool can_merge(const EditAction *action) const override;
+  bool can_merge(const EditAction &action) const override;
   void destroy() override;
   bool is_start() const
     {
@@ -117,7 +117,7 @@ public:
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
-  virtual bool can_merge(const EditAction * action) const override;
+  bool can_merge(const EditAction &action) const override;
   void destroy() override;
 
 private:
@@ -135,7 +135,7 @@ public:
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
-  virtual bool can_merge(const EditAction * action) const override;
+  bool can_merge(const EditAction &action) const override;
   void destroy() override;
 
 private:
@@ -155,7 +155,7 @@ public:
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
-  virtual bool can_merge(const EditAction * action) const override;
+  bool can_merge(const EditAction &action) const override;
   void destroy() override;
 
 private:
@@ -173,7 +173,7 @@ public:
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
-  virtual bool can_merge(const EditAction * action) const override;
+  bool can_merge(const EditAction &action) const override;
   void destroy() override;
 private:
   Glib::RefPtr<Gtk::TextTag> m_tag;
@@ -190,7 +190,7 @@ public:
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
-  virtual bool can_merge(const EditAction * action) const override;
+  bool can_merge(const EditAction &action) const override;
   void destroy() override;
 private:
   int m_line;
@@ -207,7 +207,7 @@ public:
   void undo(Gtk::TextBuffer &buffer) override;
   void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
-  virtual bool can_merge(const EditAction * action) const override;
+  bool can_merge(const EditAction &action) const override;
   void destroy() override;
 private:
   int m_offset;
