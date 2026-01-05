@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2022,2025 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2022,2025-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -133,7 +133,7 @@ private:
   typedef void (NoteBuffer::*DepthAction)(Gtk::TextIter & iter);
   bool handle_tab(DepthAction depth_action);
 
-  UndoManager           *m_undomanager;
+  std::unique_ptr<UndoManager> m_undomanager;
   static const gunichar s_indent_bullets[];
 
   // GODDAMN Gtk::TextBuffer. I hate you. Hate Hate Hate.

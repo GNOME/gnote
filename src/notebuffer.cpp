@@ -61,12 +61,11 @@ namespace gnote {
 
   NoteBuffer::NoteBuffer(const NoteTagTable::Ptr & tags, Note & note_, Preferences & preferences)
     : Gtk::TextBuffer(tags)
-    , m_undomanager(NULL)
     , m_note(note_)
     , m_preferences(preferences)
   {
     set_enable_undo(false);  // for now use our own legacy undo
-    m_undomanager = new UndoManager(*this);
+    m_undomanager = std::make_unique<UndoManager>(*this);
     signal_insert().connect(sigc::mem_fun(*this, &NoteBuffer::text_insert_event));
     signal_mark_set().connect(sigc::mem_fun(*this, &NoteBuffer::mark_set_event));
 
@@ -79,7 +78,6 @@ namespace gnote {
 
   NoteBuffer::~NoteBuffer()
   {
-    delete m_undomanager;
   }
 
   void NoteBuffer::toggle_active_tag(const Glib::ustring & tag_name)
