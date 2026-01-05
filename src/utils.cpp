@@ -529,12 +529,12 @@ namespace gnote {
 
     const TextRange &TextTagEnumerator::iterator::operator*() const
     {
-      return m_enumerator.current();
+      return m_enumerator.m_range;
     }
 
     const TextRange *TextTagEnumerator::iterator::operator->() const
     {
-      return &m_enumerator.current();
+      return &m_enumerator.m_range;
     }
 
     TextTagEnumerator::iterator &TextTagEnumerator::iterator::operator++()
