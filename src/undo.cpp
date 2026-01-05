@@ -646,7 +646,7 @@ namespace gnote {
   }
 
 
-  void UndoManager::add_undo_action(EditAction *action)
+  void UndoManager::add_undo_action(std::unique_ptr<EditAction> &&action)
   {
     DBG_ASSERT(action, "action is NULL");
     if (m_try_merge && !m_undo_stack.empty()) {
@@ -656,12 +656,11 @@ namespace gnote {
         // Merging object should handle freeing
         // action's resources, if needed.
         top->merge(*action);
-        delete action;
         return;
       }
     }
 
-    m_undo_stack.push(std::unique_ptr<EditAction>(action));
+    m_undo_stack.push(std::move(action));
 
     // Clear the redo stack
     clear_action_stack(m_redo_stack);
@@ -682,9 +681,7 @@ namespace gnote {
       return;
     }
 
-    InsertAction *action = new InsertAction (pos,
-                                             text, text.length(),
-                                             m_chop_buffer);
+    auto action = std::make_unique<InsertAction>(pos, text, text.length(), m_chop_buffer);
 
     /*
      * If this insert occurs in the middle of any
@@ -695,7 +692,7 @@ namespace gnote {
     action->split(pos, m_buffer);
     m_frozen_cnt--;
 
-    add_undo_action (action);
+    add_undo_action(std::move(action));
   }
 
 
@@ -705,7 +702,7 @@ namespace gnote {
       return;
     }
 
-    EraseAction *action = new EraseAction(start, end, m_chop_buffer);
+    auto action = std::make_unique<EraseAction>(start, end, m_chop_buffer);
     /*
      * Delete works a lot like insert here, except
      * there are two positions in the buffer that
@@ -716,7 +713,7 @@ namespace gnote {
     action->split(end, m_buffer);
     m_frozen_cnt--;
 
-    add_undo_action(action);
+    add_undo_action(std::move(action));
   }
 
 
@@ -728,8 +725,7 @@ namespace gnote {
       return;
     }
     if (NoteTagTable::tag_is_undoable (tag)) {
-      add_undo_action (new TagApplyAction (tag, start_char,
-                                           end_char));
+      add_undo_action(std::make_unique<TagApplyAction>(tag, start_char, end_char));
     }
   }
 
@@ -742,8 +738,7 @@ namespace gnote {
       return;
     }
     if (NoteTagTable::tag_is_undoable (tag)) {
-      add_undo_action (new TagRemoveAction (tag, start_char,
-                                            end_char));
+      add_undo_action(std::make_unique<TagRemoveAction>(tag, start_char, end_char));
     }
   }
 
@@ -753,7 +748,7 @@ namespace gnote {
     if(m_frozen_cnt) {
       return;
     }
-    add_undo_action(new ChangeDepthAction(line, direction));
+    add_undo_action(std::make_unique<ChangeDepthAction>(line, direction));
   }
 
   void UndoManager::on_bullet_inserted(int offset, int depth)
@@ -761,7 +756,7 @@ namespace gnote {
     if(m_frozen_cnt) {
       return;
     }
-    add_undo_action(new InsertBulletAction(offset, depth));
+    add_undo_action(std::make_unique<InsertBulletAction>(offset, depth));
   }
 
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -239,13 +239,13 @@ namespace gnote {
   void NoteEditor::on_paste_start()
   {
     auto buffer = std::dynamic_pointer_cast<NoteBuffer>(get_buffer());
-    buffer->undoer().add_undo_action(new EditActionGroup(true));
+    buffer->undoer().add_undo_action(std::make_unique<EditActionGroup>(true));
   }
 
   void NoteEditor::on_paste_end()
   {
     auto buffer = std::dynamic_pointer_cast<NoteBuffer>(get_buffer());
-    buffer->undoer().add_undo_action(new EditActionGroup(false));
+    buffer->undoer().add_undo_action(std::make_unique<EditActionGroup>(false));
   }
 
 

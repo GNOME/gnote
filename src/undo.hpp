@@ -246,9 +246,9 @@ public:
       --m_frozen_cnt;
     }
 
-  void undo_redo_action(EditAction & action, bool);
+  void undo_redo_action(EditAction &action, bool);
   void clear_undo_history();
-  void add_undo_action(EditAction * action);
+  void add_undo_action(std::unique_ptr<EditAction> &&action);
 
   sigc::signal<void()> & signal_undo_changed()
     { return m_undo_changed; }
