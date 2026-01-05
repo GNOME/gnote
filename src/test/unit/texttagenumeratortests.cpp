@@ -180,7 +180,6 @@ SUITE(TextTagEnumerator)
       auto begin = enumerator.begin();
       auto range = *begin;
       CHECK_EQUAL("Hello", range.text());
-      range.destroy(); // TODO: this should happen auto in destructor
     });
   }
 }

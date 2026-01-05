@@ -471,6 +471,59 @@ namespace gnote {
     }
 
 
+    TextRange::TextRange(const TextRange &other)
+    {
+      copy_from(other);
+    }
+
+
+    TextRange::TextRange(TextRange &&other)
+    {
+      move_from(std::move(other));
+    }
+
+
+    const TextRange &TextRange::operator=(const TextRange &other)
+    {
+      copy_from(other);
+      return *this;
+    }
+
+
+    const TextRange &TextRange::operator=(TextRange &&other)
+    {
+      move_from(std::move(other));
+      return *this;
+    }
+
+
+    void TextRange::copy_from(const TextRange &other)
+    {
+      m_buffer = other.buffer();
+      m_start_mark = m_buffer->create_mark(other.start());
+      m_end_mark = m_buffer->create_mark(other.end());
+    }
+
+
+    void TextRange::move_from(TextRange &&other)
+    {
+      m_buffer = std::move(other.m_buffer);
+      m_start_mark = std::move(other.m_start_mark);
+      m_end_mark = std::move(other.m_end_mark);
+    }
+
+
+    TextRange::~TextRange()
+    {
+      if(m_start_mark && !m_start_mark->get_deleted()) {
+        m_buffer->delete_mark(m_start_mark);
+      }
+      if(m_end_mark && !m_end_mark->get_deleted()) {
+        m_buffer->delete_mark(m_end_mark);
+      }
+    }
+
+
     Gtk::TextIter TextRange::start() const
     {
       return m_buffer->get_iter_at_mark(m_start_mark);
@@ -497,12 +550,6 @@ namespace gnote {
       Gtk::TextIter start_iter = start();
       Gtk::TextIter end_iter = end();
       m_buffer->erase(start_iter, end_iter);
-    }
-
-    void TextRange::destroy()
-    {
-      m_buffer->delete_mark(m_start_mark);
-      m_buffer->delete_mark(m_end_mark);
     }
 
     void TextRange::remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag)
@@ -580,13 +627,11 @@ namespace gnote {
       auto iter = m_buffer.get_iter_at_mark(m_mark);
 
       if(iter == m_buffer.end()) {
-        m_range.destroy();
         m_buffer.delete_mark(m_mark);
         return false;
       }
 
       if (!iter.forward_to_tag_toggle(m_tag)) {
-        m_range.destroy();
         m_buffer.delete_mark(m_mark);
         return false;
       }
@@ -599,7 +644,6 @@ namespace gnote {
       m_range.set_start(iter);
 
       if (!iter.forward_to_tag_toggle(m_tag)) {
-        m_range.destroy();
         m_buffer.delete_mark(m_mark);
         return false;
       }

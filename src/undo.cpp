@@ -190,8 +190,6 @@ namespace gnote {
   {
     if(auto insert = dynamic_cast<InsertAction*>(&action)) {
       m_chop.set_end(insert->m_chop.end());
-
-      insert->m_chop.destroy();
     }
   }
 
@@ -230,7 +228,6 @@ namespace gnote {
   void InsertAction::destroy()
   {
     m_chop.erase();
-    m_chop.destroy();
   }
 
   
@@ -288,18 +285,12 @@ namespace gnote {
     if (m_start == erase.m_start) {
       m_end += erase.m_end - erase.m_start;
       m_chop.set_end(erase.m_chop.end());
-
-      // Delete the marks, leave the text
-      erase.m_chop.destroy();
     } 
     else {
       m_start = erase.m_start;
 
       Gtk::TextIter chop_start = m_chop.start();
       m_chop.buffer()->insert(chop_start, erase.m_chop.start(), erase.m_chop.end());
-
-      // Delete the marks and text
-      erase.destroy();
     }
   }
 
@@ -349,7 +340,6 @@ namespace gnote {
   void EraseAction::destroy()
   {
     m_chop.erase();
-    m_chop.destroy();
   }
 
 

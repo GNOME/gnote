@@ -142,7 +142,12 @@ class Preferences;
     {
     public:
       TextRange();
-      TextRange(const Gtk::TextIter & start, const Gtk::TextIter & end);
+      TextRange(const Gtk::TextIter &start, const Gtk::TextIter &end);
+      TextRange(const TextRange &other);
+      TextRange(TextRange &&other);
+      const TextRange &operator=(const TextRange &other);
+      const TextRange &operator=(TextRange &&other);
+      ~TextRange();
       const Glib::RefPtr<Gtk::TextBuffer> & buffer() const
         {
           return m_buffer;
@@ -160,9 +165,11 @@ class Preferences;
       Gtk::TextIter end() const;
       void set_end(const Gtk::TextIter &);  
       void erase();
-      void destroy();
       void remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag);
     private:
+      void copy_from(const TextRange &other);
+      void move_from(TextRange &&other);
+
       Glib::RefPtr<Gtk::TextBuffer> m_buffer;
       Glib::RefPtr<Gtk::TextMark>   m_start_mark;
       Glib::RefPtr<Gtk::TextMark>   m_end_mark;
