@@ -114,6 +114,10 @@ SUITE(TextTagEnumerator)
     CHECK_EQUAL("World", begin->text());
     ++begin;
     CHECK(begin == enumerator.end());
+
+    // iterating over the same enumerator gives end right away
+    auto begin2 = enumerator.begin();
+    CHECK(begin2 == enumerator.end());
   }
 
   TEST_FIXTURE(Fixture3BoldWords, with_multiple_tagged_pieces_returns_those)
