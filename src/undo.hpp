@@ -42,7 +42,7 @@ class EditAction
 public:
   virtual ~EditAction() {}
   virtual void undo(Gtk::TextBuffer &buffer) = 0;
-  virtual void redo (Gtk::TextBuffer * buffer) = 0;
+  virtual void redo(Gtk::TextBuffer &buffer) = 0;
   virtual void merge (EditAction * action) = 0;
   virtual bool can_merge (const EditAction * action) const = 0;
   virtual void destroy () = 0;
@@ -54,7 +54,7 @@ class EditActionGroup
 public:
   EditActionGroup(bool start);
   void undo(Gtk::TextBuffer &buffer) override;
-  virtual void redo(Gtk::TextBuffer *buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction *action) override;
   virtual bool can_merge(const EditAction *action) const override;
   virtual void destroy() override;
@@ -115,7 +115,7 @@ public:
   InsertAction(const Gtk::TextIter & start, const Glib::ustring & text, int length,
                const ChopBuffer::Ptr & chop_buf);
   void undo(Gtk::TextBuffer &buffer) override;
-  virtual void redo(Gtk::TextBuffer * buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
   virtual bool can_merge(const EditAction * action) const override;
   virtual void destroy() override;
@@ -133,7 +133,7 @@ public:
   EraseAction(const Gtk::TextIter & start_iter, const Gtk::TextIter & end_iter,
                const ChopBuffer::Ptr & chop_buf);
   void undo(Gtk::TextBuffer &buffer) override;
-  virtual void redo(Gtk::TextBuffer * buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
   virtual bool can_merge(const EditAction * action) const override;
   virtual void destroy() override;
@@ -153,7 +153,7 @@ class TagApplyAction
 public:
   TagApplyAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter & start, const Gtk::TextIter & end);
   void undo(Gtk::TextBuffer &buffer) override;
-  virtual void redo(Gtk::TextBuffer * buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
   virtual bool can_merge(const EditAction * action) const override;
   virtual void destroy() override;
@@ -171,7 +171,7 @@ class TagRemoveAction
 public:
   TagRemoveAction(const Glib::RefPtr<Gtk::TextTag> &, const Gtk::TextIter & start, const Gtk::TextIter & end);
   void undo(Gtk::TextBuffer &buffer) override;
-  virtual void redo(Gtk::TextBuffer * buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
   virtual bool can_merge(const EditAction * action) const override;
   virtual void destroy() override;
@@ -188,7 +188,7 @@ class ChangeDepthAction
 public:
   ChangeDepthAction(int line, bool direction);
   void undo(Gtk::TextBuffer &buffer) override;
-  virtual void redo(Gtk::TextBuffer * buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
   virtual bool can_merge(const EditAction * action) const override;
   virtual void destroy() override;
@@ -205,7 +205,7 @@ class InsertBulletAction
 public:
   InsertBulletAction(int offset, int depth);
   void undo(Gtk::TextBuffer &buffer) override;
-  virtual void redo(Gtk::TextBuffer * buffer) override;
+  void redo(Gtk::TextBuffer &buffer) override;
   virtual void merge(EditAction * action) override;
   virtual bool can_merge(const EditAction * action) const override;
   virtual void destroy() override;

@@ -37,7 +37,7 @@ namespace gnote {
   {
   }
 
-  void EditActionGroup::redo(Gtk::TextBuffer*)
+  void EditActionGroup::redo(Gtk::TextBuffer&)
   {
   }
 
@@ -179,17 +179,15 @@ namespace gnote {
   }
 
 
-  void InsertAction::redo (Gtk::TextBuffer * buffer)
+  void InsertAction::redo(Gtk::TextBuffer &buffer)
   {
-    remove_split_tags (buffer);
+    remove_split_tags(&buffer);
 
-    Gtk::TextIter idx_iter = buffer->get_iter_at_offset (m_index);
-    buffer->insert (idx_iter, m_chop.start(), m_chop.end());
+    auto idx_iter = buffer.get_iter_at_offset(m_index);
+    buffer.insert(idx_iter, m_chop.start(), m_chop.end());
 
-    buffer->move_mark (buffer->get_selection_bound(), 
-                       buffer->get_iter_at_offset (m_index));
-    buffer->move_mark (buffer->get_insert(),
-                       buffer->get_iter_at_offset (m_index + m_chop.length()));
+    buffer.move_mark(buffer.get_selection_bound(), buffer.get_iter_at_offset(m_index));
+    buffer.move_mark(buffer.get_insert(), buffer.get_iter_at_offset(m_index + m_chop.length()));
   }
 
 
@@ -279,17 +277,15 @@ namespace gnote {
   }
 
 
-  void EraseAction::redo (Gtk::TextBuffer * buffer)
+  void EraseAction::redo(Gtk::TextBuffer &buffer)
   {
-    remove_split_tags (buffer);
+    remove_split_tags(&buffer);
 
-    Gtk::TextIter start_iter = buffer->get_iter_at_offset (m_start);
-    Gtk::TextIter end_iter = buffer->get_iter_at_offset (m_end);
-    buffer->erase (start_iter, end_iter);
-    buffer->move_mark (buffer->get_insert(), 
-                       buffer->get_iter_at_offset (m_start));
-    buffer->move_mark (buffer->get_selection_bound(), 
-                       buffer->get_iter_at_offset (m_start));
+    Gtk::TextIter start_iter = buffer.get_iter_at_offset(m_start);
+    Gtk::TextIter end_iter = buffer.get_iter_at_offset(m_end);
+    buffer.erase(start_iter, end_iter);
+    buffer.move_mark(buffer.get_insert(), buffer.get_iter_at_offset(m_start));
+    buffer.move_mark(buffer.get_selection_bound(), buffer.get_iter_at_offset(m_start));
   }
 
 
@@ -388,15 +384,14 @@ namespace gnote {
   }
 
 
-  void TagApplyAction::redo (Gtk::TextBuffer * buffer)
+  void TagApplyAction::redo(Gtk::TextBuffer &buffer)
   {
-    Gtk::TextIter start_iter, end_iter;
-    start_iter = buffer->get_iter_at_offset (m_start);
-    end_iter = buffer->get_iter_at_offset (m_end);
+    auto start_iter = buffer.get_iter_at_offset(m_start);
+    auto end_iter = buffer.get_iter_at_offset(m_end);
 
-    buffer->move_mark (buffer->get_selection_bound(), start_iter);
-    buffer->apply_tag (m_tag, start_iter, end_iter);
-    buffer->move_mark (buffer->get_insert(), end_iter);
+    buffer.move_mark(buffer.get_selection_bound(), start_iter);
+    buffer.apply_tag(m_tag, start_iter, end_iter);
+    buffer.move_mark(buffer.get_insert(), end_iter);
   }
 
 
@@ -438,15 +433,14 @@ namespace gnote {
   }
 
 
-  void TagRemoveAction::redo (Gtk::TextBuffer * buffer)
+  void TagRemoveAction::redo(Gtk::TextBuffer &buffer)
   {
-    Gtk::TextIter start_iter, end_iter;
-    start_iter = buffer->get_iter_at_offset (m_start);
-    end_iter = buffer->get_iter_at_offset (m_end);
+    Gtk::TextIter start_iter = buffer.get_iter_at_offset(m_start);
+    Gtk::TextIter end_iter = buffer.get_iter_at_offset(m_end);
 
-    buffer->move_mark (buffer->get_selection_bound(), start_iter);
-    buffer->remove_tag (m_tag, start_iter, end_iter);
-    buffer->move_mark (buffer->get_insert(), end_iter);
+    buffer.move_mark(buffer.get_selection_bound(), start_iter);
+    buffer.remove_tag(m_tag, start_iter, end_iter);
+    buffer.move_mark(buffer.get_insert(), end_iter);
   }
 
 
@@ -492,21 +486,19 @@ namespace gnote {
   }
 
 
-  void ChangeDepthAction::redo (Gtk::TextBuffer * buffer)
+  void ChangeDepthAction::redo(Gtk::TextBuffer &buffer)
   {
-    Gtk::TextIter iter = buffer->get_iter_at_line (m_line);
-
-    NoteBuffer* note_buffer = dynamic_cast<NoteBuffer*>(buffer);
-    if(note_buffer) {    
-      if (m_direction) {
-        note_buffer->increase_depth (iter);
+    if(auto note_buffer = dynamic_cast<NoteBuffer*>(&buffer)) {
+      auto iter = buffer.get_iter_at_line(m_line);
+      if(m_direction) {
+        note_buffer->increase_depth(iter);
       } 
       else {
-        note_buffer->decrease_depth (iter);
+        note_buffer->decrease_depth(iter);
       }
 
-      buffer->move_mark (buffer->get_insert(), iter);
-      buffer->move_mark (buffer->get_selection_bound(), iter);
+      buffer.move_mark(buffer.get_insert(), iter);
+      buffer.move_mark(buffer.get_selection_bound(), iter);
     }
   }
 
@@ -551,15 +543,15 @@ namespace gnote {
   }
 
 
-  void InsertBulletAction::redo (Gtk::TextBuffer * buffer)
+  void InsertBulletAction::redo(Gtk::TextBuffer &buffer)
   {
-    Gtk::TextIter iter = buffer->get_iter_at_offset (m_offset);
-    iter = buffer->insert (iter, "\n");
+    auto iter = buffer.get_iter_at_offset(m_offset);
+    iter = buffer.insert(iter, "\n");
 
-    dynamic_cast<NoteBuffer*>(buffer)->insert_bullet(iter, m_depth);
+    dynamic_cast<NoteBuffer&>(buffer).insert_bullet(iter, m_depth);
 
-    buffer->move_mark (buffer->get_insert(), iter);
-    buffer->move_mark (buffer->get_selection_bound(), iter);
+    buffer.move_mark(buffer.get_insert(), iter);
+    buffer.move_mark(buffer.get_selection_bound(), iter);
   }
 
 
@@ -646,7 +638,7 @@ namespace gnote {
       action.undo(m_buffer);
     }
     else {
-      action.redo(&m_buffer);
+      action.redo(m_buffer);
     }
   }
 
