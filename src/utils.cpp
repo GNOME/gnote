@@ -558,11 +558,19 @@ namespace gnote {
       , m_mark(buffer.create_mark(buffer.begin(), true))
       , m_range(buffer.begin(), buffer.begin())
     {
+      if(m_range.start().starts_tag(m_tag)) {
+        auto end = m_range.end();
+        end.forward_to_tag_toggle(m_tag);
+        m_range.set_end(end);
+      }
+      else if(!move_next()) {
+        m_mark.reset();
+      }
     }
 
     TextTagEnumerator::~TextTagEnumerator()
     {
-      if(!m_mark->get_deleted()) {
+      if(m_mark && !m_mark->get_deleted()) {
         m_buffer.delete_mark(m_mark);
       }
     }
@@ -610,23 +618,7 @@ namespace gnote {
 
     TextTagEnumerator::iterator TextTagEnumerator::begin()
     {
-      if(m_range.start().starts_tag(m_tag)) {
-        auto end = m_range.end();
-        if(!end.ends_tag(m_tag)) {
-          if(!end.forward_to_tag_toggle(m_tag)) {
-            return iterator(*this, true);
-          }
-
-          m_range.set_end(end);
-        }
-
-        return iterator(*this, false);
-      }
-      if(move_next()) {
-        return iterator(*this, false);
-      }
-
-      return iterator(*this, true);
+      return iterator(*this, !bool(m_mark) || m_mark->get_deleted());
     }
 
     TextTagEnumerator::iterator TextTagEnumerator::end()
