@@ -45,13 +45,13 @@ namespace bugzilla {
 
     m_tag->set_widget_location(Glib::RefPtr<Gtk::TextMark>());
 
-    apply_split_tag(&buffer);
+    apply_split_tag(buffer);
   }
 
 
   void InsertBugAction::redo(Gtk::TextBuffer &buffer)
   {
-    remove_split_tags(&buffer);
+    remove_split_tags(buffer);
 
     Gtk::TextIter cursor = buffer.get_iter_at_offset(m_offset);
 
