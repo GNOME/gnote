@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019,2023 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2023,2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -158,9 +158,7 @@ namespace bugzilla {
       buffer->place_cursor (cursor);
 
       Glib::ustring string_id = TO_STRING(id);
-      buffer->undoer().add_undo_action (new InsertBugAction (cursor, 
-                                                             string_id, 
-                                                             link_tag));
+      buffer->undoer().add_undo_action(std::make_unique<InsertBugAction>(cursor, string_id, link_tag));
 
       std::vector<Glib::RefPtr<Gtk::TextTag> > tags;
       tags.push_back(link_tag);
