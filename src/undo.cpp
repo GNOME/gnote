@@ -78,7 +78,7 @@ namespace gnote {
   {
   }
 
-  void SplitterAction::split(Gtk::TextIter iter, Gtk::TextBuffer *buffer)
+  void SplitterAction::split(Gtk::TextIter iter, Gtk::TextBuffer &buffer)
   {
     for(const auto & tag : iter.get_tags()) {
       auto noteTag = std::dynamic_pointer_cast<const NoteTag>(tag);
@@ -94,15 +94,13 @@ namespace gnote {
         start.backward_to_tag_toggle (tag);
         end.forward_to_tag_toggle (tag);
         add_split_tag (start, end, tag);
-        buffer->remove_tag(tag, start, end);
+        buffer.remove_tag(tag, start, end);
       }
     }
   }
    
 
-  void SplitterAction::add_split_tag(const Gtk::TextIter & start, 
-                                     const Gtk::TextIter & end, 
-                                     const Glib::RefPtr<Gtk::TextTag> tag)
+  void SplitterAction::add_split_tag(const Gtk::TextIter &start, const Gtk::TextIter &end, const Glib::RefPtr<Gtk::TextTag> &tag)
   {
     TagData data;
     data.start = start.get_offset();
@@ -131,34 +129,31 @@ namespace gnote {
   }
 
 
-  void SplitterAction::apply_split_tag(Gtk::TextBuffer * buffer)
+  void SplitterAction::apply_split_tag(Gtk::TextBuffer &buffer)
   {
     for(const auto & tag : m_splitTags) {
-      int offset = get_split_offset ();
+      int offset = get_split_offset();
 
-      Gtk::TextIter start = buffer->get_iter_at_offset (tag.start - offset);
-      Gtk::TextIter end = buffer->get_iter_at_offset (tag.end - offset);
-      buffer->apply_tag(tag.tag, start, end);
+      auto start = buffer.get_iter_at_offset(tag.start - offset);
+      auto end = buffer.get_iter_at_offset(tag.end - offset);
+      buffer.apply_tag(tag.tag, start, end);
     }
   }
 
 
-  void SplitterAction::remove_split_tags(Gtk::TextBuffer *buffer)
+  void SplitterAction::remove_split_tags(Gtk::TextBuffer &buffer)
   {
     for(const auto & tag : m_splitTags) {
-      Gtk::TextIter start = buffer->get_iter_at_offset (tag.start);
-      Gtk::TextIter end = buffer->get_iter_at_offset (tag.end);
-      buffer->remove_tag(tag.tag, start, end);
+      auto start = buffer.get_iter_at_offset(tag.start);
+      auto end = buffer.get_iter_at_offset(tag.end);
+      buffer.remove_tag(tag.tag, start, end);
     }
   }
 
 
-  InsertAction::InsertAction(const Gtk::TextIter & start, 
-                             const Glib::ustring & , int length,
-                             const ChopBuffer::Ptr & chop_buf)
+  InsertAction::InsertAction(const Gtk::TextIter &start, const Glib::ustring&, int length, const ChopBuffer::Ptr &chop_buf)
     : m_index(start.get_offset() - length)
     , m_is_paste(length > 1)
-    
   {
     Gtk::TextIter index_iter = start.get_buffer()->get_iter_at_offset(m_index);
     m_chop = chop_buf->add_chop(index_iter, start);
@@ -175,13 +170,13 @@ namespace gnote {
     buffer.move_mark(buffer.get_insert(), buffer.get_iter_at_offset(m_index - tag_images));
     buffer.move_mark(buffer.get_selection_bound(), buffer.get_iter_at_offset(m_index - tag_images));
 
-    apply_split_tag(&buffer);
+    apply_split_tag(buffer);
   }
 
 
   void InsertAction::redo(Gtk::TextBuffer &buffer)
   {
-    remove_split_tags(&buffer);
+    remove_split_tags(buffer);
 
     auto idx_iter = buffer.get_iter_at_offset(m_index);
     buffer.insert(idx_iter, m_chop.start(), m_chop.end());
@@ -271,13 +266,13 @@ namespace gnote {
                                                  ? m_end - tag_images
                                                  : m_start - tag_images));
 
-    apply_split_tag(&buffer);
+    apply_split_tag(buffer);
   }
 
 
   void EraseAction::redo(Gtk::TextBuffer &buffer)
   {
-    remove_split_tags(&buffer);
+    remove_split_tags(buffer);
 
     Gtk::TextIter start_iter = buffer.get_iter_at_offset(m_start);
     Gtk::TextIter end_iter = buffer.get_iter_at_offset(m_end);
@@ -701,7 +696,7 @@ namespace gnote {
      * add them to the InsertAction.
      */
     m_frozen_cnt++;
-    action->split(pos, &m_buffer);
+    action->split(pos, m_buffer);
     m_frozen_cnt--;
 
     add_undo_action (action);
@@ -721,8 +716,8 @@ namespace gnote {
      * may need to have their tags removed.
      */
     m_frozen_cnt++;
-    action->split(start, &m_buffer);
-    action->split(end, &m_buffer);
+    action->split(start, m_buffer);
+    action->split(end, m_buffer);
     m_frozen_cnt--;
 
     add_undo_action(action);

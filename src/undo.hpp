@@ -86,24 +86,23 @@ public:
     Glib::RefPtr<Gtk::TextTag> tag;
   };
 
-  const utils::TextRange & get_chop() const
+  const utils::TextRange &get_chop() const
     {
       return m_chop;
     }
-  const std::vector<TagData> & get_split_tags() const
+  const std::vector<TagData> &get_split_tags() const
     {
       return m_splitTags;
     }
-  void split(Gtk::TextIter iter, Gtk::TextBuffer *);
-  void add_split_tag(const Gtk::TextIter &, const Gtk::TextIter &, 
-                     const Glib::RefPtr<Gtk::TextTag> tag);
+  void split(Gtk::TextIter iter, Gtk::TextBuffer&);
+  void add_split_tag(const Gtk::TextIter&, const Gtk::TextIter&, const Glib::RefPtr<Gtk::TextTag> &tag);
 protected:
   SplitterAction();
   int get_split_offset() const;
-  void apply_split_tag(Gtk::TextBuffer *);
-  void remove_split_tags(Gtk::TextBuffer *);
+  void apply_split_tag(Gtk::TextBuffer&);
+  void remove_split_tags(Gtk::TextBuffer&);
   std::vector<TagData> m_splitTags;
-  utils::TextRange   m_chop;
+  utils::TextRange m_chop;
 };
 
 
