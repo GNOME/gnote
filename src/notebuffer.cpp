@@ -752,11 +752,8 @@ namespace gnote {
 
   void NoteBuffer::on_tag_changed(const Glib::RefPtr<Gtk::TextTag> & tag, bool)
   {
-    NoteTag::Ptr note_tag = std::dynamic_pointer_cast<NoteTag>(tag);
-    if (note_tag) {
-      utils::TextTagEnumerator enumerator(*m_note.get_buffer(), note_tag);
-      while(enumerator.move_next()) {
-        const utils::TextRange & range(enumerator.current());
+    if(auto note_tag = std::dynamic_pointer_cast<NoteTag>(tag)) {
+      for(const auto &range : utils::TextTagEnumerator(*m_note.get_buffer(), note_tag)) {
         widget_swap(note_tag, range.start(), range.end(), true);
       }
     }
