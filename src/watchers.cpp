@@ -737,11 +737,10 @@ namespace gnote {
       auto buffer = static_cast<Note&>(note).get_buffer();
 
       // Turn all link:internal to link:broken for the deleted note.
-      utils::TextTagEnumerator enumerator(*buffer, link_tag);
-      while(enumerator.move_next()) {
-        const utils::TextRange & range(enumerator.current());
-        if(enumerator.current().text().lowercase() != old_title_lower)
+      for(const auto &range : utils::TextTagEnumerator(*buffer, link_tag)) {
+        if(range.text().lowercase() != old_title_lower) {
           continue;
+        }
 
         buffer->remove_tag(link_tag, range.start(), range.end());
         buffer->apply_tag(broken_link_tag, range.start(), range.end());
