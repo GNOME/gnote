@@ -562,19 +562,18 @@ namespace gnote {
 
     // Replace existing links with the new title.
     Gtk::TextBuffer &buffer = *get_buffer();
-    for(const auto &range : utils::TextTagEnumerator(buffer, link_tag)) {
+    for(auto &range : utils::TextTagEnumerator(buffer, link_tag)) {
       if(range.text().lowercase() != old_title_lower) {
         continue;
       }
 
       if(!rename) {
         DBG_OUT("Removing link tag from text %s", range.text().c_str());
-        buffer.remove_tag(link_tag, range.start(), range.end());
+        range.remove_tag(link_tag);
       }
       else {
         DBG_OUT("Replacing %s with %s", range.text().c_str(), renamed.get_title().c_str());
-        buffer.erase(range.start(), range.end());
-        buffer.insert_with_tag(range.start(), renamed.get_title(), link_tag);
+        range.replace(renamed.get_title(), link_tag);
       }
     }
   }
