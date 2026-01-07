@@ -162,6 +162,31 @@ SUITE(TextTagEnumerator)
     CHECK_EQUAL("=== X, YYYYY! Have a nice ZZZZZZZZ! ===", buffer->get_text());
   }
 
+  TEST_FIXTURE(Fixture3BoldWords, can_replace_found_ranges_when_iterating_using_rage_replace)
+  {
+    auto italic = buffer->create_tag("italic");
+    std::deque<Glib::ustring> replacements { "X", "YYYYY", "ZZZZZZZZ" };
+    for(auto &range : gnote::utils::TextTagEnumerator(*buffer, bold)) {
+      auto replacement = replacements.front();
+      replacements.pop_front();
+      range.replace(replacement, italic);
+      italic.reset(); // only tag first replacement
+
+      CHECK_EQUAL(replacement, range.text());
+      CHECK(!range.start().starts_tag(bold));
+    }
+
+    CHECK_EQUAL("=== X, YYYYY! Have a nice ZZZZZZZZ! ===", buffer->get_text());
+
+    italic = buffer->get_tag_table()->lookup("italic");
+    gnote::utils::TextTagEnumerator enumerator(*buffer, italic);
+    auto begin = enumerator.begin();
+    CHECK_EQUAL("X", begin->text());
+    CHECK(begin->start().starts_tag(italic));
+    ++begin;
+    CHECK(begin == enumerator.end());
+  }
+
   TEST_FIXTURE(Fixture3BoldWords, iteration_does_not_leak_marks)
   {
     test_no_mark_leaks([this] {
