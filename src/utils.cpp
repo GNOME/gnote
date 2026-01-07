@@ -558,6 +558,21 @@ namespace gnote {
     }
 
 
+    void TextRange::replace(const Glib::ustring &replacement, const Glib::RefPtr<Gtk::TextTag> &tag)
+    {
+      erase();
+      m_buffer->insert(start(), replacement);
+      if(replacement.size() > 0) {
+        auto iter = start();
+        iter.forward_chars(replacement.size());
+        set_end(iter);
+      }
+      if(tag) {
+        m_buffer->apply_tag(tag, start(), end());
+      }
+    }
+
+
     TextTagEnumerator::iterator::iterator(TextTagEnumerator &enumerator, bool end)
       : m_enumerator(enumerator)
       , m_end(end)

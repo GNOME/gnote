@@ -166,6 +166,7 @@ class Preferences;
       void set_end(const Gtk::TextIter &);  
       void erase();
       void remove_tag(const Glib::RefPtr<Gtk::TextTag> & tag);
+      void replace(const Glib::ustring &replacement, const Glib::RefPtr<Gtk::TextTag> &tag = 0);
     private:
       void copy_from(const TextRange &other);
       void move_from(TextRange &&other);
