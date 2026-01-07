@@ -187,7 +187,9 @@ class Preferences;
         [[nodiscard]] bool operator==(const iterator &other) const;
         [[nodiscard]] bool operator!=(const iterator &other) const;
         [[nodiscard]] const TextRange &operator*() const;
+        [[nodiscard]] TextRange &operator*();
         [[nodiscard]] const TextRange *operator->() const;
+        [[nodiscard]] TextRange *operator->();
         iterator &operator++();
         [[nodiscard]] iterator operator++(int);
       private:

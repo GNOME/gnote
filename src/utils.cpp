@@ -579,7 +579,17 @@ namespace gnote {
       return m_enumerator.m_range;
     }
 
+    TextRange &TextTagEnumerator::iterator::operator*()
+    {
+      return m_enumerator.m_range;
+    }
+
     const TextRange *TextTagEnumerator::iterator::operator->() const
+    {
+      return &m_enumerator.m_range;
+    }
+
+    TextRange *TextTagEnumerator::iterator::operator->()
     {
       return &m_enumerator.m_range;
     }
