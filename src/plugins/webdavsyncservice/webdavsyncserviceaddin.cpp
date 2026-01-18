@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019-2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -105,18 +105,18 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(Gtk::Window &, E
   m_url_entry = Gtk::make_managed<Gtk::Entry>();
   m_url_entry->set_text(url);
   m_url_entry->signal_changed().connect(requiredPrefChanged);
-  add_row(table, m_url_entry, _("_URL:"), 0);
+  add_row(*table, *m_url_entry, _("_URL:"), 0);
 
   m_username_entry = Gtk::make_managed<Gtk::Entry>();
   m_username_entry->set_text(username);
   m_username_entry->signal_changed().connect(requiredPrefChanged);
-  add_row(table, m_username_entry, _("User_name:"), 1);
+  add_row(*table, *m_username_entry, _("User_name:"), 1);
 
   m_password_entry = Gtk::make_managed<Gtk::Entry>();
   m_password_entry->set_text(password);
   m_password_entry->set_visibility(false);
   m_password_entry->signal_changed().connect(requiredPrefChanged);
-  add_row(table, m_password_entry, _("_Password:"), 2);
+  add_row(*table, *m_password_entry, _("_Password:"), 2);
 
   table->set_hexpand(true);
   table->set_vexpand(false);
@@ -301,15 +301,15 @@ bool WebDavSyncServiceAddin::accept_ssl_cert()
   }
 }
 
-void WebDavSyncServiceAddin::add_row(Gtk::Grid *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row)
+void WebDavSyncServiceAddin::add_row(Gtk::Grid &table, Gtk::Widget &widget, const Glib::ustring &labelText, uint row)
 {
   auto l = Gtk::make_managed<Gtk::Label>(labelText, true);
   l->property_xalign() = 0.0f;
-  table->attach(*l, 0, row);
+  table.attach(*l, 0, row);
 
-  table->attach(*widget, 1, row);
+  table.attach(widget, 1, row);
 
-  l->set_mnemonic_widget(*widget);
+  l->set_mnemonic_widget(widget);
 
   // TODO: Tooltips
 }

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017,2019,2021,2023 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2019,2021,2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -87,7 +87,7 @@ private:
   void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);
   bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const;
   bool accept_ssl_cert();
-  void add_row(Gtk::Grid *table, Gtk::Widget *widget, const Glib::ustring & labelText, uint row);
+  void add_row(Gtk::Grid &table, Gtk::Widget &widget, const Glib::ustring &labelText, uint row);
 
   Gtk::Entry *m_url_entry;
   Gtk::Entry *m_username_entry;
