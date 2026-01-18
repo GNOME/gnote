@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2023,2025 Aurimas Cernius
+ * Copyright (C) 2019-2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -119,13 +119,6 @@ bool GvfsSyncService::test_sync_directory(const Glib::RefPtr<Gio::File> & path, 
 
 bool GvfsSyncService::mount_async(const Glib::RefPtr<Gio::File> & path, const std::function<void(bool, const Glib::ustring &)> & completed, const Glib::RefPtr<Gio::MountOperation> & op)
 {
-  try {
-    path->find_enclosing_mount();
-    return true;
-  }
-  catch(Gio::Error & e) {
-  }
-
   path->mount_enclosing_volume(op, [this, path, completed](Glib::RefPtr<Gio::AsyncResult> & result) {
     Glib::ustring error;
     try {
@@ -147,6 +140,14 @@ bool GvfsSyncService::mount_async(const Glib::RefPtr<Gio::File> & path, const st
 
 bool GvfsSyncService::mount_sync(const Glib::RefPtr<Gio::File> & path, const Glib::RefPtr<Gio::MountOperation> & op)
 {
+  // early check if already mounted
+  try {
+    path->find_enclosing_mount();
+    return true;
+  }
+  catch(Gio::Error & e) {
+  }
+
   bool ret = true;
   CompletionMonitor cond;
   {
