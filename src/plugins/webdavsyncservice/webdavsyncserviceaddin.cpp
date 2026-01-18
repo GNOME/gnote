@@ -307,6 +307,7 @@ void WebDavSyncServiceAddin::add_row(Gtk::Grid &table, Gtk::Widget &widget, cons
   l->property_xalign() = 0.0f;
   table.attach(*l, 0, row);
 
+  widget.set_hexpand(true);
   table.attach(widget, 1, row);
 
   l->set_mnemonic_widget(widget);
