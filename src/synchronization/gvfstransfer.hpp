@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2025 Aurimas Cernius
+ * Copyright (C) 2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,17 +37,26 @@ enum class TransferResult
   FAILURE,
 };
 
-struct FileTransfer
+template <typename FileT>
+struct FileTransferBase
 {
-  FileTransfer(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest)
+  FileTransferBase(const FileT &src, const FileT &dest)
     : source(src)
     , destination(dest)
     , result(TransferResult::NOT_STARTED)
   {}
 
-  Glib::RefPtr<Gio::File> source;
-  Glib::RefPtr<Gio::File> destination;
+  FileT source;
+  FileT destination;
   mutable TransferResult result;
+};
+
+struct FileTransfer
+  : FileTransferBase<Glib::RefPtr<Gio::File>>
+{
+  FileTransfer(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest)
+    : FileTransferBase(src, dest)
+  {}
 };
 
 class GvfsTransferBase
