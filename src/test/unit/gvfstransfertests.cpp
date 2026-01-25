@@ -47,11 +47,19 @@ SUITE(GvfsTransferTests)
 
     void transfer_complete(const std::function<void(TransferResult)> &completion) const
     {
-      result = TransferResult::SUCCESS;
+      if(intermediate_results.empty()) {
+        result = TransferResult::SUCCESS;
+      }
+      else {
+        result = intermediate_results.front();
+        intermediate_results.pop();
+      }
+
       completion(result);
     }
 
     mutable TransferResult result;
+    mutable std::queue<TransferResult> intermediate_results;
     std::function<void(std::function<void()>)> submit_for_completion;
   };
 
@@ -117,9 +125,33 @@ SUITE(GvfsTransferTests)
     TestGvfsTransfer transfer(transfers);
     perform_transfers(transfer);
 
-
     CHECK(TransferResult::SUCCESS == transfers[0].result);
     CHECK(TransferResult::SUCCESS == transfers[1].result);
+  }
+
+  TEST_FIXTURE(Fixture, failures_are_retried)
+  {
+    std::queue<TransferResult> transfer_results;
+    transfer_results.push(TransferResult::FAILURE);
+    std::vector<TestTransfer> transfers;
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+
+    // transfer that fails once
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+    transfers.back().intermediate_results = transfer_results;
+
+    // transfer that fials twice
+    transfer_results.push(TransferResult::FAILURE);
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+    transfers.back().intermediate_results = transfer_results;
+
+    TestGvfsTransfer transfer(transfers);
+    perform_transfers(transfer);
+    CHECK(TransferResult::SUCCESS == transfers[0].result);
+    CHECK(TransferResult::SUCCESS == transfers[1].result);
+    CHECK(transfers[1].intermediate_results.empty());
+    CHECK(TransferResult::SUCCESS == transfers[2].result);
+    CHECK(transfers[2].intermediate_results.empty());
   }
 }
 
