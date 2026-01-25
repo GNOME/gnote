@@ -58,48 +58,66 @@ SUITE(GvfsTransferTests)
 
   typedef gnote::sync::GvfsTransfer<std::vector<TestTransfer>, TestTransfer> TestGvfsTransfer;
 
-
-  TEST(all_files_are_transfered)
+  struct Fixture
   {
     gnote::Monitor monitor;
     std::queue<std::function<void()>> async_queue;
-    bool transfers_complete = false;
-    auto async_transfer = [&monitor, &async_queue](std::function<void()> completion) {
+    bool transfers_complete;
+    std::function<void(std::function<void()>)> async_transfer;
+
+    Fixture()
+      : async_transfer([this](std::function<void()> completion) { submit_transfer(completion); })
+    {
+    }
+
+    void submit_transfer(std::function<void()> completion)
+    {
       gnote::Monitor::Lock guard(monitor);
       async_queue.push(completion);
       monitor.notify_one();
     };
 
+    void perform_transfers(TestGvfsTransfer &transfer)
+    {
+      std::thread tfer_thread([this, &transfer] {
+        transfer.transfer();
+        transfers_complete = true;
+        gnote::Monitor::Lock lock(monitor);
+        monitor.notify_one();
+      });
+
+      while(!transfers_complete) {
+        std::function<void()> func;
+        {
+          gnote::Monitor::Lock guard(monitor);
+          while(async_queue.empty() && !transfers_complete) {
+            monitor.wait(guard);
+          }
+          if(!async_queue.empty()) {
+            func = async_queue.front();
+            async_queue.pop();
+          }
+        }
+        if(func) {
+          func();
+        }
+      }
+
+      tfer_thread.join();
+    }
+  };
+
+
+  TEST_FIXTURE(Fixture, all_files_are_transfered)
+  {
     std::vector<TestTransfer> transfers;
     transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
     transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+
     TestGvfsTransfer transfer(transfers);
+    perform_transfers(transfer);
 
-    std::thread tfer_thread([&monitor, &transfer, &transfers_complete] {
-      transfer.transfer();
-      transfers_complete = true;
-      gnote::Monitor::Lock lock(monitor);
-      monitor.notify_one();
-    });
 
-    while(!transfers_complete) {
-      std::function<void()> func;
-      {
-        gnote::Monitor::Lock guard(monitor);
-        while(async_queue.empty() && !transfers_complete) {
-          monitor.wait(guard);
-        }
-        if(!async_queue.empty()) {
-          func = async_queue.front();
-          async_queue.pop();
-        }
-      }
-      if(func) {
-        func();
-       }
-    }
-
-    tfer_thread.join();
     CHECK(TransferResult::SUCCESS == transfers[0].result);
     CHECK(TransferResult::SUCCESS == transfers[1].result);
   }
