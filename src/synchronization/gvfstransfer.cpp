@@ -26,7 +26,16 @@
 namespace gnote {
 namespace sync {
 
-TransferResult GvfsTransferBase::finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result)
+void GioFileWrapper::copy_to_async(const GioFileWrapper &dest, const std::function<void(TransferResult)> &completion, const Glib::RefPtr<Gio::Cancellable> &cancel_op) const
+{
+  m_file->copy_async(dest.m_file, [this, completion](Glib::RefPtr<Gio::AsyncResult> &result) {
+    auto res = finish_single_transfer(m_file, result);
+    completion(res);
+  }, cancel_op);
+}
+
+
+TransferResult GioFileWrapper::finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result) const
 {
   try {
     if(source->copy_finish(result)) {

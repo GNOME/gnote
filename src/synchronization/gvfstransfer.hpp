@@ -37,6 +37,20 @@ enum class TransferResult
   FAILURE,
 };
 
+class GioFileWrapper
+{
+public:
+  GioFileWrapper(const Glib::RefPtr<Gio::File> &file)
+    : m_file(file)
+  {}
+
+  void copy_to_async(const GioFileWrapper &dest, const std::function<void(TransferResult)> &completion, const Glib::RefPtr<Gio::Cancellable> &cancel_op) const;
+private:
+  TransferResult finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result) const;
+
+  Glib::RefPtr<Gio::File> m_file;
+};
+
 template <typename FileT>
 struct FileTransferBase
 {
@@ -46,13 +60,18 @@ struct FileTransferBase
     , result(TransferResult::NOT_STARTED)
   {}
 
+  void transfer_async(const std::function<void(TransferResult)> &completion, const Glib::RefPtr<Gio::Cancellable> &cancel_op) const
+  {
+    source.copy_to_async(destination, completion, cancel_op);
+  }
+
   FileT source;
   FileT destination;
   mutable TransferResult result;
 };
 
 struct FileTransfer
-  : FileTransferBase<Glib::RefPtr<Gio::File>>
+  : FileTransferBase<GioFileWrapper>
 {
   FileTransfer(const Glib::RefPtr<Gio::File> &src, const Glib::RefPtr<Gio::File> &dest)
     : FileTransferBase(src, dest)
@@ -62,11 +81,10 @@ struct FileTransfer
 class GvfsTransferBase
 {
 protected:
-  static TransferResult finish_single_transfer(const Glib::RefPtr<Gio::File> &source, const Glib::RefPtr<Gio::AsyncResult> &result);
   static unsigned calculate_failure_margin(std::size_t transfers);
 };
 
-template <typename ContainerT>
+template <typename ContainerT, typename FileTransferT = FileTransfer>
 class GvfsTransfer
   : public GvfsTransferBase
 {
@@ -99,19 +117,18 @@ private:
     std::atomic<unsigned> remaining(m_transfers.size());
     std::atomic<unsigned> failures(0);
 
-    for(const FileTransfer &transfer : m_transfers) {
+    for(const FileTransferT &transfer : m_transfers) {
       if(transfer.result == TransferResult::SUCCESS) {
         --remaining;
         continue;
       }
       transfer.result = TransferResult::NOT_STARTED;
-      transfer.source->copy_async(transfer.destination, [this, &transfer, &remaining, &failures](Glib::RefPtr<Gio::AsyncResult> &result) {
-        transfer.result = finish_single_transfer(transfer.source, result);
-        if(transfer.result == TransferResult::FAILURE) {
+      transfer.transfer_async([this, &remaining, &failures](TransferResult result) {
+        if(result == TransferResult::FAILURE) {
           ++failures;
         }
 
-        if(--remaining == 0 || transfer.result == TransferResult::FAILURE) {
+        if(--remaining == 0 || result == TransferResult::FAILURE) {
           Monitor::Lock lock(m_finished);
           m_finished.notify_one();
         }
