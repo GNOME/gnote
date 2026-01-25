@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2025 Aurimas Cernius
+ * Copyright (C) 2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -78,6 +78,9 @@ public:
         if(no_progress) {
           break;
         }
+      }
+      else {
+        failures = 0;
       }
     }
     while(failures > 0 && !m_cancel_op->is_cancelled());
