@@ -106,6 +106,9 @@ public:
           break;
         }
       }
+      else {
+        failures = 0;
+      }
     }
     while(failures > 0 && !m_cancel_op->is_cancelled());
 
