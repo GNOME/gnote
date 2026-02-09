@@ -64,7 +64,74 @@ SUITE(GvfsTransferTests)
   };
 
 
-  typedef gnote::sync::GvfsTransfer<std::vector<TestTransfer>, TestTransfer> TestGvfsTransfer;
+  struct TestLimiterNoLimit
+  {
+    TestLimiterNoLimit()
+      : claims(0)
+      , releases(0)
+    {}
+
+    void claim()
+    {
+      ++claims;
+    }
+
+    void release()
+    {
+      ++releases;
+    }
+
+    int claims;
+    int releases;
+  };
+
+
+  struct TestLimiterFixed
+  {
+    explicit TestLimiterFixed(unsigned max)
+      : m_current(0)
+      , m_limiter(max)
+    {
+      s_max = 0;
+    }
+
+    void claim()
+    {
+      m_limiter.claim();
+      std::unique_lock lock(m_control);
+      if(++m_current > s_max) {
+        s_max = m_current;
+      }
+    }
+
+    void release()
+    {
+      {
+        std::unique_lock lock(m_control);
+        --m_current;
+      }
+      m_limiter.release();
+    }
+
+    static unsigned s_max;
+
+    std::mutex m_control;
+    std::condition_variable m_total_reached;
+    unsigned m_current;
+    gnote::sync::TransferLimiterFixed m_limiter;
+  };
+
+
+  template <typename LimiterT = gnote::sync::TransferLimiterNoLimit>
+  struct TestGvfsTransfer : gnote::sync::GvfsTransfer<std::vector<TestTransfer>, TestTransfer, LimiterT>
+  {
+    template <typename... LimiterArgs>
+    explicit TestGvfsTransfer(const std::vector<TestTransfer> &transfers, const LimiterArgs... args)
+      : gnote::sync::GvfsTransfer<std::vector<TestTransfer>, TestTransfer, LimiterT>(transfers, args...)
+    {}
+
+    using gnote::sync::GvfsTransfer<std::vector<TestTransfer>, TestTransfer, LimiterT>::m_limiter;
+  };
 
   struct Fixture
   {
@@ -85,7 +152,8 @@ SUITE(GvfsTransferTests)
       monitor.notify_one();
     };
 
-    void perform_transfers(TestGvfsTransfer &transfer)
+    template <typename LimiterT>
+    void perform_transfers(TestGvfsTransfer<LimiterT> &transfer)
     {
       std::thread tfer_thread([this, &transfer] {
         transfer.transfer();
@@ -153,5 +221,36 @@ SUITE(GvfsTransferTests)
     CHECK(TransferResult::SUCCESS == transfers[2].result);
     CHECK(transfers[2].intermediate_results.empty());
   }
+
+  TEST_FIXTURE(Fixture, limiter_is_claimed_and_released)
+  {
+    std::vector<TestTransfer> transfers;
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+    TestGvfsTransfer<TestLimiterNoLimit> transfer(transfers);
+    perform_transfers(transfer);
+    CHECK(TransferResult::SUCCESS == transfers[0].result);
+    CHECK_EQUAL(1, transfer.m_limiter.claims);
+    CHECK_EQUAL(1, transfer.m_limiter.releases);
+  }
+
+  TEST_FIXTURE(Fixture, limiter_is_not_exceeded)
+  {
+    const unsigned MAX_TRANSFERS = 2;
+
+    std::vector<TestTransfer> transfers;
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+    transfers.emplace_back(async_transfer, TransferResult::NOT_STARTED);
+    TestGvfsTransfer<TestLimiterFixed> transfer(transfers, MAX_TRANSFERS);
+    perform_transfers(transfer);
+    CHECK(TransferResult::SUCCESS == transfers[0].result);
+    CHECK(TransferResult::SUCCESS == transfers[1].result);
+    CHECK(TransferResult::SUCCESS == transfers[2].result);
+    CHECK(TransferResult::SUCCESS == transfers[3].result);
+    CHECK_EQUAL(MAX_TRANSFERS, TestLimiterFixed::s_max);
+  }
 }
+
+unsigned SuiteGvfsTransferTests::TestLimiterFixed::s_max = 0;
 
