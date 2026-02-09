@@ -108,13 +108,15 @@ protected:
   static unsigned calculate_failure_margin(std::size_t transfers);
 };
 
-template <typename ContainerT, typename FileTransferT = FileTransfer>
+template <typename ContainerT, typename FileTransferT = FileTransfer, typename TransferLimiterT = TransferLimiterNoLimit>
 class GvfsTransfer
   : public GvfsTransferBase
 {
 public:
-  explicit GvfsTransfer(const ContainerT &transfers)
-    : m_transfers(transfers)
+  template <typename... LimiterArgs>
+  explicit GvfsTransfer(const ContainerT &transfers, const LimiterArgs... limiter_args)
+    : m_limiter(limiter_args...)
+    , m_transfers(transfers)
     , m_failure_margin(calculate_failure_margin(transfers.size()))
   {}
 
@@ -138,6 +140,8 @@ public:
 
     return failures;
   }
+protected:
+  TransferLimiterT m_limiter;
 private:
   unsigned try_file_transfer()
   {
@@ -150,7 +154,9 @@ private:
         continue;
       }
       transfer.result = TransferResult::NOT_STARTED;
+      m_limiter.claim();
       transfer.transfer_async([this, &remaining, &failures](TransferResult result) {
+        m_limiter.release();
         if(result == TransferResult::FAILURE) {
           ++failures;
         }
