@@ -65,6 +65,28 @@ unsigned GvfsTransferBase::calculate_failure_margin(std::size_t transfers)
   return failure_margin;
 }
 
+
+TransferLimiterFixed::TransferLimiterFixed(unsigned max)
+{
+  sem_init(&m_semaphore, 0, max);
+}
+
+TransferLimiterFixed::~TransferLimiterFixed()
+{
+  sem_destroy(&m_semaphore);
+}
+
+void TransferLimiterFixed::claim()
+{
+  sem_wait(&m_semaphore);
+}
+
+void TransferLimiterFixed::release()
+{
+  sem_post(&m_semaphore);
+}
+
+
 }
 }
 

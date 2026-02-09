@@ -22,6 +22,7 @@
 
 #include <atomic>
 
+#include <semaphore.h>
 #include <giomm/file.h>
 
 #include "base/monitor.hpp"
@@ -77,6 +78,29 @@ struct FileTransfer
     : FileTransferBase(src, dest)
   {}
 };
+
+
+struct TransferLimiterNoLimit
+{
+  void claim() {}
+  void release() {}
+};
+
+
+class TransferLimiterFixed
+{
+public:
+  explicit TransferLimiterFixed(unsigned max);
+  TransferLimiterFixed(const TransferLimiterFixed&) = delete;
+  TransferLimiterFixed &operator=(const TransferLimiterFixed&) = delete;
+  ~TransferLimiterFixed();
+
+  void claim();
+  void release();
+private:
+  sem_t m_semaphore;
+};
+
 
 class GvfsTransferBase
 {
