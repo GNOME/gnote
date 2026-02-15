@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2023,2025 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -161,8 +161,7 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
     uploads.emplace_back(local_note, server_note, sharp::file_basename(file_path));
   }
 
-  GvfsTransfer file_transfer(uploads);
-  const auto failures = file_transfer.transfer();
+  const auto failures = transfer_files(uploads);
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to upload %1 note", "Failed to upload %1 notes", failures), failures));
   }
@@ -250,8 +249,7 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
     xmlFreeDoc(xml_doc);
   }
 
-  GvfsTransfer file_transfers(downloads);
-  const auto failures = file_transfers.transfer();
+  const auto failures = transfer_files(downloads);
 
   if(failures > 0) {
     throw GnoteSyncException(Glib::ustring::compose(ngettext("Failed to download %1 note update", "Failed to download %1 note updates", failures), failures));
@@ -716,6 +714,14 @@ void FileSystemSyncServer::lock_timeout()
   update_lock_file(m_sync_lock);
   // Reset the timer to 20 seconds sooner than the sync lock duration
   m_lock_timeout.reset(sharp::time_span_total_milliseconds(m_sync_lock.duration) - 20000);
+}
+
+
+template <typename ContainerT>
+unsigned FileSystemSyncServer::transfer_files(const ContainerT &transfers) const
+{
+  GvfsTransfer file_transfers(transfers);
+  return file_transfers.transfer();
 }
 
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2023,2025 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,6 +57,10 @@ private:
   void update_lock_file(const SyncLockInfo & syncLockInfo);
   bool is_valid_xml_file(const Glib::RefPtr<Gio::File> & xmlFilePath, xmlDocPtr *xml_doc);
   void lock_timeout();
+
+  template <typename ContainerT>
+  [[nodiscard]]
+  unsigned transfer_files(const ContainerT &transfers) const;
 
   std::vector<Glib::ustring> m_updated_notes;
   std::vector<Glib::ustring> m_deleted_notes;
