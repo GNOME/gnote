@@ -68,6 +68,11 @@ protected:
         sharp::directory_create(path);
       }
     }
+
+  virtual std::optional<unsigned> max_concurrent_transfers() const
+    {
+      return 4;
+    }
 private:
   WebDavSyncServer(Glib::RefPtr<Gio::File> && local_sync_path, const Glib::ustring & client_id)
     : gnote::sync::FileSystemSyncServer(std::move(local_sync_path), client_id)
