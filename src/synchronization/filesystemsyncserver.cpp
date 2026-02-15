@@ -720,7 +720,20 @@ void FileSystemSyncServer::lock_timeout()
 template <typename ContainerT>
 unsigned FileSystemSyncServer::transfer_files(const ContainerT &transfers) const
 {
-  GvfsTransfer file_transfers(transfers);
+  const auto max = max_concurrent_transfers();
+  if(max) {
+    return transfer_files<ContainerT, TransferLimiterFixed>(transfers, max.value());
+  }
+  else {
+    return transfer_files<ContainerT, TransferLimiterNoLimit>(transfers);
+  }
+}
+
+
+template <typename ContainerT, typename LimiterT, typename... LimiterArgs>
+unsigned FileSystemSyncServer::transfer_files(const ContainerT &transfers, LimiterArgs... args) const
+{
+  GvfsTransfer<ContainerT, FileTransfer, LimiterT> file_transfers(transfers, args...);
   return file_transfers.transfer();
 }
 

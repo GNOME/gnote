@@ -49,6 +49,10 @@ public:
   virtual bool updates_available_since(int revision) override;
 protected:
   virtual void mkdir_p(const Glib::RefPtr<Gio::File> & path);
+  virtual std::optional<unsigned> max_concurrent_transfers() const
+    {
+      return {};
+    }
 private:
   void common_ctor();
 
@@ -61,6 +65,9 @@ private:
   template <typename ContainerT>
   [[nodiscard]]
   unsigned transfer_files(const ContainerT &transfers) const;
+  template <typename ContainerT, typename LimiterT, typename... LimiterArgs>
+  [[nodiscard]]
+  unsigned transfer_files(const ContainerT &transfers, LimiterArgs... args) const;
 
   std::vector<Glib::ustring> m_updated_notes;
   std::vector<Glib::ustring> m_deleted_notes;
