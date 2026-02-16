@@ -326,6 +326,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
     }
 
     // Write out the new manifest file
+    Glib::ustring manifest_content;
     {
       sharp::XmlWriter xml;
       xml.write_start_document();
@@ -370,6 +371,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
       gsize written;
       stream->write_all(xml_content, written);
       stream->close();
+      manifest_content = std::move(xml_content);
     }
 
 
@@ -389,7 +391,12 @@ bool FileSystemSyncServer::commit_sync_transaction()
     //       checks should be implemented.
 
     // Copy the /${parent}/${rev}/manifest.xml -> /manifest.xml
-    manifest_file->copy(m_manifest_path);
+    {
+      auto stream = m_manifest_path->create_file();
+      gsize written;
+      stream->write_all(manifest_content, written);
+      stream->close();
+    }
 
     try {
       // Delete /manifest.xml.old
