@@ -324,12 +324,12 @@ bool FileSystemSyncServer::commit_sync_transaction()
     }
 
     // Write out the new manifest file
-    sharp::XmlWriter *xml = new sharp::XmlWriter();
-    try {
-      xml->write_start_document();
-      xml->write_start_element("", "sync", "");
-      xml->write_attribute_string("", "revision", "", TO_STRING(m_new_revision));
-      xml->write_attribute_string("", "server-id", "", m_server_id);
+    {
+      sharp::XmlWriter xml;
+      xml.write_start_document();
+      xml.write_start_element("", "sync", "");
+      xml.write_attribute_string("", "revision", "", TO_STRING(m_new_revision));
+      xml.write_attribute_string("", "server-id", "", m_server_id);
 
       for(std::map<Glib::ustring, Glib::ustring>::iterator iter = notes.begin(); iter != notes.end(); ++iter) {
         // Don't write out deleted notes
@@ -342,26 +342,25 @@ bool FileSystemSyncServer::commit_sync_transaction()
           continue;
         }
 
-        xml->write_start_element("", "note", "");
-        xml->write_attribute_string("", "id", "", iter->first);
-        xml->write_attribute_string("", "rev", "", iter->second);
-        xml->write_end_element();
+        xml.write_start_element("", "note", "");
+        xml.write_attribute_string("", "id", "", iter->first);
+        xml.write_attribute_string("", "rev", "", iter->second);
+        xml.write_end_element();
       }
 
       // Write out all the updated notes
       for(auto & note : m_updated_notes) {
-        xml->write_start_element("", "note", "");
-        xml->write_attribute_string("", "id", "", note);
-        xml->write_attribute_string("", "rev", "", TO_STRING(m_new_revision));
-        xml->write_end_element();
+        xml.write_start_element("", "note", "");
+        xml.write_attribute_string("", "id", "", note);
+        xml.write_attribute_string("", "rev", "", TO_STRING(m_new_revision));
+        xml.write_end_element();
       }
 
-      xml->write_end_element();
-      xml->write_end_document();
-      xml->close();
-      Glib::ustring xml_content = xml->to_string();
-      delete xml;
-      xml = nullptr;
+      xml.write_end_element();
+      xml.write_end_document();
+      xml.close();
+      Glib::ustring xml_content = xml.to_string();
+
       if(manifest_file->query_exists()) {
         manifest_file->remove();
       }
@@ -369,13 +368,6 @@ bool FileSystemSyncServer::commit_sync_transaction()
       gsize written;
       stream->write_all(xml_content, written);
       stream->close();
-    }
-    catch(...) {
-      if(xml) {
-        xml->close();
-        delete xml;
-      }
-      throw;
     }
 
 
