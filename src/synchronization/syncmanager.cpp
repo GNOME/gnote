@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -328,6 +328,8 @@ namespace {
         server->upload_notes(new_or_modified_notes); // TODO: Callbacks to update GUI as upload progresses
       }
 
+      DBG_OUT("Sync: upload complete, deleting notes");
+
       // Handle notes deleted on client
       std::vector<Glib::ustring> locally_deleted_uuids;
       auto all_note_uuids = server->get_all_note_uuids();
@@ -349,6 +351,8 @@ namespace {
         set_state(DELETE_SERVER_NOTES);
         server->delete_notes(locally_deleted_uuids);
       }
+
+      DBG_OUT("Sync: note synchronization completed, finishing up transaction");
 
       set_state(COMMITTING_CHANGES);
       bool commitResult = server->commit_sync_transaction();
