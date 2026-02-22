@@ -1,5 +1,5 @@
 # Hungarian translation for gnote.
-# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnote package.
 #
 # Gabor Torok <gabo at linuxportal dot hu>, 2004.
@@ -8,25 +8,25 @@
 # Balint Laza <laza at szentkoronaradio dot com>, 2008.
 # István Nyitrai <sianis at gmail dot com>, 2009.
 # Lukács Bence <lukacs.bence1 at gmail dot com>, 2012.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-09-08 20:07+0000\n"
-"PO-Revision-Date: 2025-09-09 22:07+0200\n"
+"POT-Creation-Date: 2026-02-21 13:26+0000\n"
+"PO-Revision-Date: 2026-02-22 18:39+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
-#: src/recentchanges.cpp:99 src/recentchanges.cpp:121
+#: src/recentchanges.cpp:100 src/recentchanges.cpp:122
 msgid "Gnote"
 msgstr "Gnote jegyzettömb"
 
@@ -75,7 +75,7 @@ msgid "New Window"
 msgstr "Új ablak"
 
 #: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:282 src/searchnoteswidget.cpp:343
+#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Új jegyzet"
 
@@ -892,8 +892,8 @@ msgstr "Válasszon ikont…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:314
-#: src/utils.cpp:321
+#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
+#: src/utils.cpp:337
 msgid "_Cancel"
 msgstr "_Mégse"
 
@@ -1087,7 +1087,7 @@ msgid "Synchronize Gnote Notes to an online directory"
 msgstr "A Gnote jegyzetek szinkronizálása egy online könyvtárral"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:167
 msgid "Failed to mount the folder"
 msgstr "Nem sikerült csatolni a mappát"
 
@@ -1391,32 +1391,32 @@ msgstr "Lehetővé teszi a szöveg aláhúzását."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière és a Tomboy projekt"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
 msgid "User_name:"
 msgstr "_Felhasználónév:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:124
 msgid "_Password:"
 msgstr "_Jelszó:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:142
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:147
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:170
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "A(z) %1 szinkronizálási cél nem létezik."
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:185
 msgid "URL, username, or password field is empty."
 msgstr "Az URL, felhasználónév vagy jelszó mező üres."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:284
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1467,13 +1467,18 @@ msgstr ""
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
 #: src/gnote.cpp:286
+#| msgid ""
+#| "Copyright © 2010-2025 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2025 Aurimas Cernius\n"
+"Copyright © 2010-2026 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"Copyright © 2010-2025 Aurimas Cernius\n"
+"Copyright © 2010-2026 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 a Tomboy eredeti szerzői."
@@ -1482,80 +1487,87 @@ msgstr ""
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Egyszerű és könnyen használható asztali jegyzetkezelő alkalmazás."
 
-#: src/gnote.cpp:292
+#. TRANSLATORS:
+#. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
+#.
+#: src/gnote.cpp:294
+msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
+
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "Honlap"
 
-#: src/gnote.cpp:296
+#: src/gnote.cpp:299
 msgid "Contributors"
 msgstr "Közreműködők"
 
-#: src/gnote.cpp:507
+#: src/gnote.cpp:510
 msgid "Run Gnote in background."
 msgstr "A Gnote futtatása a háttérben."
 
-#: src/gnote.cpp:508
+#: src/gnote.cpp:511
 msgid "Run Gnote as GNOME Shell search provider."
 msgstr "A Gnote futtatása GNOME parancsértelmező keresőszolgáltatóként."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr "Adja meg a jegyzeteket tartalmazó könyvtár útvonalát."
 
-#: src/gnote.cpp:509
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "útvonal"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr "A Keresés minden jegyzetben ablak megnyitása a keresőkifejezéssel."
 
-#: src/gnote.cpp:510 src/gnote.cpp:516
+#: src/gnote.cpp:513 src/gnote.cpp:519
 msgid "text"
 msgstr "szöveg"
 
-#: src/gnote.cpp:511
+#: src/gnote.cpp:514
 msgid "Print version information."
 msgstr "Verzióinformációk kiírása."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "Create and display a new note, with a optional title."
 msgstr "Új jegyzet létrehozása és megjelenítése, elhagyható címmel."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:515
 msgid "title"
 msgstr "cím"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:516
 msgid "Open a new window."
 msgstr "Új ablak megnyitása."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "Display the existing note matching title."
 msgstr "Az illeszkedő című meglévő jegyzet megjelenítése."
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:517
 msgid "title/url"
 msgstr "cím/url"
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:518
 msgid "Display the 'Start Here' note."
 msgstr "A „Kezdje itt” jegyzet megjelenítése."
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:519
 msgid "Search and highlight text in the opened note."
 msgstr "Szöveg keresése és kiemelése megnyitott jegyzetben."
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "A note taking application"
 msgstr "Jegyzetkezelő alkalmazás"
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:523
 msgid "Gnote options at launch"
 msgstr "A Gnote indítási kapcsolói"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:704
+#: src/gnote.cpp:707
 msgid "Version %1"
 msgstr "%1 verzió"
 
@@ -1675,11 +1687,11 @@ msgstr "Fontos"
 msgid "Active"
 msgstr "Aktív"
 
-#: src/notebuffer.cpp:1398
+#: src/notebuffer.cpp:1393
 msgid "</list> tag mismatch"
 msgstr "</list> címke eltérés"
 
-#: src/notebuffer.cpp:1482
+#: src/notebuffer.cpp:1477
 #, c-format
 msgid "Exception: %s"
 msgstr "Kivétel: %s"
@@ -1714,21 +1726,21 @@ msgstr ""
 "lemezterület és rendelkezik jogosultságokkal a ~/.local/share/gnote könyvtár "
 "írásához. A hiba részletei a ~/.gnote.log fájlban találhatók."
 
-#: src/note.cpp:624
+#: src/note.cpp:616
 msgid "Setting text content for closed notes not supported"
 msgstr "A szövegtartalom beállítása nem támogatott a zárolt jegyzetekhez"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:101 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "Új jegyzet sablon"
 
-#: src/notemanagerbase.cpp:334
+#: src/notemanagerbase.cpp:349
 msgid "Describe your new note here."
 msgstr "Ide írhatja a jegyzet tartalmát."
 
-#: src/notemanager.cpp:116
+#: src/notemanager.cpp:118
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1769,7 +1781,7 @@ msgstr ""
 "hivatkozást leírva a program automatikusan aláhúzza azt? Kattintson a "
 "hivatkozásra a jegyzet megnyitásához.</note-content>"
 
-#: src/notemanager.cpp:135
+#: src/notemanager.cpp:137
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1799,31 +1811,31 @@ msgstr ""
 "automatikusan hivatkozássá alakul.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:150 src/notemanager.cpp:185
+#: src/notemanager.cpp:152 src/notemanager.cpp:187
 msgid "Start Here"
 msgstr "Kezdje itt"
 
-#: src/notemanager.cpp:154
+#: src/notemanager.cpp:156
 msgid "Using Links in Gnote"
 msgstr "Hivatkozások használata a Gnoteban"
 
-#: src/notemanager.cpp:158
+#: src/notemanager.cpp:160
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Hiba a kezdő jegyzetek létrehozásakor: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:173
+#: src/notemanager.cpp:175
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Hiba a jegyzet XML feldolgozásakor, „%s” kihagyása: %s"
 
-#: src/notemanager.cpp:384
+#: src/notemanager.cpp:386
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Hiba a mentéskor: %s"
 
-#: src/notemanager.cpp:389
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "Nem volt „%s” URI-val rendelkező jegyzet található, nem lehet menteni"
@@ -1887,32 +1899,32 @@ msgstr "Jegyzet neve"
 msgid "Ad_vanced"
 msgstr "Spe_ciális"
 
-#: src/notewindow.cpp:319
+#: src/notewindow.cpp:324
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: src/notewindow.cpp:321
+#: src/notewindow.cpp:326
 msgid "_Redo"
 msgstr "Új_ra"
 
-#: src/notewindow.cpp:323 src/notewindow.cpp:356
+#: src/notewindow.cpp:328 src/notewindow.cpp:361
 msgid "_Link to New Note"
 msgstr "_Hivatkozás egy új jegyzetre"
 
-#: src/notewindow.cpp:325
+#: src/notewindow.cpp:330
 msgctxt "NoteActions"
 msgid "_Important"
 msgstr "_Fontos"
 
-#: src/notewindow.cpp:334
+#: src/notewindow.cpp:339
 msgid "_Delete…"
 msgstr "_Törlés…"
 
-#: src/notewindow.cpp:376
+#: src/notewindow.cpp:381
 msgid "Set properties of text"
 msgstr "Szöveg beállításai"
 
-#: src/notewindow.cpp:388
+#: src/notewindow.cpp:393
 msgid ""
 "This note is a template note. It determines the default content of regular "
 "notes, and will not show up in the note menu or search window."
@@ -1920,39 +1932,39 @@ msgstr ""
 "Ez a jegyzet egy sablon jegyzet. A normál jegyzetek alap tartalmát határozza "
 "meg, és nem jelenik meg a jegyzet menüben vagy a keresés ablakban."
 
-#: src/notewindow.cpp:391
+#: src/notewindow.cpp:396
 msgid "Convert to regular note"
 msgstr "Átalakítás normál jegyzetté"
 
-#: src/notewindow.cpp:394
+#: src/notewindow.cpp:399
 msgid "Save Se_lection"
 msgstr "_Kijelölés mentése"
 
-#: src/notewindow.cpp:398
+#: src/notewindow.cpp:403
 msgid "Save _Title"
 msgstr "_Cím mentése"
 
-#: src/notewindow.cpp:492 src/notewindow.cpp:602
+#: src/notewindow.cpp:497 src/notewindow.cpp:607
 msgid "Cannot create note"
 msgstr "Nem hozható létre jegyzet"
 
-#: src/notewindow.cpp:980
+#: src/notewindow.cpp:1032
 msgid "_Highlight"
 msgstr "_Kiemelés"
 
-#: src/notewindow.cpp:984
+#: src/notewindow.cpp:1036
 msgid "_Normal"
 msgstr "N_ormál"
 
-#: src/notewindow.cpp:985
+#: src/notewindow.cpp:1037
 msgid "S_mall"
 msgstr "Ki_csi"
 
-#: src/notewindow.cpp:986
+#: src/notewindow.cpp:1038
 msgid "_Large"
 msgstr "_Nagy"
 
-#: src/notewindow.cpp:987
+#: src/notewindow.cpp:1039
 msgid "Hu_ge"
 msgstr "Óriá_si"
 
@@ -1980,7 +1992,7 @@ msgstr "Bővítmények"
 #. Button to close dialog.
 #: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
 #: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:311
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
 msgid "_Close"
 msgstr "_Bezárás"
 
@@ -2239,34 +2251,34 @@ msgstr "Szerző:"
 msgid "Copyright:"
 msgstr "Copyright:"
 
-#: src/recentchanges.cpp:66
+#: src/recentchanges.cpp:67
 msgid "Close"
 msgstr "Bezárás"
 
-#: src/recentchanges.cpp:311
+#: src/recentchanges.cpp:312
 msgid "Search"
 msgstr "Keresés"
 
-#: src/recentchanges.cpp:386
+#: src/recentchanges.cpp:387
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "A beágyazott doboz szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:411
+#: src/recentchanges.cpp:418
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "A keresés beviteli mezőjének szülője nem Gtk::Grid, jelentse a hibát!"
 
-#: src/recentchanges.cpp:743
+#: src/recentchanges.cpp:790
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nincs beágyazva az "
 "ablakba"
 
-#: src/recentchanges.cpp:750
+#: src/recentchanges.cpp:797
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Kísérlet egy olyan felületi elem előtérbe hozására, amely nem Gtk::Widget"
 
-#: src/recentchanges.cpp:950
+#: src/recentchanges.cpp:997
 msgid "No configured actions"
 msgstr "Nincsenek beállított műveletek"
 
@@ -2393,19 +2405,19 @@ msgstr "%1 meghiúsult"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stíluslap, küldjön hibajelentést"
 
-#: src/synchronization/filesystemsyncserver.cpp:167
+#: src/synchronization/filesystemsyncserver.cpp:166
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Nem sikerült feltölteni %1 jegyzetet"
 msgstr[1] "Nem sikerült feltölteni %1 jegyzetet"
 
-#: src/synchronization/filesystemsyncserver.cpp:257
+#: src/synchronization/filesystemsyncserver.cpp:255
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Nem sikerült letölteni %1 jegyzetfrissítést"
 msgstr[1] "Nem sikerült letölteni %1 jegyzetfrissítést"
 
-#: src/synchronization/filesystemsyncserver.cpp:428
+#: src/synchronization/filesystemsyncserver.cpp:425
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2415,12 +2427,12 @@ msgstr ""
 "integritása hibátlan, de néhány fölösleges fájl jelen lehet. A hibaüzenet: "
 "%s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:634
+#: src/synchronization/filesystemsyncserver.cpp:631
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Hiba a zár frissítésekor: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:673
+#: src/synchronization/filesystemsyncserver.cpp:670
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Hiba a régi szinkronizációs zár („%s”) törlésekor: %s"
@@ -2449,16 +2461,16 @@ msgstr "A tesztfájl eltávolításának kísérlete sikertelen"
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
-#: src/synchronization/gvfstransfer.cpp:36
+#: src/synchronization/gvfstransfer.cpp:45
 msgid "Failed to copy file"
 msgstr "Nem sikerült másolni a fájlt"
 
-#: src/synchronization/gvfstransfer.cpp:40
+#: src/synchronization/gvfstransfer.cpp:49
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Kivétel a jegyzet másolatának befejezésekor: %s"
 
-#: src/synchronization/gvfstransfer.cpp:43
+#: src/synchronization/gvfstransfer.cpp:52
 msgid "Exception when finishing note copy"
 msgstr "Kivétel a jegyzet másolatának befejezésekor"
 
@@ -2672,7 +2684,7 @@ msgstr "Jegyzetek szinkronizálása"
 
 #: src/synchronization/syncmanager.cpp:100
 #: src/synchronization/syncmanager.cpp:117
-#: src/synchronization/syncmanager.cpp:589
+#: src/synchronization/syncmanager.cpp:593
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Hiba jelentése. Eldobás sikertelen: %s"
@@ -2688,17 +2700,17 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Hiba a SyncServer létrehozásakor: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:380
+#: src/synchronization/syncmanager.cpp:384
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "A szinkronizálás meghiúsult a következő kivétellel: %s"
 
-#: src/utils.cpp:74
+#: src/utils.cpp:75
 #, c-format
 msgid "Failed to show help: %s"
 msgstr "Nem sikerült megjeleníteni a súgót: %s"
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2706,75 +2718,76 @@ msgstr ""
 "A „Gnote jegyzetkezelő kézikönyve” nem található. Ellenőrizze, hogy a "
 "telepítés sikeresen fejeződött-e be."
 
-#: src/utils.cpp:81
+#: src/utils.cpp:82
 msgid "Help not found"
 msgstr "Nem található súgó"
 
 #: src/utils.cpp:99
 #, c-format
-msgid "Failed to open URL: %s"
-msgstr "Nem sikerült megnyitni az URL-t: %s"
+#| msgid "Failed to open URL: %s"
+msgid "Failed to open '%s': %s"
+msgstr "A(z) „%s” megnyitása sikertelen: %s"
 
-#: src/utils.cpp:115
+#: src/utils.cpp:131
 msgid "Cannot open location"
 msgstr "Nem lehet megnyitni a helyet"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:176
+#: src/utils.cpp:192
 msgid "Today, %1"
 msgstr "Ma, %1"
 
-#: src/utils.cpp:177
+#: src/utils.cpp:193
 msgid "Today"
 msgstr "Ma"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:182
+#: src/utils.cpp:198
 msgid "Tomorrow, %1"
 msgstr "Holnap, %1"
 
-#: src/utils.cpp:183
+#: src/utils.cpp:199
 msgid "Tomorrow"
 msgstr "Holnap"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:188
+#: src/utils.cpp:204
 msgid "Yesterday, %1"
 msgstr "Tegnap, %1"
 
-#: src/utils.cpp:189
+#: src/utils.cpp:205
 msgid "Yesterday"
 msgstr "Tegnap"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:194
+#: src/utils.cpp:210
 #, no-c-format
 msgid "%b %d"
 msgstr "%b. %-d."
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:198
+#: src/utils.cpp:214
 msgid "%b %d %Y"
 msgstr "%Y %b. %d"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:203
+#: src/utils.cpp:219
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:214
+#: src/utils.cpp:230
 msgid "No Date"
 msgstr "Nincs dátum"
 
-#: src/utils.cpp:308 src/utils.cpp:322
+#: src/utils.cpp:324 src/utils.cpp:338
 msgid "_OK"
 msgstr "_OK"
 
-#: src/utils.cpp:317
+#: src/utils.cpp:333
 msgid "_No"
 msgstr "_Nem"
 
-#: src/utils.cpp:318
+#: src/utils.cpp:334
 msgid "_Yes"
 msgstr "_Igen"
 
