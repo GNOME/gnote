@@ -2,13 +2,13 @@
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2010.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2025-12-28 21:28+0000\n"
-"PO-Revision-Date: 2025-12-29 09:40+0200\n"
+"POT-Creation-Date: 2026-02-23 21:05+0000\n"
+"PO-Revision-Date: 2026-02-24 21:44+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1458,13 +1458,18 @@ msgstr ""
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
 #: src/gnote.cpp:286
+#| msgid ""
+#| "Copyright © 2010-2025 Aurimas Cernius\n"
+#| "Copyright © 2009-2011 Debarshi Ray\n"
+#| "Copyright © 2009 Hubert Figuiere\n"
+#| "Copyright © 2004-2009 the Tomboy original authors."
 msgid ""
-"Copyright © 2010-2025 Aurimas Cernius\n"
+"Copyright © 2010-2026 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 the Tomboy original authors."
 msgstr ""
-"© Aurimas Cernius, 2010–2025\n"
+"© Aurimas Cernius, 2010–2026\n"
 "© Debarshi Ray, 2009-2011\n"
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
@@ -1477,7 +1482,6 @@ msgstr "Проста програма створення нотаток."
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
 #: src/gnote.cpp:294
-#| msgid "https://gitlab.gnome.org/GNOME/gnote/-/blob/master/wiki/main.md"
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 
@@ -2415,7 +2419,7 @@ msgstr[1] "Не вдалося отримати оновлення %1 нотат
 msgstr[2] "Не вдалося отримати оновлення %1 нотаток"
 msgstr[3] "Не вдалося отримати оновлення нотатки"
 
-#: src/synchronization/filesystemsyncserver.cpp:428
+#: src/synchronization/filesystemsyncserver.cpp:427
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2425,12 +2429,12 @@ msgstr ""
 "даних на сервері все гаразд, але можуть лишитися якісь зайві файли. Ось "
 "повідомлення про помилку: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:634
+#: src/synchronization/filesystemsyncserver.cpp:633
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Помилка під час оновлення блокування: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:673
+#: src/synchronization/filesystemsyncserver.cpp:672
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr ""
@@ -2724,7 +2728,6 @@ msgstr "Довідку не знайдено"
 
 #: src/utils.cpp:99
 #, c-format
-#| msgid "Failed to open URL: %s"
 msgid "Failed to open '%s': %s"
 msgstr "Не вдалося відкрити «%s»: %s"
 
