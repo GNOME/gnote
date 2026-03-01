@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2016-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2011,2013,2016-2017,2019-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -65,6 +65,7 @@ private:
 
   void update_custom_font_setting();
   void modify_font_from_string (const Glib::ustring & fontString);
+  void update_tab_stops();
   bool key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
   void on_paste_start();
   void on_paste_end();

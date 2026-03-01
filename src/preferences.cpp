@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2021,2024-2025 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2021,2024-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -96,6 +96,7 @@ const Glib::ustring SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
 const Glib::ustring SEARCH_SORTING = "search-sorting";
 const Glib::ustring USE_CLIENT_SIDE_DECORATIONS = "use-client-side-decorations";
 const Glib::ustring COLOR_SCHEME = "color-scheme";
+const Glib::ustring EDITOR_TAB_WIDTH = "editor-tab-width";
 
 const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
@@ -135,6 +136,7 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR, int);
     SETUP_CACHED_KEY(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE, string);
     SETUP_CACHED_KEY(m_schema_gnote, color_scheme, COLOR_SCHEME, string);
+    SETUP_CACHED_KEY(m_schema_gnote, editor_tab_width, EDITOR_TAB_WIDTH, uint);
 
     SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_clock_format, DESKTOP_GNOME_CLOCK_FORMAT, string);
     m_schema_gnome_interface->signal_changed("accent-color").connect([this](const Glib::ustring &) {

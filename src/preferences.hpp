@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2022,2024-2025 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2022,2024-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -80,6 +80,7 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_STRING(search_sorting)
     GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
     GNOTE_PREFERENCES_CACHING_SETTING(color_scheme, const Glib::ustring&)
+    GNOTE_PREFERENCES_CACHING_SETTING(editor_tab_width, unsigned);
 
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
     sigc::signal<void()> signal_desktop_gnome_accent_color_changed;
@@ -108,6 +109,7 @@ namespace gnote {
     Glib::ustring m_highlight_background_color;
     Glib::ustring m_highlight_foreground_color;
     Glib::ustring m_color_scheme;
+    unsigned m_editor_tab_width;
 
     Glib::ustring m_desktop_gnome_clock_format;
     Glib::ustring m_desktop_gnome_font;

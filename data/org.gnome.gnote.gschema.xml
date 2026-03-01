@@ -151,6 +151,11 @@
       <summary>Preferred color scheme to use</summary>
       <description>The theme variant to use. Possible values are empty string to follow the system, 'dark' and 'light'.</description>
     </key>
+    <key name="editor-tab-width" type="u">
+      <default>0</default>
+      <summary>Tab width in note editor</summary>
+      <description>Tab stop positions in editor will be setup using this number as a step in space characters. Zero to use the default tab width.</description>
+    </key>
     <child name="export-html" schema="org.gnome.gnote.export-html" />
     <child name="sync" schema="org.gnome.gnote.sync" />
     <child name="sync-gvfs" schema="org.gnome.gnote.sync.gvfs" />

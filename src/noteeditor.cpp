@@ -41,9 +41,11 @@ namespace gnote {
     set_wrap_mode(Gtk::WrapMode::WORD);
     set_left_margin(default_margin());
     set_right_margin(default_margin());
+    update_tab_stops();
 
     m_preferences.signal_enable_custom_font_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
     m_preferences.signal_custom_font_face_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
+    m_preferences.signal_editor_tab_width_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_tab_stops));
 
     // query all monitored settings to get change notifications
     bool enable_custom_font = m_preferences.enable_custom_font();
@@ -89,6 +91,35 @@ namespace gnote {
   {
     DBG_OUT("Switching note font to '%s'...", fontString.c_str());
     Gtk::Settings::get_default()->property_gtk_font_name() = fontString;
+  }
+
+
+  void NoteEditor::update_tab_stops()
+  {
+    const unsigned tab_width = m_preferences.editor_tab_width();
+    if(tab_width == 0 || tab_width > 32) {
+      property_tabs().reset_value();
+      return;
+    }
+
+    const int num_tabs = 16;
+
+    auto context = get_ltr_context();
+    auto layout = Pango::Layout::create(context);
+    const Glib::ustring spaces(tab_width, ' ');
+
+    Glib::ustring indentation;
+
+    Pango::TabArray tabs(num_tabs, true);
+    for(int i = 0; i < tabs.get_size(); ++i) {
+      indentation += spaces;
+      layout->set_text(indentation);
+      int width, height;
+      layout->get_pixel_size(width, height);
+      tabs.set_tab(i, Pango::TabAlign::LEFT, width);
+    }
+
+    set_tabs(tabs);
   }
 
   
