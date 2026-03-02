@@ -86,6 +86,7 @@ namespace gnote {
     register_main_window_action("change-font-size", &Glib::Variant<Glib::ustring>::variant_type(), true);
     register_main_window_action("increase-indent", NULL, true);
     register_main_window_action("decrease-indent", NULL, true);
+    register_main_window_action("find", NULL, false);
 
     signal_build_main_window_search_popover.connect(sigc::mem_fun(*this, &ActionManager::add_app_menu_items));
   }

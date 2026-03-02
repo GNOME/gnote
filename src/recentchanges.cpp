@@ -202,6 +202,9 @@ namespace gnote {
     if(auto action = find_action("close-tab")) {
       action->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::close_current_tab));
     }
+    if(auto action = find_action("find")) {
+      action->signal_activate().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find));
+    }
     find_action("close-window")->signal_activate()
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_close_window));
     am.signal_main_window_search_actions_changed
@@ -227,6 +230,10 @@ namespace gnote {
     shortcuts->add_shortcut(shortcut);
     action = Gtk::NamedAction::create("app.new-note");
     trigger = Gtk::KeyvalTrigger::create(GDK_KEY_N, Gdk::ModifierType::CONTROL_MASK|Gdk::ModifierType::SHIFT_MASK);
+    shortcut = Gtk::Shortcut::create(trigger, action);
+    shortcuts->add_shortcut(shortcut);
+    trigger = Gtk::KeyvalTrigger::create(GDK_KEY_F, Gdk::ModifierType::CONTROL_MASK);
+    action = Gtk::NamedAction::create("win.find");
     shortcut = Gtk::Shortcut::create(trigger, action);
     shortcuts->add_shortcut(shortcut);
 
@@ -308,7 +315,6 @@ namespace gnote {
 
     m_search_button.set_image_from_icon_name("edit-find-symbolic");
     m_search_button.signal_toggled().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_button_toggled));
-    add_shortcut(m_search_button, GDK_KEY_F, Gdk::ModifierType::CONTROL_MASK);
     m_search_button.set_tooltip_text(_("Search"));
     Gtk::Grid *search_group = manage(new Gtk::Grid);
     search_group->set_column_spacing(5);
@@ -715,6 +721,28 @@ namespace gnote {
 
     if(auto widget = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(page_idx))) {
       unembed_widget(*widget);
+    }
+  }
+
+  void NoteRecentChanges::on_find(const Glib::VariantBase&)
+  {
+    if(!m_search_button.get_active()) {
+      m_search_button.set_active(true);
+    }
+    else {
+      if(!m_search_entry) {
+        return;
+      }
+      auto focused = get_focus();
+      bool entry_focused = focused && (focused == m_search_entry
+                                       || focused->is_ancestor(*m_search_entry));
+      if(!entry_focused) {
+        m_search_entry->select_region(0, -1);
+        m_search_entry->grab_focus();
+      }
+      else {
+        m_search_button.set_active(false);
+      }
     }
   }
 
