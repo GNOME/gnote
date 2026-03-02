@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-01-05 12:23+0000\n"
-"PO-Revision-Date: 2026-01-05 16:44+0100\n"
+"POT-Creation-Date: 2026-03-01 20:09+0000\n"
+"PO-Revision-Date: 2026-03-02 14:21+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -387,21 +387,33 @@ msgstr ""
 "Različica teme za uporabo. Možne vrednosti so prazen niz, ki sledi sistemu, "
 "»dark« in »light«."
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:156
+msgid "Tab width in note editor"
+msgstr "Širina tabulatorja v urejevalniku zapiskov"
+
+#: data/org.gnome.gnote.gschema.xml:157
+msgid ""
+"Tab stop positions in editor will be setup using this number as a step in "
+"space characters. Zero to use the default tab width."
+msgstr ""
+"Položaj tabulatorke v urejevalniku nastavljate s to številko kot korakom v "
+"presledkih. Če nastavite na nič, bo uporabljena privzeta širina tabulatorja."
+
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Last Directory"
 msgstr "HTML izvoz zadnje mape"
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Zadnja mapa v katero so bila izvožena sporočilca z vstavkom izvoz v HTML."
 
-#: data/org.gnome.gnote.gschema.xml:168
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Linked Notes"
 msgstr "HTML izvoz povezanih zapiskov"
 
-#: data/org.gnome.gnote.gschema.xml:169
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -409,11 +421,11 @@ msgstr ""
 "Zadnja nastavitev za potrditveno polje 'Izvozi povezana sporočilca' v "
 "vstavku izvoz v HTML."
 
-#: data/org.gnome.gnote.gschema.xml:173
+#: data/org.gnome.gnote.gschema.xml:178
 msgid "HTML Export All Linked Notes"
 msgstr "HTML izvoz vseh povezanih sporočilc"
 
-#: data/org.gnome.gnote.gschema.xml:174
+#: data/org.gnome.gnote.gschema.xml:179
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -425,11 +437,11 @@ msgstr ""
 "'HTML izvoz povezanih sporočilc' in se uporablja za določanje ali bi morala "
 "biti vsa sporočila (najdena rekurzivno) vključena med izvozom v HTML."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Client ID"
 msgstr "ID odjemalca usklajevanja"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -437,11 +449,11 @@ msgstr ""
 "Enoznačno določilo za ta odjemalec Gnote, uporabljeno ob komunikaciji z "
 "uskladitvenim strežnikom."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Synchronization Local Server Path"
 msgstr "Pot krajevnega uskladitvenega strežnika"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -449,11 +461,11 @@ msgstr ""
 "Pot do uskladitvenega strežnika ob uporabi vstavka storitve usklajevanja "
 "datotečnega sistema."
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Selected Synchronization Service Addin"
 msgstr "Vstavek uskladitvene storitve je izbran"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -461,11 +473,11 @@ msgstr ""
 "Enoznačno določilo za trenutno nastavljen vstavek storitve uskladitve "
 "sporočilc."
 
-#: data/org.gnome.gnote.gschema.xml:195
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Shranjeno obnašanje sporov usklajevanja sporočilc"
 
-#: data/org.gnome.gnote.gschema.xml:196
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -478,11 +490,11 @@ msgstr ""
 "notranje oštevilčene. Vrednost 0 določi, da je uporabnik vedno obveščen o "
 "napaki in ima možnost vsako težavo reševati posebej."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Zakasnitev samodejnega usklajevanja v ozadju"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -493,19 +505,19 @@ msgstr ""
 "v ozadju. Vrednosti pod 1 onemogočijo samodejno usklajevanje. Najnižja "
 "sprejemljiva vrednost je 5 minut."
 
-#: data/org.gnome.gnote.gschema.xml:208
+#: data/org.gnome.gnote.gschema.xml:213
 msgid "Online directory URI"
 msgstr "URI spletne mape"
 
-#: data/org.gnome.gnote.gschema.xml:209
+#: data/org.gnome.gnote.gschema.xml:214
 msgid "URI to online directory where notes are synchronized to."
 msgstr "Naslov URL spletne mape za usklajevanje sporočilc."
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Accept SSL Certificates"
 msgstr "Sprejmi potrdila SSL"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:221
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -513,37 +525,37 @@ msgstr ""
 "Uporabite wdfs možnost \"-ac\" za sprejem potrdil SSL brez vprašanj "
 "uporabniku."
 
-#: data/org.gnome.gnote.gschema.xml:220
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share URL"
 msgstr "Naslova URL souporabe"
 
-#: data/org.gnome.gnote.gschema.xml:221
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Naslov URL WebDAV za usklajevanje sporočilc."
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid "Share username"
 msgstr "Uporabniško ime souporabe"
 
-#: data/org.gnome.gnote.gschema.xml:226
+#: data/org.gnome.gnote.gschema.xml:231
 msgid "Username to access WebDAV share."
 msgstr "Uporabniško ime za dostop do WebDAV."
 
-#: data/org.gnome.gnote.gschema.xml:232
+#: data/org.gnome.gnote.gschema.xml:237
 msgid "Timestamp format"
 msgstr "Oblika časovnega žiga"
 
-#: data/org.gnome.gnote.gschema.xml:233
+#: data/org.gnome.gnote.gschema.xml:238
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "Oblika datuma v časovnem žigu. Sledi obliki strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:239
+#: data/org.gnome.gnote.gschema.xml:244
 msgid "Time between checks"
 msgstr "Čas med preverjanji"
 
-#: data/org.gnome.gnote.gschema.xml:240
+#: data/org.gnome.gnote.gschema.xml:245
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -1068,7 +1080,7 @@ msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Uskladi sporočilca Gnote s spletno mapo"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:167
 msgid "Failed to mount the folder"
 msgstr "Mape ni bilo mogoče priklopiti"
 
@@ -1373,32 +1385,32 @@ msgstr "Doda možnost podčrtovanja besedila."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière in projekt Tomboy"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "_URL:"
 msgstr "Naslov _URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
 msgid "User_name:"
 msgstr "Uporab_niško ime:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:124
 msgid "_Password:"
 msgstr "_Geslo:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:142
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:147
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:170
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "Cilj sinhronizacije %1 ne obstaja!"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:185
 msgid "URL, username, or password field is empty."
 msgstr "Polje naslova URL, uporabniškega imena ali gesla je prazno."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:284
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1699,7 +1711,7 @@ msgstr ""
 "dovolj prostora na disku in so določene ustrezna dovoljenja za pisanje v "
 "mapo ~/.local/share/gnote. Podrobnosti o napaki so zapisane v ~/.gnote.log"
 
-#: src/note.cpp:617
+#: src/note.cpp:616
 msgid "Setting text content for closed notes not supported"
 msgstr "Določanje vsebine besedila za zaprta sporočilca ni podprto"
 
@@ -2375,7 +2387,7 @@ msgstr "%1 je spodletelo"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Slogovna predloga je prazna. Pošljite poročilo o hrošču"
 
-#: src/synchronization/filesystemsyncserver.cpp:167
+#: src/synchronization/filesystemsyncserver.cpp:166
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "%1 sporočilc ni bilo uspešno naloženih na strežnik"
@@ -2383,7 +2395,7 @@ msgstr[1] "%1 sporočilce ni bilo uspešno naloženo na strežnik"
 msgstr[2] "%1 sporočilci nista bili uspešno naloženi na strežnik"
 msgstr[3] "%1 sporočilca niso bila uspešno naložena na strežnik"
 
-#: src/synchronization/filesystemsyncserver.cpp:257
+#: src/synchronization/filesystemsyncserver.cpp:255
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Neuspel prenos posodobitev %1 sporočilc"
@@ -2391,7 +2403,7 @@ msgstr[1] "Neuspel prenos posodobitve %1 sporočilca"
 msgstr[2] "Neuspel prenos posodobitev %1 sporočilc"
 msgstr[3] "Neuspel prenos posodobitev %1 sporočilc"
 
-#: src/synchronization/filesystemsyncserver.cpp:428
+#: src/synchronization/filesystemsyncserver.cpp:425
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2400,12 +2412,12 @@ msgstr ""
 "Izjema pri čiščenju strežnika med oddajanjem. Integriteta strežnika je v "
 "redu, lahko pa da odvečne datoteke plavajo naokoli. Napaka: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:634
+#: src/synchronization/filesystemsyncserver.cpp:631
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Napaka pri posodabljanju zaklepanja: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:673
+#: src/synchronization/filesystemsyncserver.cpp:670
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Napaka med brisanjem starega zaklepa usklajevanja \"%s\": %s"
@@ -2434,16 +2446,16 @@ msgstr "Napaka pri poskusu odstranitve preskusne datoteke"
 msgid "Unknown error"
 msgstr "Neznana napaka"
 
-#: src/synchronization/gvfstransfer.cpp:36
+#: src/synchronization/gvfstransfer.cpp:45
 msgid "Failed to copy file"
 msgstr "Kopiranje datoteke ni uspelo"
 
-#: src/synchronization/gvfstransfer.cpp:40
+#: src/synchronization/gvfstransfer.cpp:49
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Izjema med izdelavo kopije sporočilca: %s"
 
-#: src/synchronization/gvfstransfer.cpp:43
+#: src/synchronization/gvfstransfer.cpp:52
 msgid "Exception when finishing note copy"
 msgstr "Izjema med izdelavo kopije sporočilca"
 
@@ -2658,7 +2670,7 @@ msgstr "Uskladi sporočilca"
 
 #: src/synchronization/syncmanager.cpp:100
 #: src/synchronization/syncmanager.cpp:117
-#: src/synchronization/syncmanager.cpp:589
+#: src/synchronization/syncmanager.cpp:593
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Prijavite napako. Zasedba ni uspela: %s"
@@ -2674,7 +2686,7 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Izjema pri ustvarjanju SyncServer: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:380
+#: src/synchronization/syncmanager.cpp:384
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Usklajevanje je spodletelo z naslednjo izjemo: %s"
