@@ -1,14 +1,14 @@
 # Hungarian translation for gnote help.
-# Copyright (C) 2014, 2016, 2024 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2016, 2024, 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the user help.
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2014, 2016.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2024.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2024, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote_help master\n"
-"POT-Creation-Date: 2024-07-29 20:56+0000\n"
-"PO-Revision-Date: 2024-09-20 01:45+0200\n"
+"POT-Creation-Date: 2026-03-03 20:08+0000\n"
+"PO-Revision-Date: 2026-03-06 10:02+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -704,15 +704,15 @@ msgstr ""
 #. (itstool) path: license/p
 #: C/gnote-addin-tableofcontents.page:42
 msgid ""
-"This <em>help topic</em> is licensed under the <link href=\"http://www.gnu."
-"org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version 1.1</"
-"link> (GFDL). It means that you are free to copy, distribute and/or modify "
-"this document, under some conditions."
+"This <em>help topic</em> is licensed under the <link href=\"http://"
+"www.gnu.org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version "
+"1.1</link> (GFDL). It means that you are free to copy, distribute and/or "
+"modify this document, under some conditions."
 msgstr ""
-"Ez a <em>súgótéma</em> a <link href=\"http://www.gnu.org/licenses/fdl-1.1."
-"html\">GNU Free Documentation License 1.1-es verziója</link> (GFDL) alatt "
-"van licencelve. Ez azt jelenti, hogy bizonyos feltételek mellett szabadon "
-"másolhatja, terjesztheti és/vagy módosíthatja ezt a dokumentumot."
+"Ez a <em>súgótéma</em> a <link href=\"http://www.gnu.org/licenses/"
+"fdl-1.1.html\">GNU Free Documentation License 1.1-es verziója</link> (GFDL) "
+"alatt van licencelve. Ez azt jelenti, hogy bizonyos feltételek mellett "
+"szabadon másolhatja, terjesztheti és/vagy módosíthatja ezt a dokumentumot."
 
 #. (itstool) path: credit/name
 #: C/gnote-addin-tableofcontents.page:51
@@ -795,10 +795,14 @@ msgstr "Szerkesztett jegyzet a tartalomjegyzékével"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-tableofcontents.page:114
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-addin-table-of-contents.png' "
+#| "md5='fdaa13ac6400173a4d05675a69c019f1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-addin-table-of-contents.png' "
-"md5='fdaa13ac6400173a4d05675a69c019f1'"
+"md5='c2789bb8efa7ae2f84680a573a1795ab'"
 msgstr ""
 "external ref='figures/gnote-addin-table-of-contents.png' "
 "md5='089993a199798b2ab8146ef7fe62f0f3'"
@@ -1290,8 +1294,9 @@ msgstr "Jegyzetek létrehozása"
 
 #. (itstool) path: credit/years
 #: C/gnote-creating-notes.page:16
-msgid "2011-2012,2019,2023-2024"
-msgstr "2011-2012,2019,2023-2024"
+#| msgid "2011-2012,2019,2023-2024"
+msgid "2011-2012,2019,2023-2025"
+msgstr "2011-2012,2019,2023-2025"
 
 #. (itstool) path: page/title
 #: C/gnote-creating-notes.page:25
@@ -1315,9 +1320,14 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:30
-msgid "In the <app>Gnote</app> window, click the toolbar item <gui>New</gui>."
+#| msgid ""
+#| "In the <app>Gnote</app> window, click the toolbar item <gui>New</gui>."
+msgid ""
+"In the <app>Gnote</app> window, click the button <gui>New</gui> at the "
+"bottom of the notes list."
 msgstr ""
-"A <app>Gnote</app> ablakában kattintson az <gui>Új</gui> eszköztárelemre."
+"A <app>Gnote</app> ablakában kattintson a jegyzetek listája alján lévő "
+"<gui>Új</gui> gombra."
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:31
@@ -1359,6 +1369,18 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:29
+#| msgid ""
+#| "In the list of notes press <key>Delete</key>. This will delete all "
+#| "selected notes."
+msgid ""
+"Press the <gui>Delete</gui> button at the bottom of notes list. This will "
+"delete all selected notes."
+msgstr ""
+"Nyomja meg a jegyzetek listája alján lévő <gui>Törlés</gui> gombot. Ez "
+"törölni fogja az összes kijelölt jegyzetet."
+
+#. (itstool) path: item/p
+#: C/gnote-deleting-notes.page:30
 msgid ""
 "When a note is open, press the <gui>Note Actions</gui> button on the toolbar "
 "and press <gui>Delete</gui> in menu that opens."
@@ -1368,7 +1390,7 @@ msgstr ""
 "<gui>Törlés</gui> gombot."
 
 #. (itstool) path: page/p
-#: C/gnote-deleting-notes.page:31
+#: C/gnote-deleting-notes.page:32
 msgid ""
 "In both cases a dialog box will pop up asking if you want to permanently "
 "delete the note and its contents. Click the <gui>Delete</gui> button to "
@@ -1432,10 +1454,14 @@ msgstr "<app>Gnote</app> jegyzet"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-editing-notes.page:30
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-new-note.png' "
+#| "md5='325e546b0a2bad7aa7772a5da11bb2e2'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
-"md5='325e546b0a2bad7aa7772a5da11bb2e2'"
+"md5='81c7fb8a64a250f01a6d15d78f62cc3b'"
 msgstr ""
 "external ref='figures/gnote-new-note.png' "
 "md5='956a492c3588fa95ddc38a06fe052d59'"
@@ -1725,10 +1751,14 @@ msgstr "A <app>Gnote</app> főablaka"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-introduction.page:39
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-search-all-notes.png' "
+#| "md5='20da8d0c6dcbf109d842d0874701aee1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-search-all-notes.png' "
-"md5='20da8d0c6dcbf109d842d0874701aee1'"
+"md5='96b6af9702785e81c971596206a6fdc5'"
 msgstr ""
 "external ref='figures/gnote-search-all-notes.png' "
 "md5='0dbcd27ed3be39e9389e1094dad5be32'"
@@ -2307,10 +2337,14 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gnote-template-note.png' "
+#| "md5='23f1d757ae0e2b5486228d3c3f326af6'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
-"md5='23f1d757ae0e2b5486228d3c3f326af6'"
+"md5='75b2199e0a72426cd5542749bb6643b4'"
 msgstr ""
 "external ref='figures/gnote-template-note.png' "
 "md5='7d8c18bd97b5e397082a5cd53927ade6'"
@@ -2467,10 +2501,14 @@ msgstr "Új jegyzettömb a helyi menüből"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:50
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/add-notebook-search.png' "
+#| "md5='da324c883996c63cf7d4a275e64bc310'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
-"md5='da324c883996c63cf7d4a275e64bc310'"
+"md5='f356761e7742cce186de161d456fb9c3'"
 msgstr ""
 "external ref='figures/add-notebook-search.png' "
 "md5='08aaf95019a92e77dbab47b54aa1d89d'"
@@ -2536,10 +2574,14 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:66
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/add-to-notebook.png' "
+#| "md5='a54ae1f477dfcd565fa64b7c30feea1c'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
-"md5='a54ae1f477dfcd565fa64b7c30feea1c'"
+"md5='92154710337c4ade900683ad2fb1cc63'"
 msgstr ""
 "external ref='figures/add-to-notebook.png' "
 "md5='ee85e2f40a2fb9e7f7553afd4e8ec813'"
@@ -2614,10 +2656,14 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:84
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/note-template.png' "
+#| "md5='89b15214392c4b99fc4484fb70f3356b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/note-template.png' "
-"md5='89b15214392c4b99fc4484fb70f3356b'"
+"md5='89cfa447fb5def96f5dc5b358c01cff3'"
 msgstr ""
 "external ref='figures/note-template.png' "
 "md5='17a105ca21033b0097d0f1a94edcb7e7'"
@@ -2688,10 +2734,14 @@ msgstr "Jegyzettömb törlése a főablakból"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:98
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/delete-notebook.png' "
+#| "md5='70bc8c7acb7103762d4f8f87efbd4f1b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
-"md5='70bc8c7acb7103762d4f8f87efbd4f1b'"
+"md5='7e46316ec66f412648856c811b921ccf'"
 msgstr ""
 "external ref='figures/delete-notebook.png' "
 "md5='b96785aeb748ccdeafbf194208e4be01'"
