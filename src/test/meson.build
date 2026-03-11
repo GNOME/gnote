@@ -12,6 +12,7 @@ test_sources = [
   'unit/directorytests.cpp',
   'unit/filesutests.cpp',
   'unit/fileinfoutests.cpp',
+  'unit/filesystemsyncservertests.cpp',
   'unit/gnotesyncclientutests.cpp',
   'unit/gvfstransfertests.cpp',
   'unit/hashtests.cpp',
