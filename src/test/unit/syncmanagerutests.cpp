@@ -25,13 +25,15 @@
 #include <UnitTest++/UnitTest++.h>
 
 #include "notemanager.hpp"
+#include "testgnote.hpp"
+#include "testnote.hpp"
+#include "testnotemanager.hpp"
+#include "testsyncmanager.hpp"
+#include "testutils.hpp"
 #include "sharp/files.hpp"
 #include "sharp/directory.hpp"
 #include "synchronization/silentui.hpp"
-#include "test/testgnote.hpp"
-#include "test/testnote.hpp"
-#include "test/testnotemanager.hpp"
-#include "test/testsyncmanager.hpp"
+
 
 using namespace gnote;
 
@@ -84,7 +86,7 @@ SUITE(SyncManagerTests)
     Synchronizer synchronizer;
 
     Fixture1()
-      : tempdir(make_temp_dir())
+      : tempdir(test::make_temp_dir())
       , syncdir(tempdir + "/sync")
       , synchronizer(tempdir, syncdir)
     {
@@ -98,14 +100,6 @@ SUITE(SyncManagerTests)
     ~Fixture1()
     {
       test::remove_dir(tempdir);
-    }
-
-    Glib::ustring make_temp_dir()
-    {
-      char temp_dir_tmpl[] = "/tmp/gnotetestnotesXXXXXX";
-      char *temp_dir = g_mkdtemp(temp_dir_tmpl);
-      REQUIRE CHECK(temp_dir != NULL);
-      return temp_dir;
     }
 
     static Glib::ustring make_note_content(const Glib::ustring &title, const Glib::ustring &body)
@@ -153,7 +147,7 @@ SUITE(SyncManagerTests)
     Synchronizer synchronizer2;
 
     Fixture2()
-      : tempdir2(make_temp_dir())
+      : tempdir2(test::make_temp_dir())
       , synchronizer2(tempdir2, syncdir)
     {
     }

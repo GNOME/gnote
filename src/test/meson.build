@@ -7,6 +7,7 @@ test_sources = [
   'testsyncclient.cpp',
   'testsyncmanager.cpp',
   'testtagmanager.cpp',
+  'testutils.cpp',
   'unit/datetimeutests.cpp',
   'unit/directorytests.cpp',
   'unit/filesutests.cpp',
