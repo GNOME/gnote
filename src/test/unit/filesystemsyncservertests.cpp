@@ -29,6 +29,14 @@
 
 SUITE(FileSystemSyncServerTests)
 {
+  const Glib::ustring valid_manifest =
+    "<sync revision=\"2\" server-id=\"0cac27e4-cb54-4d9a-aaaa-28a010f213d3\">"
+    "<note id=\"69f26039-67fc-44ae-97c0-fa44aa2bc81c\" rev=\"1\"/>"
+    "<note id=\"b97f40cf-1165-4466-8eb9-9d2822ff4819\" rev=\"2\"/>"
+    "<note id=\"3f669325-f523-49c2-852d-4ba45f3ed707\" rev=\"2\"/>"
+    "</sync>"
+    ;
+
   struct Fixture
   {
     Glib::ustring sync_path;
@@ -49,14 +57,8 @@ SUITE(FileSystemSyncServerTests)
 
   TEST_FIXTURE(Fixture, get_all_note_uuids_with_proper_manifest)
   {
-    const Glib::ustring manifest = "<sync revision=\"2\" server-id=\"0cac27e4-cb54-4d9a-aaaa-28a010f213d3\">"
-                                   "<note id=\"69f26039-67fc-44ae-97c0-fa44aa2bc81c\" rev=\"1\"/>"
-                                   "<note id=\"b97f40cf-1165-4466-8eb9-9d2822ff4819\" rev=\"2\"/>"
-                                   "<note id=\"3f669325-f523-49c2-852d-4ba45f3ed707\" rev=\"2\"/>"
-                                   "</sync>";
-
     auto manifest_file = Glib::build_filename(sync_path, "manifest.xml");
-    sharp::file_write_all_text(manifest_file, manifest);
+    sharp::file_write_all_text(manifest_file, valid_manifest);
 
     auto note_uids = server.get_all_note_uuids();
     CHECK_EQUAL(3, note_uids.size());
