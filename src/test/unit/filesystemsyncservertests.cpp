@@ -88,5 +88,14 @@ SUITE(FileSystemSyncServerTests)
     int revision = server.latest_revision();
     CHECK_EQUAL(-1, revision);
   }
+
+  TEST_FIXTURE(Fixture, latest_revision_with_proper_manifest)
+  {
+    auto manifest_file = Glib::build_filename(sync_path, "manifest.xml");
+    sharp::file_write_all_text(manifest_file, valid_manifest);
+
+    int revision = server.latest_revision();
+    CHECK_EQUAL(2, revision);
+  }
 }
 
