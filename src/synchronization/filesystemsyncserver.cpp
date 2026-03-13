@@ -211,8 +211,7 @@ std::vector<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
 {
   std::vector<Glib::ustring> noteUUIDs;
 
-  xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_manifest_path, &xml_doc)) {
+  if(auto xml_doc = parse_xml_file(m_manifest_path)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
     sharp::XmlNodeSet noteIds = sharp::xml_node_xpath_find(root_node, "//note/@id");
     DBG_OUT("get_all_note_uuids has %d notes", int(noteIds.size()));
