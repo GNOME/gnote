@@ -65,5 +65,20 @@ SUITE(FileSystemSyncServerTests)
     CHECK_EQUAL("69f26039-67fc-44ae-97c0-fa44aa2bc81c", note_uids[1]);
     CHECK_EQUAL("b97f40cf-1165-4466-8eb9-9d2822ff4819", note_uids[2]);
   }
+
+  TEST_FIXTURE(Fixture, get_all_note_uuids_with_invalid_manifest)
+  {
+    const Glib::ustring manifest = "======";
+    auto manifest_file = Glib::build_filename(sync_path, "manifest.xml");
+    sharp::file_write_all_text(manifest_file, manifest);
+
+    try {
+      auto note_uids = server.get_all_note_uuids();
+      CHECK(false); // exception expected
+    }
+    catch(std::runtime_error &e) {
+      // expected
+    }
+  }
 }
 
