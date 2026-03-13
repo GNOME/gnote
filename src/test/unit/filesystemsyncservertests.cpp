@@ -82,5 +82,11 @@ SUITE(FileSystemSyncServerTests)
       // expected
     }
   }
+
+  TEST_FIXTURE(Fixture, latest_revision_empty_dir)
+  {
+    int revision = server.latest_revision();
+    CHECK_EQUAL(-1, revision);
+  }
 }
 
