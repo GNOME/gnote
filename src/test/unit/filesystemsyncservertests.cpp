@@ -49,17 +49,40 @@ SUITE(FileSystemSyncServerTests)
     }
   };
 
+  struct FixtureWithManifest
+    : Fixture
+  {
+    explicit FixtureWithManifest(const Glib::ustring &content)
+    {
+      auto manifest_file = Glib::build_filename(sync_path, "manifest.xml");
+      sharp::file_write_all_text(manifest_file, content);
+    }
+  };
+
+  struct FixtureValidManifest
+    : FixtureWithManifest
+  {
+    FixtureValidManifest()
+      : FixtureWithManifest(valid_manifest)
+    {}
+  };
+
+  struct FixtureInvalidManifest
+    : FixtureWithManifest
+  {
+    FixtureInvalidManifest()
+      : FixtureWithManifest("=====")
+    {}
+  };
+
   TEST_FIXTURE(Fixture, get_all_note_uuids_empty_dir)
   {
     auto note_uids = server.get_all_note_uuids();
     CHECK_EQUAL(0, note_uids.size());
   }
 
-  TEST_FIXTURE(Fixture, get_all_note_uuids_with_proper_manifest)
+  TEST_FIXTURE(FixtureValidManifest, get_all_note_uuids_with_proper_manifest)
   {
-    auto manifest_file = Glib::build_filename(sync_path, "manifest.xml");
-    sharp::file_write_all_text(manifest_file, valid_manifest);
-
     auto note_uids = server.get_all_note_uuids();
     CHECK_EQUAL(3, note_uids.size());
     std::sort(note_uids.begin(), note_uids.end());
@@ -68,12 +91,8 @@ SUITE(FileSystemSyncServerTests)
     CHECK_EQUAL("b97f40cf-1165-4466-8eb9-9d2822ff4819", note_uids[2]);
   }
 
-  TEST_FIXTURE(Fixture, get_all_note_uuids_with_invalid_manifest)
+  TEST_FIXTURE(FixtureInvalidManifest, get_all_note_uuids_with_invalid_manifest)
   {
-    const Glib::ustring manifest = "======";
-    auto manifest_file = Glib::build_filename(sync_path, "manifest.xml");
-    sharp::file_write_all_text(manifest_file, manifest);
-
     try {
       auto note_uids = server.get_all_note_uuids();
       CHECK(false); // exception expected
@@ -89,11 +108,8 @@ SUITE(FileSystemSyncServerTests)
     CHECK_EQUAL(-1, revision);
   }
 
-  TEST_FIXTURE(Fixture, latest_revision_with_proper_manifest)
+  TEST_FIXTURE(FixtureValidManifest, latest_revision_with_proper_manifest)
   {
-    auto manifest_file = Glib::build_filename(sync_path, "manifest.xml");
-    sharp::file_write_all_text(manifest_file, valid_manifest);
-
     int revision = server.latest_revision();
     CHECK_EQUAL(2, revision);
   }
