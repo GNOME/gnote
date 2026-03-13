@@ -48,6 +48,34 @@ int str_to_int(const Glib::ustring & s)
   }
 }
 
+xmlDocPtr parse_xml_file(const Glib::RefPtr<Gio::File> &xml_file)
+{
+  // Check that file exists
+  if(!xml_file->query_exists()) {
+    return nullptr;
+  }
+
+  // Attempt to load the file and parse it as XML
+  auto stream = xml_file->read();
+  std::ostringstream os;
+  int buf_size = 4 * 1024;
+  char buffer[buf_size];
+  gssize read = 0;
+  do {
+    read = stream->read(buffer, buf_size);
+    os.write(buffer, read);
+  }
+  while(read == buf_size);
+  stream->close();
+  auto xml_string = os.str();
+  xmlDocPtr xml = xmlReadMemory(xml_string.c_str(), xml_string.size(), xml_file->get_uri().c_str(), "UTF-8", 0);
+  if(!xml) {
+    throw std::runtime_error("Failed to parse xml");
+  }
+
+  return xml;
+}
+
 struct NoteUpload
   : gnote::sync::FileTransfer
 {
@@ -672,38 +700,25 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
 }
 
 
-bool FileSystemSyncServer::is_valid_xml_file(const Glib::RefPtr<Gio::File> & xmlFile, xmlDocPtr *xml_doc)
+bool FileSystemSyncServer::is_valid_xml_file(const Glib::RefPtr<Gio::File> &xml_file, xmlDocPtr *xml_doc)
 {
-  // Check that file exists
-  if(!xmlFile->query_exists()) {
-    return false;
+  try {
+    if(auto xml = parse_xml_file(xml_file)) {
+      if(xml_doc == NULL) {
+        xmlFreeDoc(xml);
+      }
+      else {
+        *xml_doc = xml;
+      }
+
+      return true;
+    }
+  }
+  catch(std::runtime_error &e) {
+    ERR_OUT(_("Error reading file '%s': %s"), xml_file->get_uri().c_str(), e.what());
   }
 
-  // TODO: Permissions errors
-  // Attempt to load the file and parse it as XML
-  auto stream = xmlFile->read();
-  std::ostringstream os;
-  int buf_size = 4 * 1024;
-  char buffer[buf_size];
-  gssize read = 0;
-  do {
-    read = stream->read(buffer, buf_size);
-    os.write(buffer, read);
-  }
-  while(read == buf_size);
-  stream->close();
-  auto xml_string = os.str();
-  xmlDocPtr xml = xmlReadMemory(xml_string.c_str(), xml_string.size(), xmlFile->get_uri().c_str(), "UTF-8", 0);
-  if(!xml) {
-    return false;
-  }
-  if(xml_doc == NULL) {
-    xmlFreeDoc(xml);
-  }
-  else {
-    *xml_doc = xml;
-  }
-  return true;
+  return false;
 }
 
 
