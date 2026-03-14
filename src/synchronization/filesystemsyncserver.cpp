@@ -472,73 +472,19 @@ bool FileSystemSyncServer::cancel_sync_transaction()
 
 int FileSystemSyncServer::latest_revision()
 {
-  int latestRev = -1;
-  int latestRevDir = -1;
-  xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_manifest_path, &xml_doc) == true) {
+  int latest_rev = -1;
+  if(auto xml_doc = parse_xml_file(m_manifest_path)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
-    xmlNodePtr syncNode = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
-    Glib::ustring latestRevStr = sharp::xml_node_get_attribute(syncNode, "revision");
-    if(latestRevStr != "") {
-      latestRev = str_to_int(latestRevStr);
+    xmlNodePtr sync_node = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
+    Glib::ustring latest_rev_str = sharp::xml_node_get_attribute(sync_node, "revision");
+    if(latest_rev_str != "") {
+      latest_rev = str_to_int(latest_rev_str, -1);
     }
+
+    xmlFreeDoc(xml_doc);
   }
 
-  bool foundValidManifest = false;
-  while (!foundValidManifest) {
-    if(latestRev < 0) {
-      // Look for the highest revision parent path
-      std::vector<Glib::RefPtr<Gio::File>> directories = sharp::directory_get_directories(m_server_path);
-      for(auto & iter : directories) {
-        try {
-          int currentRevParentDir = str_to_int(sharp::file_filename(iter));
-          if(currentRevParentDir > latestRevDir) {
-            latestRevDir = currentRevParentDir;
-          }
-        }
-        catch(...)
-        {}
-      }
-
-      if(latestRevDir >= 0) {
-        directories = sharp::directory_get_directories(m_server_path->get_child(TO_STRING(latestRevDir)));
-        for(auto & iter : directories) {
-          try {
-            int currentRev = str_to_int(iter->get_basename());
-            if(currentRev > latestRev) {
-              latestRev = currentRev;
-            }
-          }
-          catch(...)
-          {}
-        }
-      }
-
-      if(latestRev >= 0) {
-        // Validate that the manifest file inside the revision is valid
-        // TODO: Should we create the /manifest.xml file with a valid one?
-        auto revDirPath = get_revision_dir_path(latestRev);
-        auto revManifestPath = revDirPath->get_child("manifest.xml");
-        if(is_valid_xml_file(revManifestPath, NULL)) {
-          foundValidManifest = true;
-        }
-        else {
-          // TODO: Does this really belong here?
-          sharp::directory_delete(revDirPath, true);
-          // Continue looping
-        }
-      }
-      else {
-        foundValidManifest = true;
-      }
-    }
-    else {
-      foundValidManifest = true;
-    }
-  }
-
-  xmlFreeDoc(xml_doc);
-  return latestRev;
+  return latest_rev;
 }
 
 
