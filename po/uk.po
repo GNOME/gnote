@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-02 14:12+0000\n"
-"PO-Revision-Date: 2026-03-03 22:06+0200\n"
+"POT-Creation-Date: 2026-03-14 18:14+0000\n"
+"PO-Revision-Date: 2026-03-14 21:03+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -403,8 +403,8 @@ msgid ""
 "Tab stop positions in editor will be setup using this number as a step in "
 "space characters. Zero to use the default tab width."
 msgstr ""
-"Позиції табуляції у редакторі буде встановлено з використанням цієї"
-" кількості пробілів як кроку. Нуль — використовувати типову ширину табуляції."
+"Позиції табуляції у редакторі буде встановлено з використанням цієї "
+"кількості пробілів як кроку. Нуль — використовувати типову ширину табуляції."
 
 #: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Last Directory"
@@ -2410,7 +2410,7 @@ msgstr "Помилка %1"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Порожня таблиця стилів. Будь ласка, повідомте про цю ваду."
 
-#: src/synchronization/filesystemsyncserver.cpp:166
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Не вдалося вивантажити %1 нотатку"
@@ -2418,7 +2418,7 @@ msgstr[1] "Не вдалося вивантажити %1 нотатки"
 msgstr[2] "Не вдалося вивантажити %1 нотаток"
 msgstr[3] "Не вдалося вивантажити нотатку"
 
-#: src/synchronization/filesystemsyncserver.cpp:255
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Не вдалося отримати оновлення %1 нотатки"
@@ -2426,7 +2426,7 @@ msgstr[1] "Не вдалося отримати оновлення %1 нотат
 msgstr[2] "Не вдалося отримати оновлення %1 нотаток"
 msgstr[3] "Не вдалося отримати оновлення нотатки"
 
-#: src/synchronization/filesystemsyncserver.cpp:425
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2436,16 +2436,22 @@ msgstr ""
 "даних на сервері все гаразд, але можуть лишитися якісь зайві файли. Ось "
 "повідомлення про помилку: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:631
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Помилка під час оновлення блокування: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:670
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr ""
 "Помилка під час спроби вилучити старе блокування синхронізації «%s»: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+#| msgid "Error removing icon %s: %s"
+msgid "Error reading file '%s': %s"
+msgstr "Помилка під час читання файла «%s»: %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
