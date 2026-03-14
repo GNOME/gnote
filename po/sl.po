@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-01 20:09+0000\n"
-"PO-Revision-Date: 2026-03-02 14:21+0100\n"
+"POT-Creation-Date: 2026-03-14 18:14+0000\n"
+"PO-Revision-Date: 2026-03-14 22:36+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -738,27 +738,27 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Zmanjšaj zamik/onemogoči oznake za trenutno vrstico"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "_Novo sporočilce"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "Novo _okno"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
 msgid "_Preferences"
 msgstr "_Možnosti"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:134
 msgid "_Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
-#: src/actionmanager.cpp:134
+#: src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: src/actionmanager.cpp:135
+#: src/actionmanager.cpp:136
 msgid "_About Gnote"
 msgstr "_O Gnote"
 
@@ -2237,27 +2237,27 @@ msgstr "Avtorske pravice:"
 msgid "Close"
 msgstr "Zapri"
 
-#: src/recentchanges.cpp:312
+#: src/recentchanges.cpp:318
 msgid "Search"
 msgstr "Poišči"
 
-#: src/recentchanges.cpp:387
+#: src/recentchanges.cpp:393
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Nadrejeni vdelanega polja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:418
+#: src/recentchanges.cpp:424
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Nadrejeni vnosa iskanja ni Gtk::Grid, prijavite napako!"
 
-#: src/recentchanges.cpp:790
+#: src/recentchanges.cpp:818
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni vdelan v okno"
 
-#: src/recentchanges.cpp:797
+#: src/recentchanges.cpp:825
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Poskus postavljanja v ospredje pripomočka, ki ni Gtk::Widget"
 
-#: src/recentchanges.cpp:997
+#: src/recentchanges.cpp:1025
 msgid "No configured actions"
 msgstr "Ni nastavljenih dejanj"
 
@@ -2387,7 +2387,7 @@ msgstr "%1 je spodletelo"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Slogovna predloga je prazna. Pošljite poročilo o hrošču"
 
-#: src/synchronization/filesystemsyncserver.cpp:166
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "%1 sporočilc ni bilo uspešno naloženih na strežnik"
@@ -2395,7 +2395,7 @@ msgstr[1] "%1 sporočilce ni bilo uspešno naloženo na strežnik"
 msgstr[2] "%1 sporočilci nista bili uspešno naloženi na strežnik"
 msgstr[3] "%1 sporočilca niso bila uspešno naložena na strežnik"
 
-#: src/synchronization/filesystemsyncserver.cpp:255
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Neuspel prenos posodobitev %1 sporočilc"
@@ -2403,7 +2403,7 @@ msgstr[1] "Neuspel prenos posodobitve %1 sporočilca"
 msgstr[2] "Neuspel prenos posodobitev %1 sporočilc"
 msgstr[3] "Neuspel prenos posodobitev %1 sporočilc"
 
-#: src/synchronization/filesystemsyncserver.cpp:425
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2412,15 +2412,20 @@ msgstr ""
 "Izjema pri čiščenju strežnika med oddajanjem. Integriteta strežnika je v "
 "redu, lahko pa da odvečne datoteke plavajo naokoli. Napaka: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:631
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Napaka pri posodabljanju zaklepanja: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:670
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Napaka med brisanjem starega zaklepa usklajevanja \"%s\": %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+msgid "Error reading file '%s': %s"
+msgstr "Napaka pri branju datoteke »%s«: %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
