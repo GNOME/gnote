@@ -38,13 +38,13 @@
 
 namespace {
 
-int str_to_int(const Glib::ustring & s)
+int str_to_int(const Glib::ustring &s, int default_return = 0)
 {
   try {
     return STRING_TO_INT(s);
   }
   catch(...) {
-    return 0;
+    return default_return;
   }
 }
 
