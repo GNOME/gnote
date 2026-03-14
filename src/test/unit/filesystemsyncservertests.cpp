@@ -113,5 +113,16 @@ SUITE(FileSystemSyncServerTests)
     int revision = server.latest_revision();
     CHECK_EQUAL(2, revision);
   }
+
+  TEST_FIXTURE(FixtureInvalidManifest, latest_revision_with_invalid_manifest)
+  {
+    try {
+      server.latest_revision();
+      CHECK(false);
+    }
+    catch(std::runtime_error &e) {
+      // expected
+    }
+  }
 }
 
