@@ -227,7 +227,7 @@ std::vector<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
 
 bool FileSystemSyncServer::updates_available_since(int revision)
 {
-  return latest_revision() > revision; // TODO: Mounting, etc?
+  return latest_revision() > revision;
 }
 
 
