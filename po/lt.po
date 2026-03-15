@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-02 14:12+0000\n"
-"PO-Revision-Date: 2026-03-08 23:31+0200\n"
+"POT-Creation-Date: 2026-03-14 18:14+0000\n"
+"PO-Revision-Date: 2026-03-15 16:17+0200\n"
 "Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -2390,21 +2390,21 @@ msgstr "%1 nepavyko"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stilių lentelė, praneškite apie klaidą"
 
-#: src/synchronization/filesystemsyncserver.cpp:166
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Nepavyko nusiųsti %1 raštelio"
 msgstr[1] "Nepavyko nusiųsti %1 raštelių"
 msgstr[2] "Nepavyko nusiųsti %1 raštelių"
 
-#: src/synchronization/filesystemsyncserver.cpp:255
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Nepavyko atsisiųsti %1 raštelio atnaujinimo"
 msgstr[1] "Nepavyko atsisiųsti %1 raštelių atnaujinimų"
 msgstr[2] "Nepavyko atsisiųsti %1 raštelių atnaujinimų"
 
-#: src/synchronization/filesystemsyncserver.cpp:425
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2413,15 +2413,20 @@ msgstr ""
 "Kilo išskirtinė situacija išvalant serverį patvirtinimo metu. Su serverio "
 "vientisumu bėdų nėra, bet gali būti papildomų failų.  Štai klaida: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:631
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Klaida atnaujinant užraktą: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:670
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Klaida trinant seną sinchronizacijos užraktą „%s“: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+msgid "Error reading file '%s': %s"
+msgstr "Klaida skaitant failą „%s“: %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
