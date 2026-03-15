@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-01 20:09+0000\n"
-"PO-Revision-Date: 2026-03-02 09:38+0800\n"
+"POT-Creation-Date: 2026-03-14 18:14+0000\n"
+"PO-Revision-Date: 2026-03-15 11:05+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -693,27 +693,27 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "当前行减少缩进或禁用项目符号"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "新建便笺(_N)"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "新建窗口(_W)"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
 msgid "_Preferences"
 msgstr "首选项(_P)"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:134
 msgid "_Shortcuts"
 msgstr "快捷键(_S)"
 
-#: src/actionmanager.cpp:134
+#: src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: src/actionmanager.cpp:135
+#: src/actionmanager.cpp:136
 msgid "_About Gnote"
 msgstr "关于 Gnote(_A)"
 
@@ -2154,27 +2154,27 @@ msgstr "版权所有："
 msgid "Close"
 msgstr "关闭"
 
-#: src/recentchanges.cpp:312
+#: src/recentchanges.cpp:318
 msgid "Search"
 msgstr "搜索"
 
-#: src/recentchanges.cpp:387
+#: src/recentchanges.cpp:393
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "embed box 的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:418
+#: src/recentchanges.cpp:424
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "搜索条目的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:790
+#: src/recentchanges.cpp:818
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "尝试前置一个未内嵌在窗口中的部件"
 
-#: src/recentchanges.cpp:797
+#: src/recentchanges.cpp:825
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "尝试前置一个不是 Gtk::Widget 的部件"
 
-#: src/recentchanges.cpp:997
+#: src/recentchanges.cpp:1025
 msgid "No configured actions"
 msgstr "未配置操作"
 
@@ -2300,17 +2300,17 @@ msgstr "%1 已失败"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "没有样式表，请报告 bug"
 
-#: src/synchronization/filesystemsyncserver.cpp:166
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "上传 %1 便笺失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:255
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "下载 %1 便笺更新失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:425
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2319,15 +2319,20 @@ msgstr ""
 "提交时服务器清理异常。服务器完整性没有问题但是可能会遗留一些文件。错误为："
 "%s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:631
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "更新锁时出错: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:670
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "删除旧的同步锁“%s”时出错：%s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+msgid "Error reading file '%s': %s"
+msgstr "读取文件“%s”时出错：%s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
