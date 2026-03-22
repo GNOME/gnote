@@ -26,8 +26,18 @@
 
 #include <UnitTest++/UnitTest++.h>
 
+#ifdef DEBUG
+namespace utils {
+  extern gint g_debug_log_level;
+}
+#endif
+
 int main(int /*argc*/, char ** /*argv*/)
 {
+#ifdef DEBUG
+  // disable debug logs
+  utils::g_debug_log_level = 0;
+#endif
   // force certain timezone so that time tests work
   setenv("TZ", "Europe/London", 1);
   // also force the locale for formatting tests
