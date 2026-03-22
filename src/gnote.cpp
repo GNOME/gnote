@@ -51,6 +51,12 @@
 #include "sharp/files.hpp"
 #include "notebooks/notebookmanager.hpp"
 
+#ifdef DEBUG
+  // defined in debug.cpp
+namespace utils {
+  extern gint g_debug_log_level;
+}
+#endif
 
 namespace gnote {
 
@@ -508,7 +514,6 @@ namespace gnote {
     const GOptionEntry entries[] =
       {
         { "background", 0, G_OPTION_ARG_NONE, G_OPTION_ARG_NONE, &m_background, _("Run Gnote in background."), NULL },
-        { "shell-search", 0, G_OPTION_FLAG_HIDDEN, G_OPTION_ARG_NONE, &m_shell_search, _("Run Gnote as GNOME Shell search provider."), NULL },
         { "note-path", 0, 0, G_OPTION_ARG_STRING, &m_note_path, _("Specify the path of the directory containing the notes."), _("path") },
         { "search", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, (void*)GnoteCommandLine::parse_func, _("Open the search all notes window with the search text."), _("text") },
         { "version", 0, 0, G_OPTION_ARG_NONE, &m_show_version, _("Print version information."), NULL },
@@ -517,6 +522,9 @@ namespace gnote {
         { "open-note", 0, 0, G_OPTION_ARG_STRING, &m_open_note, _("Display the existing note matching title."), _("title/url") },
         { "start-here", 0, 0, G_OPTION_ARG_NONE, &m_open_start_here, _("Display the 'Start Here' note."), NULL },
         { "highlight-search", 0, 0, G_OPTION_ARG_STRING, &m_highlight_search, _("Search and highlight text in the opened note."), _("text") },
+#ifdef DEBUG
+        { "verbose", 0, G_OPTION_FLAG_NONE, G_OPTION_ARG_INT, &::utils::g_debug_log_level, "Debug log verbosity", "Level: 0-3" },
+#endif
         { NULL, 0, 0, (GOptionArg)0, NULL, NULL, NULL }
       };
 
@@ -582,6 +590,12 @@ namespace gnote {
       m_open_note = argv[argc -1];
       m_open_note_uri = m_open_note;
     }
+
+#ifdef DEBUG
+    if(::utils::g_debug_log_level < 0 || ::utils::g_debug_log_level > 3) {
+      ::utils::g_debug_log_level = 1;
+    }
+#endif
   }
 
 
