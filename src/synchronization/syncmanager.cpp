@@ -415,7 +415,7 @@ namespace {
     if(!m_sync_thread) {
       Glib::TimeSpan time_since_last_check = Glib::DateTime::create_now_utc().difference(m_last_background_check);
       if(sharp::time_span_total_minutes(time_since_last_check) > m_autosync_timeout_pref_minutes - 1) {
-        DBG_OUT("Note edited...killing autosync timer until next save or delete event");
+        DBG_OUT_3("Note edited...killing autosync timer until next save or delete event");
         m_autosync_timer.cancel();
       }
     }
@@ -432,7 +432,7 @@ namespace {
       m_autosync_timeout_pref_minutes = timeoutPref;
       m_autosync_timer.cancel();
       if(m_autosync_timeout_pref_minutes > 0) {
-        DBG_OUT("Autosync pref changed...restarting sync timer");
+        DBG_OUT_3("Autosync pref changed...restarting sync timer");
         m_autosync_timeout_pref_minutes = m_autosync_timeout_pref_minutes >= 5 ? m_autosync_timeout_pref_minutes : 5;
         m_last_background_check = Glib::DateTime::create_now_utc();
         // Perform a sync no sooner than user specified
@@ -446,7 +446,7 @@ namespace {
   void SyncManager::handle_note_saved_or_deleted(NoteBase &)
   {
     if(!m_sync_thread && m_autosync_timeout_pref_minutes > 0) {
-      DBG_OUT("Note saved or deleted...restarting sync timer");
+      DBG_OUT_3("Note saved or deleted...restarting sync timer");
       m_last_background_check = Glib::DateTime::create_now_utc();
       // Perform a sync one minute after setting change
       m_current_autosync_timeout_minutes = 1;
@@ -511,7 +511,7 @@ namespace {
       addin->post_sync_cleanup(); // Let FUSE unmount, etc
 
       if(client_has_updates || server_has_updates) {
-        DBG_OUT("Detected that sync would be a good idea now");
+        DBG_OUT_3("Detected that sync would be a good idea now");
         // TODO: Check that it's safe to sync, block other sync UIs
 	need_update = true;
       }
@@ -544,7 +544,7 @@ namespace {
       return;
     }
 
-    DBG_OUT("Creating sync checker thread");
+    DBG_OUT_3("Creating sync checker thread");
     m_sync_checker_thread.reset(new std::thread([this] { sync_checker_thread(); }));
   }
 
@@ -701,7 +701,7 @@ namespace {
         }
         else if(xml.get_name() == "tags") {
           tags = xml.read_inner_xml();
-          DBG_OUT("In the bits: tags = %s", tags.c_str()); // TODO: Delete
+          DBG_OUT_3("In the bits: tags = %s", tags.c_str()); // TODO: Delete
         }
         else if(xml.get_name() == "text") {
           content = xml.read_inner_xml();
