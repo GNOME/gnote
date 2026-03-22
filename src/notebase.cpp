@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2017,2019-2020,2022-2024 Aurimas Cernius
+ * Copyright (C) 2011-2014,2017,2019-2020,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -74,7 +74,7 @@ std::vector<Glib::ustring> NoteBase::parse_tags(const xmlNodePtr tagnodes)
     if(xmlStrEqual(node->name, (const xmlChar*)"tag") && (node->type == XML_ELEMENT_NODE)) {
       xmlChar * content = xmlNodeGetContent(node);
       if(content) {
-        DBG_OUT("found tag %s", content);
+        DBG_OUT_3("found tag %s", content);
         tags.push_back((const char*)content);
         xmlFree(content);
       }
@@ -265,7 +265,7 @@ void NoteBase::add_tag(Tag &tag)
 
   signal_tag_added(*this, tag);
 
-  DBG_OUT ("Tag added, queueing save");
+  DBG_OUT_3("Tag added, queueing save");
   queue_save(OTHER_DATA_CHANGED);
 }
 
@@ -292,7 +292,7 @@ void NoteBase::remove_tag(Tag & tag)
 
   signal_tag_removed(*this, tag_name);
 
-  DBG_OUT("Tag removed, queueing save");
+  DBG_OUT_3("Tag removed, queueing save");
   queue_save(OTHER_DATA_CHANGED);
 }
 
@@ -371,7 +371,7 @@ void NoteBase::load_foreign_note_xml(const Glib::ustring & foreignNoteXml, Chang
           xmlFreeDoc(doc2);
         }
         else {
-          DBG_OUT("loading tag subtree failed");
+          DBG_OUT_1("loading tag subtree failed");
         }
       }
       break;
@@ -458,7 +458,7 @@ void NoteArchiver::read_file(const Glib::ustring & file, NoteData & data)
     try {
       // Note has old format, so rewrite it.  No need
       // to reread, since we are not adding anything.
-      DBG_OUT("Updating note XML from %s to newest format...", version.c_str());
+      DBG_OUT_1("Updating note XML from %s to newest format...", version.c_str());
       write_file(file, data);
     }
     catch(sharp::Exception & e) {
@@ -528,7 +528,7 @@ void NoteArchiver::_read(sharp::XmlReader & xml, NoteData & data, Glib::ustring 
           xmlFreeDoc(doc2);
         }
         else {
-          DBG_OUT("loading tag subtree failed");
+          DBG_OUT_1("loading tag subtree failed");
         }
       }
       break;
