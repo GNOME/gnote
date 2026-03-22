@@ -125,7 +125,7 @@ namespace {
       m_client->reset();
     }
     catch(std::exception & e) {
-      DBG_OUT("Error deleting client manifest during reset: %s", e.what());
+      ERR_OUT("Error deleting client manifest during reset: %s", e.what());
     }
   }
 
@@ -172,7 +172,7 @@ namespace {
       f.addin = get_configured_sync_service();
       if(f.addin == NULL) {
         set_state(NO_CONFIGURED_SYNC_SERVICE);
-        DBG_OUT("get_configured_sync_service is null");
+        ERR_OUT("get_configured_sync_service is null");
         set_state(IDLE);
         return;
       }
@@ -476,7 +476,7 @@ namespace {
         }
       }
       catch(std::exception & e) {
-        DBG_OUT("Exception while creating SyncServer: %s\n", e.what());
+        ERR_OUT("Exception while creating SyncServer: %s\n", e.what());
         addin->post_sync_cleanup();// TODO: Needed?
         utils::main_context_invoke([this, need_update]() { on_sync_checker_finished(need_update); });
         return;
@@ -502,7 +502,7 @@ namespace {
       }
       catch(...) {
         // TODO: A libnotify bubble might be nice
-        DBG_OUT("Error connecting to server");
+        ERR_OUT("Error connecting to server");
         addin->post_sync_cleanup();
         utils::main_context_invoke([this, need_update]() { on_sync_checker_finished(need_update); });
         return;
@@ -679,7 +679,7 @@ namespace {
       return title1 == title2 && tags1 == tags2 && content1 == content2;
     }
     catch(std::exception & e) {
-      DBG_OUT("synchronized_note_xml_matches threw exception: %s", e.what());
+      ERR_OUT("threw exception: %s", e.what());
       return false;
     }
   }
@@ -742,10 +742,10 @@ namespace {
       }
     }
     catch(std::exception & e) {
-      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
+      ERR_OUT("Exception caught in %s: %s\n", __func__, e.what());
     }
     catch(...) {
-      DBG_OUT("Exception caught in %s\n", __func__);
+      ERR_OUT("Exception caught in %s\n", __func__);
     }
   }
 
@@ -757,10 +757,10 @@ namespace {
       update_local_note(existingNote, noteUpdate, DOWNLOAD_NEW);
     }
     catch(std::exception & e) {
-      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
+      ERR_OUT("Exception caught in %s: %s\n", __func__, e.what());
     }
     catch(...) {
-      DBG_OUT("Exception caught in %s\n", __func__);
+      ERR_OUT("Exception caught in %s\n", __func__);
     }
   }
 
@@ -771,10 +771,10 @@ namespace {
       update_local_note(existing_note, note_update, DOWNLOAD_MODIFIED);
     }
     catch(std::exception & e) {
-      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
+      ERR_OUT("Exception caught in %s: %s\n", __func__, e.what());
     }
     catch(...) {
-      DBG_OUT("Exception caught in %s\n", __func__);
+      ERR_OUT("Exception caught in %s\n", __func__);
     }
   }
 
@@ -785,10 +785,10 @@ namespace {
       note_mgr().delete_note(existing_note);
     }
     catch(std::exception & e) {
-      DBG_OUT("Exception caught in %s: %s\n", __func__, e.what());
+      ERR_OUT("Exception caught in %s: %s\n", __func__, e.what());
     }
     catch(...) {
-      DBG_OUT("Exception caught in %s\n", __func__);
+      ERR_OUT("Exception caught in %s\n", __func__);
     }
   }
 
