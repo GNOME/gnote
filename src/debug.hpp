@@ -33,8 +33,18 @@ namespace utils {
 #endif
 
 #ifdef DEBUG
+#define DBG_OUT_LEVEL(level, x, ...) ::utils::dbg_print(level, x, __FUNCTION__, ## __VA_ARGS__)
+#else
+#define DBG_OUT_LEVEL(level, x, ...)
+#endif
+
+#define DBG_OUT_1(x, ...) DBG_OUT_LEVEL(1, x, ## __VA_ARGS__)
+#define DBG_OUT_2(x, ...) DBG_OUT_LEVEL(2, x, ## __VA_ARGS__)
+#define DBG_OUT_3(x, ...) DBG_OUT_LEVEL(3, x, ## __VA_ARGS__)
+
+#ifdef DEBUG
 #define DBG_OUT(x, ...) \
-  ::utils::dbg_print(x,  __FUNCTION__, ## __VA_ARGS__)
+  ::utils::dbg_print(0, x,  __FUNCTION__, ## __VA_ARGS__)
 #else
 #define DBG_OUT(x, ...)   
 #endif
@@ -58,8 +68,8 @@ namespace utils {
    * @param fmt the formt string, printf style
    * @param func the func name
    */
-  void dbg_print(const char* fmt, const char* func, ...)
-    _PRINTF_FORMAT(1,3);
+  void dbg_print(int level, const char* fmt, const char* func, ...)
+    _PRINTF_FORMAT(2,4);
 
   /** assert 
    * @param condvalue the value of the assert, true, assert

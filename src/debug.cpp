@@ -61,6 +61,10 @@
 
 namespace utils {
 
+#ifdef DEBUG
+  gint g_debug_log_level = 1;
+#endif
+
   static void _vprint(const char *prefix, const char *fmt, 
                      const char* func,  va_list marker);
   static void _vfprint(FILE *file, const char *prefix, const char *fmt, 
@@ -68,10 +72,14 @@ namespace utils {
   static void _print(const char *prefix, const char *fmt, 
              const char* func, ...);
 
-  void dbg_print(const char *DBG(fmt), const char* DBG(func), ...)
+  void dbg_print(int level, const char *DBG(fmt), const char* DBG(func), ...)
   {
 #ifdef DEBUG
 #define DEBUG_MSG "DEBUG: "
+    if(level > g_debug_log_level) {
+      return;
+    }
+
     va_list marker;
     
     va_start(marker, func);
