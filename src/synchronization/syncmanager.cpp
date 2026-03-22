@@ -141,7 +141,7 @@ namespace {
     }
 
     m_sync_ui = sync_ui;
-    DBG_OUT("Creating synchronization thread");
+    DBG_OUT_2("Creating synchronization thread");
     m_sync_thread.reset(new std::thread([this] { synchronization_thread(); }));
     m_sync_thread->detach();
   }
@@ -329,7 +329,7 @@ namespace {
         server->upload_notes(new_or_modified_notes); // TODO: Callbacks to update GUI as upload progresses
       }
 
-      DBG_OUT("Sync: upload complete, deleting notes");
+      DBG_OUT_2("upload complete, deleting notes");
 
       // Handle notes deleted on client
       std::vector<Glib::ustring> locally_deleted_uuids;
@@ -498,7 +498,7 @@ namespace {
       // NOTE: Important to check, at least to verify
       //       that server is available
       try {
-        DBG_OUT("Checking server for updates");
+        DBG_OUT_2("Checking server for updates");
         server_has_updates = server->updates_available_since(m_client->last_synchronized_revision());
       }
       catch(...) {
