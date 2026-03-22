@@ -135,7 +135,7 @@ namespace {
     if(m_sync_thread) {
       // A synchronization thread is already running
       // TODO: Start new sync if existing dlg is for finished sync
-      DBG_OUT("A synchronization thread is already running");
+      DBG_OUT_1("A synchronization thread is already running");
       m_sync_ui->present_ui();
       return;
     }
@@ -177,7 +177,7 @@ namespace {
         return;
       }
 
-      DBG_OUT("synchronization_thread using SyncServiceAddin: %s", f.addin->name().c_str());
+      DBG_OUT_1("using SyncServiceAddin: %s", f.addin->name().c_str());
 
       set_state(CONNECTING);
       try {
@@ -200,12 +200,13 @@ namespace {
       // TODO: We should really throw exceptions from BeginSyncTransaction ()
       if(!server->begin_sync_transaction()) {
         set_state(LOCKED);
-        DBG_OUT("Server locked, try again later");
+        DBG_OUT_1("Server locked, try again later");
         set_state(IDLE);
         f.addin->post_sync_cleanup();
         return;
       }
-      DBG_OUT("8");
+
+      DBG_OUT_1("performing synchronization");
       const auto latest_server_revision = server->latest_revision();
       const int new_revision = latest_server_revision + 1;
 
@@ -223,9 +224,9 @@ namespace {
       set_state(PREPARE_DOWNLOAD);
 
       // Handle notes modified or added on server
-      DBG_OUT("Sync: get_note_updates_since rev %d", m_client->last_synchronized_revision());
+      DBG_OUT_1("get_note_updates_since rev %d", m_client->last_synchronized_revision());
       const auto note_updates = server->get_note_updates_since(m_client->last_synchronized_revision());
-      DBG_OUT("Sync: %zu updates since rev %d", note_updates.size(), m_client->last_synchronized_revision());
+      DBG_OUT_1("%zu updates since rev %d", note_updates.size(), m_client->last_synchronized_revision());
 
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
@@ -240,7 +241,7 @@ namespace {
         if(find_note_by_uuid(iter.second.m_uuid)) {
           auto existing_note = note_mgr().find(iter.second.m_title);
           if(existing_note && !iter.second.basically_equal_to(existing_note.value())) {
-            DBG_OUT("Sync: Early conflict detection for '%s'", iter.second.m_title.c_str());
+            DBG_OUT_1("Early conflict detection for '%s'", iter.second.m_title.c_str());
             if(m_sync_ui != 0) {
               m_sync_ui->note_conflict_detected(existing_note.value(), iter.second, note_update_titles);
             }
@@ -265,7 +266,7 @@ namespace {
           // title and delete if necessary.
           auto existingNote = note_mgr().find(iter.second.m_title);
           if(existingNote) {
-            DBG_OUT("SyncManager: Deleting auto-generated note: %s", iter.second.m_title.c_str());
+            DBG_OUT_1("Deleting auto-generated note: %s", iter.second.m_title.c_str());
             delete_note_in_main_thread(existingNote.value());
           }
           create_note_in_main_thread(iter.second);
@@ -279,7 +280,7 @@ namespace {
           }
           else {
             // Logger.Debug ("Sync: Late conflict detection for '{0}'", noteUpdate.Title);
-            DBG_OUT("SyncManager: Content conflict in note update for note '%s'", iter.second.m_title.c_str());
+            DBG_OUT_1("Content conflict in note update for note '%s'", iter.second.m_title.c_str());
             // Note already exists locally, but has been modified since last sync; prompt user
             if(m_sync_ui != 0) {
               m_sync_ui->note_conflict_detected(existing, iter.second, note_update_titles);
@@ -322,7 +323,7 @@ namespace {
         }
       });
 
-      DBG_OUT("Sync: Uploading %zu note updates", new_or_modified_notes.size());
+      DBG_OUT_1("Uploading %zu note updates", new_or_modified_notes.size());
       if(new_or_modified_notes.size() > 0) {
         set_state(UPLOADING);
         server->upload_notes(new_or_modified_notes); // TODO: Callbacks to update GUI as upload progresses
@@ -352,7 +353,7 @@ namespace {
         server->delete_notes(locally_deleted_uuids);
       }
 
-      DBG_OUT("Sync: note synchronization completed, finishing up transaction");
+      DBG_OUT_1("note synchronization completed, finishing up transaction");
 
       set_state(COMMITTING_CHANGES);
       bool commitResult = server->commit_sync_transaction();
@@ -375,7 +376,7 @@ namespace {
       m_client->last_sync_date(Glib::DateTime::create_now_utc());
       m_client->end_synchronization();
 
-      DBG_OUT("Sync: New revision: %d", m_client->last_synchronized_revision());
+      DBG_OUT_1("New revision: %d", m_client->last_synchronized_revision());
 
       set_state(IDLE);
 
@@ -540,7 +541,7 @@ namespace {
   {
     if(m_sync_checker_thread) {
       // A synchronization checker thread is already running
-      DBG_OUT("A sync checker thread is already running");
+      DBG_OUT_1("A sync checker thread is already running");
       return;
     }
 
