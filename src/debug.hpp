@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2019 Aurimas Cernius
+ * Copyright (C) 2012-2013,2019,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -50,13 +50,6 @@ namespace utils {
 #define ERR_OUT(x, ...) \
   ::utils::err_print(x,  __FUNCTION__, ## __VA_ARGS__)
 
-#ifdef DEBUG
-#define LOG_OUT(x, ...) \
-  ::utils::log_print(x, __FUNCTION__, ## __VA_ARGS__)
-#else
-#define LOG_OUT(x, ...)
-#endif
-
 
 
   /** print debug messages. printf format.
@@ -84,14 +77,6 @@ namespace utils {
    * @param func the func name
    */
   void err_print(const char *fmt, const char* func, ...)
-    _PRINTF_FORMAT(1,3);
-
-  /** print message to log file.
-   * Call with LOG_OUT macro.
-   * @param fmt the format string, printf style
-   * @param func the function name
-   */
-  void log_print(const char *fmt, const char *func, ...)
     _PRINTF_FORMAT(1,3);
 
 }

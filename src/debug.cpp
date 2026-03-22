@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -110,27 +110,6 @@ namespace utils {
     va_end(marker);
     
 #undef ERROR_MSG
-  }
-
-
-  void log_print(const char *DBG(fmt), const char *DBG(func), ...)
-  {
-#ifdef DEBUG
-#define LOG_MSG "LOG: "
-    Glib::ustring filename = Glib::build_filename(Glib::get_home_dir(), "gnote.log");
-    FILE *file = fopen(filename.c_str(), "a");
-    if(!file) {
-      return;
-    }
-    va_list marker;
-
-    va_start(marker, func);
-    _vfprint(file, LOG_MSG, fmt, func, marker);
-
-   va_end(marker);
-   fclose(file);
-#undef LOG_MSG
-#endif
   }
 
 
