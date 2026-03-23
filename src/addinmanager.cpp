@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2017,2019-2023,2026 Aurimas Cernius
  * Copyright (C) 2009, 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -364,7 +364,7 @@ namespace {
         loaded.insert(std::make_pair(addin_info.first, addin));
       }
       else {
-        DBG_OUT("wrong type for the interface: %s", typeid(*iface).name());
+        ERR_OUT("wrong type for the interface: %s", typeid(*iface).name());
         delete iface;
       }
     }
@@ -457,7 +457,7 @@ namespace {
         }
       }
       catch(std::exception & e) {
-        DBG_OUT("Error calling %s.initialize (): %s", addin->id().c_str(), e.what());
+        ERR_OUT("Error calling %s.initialize (): %s", addin->id().c_str(), e.what());
 
         // TODO: Call something like AddinManager.Disable (addin)
       }
@@ -476,8 +476,7 @@ namespace {
           addin.shutdown();
         }
         catch (const sharp::Exception & e) {
-          DBG_OUT("Error calling %s.Shutdown (): %s",
-                  typeid(addin).name(), e.what());
+          ERR_OUT("Error calling %s.Shutdown (): %s", typeid(addin).name(), e.what());
         }
       }
     }
