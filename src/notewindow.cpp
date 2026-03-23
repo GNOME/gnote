@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2025 Aurimas Cernius
+ * Copyright (C) 2011-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -135,7 +135,7 @@ namespace gnote {
         m_width = cur_width;
         m_height = cur_height;
 
-        DBG_OUT("WindowConfigureEvent queueing save");
+        DBG_OUT_3("WindowConfigureEvent queueing save");
         m_note.queue_save(NO_CHANGE);
       }
     }
@@ -566,7 +566,7 @@ namespace gnote {
   {
     auto & undo_manager = m_note.get_buffer()->undoer();
     if(undo_manager.get_can_undo()) {
-      DBG_OUT("Running undo...");
+      DBG_OUT_3("Running undo...");
       undo_manager.undo();
     }
   }
@@ -575,7 +575,7 @@ namespace gnote {
   {
     auto & undo_manager = m_note.get_buffer()->undoer();
     if(undo_manager.get_can_redo()) {
-      DBG_OUT("Running redo...");
+      DBG_OUT_3("Running redo...");
       undo_manager.redo();
     }
   }
