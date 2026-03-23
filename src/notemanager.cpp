@@ -61,7 +61,7 @@ namespace gnote {
       bool has_imported = false;
 
       if(l.empty()) {
-        DBG_OUT("no import plugins");
+        DBG_OUT_3("no import plugins");
       }
 
       for(auto import_addin : l) {
