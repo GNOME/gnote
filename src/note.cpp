@@ -361,7 +361,7 @@ namespace gnote {
   
   void Note::on_buffer_changed()
   {
-    DBG_OUT("on_buffer_changed queuein save");
+    DBG_OUT_3("on_buffer_changed queueing save");
     queue_save(CONTENT_CHANGED);
   }
 
@@ -370,7 +370,7 @@ namespace gnote {
                                    const Gtk::TextBuffer::iterator &)
   {
     if(NoteTagTable::tag_is_serializable(tag)) {
-      DBG_OUT("BufferTagApplied queueing save: %s", tag->property_name().get_value().c_str());
+      DBG_OUT_3("BufferTagApplied queueing save: %s", tag->property_name().get_value().c_str());
       queue_save(get_tag_table()->get_change_type(tag));
     }
   }
@@ -380,7 +380,7 @@ namespace gnote {
                                    const Gtk::TextBuffer::iterator &)
   {
     if(NoteTagTable::tag_is_serializable(tag)) {
-      DBG_OUT("BufferTagRemoved queueing save: %s", tag->property_name().get_value().c_str());
+      DBG_OUT_3("BufferTagRemoved queueing save: %s", tag->property_name().get_value().c_str());
       queue_save(get_tag_table()->get_change_type(tag));
     }
   }
@@ -410,7 +410,7 @@ namespace gnote {
       m_data.data().set_selection_bound_position(NoteData::s_noPosition);
     }
 
-    DBG_OUT("OnBufferSetMark queueing save");
+    DBG_OUT_3("OnBufferSetMark queueing save");
     queue_save(NO_CHANGE);
   }
 
@@ -421,7 +421,7 @@ namespace gnote {
 
   void Note::queue_save (ChangeType changeType)
   {
-    DBG_OUT("Got QueueSave");
+    DBG_OUT_3("Got QueueSave");
 
     if(!m_is_deleting) {
       // Replace the existing save timeout.  Wait 4 seconds
@@ -568,11 +568,11 @@ namespace gnote {
       }
 
       if(!rename) {
-        DBG_OUT("Removing link tag from text %s", range.text().c_str());
+        DBG_OUT_3("Removing link tag from text %s", range.text().c_str());
         range.remove_tag(link_tag);
       }
       else {
-        DBG_OUT("Replacing %s with %s", range.text().c_str(), renamed.get_title().c_str());
+        DBG_OUT_3("Replacing %s with %s", range.text().c_str(), renamed.get_title().c_str());
         range.replace(renamed.get_title(), link_tag);
       }
     }
@@ -631,7 +631,7 @@ namespace gnote {
   const Glib::RefPtr<NoteBuffer> & Note::get_buffer()
   {
     if(!m_buffer) {
-      DBG_OUT("Creating buffer for %s", m_data.data().title().c_str());
+      DBG_OUT_3("Creating buffer for %s", m_data.data().title().c_str());
       m_buffer = NoteBuffer::create(get_tag_table(), *this, m_gnote.preferences());
       m_data.set_buffer(Glib::RefPtr<NoteBuffer>(m_buffer));
 
