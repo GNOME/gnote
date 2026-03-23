@@ -998,7 +998,7 @@ namespace gnote {
     // as the current note's title, it's safe to omit this check and
     // also works around the bug.
     if (link) {
-      DBG_OUT ("Opening note '%s' on click...", link_name.c_str());
+      DBG_OUT_3("Opening note '%s' on click...", link_name.c_str());
       MainWindow::present_default(ignote(), static_cast<Note&>(link.value().get()));
       return true;
     }
@@ -1278,22 +1278,22 @@ namespace gnote {
   void NoteTagsWatcher::on_note_opened ()
   {
     // FIXME: Just for kicks, spit out the current tags
-    DBG_OUT ("%s tags:", get_note().get_title().c_str());
+    DBG_OUT_3("%s tags:", get_note().get_title().c_str());
     for(const Tag &tag : get_note().get_tags()) {
-      DBG_OUT ("\t%s", tag.name().c_str());
+      DBG_OUT_3("\t%s", tag.name().c_str());
     }
   }
 
 #ifdef DEBUG
   void NoteTagsWatcher::on_tag_added(const NoteBase& DBG(note), const Tag& DBG(tag))
   {
-    DBG_OUT ("Tag added to %s: %s", note.get_title().c_str(), tag.name().c_str());
+    DBG_OUT_3("Tag added to %s: %s", note.get_title().c_str(), tag.name().c_str());
   }
 
 
   void NoteTagsWatcher::on_tag_removing(const NoteBase& note, const Tag & tag)
   {
-    DBG_OUT ("Removing tag from %s: %s", note.get_title().c_str(), tag.name().c_str());
+    DBG_OUT_3("Removing tag from %s: %s", note.get_title().c_str(), tag.name().c_str());
   }
 #endif
 
@@ -1301,7 +1301,7 @@ namespace gnote {
   void NoteTagsWatcher::on_tag_removed(const NoteBase&, const Glib::ustring& tag_name)
   {
     auto tag = manager().tag_manager().get_tag(tag_name);
-    DBG_OUT ("Watchers.OnTagRemoved popularity count: %d", tag ? tag.value().get().popularity() : 0);
+    DBG_OUT_3("Watchers.OnTagRemoved popularity count: %d", tag ? tag.value().get().popularity() : 0);
     if(tag && tag.value().get().popularity() == 0) {
       manager().tag_manager().remove_tag(*tag);
     }
