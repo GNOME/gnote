@@ -77,11 +77,11 @@ namespace gnote {
   {
     if (m_preferences.enable_custom_font()) {
       auto fontString = m_preferences.custom_font_face();
-      DBG_OUT( "Switching note font to '%s'...", fontString.c_str());
+      DBG_OUT_3( "Switching note font to '%s'...", fontString.c_str());
       modify_font_from_string (fontString);
     } 
     else {
-      DBG_OUT("Switching back to the default font");
+      DBG_OUT_3("Switching back to the default font");
       Gtk::Settings::get_default()->reset_property("gtk-font-name");
     }
   }
@@ -89,7 +89,7 @@ namespace gnote {
   
   void NoteEditor::modify_font_from_string (const Glib::ustring & fontString)
   {
-    DBG_OUT("Switching note font to '%s'...", fontString.c_str());
+    DBG_OUT_3("Switching note font to '%s'...", fontString.c_str());
     Gtk::Settings::get_default()->property_gtk_font_name() = fontString;
   }
 
