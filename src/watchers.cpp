@@ -804,12 +804,12 @@ namespace gnote {
     // TitleTrie.FindMatches, probably.
     auto hit_ref = note_manager.find_by_uri(hit.value());
     if(!hit_ref) {
-      DBG_OUT("do_highlight: missing note '%s'." , hit.key().c_str());
+      DBG_OUT_1("do_highlight: missing note '%s'." , hit.key().c_str());
       return;
     }
       
     if(!note_manager.find(hit.key())) {
-      DBG_OUT("do_highlight: '%s' links to non-existing note." , hit.key().c_str());
+      DBG_OUT_1("do_highlight: '%s' links to non-existing note." , hit.key().c_str());
       return;
     }
       
@@ -974,7 +974,7 @@ namespace gnote {
     auto link = manager().find(link_name);
 
     if (!link) {
-      DBG_OUT("Creating note '%s'...", link_name.c_str());
+      DBG_OUT_1("Creating note '%s'...", link_name.c_str());
       try {
         link = std::ref(manager().create(Glib::ustring(link_name)));
       } 
