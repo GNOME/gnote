@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2016-2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2010-2014,2016-2017,2019-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -432,7 +432,7 @@ NoteBase::ORef NoteManagerBase::find_template_note() const
 
 void NoteManagerBase::delete_note(NoteBase & note)
 {
-  DBG_OUT("Deleting note '%s'.", note.get_title().c_str());
+  DBG_OUT_1("Deleting note '%s'.", note.get_title().c_str());
   NoteBase::Ptr cached_ref;  // prevent note from being destroyed
 
   for(auto iter = m_notes.begin(); iter != m_notes.end(); ++iter) {
