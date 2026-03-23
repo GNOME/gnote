@@ -214,7 +214,7 @@ namespace gnote {
       return false;  // same note, same title
     }
 
-    DBG_OUT("Renaming note from '%s' to '%s'", note.get_title().c_str(), title.c_str());
+    DBG_OUT_2("Renaming note from '%s' to '%s'", note.get_title().c_str(), title.c_str());
     note.set_title(std::move(title), true);
     return true;
   }
@@ -437,7 +437,7 @@ namespace gnote {
     }
     tag = manager().tag_manager().get_or_create_tag(tag_name);
     get_note()->add_tag(tag);
-    DBG_OUT("Added language tag %s", tag_name.c_str());
+    DBG_OUT_2("Added language tag %s", tag_name.c_str());
   }
 
   Tag::Ptr NoteSpellChecker::get_language_tag()
@@ -627,7 +627,7 @@ namespace gnote {
       Gtk::TextIter end_cpy = start_cpy;
       end_cpy.forward_chars(match.size());
 
-      DBG_OUT("url is %s", start_cpy.get_slice(end_cpy).c_str());
+      DBG_OUT_2("url is %s", start_cpy.get_slice(end_cpy).c_str());
       get_buffer()->apply_tag(m_url_tag, start_cpy, end_cpy);
 
       start = end_cpy;
@@ -841,7 +841,7 @@ namespace gnote {
       return;
     }
 
-    DBG_OUT("Matching Note title '%s' at %d-%d...", hit.key().c_str(), hit.start(), hit.end());
+    DBG_OUT_2("Matching Note title '%s' at %d-%d...", hit.key().c_str(), hit.start(), hit.end());
 
     auto tag_table = note.get_tag_table();
     auto link_tag = tag_table->get_link_tag();
@@ -1071,7 +1071,7 @@ namespace gnote {
 	break;
       }
 
-      DBG_OUT("Highlighting wikiword: '%s' at offset %d",
+      DBG_OUT_2("Highlighting wikiword: '%s' at offset %d",
               start_cpy.get_slice(end_cpy).c_str(), int(start_pos));
 
       if(!manager().find(match)) {
