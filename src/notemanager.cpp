@@ -231,7 +231,7 @@ namespace gnote {
   {
     m_addin_mgr->shutdown_application_addins();
 
-    DBG_OUT("Saving unsaved notes...");
+    DBG_OUT_2("Saving unsaved notes...");
       
     // Use a copy of the notes to prevent bug #510442 (crash on exit
     // when iterating the notes to save them.
