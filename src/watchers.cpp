@@ -816,7 +816,7 @@ namespace gnote {
     const NoteBase & hit_note = hit_ref.value();
 
     if(hit.key().lowercase() != hit_note.get_title().lowercase()) { // == 0 if same string
-      DBG_OUT("do_highlight: '%s' links wrongly to note '%s'." , hit.key().c_str(), hit_note.get_title().c_str());
+      ERR_OUT("do_highlight: '%s' links wrongly to note '%s'." , hit.key().c_str(), hit_note.get_title().c_str());
       return;
     }
       
