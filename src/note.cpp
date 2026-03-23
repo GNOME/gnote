@@ -344,7 +344,7 @@ namespace gnote {
       return;
     m_save_needed = false;
 
-    DBG_OUT("Saving '%s'...", m_data.data().title().c_str());
+    DBG_OUT_2("Saving '%s'...", m_data.data().title().c_str());
 
     try {
       manager().note_archiver().write_file(file_path(), m_data.synchronized_data());
