@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2024,2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -65,7 +65,7 @@ namespace gnote {
       }
 
       for(auto import_addin : l) {
-        DBG_OUT("importing");
+        DBG_OUT_1("importing");
         import_addin->initialize();
         if(import_addin->want_to_run(*this)) {
           has_imported |= import_addin->first_run(*this);
