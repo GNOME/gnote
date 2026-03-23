@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2025 Aurimas Cernius
+ * Copyright (C) 2010-2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -561,7 +561,7 @@ namespace gnote {
     if(total > 0) {
       ++current;
     }
-    DBG_OUT("New search position: %u/%u", current, total);
+    DBG_OUT_3("New search position: %u/%u", current, total);
 
     Gtk::Button *next, *prev;
     Gtk::Label *search_position;
