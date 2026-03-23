@@ -1277,11 +1277,13 @@ namespace gnote {
 
   void NoteTagsWatcher::on_note_opened ()
   {
+#ifdef DEBUG
     // FIXME: Just for kicks, spit out the current tags
     DBG_OUT_3("%s tags:", get_note().get_title().c_str());
     for(const Tag &tag : get_note().get_tags()) {
       DBG_OUT_3("\t%s", tag.name().c_str());
     }
+#endif
   }
 
 #ifdef DEBUG
