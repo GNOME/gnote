@@ -601,7 +601,7 @@ namespace gnote {
 
   int GnoteCommandLine::execute()
   {
-    DBG_OUT("running args");
+    DBG_OUT_1("running args");
 
     RemoteControl *remote_control = static_cast<Gnote&>(m_gnote).remote_control().get_remote_control();
     if(remote_control) {
@@ -737,7 +737,7 @@ namespace gnote {
 
   bool GnoteCommandLine::needs_execute() const
   {
-    DBG_OUT("needs execute?");
+    DBG_OUT_3("needs execute?");
     return m_do_new_note ||
       m_open_note ||
       m_do_search ||
