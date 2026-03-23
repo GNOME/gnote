@@ -1467,8 +1467,7 @@ namespace gnote {
           }
           break;
         default:
-          DBG_OUT("Unhandled element %d. Value: '%s'",
-                  xml.get_node_type(), xml.get_value().c_str());
+          ERR_OUT("Unhandled element %d. Value: '%s'", xml.get_node_type(), xml.get_value().c_str());
           break;
         }
       }
