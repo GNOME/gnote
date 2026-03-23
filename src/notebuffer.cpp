@@ -82,7 +82,7 @@ namespace gnote {
 
   void NoteBuffer::toggle_active_tag(const Glib::ustring & tag_name)
   {
-    DBG_OUT("ToggleTag called for '%s'", tag_name.c_str());
+    DBG_OUT_3("ToggleTag called for '%s'", tag_name.c_str());
     
     Glib::RefPtr<Gtk::TextTag> tag = get_tag_table()->lookup(tag_name);
     Gtk::TextIter select_start, select_end;
@@ -108,7 +108,7 @@ namespace gnote {
 
   void NoteBuffer::set_active_tag (const Glib::ustring & tag_name)
   {
-    DBG_OUT("SetTag called for '%s'", tag_name.c_str());
+    DBG_OUT_3("SetTag called for '%s'", tag_name.c_str());
 
     Glib::RefPtr<Gtk::TextTag> tag = get_tag_table()->lookup(tag_name);
     Gtk::TextIter select_start, select_end;
@@ -123,7 +123,7 @@ namespace gnote {
 
   void NoteBuffer::remove_active_tag (const Glib::ustring & tag_name)
   {
-    DBG_OUT("remove_tagcalled for '%s'", tag_name.c_str());
+    DBG_OUT_3("remove_tagcalled for '%s'", tag_name.c_str());
 
     Glib::RefPtr<Gtk::TextTag> tag = get_tag_table()->lookup(tag_name);
     Gtk::TextIter select_start, select_end;
@@ -1207,7 +1207,7 @@ namespace gnote {
 
       // Hidden character representing an anchor
       if (iter.get_char() == 0xFFFC) {
-        DBG_OUT("Got child anchor!!!");
+        DBG_OUT_3("Got child anchor!!!");
         if (iter.get_child_anchor()) {
           const char * serialize = (const char*)(iter.get_child_anchor()->get_data(Glib::Quark("serialize")));
           if (serialize)
