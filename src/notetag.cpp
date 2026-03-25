@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -197,7 +197,7 @@ namespace {
     try {
       m_signal_changed(*this, false);
     } catch (sharp::Exception & e) {
-      DBG_OUT("Exception calling TagChanged from NoteTag.set_Widget: %s", e.what());
+      ERR_OUT("Exception calling TagChanged from NoteTag.set_Widget: %s", e.what());
     }
   }
 
