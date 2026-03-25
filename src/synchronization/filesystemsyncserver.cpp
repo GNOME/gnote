@@ -179,7 +179,7 @@ void FileSystemSyncServer::mkdir_p(const Glib::RefPtr<Gio::File> & path)
 void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes)
 {
   mkdir_p(m_new_revision_path);
-  DBG_OUT("UploadNotes: notes.Count = %d", int(notes.size()));
+  DBG_OUT_1("UploadNotes: notes.Count = %d", int(notes.size()));
   m_updated_notes.reserve(notes.size());
   std::vector<NoteUpload> uploads;
   for(NoteBase &iter : notes) {
@@ -214,7 +214,7 @@ std::vector<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
   if(auto xml_doc = parse_xml_file(m_manifest_path)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
     sharp::XmlNodeSet noteIds = sharp::xml_node_xpath_find(root_node, "//note/@id");
-    DBG_OUT("get_all_note_uuids has %d notes", int(noteIds.size()));
+    DBG_OUT_1("get_all_note_uuids has %d notes", int(noteIds.size()));
     for(sharp::XmlNodeSet::iterator iter = noteIds.begin(); iter != noteIds.end(); ++iter) {
       noteUUIDs.push_back(sharp::xml_node_content(*iter));
     }
@@ -304,7 +304,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
     auto lock_expires = file_info->get_modification_date_time().to_utc().add(currentSyncLock.duration);
     auto now = Glib::DateTime::create_now_utc();
     if(now < lock_expires) {
-      DBG_OUT("Sync: Discovered a sync lock file, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
+      DBG_OUT_1("Sync: Discovered a sync lock file, wait at least %s before trying again.", sharp::time_span_string(currentSyncLock.duration).c_str());
       return false;
     }
   }
@@ -613,7 +613,7 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
 
 void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
 {
-  DBG_OUT("Sync: Cleaning up a previous failed sync transaction");
+  DBG_OUT_1("Cleaning up a previous failed sync transaction");
   int rev = latest_revision();
   if(rev >= 0 && !is_valid_xml_file(m_manifest_path, NULL)) {
     // Time to discover the latest valid revision
@@ -635,7 +635,7 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
   }
 
   // Delete the old lock file
-  DBG_OUT("Sync: Deleting expired lockfile");
+  DBG_OUT_1("Deleting expired lockfile");
   try {
     m_lock_path->remove();
   }
