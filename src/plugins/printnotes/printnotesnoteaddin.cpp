@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2015-2017,2019-2021,2023 Aurimas Cernius
+ * Copyright (C) 2010-2013,2015-2017,2019-2021,2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -102,7 +102,7 @@ namespace printnotes {
     } 
     catch (const sharp::Exception & e) 
     {
-      DBG_OUT("Exception while printing %s: %s", get_note().get_title().c_str(),
+      ERR_OUT("Exception while printing %s: %s", get_note().get_title().c_str(),
               e.what());
       auto dlg = Gtk::make_managed<gnote::utils::HIGMessageDialog>(get_host_window(),
                                          GTK_DIALOG_MODAL,
