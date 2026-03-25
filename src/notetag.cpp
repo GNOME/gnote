@@ -228,8 +228,7 @@ namespace {
             m_attributes [name] = xml.get_value();
 
             on_attribute_read (name);
-            DBG_OUT("NoteTag: %s read attribute %s='%s'",
-                    get_element_name().c_str(), name.c_str(), xml.get_value().c_str());
+            DBG_OUT_3("NoteTag: %s read attribute %s='%s'", get_element_name().c_str(), name.c_str(), xml.get_value().c_str());
           }
       }
     }
