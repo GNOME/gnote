@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2016-2017,2019-2020,2022-2024 Aurimas Cernius
+ * Copyright (C) 2011-2014,2016-2017,2019-2020,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ namespace gnote {
     , m_gnote(g)
     , m_manager(manager)
   {
-    DBG_OUT("initialized remote control");
+    DBG_OUT_2("initialized remote control");
     m_manager.signal_note_added.connect(
       sigc::mem_fun(*this, &RemoteControl::on_note_added));
     m_manager.signal_note_deleted.connect(
