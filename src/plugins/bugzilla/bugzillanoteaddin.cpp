@@ -96,7 +96,7 @@ namespace bugzilla {
       sharp::directory_copy(src, dest);
     }
     catch (const std::exception & e) {
-      DBG_OUT("BugzillaNoteAddin: migrating images: %s", e.what());
+      ERR_OUT("BugzillaNoteAddin: migrating images: %s", e.what());
     }
   }
 

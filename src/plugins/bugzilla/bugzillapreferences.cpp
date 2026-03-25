@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -200,7 +200,7 @@ namespace bugzilla {
         pixbuf = Gdk::Pixbuf::create_from_file(icon_file);
       } 
       catch (const std::exception & e) {
-        DBG_OUT("Error loading Bugzilla Icon %s: %s", icon_file.c_str(), e.what());
+        ERR_OUT("Error loading Bugzilla Icon %s: %s", icon_file.c_str(), e.what());
       }
 
       if (!pixbuf) {
