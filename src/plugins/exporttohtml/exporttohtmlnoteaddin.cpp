@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -196,7 +196,7 @@ sharp::XslTransform & ExportToHtmlNoteAddin::get_note_xsl()
                                                &to_lower);
     DBG_OUT("xsltRegisterExtModule %d", result);
     if(result == -1) {
-      DBG_OUT("xsltRegisterExtModule failed");
+      ERR_OUT("xsltRegisterExtModule failed");
     }
 
     s_xsl = new sharp::XslTransform;
