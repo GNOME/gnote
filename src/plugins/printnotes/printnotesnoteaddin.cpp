@@ -327,7 +327,7 @@ namespace printnotes {
                                                 - m_margin_top - m_margin_bottom
                                                 - compute_footer_height(context));
 
-    DBG_OUT("margins = %d %d %d %d", m_margin_top, m_margin_left,
+    DBG_OUT_3("margins = %d %d %d %d", m_margin_top, m_margin_left,
             m_margin_right, m_margin_bottom);
 
     m_page_breaks.clear();
