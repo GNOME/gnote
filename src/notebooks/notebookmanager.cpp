@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -253,7 +253,7 @@ namespace gnote {
       }
       
       auto & notebook = g.notebook_manager().get_or_create_notebook (notebookName);
-      DBG_OUT("Created the notebook: %s (%s)", notebook.get_name().c_str(), notebook.get_normalized_name().c_str());
+      DBG_OUT_1("Created the notebook: %s (%s)", notebook.get_name().c_str(), notebook.get_normalized_name().c_str());
         
       if(!notes_to_add.empty()) {
         // Move all the specified notesToAdd into the new notebook
