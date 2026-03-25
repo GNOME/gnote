@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019-2020,2022-2024 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019-2020,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009-2010 Debarshi Ray
  *
  * This program is free software: you can redistribute it and/or modify
@@ -79,7 +79,7 @@ void NoteOfTheDay::cleanup_old(gnote::NoteManagerBase & manager)
   });
 
   for(const auto & note : kill_list) {
-    DBG_OUT("NoteOfTheDay: Deleting old unmodified '%s'", note.get().get_title().c_str());
+    DBG_OUT_2("NoteOfTheDay: Deleting old unmodified '%s'", note.get().get_title().c_str());
     manager.delete_note(note);
   }
 }
