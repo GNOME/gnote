@@ -251,7 +251,7 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
     }
   }
   catch(KeyringException & ke) {
-    DBG_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
+    ERR_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
   }
 
   return url != "" && username != "" && password != "";
@@ -272,7 +272,7 @@ void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, con
     }
   }
   catch(KeyringException & ke) {
-    DBG_OUT("Saving configuration to the GNOME keyring failed with the following message: %s", ke.what());
+    ERR_OUT("Saving configuration to the GNOME keyring failed with the following message: %s", ke.what());
     // TODO: If the above fails (no keyring daemon), save all but password
     //       to GConf, and notify user.
     // Save configuration into GConf
