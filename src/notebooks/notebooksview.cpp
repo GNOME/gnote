@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2014,2019,2022-2025 Aurimas Cernius
+ * Copyright (C) 2011-2014,2019,2022-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -375,7 +375,7 @@ namespace gnote {
     {
       NotebookManager & notebook_manager = m_note_manager.notebook_manager();
       auto & new_notebook = notebook_manager.get_or_create_notebook(new_name);
-      DBG_OUT("Renaming notebook '{%s}' to '{%s}'", old_notebook.get_name().c_str(), new_name.c_str());
+      DBG_OUT_1("Renaming notebook '{%s}' to '{%s}'", old_notebook.get_name().c_str(), new_name.c_str());
       if(auto t = old_notebook.get_tag()) {
         Tag &tag = t.value();
         for(NoteBase *note : tag.get_notes()) {
