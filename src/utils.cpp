@@ -105,10 +105,10 @@ namespace gnote {
     void open_url(Gtk::Window & parent, const Glib::ustring & url)
     {
       if(!url.empty()) {
-        DBG_OUT("Opening url '%s'...", url.c_str());
+        DBG_OUT_1("Opening url '%s'...", url.c_str());
         if(url.lowercase().find("file://") == 0) {
           auto path = url.substr(7);
-          DBG_OUT("Opening file '%s'...", path.c_str());
+          DBG_OUT_1("Opening file '%s'...", path.c_str());
           auto launcher = Gtk::FileLauncher::create(Gio::File::create_for_path(path));
           launch_file_or_uri(launcher, parent, path);
           return;
