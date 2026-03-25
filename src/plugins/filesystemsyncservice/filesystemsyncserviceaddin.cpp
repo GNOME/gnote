@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017-2023,2025 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017-2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -150,14 +150,14 @@ bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void(bool, 
 
   if(syncPath == "") {
     // TODO: Figure out a way to send the error back to the client
-    DBG_OUT("The path is empty");
+    ERR_OUT("The path is empty");
     throw gnote::sync::GnoteSyncException(_("Folder path field is empty."));
   }
 
   // Attempt to create the path and fail if we can't
   if(sharp::directory_exists(syncPath) == false) {
     if(!sharp::directory_create(syncPath)) {
-      DBG_OUT("Could not create \"%s\"", syncPath.c_str());
+      ERR_OUT("Could not create \"%s\"", syncPath.c_str());
       throw gnote::sync::GnoteSyncException(_("Specified folder path does not exist, and Gnote was unable to create it."));
     }
   }
