@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016,2019,2022-2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,7 +62,7 @@ void SearchProvider::on_method_call(const Glib::RefPtr<Gio::DBus::Connection> &,
                                     const Glib::VariantContainerBase & parameters,
                                     const Glib::RefPtr<Gio::DBus::MethodInvocation> & invocation)
 {
-  DBG_OUT("Search method %s called", method_name.c_str());
+  DBG_OUT_2("Search method %s called", method_name.c_str());
   std::map<Glib::ustring, stub_func>::iterator iter = m_stubs.find(method_name);
   if(iter == m_stubs.end()) {
     invocation->return_error(Gio::DBus::Error(Gio::DBus::Error::UNKNOWN_METHOD,
