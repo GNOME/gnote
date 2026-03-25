@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -182,7 +182,7 @@ namespace sharp {
   int XmlWriter::write_char_entity(gunichar ch)
   {
     Glib::ustring unistring(1, (gunichar)ch);
-    DBG_OUT("write entity %s", unistring.c_str());
+    DBG_OUT_3("write entity %s", unistring.c_str());
     return xmlTextWriterWriteString(m_writer, (const xmlChar*)unistring.c_str());
   }
 
