@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013,2017,2019,2021-2022 Aurimas Cernius
+ * Copyright (C) 2011,2013,2017,2019,2021-2022,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -78,7 +78,7 @@ void RemoteControlProxy::register_object(const Glib::RefPtr<Gio::DBus::Connectio
   m_remote_control = new RemoteControl(conn, g, manager, GNOTE_SERVER_PATH, GNOTE_INTERFACE_NAME, m_gnote_interface);
   m_search_provider = new org::gnome::Gnote::SearchProvider(conn, GNOTE_SEARCH_PROVIDER_PATH,
                                                             m_search_provider_interface, g, manager);
-  DBG_OUT("Gnote remote control active.");
+  DBG_OUT_3("Gnote remote control active.");
 }
 
 
