@@ -43,13 +43,6 @@ namespace utils {
 #define DBG_OUT_3(x, ...) DBG_OUT_LEVEL(3, x, ## __VA_ARGS__)
 
 #ifdef DEBUG
-#define DBG_OUT(x, ...) \
-  ::utils::dbg_print(0, x,  __FUNCTION__, ## __VA_ARGS__)
-#else
-#define DBG_OUT(x, ...)   
-#endif
-
-#ifdef DEBUG
 #define DBG_ASSERT(cond, reason)  \
   ::utils::dbg_assert(bool(cond), #cond, __FILE__, __LINE__, reason)
 #else
