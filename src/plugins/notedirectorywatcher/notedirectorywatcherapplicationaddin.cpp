@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2021-2023 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2021-2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -204,7 +204,7 @@ void NoteDirectoryWatcherApplicationAddin::delete_note(const Glib::ustring & not
   if(!note_manager().find_by_uri(note_uri, [this](gnote::NoteBase & note_to_delete) {
     note_manager().delete_note(note_to_delete);
   })) {
-    DBG_OUT("notedirectorywatcher: did not delete %s because note not found.", note_id.c_str());
+    ERR_OUT("notedirectorywatcher: did not delete %s because note not found.", note_id.c_str());
   }
 }
 
@@ -212,7 +212,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
 {
   const Glib::ustring & note_path = Glib::build_filename(note_manager().notes_dir(), note_id + ".note");
   if (!sharp::file_exists(note_path)) {
-    DBG_OUT("NoteDirectoryWatcher: Not processing update of %s because file does not exist.", note_path.c_str());
+    ERR_OUT("NoteDirectoryWatcher: Not processing update of %s because file does not exist.", note_path.c_str());
     return;
   }
 
@@ -227,7 +227,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
   }
 
   if(noteXml == "") {
-    DBG_OUT("NoteDirectoryWatcher: Update aborted, %s had no contents.", note_path.c_str());
+    ERR_OUT("NoteDirectoryWatcher: Update aborted, %s had no contents.", note_path.c_str());
     return;
   }
 
