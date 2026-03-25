@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2026 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -1053,7 +1053,7 @@ namespace {
         active_sync->service().reset_configuration();
       }
       catch(std::exception & e) {
-        DBG_OUT("Error calling %s.reset_configuration: %s", active_sync->service().id().c_str(), e.what());
+        ERR_OUT("Error calling %s.reset_configuration: %s", active_sync->service().id().c_str(), e.what());
       }
 
       m_gnote.preferences().sync_selected_service_addin("");
@@ -1126,7 +1126,7 @@ namespace {
       errorMsg = e.what();
     }
     catch(std::exception & e) {
-      DBG_OUT("Unexpected error calling %s.save_configuration: %s", active_sync->service().id().c_str(), e.what());
+      ERR_OUT("Unexpected error calling %s.save_configuration: %s", active_sync->service().id().c_str(), e.what());
     }
 
     if(!saved) {
