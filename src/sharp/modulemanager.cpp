@@ -57,7 +57,7 @@ namespace sharp {
     }
 
     Glib::Module module(mod, Glib::Module::Flags::LOCAL);
-    DBG_OUT("load module %s", file_basename(mod).c_str());
+    DBG_OUT_1("load module %s", file_basename(mod).c_str());
     if(!module) {
       ERR_OUT(_("Error loading %s"), Glib::Module::get_last_error().c_str());
       return dmod;
