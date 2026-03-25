@@ -103,7 +103,7 @@ void ExportToHtmlNoteAddin::export_button_clicked(const Glib::VariantBase&)
 void ExportToHtmlNoteAddin::export_dialog_response(ExportToHtmlDialog & dialog)
 {
   Glib::ustring output_path = dialog.get_file()->get_path();
-  DBG_OUT("Exporting Note '%s' to '%s'...", get_note().get_title().c_str(), output_path.c_str());
+  DBG_OUT_2("Exporting Note '%s' to '%s'...", get_note().get_title().c_str(), output_path.c_str());
 
   sharp::StreamWriter writer;
   Glib::ustring error_message;
@@ -194,7 +194,7 @@ sharp::XslTransform & ExportToHtmlNoteAddin::get_note_xsl()
     int result = xsltRegisterExtModuleFunction((const xmlChar *)"ToLower",
                                                (const xmlChar *)"http://beatniksoftware.com/tomboy", 
                                                &to_lower);
-    DBG_OUT("xsltRegisterExtModule %d", result);
+    DBG_OUT_3("xsltRegisterExtModule %d", result);
     if(result == -1) {
       ERR_OUT("xsltRegisterExtModule failed");
     }
@@ -203,7 +203,7 @@ sharp::XslTransform & ExportToHtmlNoteAddin::get_note_xsl()
     Glib::ustring stylesheet_file = DATADIR "/gnote/" STYLESHEET_NAME;
 
     if (sharp::file_exists (stylesheet_file)) {
-      DBG_OUT("ExportToHTML: Using user-custom %s file.", STYLESHEET_NAME);
+      DBG_OUT_1("ExportToHTML: Using user-custom %s file.", STYLESHEET_NAME);
       s_xsl->load(stylesheet_file);
     } 
 #if 0
