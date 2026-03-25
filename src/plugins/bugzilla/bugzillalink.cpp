@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017,2019,2022,2023 Aurimas Cernius
+ * Copyright (C) 2012,2017,2019,2022,2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -94,7 +94,7 @@ namespace bugzilla {
   bool BugzillaLink::activate(const gnote::NoteEditor &, const Gtk::TextIter &)
   {
     if(!get_bug_url().empty()) {
-      DBG_OUT("Opening url '%s'...", get_bug_url().c_str());
+      DBG_OUT_3("Opening url '%s'...", get_bug_url().c_str());
 				
       try {
         gnote::utils::open_url(m_gnote.get_main_window(), get_bug_url());
