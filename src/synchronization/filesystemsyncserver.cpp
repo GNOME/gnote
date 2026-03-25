@@ -257,7 +257,7 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
 
     Glib::ustring xpath = Glib::ustring::compose("//note[@rev > %1]", revision);
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
-    DBG_OUT("get_note_updates_since xpath returned %d nodes", int(noteNodes.size()));
+    DBG_OUT_2("get_note_updates_since xpath returned %d nodes", int(noteNodes.size()));
     if(noteNodes.size() > 0) {
       for(auto & node : noteNodes) {
         Glib::ustring note_id = sharp::xml_node_content(sharp::xml_node_xpath_find_single_node(node, "@id"));
@@ -288,7 +288,7 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
     noteUpdates.insert(std::make_pair(downloaded.note_id, update));
   }
 
-  DBG_OUT("get_note_updates_since (%d) returning: %d", revision, int(noteUpdates.size()));
+  DBG_OUT_2("get_note_updates_since (%d) returning: %d", revision, int(noteUpdates.size()));
   return noteUpdates;
 }
 
