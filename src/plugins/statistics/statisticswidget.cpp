@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2017,2019,2023-2024 Aurimas Cernius
+ * Copyright (C) 2013-2014,2017,2019,2023-2024,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -121,7 +121,7 @@ private:
         m_model->append(StatisticsRecord::create({"\t" + nb.first.get().get_name(), Glib::ustring::compose(fmt, nb.second)}));
       }
 
-      DBG_OUT("Statistics updated");
+      DBG_OUT_3("Statistics updated");
     }
 
   void on_note_list_changed(gnote::NoteBase &)
