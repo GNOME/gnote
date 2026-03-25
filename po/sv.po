@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-01-07 14:43+0000\n"
-"PO-Revision-Date: 2026-01-25 03:08+0100\n"
+"POT-Creation-Date: 2026-03-23 20:42+0000\n"
+"PO-Revision-Date: 2026-03-13 23:59+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -391,22 +391,34 @@ msgstr ""
 "Temavarianten att använda. Möjliga värden är tom sträng för att följa "
 "systemet, ”dark” (mörk) och ”light” (ljus)."
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:156
+msgid "Tab width in note editor"
+msgstr "Tabbredd i anteckningsredigerare"
+
+#: data/org.gnome.gnote.gschema.xml:157
+msgid ""
+"Tab stop positions in editor will be setup using this number as a step in "
+"space characters. Zero to use the default tab width."
+msgstr ""
+"Positioner för tabbstopp i redigeraren kommer konfigureras med detta tal som "
+"ett steg i blanktecken. Noll för att använda standardtabbredden."
+
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Last Directory"
 msgstr "HTML-exportera senaste katalogen"
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Senaste katalogen som en anteckning exporterades till med insticksmodulen "
 "”Exportera till HTML”."
 
-#: data/org.gnome.gnote.gschema.xml:168
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Linked Notes"
 msgstr "HTML-exportera länkade anteckningar"
 
-#: data/org.gnome.gnote.gschema.xml:169
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -414,11 +426,11 @@ msgstr ""
 "Senaste inställningen för kryssrutan ”Exportera länkade anteckningar” i "
 "insticksmodulen ”Exportera till HTML”."
 
-#: data/org.gnome.gnote.gschema.xml:173
+#: data/org.gnome.gnote.gschema.xml:178
 msgid "HTML Export All Linked Notes"
 msgstr "HTML-exportera alla länkade anteckningar"
 
-#: data/org.gnome.gnote.gschema.xml:174
+#: data/org.gnome.gnote.gschema.xml:179
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -431,11 +443,11 @@ msgstr ""
 "anteckningar” och används för att ange huruvida alla anteckningar (rekursivt "
 "hittade) ska inkluderas vid en HTML-exportering."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Client ID"
 msgstr "ID för synkroniseringsklient"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -443,11 +455,11 @@ msgstr ""
 "Unik identifierare för den här Gnote-klienten, används vid kommunikation med "
 "en synkroniseringsserver."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Synchronization Local Server Path"
 msgstr "Lokal serversökväg för synkronisering"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -455,11 +467,11 @@ msgstr ""
 "Sökväg till synkroniseringsservern när tilläggstjänsten för synkronisering "
 "av filsystem används."
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Selected Synchronization Service Addin"
 msgstr "Valt tilläggstjänst för synkronisering"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -467,11 +479,11 @@ msgstr ""
 "Unik identifierare för den för närvarande konfigurerade tilläggstjänsten för "
 "synkronisering av anteckningar."
 
-#: data/org.gnome.gnote.gschema.xml:195
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Sparat beteende för synkroniseringskonflikter för anteckningar"
 
-#: data/org.gnome.gnote.gschema.xml:196
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -485,11 +497,11 @@ msgstr ""
 "indikerar att användaren önskar att bli tillfrågad när en konflikt uppstår, "
 "så att användaren kan hantera konflikten från fall till fall."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Tidsgräns överskreds för automatisk bakgrundssynkronisering"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -502,19 +514,19 @@ msgstr ""
 "inaktiverad. Det lägsta tillåtna positiva värdet är 5. Värdet anges i "
 "minuter."
 
-#: data/org.gnome.gnote.gschema.xml:208
+#: data/org.gnome.gnote.gschema.xml:213
 msgid "Online directory URI"
 msgstr "URI för nätkatalog"
 
-#: data/org.gnome.gnote.gschema.xml:209
+#: data/org.gnome.gnote.gschema.xml:214
 msgid "URI to online directory where notes are synchronized to."
 msgstr "URI till nätkatalog som anteckningar synkroniseras till."
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Accept SSL Certificates"
 msgstr "Acceptera SSL-certifikat"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:221
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -522,27 +534,27 @@ msgstr ""
 "Använd wdfs-flaggan ”-ac” för att acceptera SSL-certifikat utan att "
 "tillfråga användaren."
 
-#: data/org.gnome.gnote.gschema.xml:220
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share URL"
 msgstr "Utdelnings-URL"
 
-#: data/org.gnome.gnote.gschema.xml:221
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL till WebDAV-utdelning som anteckningar synkroniseras till."
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid "Share username"
 msgstr "Användarnamn för utdelning"
 
-#: data/org.gnome.gnote.gschema.xml:226
+#: data/org.gnome.gnote.gschema.xml:231
 msgid "Username to access WebDAV share."
 msgstr "Användarnamn för att komma åt WebDAV-utdelning."
 
-#: data/org.gnome.gnote.gschema.xml:232
+#: data/org.gnome.gnote.gschema.xml:237
 msgid "Timestamp format"
 msgstr "Format för tidsstämpel"
 
-#: data/org.gnome.gnote.gschema.xml:233
+#: data/org.gnome.gnote.gschema.xml:238
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -550,11 +562,11 @@ msgstr ""
 "Datumformatet som används för tidsstämpeln. Den följer formatet för "
 "strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:239
+#: data/org.gnome.gnote.gschema.xml:244
 msgid "Time between checks"
 msgstr "Tid mellan kontroller"
 
-#: data/org.gnome.gnote.gschema.xml:240
+#: data/org.gnome.gnote.gschema.xml:245
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -737,27 +749,27 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Minska indentering/inaktivera punkter för aktuell rad"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "_Ny anteckning"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "Nytt _fönster"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:134
 msgid "_Shortcuts"
 msgstr "_Genvägar"
 
-#: src/actionmanager.cpp:134
+#: src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/actionmanager.cpp:135
+#: src/actionmanager.cpp:136
 msgid "_About Gnote"
 msgstr "_Om Gnote"
 
@@ -1081,7 +1093,7 @@ msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Synkronisera Gnote-anteckningar till en nätkatalog"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:167
 msgid "Failed to mount the folder"
 msgstr "Misslyckades med att montera mappen"
 
@@ -1382,32 +1394,32 @@ msgstr "Lägger till möjligheten att stryka under text."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière och Tomboy-projektet"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "_URL:"
 msgstr "_Url:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
 msgid "User_name:"
 msgstr "Användar_namn:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:124
 msgid "_Password:"
 msgstr "_Lösenord:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:142
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:147
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:170
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "Synkroniseringsmål %1 finns inte!"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:185
 msgid "URL, username, or password field is empty."
 msgstr "Fältet för URL, användarnamn eller lösenord är tomt."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:284
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1432,22 +1444,22 @@ msgstr "Synkronisera Gnote-anteckningar till en WebDAV-URL."
 msgid "Exception thrown when creating note: %s"
 msgstr "Undantag kastat vid skapande av anteckning: %s"
 
-#: src/gnote.cpp:216
+#: src/gnote.cpp:222
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Ingen D-Bus-anslutning tillgänglig, skalsökning och fjärrkontroll kommer "
 "inte att fungera."
 
-#: src/gnote.cpp:249
+#: src/gnote.cpp:255
 msgid "Failed to get shortcuts window!"
 msgstr "Misslyckades med att hämta genvägsfönster!"
 
-#: src/gnote.cpp:263
+#: src/gnote.cpp:269
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:283
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -1459,7 +1471,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gnote.cpp:286
+#: src/gnote.cpp:292
 msgid ""
 "Copyright © 2010-2026 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1471,91 +1483,87 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: src/gnote.cpp:290
+#: src/gnote.cpp:296
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
 #. TRANSLATORS:
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
-#: src/gnote.cpp:294
+#: src/gnote.cpp:300
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/sv/home"
 
-#: src/gnote.cpp:295
+#: src/gnote.cpp:301
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: src/gnote.cpp:299
+#: src/gnote.cpp:305
 msgid "Contributors"
 msgstr "Bidragsgivare"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:516
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: src/gnote.cpp:511
-msgid "Run Gnote as GNOME Shell search provider."
-msgstr "Kör Gnote som söktjänst för GNOME Shell."
-
-#: src/gnote.cpp:512
+#: src/gnote.cpp:517
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:517
 msgid "path"
 msgstr "sökväg"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:518
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: src/gnote.cpp:513 src/gnote.cpp:519
+#: src/gnote.cpp:518 src/gnote.cpp:524
 msgid "text"
 msgstr "text"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:519
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:520
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:520
 msgid "title"
 msgstr "titel"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:521
 msgid "Open a new window."
 msgstr "Öppna ett nytt fönster."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:522
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:522
 msgid "title/url"
 msgstr "titel/url"
 
-#: src/gnote.cpp:518
+#: src/gnote.cpp:523
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: src/gnote.cpp:519
+#: src/gnote.cpp:524
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:531
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:531
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:707
+#: src/gnote.cpp:721
 msgid "Version %1"
 msgstr "Version %1"
 
@@ -1680,7 +1688,7 @@ msgstr "Aktiva"
 msgid "</list> tag mismatch"
 msgstr "</list>-tagg ej korrekt matchad"
 
-#: src/notebuffer.cpp:1477
+#: src/notebuffer.cpp:1476
 #, c-format
 msgid "Exception: %s"
 msgstr "Undantag: %s"
@@ -2247,28 +2255,28 @@ msgstr "Copyright:"
 msgid "Close"
 msgstr "Stäng"
 
-#: src/recentchanges.cpp:312
+#: src/recentchanges.cpp:318
 msgid "Search"
 msgstr "Sök"
 
-#: src/recentchanges.cpp:387
+#: src/recentchanges.cpp:393
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "Överordnad till inbäddningsruta är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:418
+#: src/recentchanges.cpp:424
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "Överordnad till sökfält är inte Gtk::Grid, rapportera ett fel!"
 
-#: src/recentchanges.cpp:790
+#: src/recentchanges.cpp:818
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Försök att ta en komponent till förgrunden, som inte är inbäddad i fönstret"
 
-#: src/recentchanges.cpp:797
+#: src/recentchanges.cpp:825
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "Försök att ta en komponent till förgrunden, som inte är Gtk::Widget"
 
-#: src/recentchanges.cpp:997
+#: src/recentchanges.cpp:1025
 msgid "No configured actions"
 msgstr "Inga konfigurerade åtgärder"
 
@@ -2395,19 +2403,19 @@ msgstr "%1 misslyckades"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Stilmall är NULL, rapportera gärna ett fel"
 
-#: src/synchronization/filesystemsyncserver.cpp:167
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Misslyckades med att skicka %1 anteckning"
 msgstr[1] "Misslyckades med att skicka %1 anteckningar"
 
-#: src/synchronization/filesystemsyncserver.cpp:257
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Misslyckades med att hämta %1 anteckningsuppdatering"
 msgstr[1] "Misslyckades med att hämta %1 anteckningsuppdateringar"
 
-#: src/synchronization/filesystemsyncserver.cpp:428
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2416,15 +2424,20 @@ msgstr ""
 "Undantag under serverstädning vid incheckning. Serverns integritet är OK, "
 "men det kan finnas några överflödiga filer.  Här är felet: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:634
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Fel vid uppdatering av lås: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:673
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Fel vid borttagning av det gamla synkroniseringslåset ”%s”: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+msgid "Error reading file '%s': %s"
+msgstr "Fel vid läsning av filen ”%s”: %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
@@ -2450,16 +2463,16 @@ msgstr "Fel vid försök att ta bort testfil"
 msgid "Unknown error"
 msgstr "Okänt fel"
 
-#: src/synchronization/gvfstransfer.cpp:36
+#: src/synchronization/gvfstransfer.cpp:45
 msgid "Failed to copy file"
 msgstr "Misslyckades med att kopiera fil"
 
-#: src/synchronization/gvfstransfer.cpp:40
+#: src/synchronization/gvfstransfer.cpp:49
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Undantag vid slutförande av anteckningskopiering: %s"
 
-#: src/synchronization/gvfstransfer.cpp:43
+#: src/synchronization/gvfstransfer.cpp:52
 msgid "Exception when finishing note copy"
 msgstr "Undantag vid slutförande av anteckningskopiering"
 
@@ -2672,7 +2685,7 @@ msgstr "Synkronisera anteckningar"
 
 #: src/synchronization/syncmanager.cpp:100
 #: src/synchronization/syncmanager.cpp:117
-#: src/synchronization/syncmanager.cpp:589
+#: src/synchronization/syncmanager.cpp:594
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Rapportera ett fel. Typkonvertering misslyckades: %s"
@@ -2688,7 +2701,7 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Undantag under skapande av SyncServer: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:380
+#: src/synchronization/syncmanager.cpp:385
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Synkronisering misslyckades med följande undantag: %s"
@@ -2799,6 +2812,9 @@ msgstr "Anteckningstiteln är upptagen"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
+
+#~ msgid "Run Gnote as GNOME Shell search provider."
+#~ msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
 #, c-format
 #~ msgid "Failed to upload note: %s"
