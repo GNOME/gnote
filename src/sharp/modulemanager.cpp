@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019,2022 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2022,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -66,7 +66,7 @@ namespace sharp {
     void *func = NULL;
     bool found = module.get_symbol("dynamic_module_instanciate", func);
     if(!found) {
-      DBG_OUT(_("Error getting symbol dynamic_module_instanciate: %s"),
+      ERR_OUT(_("Error getting symbol dynamic_module_instanciate: %s"),
               Glib::Module::get_last_error().c_str());
       return dmod;
     }
