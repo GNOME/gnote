@@ -197,7 +197,7 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
 
 void NoteDirectoryWatcherApplicationAddin::delete_note(const Glib::ustring & note_id)
 {
-  DBG_OUT("NoteDirectoryWatcher: deleting %s because file deleted.", note_id.c_str());
+  DBG_OUT_1("NoteDirectoryWatcher: deleting %s because file deleted.", note_id.c_str());
 
   Glib::ustring note_uri = make_uri(note_id);
 
