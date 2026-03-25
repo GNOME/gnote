@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021-2022,2024 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2022,2024,2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -160,11 +160,11 @@ namespace gnote {
     auto iter = std::find_if(m_tags.begin(), m_tags.end(), [&tag](const TagPtr &t) { return t.get() == &tag; });
     if(iter != m_tags.end()) {
       m_tags.erase(iter);
-      DBG_OUT("TagManager: Removed tag: %s", tag_name.c_str());
+      DBG_OUT_3("TagManager: Removed tag: %s", tag_name.c_str());
     }
     else {
       // FIXME: For some really weird reason, this block actually gets called sometimes!
-      DBG_OUT("TagManager: Call to remove tag from ListStore failed: %s", tag_name.c_str());
+      DBG_OUT_3("TagManager: Call to remove tag from ListStore failed: %s", tag_name.c_str());
     }
 
     auto notes = tag.get_notes();
