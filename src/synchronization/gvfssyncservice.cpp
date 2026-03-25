@@ -71,7 +71,7 @@ bool GvfsSyncService::test_sync_directory(const Glib::RefPtr<Gio::File> & path, 
   try {
     if(sharp::directory_exists(path) == false) {
       if(!sharp::directory_create(path)) {
-        DBG_OUT("Could not create \"%s\"", sync_uri.c_str());
+        ERR_OUT("Could not create \"%s\"", sync_uri.c_str());
         error = _("Specified folder path does not exist, and Gnote was unable to create it.");
         return false;
       }
