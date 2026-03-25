@@ -47,7 +47,7 @@ namespace sync {
     // TODO: Update tray/applet icon
     //       D-Bus event?
     //       libnotify bubbles when appropriate
-    DBG_OUT("SilentUI: SyncStateChanged: %d", int(state));
+    DBG_OUT_2("SilentUI: SyncStateChanged: %d", int(state));
     switch(state) {
     case CONNECTING:
       m_ui_disabled = true;
@@ -70,7 +70,7 @@ namespace sync {
 
   void SilentUI::note_synchronized(const Glib::ustring & DBG(noteTitle), NoteSyncType DBG(type))
   {
-    DBG_OUT("note synchronized, Title: %s, Type: %d", noteTitle.c_str(), int(type));
+    DBG_OUT_2("note synchronized, Title: %s, Type: %d", noteTitle.c_str(), int(type));
   }
 
 
