@@ -76,7 +76,7 @@ namespace gnote {
 
           auto drop = [this, &dest_notebook](const Glib::ustring & uri) {
             return dest_notebook->note_manager().find_by_uri(uri, [dest_notebook](NoteBase & note) {
-              DBG_OUT("Dropped into notebook: %s", note.get_title().c_str());
+              DBG_OUT_2("Dropped into notebook: %s", note.get_title().c_str());
               dest_notebook->add_note(static_cast<Note&>(note));
             });
           };
