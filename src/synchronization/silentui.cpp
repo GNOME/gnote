@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019,2023,2025 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019,2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -78,7 +78,7 @@ namespace sync {
                                         NoteUpdate remoteNote,
                                         const std::vector<Glib::ustring> &)
   {
-    DBG_OUT("note conflict detected, overwriting without a care");
+    DBG_OUT_1("note conflict detected, overwriting without a care");
     // TODO: At least respect conflict prefs
     // TODO: Implement more useful conflict handling
     if(localConflictNote.id() != remoteNote.m_uuid) {
