@@ -103,7 +103,7 @@ void NoteDirectoryWatcherApplicationAddin::handle_file_system_change_event(
 
   Glib::ustring note_id = get_id(file->get_path());
 
-  DBG_OUT("NoteDirectoryWatcher: %s has %d (note_id=%s)", file->get_path().c_str(), int(event_type), note_id.c_str());
+  DBG_OUT_2("NoteDirectoryWatcher: %s has %d (note_id=%s)", file->get_path().c_str(), int(event_type), note_id.c_str());
 
   // Record that the file has been added/changed/deleted.  Adds/changes trump
   // deletes.  Record the date.
@@ -160,12 +160,12 @@ bool NoteDirectoryWatcherApplicationAddin::handle_timeout()
     std::vector<Glib::ustring> keysToRemove(m_file_change_records.size());
 
     for(auto iter : m_file_change_records) {
-      DBG_OUT("NoteDirectoryWatcher: Handling (timeout) %s", iter.first.c_str());
+      DBG_OUT_2("NoteDirectoryWatcher: Handling (timeout) %s", iter.first.c_str());
 
       // Check that Note.Saved event didn't occur within (check-interval -2) seconds of last write
       if(m_note_save_times.find(iter.first) != m_note_save_times.end() &&
           std::abs(sharp::time_span_total_seconds(m_note_save_times[iter.first].difference(iter.second.last_change))) <= (m_check_interval - 2)) {
-        DBG_OUT("NoteDirectoryWatcher: Ignoring (timeout) because it was probably a Gnote write");
+        DBG_OUT_2("NoteDirectoryWatcher: Ignoring (timeout) because it was probably a Gnote write");
         keysToRemove.push_back(iter.first);
         continue;
       }
@@ -239,7 +239,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
 
   if(!note) {
     is_new_note = true;
-    DBG_OUT("NoteDirectoryWatcher: Adding %s because file changed.", note_id.c_str());
+    DBG_OUT_2("NoteDirectoryWatcher: Adding %s because file changed.", note_id.c_str());
 
     Glib::ustring title;
     Glib::RefPtr<Glib::Regex> regex = Glib::Regex::create("<title>([^<]+)</title>", Glib::Regex::CompileFlags::MULTILINE);
@@ -265,7 +265,7 @@ void NoteDirectoryWatcherApplicationAddin::add_or_update_note(const Glib::ustrin
   }
 
   if(is_new_note) {
-    DBG_OUT("NoteDirectoryWatcher: Updating %s because file changed.", note_id.c_str());
+    DBG_OUT_2("NoteDirectoryWatcher: Updating %s because file changed.", note_id.c_str());
   }
   try {
     note.value().get().load_foreign_note_xml(noteXml, gnote::CONTENT_CHANGED);
