@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-01-05 18:54+0000\n"
-"PO-Revision-Date: 2026-01-06 10:39-0300\n"
+"POT-Creation-Date: 2026-03-20 20:48+0000\n"
+"PO-Revision-Date: 2026-03-29 18:36-0300\n"
 "Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 "X-Project-Style: gnome\n"
 "X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/gnote/\n"
 "X-DL-Lang: pt_BR\n"
@@ -412,22 +412,35 @@ msgstr ""
 "A variante do tema para usar. Possíveis valores são cadeia vazia para seguir "
 "o sistema, 'escuro' e 'claro'."
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:156
+msgid "Tab width in note editor"
+msgstr "Largura da tabulação no editor de notas"
+
+#: data/org.gnome.gnote.gschema.xml:157
+msgid ""
+"Tab stop positions in editor will be setup using this number as a step in "
+"space characters. Zero to use the default tab width."
+msgstr ""
+"Posição de parada da tabulação no editor será configurada usando este número "
+"como um degrau no carácter espaço. Zero para usar a largura da tabulação "
+"padrão."
+
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Last Directory"
 msgstr "Exportar o último diretório para HTML"
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "O último diretório para onde foi exportada uma nota utilizando o plug-in "
 "Exportar para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:168
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Linked Notes"
 msgstr "Exportar as notas vinculadas para HTML"
 
-#: data/org.gnome.gnote.gschema.xml:169
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -435,11 +448,11 @@ msgstr ""
 "O último estado da caixa de seleção “Exportar notas vinculadas” no plug-in "
 "de exportação para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:173
+#: data/org.gnome.gnote.gschema.xml:178
 msgid "HTML Export All Linked Notes"
 msgstr "Exportar todas as notas vinculadas para HTML"
 
-#: data/org.gnome.gnote.gschema.xml:174
+#: data/org.gnome.gnote.gschema.xml:179
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -452,11 +465,11 @@ msgstr ""
 "todas as notas (localizadas recursivamente) devem ser incluídas durante a "
 "exportação para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Client ID"
 msgstr "ID do cliente de sincronização"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -464,11 +477,11 @@ msgstr ""
 "Um identificador único para este cliente Gnote, usado na comunicação com um "
 "servidor de sincronização."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Synchronization Local Server Path"
 msgstr "Caminho do servidor local de sincronização"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -476,11 +489,11 @@ msgstr ""
 "Caminho para o servidor de sincronização a usar quando o plug-in de "
 "sincronização de sistema de arquivos estiver em uso."
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Selected Synchronization Service Addin"
 msgstr "Plug-in do serviço de sincronização selecionado"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -488,11 +501,11 @@ msgstr ""
 "Um identificador único para o plug-in do serviço de sincronização de nota "
 "configurado atualmente."
 
-#: data/org.gnome.gnote.gschema.xml:195
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Comportamento salvo de conflito de sincronização de nota"
 
-#: data/org.gnome.gnote.gschema.xml:196
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -506,11 +519,11 @@ msgstr ""
 "deseja ser perguntado quando ocorrer um conflito, de forma que ele possa "
 "lidar caso a caso com as situações de conflito."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Tempo limite de sincronização automática em segundo plano"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -522,19 +535,19 @@ msgstr ""
 "Qualquer valor inferior a 1 indica que a sincronização automática está "
 "desabilitada. O menor valor positivo aceito é 5. O valor é em minutos."
 
-#: data/org.gnome.gnote.gschema.xml:208
+#: data/org.gnome.gnote.gschema.xml:213
 msgid "Online directory URI"
 msgstr "URI de diretório online"
 
-#: data/org.gnome.gnote.gschema.xml:209
+#: data/org.gnome.gnote.gschema.xml:214
 msgid "URI to online directory where notes are synchronized to."
 msgstr "URL de diretório online para onde as notas são sincronizadas."
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Accept SSL Certificates"
 msgstr "Aceitar certificados SSL"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:221
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -542,27 +555,27 @@ msgstr ""
 "Usa a opção wdfs “-ac” para aceitar certificados SSL sem perguntar ao "
 "usuário."
 
-#: data/org.gnome.gnote.gschema.xml:220
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share URL"
 msgstr "URL de compartilhamento"
 
-#: data/org.gnome.gnote.gschema.xml:221
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL de compartilhamento WebDav para onde as notas são sincronizadas."
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid "Share username"
 msgstr "Nome de usuário de compartilhamento"
 
-#: data/org.gnome.gnote.gschema.xml:226
+#: data/org.gnome.gnote.gschema.xml:231
 msgid "Username to access WebDAV share."
 msgstr "Nome do usuário para acessar o compartilhamento WebDav."
 
-#: data/org.gnome.gnote.gschema.xml:232
+#: data/org.gnome.gnote.gschema.xml:237
 msgid "Timestamp format"
 msgstr "Formato de data e hora"
 
-#: data/org.gnome.gnote.gschema.xml:233
+#: data/org.gnome.gnote.gschema.xml:238
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -570,11 +583,11 @@ msgstr ""
 "O formato de data que é utilizado para a data e hora. Segue o formato do "
 "strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:239
+#: data/org.gnome.gnote.gschema.xml:244
 msgid "Time between checks"
 msgstr "Tempo entre as verificações"
 
-#: data/org.gnome.gnote.gschema.xml:240
+#: data/org.gnome.gnote.gschema.xml:245
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -757,27 +770,27 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Diminui o recuo/desabilita marcadores para a linha atual"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "_Nova nota"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "Nova _janela"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:134
 msgid "_Shortcuts"
 msgstr "_Atalhos"
 
-#: src/actionmanager.cpp:134
+#: src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "Aj_uda"
 
-#: src/actionmanager.cpp:135
+#: src/actionmanager.cpp:136
 msgid "_About Gnote"
 msgstr "_Sobre o Gnote"
 
@@ -1101,7 +1114,7 @@ msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Sincroniza notas do Gnote para um diretório online"
 
 #: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:162
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:167
 msgid "Failed to mount the folder"
 msgstr "Falha ao montar a pasta"
 
@@ -1404,32 +1417,32 @@ msgstr "Adiciona a possibilidade de sublinhar o texto."
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuiere e o projeto Tomboy"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:108
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
 msgid "User_name:"
 msgstr "_Nome de usuário:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:119
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:124
 msgid "_Password:"
 msgstr "_Senha:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:142
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:147
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:165
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:170
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "O destino de sincronização %1 não existe!"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:180
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:185
 msgid "URL, username, or password field is empty."
 msgstr "Campo de URL, nome de usuário ou senha está vazio."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:279
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:284
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1735,7 +1748,7 @@ msgstr ""
 "espaço em disco suficiente e que tenha permissões sobre ~/.local/share/"
 "gnote. Detalhes do erro podem ser localizados em ~/.gnote.log."
 
-#: src/note.cpp:617
+#: src/note.cpp:616
 msgid "Setting text content for closed notes not supported"
 msgstr "Não suporte à definição do conteúdo de texto para notas fechadas"
 
@@ -2261,31 +2274,31 @@ msgstr "Copyright:"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/recentchanges.cpp:312
+#: src/recentchanges.cpp:318
 msgid "Search"
 msgstr "Pesquisar"
 
-#: src/recentchanges.cpp:387
+#: src/recentchanges.cpp:393
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "O pai da caixa embutida não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:418
+#: src/recentchanges.cpp:424
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:790
+#: src/recentchanges.cpp:818
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não está incorporado "
 "na janela"
 
-#: src/recentchanges.cpp:797
+#: src/recentchanges.cpp:825
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não é Gtk::Widget"
 
-#: src/recentchanges.cpp:997
+#: src/recentchanges.cpp:1025
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2412,19 +2425,19 @@ msgstr "%1 falhou"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "folha de estilos NULA, favor relatar este erro"
 
-#: src/synchronization/filesystemsyncserver.cpp:167
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Falha ao enviar %1 nota"
 msgstr[1] "Falha ao enviar %1 notas"
 
-#: src/synchronization/filesystemsyncserver.cpp:257
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Falha ao baixar %1 atualização de nota"
 msgstr[1] "Falha ao baixar %1 atualizações de notas"
 
-#: src/synchronization/filesystemsyncserver.cpp:428
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2434,15 +2447,20 @@ msgstr ""
 "está OK, mas pode haver um excesso de arquivos flutuantes por aí. Aqui está "
 "o erro: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:634
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Erro ao atualizar bloqueio: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:673
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Erro ao excluir a trava de sincronização antiga “%s”: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+msgid "Error reading file '%s': %s"
+msgstr "Erro lendo arquivo '%s': %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
@@ -2468,16 +2486,16 @@ msgstr "Falha ao tentar remover o arquivo de teste"
 msgid "Unknown error"
 msgstr "Erro desconhecido"
 
-#: src/synchronization/gvfstransfer.cpp:36
+#: src/synchronization/gvfstransfer.cpp:45
 msgid "Failed to copy file"
 msgstr "Falha ao copiar arquivo"
 
-#: src/synchronization/gvfstransfer.cpp:40
+#: src/synchronization/gvfstransfer.cpp:49
 #, c-format
 msgid "Exception when finishing note copy: %s"
 msgstr "Exceção ao finalizar a cópia da nota: %s"
 
-#: src/synchronization/gvfstransfer.cpp:43
+#: src/synchronization/gvfstransfer.cpp:52
 msgid "Exception when finishing note copy"
 msgstr "Exceção ao finalizar a cópia da nota"
 
@@ -2691,7 +2709,7 @@ msgstr "Sincronizar as notas"
 
 #: src/synchronization/syncmanager.cpp:100
 #: src/synchronization/syncmanager.cpp:117
-#: src/synchronization/syncmanager.cpp:589
+#: src/synchronization/syncmanager.cpp:593
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Relate um erro. Chamada falhou: %s"
@@ -2707,7 +2725,7 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Exceção ao criar um servidor de sincronização: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:380
+#: src/synchronization/syncmanager.cpp:384
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Sincronização falhou com a seguinte exceção: %s"
