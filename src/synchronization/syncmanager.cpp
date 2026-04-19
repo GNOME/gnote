@@ -181,7 +181,7 @@ namespace {
 
       set_state(CONNECTING);
       try {
-        server.reset(f.addin->create_sync_server());
+        server = f.addin->create_sync_server();
         if(server == NULL)
           throw std::logic_error("addin.create_sync_server() returned NULL");
       }
@@ -471,7 +471,7 @@ namespace {
       // TODO: block sync while checking
       std::unique_ptr<SyncServer> server;
       try {
-        server.reset(addin->create_sync_server());
+        server = addin->create_sync_server();
         if(server == 0) {
           throw std::logic_error("addin->create_sync_server() returned null");
         }
