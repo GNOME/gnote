@@ -142,8 +142,8 @@ std::unique_ptr<SyncServer> FileSystemSyncServer::create(Glib::RefPtr<Gio::File>
 }
 
 
-FileSystemSyncServer::FileSystemSyncServer(Glib::RefPtr<Gio::File> && localSyncPath, const Glib::ustring & client_id)
-  : m_server_path(std::move(localSyncPath))
+FileSystemSyncServer::FileSystemSyncServer(Glib::RefPtr<Gio::File> && path, const Glib::ustring & client_id)
+  : m_server_path(std::move(path))
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
   , m_sync_lock(client_id)
 {
