@@ -24,6 +24,7 @@
 #include <memory>
 
 #include "isyncmanager.hpp"
+#include "manifestfile.hpp"
 #include "utils.hpp"
 #include "sharp/datetime.hpp"
 
@@ -77,7 +78,7 @@ private:
   Glib::RefPtr<Gio::File> m_server_path;
   Glib::ustring m_cache_path;
   Glib::RefPtr<Gio::File> m_lock_path;
-  Glib::RefPtr<Gio::File> m_manifest_path;
+  ManifestFile m_manifest;
 
   int m_new_revision;
   Glib::RefPtr<Gio::File> m_new_revision_path;
