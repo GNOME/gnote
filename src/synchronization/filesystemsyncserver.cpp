@@ -136,9 +136,9 @@ typedef std::unordered_set<NoteDownload, NoteDownloadHash, NoteDownloadIdEqual> 
 namespace gnote {
 namespace sync {
 
-SyncServer *FileSystemSyncServer::create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
+std::unique_ptr<SyncServer> FileSystemSyncServer::create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
 {
-  return new FileSystemSyncServer(std::move(path), prefs.sync_client_id());
+  return std::make_unique<FileSystemSyncServer>(std::move(path), prefs.sync_client_id());
 }
 
 

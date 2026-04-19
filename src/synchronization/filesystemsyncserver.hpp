@@ -21,6 +21,8 @@
 #ifndef _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 #define _SYNCHRONIZATION_FILESYSTEMSYNCSERVER_HPP_
 
+#include <memory>
+
 #include "isyncmanager.hpp"
 #include "utils.hpp"
 #include "sharp/datetime.hpp"
@@ -34,7 +36,7 @@ class FileSystemSyncServer
   : public SyncServer
 {
 public:
-  static SyncServer *create(Glib::RefPtr<Gio::File> && path, Preferences & prefs);
+  static std::unique_ptr<SyncServer> create(Glib::RefPtr<Gio::File> && path, Preferences & prefs);
   FileSystemSyncServer(Glib::RefPtr<Gio::File> && path, const Glib::ustring & client_id);
   virtual bool begin_sync_transaction() override;
   virtual bool commit_sync_transaction() override;
