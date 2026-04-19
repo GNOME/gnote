@@ -147,12 +147,6 @@ FileSystemSyncServer::FileSystemSyncServer(Glib::RefPtr<Gio::File> && localSyncP
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
   , m_sync_lock(client_id)
 {
-  common_ctor();
-}
-
-
-void FileSystemSyncServer::common_ctor()
-{
   if(!sharp::directory_exists(m_server_path)) {
     throw std::invalid_argument(("Directory not found: " + m_server_path->get_uri()).c_str());
   }

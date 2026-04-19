@@ -56,8 +56,6 @@ protected:
       return {};
     }
 private:
-  void common_ctor();
-
   Glib::RefPtr<Gio::File> get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);
   void update_lock_file(const SyncLockInfo & syncLockInfo);
