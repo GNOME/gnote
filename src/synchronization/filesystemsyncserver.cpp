@@ -145,14 +145,13 @@ std::unique_ptr<SyncServer> FileSystemSyncServer::create(Glib::RefPtr<Gio::File>
 FileSystemSyncServer::FileSystemSyncServer(Glib::RefPtr<Gio::File> && path, const Glib::ustring & client_id)
   : m_server_path(std::move(path))
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
+  , m_lock_path(m_server_path->get_child("lock"))
+  , m_manifest_path(m_server_path->get_child("manifest.xml"))
   , m_sync_lock(client_id)
 {
   if(!sharp::directory_exists(m_server_path)) {
     throw std::invalid_argument(("Directory not found: " + m_server_path->get_uri()).c_str());
   }
-
-  m_lock_path = m_server_path->get_child("lock");
-  m_manifest_path = m_server_path->get_child("manifest.xml");
 
   m_new_revision = latest_revision() + 1;
   m_new_revision_path = get_revision_dir_path(m_new_revision);
