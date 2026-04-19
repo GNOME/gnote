@@ -52,10 +52,14 @@ class WebDavSyncServer
   : public gnote::sync::FileSystemSyncServer
 {
 public:
-  static WebDavSyncServer *create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
+  static std::unique_ptr<WebDavSyncServer> create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
     {
-      return new WebDavSyncServer(std::move(path), prefs.sync_client_id());
+      return std::make_unique<WebDavSyncServer>(std::move(path), prefs.sync_client_id());
     }
+
+  WebDavSyncServer(Glib::RefPtr<Gio::File> && local_sync_path, const Glib::ustring & client_id)
+    : gnote::sync::FileSystemSyncServer(std::move(local_sync_path), client_id)
+  {}
 protected:
   void mkdir_p(const Glib::RefPtr<Gio::File> & path) override
     {
@@ -73,10 +77,6 @@ protected:
     {
       return 4;
     }
-private:
-  WebDavSyncServer(Glib::RefPtr<Gio::File> && local_sync_path, const Glib::ustring & client_id)
-    : gnote::sync::FileSystemSyncServer(std::move(local_sync_path), client_id)
-  {}
 };
 
 
@@ -167,7 +167,7 @@ std::unique_ptr<gnote::sync::SyncServer> WebDavSyncServiceAddin::create_sync_ser
     if(!path->query_exists())
       throw sharp::Exception(Glib::ustring::format(_("Synchronization destination %1 doesn't exist!"), sync_uri));
 
-    return std::unique_ptr<gnote::sync::SyncServer>(WebDavSyncServer::create(std::move(path), ignote().preferences()));
+    return WebDavSyncServer::create(std::move(path), ignote().preferences());
   }
   else {
     throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");
