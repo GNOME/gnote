@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2017-2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011,2017-2019,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -124,12 +124,12 @@ namespace sharp {
     return text;
   }
 
-  Glib::ustring file_read_all_text(const Glib::RefPtr<Gio::File> & path)
+  Glib::ustring file_read_all_text(Gio::File &path)
   {
     Glib::ustring ret;
     char *contents = nullptr;
     gsize size = 0;
-    if(path->load_contents(contents, size)) {
+    if(path.load_contents(contents, size)) {
       if(contents) {
         ret = contents;
         g_free(contents);
