@@ -27,7 +27,7 @@ namespace sync {
 class ManifestFile
 {
 public:
-  ManifestFile(Glib::RefPtr<Gio::File> && path);
+  explicit ManifestFile(Glib::RefPtr<Gio::File> && path);
   ManifestFile(const ManifestFile&) = delete;
   ManifestFile &operator=(const ManifestFile&) = delete;
 
