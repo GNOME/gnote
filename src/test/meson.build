@@ -16,6 +16,7 @@ test_sources = [
   'unit/gnotesyncclientutests.cpp',
   'unit/gvfstransfertests.cpp',
   'unit/hashtests.cpp',
+  'unit/manifestfiletests.cpp',
   'unit/noteutests.cpp',
   'unit/notemanagerutests.cpp',
   'unit/stringutests.cpp',
