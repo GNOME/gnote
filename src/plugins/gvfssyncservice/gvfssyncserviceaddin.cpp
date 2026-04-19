@@ -75,7 +75,7 @@ std::unique_ptr<gnote::sync::SyncServer> GvfsSyncServiceAddin::create_sync_serve
     if(!path->query_exists())
       sharp::directory_create(path);
 
-    return std::unique_ptr<gnote::sync::SyncServer>(gnote::sync::FileSystemSyncServer::create(std::move(path), ignote().preferences()));
+    return gnote::sync::FileSystemSyncServer::create(std::move(path), ignote().preferences());
   }
   else {
     throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");
