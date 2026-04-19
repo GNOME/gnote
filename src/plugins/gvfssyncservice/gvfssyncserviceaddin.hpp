@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019-2021,2023 Aurimas Cernius
+ * Copyright (C) 2019-2021,2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ public:
 
   virtual void initialize() override;
 
-  virtual gnote::sync::SyncServer *create_sync_server() override;
+  std::unique_ptr<gnote::sync::SyncServer> create_sync_server() override;
   virtual Gtk::Widget *create_preferences_control(Gtk::Window & parent, EventHandler requiredPrefChanged) override;
   virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) override;
   virtual void reset_configuration() override;
