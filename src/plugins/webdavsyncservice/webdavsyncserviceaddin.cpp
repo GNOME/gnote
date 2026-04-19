@@ -154,10 +154,8 @@ Glib::ustring WebDavSyncServiceAddin::id() const
   return "wdfs";
 }
 
-gnote::sync::SyncServer *WebDavSyncServiceAddin::create_sync_server()
+std::unique_ptr<gnote::sync::SyncServer> WebDavSyncServiceAddin::create_sync_server()
 {
-  gnote::sync::SyncServer *server;
-
   Glib::ustring sync_uri, username, password;
   if(get_config_settings(sync_uri, username, password)) {
     m_uri = sync_uri;
@@ -169,13 +167,11 @@ gnote::sync::SyncServer *WebDavSyncServiceAddin::create_sync_server()
     if(!path->query_exists())
       throw sharp::Exception(Glib::ustring::format(_("Synchronization destination %1 doesn't exist!"), sync_uri));
 
-    server = WebDavSyncServer::create(std::move(path), ignote().preferences());
+    return std::unique_ptr<gnote::sync::SyncServer>(WebDavSyncServer::create(std::move(path), ignote().preferences()));
   }
   else {
     throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");
   }
-
-  return server;
 }
 
 bool WebDavSyncServiceAddin::save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved)

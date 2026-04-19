@@ -78,7 +78,7 @@ public:
   /// </summary>
   virtual Glib::ustring id() const override;
 
-  virtual gnote::sync::SyncServer *create_sync_server() override;
+  std::unique_ptr<gnote::sync::SyncServer> create_sync_server() override;
   virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) override;
   virtual void reset_configuration() override;
 private:
