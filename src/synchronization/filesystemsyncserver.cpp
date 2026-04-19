@@ -48,16 +48,16 @@ int str_to_int(const Glib::ustring &s, int default_return = 0)
   }
 }
 
-xmlDocPtr parse_xml_file(const Glib::RefPtr<Gio::File> &xml_file)
+xmlDocPtr parse_xml_file(Gio::File &xml_file)
 {
   // Check that file exists
-  if(!xml_file->query_exists()) {
+  if(!xml_file.query_exists()) {
     return nullptr;
   }
 
   // Attempt to load the file and parse it as XML
-  auto xml_string = sharp::file_read_all_text(*xml_file);
-  xmlDocPtr xml = xmlReadMemory(xml_string.c_str(), xml_string.size(), xml_file->get_uri().c_str(), "UTF-8", 0);
+  auto xml_string = sharp::file_read_all_text(xml_file);
+  xmlDocPtr xml = xmlReadMemory(xml_string.c_str(), xml_string.size(), xml_file.get_uri().c_str(), "UTF-8", 0);
   if(!xml) {
     throw std::runtime_error("Failed to parse xml");
   }
@@ -193,7 +193,7 @@ std::vector<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
 {
   std::vector<Glib::ustring> noteUUIDs;
 
-  if(auto xml_doc = parse_xml_file(m_manifest_path)) {
+  if(auto xml_doc = parse_xml_file(*m_manifest_path)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
     sharp::XmlNodeSet noteIds = sharp::xml_node_xpath_find(root_node, "//note/@id");
     DBG_OUT_1("get_all_note_uuids has %d notes", int(noteIds.size()));
@@ -455,7 +455,7 @@ bool FileSystemSyncServer::cancel_sync_transaction()
 int FileSystemSyncServer::latest_revision()
 {
   int latest_rev = -1;
-  if(auto xml_doc = parse_xml_file(m_manifest_path)) {
+  if(auto xml_doc = parse_xml_file(*m_manifest_path)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
     xmlNodePtr sync_node = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
     Glib::ustring latest_rev_str = sharp::xml_node_get_attribute(sync_node, "revision");
@@ -630,7 +630,7 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
 bool FileSystemSyncServer::is_valid_xml_file(const Glib::RefPtr<Gio::File> &xml_file, xmlDocPtr *xml_doc)
 {
   try {
-    if(auto xml = parse_xml_file(xml_file)) {
+    if(auto xml = parse_xml_file(*xml_file)) {
       if(xml_doc == NULL) {
         xmlFreeDoc(xml);
       }
