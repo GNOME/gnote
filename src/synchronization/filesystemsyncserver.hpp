@@ -60,7 +60,7 @@ private:
   Glib::RefPtr<Gio::File> get_revision_dir_path(int rev);
   void cleanup_old_sync(const SyncLockInfo & syncLockInfo);
   void update_lock_file(const SyncLockInfo & syncLockInfo);
-  bool is_valid_xml_file(const Glib::RefPtr<Gio::File> & xmlFilePath, xmlDocPtr *xml_doc);
+  bool is_valid_xml_file(Gio::File &xml_file, xmlDocPtr *xml_doc);
   void lock_timeout();
 
   template <typename ContainerT>

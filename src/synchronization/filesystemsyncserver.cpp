@@ -234,7 +234,7 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
 
   NoteDownloadSet downloads;
   xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_manifest.path(), &xml_doc)) {
+  if(is_valid_xml_file(m_manifest.file(), &xml_doc)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
 
     Glib::ustring xpath = Glib::ustring::compose("//note[@rev > %1]", revision);
@@ -321,7 +321,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
 
     std::map<Glib::ustring, Glib::ustring> notes;
     xmlDocPtr xml_doc = NULL;
-    if(is_valid_xml_file(m_manifest.path(), &xml_doc) == true) {
+    if(is_valid_xml_file(m_manifest.file(), &xml_doc)) {
       xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
       sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, "//note");
       for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
@@ -475,7 +475,7 @@ SyncLockInfo FileSystemSyncServer::current_sync_lock()
   SyncLockInfo syncLockInfo(m_sync_lock.client_id);
 
   xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_lock_path, &xml_doc)) {
+  if(is_valid_xml_file(*m_lock_path, &xml_doc)) {
     xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
 
     xmlNodePtr node = sharp::xml_node_xpath_find_single_node(root_node, "//transaction-id/text ()");
@@ -521,7 +521,7 @@ Glib::ustring FileSystemSyncServer::id()
 
   // Attempt to read from manifest file first
   xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_manifest.path(), &xml_doc)) {
+  if(is_valid_xml_file(m_manifest.file(), &xml_doc)) {
     sharp::XmlReader reader(xml_doc);
     if(reader.read()) {
       if(reader.get_node_type() == XML_READER_TYPE_ELEMENT && reader.get_name() == "sync") {
@@ -597,7 +597,7 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
 {
   DBG_OUT_1("Cleaning up a previous failed sync transaction");
   int rev = latest_revision();
-  if(rev >= 0 && !is_valid_xml_file(m_manifest.path(), nullptr)) {
+  if(rev >= 0 && !is_valid_xml_file(m_manifest.file(), nullptr)) {
     // Time to discover the latest valid revision
     // If no manifest.xml file exists, that means we've got to
     // figure out if there are any previous revisions with valid
@@ -606,7 +606,7 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
       auto revParentPath = get_revision_dir_path(rev);
       auto manifest = revParentPath->get_child("manifest.xml");
 
-      if(is_valid_xml_file(manifest, NULL) == false) {
+      if(is_valid_xml_file(*manifest, NULL) == false) {
         continue;
       }
 
@@ -627,10 +627,10 @@ void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
 }
 
 
-bool FileSystemSyncServer::is_valid_xml_file(const Glib::RefPtr<Gio::File> &xml_file, xmlDocPtr *xml_doc)
+bool FileSystemSyncServer::is_valid_xml_file(Gio::File &xml_file, xmlDocPtr *xml_doc)
 {
   try {
-    if(auto xml = parse_xml_file(*xml_file)) {
+    if(auto xml = parse_xml_file(xml_file)) {
       if(xml_doc == NULL) {
         xmlFreeDoc(xml);
       }
@@ -642,7 +642,7 @@ bool FileSystemSyncServer::is_valid_xml_file(const Glib::RefPtr<Gio::File> &xml_
     }
   }
   catch(std::runtime_error &e) {
-    ERR_OUT(_("Error reading file '%s': %s"), xml_file->get_uri().c_str(), e.what());
+    ERR_OUT(_("Error reading file '%s': %s"), xml_file.get_uri().c_str(), e.what());
   }
 
   return false;
