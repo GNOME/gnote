@@ -63,6 +63,7 @@ libgnote_sources = [
   'synchronization/gvfssyncservice.cpp',
   'synchronization/gvfstransfer.cpp',
   'synchronization/isyncmanager.cpp',
+  'synchronization/manifestfile.cpp',
   'synchronization/syncui.cpp',
   'synchronization/syncutils.cpp',
   'synchronization/syncserviceaddin.cpp',
