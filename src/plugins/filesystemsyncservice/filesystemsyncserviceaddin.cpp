@@ -61,10 +61,8 @@ void FileSystemSyncServiceAddin::shutdown()
   m_enabled = false;
 }
 
-gnote::sync::SyncServer *FileSystemSyncServiceAddin::create_sync_server()
+std::unique_ptr<gnote::sync::SyncServer> FileSystemSyncServiceAddin::create_sync_server()
 {
-  gnote::sync::SyncServer *server;
-
   Glib::ustring syncPath;
   if(get_config_settings(syncPath)) {
     m_path = syncPath;
@@ -73,13 +71,11 @@ gnote::sync::SyncServer *FileSystemSyncServiceAddin::create_sync_server()
     }
 
     auto path = Gio::File::create_for_path(m_path);
-    server = gnote::sync::FileSystemSyncServer::create(std::move(path), ignote().preferences());
+    return std::unique_ptr<gnote::sync::SyncServer>(gnote::sync::FileSystemSyncServer::create(std::move(path), ignote().preferences()));
   }
   else {
     throw std::logic_error("FileSystemSyncServiceAddin.create_sync_server() called without being configured");
   }
-
-  return server;
 }
 
 
