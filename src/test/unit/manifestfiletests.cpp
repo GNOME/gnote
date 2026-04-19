@@ -20,11 +20,20 @@
 
 #include <UnitTest++/UnitTest++.h>
 
+#include "testutils.hpp"
 #include "synchronization/manifestfile.hpp"
 
 
 SUITE(ManifestFile)
 {
+  const char *TEST_MANIFEST_CONTENT = ""
+    "<sync revision=\"2\" server-id=\"0cac27e4-cb54-4d9a-aaaa-28a010f213d3\">"
+    "  <note id=\"064e27ed-eaf3-4769-9084-0fa925a5cf11\" rev=\"1\"/>"
+    "  <note id=\"0ead2704-4c24-4110-b7da-22d00cae25f3\" rev=\"2\"/>"
+    "  <note id=\"1006a78a-6e61-4492-b5cc-a42f62d0a9ef\" rev=\"0\"/>"
+    "</sync>";
+
+
   TEST(null_path_throws)
   {
     try {
@@ -34,6 +43,35 @@ SUITE(ManifestFile)
     catch(std::invalid_argument&) {
       // expected
     }
+  }
+
+  TEST(load_non_existent_file_succeeds)
+  {
+    auto sync_path = Gio::File::create_for_path(test::make_temp_dir());
+    gnote::sync::ManifestFile manifest(sync_path->get_child("manifest.xml"));
+    bool result = manifest.load();
+    CHECK(result);
+  }
+
+  TEST(load_invalid_xml_throws)
+  {
+    try {
+      Glib::ustring xml{TEST_MANIFEST_CONTENT};
+      xml.erase(xml.rfind('<'));
+      gnote::sync::ManifestFile manifest(std::move(xml));
+      [[maybe_unused]] bool result = manifest.load();
+      CHECK(false);
+    }
+    catch(std::runtime_error&) {
+      // expected
+    }
+  }
+
+  TEST(load_valid_xml_succeeds)
+  {
+    gnote::sync::ManifestFile manifest(Glib::ustring{TEST_MANIFEST_CONTENT});
+    bool result = manifest.load();
+    CHECK(result);
   }
 }
 

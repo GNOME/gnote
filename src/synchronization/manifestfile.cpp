@@ -19,6 +19,7 @@
 
 
 #include "manifestfile.hpp"
+#include "sharp/files.hpp"
 
 
 namespace gnote {
@@ -26,10 +27,37 @@ namespace sync {
 
 ManifestFile::ManifestFile(Glib::RefPtr<Gio::File> && path)
   : m_path(std::move(path))
+  , m_xml(nullptr, nullptr)
 {
   if(!m_path) {
     throw std::invalid_argument("Manifest path must be provided");
   }
+}
+
+ManifestFile::ManifestFile(Glib::ustring && xml_content)
+  : m_xml_content(std::move(xml_content))
+  , m_xml(nullptr, nullptr)
+{
+}
+
+bool ManifestFile::load()
+{
+  if(m_path) {
+    if(m_path->query_exists()) {
+      m_xml_content = sharp::file_read_all_text(*m_path);
+    }
+    else {
+      return true;
+    }
+  }
+
+  if(xmlDocPtr xml = xmlReadMemory(m_xml_content.c_str(), m_xml_content.size(), m_path ? m_path->get_uri().c_str() : nullptr, "UTF-8", 0)) {
+    m_xml = xmlDocUniquePtr(std::move(xml), &xmlFreeDoc);
+    return true;
+  }
+
+  m_xml_content.clear();
+  throw std::runtime_error("Failed to parse xml");
 }
 
 }

@@ -19,6 +19,7 @@
 
 
 #include <giomm/file.h>
+#include <libxml/xmlreader.h>
 
 
 namespace gnote {
@@ -28,6 +29,7 @@ class ManifestFile
 {
 public:
   explicit ManifestFile(Glib::RefPtr<Gio::File> && path);
+  explicit ManifestFile(Glib::ustring && xml_content);
   ManifestFile(const ManifestFile&) = delete;
   ManifestFile &operator=(const ManifestFile&) = delete;
 
@@ -43,8 +45,13 @@ public:
     {
       return *path();
     }
+
+  [[nodiscard]] bool load();
 private:
   Glib::RefPtr<Gio::File> m_path;
+  Glib::ustring m_xml_content;
+  using xmlDocUniquePtr = std::unique_ptr<xmlDoc, decltype(&xmlFreeDoc)>;
+  xmlDocUniquePtr m_xml;
 };
 
 }
