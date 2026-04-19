@@ -56,18 +56,7 @@ xmlDocPtr parse_xml_file(const Glib::RefPtr<Gio::File> &xml_file)
   }
 
   // Attempt to load the file and parse it as XML
-  auto stream = xml_file->read();
-  std::ostringstream os;
-  int buf_size = 4 * 1024;
-  char buffer[buf_size];
-  gssize read = 0;
-  do {
-    read = stream->read(buffer, buf_size);
-    os.write(buffer, read);
-  }
-  while(read == buf_size);
-  stream->close();
-  auto xml_string = os.str();
+  auto xml_string = sharp::file_read_all_text(*xml_file);
   xmlDocPtr xml = xmlReadMemory(xml_string.c_str(), xml_string.size(), xml_file->get_uri().c_str(), "UTF-8", 0);
   if(!xml) {
     throw std::runtime_error("Failed to parse xml");
