@@ -33,11 +33,15 @@ public:
 
   [[nodiscard]] const Glib::RefPtr<Gio::File> &path() const
     {
+      if(!m_path) {
+        throw std::logic_error("path can only be called when provided to constructor");
+      }
+
       return m_path;
     }
   [[nodiscard]] Gio::File &file() const
     {
-      return *m_path;
+      return *path();
     }
 private:
   Glib::RefPtr<Gio::File> m_path;
