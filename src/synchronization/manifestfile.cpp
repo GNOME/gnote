@@ -18,6 +18,7 @@
  */
 
 
+#include "debug.hpp"
 #include "manifestfile.hpp"
 #include "base/macros.hpp"
 #include "sharp/files.hpp"
@@ -110,6 +111,16 @@ void ManifestFile::write_new(const Glib::ustring &content)
     }
     stream->close();
   }
+
+  try {
+    if(old_manifest_path->query_exists()) {
+      old_manifest_path->remove();
+    }
+  }
+  catch(std::exception &e) {
+    ERR_OUT("Recoverable failure: failed to remove old manifest: %s", e.what());
+  }
+
 
   m_xml.reset();
   m_xml_content = content;
