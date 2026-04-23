@@ -91,6 +91,33 @@ unsigned ManifestFile::revision()
   throw std::runtime_error("No revision found in the manifest");
 }
 
+void ManifestFile::write_new(const Glib::ustring &content)
+{
+  // Rename original /manifest.xml to /manifest.xml.old
+  auto old_manifest_path = Gio::File::create_for_uri(m_path->get_uri() + ".old");
+  if(old_manifest_path->query_exists()) {
+    old_manifest_path->remove();
+  }
+  if(m_path->query_exists()) {
+    m_path->move(old_manifest_path);
+  }
+
+  {
+    auto stream = m_path->create_file();
+    gsize written;
+    if(!stream->write_all(content, written)) {
+      throw std::runtime_error("Failed to write new manifest file");
+    }
+    stream->close();
+  }
+
+  m_xml.reset();
+  m_xml_content = content;
+  if(!load_xml()) {
+    throw std::runtime_error("Failed to parse new xml");
+  }
+}
+
 }
 }
 

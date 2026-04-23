@@ -54,6 +54,7 @@ public:
       return m_xml.get() != nullptr;
     }
   [[nodiscard]] unsigned revision();
+  void write_new(const Glib::ustring &content);
 private:
   bool load_xml();
 
