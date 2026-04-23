@@ -64,7 +64,9 @@ SUITE(FileSystemSyncServerTests)
   {
     FixtureValidManifest()
       : FixtureWithManifest(valid_manifest)
-    {}
+    {
+      server.begin_sync_transaction();
+    }
   };
 
   struct FixtureInvalidManifest
@@ -117,6 +119,7 @@ SUITE(FileSystemSyncServerTests)
   TEST_FIXTURE(FixtureInvalidManifest, latest_revision_with_invalid_manifest)
   {
     try {
+      server.begin_sync_transaction();
       server.latest_revision();
       CHECK(false);
     }
