@@ -18,6 +18,8 @@
  */
 
 
+#include <optional>
+
 #include <giomm/file.h>
 #include <libxml/xmlreader.h>
 
@@ -51,11 +53,13 @@ public:
     {
       return m_xml.get() != nullptr;
     }
+  [[nodiscard]] unsigned revision();
 private:
   Glib::RefPtr<Gio::File> m_path;
   Glib::ustring m_xml_content;
   using xmlDocUniquePtr = std::unique_ptr<xmlDoc, decltype(&xmlFreeDoc)>;
   xmlDocUniquePtr m_xml;
+  std::optional<unsigned> m_revision;
 };
 
 }

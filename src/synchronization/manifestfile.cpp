@@ -19,7 +19,9 @@
 
 
 #include "manifestfile.hpp"
+#include "base/macros.hpp"
 #include "sharp/files.hpp"
+#include "sharp/xml.hpp"
 
 
 namespace gnote {
@@ -58,6 +60,26 @@ bool ManifestFile::load()
 
   m_xml_content.clear();
   throw std::runtime_error("Failed to parse xml");
+}
+
+unsigned ManifestFile::revision()
+{
+  if(m_revision.has_value()) {
+    return m_revision.value();
+  }
+
+  if(!m_xml) {
+    throw std::runtime_error("No valid manifest file has been loaded");
+  }
+
+  xmlNodePtr root_node = xmlDocGetRootElement(m_xml.get());
+  xmlNodePtr sync_node = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
+  Glib::ustring latest_rev_str = sharp::xml_node_get_attribute(sync_node, "revision");
+  if(latest_rev_str != "") {
+    return STRING_TO_INT(latest_rev_str );
+  }
+
+  throw std::runtime_error("No revision found in the manifest");
 }
 
 }
