@@ -47,6 +47,10 @@ public:
     }
 
   [[nodiscard]] bool load();
+  [[nodiscard]] bool is_loaded() const
+    {
+      return m_xml.get() != nullptr;
+    }
 private:
   Glib::RefPtr<Gio::File> m_path;
   Glib::ustring m_xml_content;
