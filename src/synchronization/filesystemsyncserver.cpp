@@ -136,14 +136,12 @@ FileSystemSyncServer::FileSystemSyncServer(Glib::RefPtr<Gio::File> && path, cons
   , m_cache_path(Glib::build_filename(Glib::get_tmp_dir(), Glib::get_user_name(), "gnote"))
   , m_lock_path(m_server_path->get_child("lock"))
   , m_manifest(m_server_path->get_child("manifest.xml"))
+  , m_new_revision(-1)
   , m_sync_lock(client_id)
 {
   if(!sharp::directory_exists(m_server_path)) {
     throw std::invalid_argument(("Directory not found: " + m_server_path->get_uri()).c_str());
   }
-
-  m_new_revision = latest_revision() + 1;
-  m_new_revision_path = get_revision_dir_path(m_new_revision);
 
   m_lock_timeout.signal_timeout
     .connect(sigc::mem_fun(*this, &FileSystemSyncServer::lock_timeout));
@@ -303,6 +301,13 @@ bool FileSystemSyncServer::begin_sync_transaction()
 
   m_updated_notes.clear();
   m_deleted_notes.clear();
+  if(m_manifest.load()) {
+    m_new_revision = latest_revision() + 1;
+  }
+  else {
+    m_new_revision = 0;
+  }
+  m_new_revision_path = get_revision_dir_path(m_new_revision);
 
   return true;
 }
