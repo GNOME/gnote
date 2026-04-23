@@ -75,5 +75,30 @@ SUITE(ManifestFile)
     auto revision = manifest.revision();
     CHECK_EQUAL(2, revision);
   }
+
+  TEST(write_new_reloads)
+  {
+    Glib::ustring xml{TEST_MANIFEST_CONTENT};
+    auto sync_path = Gio::File::create_for_path(test::make_temp_dir());
+    auto manifest_file = sync_path->get_child("manifest.xml");
+    {
+      auto stream = manifest_file->create_file();
+      gsize written = 0;
+      stream->write_all(xml, written);
+      stream->close();
+    }
+
+    gnote::sync::ManifestFile manifest(std::move(manifest_file));
+    bool loaded = manifest.load();
+    CHECK(loaded);
+    {
+      auto pos = xml.find('2');
+      xml.replace(pos, 1, "3");
+    }
+
+    manifest.write_new(xml);
+    auto revision = manifest.revision();
+    CHECK_EQUAL(3, revision);
+  }
 }
 
