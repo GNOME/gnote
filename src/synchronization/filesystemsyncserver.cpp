@@ -386,36 +386,9 @@ bool FileSystemSyncServer::commit_sync_transaction()
       manifest_content = std::move(xml_content);
     }
 
-
-    // Rename original /manifest.xml to /manifest.xml.old
-    auto old_manifest_path = Gio::File::create_for_uri(m_manifest.file().get_uri() + ".old");
-    if(old_manifest_path->query_exists()) {
-      old_manifest_path->remove();
-    }
-    if(m_manifest.file().query_exists()) {
-      m_manifest.file().move(old_manifest_path);
-    }
-
-    // * * * Begin Cleanup Code * * *
-    // TODO: Consider completely discarding cleanup code, in favor
-    //       of periodic thorough server consistency checks (say every 30 revs).
-    //       Even if we do continue providing some cleanup, consistency
-    //       checks should be implemented.
-
-    // Copy the /${parent}/${rev}/manifest.xml -> /manifest.xml
-    {
-      auto stream = m_manifest.file().create_file();
-      gsize written;
-      stream->write_all(manifest_content, written);
-      stream->close();
-    }
+    m_manifest.write_new(manifest_content);
 
     try {
-      // Delete /manifest.xml.old
-      if(old_manifest_path->query_exists()) {
-        old_manifest_path->remove();
-      }
-
       auto old_manifest_file = get_revision_dir_path(m_new_revision - 1)->get_child("manifest.xml");
       if(old_manifest_file->query_exists()) {
         // TODO: Do step #8 as described in http://bugzilla.gnome.org/show_bug.cgi?id=321037#c17
@@ -460,15 +433,8 @@ bool FileSystemSyncServer::cancel_sync_transaction()
 int FileSystemSyncServer::latest_revision()
 {
   int latest_rev = -1;
-  if(auto xml_doc = parse_xml_file(m_manifest.file())) {
-    xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
-    xmlNodePtr sync_node = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
-    Glib::ustring latest_rev_str = sharp::xml_node_get_attribute(sync_node, "revision");
-    if(latest_rev_str != "") {
-      latest_rev = str_to_int(latest_rev_str, -1);
-    }
-
-    xmlFreeDoc(xml_doc);
+  if(m_manifest.is_loaded()) {
+    latest_rev = m_manifest.revision();
   }
 
   return latest_rev;
