@@ -49,7 +49,7 @@ bool ManifestFile::load()
       m_xml_content = sharp::file_read_all_text(*m_path);
     }
     else {
-      return true;
+      return false;
     }
   }
 

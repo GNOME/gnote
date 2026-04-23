@@ -45,12 +45,12 @@ SUITE(ManifestFile)
     }
   }
 
-  TEST(load_non_existent_file_succeeds)
+  TEST(load_non_existent_file_fails)
   {
     auto sync_path = Gio::File::create_for_path(test::make_temp_dir());
     gnote::sync::ManifestFile manifest(sync_path->get_child("manifest.xml"));
     bool result = manifest.load();
-    CHECK(result);
+    CHECK(!result);
   }
 
   TEST(load_invalid_xml_throws)
