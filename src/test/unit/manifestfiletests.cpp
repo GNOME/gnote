@@ -72,6 +72,8 @@ SUITE(ManifestFile)
     gnote::sync::ManifestFile manifest(Glib::ustring{TEST_MANIFEST_CONTENT});
     bool result = manifest.load();
     CHECK(result);
+    auto revision = manifest.revision();
+    CHECK_EQUAL(2, revision);
   }
 }
 
