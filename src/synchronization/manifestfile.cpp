@@ -53,13 +53,22 @@ bool ManifestFile::load()
     }
   }
 
-  if(xmlDocPtr xml = xmlReadMemory(m_xml_content.c_str(), m_xml_content.size(), m_path ? m_path->get_uri().c_str() : nullptr, "UTF-8", 0)) {
-    m_xml = xmlDocUniquePtr(std::move(xml), &xmlFreeDoc);
+  if(load_xml()) {
     return true;
   }
 
   m_xml_content.clear();
   throw std::runtime_error("Failed to parse xml");
+}
+
+bool ManifestFile::load_xml()
+{
+  if(xmlDocPtr xml = xmlReadMemory(m_xml_content.c_str(), m_xml_content.size(), m_path ? m_path->get_uri().c_str() : nullptr, "UTF-8", 0)) {
+    m_xml = xmlDocUniquePtr(std::move(xml), &xmlFreeDoc);
+    return true;
+  }
+
+  return false;
 }
 
 unsigned ManifestFile::revision()

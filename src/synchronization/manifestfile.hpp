@@ -55,6 +55,8 @@ public:
     }
   [[nodiscard]] unsigned revision();
 private:
+  bool load_xml();
+
   Glib::RefPtr<Gio::File> m_path;
   Glib::ustring m_xml_content;
   using xmlDocUniquePtr = std::unique_ptr<xmlDoc, decltype(&xmlFreeDoc)>;
