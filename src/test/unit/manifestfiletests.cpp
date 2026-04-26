@@ -76,6 +76,15 @@ SUITE(ManifestFile)
     CHECK_EQUAL(2, revision);
   }
 
+  TEST(server_id_valid_xml_returns_id)
+  {
+    gnote::sync::ManifestFile manifest(Glib::ustring{TEST_MANIFEST_CONTENT});
+    bool result = manifest.load();
+    CHECK(result);
+    auto server_id = manifest.server_id();
+    CHECK_EQUAL("0cac27e4-cb54-4d9a-aaaa-28a010f213d3", server_id);
+  }
+
   TEST(write_new_reloads)
   {
     Glib::ustring xml{TEST_MANIFEST_CONTENT};

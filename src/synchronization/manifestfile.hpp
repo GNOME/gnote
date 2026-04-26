@@ -62,6 +62,7 @@ public:
       throw std::logic_error("Attempt to get XML doc that wasn't loaded");
     }
   [[nodiscard]] unsigned revision();
+  [[nodiscard]] Glib::ustring server_id();
   void write_new(const Glib::ustring &content);
 private:
   bool load_xml();
@@ -71,6 +72,7 @@ private:
   using xmlDocUniquePtr = std::unique_ptr<xmlDoc, decltype(&xmlFreeDoc)>;
   xmlDocUniquePtr m_xml;
   std::optional<unsigned> m_revision;
+  Glib::ustring m_server_id;
 };
 
 }

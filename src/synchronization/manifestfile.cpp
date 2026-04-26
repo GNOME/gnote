@@ -22,6 +22,7 @@
 #include "manifestfile.hpp"
 #include "base/macros.hpp"
 #include "sharp/files.hpp"
+#include "sharp/string.hpp"
 #include "sharp/xml.hpp"
 
 
@@ -87,10 +88,25 @@ unsigned ManifestFile::revision()
   Glib::ustring latest_rev_str = sharp::xml_node_get_attribute(sync_node, "revision");
   if(latest_rev_str != "") {
     m_revision = STRING_TO_INT(latest_rev_str );
+    m_server_id = sharp::xml_node_get_attribute(sync_node, "server-id");
+    if(sharp::string_trim(m_server_id) == "") {
+      m_server_id = "";
+      throw std::runtime_error("No valid server-id in the manifest");
+    }
+
     return m_revision.value();
   }
 
   throw std::runtime_error("No revision found in the manifest");
+}
+
+Glib::ustring ManifestFile::server_id()
+{
+  if(m_server_id == "") {
+    [[maybe_unused]] auto rev = revision();
+  }
+
+  return m_server_id;
 }
 
 void ManifestFile::write_new(const Glib::ustring &content)
