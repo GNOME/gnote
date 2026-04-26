@@ -564,40 +564,6 @@ void FileSystemSyncServer::update_lock_file(const SyncLockInfo & syncLockInfo)
 }
 
 
-void FileSystemSyncServer::cleanup_old_sync(const SyncLockInfo &)
-{
-  DBG_OUT_1("Cleaning up a previous failed sync transaction");
-  int rev = latest_revision();
-  if(rev >= 0 && !is_valid_xml_file(m_manifest.file(), nullptr)) {
-    // Time to discover the latest valid revision
-    // If no manifest.xml file exists, that means we've got to
-    // figure out if there are any previous revisions with valid
-    // manifest.xml files around.
-    for (; rev >= 0; rev--) {
-      auto revParentPath = get_revision_dir_path(rev);
-      auto manifest = revParentPath->get_child("manifest.xml");
-
-      if(is_valid_xml_file(*manifest, NULL) == false) {
-        continue;
-      }
-
-      // Restore a valid manifest path
-      manifest->copy(m_manifest.path());
-      break;
-    }
-  }
-
-  // Delete the old lock file
-  DBG_OUT_1("Deleting expired lockfile");
-  try {
-    m_lock_path->remove();
-  }
-  catch(std::exception & e) {
-    ERR_OUT(_("Error deleting the old synchronization lock \"%s\": %s"), m_lock_path->get_uri().c_str(), e.what());
-  }
-}
-
-
 bool FileSystemSyncServer::is_valid_xml_file(Gio::File &xml_file, xmlDocPtr *xml_doc)
 {
   try {
