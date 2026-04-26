@@ -191,14 +191,13 @@ std::vector<Glib::ustring> FileSystemSyncServer::get_all_note_uuids()
 {
   std::vector<Glib::ustring> noteUUIDs;
 
-  if(auto xml_doc = parse_xml_file(m_manifest.file())) {
-    xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
+  if(m_manifest.is_loaded()) {
+    xmlNodePtr root_node = xmlDocGetRootElement(&m_manifest.xml_doc());
     sharp::XmlNodeSet noteIds = sharp::xml_node_xpath_find(root_node, "//note/@id");
     DBG_OUT_1("get_all_note_uuids has %d notes", int(noteIds.size()));
     for(sharp::XmlNodeSet::iterator iter = noteIds.begin(); iter != noteIds.end(); ++iter) {
       noteUUIDs.push_back(sharp::xml_node_content(*iter));
     }
-    xmlFreeDoc(xml_doc);
   }
 
   return noteUUIDs;
