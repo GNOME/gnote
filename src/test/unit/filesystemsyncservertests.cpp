@@ -96,6 +96,7 @@ SUITE(FileSystemSyncServerTests)
   TEST_FIXTURE(FixtureInvalidManifest, get_all_note_uuids_with_invalid_manifest)
   {
     try {
+      server.begin_sync_transaction();
       auto note_uids = server.get_all_note_uuids();
       CHECK(false); // exception expected
     }
