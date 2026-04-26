@@ -482,21 +482,11 @@ SyncLockInfo FileSystemSyncServer::current_sync_lock()
 
 Glib::ustring FileSystemSyncServer::id()
 {
-  m_server_id = "";
-
-  // Attempt to read from manifest file first
-  xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_manifest.file(), &xml_doc)) {
-    sharp::XmlReader reader(xml_doc);
-    if(reader.read()) {
-      if(reader.get_node_type() == XML_READER_TYPE_ELEMENT && reader.get_name() == "sync") {
-	m_server_id = reader.get_attribute("server-id");
-      }
-    }
+  if(m_manifest.is_loaded()) {
+    m_server_id = m_manifest.server_id();
   }
-
-  // Generate a new ID if there isn't already one
-  if(m_server_id == "") {
+  else {
+    // Generate a new ID if there isn't already one
     m_server_id = sharp::uuid().string();
   }
 
