@@ -230,9 +230,8 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
   }
 
   NoteDownloadSet downloads;
-  xmlDocPtr xml_doc = NULL;
-  if(is_valid_xml_file(m_manifest.file(), &xml_doc)) {
-    xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
+  if(m_manifest.is_loaded()) {
+    xmlNodePtr root_node = xmlDocGetRootElement(&m_manifest.xml_doc());
 
     Glib::ustring xpath = Glib::ustring::compose("//note[@rev > %1]", revision);
     sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, xpath.c_str());
@@ -251,8 +250,6 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
         }
       }
     }
-
-    xmlFreeDoc(xml_doc);
   }
 
   const auto failures = transfer_files(downloads);
