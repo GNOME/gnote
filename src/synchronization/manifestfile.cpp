@@ -86,7 +86,8 @@ unsigned ManifestFile::revision()
   xmlNodePtr sync_node = sharp::xml_node_xpath_find_single_node(root_node, "//sync");
   Glib::ustring latest_rev_str = sharp::xml_node_get_attribute(sync_node, "revision");
   if(latest_rev_str != "") {
-    return STRING_TO_INT(latest_rev_str );
+    m_revision = STRING_TO_INT(latest_rev_str );
+    return m_revision.value();
   }
 
   throw std::runtime_error("No revision found in the manifest");
