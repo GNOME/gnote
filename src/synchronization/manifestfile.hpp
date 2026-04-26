@@ -53,6 +53,14 @@ public:
     {
       return m_xml.get() != nullptr;
     }
+  xmlDoc &xml_doc()
+    {
+      if(m_xml) {
+        return *m_xml;
+      }
+
+      throw std::logic_error("Attempt to get XML doc that wasn't loaded");
+    }
   [[nodiscard]] unsigned revision();
   void write_new(const Glib::ustring &content);
 private:
