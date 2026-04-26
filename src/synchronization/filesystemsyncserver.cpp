@@ -321,16 +321,14 @@ bool FileSystemSyncServer::commit_sync_transaction()
     }
 
     std::map<Glib::ustring, Glib::ustring> notes;
-    xmlDocPtr xml_doc = NULL;
-    if(is_valid_xml_file(m_manifest.file(), &xml_doc)) {
-      xmlNodePtr root_node = xmlDocGetRootElement(xml_doc);
+    if(m_manifest.is_loaded()) {
+      xmlNodePtr root_node = xmlDocGetRootElement(&m_manifest.xml_doc());
       sharp::XmlNodeSet noteNodes = sharp::xml_node_xpath_find(root_node, "//note");
       for(sharp::XmlNodeSet::iterator iter = noteNodes.begin(); iter != noteNodes.end(); ++iter) {
         Glib::ustring note_id = sharp::xml_node_get_attribute(*iter, "id");
         Glib::ustring rev = sharp::xml_node_get_attribute(*iter, "rev");
         notes[note_id] = rev;
       }
-      xmlFreeDoc(xml_doc);
     }
 
     // Write out the new manifest file
