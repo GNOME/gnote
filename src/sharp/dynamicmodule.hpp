@@ -64,8 +64,6 @@ public:
   void enabled(bool enable=true);
 
   IfaceFactoryBase::ORef query_interface(const char *) const;
-  /** Check if the module provide and interface */
-  bool has_interface(const char *) const;
 protected:
   DynamicModule();
 

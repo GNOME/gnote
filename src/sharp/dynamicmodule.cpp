@@ -53,13 +53,6 @@ namespace sharp {
     return *iter->second;
   }
 
-  bool DynamicModule::has_interface(const char * intf) const
-  {
-    auto iter = m_interfaces.find(intf);
-    return (iter != m_interfaces.end());
-  }
-
-
   void DynamicModule::add(const char * iface, IfaceFactoryBase* mod)
   {
     auto iter = m_interfaces.find(iface);
