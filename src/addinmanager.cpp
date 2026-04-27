@@ -136,13 +136,13 @@ namespace {
       }
     }
 
-    sharp::IfaceFactoryBase * const f = dmod->query_interface(NoteAddin::IFACE_NAME);
+    auto f = dmod->query_interface(NoteAddin::IFACE_NAME);
     if(!f) {
       ERR_OUT(_("%s does not implement %s"), id.c_str(), NoteAddin::IFACE_NAME);
       return;
     }
 
-    load_note_addin(std::move(id), f);
+    load_note_addin(std::move(id), &f.value().get());
   }
 
   void AddinManager::load_note_addin(Glib::ustring && id, sharp::IfaceFactoryBase *const f)
@@ -304,9 +304,9 @@ namespace {
 
   void AddinManager::add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod)
   {
-    sharp::IfaceFactoryBase * f = dmod->query_interface(NoteAddin::IFACE_NAME);
+    auto f = dmod->query_interface(NoteAddin::IFACE_NAME);
     if(f && dmod->is_enabled()) {
-      m_note_addin_infos.insert(std::make_pair(mod_id, f));
+      m_note_addin_infos.insert(std::make_pair(mod_id, &f.value().get()));
     }
 
     f = dmod->query_interface(AddinPreferenceFactoryBase::IFACE_NAME);

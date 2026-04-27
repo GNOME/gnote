@@ -43,14 +43,14 @@ namespace sharp {
     m_enabled = enable;
   }
 
-  IfaceFactoryBase * DynamicModule::query_interface(const char * intf) const
+  IfaceFactoryBase::ORef DynamicModule::query_interface(const char *intf) const
   {
     auto iter = m_interfaces.find(intf);
     if(iter == m_interfaces.end()) {
-      return NULL;
+      return IfaceFactoryBase::ORef();
     }
 
-    return iter->second.get();
+    return *iter->second;
   }
 
   bool DynamicModule::has_interface(const char * intf) const

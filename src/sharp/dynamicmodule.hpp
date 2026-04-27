@@ -63,10 +63,7 @@ public:
 
   void enabled(bool enable=true);
 
-  /** Query an "interface" 
-   * may return NULL
-   */
-  IfaceFactoryBase * query_interface(const char *) const;
+  IfaceFactoryBase::ORef query_interface(const char *) const;
   /** Check if the module provide and interface */
   bool has_interface(const char *) const;
 protected:
