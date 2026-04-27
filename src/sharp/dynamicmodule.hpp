@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2010,2013,2017,2019,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -33,10 +33,11 @@
 
 #include <glibmm/ustring.h>
 
+#include "modulefactory.hpp"
+
 
 namespace sharp {
 
-class IfaceFactoryBase;
 class DynamicModule;
 
 typedef DynamicModule* (*instanciate_func_t)();
