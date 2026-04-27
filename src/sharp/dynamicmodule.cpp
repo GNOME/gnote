@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017 Aurimas Cernius
+ * Copyright (C) 2013,2017,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -38,12 +38,6 @@ namespace sharp {
   }
 
 
-  DynamicModule::~DynamicModule()
-  {
-    sharp::map_delete_all_second(m_interfaces);
-  }
-
-  
   void DynamicModule::enabled(bool enable)
   {
     m_enabled = enable;
@@ -56,7 +50,7 @@ namespace sharp {
       return NULL;
     }
 
-    return iter->second;
+    return iter->second.get();
   }
 
   bool DynamicModule::has_interface(const char * intf) const
@@ -74,8 +68,7 @@ namespace sharp {
     }
     else {
       // replace
-      delete iter->second;
-      iter->second = mod;
+      iter->second.reset(mod);
     }
   }
 

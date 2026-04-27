@@ -30,6 +30,7 @@
 #define __SHARP_DYNAMICMODULE_HPP_
 
 #include <map>
+#include <memory>
 
 #include <glibmm/ustring.h>
 
@@ -55,9 +56,6 @@ typedef DynamicModule* (*instanciate_func_t)();
 class DynamicModule
 {
 public:
-
-  virtual ~DynamicModule();
-
   bool is_enabled() const
     {
       return m_enabled;
@@ -79,7 +77,7 @@ protected:
   
 private:
   bool m_enabled;
-  std::map<Glib::ustring, IfaceFactoryBase *> m_interfaces;
+  std::map<Glib::ustring, std::unique_ptr<IfaceFactoryBase>> m_interfaces;
 };
 
 
