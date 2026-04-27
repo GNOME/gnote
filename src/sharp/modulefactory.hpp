@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2019 Aurimas Cernius
+ * Copyright (C) 2013,2019,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,6 +28,9 @@
 #ifndef __SHARP_MODULE_FACTORY_HPP__
 #define __SHARP_MODULE_FACTORY_HPP__
 
+#include <functional>
+#include <optional>
+
 
 namespace sharp {
 
@@ -47,6 +50,9 @@ protected:
 class IfaceFactoryBase
 {
 public:
+  typedef std::reference_wrapper<IfaceFactoryBase> Ref;
+  typedef std::optional<Ref> ORef;
+
   virtual ~IfaceFactoryBase()
     {}
   
