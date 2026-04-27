@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2019 Aurimas Cernius
+ * Copyright (C) 2019,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -58,17 +58,6 @@ namespace sharp {
     }
 
     return l;
-  }
-
-
-  /** call operator delete on all the data element. */
-  template <typename _Map>
-  void map_delete_all_second(const _Map & m)
-  {
-    for(typename _Map::const_iterator iter = m.begin();
-        iter != m.end(); ++iter) {
-      delete iter->second;
-    }    
   }
 
 }
