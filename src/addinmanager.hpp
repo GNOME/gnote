@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2015,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010,2012-2015,2017,2019-2020,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -86,7 +86,7 @@ public:
 private:
   void load_addin_infos(const Glib::ustring & global_path, const Glib::ustring & local_path);
   void load_addin_infos(const Glib::ustring & path);
-  void load_note_addin(Glib::ustring && id, sharp::IfaceFactoryBase *const f);
+  void load_note_addin(Glib::ustring && id, sharp::IfaceFactoryBase &f);
   std::vector<Glib::ustring> get_enabled_addins() const;
   void initialize_sharp_addins();
   void add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod);
@@ -111,7 +111,7 @@ private:
   /// Key = TypeExtensionNode.Id
   /// the iface factory is not owned by the manager.
   /// TODO: make sure it is removed if the dynamic module is unloaded.
-  typedef std::map<Glib::ustring, sharp::IfaceFactoryBase*> IdInfoMap;
+  typedef std::map<Glib::ustring, sharp::IfaceFactoryBase::Ref> IdInfoMap;
   IdInfoMap                                m_note_addin_infos;
   typedef std::map<Glib::ustring, std::unique_ptr<sync::SyncServiceAddin>> IdSyncServiceAddinMap;
   IdSyncServiceAddinMap                    m_sync_service_addins;
