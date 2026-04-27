@@ -196,7 +196,7 @@ namespace {
       set_module_for_selected_addin(module);
     }
 
-    if (module->has_interface(NoteAddin::IFACE_NAME)) {
+    if (module->query_interface(NoteAddin::IFACE_NAME)) {
       if (enable)
         m_addin_manager.add_note_addin_info(std::move(id), module);
       else
@@ -665,8 +665,7 @@ namespace {
       if(loaded) {
         const sharp::DynamicModule *module = m_addin_manager.get_module(id);
         enabled = module->is_enabled();
-        addin_prefs_button->set_sensitive(
-          module->has_interface(AddinPreferenceFactoryBase::IFACE_NAME));
+        addin_prefs_button->set_sensitive(bool(module->query_interface(AddinPreferenceFactoryBase::IFACE_NAME)));
       }
       else {
         addin_prefs_button->set_sensitive(false);
