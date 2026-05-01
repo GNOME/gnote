@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2015-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2013,2015-2017,2019-2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,6 +36,13 @@ void MainWindow::present_in(MainWindow & win, Note & note)
 
 MainWindow & MainWindow::present_in_new_window(IGnote & g, Note & note)
 {
+  if(note.has_window()) {
+    auto win = note.get_window();
+    if(auto host = win->host()) {
+        host->unembed_widget(*win);
+    }
+  }
+
   MainWindow & window = g.new_main_window();
   window.present_note(note);
   window.present();
