@@ -52,7 +52,6 @@ namespace gnote {
 
   NoteRenameWatcher::~NoteRenameWatcher()
   {
-    delete m_title_taken_dialog;
   }
 
   void NoteRenameWatcher::initialize ()
@@ -237,13 +236,9 @@ namespace gnote {
     /// Had to add this check because this method is being called twice.
     if (m_title_taken_dialog == NULL) {
       Gtk::Window *parent = only_warn ? NULL : get_host_window();
-      m_title_taken_dialog =
-        new utils::HIGMessageDialog (parent,
-                                     GTK_DIALOG_DESTROY_WITH_PARENT,
-                                     Gtk::MessageType::WARNING,
-                                     Gtk::ButtonsType::OK,
-                                     _("Note title taken"),
-                                     message);
+      m_title_taken_dialog = std::make_unique<utils::HIGMessageDialog>(
+        parent, GTK_DIALOG_DESTROY_WITH_PARENT, Gtk::MessageType::WARNING,
+        Gtk::ButtonsType::OK, _("Note title taken"), message);
       m_title_taken_dialog->signal_response().connect(
         sigc::mem_fun(*this, &NoteRenameWatcher::on_dialog_response));
       m_title_taken_dialog->present();
@@ -254,8 +249,7 @@ namespace gnote {
 
   void NoteRenameWatcher::on_dialog_response(int)
   {
-    delete m_title_taken_dialog;
-    m_title_taken_dialog = NULL;
+    m_title_taken_dialog.reset();
     get_window()->editor()->set_editable(true);
   }
 

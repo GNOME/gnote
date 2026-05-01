@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2020,2022-2024 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2020,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -64,7 +64,6 @@ namespace gnote {
   protected:
     NoteRenameWatcher()
       : m_editing_title(false)
-      , m_title_taken_dialog(NULL)
       {}
   private:
     Gtk::TextIter get_title_end() const;
@@ -83,7 +82,7 @@ namespace gnote {
 
     bool                       m_editing_title;
     Glib::RefPtr<Gtk::TextTag> m_title_tag;
-    utils::HIGMessageDialog   *m_title_taken_dialog;
+    std::unique_ptr<utils::HIGMessageDialog> m_title_taken_dialog;
   };
 
 #if ENABLE_GSPELL
