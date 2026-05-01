@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2011,2013-2014,2016-2017,2019-2023 Aurimas Cernius
+ * Copyright (C) 2010-2011,2013-2014,2016-2017,2019-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -63,7 +63,7 @@ void BacklinksNoteAddin::on_open_note(const Glib::VariantBase & param)
 {
   Glib::ustring uri = Glib::VariantBase::cast_dynamic<Glib::Variant<Glib::ustring>>(param).get();
   manager().find_by_uri(uri, [this](gnote::NoteBase & note) {
-    gnote::MainWindow::present_in_new_window(ignote(), static_cast<gnote::Note&>(note));
+    gnote::MainWindow::present_default(ignote(), static_cast<gnote::Note&>(note));
   });
 }
 
