@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2017,2019,2021-2025 Aurimas Cernius
+ * Copyright (C) 2011-2017,2019,2021-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -158,7 +158,6 @@ private:
   void on_save_title_check_button_toggled();
   void on_note_tag_added(const NoteBase&, const Tag&);
   void on_note_tag_removed(const NoteBase&, const Glib::ustring&);
-  void link_button_clicked();
   bool open_help_activate(Gtk::Widget&, const Glib::VariantBase&);
   void change_depth_right_handler();
   void change_depth_left_handler();

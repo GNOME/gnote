@@ -467,48 +467,6 @@ namespace gnote {
     }
   }
 
-
-  //
-  // Link menu item activate
-  //
-  // Create a new note, names according to the buffer's selected
-  // text.  Does nothing if there is no active selection.
-  //
-  void NoteWindow::link_button_clicked()
-  {
-    Glib::ustring select = m_note.get_buffer()->get_selection();
-    if (select.empty())
-      return;
-    
-    Glib::ustring body_unused;
-    Glib::ustring title = NoteManagerBase::split_title_from_content(select, body_unused);
-    if (title.empty())
-      return;
-
-    auto match = m_note.manager().find(title);
-    if(!match) {
-      try {
-        match = NoteBase::Ref(std::ref(m_note.manager().create(std::move(select))));
-      } 
-      catch (const sharp::Exception & e) {
-        auto dialog = Gtk::make_managed<utils::HIGMessageDialog>(dynamic_cast<Gtk::Window*>(host()),
-          GTK_DIALOG_DESTROY_WITH_PARENT,
-          Gtk::MessageType::ERROR, Gtk::ButtonsType::OK,
-          _("Cannot create note"), e.what());
-        dialog->show();
-        return;
-      }
-    }
-    else {
-      Gtk::TextIter start, end;
-      m_note.get_buffer()->get_selection_bounds(start, end);
-      m_note.get_buffer()->remove_tag(m_note.get_tag_table()->get_broken_link_tag(), start, end);
-      m_note.get_buffer()->apply_tag(m_note.get_tag_table()->get_link_tag(), start, end);
-    }
-
-    MainWindow::present_in(*dynamic_cast<MainWindow*>(host()), static_cast<Note&>(match.value().get()));
-  }
-
   bool NoteWindow::open_help_activate(Gtk::Widget&, const Glib::VariantBase&)
   {
     utils::show_help("gnote", "editing-notes", *dynamic_cast<Gtk::Window*>(host()));
