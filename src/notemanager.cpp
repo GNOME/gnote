@@ -28,6 +28,7 @@
 
 #include "applicationaddin.hpp"
 #include "debug.hpp"
+#include "noteeditor.hpp"
 #include "notemanager.hpp"
 #include "addinmanager.hpp"
 #include "ignote.hpp"
@@ -91,6 +92,12 @@ namespace gnote {
 
     m_notebook_manager.init();
     gnote().signal_quit.connect(sigc::mem_fun(*this, &NoteManager::on_exiting_event));
+
+    auto tag_table = NoteTagTable::instance();
+    auto link_tag = tag_table->get_link_tag();
+    auto broken_link_tag = tag_table->get_broken_link_tag();
+    link_tag->signal_activate().connect(sigc::mem_fun(*this, &NoteManager::on_link_tag_activated));
+    broken_link_tag->signal_activate().connect(sigc::mem_fun(*this, &NoteManager::on_link_tag_activated));
   }
 
   NoteManager::~NoteManager()
@@ -391,6 +398,45 @@ namespace gnote {
         ERR_OUT(_("Did not find note with uri '%s', cannot save"), uri.c_str());
       }
     }
+  }
+
+  bool NoteManager::open_or_create_link(const NoteEditor &editor, const Gtk::TextIter &start, const Gtk::TextIter &end)
+  {
+    auto buffer = std::static_pointer_cast<NoteBuffer>(const_cast<NoteEditor&>(editor).get_buffer());
+    Note &note = buffer->note();
+
+    Glib::ustring link_name = start.get_text (end);
+    auto link = find(link_name);
+
+    if (!link) {
+      DBG_OUT_1("Creating note '%s'...", link_name.c_str());
+      try {
+        link = std::ref(create(Glib::ustring(link_name)));
+      }
+      catch(...)
+      {
+        // Fail silently.
+      }
+    }
+
+    Glib::RefPtr<Gtk::TextTag> broken_link_tag = note.get_tag_table()->get_broken_link_tag();
+    if(start.starts_tag(broken_link_tag)) {
+      buffer->remove_tag(broken_link_tag, start, end);
+      buffer->apply_tag(note.get_tag_table()->get_link_tag(), start, end);
+    }
+
+    if (link) {
+      DBG_OUT_3("Opening note '%s' on click...", link_name.c_str());
+      MainWindow::present_default(gnote(), static_cast<Note&>(link.value().get()));
+      return true;
+    }
+
+    return false;
+  }
+
+  bool NoteManager::on_link_tag_activated(const NoteEditor &editor, const Gtk::TextIter &start, const Gtk::TextIter &end)
+  {
+    return open_or_create_link(editor, start, end);
   }
 
 }

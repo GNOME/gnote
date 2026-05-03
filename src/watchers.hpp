@@ -216,14 +216,7 @@ namespace gnote {
     void on_apply_tag(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag,
                       const Gtk::TextIter & start, const Gtk::TextIter &end);
 
-    bool open_or_create_link(const NoteEditor &, const Gtk::TextIter &,const Gtk::TextIter &);
-    bool on_link_tag_activated(const NoteEditor &,
-                               const Gtk::TextIter &, const Gtk::TextIter &);
-
     NoteTag::Ptr m_link_tag;
-    NoteTag::Ptr m_broken_link_tag;
-
-    static bool s_text_event_connected;
   };
 
 

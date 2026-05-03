@@ -856,8 +856,6 @@ namespace gnote {
 
   ////////////////////////////////////////////////////////////////////////
 
-  bool NoteLinkWatcher::s_text_event_connected = false;
-
   NoteAddin * NoteLinkWatcher::create()
   {
     return new NoteLinkWatcher;
@@ -868,7 +866,6 @@ namespace gnote {
   {
     auto & tag_table = get_note().get_tag_table();
     m_link_tag = tag_table->get_link_tag();
-    m_broken_link_tag = tag_table->get_broken_link_tag();
   }
 
 
@@ -879,19 +876,6 @@ namespace gnote {
 
   void NoteLinkWatcher::on_note_opened ()
   {
-    // NOTE: This avoid multiple link opens
-    // now that notes always perform TagTable
-    // sharing.  This is because if the TagTable is shared,
-    // we will connect to the same Tag's event source each
-    // time a note is opened, and get called multiple times
-    // for each button press.  Fixes bug #305813.
-    if (!s_text_event_connected) {
-      m_link_tag->signal_activate().connect(
-        sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
-      m_broken_link_tag->signal_activate().connect(
-        sigc::mem_fun(*this, &NoteLinkWatcher::on_link_tag_activated));
-      s_text_event_connected = true;
-    }
     get_buffer()->signal_insert().connect(
       sigc::mem_fun(*this, &NoteLinkWatcher::on_insert_text));
     get_buffer()->signal_apply_tag().connect(
@@ -957,54 +941,6 @@ namespace gnote {
     if(!link) {
       unhighlight_in_block(start, end);
     }
-  }
-
-
-  bool NoteLinkWatcher::open_or_create_link(const NoteEditor &,
-                                            const Gtk::TextIter & start,
-                                            const Gtk::TextIter & end)
-  {
-    Glib::ustring link_name = start.get_text (end);
-    auto link = manager().find(link_name);
-
-    if (!link) {
-      DBG_OUT_1("Creating note '%s'...", link_name.c_str());
-      try {
-        link = std::ref(manager().create(Glib::ustring(link_name)));
-      } 
-      catch(...)
-      {
-        // Fail silently.
-      }
-    }
-
-    Note & note = get_note();
-    Glib::RefPtr<Gtk::TextTag> broken_link_tag = note.get_tag_table()->get_broken_link_tag();
-    if(start.starts_tag(broken_link_tag)) {
-      note.get_buffer()->remove_tag(broken_link_tag, start, end);
-      note.get_buffer()->apply_tag(note.get_tag_table()->get_link_tag(), start, end);
-    }
-
-    // FIXME: We used to also check here for (link != this.Note), but
-    // somehow this was causing problems receiving clicks for the
-    // wrong instance of a note (see bug #413234).  Since a
-    // link:internal tag is never applied around text that's the same
-    // as the current note's title, it's safe to omit this check and
-    // also works around the bug.
-    if (link) {
-      DBG_OUT_3("Opening note '%s' on click...", link_name.c_str());
-      MainWindow::present_default(ignote(), static_cast<Note&>(link.value().get()));
-      return true;
-    }
-
-    return false;
-  }
-
-  bool NoteLinkWatcher::on_link_tag_activated(const NoteEditor & editor,
-                                              const Gtk::TextIter &start, 
-                                              const Gtk::TextIter &end)
-  {
-    return open_or_create_link(editor, start, end);
   }
 
 

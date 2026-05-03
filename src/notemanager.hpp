@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -85,6 +85,8 @@ namespace gnote {
     void create_start_notes();
     void load_notes();
     void on_exiting_event();
+    bool open_or_create_link(const NoteEditor &, const Gtk::TextIter &,const Gtk::TextIter &);
+    bool on_link_tag_activated(const NoteEditor &, const Gtk::TextIter &, const Gtk::TextIter &);
 
     Preferences & m_preferences;
     notebooks::NotebookManager m_notebook_manager;
