@@ -85,15 +85,11 @@ Glib::ustring NoteManagerBase::sanitize_xml_content(const Glib::ustring & xml_co
 
 NoteManagerBase::NoteManagerBase(IGnote & g)
   : m_gnote(g)
-  , m_trie_controller(NULL)
 {
 }
 
 NoteManagerBase::~NoteManagerBase()
 {
-  if(m_trie_controller) {
-    delete m_trie_controller;
-  }
 }
 
 void NoteManagerBase::delete_old_backups(const Glib::ustring &backup, const Glib::DateTime &keep_since)
@@ -162,9 +158,9 @@ void NoteManagerBase::migrate_notes(const Glib::ustring & /*old_note_dir*/)
 }
 
 // Create the TrieController. For overriding in test methods.
-TrieController *NoteManagerBase::create_trie_controller()
+std::unique_ptr<TrieController> NoteManagerBase::create_trie_controller()
 {
-  return new TrieController(*this);
+  return std::make_unique<TrieController>(*this);
 }
 
 void NoteManagerBase::post_load()

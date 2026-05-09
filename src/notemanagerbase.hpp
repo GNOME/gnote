@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019-2020,2022-2025 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019-2020,2022-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -169,10 +169,10 @@ private:
   bool first_run() const;
   void create_notes_dir() const;
   bool create_directory(const Glib::ustring & directory) const;
-  TrieController *create_trie_controller();
+  std::unique_ptr<TrieController> create_trie_controller();
 
   IGnote & m_gnote;
-  TrieController *m_trie_controller;
+  std::unique_ptr<TrieController> m_trie_controller;
   Glib::ustring m_notes_dir;
   bool m_read_only;
 };
