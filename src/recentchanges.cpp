@@ -123,7 +123,7 @@ namespace gnote {
     set_icon_name(IconManager::GNOTE);
     register_actions();
 
-    m_search_notes_widget = new SearchNotesWidget(g, m);
+    m_search_notes_widget = manage(new SearchNotesWidget(g, m));
     m_search_notes_widget->signal_open_note
       .connect(sigc::mem_fun(*this, &NoteRecentChanges::present_note));
     m_search_notes_widget->signal_open_note_new_window
@@ -175,7 +175,6 @@ namespace gnote {
     if(!m_search_box && m_search_text) {
       delete m_search_text;
     }
-    delete m_search_notes_widget;
   }
 
   void NoteRecentChanges::register_actions()
