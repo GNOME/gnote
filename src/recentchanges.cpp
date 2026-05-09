@@ -102,7 +102,6 @@ namespace gnote {
     , m_note_manager(m)
     , m_preferences(g.preferences())
     , m_search_box(nullptr)
-    , m_search_entry(nullptr)
     , m_mapped(false)
   {
     set_resizable(true);
@@ -171,9 +170,6 @@ namespace gnote {
       while(m_embed_book.get_n_pages() > 0) {
         m_embed_book.remove_page(-1);
       }
-    }
-    if(!m_search_box && m_search_text) {
-      delete m_search_text;
     }
   }
 
@@ -357,30 +353,18 @@ namespace gnote {
       return false;
     }
 
-    Glib::ustring search_text;
-    if(m_search_text) {
-      search_text = *m_search_text;
-      delete m_search_text;
-    }
-    m_search_entry = manage(new Gtk::SearchEntry);
-    m_search_entry->set_text(search_text);
-    m_search_entry->set_size_request(300);
-    m_search_entry->set_search_delay(500);
-    m_search_entry->signal_search_changed()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_changed));
-    m_search_entry->signal_search_started()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_changed));
-    m_search_entry->signal_stop_search()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_stopped));
-    m_search_entry->signal_next_match()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
-    m_search_entry->signal_previous_match()
-      .connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
+    m_search_entry.set_size_request(300);
+    m_search_entry.set_search_delay(500);
+    m_search_entry.signal_search_changed().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_changed));
+    m_search_entry.signal_search_started().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_changed));
+    m_search_entry.signal_stop_search().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_search_stopped));
+    m_search_entry.signal_next_match().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_next_button_clicked));
+    m_search_entry.signal_previous_match().connect(sigc::mem_fun(*this, &NoteRecentChanges::on_find_prev_button_clicked));
 
     m_search_box = Gtk::make_managed<Gtk::Box>();
     m_search_box->add_css_class("linked");
     m_search_box->set_hexpand(false);
-    m_search_box->append(*m_search_entry);
+    m_search_box->append(m_search_entry);
     m_search_box->set_halign(Gtk::Align::CENTER);
 
     auto content = dynamic_cast<Gtk::Grid*>(m_search_button.get_parent());
@@ -414,7 +398,7 @@ namespace gnote {
     position_label->set_margin_start(6);
     position_label->set_margin_end(6);
 
-    if(auto box = dynamic_cast<Gtk::Box*>(m_search_entry->get_parent())) {
+    if(auto box = dynamic_cast<Gtk::Box*>(m_search_entry.get_parent())) {
       box->append(*position_label);
       box->append(*find_next_button);
       box->append(*find_prev_button);
@@ -452,11 +436,8 @@ namespace gnote {
   {
     find_next = find_prev = nullptr;
     position_label = nullptr;
-    if(m_search_entry == nullptr) {
-      return false;
-    }
 
-    Gtk::Widget *widget = m_search_entry;
+    Gtk::Widget *widget = const_cast<decltype(m_search_entry)*>(&m_search_entry);
     while((widget = widget->get_next_sibling())) {
       if(widget->get_name() == BUTTON_FIND_NEXT) {
         find_next = dynamic_cast<Gtk::Button*>(widget);
@@ -511,11 +492,11 @@ namespace gnote {
       focus = false;
     }
     m_search_box->show();
-    m_search_entry->select_region(0, -1);
+    m_search_entry.select_region(0, -1);
     if(focus) {
-      m_search_entry->grab_focus();
+      m_search_entry.grab_focus();
     }
-    Glib::ustring text = m_search_entry->get_text();
+    Glib::ustring text = m_search_entry.get_text();
     update_search_bar(*currently_foreground(), text != "");
   }
 
@@ -534,7 +515,7 @@ namespace gnote {
         hide_find_next_prev();
       }
       if(perform_search) {
-        this->perform_search(*searchable_item, m_search_button.get_active() ? m_search_entry->get_text() : "");
+        this->perform_search(*searchable_item, m_search_button.get_active() ? m_search_entry.get_text() : "");
       }
     }
     else {
@@ -697,7 +678,7 @@ namespace gnote {
     switch(keyval) {
     case GDK_KEY_Escape:
       if(m_search_button.get_active()) {
-        m_search_entry->set_text("");
+        m_search_entry.set_text("");
         m_search_button.set_active(false);
       }
       return true;
@@ -729,15 +710,12 @@ namespace gnote {
       m_search_button.set_active(true);
     }
     else {
-      if(!m_search_entry) {
-        return;
-      }
       auto focused = get_focus();
-      bool entry_focused = focused && (focused == m_search_entry
-                                       || focused->is_ancestor(*m_search_entry));
+      bool entry_focused = focused && (focused == &m_search_entry
+                                       || focused->is_ancestor(m_search_entry));
       if(!entry_focused) {
-        m_search_entry->select_region(0, -1);
-        m_search_entry->grab_focus();
+        m_search_entry.select_region(0, -1);
+        m_search_entry.grab_focus();
       }
       else {
         m_search_button.set_active(false);
@@ -754,17 +732,7 @@ namespace gnote {
 
   void NoteRecentChanges::set_search_text(Glib::ustring && value)
   {
-    if(m_search_box) {
-      m_search_entry->set_text(std::move(value));
-    }
-    else {
-      if(!m_search_text) {
-        m_search_text = new Glib::ustring(std::move(value));
-      }
-      else {
-        *m_search_text = std::move(value);
-      }
-    }
+    m_search_entry.set_text(std::move(value));
   }
 
   void NoteRecentChanges::embed_widget(EmbeddableWidget & widget)
@@ -946,13 +914,7 @@ namespace gnote {
 
   Glib::ustring NoteRecentChanges::get_search_text()
   {
-    Glib::ustring text;
-    if(m_search_box) {
-      text = m_search_entry->get_text();
-    }
-    else if(m_search_text) {
-      text = *m_search_text;
-    }
+    Glib::ustring text = m_search_entry.get_text();
     text = sharp::string_trim(text);
     return text;
   }
@@ -1052,9 +1014,9 @@ namespace gnote {
       return false;
     case GDK_KEY_BackSpace:
       if(m_search_button.get_active()) {
-        Glib::ustring s = m_search_entry->get_text();
+        Glib::ustring s = m_search_entry.get_text();
         if(s.size()) {
-          m_search_entry->set_text(s.substr(0, s.size() - 1));
+          m_search_entry.set_text(s.substr(0, s.size() - 1));
         }
       }
       return false;
@@ -1072,9 +1034,9 @@ namespace gnote {
             show_search_bar(false);
             m_search_button.activate();
           }
-          Glib::ustring s = m_search_entry->get_text();
+          Glib::ustring s = m_search_entry.get_text();
           s += character;
-          m_search_entry->set_text(s);
+          m_search_entry.set_text(s);
           return true;
         }
         return false;

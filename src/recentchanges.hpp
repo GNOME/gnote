@@ -116,11 +116,7 @@ private:
   Gtk::Widget        *m_header_bar;
   SearchNotesWidget  *m_search_notes_widget;
   Gtk::Box *m_search_box;
-  union
-  {
-    Gtk::SearchEntry *m_search_entry;
-    Glib::ustring    *m_search_text;
-  };
+  Gtk::SearchEntry m_search_entry;
   Gtk::ToggleButton   m_search_button;
   Gtk::Grid           m_embedded_toolbar;
   Gtk::Notebook       m_embed_book;
