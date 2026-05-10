@@ -81,7 +81,7 @@ namespace gnote {
     virtual NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) override;
     NoteBase::Ptr note_load(Glib::ustring && file_name) override;
   private:
-    AddinManager *create_addin_manager();
+    std::unique_ptr<AddinManager> create_addin_manager();
     void create_start_notes();
     void load_notes();
     void on_exiting_event();
@@ -90,7 +90,7 @@ namespace gnote {
 
     Preferences & m_preferences;
     notebooks::NotebookManager m_notebook_manager;
-    AddinManager   *m_addin_mgr;
+    std::unique_ptr<AddinManager> m_addin_mgr;
     NoteArchiver m_note_archiver;
     TagManager m_tag_manager;
 

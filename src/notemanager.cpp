@@ -42,7 +42,6 @@ namespace gnote {
     : NoteManagerBase(g)
     , m_preferences(g.preferences())
     , m_notebook_manager(*this)
-    , m_addin_mgr(NULL)
     , m_note_archiver(*this)
     , m_save_timeout(0)
   {
@@ -102,12 +101,11 @@ namespace gnote {
 
   NoteManager::~NoteManager()
   {
-    delete m_addin_mgr;
   }
 
-  AddinManager *NoteManager::create_addin_manager()
+  std::unique_ptr<AddinManager> NoteManager::create_addin_manager()
   {
-    return new AddinManager(gnote(), *this, m_preferences, IGnote::conf_dir());
+    return std::make_unique<AddinManager>(gnote(), *this, m_preferences, IGnote::conf_dir());
   }
 
   void NoteManager::create_start_notes ()
