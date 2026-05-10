@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013-2014,2016-2017,2019-2020,2023 Aurimas Cernius
+ * Copyright (C) 2013-2014,2016-2017,2019-2020,2023,2026 Aurimas Cernius
  * Copyright (C) 2011 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -108,7 +108,7 @@ private:
     bool m_payload_present;
   };
 
-  std::vector<TrieState*> m_states;
+  std::vector<std::unique_ptr<TrieState>> m_states;
   const bool m_case_sensitive;
   const TrieStatePtr m_root;
   size_t m_max_length;
@@ -120,14 +120,7 @@ public:
     , m_root(new TrieState('\0', -1, TrieStatePtr()))
     , m_max_length(0)
   {
-    m_states.push_back(m_root);
-  }
-
-  ~TrieTree()
-  {
-    for(auto state : m_states) {
-      delete state;
-    }
+    m_states.push_back(std::unique_ptr<TrieState>(m_root));
   }
 
   void add_keyword(const Glib::ustring & keyword, const value_t & pattern_id)
@@ -143,7 +136,7 @@ public:
       TrieStatePtr target_state = find_state_transition(current_state, c);
       if (0 == target_state) {
         target_state = new TrieState(c, i, m_root);
-        m_states.push_back(target_state);
+        m_states.push_back(std::unique_ptr<TrieState>(target_state));
         current_state->transitions().push_front(target_state);
       }
 
