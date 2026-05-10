@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2015,2017,2019-2020,2022-2025 Aurimas Cernius
+ * Copyright (C) 2011-2015,2017,2019-2020,2022-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -125,7 +125,7 @@ public:
     }
   NoteWindow * get_window()
     {
-      return m_window;
+      return m_window.get();
     }
   NoteWindow * create_window();
   bool is_special() const;
@@ -191,7 +191,7 @@ private:
   bool                       m_note_window_embedded;
 
   Gtk::Widget               *m_focus_widget;
-  NoteWindow                *m_window;
+  std::unique_ptr<NoteWindow> m_window;
   Glib::RefPtr<NoteBuffer>   m_buffer;
   Glib::RefPtr<NoteTagTable> m_tag_table;
 

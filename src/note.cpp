@@ -254,7 +254,6 @@ namespace gnote {
     , m_is_deleting(false)
     , m_note_window_embedded(false)
     , m_focus_widget(NULL)
-    , m_window(NULL)
     , m_tag_table(NULL)
   {
     for(const auto & iter : m_data.data().tags()) {
@@ -266,7 +265,6 @@ namespace gnote {
 
   Note::~Note()
   {
-    delete m_window;
   }
 
   Note::Ptr Note::create_new_note(Glib::ustring && title, Glib::ustring && filename, NoteManager & manager, IGnote & g)
@@ -314,8 +312,7 @@ namespace gnote {
       if(m_window->host()) {
         m_window->host()->unembed_widget(*m_window);
       }
-      delete m_window; 
-      m_window = NULL;
+      m_window.reset();
     }
       
     // Remove note URI from GConf entry menu_pinned_notes
@@ -651,7 +648,7 @@ namespace gnote {
   NoteWindow * Note::create_window()
   {
     if(!m_window) {
-      m_window = new NoteWindow(*this, m_gnote);
+      m_window = std::make_unique<NoteWindow>(*this, m_gnote);
       m_window->signal_destroy().connect(sigc::mem_fun(*this, &Note::on_window_destroyed));
 
       m_window->editor()->set_sensitive(enabled());
@@ -662,7 +659,7 @@ namespace gnote {
       m_window->signal_embedded.connect(sigc::mem_fun(*this, &Note::on_note_window_embedded));
       m_window->signal_foregrounded.connect(sigc::mem_fun(*this, &Note::on_note_window_foregrounded));
     }
-    return m_window;
+    return m_window.get();
   }
 
   void Note::on_note_window_embedded()
