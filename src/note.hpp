@@ -167,7 +167,6 @@ private:
                              const Gtk::TextBuffer::iterator &);
   void on_buffer_mark_set(const Gtk::TextBuffer::iterator & iter,
                           const Glib::RefPtr<Gtk::TextBuffer::Mark> & insert);
-  void on_window_destroyed();
   void process_child_widget_queue();
   void process_rename_link_update(const Glib::ustring & old_title);
   void on_note_window_embedded();

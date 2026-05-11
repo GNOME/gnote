@@ -411,11 +411,6 @@ namespace gnote {
     queue_save(NO_CHANGE);
   }
 
-  void Note::on_window_destroyed()
-  {
-    m_window = NULL;
-  }
-
   void Note::queue_save (ChangeType changeType)
   {
     DBG_OUT_3("Got QueueSave");
@@ -649,7 +644,6 @@ namespace gnote {
   {
     if(!m_window) {
       m_window = std::make_unique<NoteWindow>(*this, m_gnote);
-      m_window->signal_destroy().connect(sigc::mem_fun(*this, &Note::on_window_destroyed));
 
       m_window->editor()->set_sensitive(enabled());
       if(m_data.data().has_extent()) {
