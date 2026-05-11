@@ -182,10 +182,10 @@ private:
   MainWindow *get_active_window();
   void register_object();
 
-  NoteManager *m_manager;
+  std::unique_ptr<NoteManager> m_manager;
   Preferences m_preferences;
   ActionManager m_action_manager;
-  sync::SyncManager *m_sync_manager;
+  std::unique_ptr<sync::SyncManager> m_sync_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;
   bool m_is_background;
   bool m_is_shell_search;

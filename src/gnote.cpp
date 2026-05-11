@@ -62,8 +62,6 @@ namespace gnote {
 
   Gnote::Gnote()
     : Gtk::Application("org.gnome.Gnote", Gio::Application::Flags::HANDLES_COMMAND_LINE)
-    , m_manager(NULL)
-    , m_sync_manager(NULL)
     , m_is_background(false)
     , m_is_shell_search(false)
     , m_cmd_line(*this)
@@ -72,11 +70,8 @@ namespace gnote {
 
   Gnote::~Gnote()
   {
-    if(m_sync_manager) {
-      delete m_sync_manager;
-    }
-    // why this crashes inside GDataTime sometimes when deleted?
-    //delete m_manager;
+    // make sure it is deleted before note manager, as it hold the reference to it
+    m_sync_manager.reset();
   }
 
 
@@ -160,10 +155,10 @@ namespace gnote {
 
     //create singleton objects
     m_preferences.init();
-    m_manager = new NoteManager(*this);
+    m_manager = std::make_unique<NoteManager>(*this);
     m_manager->init(note_path);
     m_action_manager.init();
-    m_sync_manager = new sync::SyncManager(*this, default_note_manager());
+    m_sync_manager = std::make_unique<sync::SyncManager>(*this, default_note_manager());
     m_sync_manager->init();
 
     m_preferences.signal_color_scheme_changed.connect(sigc::mem_fun(*this, &Gnote::on_color_scheme_pref_changed));
