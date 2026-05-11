@@ -43,10 +43,6 @@ namespace sharp {
 
   ModuleManager::~ModuleManager()
   {
-    for(ModuleMap::const_iterator mod_iter = m_modules.begin();
-        mod_iter != m_modules.end(); ++mod_iter) {
-      delete mod_iter->second;
-    }
   }
 
   DynamicModule *ModuleManager::load_module(const Glib::ustring & mod)
@@ -74,7 +70,7 @@ namespace sharp {
     instanciate_func_t real_func = (instanciate_func_t)func;
     dmod = (*real_func)();
     if(dmod) {
-      m_modules[mod] = dmod;
+      m_modules[mod].reset(dmod);
       module.make_resident();
     }
 
@@ -92,7 +88,7 @@ namespace sharp {
   {
     ModuleMap::const_iterator iter = m_modules.find(module);
     if(iter != m_modules.end()) {
-      return iter->second;
+      return iter->second.get();
     }
     return 0;
   }

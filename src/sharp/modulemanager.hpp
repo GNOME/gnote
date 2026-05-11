@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -36,7 +36,7 @@ namespace sharp {
 
 class DynamicModule;
 
-typedef std::map<Glib::ustring, DynamicModule*> ModuleMap;
+typedef std::map<Glib::ustring, std::unique_ptr<DynamicModule>> ModuleMap;
 
 class ModuleManager 
 {

@@ -292,7 +292,7 @@ namespace {
         iter != modules.end(); ++iter) {
 
       Glib::ustring mod_id = get_info_for_module(iter->first).id();
-      sharp::DynamicModule* dmod = iter->second;
+      sharp::DynamicModule *dmod = iter->second.get();
       if(!dmod) {
         continue;
       }
