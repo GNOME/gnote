@@ -329,8 +329,7 @@ namespace gnote {
 
   MainWindow & Gnote::new_main_window()
   {
-    NoteRecentChanges *win = new NoteRecentChanges(*this, default_note_manager());
-    win->signal_hide().connect([this, win]() { on_main_window_closed(win); });
+    NoteRecentChanges *win = manage(new NoteRecentChanges(*this, default_note_manager()));
     add_window(*win);
     auto group = Gtk::WindowGroup::create();
     group->add_window(*win);
@@ -353,11 +352,6 @@ namespace gnote {
     }
 
     return new_main_window();
-  }
-
-  void Gnote::on_main_window_closed(Gtk::Window *win)
-  {
-    delete win;
   }
 
   MainWindow & Gnote::get_window_for_note()
