@@ -49,7 +49,6 @@ namespace {
   NoteTag::NoteTag(Glib::ustring && tag_name, int flags)
     : Gtk::TextTag(tag_name)
     , m_element_name(std::move(tag_name))
-    , m_widget(NULL)
     , m_flags(flags | CAN_SERIALIZE | CAN_SPLIT)
   {
     if(m_element_name.empty()) {
@@ -63,7 +62,6 @@ namespace {
   
   NoteTag::NoteTag()
     : Gtk::TextTag()
-    , m_widget(NULL)
     , m_flags(0)
   {
   }
@@ -188,11 +186,7 @@ namespace {
 
   void NoteTag::set_widget(Gtk::Widget * value)
   {
-    if ((value == NULL) && m_widget) {
-      delete m_widget;
-    }
-
-    m_widget = value;
+    m_widget.reset(value);
 
     try {
       m_signal_changed(*this, false);

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011,2013-2014,2017,2019,2021-2025 Aurimas Cernius
+ * Copyright (C) 2011,2013-2014,2017,2019,2021-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -124,7 +124,7 @@ public:
   virtual void read(sharp::XmlReader &, bool);
   virtual Gtk::Widget * get_widget() const
     {
-      return m_widget;
+      return m_widget.get();
     }
   virtual void set_widget(Gtk::Widget *);
   const Glib::RefPtr<Gtk::TextMark> & get_widget_location() const
@@ -153,7 +153,7 @@ protected:
 private:
   Glib::ustring       m_element_name;
   Glib::RefPtr<Gtk::TextMark> m_widget_location;
-  Gtk::Widget       * m_widget;
+  std::unique_ptr<Gtk::Widget> m_widget;
   int                 m_flags;
   TagActivatedHandler m_signal_activate;
   sigc::signal<void(const Gtk::TextTag&, bool)> m_signal_changed;
