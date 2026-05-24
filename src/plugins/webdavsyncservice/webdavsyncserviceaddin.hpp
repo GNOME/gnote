@@ -83,7 +83,7 @@ public:
   virtual void reset_configuration() override;
 private:
   static Glib::RefPtr<Gio::MountOperation> create_mount_operation(const Glib::ustring & username, const Glib::ustring & password);
-  bool get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const;
+  bool get_config_settings(Glib::ustring & url, Glib::ustring & username) const;
   std::optional<Glib::ustring> get_password() const;
   void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);
   bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const;

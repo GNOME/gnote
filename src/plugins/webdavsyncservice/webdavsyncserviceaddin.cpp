@@ -105,7 +105,10 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(Gtk::Window &, E
 
   // Read settings out of gconf
   Glib::ustring url, username, password;
-  get_config_settings(url, username, password);
+  get_config_settings(url, username);
+  if(auto pass = get_password()) {
+    password = pass.value();
+  }
 
   m_url_entry = Gtk::make_managed<Gtk::Entry>();
   m_url_entry->set_text(url);
@@ -130,8 +133,8 @@ Gtk::Widget *WebDavSyncServiceAddin::create_preferences_control(Gtk::Window &, E
 
 bool WebDavSyncServiceAddin::is_configured() const
 {
-  Glib::ustring url, username, password;
-  return get_config_settings(url, username, password);
+  Glib::ustring url, username;
+  return get_config_settings(url, username);
 }
 
 
@@ -157,8 +160,14 @@ Glib::ustring WebDavSyncServiceAddin::id() const
 std::unique_ptr<gnote::sync::SyncServer> WebDavSyncServiceAddin::create_sync_server()
 {
   Glib::ustring sync_uri, username, password;
-  if(get_config_settings(sync_uri, username, password)) {
+  if(get_config_settings(sync_uri, username)) {
     m_uri = sync_uri;
+    if(auto pass = get_password()) {
+      password = pass.value();
+    }
+    else {
+      throw std::logic_error("Failed to retrieve password");
+    }
 
     auto path = Gio::File::create_for_uri(m_uri);
     if(!mount_sync(path, create_mount_operation(username, password))) {
@@ -232,25 +241,20 @@ void WebDavSyncServiceAddin::reset_configuration()
   save_config_settings("", "", "");
 }
 
-bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const
+bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustring & username) const
 {
-  // Retrieve configuration from the GNOME Keyring and GSettings
   url = "";
   username = "";
-  password = "";
 
   try {
-    if(auto pass = get_password()) {
-      username = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_username());
-      url = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_url());
-      password = pass.value();
-    }
+    username = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_username());
+    url = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_url());
   }
   catch(KeyringException & ke) {
     ERR_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
   }
 
-  return url != "" && username != "" && password != "";
+  return url != "" && username != "";
 }
 
 std::optional<Glib::ustring> WebDavSyncServiceAddin::get_password() const
