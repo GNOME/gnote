@@ -240,10 +240,10 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
   password = "";
 
   try {
-    password = sharp::string_trim(Ring::find_password(s_request_attributes));
-    if(password != "") {
+    if(auto pass = get_password()) {
       username = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_username());
       url = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_url());
+      password = pass.value();
     }
   }
   catch(KeyringException & ke) {
@@ -251,6 +251,21 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
   }
 
   return url != "" && username != "" && password != "";
+}
+
+std::optional<Glib::ustring> WebDavSyncServiceAddin::get_password() const
+{
+  try {
+    auto password = Ring::find_password(s_request_attributes);
+    if(password != "") {
+      return password;
+    }
+  }
+  catch(KeyringException & ke) {
+    ERR_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
+  }
+
+  return nullptr;
 }
 
 void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password)
