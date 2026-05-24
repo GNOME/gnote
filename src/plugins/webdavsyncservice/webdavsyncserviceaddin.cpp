@@ -256,10 +256,7 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
 std::optional<Glib::ustring> WebDavSyncServiceAddin::get_password() const
 {
   try {
-    auto password = Ring::find_password(s_request_attributes);
-    if(password != "") {
-      return password;
-    }
+    return Ring::find_password(s_request_attributes);
   }
   catch(KeyringException & ke) {
     ERR_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
