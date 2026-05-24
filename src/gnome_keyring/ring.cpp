@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2013,2017 Aurimas Cernius
+ * Copyright (C) 2012-2013,2017,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ SecretSchema Ring::s_schema = {
 #pragma GCC diagnostic pop
 
 
-Glib::ustring Ring::find_password(const std::map<Glib::ustring, Glib::ustring> & atts)
+std::optional<Glib::ustring> Ring::find_password(const std::map<Glib::ustring, Glib::ustring> & atts)
 {
   GHashTable *attributes = keyring_attributes(atts);
   GError *error = NULL;
@@ -56,12 +56,13 @@ Glib::ustring Ring::find_password(const std::map<Glib::ustring, Glib::ustring> &
     throw e;
   }
 
-  Glib::ustring res;
   if(result) {
-    res = result;
+    Glib::ustring res = result;
     secret_password_free(result);
+    return res;
   }
-  return res;
+
+  return nullptr;
 }
 
 Glib::ustring Ring::default_keyring()

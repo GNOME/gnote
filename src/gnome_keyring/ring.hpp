@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012,2017 Aurimas Cernius
+ * Copyright (C) 2012,2017,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,9 @@
 #ifndef _GNOME_KEYRING_RING_HPP_
 #define _GNOME_KEYRING_RING_HPP_
 
-#include <vector>
 #include <map>
+#include <optional>
+#include <vector>
 
 #include <glibmm/ustring.h>
 #include <libsecret/secret.h>
@@ -35,7 +36,7 @@ namespace keyring {
 class Ring
 {
 public:
-  static Glib::ustring find_password(const std::map<Glib::ustring, Glib::ustring> & atts);
+  static std::optional<Glib::ustring> find_password(const std::map<Glib::ustring, Glib::ustring> & atts);
   static Glib::ustring default_keyring();
   static void create_password(const Glib::ustring & keyring, const Glib::ustring & displayName,
                               const std::map<Glib::ustring, Glib::ustring> & attributes,
