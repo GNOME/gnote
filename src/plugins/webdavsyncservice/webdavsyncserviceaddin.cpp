@@ -179,7 +179,7 @@ std::unique_ptr<gnote::sync::SyncServer> WebDavSyncServiceAddin::create_sync_ser
     return WebDavSyncServer::create(std::move(path), ignote().preferences());
   }
   else {
-    throw std::logic_error("GvfsSyncServiceAddin.create_sync_server() called without being configured");
+    throw std::logic_error("WebDavSyncServiceAddin.create_sync_server() called without being configured");
   }
 }
 
