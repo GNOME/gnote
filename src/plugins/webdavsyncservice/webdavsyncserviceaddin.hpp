@@ -82,7 +82,7 @@ public:
   virtual bool save_configuration(const sigc::slot<void(bool, Glib::ustring)> & on_saved) override;
   virtual void reset_configuration() override;
 private:
-  static Glib::RefPtr<Gio::MountOperation> create_mount_operation(const Glib::ustring & username, const Glib::ustring & password);
+  static Glib::RefPtr<Gio::MountOperation> create_mount_operation(const Glib::ustring & username, std::function<std::optional<Glib::ustring>()> get_password);
   static std::optional<Glib::ustring> get_password();
   bool get_config_settings(Glib::ustring & url, Glib::ustring & username) const;
   void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);

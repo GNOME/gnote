@@ -170,7 +170,7 @@ std::unique_ptr<gnote::sync::SyncServer> WebDavSyncServiceAddin::create_sync_ser
     }
 
     auto path = Gio::File::create_for_uri(m_uri);
-    if(!mount_sync(path, create_mount_operation(username, password))) {
+    if(!mount_sync(path, create_mount_operation(username, get_password))) {
       throw sharp::Exception(_("Failed to mount the folder"));
     }
     if(!path->query_exists())
@@ -203,7 +203,7 @@ bool WebDavSyncServiceAddin::save_configuration(const sigc::slot<void(bool, Glib
         on_saved(success, error);
       });
   };
-  auto operation = create_mount_operation(username, password);
+  auto operation = create_mount_operation(username, [password]{ return password; });
   if(mount_async(path, on_mount_completed, operation)) {
     std::thread thread([this, url, on_mount_completed]() {
       on_mount_completed(true, "");
@@ -214,11 +214,11 @@ bool WebDavSyncServiceAddin::save_configuration(const sigc::slot<void(bool, Glib
   return true;
 }
 
-Glib::RefPtr<Gio::MountOperation> WebDavSyncServiceAddin::create_mount_operation(const Glib::ustring & username, const Glib::ustring & password)
+Glib::RefPtr<Gio::MountOperation> WebDavSyncServiceAddin::create_mount_operation(const Glib::ustring & username, std::function<std::optional<Glib::ustring>()> get_password)
 {
   auto operation = Gio::MountOperation::create();
   operation->signal_ask_password().connect(
-    [operation, username, password](const Glib::ustring & /* message */, const Glib::ustring & /* default_user */, const Glib::ustring & /* default_domain */, Gio::AskPasswordFlags flags) {
+    [operation, username, get_password](const Glib::ustring & /* message */, const Glib::ustring & /* default_user */, const Glib::ustring & /* default_domain */, Gio::AskPasswordFlags flags) {
       if(Gio::AskPasswordFlags::NEED_DOMAIN == (flags & Gio::AskPasswordFlags::NEED_DOMAIN)) {
         operation->reply(Gio::MountOperationResult::ABORTED);
         return;
@@ -228,7 +228,14 @@ Glib::RefPtr<Gio::MountOperation> WebDavSyncServiceAddin::create_mount_operation
         operation->set_username(username);
       }
       if(Gio::AskPasswordFlags::NEED_PASSWORD == (flags & Gio::AskPasswordFlags::NEED_PASSWORD)) {
-        operation->set_password(password);
+        if(auto password = get_password()) {
+          operation->set_password(password.value());
+        }
+        else {
+          ERR_OUT("Failed to retrieve password");
+          operation->reply(Gio::MountOperationResult::ABORTED);
+          return;
+        }
       }
 
       operation->reply(Gio::MountOperationResult::HANDLED);
