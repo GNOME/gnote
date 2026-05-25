@@ -257,7 +257,7 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
   return url != "" && username != "";
 }
 
-std::optional<Glib::ustring> WebDavSyncServiceAddin::get_password() const
+std::optional<Glib::ustring> WebDavSyncServiceAddin::get_password()
 {
   try {
     return Ring::find_password(s_request_attributes);
