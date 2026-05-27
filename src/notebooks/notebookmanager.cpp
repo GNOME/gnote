@@ -362,7 +362,6 @@ namespace gnote {
     /// </summary>
     void NotebookManager::load_notebooks()
     {
-      Gtk::TreeIter<Gtk::TreeRow> iter;
       auto tags = m_note_manager.tag_manager().all_tags();
       auto prefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX) + Notebook::NOTEBOOK_TAG_PREFIX;
       for(const Tag &tag : tags) {
