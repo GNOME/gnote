@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2016-2018 Aurimas Cernius
+ * Copyright (C) 2016-2018,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -72,9 +72,9 @@ public:
 
   void           close();
 private:
+  static void error_handler(void *arg, const char *msg, xmlParserSeverities severity, xmlTextReaderLocatorPtr locator);
 
   void setup_error_handling();
-  static void error_handler(void* arg, const char* msg, int severity, void* locator);
 
   xmlDocPtr        m_doc;
   Glib::ustring    m_buffer;

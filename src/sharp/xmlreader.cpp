@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2016-2018 Aurimas Cernius
+ * Copyright (C) 2013,2016-2018,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -203,16 +203,14 @@ namespace sharp {
 
     // We respect any other error handlers already setup:
     xmlTextReaderGetErrorHandler(m_reader, &func, &arg);
-    if(!func)
-    {
-      func = (xmlTextReaderErrorFunc)&XmlReader::error_handler;
+    if(!func) {
+      func = error_handler;
       xmlTextReaderSetErrorHandler(m_reader, func, this);
     }
   }
 
 
-  void XmlReader::error_handler(void* arg, const char* msg, 
-                                int /*severity*/, void* /*locator*/)
+  void XmlReader::error_handler(void *arg, const char *msg, xmlParserSeverities /*severity*/, xmlTextReaderLocatorPtr /*locator*/)
   {
     XmlReader* self = (XmlReader*)arg;
     self->m_error = true;
