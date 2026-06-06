@@ -18,7 +18,9 @@
  */
 
 
+#include "debug.hpp"
 #include "notebookserializer.hpp"
+#include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 
 namespace gnote {
@@ -44,6 +46,36 @@ Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &n
   writer.write_end_element();
   writer.write_end_document();
   return writer.to_string();
+}
+
+std::vector<NotebookData> NotebookSerializer::deserialize(const Glib::ustring &xml)
+{
+  sharp::XmlReader reader;
+  reader.load_buffer(xml);
+  std::vector<NotebookData> result;
+
+  while(reader.read()) {
+    if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
+      auto name = reader.get_name();
+      if(name == "notebooks") {
+        continue;
+      }
+      else if(name == "notebook") {
+        auto id = reader.get_attribute("id");
+        auto name = reader.get_attribute("name");
+        if(!id.empty() && !name.empty()) {
+          result.emplace_back(std::move(id));
+          result.back().set_name(name);
+        }
+      }
+      else {
+        ERR_OUT("Unexpected XML element '%s'", name.c_str());
+        throw std::runtime_error("Unexpected XML element");
+      }
+    }
+  }
+
+  return result;
 }
 
 }

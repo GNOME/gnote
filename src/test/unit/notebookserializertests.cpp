@@ -85,5 +85,24 @@ SUITE(NotebookSerializer)
 
     CHECK_EQUAL(reference, str);
   }
+
+  TEST(deserialize)
+  {
+    const char *xml = "<?xml version=\"1.0\"?>"
+                      "<notebooks>"
+                      "  <notebook id=\"test\" name=\"Test\"/>"
+                      "  <notebook id=\"testnb1\" name=\"Testnb1\"/>"
+                      "  <notebook id=\"testnb2\" name=\"TestNB2\"/>"
+                      "</notebooks>";
+
+    auto result = NotebookSerializer::deserialize(xml);
+    REQUIRE CHECK_EQUAL(3, result.size());
+    CHECK_EQUAL("test", result[0].get_normalized_name());
+    CHECK_EQUAL("Test", result[0].get_name());
+    CHECK_EQUAL("testnb1", result[1].get_normalized_name());
+    CHECK_EQUAL("Testnb1", result[1].get_name());
+    CHECK_EQUAL("testnb2", result[2].get_normalized_name());
+    CHECK_EQUAL("TestNB2", result[2].get_name());
+  }
 }
 

@@ -42,11 +42,40 @@ public:
   virtual Glib::ustring get_normalized_name() const = 0;
 };
 
+
+class NotebookData
+  : public INotebook
+{
+public:
+  NotebookData(Glib::ustring &&id)
+    : m_id(std::move(id))
+  {}
+
+  Glib::ustring get_name() const override
+    {
+      return m_name;
+    }
+  void set_name(const Glib::ustring &name) override
+    {
+      m_name = name;
+    }
+  Glib::ustring get_normalized_name() const override
+    {
+      return m_id;
+    }
+private:
+  Glib::ustring m_id;
+  Glib::ustring m_name;
+};
+
 class NotebookSerializer
 {
 public:
   [[nodiscard]]
   static Glib::ustring serialize(const std::vector<INotebook::Ref> &notebooks);
+
+  [[nodiscard]]
+  static std::vector<NotebookData> deserialize(const Glib::ustring &xml);
 };
 
 }
