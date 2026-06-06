@@ -21,11 +21,32 @@
 #ifndef _NOTEBOOKS_NOTEBOOK_SERIALIZER_HPP_
 #define _NOTEBOOKS_NOTEBOOK_SERIALIZER_HPP_
 
+#include <functional>
+#include <vector>
+
+#include <glibmm/ustring.h>
+
+
 namespace gnote {
 namespace notebooks {
 
+class INotebook
+{
+public:
+  typedef std::reference_wrapper<INotebook> Ref;
+
+  [[nodiscard]]
+  virtual Glib::ustring get_name() const = 0;
+  virtual void set_name(const Glib::ustring &name) = 0;
+  [[nodiscard]]
+  virtual Glib::ustring get_normalized_name() const = 0;
+};
+
 class NotebookSerializer
 {
+public:
+  [[nodiscard]]
+  static Glib::ustring serialize(const std::vector<INotebook::Ref> &notebooks);
 };
 
 }

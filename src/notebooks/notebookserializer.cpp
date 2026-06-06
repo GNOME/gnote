@@ -23,6 +23,10 @@
 namespace gnote {
 namespace notebooks {
 
+Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &notebooks)
+{
+  return Glib::ustring();
+}
 
 }
 }

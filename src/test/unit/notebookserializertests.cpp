@@ -25,5 +25,12 @@
 
 SUITE(NotebookSerializer)
 {
+  using gnote::notebooks::NotebookSerializer;
+
+  TEST(serialize_empty)
+  {
+    auto str = NotebookSerializer::serialize({});
+    CHECK_EQUAL("", str);
+  }
 }
 
