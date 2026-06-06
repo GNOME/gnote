@@ -19,13 +19,31 @@
 
 
 #include "notebookserializer.hpp"
+#include "sharp/xmlwriter.hpp"
 
 namespace gnote {
 namespace notebooks {
 
 Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &notebooks)
 {
-  return Glib::ustring();
+  if(notebooks.empty()) {
+    return Glib::ustring();
+  }
+
+  sharp::XmlWriter writer;
+  writer.write_start_document();
+  writer.write_start_element("", "notebooks", "");
+
+  for(const INotebook &nb : notebooks) {
+    writer.write_start_element("", "notebook", "");
+    writer.write_attribute_string("", "id", "", nb.get_normalized_name());
+    writer.write_attribute_string("", "name", "", nb.get_name());
+    writer.write_end_element();
+  }
+
+  writer.write_end_element();
+  writer.write_end_document();
+  return writer.to_string();
 }
 
 }
