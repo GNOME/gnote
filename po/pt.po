@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.28\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-02-21 13:26+0000\n"
-"PO-Revision-Date: 2026-02-23 22:48+0000\n"
+"POT-Creation-Date: 2026-04-19 14:44+0000\n"
+"PO-Revision-Date: 2026-06-13 17:30+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <hugokarvalho@hotmail.com>\n"
 "Language: pt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:100 src/recentchanges.cpp:122
@@ -394,22 +394,35 @@ msgstr ""
 "A variante de tema a utilizar. Os valores possíveis são uma cadeia de "
 "caracteres vazia para seguir o sistema, 'escuro' e 'claro'."
 
-#: data/org.gnome.gnote.gschema.xml:163
+#: data/org.gnome.gnote.gschema.xml:156
+msgid "Tab width in note editor"
+msgstr "Largura da tabulação no editor de notas"
+
+#: data/org.gnome.gnote.gschema.xml:157
+msgid ""
+"Tab stop positions in editor will be setup using this number as a step in "
+"space characters. Zero to use the default tab width."
+msgstr ""
+"As posições dos tabuladores no editor serão definidas utilizando este número "
+"como intervalo em caracteres de espaço. Se for zero, será utilizada a "
+"largura padrão do tabulador."
+
+#: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Last Directory"
 msgstr "Última pasta de exportação HTML"
 
-#: data/org.gnome.gnote.gschema.xml:164
+#: data/org.gnome.gnote.gschema.xml:169
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "A última pasta para onde foi exportada uma nota utilizando a extensão "
 "Exportar para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:168
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Linked Notes"
 msgstr "Exportar para HTML as notas ligadas"
 
-#: data/org.gnome.gnote.gschema.xml:169
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -417,11 +430,11 @@ msgstr ""
 "A última definição da caixa de verificação \"Exportar notas ligadas\" na "
 "extensão Exportar para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:173
+#: data/org.gnome.gnote.gschema.xml:178
 msgid "HTML Export All Linked Notes"
 msgstr "Exportar para HTML todas as notas ligadas"
 
-#: data/org.gnome.gnote.gschema.xml:174
+#: data/org.gnome.gnote.gschema.xml:179
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -434,11 +447,11 @@ msgstr ""
 "utilizada para especificar se todas as notas (encontradas recursivamente) "
 "deverão ser incluídas durante a exportação para HTML."
 
-#: data/org.gnome.gnote.gschema.xml:180
+#: data/org.gnome.gnote.gschema.xml:185
 msgid "Synchronization Client ID"
 msgstr "ID de cliente de sincronização"
 
-#: data/org.gnome.gnote.gschema.xml:181
+#: data/org.gnome.gnote.gschema.xml:186
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -446,11 +459,11 @@ msgstr ""
 "Identificador único para este cliente Gnote, utilizado ao comunicar com um "
 "servidor de sincronização."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Synchronization Local Server Path"
 msgstr "Caminho para o servidor local de sincronização"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -458,11 +471,11 @@ msgstr ""
 "Caminho para o servidor de sincronização ao utilizar a extensão de serviço "
 "de sincronização do sistema de ficheiros."
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Selected Synchronization Service Addin"
 msgstr "Extensão de serviço de sincronização selecionado"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
@@ -470,11 +483,11 @@ msgstr ""
 "Identificador único para a extensão de serviço de sincronização de notas "
 "atualmente configurado."
 
-#: data/org.gnome.gnote.gschema.xml:195
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Comportamento gravado para conflitos na sincronização de notas"
 
-#: data/org.gnome.gnote.gschema.xml:196
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -488,11 +501,11 @@ msgstr ""
 "utilizador deseja ser questionado quando ocorre um conflito, para que possa "
 "gerir cada situação caso-a-caso."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Expiração automática da sincronização em 2º plano"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -504,19 +517,19 @@ msgstr ""
 "que 1 indica que a sincronização está desligada. O valor mais baixo "
 "aceitável é 5. O valor é em minutos."
 
-#: data/org.gnome.gnote.gschema.xml:208
+#: data/org.gnome.gnote.gschema.xml:213
 msgid "Online directory URI"
 msgstr "URI de diretório online"
 
-#: data/org.gnome.gnote.gschema.xml:209
+#: data/org.gnome.gnote.gschema.xml:214
 msgid "URI to online directory where notes are synchronized to."
 msgstr "URL de diretório online para onde as notas são sincronizadas."
 
-#: data/org.gnome.gnote.gschema.xml:215
+#: data/org.gnome.gnote.gschema.xml:220
 msgid "Accept SSL Certificates"
 msgstr "Aceitar certificados SSL"
 
-#: data/org.gnome.gnote.gschema.xml:216
+#: data/org.gnome.gnote.gschema.xml:221
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -524,27 +537,27 @@ msgstr ""
 "Utilize a opção wdfs \"-ac\" para aceitar certificados SSL sem questionar o "
 "utilizador."
 
-#: data/org.gnome.gnote.gschema.xml:220
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Share URL"
 msgstr "URL de partilha"
 
-#: data/org.gnome.gnote.gschema.xml:221
+#: data/org.gnome.gnote.gschema.xml:226
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "URL de partilha WebDAV onde as notas são sincronizadas."
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid "Share username"
 msgstr "Utilizador de partilha"
 
-#: data/org.gnome.gnote.gschema.xml:226
+#: data/org.gnome.gnote.gschema.xml:231
 msgid "Username to access WebDAV share."
 msgstr "Nome de utilizador para aceder à partilha WebDAV."
 
-#: data/org.gnome.gnote.gschema.xml:232
+#: data/org.gnome.gnote.gschema.xml:237
 msgid "Timestamp format"
 msgstr "Formato da data e hora"
 
-#: data/org.gnome.gnote.gschema.xml:233
+#: data/org.gnome.gnote.gschema.xml:238
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
@@ -552,11 +565,11 @@ msgstr ""
 "O formato de data que é utilizado para a data e hora. Respeita o formato do "
 "strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:239
+#: data/org.gnome.gnote.gschema.xml:244
 msgid "Time between checks"
 msgstr "Tempo entre verificações"
 
-#: data/org.gnome.gnote.gschema.xml:240
+#: data/org.gnome.gnote.gschema.xml:245
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
@@ -739,27 +752,27 @@ msgctxt "shortcut window"
 msgid "Decrease indent/disable bullets for current line"
 msgstr "Diminui o recuo/desativa marcadores para a linha atual"
 
-#: src/actionmanager.cpp:130
+#: src/actionmanager.cpp:131
 msgid "_New Note"
 msgstr "_Nova nota"
 
-#: src/actionmanager.cpp:131
+#: src/actionmanager.cpp:132
 msgid "New _Window"
 msgstr "Nova _janela"
 
-#: src/actionmanager.cpp:132 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: src/actionmanager.cpp:133
+#: src/actionmanager.cpp:134
 msgid "_Shortcuts"
 msgstr "Atalho_s"
 
-#: src/actionmanager.cpp:134
+#: src/actionmanager.cpp:135
 msgid "_Help"
 msgstr "A_juda"
 
-#: src/actionmanager.cpp:135
+#: src/actionmanager.cpp:136
 msgid "_About Gnote"
 msgstr "_Acerca do Gnote"
 
@@ -1510,52 +1523,52 @@ msgstr "caminho"
 msgid "Open the search all notes window with the search text."
 msgstr "Abrir a janela Procurar em todas as notas com o texto de procura."
 
-#: src/gnote.cpp:513 src/gnote.cpp:519
+#: src/gnote.cpp:513 src/gnote.cpp:520
 msgid "text"
 msgstr "texto"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:515
 msgid "Print version information."
 msgstr "Imprimir informação da versão."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:516
 msgid "Create and display a new note, with a optional title."
 msgstr "Criar e mostrar uma nova nota, com título opcional."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:516
 msgid "title"
 msgstr "título"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:517
 msgid "Open a new window."
 msgstr "Abrir uma nova janela."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:518
 msgid "Display the existing note matching title."
 msgstr "Mostrar o título coincidente da nota existente."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:518
 msgid "title/url"
 msgstr "título/url"
 
-#: src/gnote.cpp:518
+#: src/gnote.cpp:519
 msgid "Display the 'Start Here' note."
 msgstr "Mostrar a nota \"Iniciar aqui\"."
 
-#: src/gnote.cpp:519
+#: src/gnote.cpp:520
 msgid "Search and highlight text in the opened note."
 msgstr "Procurar e realçar texto na nota aberta."
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:524
 msgid "A note taking application"
 msgstr "Uma aplicação para tirar notas"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:524
 msgid "Gnote options at launch"
 msgstr "Opções de arranque do Gnote"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:707
+#: src/gnote.cpp:708
 msgid "Version %1"
 msgstr "Versão %1"
 
@@ -1743,8 +1756,8 @@ msgid ""
 "Then organize the notes you create by linking related notes and ideas "
 "together!\n"
 "\n"
-"We've created a note called <link:internal>Using Links in Gnote</"
-"link:internal>.  Notice how each time we type <link:internal>Using Links in "
+"We've created a note called <link:internal>Using Links in Gnote</link:"
+"internal>.  Notice how each time we type <link:internal>Using Links in "
 "Gnote</link:internal> it automatically gets underlined?  Click on the link "
 "to open the note.</note-content>"
 msgstr ""
@@ -1762,10 +1775,10 @@ msgstr ""
 "\n"
 "Depois organize as notas que criou ligando notas e ideias relacionadas!\n"
 "\n"
-"Criámos uma nota chamada <link:internal>Usar ligações no Gnote</"
-"link:internal>.  Note como de cada vez que é escrito <link:internal>Usar "
-"ligações no Gnote</link:internal> a frase fica automaticamente sublinhada?  "
-"Clique na ligação para abrir a nota.</note-content>"
+"Criámos uma nota chamada <link:internal>Usar ligações no Gnote</link:"
+"internal>.  Note como de cada vez que é escrito <link:internal>Usar ligações "
+"no Gnote</link:internal> a frase fica automaticamente sublinhada?  Clique na "
+"ligação para abrir a nota.</note-content>"
 
 #: src/notemanager.cpp:137
 msgid ""
@@ -2237,31 +2250,31 @@ msgstr "Copyright:"
 msgid "Close"
 msgstr "Fechar"
 
-#: src/recentchanges.cpp:312
+#: src/recentchanges.cpp:318
 msgid "Search"
 msgstr "Procurar"
 
-#: src/recentchanges.cpp:387
+#: src/recentchanges.cpp:393
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "O pai da caixa embutida não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:418
+#: src/recentchanges.cpp:424
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "O pai da entrada de pesquisa não é um Gtk::Grid, por favor relate um bug!"
 
-#: src/recentchanges.cpp:790
+#: src/recentchanges.cpp:818
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não está incorporado "
 "na janela"
 
-#: src/recentchanges.cpp:797
+#: src/recentchanges.cpp:825
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Tentativa de colocar em primeiro plano um widget, que não é Gtk::Widget"
 
-#: src/recentchanges.cpp:997
+#: src/recentchanges.cpp:1025
 msgid "No configured actions"
 msgstr "Nenhuma ação configurada"
 
@@ -2388,19 +2401,19 @@ msgstr "%1 falhou"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Folha de estilos NULL, por favor, reporte um erro"
 
-#: src/synchronization/filesystemsyncserver.cpp:166
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Falha ao enviar %1 nota"
 msgstr[1] "Falha ao enviar %1 notas"
 
-#: src/synchronization/filesystemsyncserver.cpp:255
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Falha ao transferir %1 atualização de nota"
 msgstr[1] "Falha ao transferir %1 atualizações de notas"
 
-#: src/synchronization/filesystemsyncserver.cpp:425
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2410,15 +2423,20 @@ msgstr ""
 "está boa mas pode haver ficheiros excessivos a flutuar por aí. Aqui está o "
 "erro: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:631
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Erro ao atualizar bloqueio: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:670
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Erro ao eliminar a tranca de sincronização antiga \"%s\": %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+msgid "Error reading file '%s': %s"
+msgstr "Erro ao ler o ficheiro '%s': %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
@@ -3171,12 +3189,12 @@ msgstr "Verificar ortografia"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "O atalho de teclado global utilizado para criar e apresentar uma nova "
-#~ "Nota. O formato assemelha-se a \"&lt;Control&gt;a\" ou "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". O processador é razoavelmente liberal e "
-#~ "permite capitalização maiúscula ou minúscula e também abreviaturas tais "
-#~ "como \"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a "
-#~ "expressão especial \"disabled\", não existirão quaisquer atalhos de "
-#~ "teclado para esta acção."
+#~ "Nota. O formato assemelha-se a \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;&lt;"
+#~ "Alt&gt;F1\". O processador é razoavelmente liberal e permite "
+#~ "capitalização maiúscula ou minúscula e também abreviaturas tais como "
+#~ "\"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a expressão "
+#~ "especial \"disabled\", não existirão quaisquer atalhos de teclado para "
+#~ "esta acção."
 
 #~ msgid ""
 #~ "The global keybinding for opening the \"Start Here\" note. The format "
@@ -3187,12 +3205,12 @@ msgstr "Verificar ortografia"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "O atalho de teclado global utilizado para abrir a nota \"Iniciar Aqui\". "
-#~ "O formato assemelha-se a \"&lt;Control&gt;a\" ou "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". O processador é razoavelmente liberal e "
-#~ "permite capitalização maiúscula ou minúscula e também abreviaturas tais "
-#~ "como \"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a "
-#~ "expressão especial \"disabled\", não existirão quaisquer atalhos de "
-#~ "teclado para esta acção."
+#~ "O formato assemelha-se a \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;&lt;"
+#~ "Alt&gt;F1\". O processador é razoavelmente liberal e permite "
+#~ "capitalização maiúscula ou minúscula e também abreviaturas tais como "
+#~ "\"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a expressão "
+#~ "especial \"disabled\", não existirão quaisquer atalhos de teclado para "
+#~ "esta acção."
 
 #~ msgid ""
 #~ "The global keybinding for opening the Note Search dialog. The format "
@@ -3203,12 +3221,12 @@ msgstr "Verificar ortografia"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "O atalho de teclado global utilizado para abrir a janela de Procura de "
-#~ "Nota. O formato assemelha-se a \"&lt;Control&gt;a\" ou "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". O processador é razoavelmente liberal e "
-#~ "permite capitalização maiúscula ou minúscula e também abreviaturas tais "
-#~ "como \"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a "
-#~ "expressão especial \"disabled\", não existirão quaisquer atalhos de "
-#~ "teclado para esta acção."
+#~ "Nota. O formato assemelha-se a \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;&lt;"
+#~ "Alt&gt;F1\". O processador é razoavelmente liberal e permite "
+#~ "capitalização maiúscula ou minúscula e também abreviaturas tais como "
+#~ "\"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a expressão "
+#~ "especial \"disabled\", não existirão quaisquer atalhos de teclado para "
+#~ "esta acção."
 
 #~ msgid ""
 #~ "The global keybinding for opening the Recent Changes dialog. The format "
@@ -3219,12 +3237,12 @@ msgstr "Verificar ortografia"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "O atalho de teclado global utilizado para abrir a janela de Alterações "
-#~ "Recentes. O formato assemelha-se a \"&lt;Control&gt;a\" ou "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". O processador é razoavelmente liberal e "
-#~ "permite capitalização maiúscula ou minúscula e também abreviaturas tais "
-#~ "como \"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a "
-#~ "expressão especial \"disabled\", não existirão quaisquer atalhos de "
-#~ "teclado para esta acção."
+#~ "Recentes. O formato assemelha-se a \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;"
+#~ "&lt;Alt&gt;F1\". O processador é razoavelmente liberal e permite "
+#~ "capitalização maiúscula ou minúscula e também abreviaturas tais como "
+#~ "\"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a expressão "
+#~ "especial \"disabled\", não existirão quaisquer atalhos de teclado para "
+#~ "esta acção."
 
 #~ msgid ""
 #~ "The global keybinding for showing the Gnote applet's menu. The format "
@@ -3235,12 +3253,11 @@ msgstr "Verificar ortografia"
 #~ "keybinding for this action."
 #~ msgstr ""
 #~ "O atalho de teclado global que apresenta o menu de applet do Gnote. O "
-#~ "formato assemelha-se a \"&lt;Control&gt;a\" ou "
-#~ "\"&lt;Shift&gt;&lt;Alt&gt;F1\". O processador é razoavelmente liberal e "
-#~ "permite capitalização maiúscula ou minúscula e também abreviaturas tais "
-#~ "como \"&lt;Ctl&gt;\" e \"&lt;Ctrl&gt;\". Se definir a opção para a "
-#~ "expressão especial \"disabled\", não existirão quaisquer atalhos de "
-#~ "teclado para esta acção."
+#~ "formato assemelha-se a \"&lt;Control&gt;a\" ou \"&lt;Shift&gt;&lt;Alt&gt;"
+#~ "F1\". O processador é razoavelmente liberal e permite capitalização "
+#~ "maiúscula ou minúscula e também abreviaturas tais como \"&lt;Ctl&gt;\" e "
+#~ "\"&lt;Ctrl&gt;\". Se definir a opção para a expressão especial "
+#~ "\"disabled\", não existirão quaisquer atalhos de teclado para esta acção."
 
 #~ msgid "The handler for \"note://\" URLs"
 #~ msgstr "O manipulador de URLs \"note://\""
@@ -3274,8 +3291,8 @@ msgstr "Verificar ortografia"
 
 #~ msgid ""
 #~ "Hotkeys allow you to quickly access your notes from anywhere with a "
-#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, "
-#~ "<b>&lt;Alt&gt;N</b>"
+#~ "keypress. Example Hotkeys: <b>&lt;Control&gt;&lt;Shift&gt;F11</b>, <b>&lt;"
+#~ "Alt&gt;N</b>"
 #~ msgstr ""
 #~ "Teclas de atalho permitem-lhe rapidamente aceder às suas notas a partir "
 #~ "de qualquer lugar com apenas uma pressão de tecla. Exemplo de Teclas de "
@@ -3460,8 +3477,8 @@ msgstr "Verificar ortografia"
 #~ "Sorry, but something went wrong.  Please check your information and try "
 #~ "again.  The ~/.tomboy.log might be useful too."
 #~ msgstr ""
-#~ "Algo correu mal. Verifique a sua informação e tente novamente. O "
-#~ "~/.tomboy.log poderá conter informação útil."
+#~ "Algo correu mal. Verifique a sua informação e tente novamente. O ~/."
+#~ "tomboy.log poderá conter informação útil."
 
 #~ msgid "Add-in Dependencies:"
 #~ msgstr "Dependências do Plugin:"
