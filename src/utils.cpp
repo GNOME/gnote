@@ -33,6 +33,7 @@
 #include <gtkmm/urilauncher.h>
 
 #include "base/monitor.hpp"
+#include "sharp/files.hpp"
 #include "sharp/xmlreader.hpp"
 #include "sharp/xmlwriter.hpp"
 #include "sharp/string.hpp"
@@ -231,6 +232,33 @@ namespace gnote {
       }
 
       return get_pretty_print_date(date, show_time, use_12h, Glib::DateTime::create_now_local());
+    }
+
+    void replace_file_with_temp(const Glib::ustring &path, const Glib::ustring &tmp_path)
+    {
+      return replace_file_with_temp(path, tmp_path, path + "~");
+    }
+
+    void replace_file_with_temp(const Glib::ustring &path, const Glib::ustring &tmp_path, const Glib::ustring &backup)
+    {
+      if(sharp::file_exists(path)) {
+        if(sharp::file_exists(backup)) {
+          sharp::file_delete(backup);
+        }
+
+        // Backup the to a ~ file, just in case
+        sharp::file_move(path, backup);
+
+        // Move the temp file to write_file
+        sharp::file_move(tmp_path, path);
+
+        // Delete the ~ file
+        sharp::file_delete(backup);
+      }
+      else {
+        // Move the temp file to write_file
+        sharp::file_move(tmp_path, path);
+      }
     }
 
     void main_context_invoke(const sigc::slot<void()> & slot)
