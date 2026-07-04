@@ -29,6 +29,7 @@
 #include "itagmanager.hpp"
 #include "notebase.hpp"
 #include "notemanagerbase.hpp"
+#include "utils.hpp"
 #include "base/hash.hpp"
 #include "sharp/exception.hpp"
 #include "sharp/files.hpp"
@@ -560,25 +561,7 @@ void NoteArchiver::write_file(const Glib::ustring & _write_file, const NoteData 
     write(xml, data);
     xml.close();
 
-    if(sharp::file_exists(_write_file)) {
-      Glib::ustring backup_path = _write_file + "~";
-      if(sharp::file_exists(backup_path)) {
-        sharp::file_delete(backup_path);
-      }
-
-      // Backup the to a ~ file, just in case
-      sharp::file_move(_write_file, backup_path);
-
-      // Move the temp file to write_file
-      sharp::file_move(tmp_file, _write_file);
-
-      // Delete the ~ file
-      sharp::file_delete(backup_path);
-    } 
-    else {
-      // Move the temp file to write_file
-      sharp::file_move(tmp_file, _write_file);
-    }
+    utils::replace_file_with_temp(_write_file, tmp_file);
   }
   catch(const std::exception & e) {
     ERR_OUT(_("Filesystem error: %s"), e.what());
