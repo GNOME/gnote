@@ -21,10 +21,12 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <glibmm/stringutils.h>
 
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
+#include "sharp/files.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/specialnotebooks.hpp"
 #include "debug.hpp"
@@ -371,6 +373,26 @@ namespace gnote {
         }
         Notebook::Ptr notebook = Notebook::create(m_note_manager, tag);
         m_all_notebooks.push_back(notebook);
+      }
+    }
+
+    void NotebookManager::save_notebooks() const
+    {
+      std::vector<INotebook::Ref> notebooks;
+      get_notebooks([&notebooks](const Notebook::Ptr &nb) { notebooks.emplace_back(*nb); });
+      if(notebooks.size() == 0) {
+        return;
+      }
+
+      try {
+        const auto serialized = NotebookSerializer::serialize(notebooks);
+        const auto notebooks_file = Glib::build_filename(m_note_manager.notes_dir(), "notebooks");
+        const auto tmp_file = notebooks_file + ".tmp";
+        sharp::file_write_all_text(tmp_file, serialized);
+        utils::replace_file_with_temp(notebooks_file, tmp_file);
+      }
+      catch(const std::exception &e) {
+        ERR_OUT("Failed to save notebooks: %s", e.what());
       }
     }
 
