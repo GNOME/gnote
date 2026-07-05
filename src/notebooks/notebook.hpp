@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2023-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2023-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 
 #include "tag.hpp"
 #include "note.hpp"
+#include "notebookserializer.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -36,6 +37,7 @@ namespace notebooks {
 class Notebook 
   : public Glib::Object
   , public std::enable_shared_from_this<Notebook>
+  , public INotebook
 {
 public:
   typedef Glib::RefPtr<Notebook> Ptr;
@@ -46,10 +48,10 @@ public:
 
   static Ptr create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special = false);
   static Ptr create(NoteManagerBase& manager, const Tag &tag);
-  Glib::ustring get_name() const
+  Glib::ustring get_name() const override
     { return m_name; }
-  void set_name(const Glib::ustring &);
-  virtual Glib::ustring get_normalized_name() const;
+  void set_name(const Glib::ustring &) override;
+  Glib::ustring get_normalized_name() const override;
   [[nodiscard]]
   virtual Tag::ORef get_tag() const;
   Note::ORef find_template_note() const;
