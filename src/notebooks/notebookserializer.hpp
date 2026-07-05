@@ -33,7 +33,7 @@ namespace notebooks {
 class INotebook
 {
 public:
-  typedef std::reference_wrapper<INotebook> Ref;
+  typedef std::reference_wrapper<const INotebook> Ref;
 
   [[nodiscard]]
   virtual Glib::ustring get_name() const = 0;
