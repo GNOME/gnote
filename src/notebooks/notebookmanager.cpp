@@ -364,20 +364,40 @@ namespace gnote {
       return true;
     }
  
-    /// <summary>
-    /// Loop through the system tags looking for notebooks
-    /// </summary>
     void NotebookManager::load_notebooks()
     {
+      std::vector<NotebookData> saved_notebooks;
+      try {
+        const auto notebooks_file = notebooks_file_path();
+        auto xml = sharp::file_read_all_text(notebooks_file);
+        saved_notebooks = NotebookSerializer::deserialize(xml);
+      }
+      catch(std::exception &e) {
+        ERR_OUT("Failed to load notebooks file: %s", e.what());
+      }
+
+      for(auto &nb : saved_notebooks) {
+        auto notebook = Notebook::create(m_note_manager, nb.get_name());
+        m_all_notebooks.push_back(notebook);
+      }
+
       auto tags = m_note_manager.tag_manager().all_tags();
       auto prefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX) + Notebook::NOTEBOOK_TAG_PREFIX;
+      bool extra_created = false;
       for(const Tag &tag : tags) {
         // Skip over tags that aren't notebooks
         if(!tag.is_system() || !Glib::str_has_prefix(tag.name(), prefix)) {
           continue;
         }
-        Notebook::Ptr notebook = Notebook::create(m_note_manager, tag);
-        m_all_notebooks.push_back(notebook);
+        if(!get_notebook_from_tag(tag).has_value()) {
+          auto notebook = Notebook::create(m_note_manager, tag);
+          m_all_notebooks.push_back(notebook);
+          extra_created = true;
+        }
+      }
+
+      if(extra_created) {
+        save_notebooks();
       }
     }
 
