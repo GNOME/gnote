@@ -391,7 +391,7 @@ namespace gnote {
 
       try {
         const auto serialized = NotebookSerializer::serialize(notebooks);
-        const auto notebooks_file = Glib::build_filename(m_note_manager.notes_dir(), "notebooks");
+        const auto notebooks_file = notebooks_file_path();
         const auto tmp_file = notebooks_file + ".tmp";
         sharp::file_write_all_text(tmp_file, serialized);
         utils::replace_file_with_temp(notebooks_file, tmp_file);
@@ -399,6 +399,11 @@ namespace gnote {
       catch(const std::exception &e) {
         ERR_OUT("Failed to save notebooks: %s", e.what());
       }
+    }
+
+    Glib::ustring NotebookManager::notebooks_file_path() const
+    {
+      return Glib::build_filename(m_note_manager.notes_dir(), "notebooks");
     }
 
   }

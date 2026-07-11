@@ -92,6 +92,7 @@ private:
   static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const std::vector<Glib::ustring> & notes_to_add,
     std::function<void(Notebook::ORef)> on_complete);
   void load_notebooks();
+  Glib::ustring notebooks_file_path() const;
 
   std::vector<Notebook::Ptr> m_all_notebooks;
   Notebook::Ptr                        m_active_notes;
