@@ -269,6 +269,9 @@ namespace gnote {
       if(on_complete) {
         on_complete(notebook);
       }
+      else {
+        g.notebook_manager().save_notebooks();
+      }
     }
     
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, Notebook & notebook)
@@ -299,15 +302,17 @@ namespace gnote {
         }
 
         if(auto nb = g.notebook_manager().get_notebook(notebook)) {
+          auto &manager = g.notebook_manager();
           Notebook & nbook = nb.value();
 
           // Grab the template note before removing all the notebook tags
           auto & template_note = nbook.get_template_note();
 
-          g.notebook_manager().delete_notebook(nbook);
+          manager.delete_notebook(nbook);
 
           // Delete the template note
-          g.notebook_manager().note_manager().delete_note(template_note);
+          manager.note_manager().delete_note(template_note);
+          manager.save_notebooks();
         }
       });
       dialog->show();
