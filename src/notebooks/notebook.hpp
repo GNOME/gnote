@@ -52,6 +52,7 @@ public:
     { return m_name; }
   void set_name(const Glib::ustring &) override;
   Glib::ustring get_normalized_name() const override;
+  Glib::DateTime created() const override;
   [[nodiscard]]
   virtual Tag::ORef get_tag() const;
   Note::ORef find_template_note() const;
@@ -68,7 +69,7 @@ public:
       return m_note_manager;
     }
 protected:
-  Notebook(NoteManagerBase &, const Glib::ustring &, bool is_special = false);
+  Notebook(NoteManagerBase&, const Glib::ustring&, const Glib::DateTime&, bool is_special = false);
 
   Tag::ORef template_tag() const;
   bool is_template_note(const Note&);
@@ -77,11 +78,12 @@ protected:
 private:
   static Glib::ustring s_template_tag;
 
-  Notebook(NoteManagerBase &, const Tag&);
+  Notebook(NoteManagerBase &, const Tag&, const Glib::DateTime&);
   Notebook(const Notebook &);
   Notebook & operator=(const Notebook &);
   Glib::ustring m_name;
   Glib::ustring m_normalized_name;
+  Glib::DateTime m_created;
   Glib::ustring m_default_template_note_title;
   Glib::ustring m_tag;
 };

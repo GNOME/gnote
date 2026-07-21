@@ -34,8 +34,9 @@ SUITE(NotebookSerializer)
     : public INotebook
   {
   public:
-    explicit Notebook(const Glib::ustring &name)
+    explicit Notebook(const Glib::ustring &name, const Glib::DateTime &created)
       : m_name(name)
+      , m_created(created)
     {}
 
     Glib::ustring get_name() const override
@@ -50,8 +51,13 @@ SUITE(NotebookSerializer)
       {
         return m_name.lowercase();
       }
+    Glib::DateTime created() const override
+      {
+        return m_created;
+      }
   private:
     Glib::ustring m_name;
+    Glib::DateTime m_created;
   };
 
   void erase_white_space(Glib::ustring &str)

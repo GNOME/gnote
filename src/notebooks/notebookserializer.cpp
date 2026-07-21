@@ -64,7 +64,7 @@ std::vector<NotebookData> NotebookSerializer::deserialize(const Glib::ustring &x
         auto id = reader.get_attribute("id");
         auto name = reader.get_attribute("name");
         if(!id.empty() && !name.empty()) {
-          result.emplace_back(std::move(id));
+          result.emplace_back(std::move(id), Glib::DateTime());
           result.back().set_name(name);
         }
       }

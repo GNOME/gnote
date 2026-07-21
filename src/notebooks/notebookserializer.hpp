@@ -24,6 +24,7 @@
 #include <functional>
 #include <vector>
 
+#include <glibmm/datetime.h>
 #include <glibmm/ustring.h>
 
 
@@ -40,6 +41,8 @@ public:
   virtual void set_name(const Glib::ustring &name) = 0;
   [[nodiscard]]
   virtual Glib::ustring get_normalized_name() const = 0;
+  [[nodiscard]]
+  virtual Glib::DateTime created() const = 0;
 };
 
 
@@ -47,8 +50,9 @@ class NotebookData
   : public INotebook
 {
 public:
-  NotebookData(Glib::ustring &&id)
+  NotebookData(Glib::ustring &&id, Glib::DateTime &created)
     : m_id(std::move(id))
+    , m_created(created)
   {}
 
   Glib::ustring get_name() const override
@@ -63,9 +67,14 @@ public:
     {
       return m_id;
     }
+  Glib::DateTime created() const override
+    {
+      return m_created;
+    }
 private:
   Glib::ustring m_id;
   Glib::ustring m_name;
+  Glib::DateTime m_created;
 };
 
 class NotebookSerializer

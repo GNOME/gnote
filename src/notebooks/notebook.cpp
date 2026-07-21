@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,15 +61,15 @@ namespace notebooks {
 
   Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special)
   {
-    return Glib::make_refptr_for_instance(new Notebook(manager, name, is_special));
+    return Glib::make_refptr_for_instance(new Notebook(manager, name, Glib::DateTime::create_now_utc(), is_special));
   }
 
   Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Tag &tag)
   {
-    return Glib::make_refptr_for_instance(new Notebook(manager, tag));
+    return Glib::make_refptr_for_instance(new Notebook(manager, tag, Glib::DateTime::create_now_utc()));
   }
 
-  Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, bool is_special)
+  Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, const Glib::DateTime &created, bool is_special)
     : m_note_manager(manager)
   {
     // is special assume the name as is, and we don't want a tag.
@@ -83,7 +83,7 @@ namespace notebooks {
     }
   }
 
-  Notebook::Notebook(NoteManagerBase & manager, const Tag &notebook_tag)
+  Notebook::Notebook(NoteManagerBase & manager, const Tag &notebook_tag, const Glib::DateTime &created)
     : m_note_manager(manager)
   {
   // Parse the notebook name from the tag name
@@ -115,6 +115,12 @@ namespace notebooks {
   Glib::ustring Notebook::get_normalized_name() const
   {
     return m_normalized_name;
+  }
+
+
+  Glib::DateTime Notebook::created() const
+  {
+    return m_created;
   }
 
 
