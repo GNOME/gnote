@@ -81,7 +81,8 @@ class NotebookSerializer
 {
 public:
   [[nodiscard]]
-  static Glib::ustring serialize(const std::vector<INotebook::Ref> &notebooks);
+  static Glib::ustring serialize(const std::vector<INotebook::Ref> &notebooks,
+    const Glib::DateTime &timestamp = Glib::DateTime::create_now_utc());
 
   [[nodiscard]]
   static std::vector<NotebookData> deserialize(const Glib::ustring &xml);
