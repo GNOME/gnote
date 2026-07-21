@@ -75,14 +75,15 @@ SUITE(NotebookSerializer)
 
   TEST(serialize_non_empty)
   {
-    Notebook nb("Test");
+    auto created = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    Notebook nb("Test", created);
     std::vector<INotebook::Ref> notebooks;
     notebooks.emplace_back(nb);
     auto str = NotebookSerializer::serialize(notebooks);
 
     const char *xml = "<?xml version=\"1.0\"?>"
                       "<notebooks>"
-                      "  <notebook id=\"test\" name=\"Test\"/>"
+                      "  <notebook id=\"test\" name=\"Test\" created=\"2025-01-02T05:06:32.500000Z\"/>"
                       "</notebooks>";
 
     Glib::ustring reference = xml;
@@ -96,19 +97,25 @@ SUITE(NotebookSerializer)
   {
     const char *xml = "<?xml version=\"1.0\"?>"
                       "<notebooks>"
-                      "  <notebook id=\"test\" name=\"Test\"/>"
-                      "  <notebook id=\"testnb1\" name=\"Testnb1\"/>"
-                      "  <notebook id=\"testnb2\" name=\"TestNB2\"/>"
+                      "  <notebook id=\"test\" name=\"Test\" created=\"2025-01-02T05:06:32.500000Z\"/>"
+                      "  <notebook id=\"testnb1\" name=\"Testnb1\" created=\"2025-02-02T05:06:32.500000Z\"/>"
+                      "  <notebook id=\"testnb2\" name=\"TestNB2\" created=\"2025-02-02T05:06:32.500000Z\"/>"
                       "</notebooks>";
+
+    auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    auto date2 = Glib::DateTime::create_utc(2025, 2, 2, 5, 6, 32.5);
 
     auto result = NotebookSerializer::deserialize(xml);
     REQUIRE CHECK_EQUAL(3, result.size());
     CHECK_EQUAL("test", result[0].get_normalized_name());
     CHECK_EQUAL("Test", result[0].get_name());
+    CHECK(date1.equal(result[0].created()));
     CHECK_EQUAL("testnb1", result[1].get_normalized_name());
     CHECK_EQUAL("Testnb1", result[1].get_name());
+    CHECK(date2.equal(result[1].created()));
     CHECK_EQUAL("testnb2", result[2].get_normalized_name());
     CHECK_EQUAL("TestNB2", result[2].get_name());
+    CHECK(date2.equal(result[2].created()));
   }
 }
 
