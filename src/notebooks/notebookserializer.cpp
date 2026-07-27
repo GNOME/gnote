@@ -137,7 +137,7 @@ std::vector<NotebookData> NotebookSerializer::merge(std::vector<NotebookData> &l
       }
     }
 
-    if(found == loaded.end()) {
+    if(found == loaded.end() && nb.created() > loaded_time) {
       loaded.emplace_back(nb.get_normalized_name(), nb.created());
       loaded.back().set_name(nb.get_name());
     }
