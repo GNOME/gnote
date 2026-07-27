@@ -50,7 +50,7 @@ class NotebookData
   : public INotebook
 {
 public:
-  NotebookData(Glib::ustring &&id, Glib::DateTime &created)
+  NotebookData(Glib::ustring &&id, const Glib::DateTime &created)
     : m_id(std::move(id))
     , m_created(created)
   {}
