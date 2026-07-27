@@ -29,6 +29,7 @@ SUITE(NotebookSerializer)
 {
   using gnote::notebooks::INotebook;
   using gnote::notebooks::NotebookSerializer;
+  using gnote::notebooks::NotebookData;
 
   class Notebook
     : public INotebook
@@ -54,6 +55,10 @@ SUITE(NotebookSerializer)
     Glib::DateTime created() const override
       {
         return m_created;
+      }
+    void created(const Glib::DateTime &new_date)
+      {
+        m_created = new_date;
       }
   private:
     Glib::ustring m_name;
@@ -116,6 +121,44 @@ SUITE(NotebookSerializer)
     CHECK_EQUAL("testnb2", result[2].get_normalized_name());
     CHECK_EQUAL("TestNB2", result[2].get_name());
     CHECK(date2.equal(result[2].created()));
+  }
+
+  void check_notebook_update(const std::vector<NotebookData> &updates, const INotebook &nb)
+  {
+    for(const auto &upd : updates) {
+      if(upd.get_normalized_name() == nb.get_normalized_name()) {
+        CHECK(upd.created().equal(nb.created()));
+        CHECK_EQUAL(nb.get_name(), upd.get_name());
+        return;
+      }
+    }
+
+    CHECK(false);
+  }
+
+  TEST(merge)
+  {
+    auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    auto date2 = Glib::DateTime::create_utc(2025, 2, 2, 5, 6, 32.5);
+    Notebook same("Same", date1);
+    Notebook new_date("New date", date1);
+    std::vector<INotebook::Ref> current { same, new_date };
+    std::vector<NotebookData> loaded;
+    loaded.emplace_back("same", date1);
+    loaded.back().set_name("Same");
+    loaded.emplace_back("new notebook", date2);
+    loaded.back().set_name("New Notebook");
+    loaded.emplace_back("new date", date2);
+    loaded.back().set_name("New date");
+
+    auto updates = NotebookSerializer::merge(loaded, current);
+    REQUIRE CHECK_EQUAL(3, loaded.size());
+    check_notebook_update(loaded, same);
+    new_date.created(date2);
+    check_notebook_update(loaded, new_date);
+    CHECK_EQUAL(2, updates.size());
+    check_notebook_update(updates, loaded[0]);
+    check_notebook_update(updates, loaded[1]);
   }
 }
 
