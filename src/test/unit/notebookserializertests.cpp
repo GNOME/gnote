@@ -140,9 +140,11 @@ SUITE(NotebookSerializer)
   {
     auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
     auto date2 = Glib::DateTime::create_utc(2025, 2, 2, 5, 6, 32.5);
+    auto date3 = Glib::DateTime::create_utc(2025, 3, 3, 5, 6, 32.0);
     Notebook same("Same", date1);
     Notebook new_date("New date", date1);
-    std::vector<INotebook::Ref> current { same, new_date };
+    Notebook removed("Removed", date1);
+    std::vector<INotebook::Ref> current { same, new_date, removed };
     std::vector<NotebookData> loaded;
     loaded.emplace_back("same", date1);
     loaded.back().set_name("Same");
@@ -151,14 +153,14 @@ SUITE(NotebookSerializer)
     loaded.emplace_back("new date", date2);
     loaded.back().set_name("New date");
 
-    auto updates = NotebookSerializer::merge(loaded, current);
+    auto updates = NotebookSerializer::merge(loaded, current, date3);
     REQUIRE CHECK_EQUAL(3, loaded.size());
     check_notebook_update(loaded, same);
     new_date.created(date2);
     check_notebook_update(loaded, new_date);
     CHECK_EQUAL(2, updates.size());
-    check_notebook_update(updates, loaded[0]);
     check_notebook_update(updates, loaded[1]);
+    check_notebook_update(updates, loaded[2]);
   }
 }
 
