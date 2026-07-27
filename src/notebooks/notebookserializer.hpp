@@ -86,6 +86,10 @@ public:
 
   [[nodiscard]]
   static std::vector<NotebookData> deserialize(const Glib::ustring &xml);
+
+  // returns loaded notebooks that aren't among current, or need updating, updates loaded to contain all after merge
+  [[nodiscard]]
+  static std::vector<NotebookData> merge(std::vector<NotebookData> &loaded, const std::vector<INotebook::Ref> &current);
 };
 
 }

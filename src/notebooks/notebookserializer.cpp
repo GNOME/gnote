@@ -98,6 +98,53 @@ std::vector<NotebookData> NotebookSerializer::deserialize(const Glib::ustring &x
   return result;
 }
 
+std::vector<NotebookData> NotebookSerializer::merge(std::vector<NotebookData> &loaded, const std::vector<INotebook::Ref> &current)
+{
+  std::vector<NotebookData> updated;
+
+  // loaded not among the current or requiring update
+  for(const auto &ld_nb : loaded) {
+    auto found = current.end();
+    for(auto iter = current.begin(); iter != current.end(); ++iter) {
+      if(iter->get().get_normalized_name() == ld_nb.get_normalized_name()) {
+        found = iter;
+        break;
+      }
+    }
+
+    bool update = false;
+    if(found == current.end()) {
+      update = true;
+    }
+    else if(found->get().created() < ld_nb.created()) {
+      update = true;
+    }
+
+    if(update) {
+      updated.emplace_back(ld_nb.get_normalized_name(), ld_nb.created());
+      updated.back().set_name(ld_nb.get_name());
+    }
+  }
+
+  // current notebooks not among the loaded
+  for(const INotebook &nb : current) {
+    auto found = loaded.end();
+    for(auto iter = loaded.begin(); iter != loaded.end(); ++iter) {
+      if(iter->get_normalized_name() == nb.get_normalized_name()) {
+        found = iter;
+        break;
+      }
+    }
+
+    if(found == loaded.end()) {
+      loaded.emplace_back(nb.get_normalized_name(), nb.created());
+      loaded.back().set_name(nb.get_name());
+    }
+  }
+
+  return updated;
+}
+
 }
 }
 
