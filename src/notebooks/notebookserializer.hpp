@@ -89,7 +89,8 @@ public:
 
   // returns loaded notebooks that aren't among current, or need updating, updates loaded to contain all after merge
   [[nodiscard]]
-  static std::vector<NotebookData> merge(std::vector<NotebookData> &loaded, const std::vector<INotebook::Ref> &current);
+  static std::vector<NotebookData> merge(std::vector<NotebookData> &loaded, const std::vector<INotebook::Ref> &current,
+    const Glib::DateTime &loaded_time);
 };
 
 }

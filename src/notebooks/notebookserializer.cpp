@@ -98,7 +98,8 @@ std::vector<NotebookData> NotebookSerializer::deserialize(const Glib::ustring &x
   return result;
 }
 
-std::vector<NotebookData> NotebookSerializer::merge(std::vector<NotebookData> &loaded, const std::vector<INotebook::Ref> &current)
+std::vector<NotebookData> NotebookSerializer::merge(std::vector<NotebookData> &loaded,
+  const std::vector<INotebook::Ref> &current, const Glib::DateTime &loaded_time)
 {
   std::vector<NotebookData> updated;
 
