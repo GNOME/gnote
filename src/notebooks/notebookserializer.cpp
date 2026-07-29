@@ -81,6 +81,7 @@ NotebookSerializer::Notebooks NotebookSerializer::deserialize(const Glib::ustrin
     if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
       auto name = reader.get_name();
       if(name == "notebooks") {
+        result.timestamp = parse_date(reader.get_attribute("timestamp"));
         continue;
       }
       else if(name == "notebook") {
