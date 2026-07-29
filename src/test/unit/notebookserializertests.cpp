@@ -80,14 +80,15 @@ SUITE(NotebookSerializer)
 
   TEST(serialize_non_empty)
   {
+    auto timestamp = Glib::DateTime::create_utc(2025, 9, 10, 11, 12, 13.5);
     auto created = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
     Notebook nb("Test", created);
     std::vector<INotebook::Ref> notebooks;
     notebooks.emplace_back(nb);
-    auto str = NotebookSerializer::serialize(notebooks);
+    auto str = NotebookSerializer::serialize(notebooks, timestamp);
 
     const char *xml = "<?xml version=\"1.0\"?>"
-                      "<notebooks>"
+                      "<notebooks timestamp=\"2025-09-10T11:12:13.500000Z\">"
                       "  <notebook id=\"test\" name=\"Test\" created=\"2025-01-02T05:06:32.500000Z\"/>"
                       "</notebooks>";
 
