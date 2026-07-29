@@ -102,7 +102,7 @@ SUITE(NotebookSerializer)
   TEST(deserialize)
   {
     const char *xml = "<?xml version=\"1.0\"?>"
-                      "<notebooks>"
+                      "<notebooks timestamp=\"2025-02-10T11:12:13.500000Z\">"
                       "  <notebook id=\"test\" name=\"Test\" created=\"2025-01-02T05:06:32.500000Z\"/>"
                       "  <notebook id=\"testnb1\" name=\"Testnb1\" created=\"2025-02-02T05:06:32.500000Z\"/>"
                       "  <notebook id=\"testnb2\" name=\"TestNB2\" created=\"2025-02-02T05:06:32.500000Z\"/>"
@@ -111,7 +111,8 @@ SUITE(NotebookSerializer)
     auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
     auto date2 = Glib::DateTime::create_utc(2025, 2, 2, 5, 6, 32.5);
 
-    auto result = NotebookSerializer::deserialize(xml);
+    auto deserialized = NotebookSerializer::deserialize(xml);
+    auto result = deserialized.notebooks;
     REQUIRE CHECK_EQUAL(3, result.size());
     CHECK_EQUAL("test", result[0].get_normalized_name());
     CHECK_EQUAL("Test", result[0].get_name());

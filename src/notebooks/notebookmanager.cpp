@@ -370,7 +370,7 @@ namespace gnote {
       try {
         const auto notebooks_file = notebooks_file_path();
         auto xml = sharp::file_read_all_text(notebooks_file);
-        saved_notebooks = NotebookSerializer::deserialize(xml);
+        saved_notebooks = NotebookSerializer::deserialize(xml).notebooks;
       }
       catch(std::exception &e) {
         ERR_OUT("Failed to load notebooks file: %s", e.what());

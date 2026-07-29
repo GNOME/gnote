@@ -84,8 +84,14 @@ public:
   static Glib::ustring serialize(const std::vector<INotebook::Ref> &notebooks,
     const Glib::DateTime &timestamp = Glib::DateTime::create_now_utc());
 
+  struct Notebooks
+  {
+    Glib::DateTime timestamp;
+    std::vector<NotebookData> notebooks;
+  };
+
   [[nodiscard]]
-  static std::vector<NotebookData> deserialize(const Glib::ustring &xml);
+  static Notebooks deserialize(const Glib::ustring &xml);
 
   // returns loaded notebooks that aren't among current, or need updating, updates loaded to contain all after merge
   [[nodiscard]]

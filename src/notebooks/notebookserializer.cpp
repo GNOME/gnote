@@ -71,11 +71,11 @@ Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &n
   return writer.to_string();
 }
 
-std::vector<NotebookData> NotebookSerializer::deserialize(const Glib::ustring &xml)
+NotebookSerializer::Notebooks NotebookSerializer::deserialize(const Glib::ustring &xml)
 {
   sharp::XmlReader reader;
   reader.load_buffer(xml);
-  std::vector<NotebookData> result;
+  Notebooks result;
 
   while(reader.read()) {
     if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
@@ -88,8 +88,8 @@ std::vector<NotebookData> NotebookSerializer::deserialize(const Glib::ustring &x
         auto name = reader.get_attribute("name");
 	auto created = parse_date(reader.get_attribute("created"));
         if(!id.empty() && !name.empty()) {
-          result.emplace_back(std::move(id), created);
-          result.back().set_name(name);
+          result.notebooks.emplace_back(std::move(id), created);
+          result.notebooks.back().set_name(name);
         }
       }
       else {
