@@ -46,10 +46,14 @@ Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &n
   if(notebooks.empty()) {
     return Glib::ustring();
   }
+  auto timestamp_str = sharp::date_time_to_iso8601(timestamp.to_utc());
 
   sharp::XmlWriter writer;
   writer.write_start_document();
   writer.write_start_element("", "notebooks", "");
+  if(!timestamp_str.empty()) {
+    writer.write_attribute_string("", "timestamp", "", timestamp_str);
+  }
 
   for(const INotebook &nb : notebooks) {
     writer.write_start_element("", "notebook", "");
