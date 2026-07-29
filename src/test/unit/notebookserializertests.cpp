@@ -110,8 +110,11 @@ SUITE(NotebookSerializer)
 
     auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
     auto date2 = Glib::DateTime::create_utc(2025, 2, 2, 5, 6, 32.5);
+    auto timestamp = Glib::DateTime::create_utc(2025, 2, 10, 11, 12, 13.5);
 
     auto deserialized = NotebookSerializer::deserialize(xml);
+    CHECK(bool(deserialized.timestamp));
+    CHECK(timestamp.equal(deserialized.timestamp));
     auto result = deserialized.notebooks;
     REQUIRE CHECK_EQUAL(3, result.size());
     CHECK_EQUAL("test", result[0].get_normalized_name());
