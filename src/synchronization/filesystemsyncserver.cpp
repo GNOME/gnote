@@ -65,6 +65,14 @@ xmlDocPtr parse_xml_file(Gio::File &xml_file)
   return xml;
 }
 
+void create_file(Gio::File &file, const Glib::ustring &content)
+{
+  auto stream = file.create_file();
+  gsize written;
+  stream->write_all(content, written);
+  stream->close();
+}
+
 struct NoteUpload
   : gnote::sync::FileTransfer
 {
@@ -373,10 +381,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
       if(manifest_file->query_exists()) {
         manifest_file->remove();
       }
-      auto stream = manifest_file->create_file();
-      gsize written;
-      stream->write_all(xml_content, written);
-      stream->close();
+      create_file(*manifest_file, xml_content);
       manifest_content = std::move(xml_content);
     }
 
