@@ -41,7 +41,8 @@ Glib::DateTime parse_date(const Glib::ustring s)
 }
 
 
-Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &notebooks, const Glib::DateTime &timestamp)
+template <typename NotebookT>
+Glib::ustring NotebookSerializer::serialize(const std::vector<NotebookT> &notebooks, const Glib::DateTime &timestamp)
 {
   if(notebooks.empty()) {
     return Glib::ustring();
@@ -69,6 +70,16 @@ Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &n
   writer.write_end_element();
   writer.write_end_document();
   return writer.to_string();
+}
+
+Glib::ustring NotebookSerializer::serialize(const std::vector<INotebook::Ref> &notebooks, const Glib::DateTime &timestamp)
+{
+  return serialize<INotebook::Ref>(notebooks, timestamp);
+}
+
+Glib::ustring NotebookSerializer::serialize(const std::vector<NotebookData> &notebooks, const Glib::DateTime &timestamp)
+{
+  return serialize<NotebookData>(notebooks, timestamp);
 }
 
 NotebookSerializer::Notebooks NotebookSerializer::deserialize(const Glib::ustring &xml)

@@ -84,6 +84,10 @@ public:
   static Glib::ustring serialize(const std::vector<INotebook::Ref> &notebooks,
     const Glib::DateTime &timestamp = Glib::DateTime::create_now_utc());
 
+  [[nodiscard]]
+  static Glib::ustring serialize(const std::vector<NotebookData> &notebooks,
+    const Glib::DateTime &timestamp = Glib::DateTime::create_now_utc());
+
   struct Notebooks
   {
     Glib::DateTime timestamp;
@@ -97,6 +101,11 @@ public:
   [[nodiscard]]
   static std::vector<NotebookData> merge(std::vector<NotebookData> &loaded, const std::vector<INotebook::Ref> &current,
     const Glib::DateTime &loaded_time);
+
+private:
+  template <typename NotebookT>
+  [[nodiscard]]
+  static Glib::ustring serialize(const std::vector<NotebookT> &notebooks, const Glib::DateTime &timestamp);
 };
 
 }
