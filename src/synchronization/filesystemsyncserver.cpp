@@ -324,9 +324,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
   if(m_updated_notes.size() > 0 || m_deleted_notes.size() > 0) {
     // TODO: error-checking, etc
     auto manifest_file = m_new_revision_path->get_child("manifest.xml");
-    if(!sharp::directory_exists(m_new_revision_path)) {
-      sharp::directory_create(m_new_revision_path);
-    }
+    mkdir_p(m_new_revision_path);
 
     std::map<Glib::ustring, Glib::ustring> notes;
     if(m_manifest.is_loaded()) {
