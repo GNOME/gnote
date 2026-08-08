@@ -89,6 +89,7 @@ NotebookSerializer::Notebooks NotebookSerializer::deserialize(const Glib::ustrin
   Notebooks result;
 
   while(reader.read()) {
+    result.valid = true;
     if(reader.get_node_type() == XML_READER_TYPE_ELEMENT) {
       auto name = reader.get_name();
       if(name == "notebooks") {

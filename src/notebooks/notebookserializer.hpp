@@ -90,6 +90,11 @@ public:
 
   struct Notebooks
   {
+    Notebooks()
+      : valid(false)
+    {}
+
+    bool valid;
     Glib::DateTime timestamp;
     std::vector<NotebookData> notebooks;
   };
