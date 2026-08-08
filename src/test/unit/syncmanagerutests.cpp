@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2020,2022-2023,2025 Aurimas Cernius
+ * Copyright (C) 2017-2020,2022-2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 #include <iostream>
 
 #include <glib/gstdio.h>
+#include <glibmm/miscutils.h>
 #include <UnitTest++/UnitTest++.h>
 
 #include "notemanager.hpp"
@@ -95,6 +96,7 @@ SUITE(SyncManagerTests)
       create_note(note_manager, "note1", "content1");
       create_note(note_manager, "note2", "content2");
       create_note(note_manager, "note3", "content3");
+      note_manager.notebook_manager().get_or_create_notebook("TestONE");
     }
 
     ~Fixture1()
@@ -138,6 +140,12 @@ SUITE(SyncManagerTests)
       note.set_change_type(gnote::CONTENT_CHANGED);
       note.save();
     }
+
+    std::vector<gnote::notebooks::NotebookData> deserialize_notebooks(const Glib::ustring &file)
+    {
+      auto content = sharp::file_read_all_text(file);
+      return gnote::notebooks::NotebookSerializer::deserialize(content).notebooks;
+    }
   };
 
   struct Fixture2
@@ -170,6 +178,12 @@ SUITE(SyncManagerTests)
     CHECK(find_note_in_files(files, "note1"));
     CHECK(find_note_in_files(files, "note2"));
     CHECK(find_note_in_files(files, "note3"));
+
+    auto notebooks_file = Glib::build_filename(syncednotesdir, "notebooks");
+    REQUIRE CHECK(sharp::file_exists(notebooks_file));
+    auto saved_notebooks = deserialize_notebooks(notebooks_file);
+    REQUIRE CHECK_EQUAL(1, saved_notebooks.size());
+    CHECK_EQUAL("TestONE", saved_notebooks[0].get_name());
   }
 
   TEST_FIXTURE(Fixture2, first_sync_existing_store)
