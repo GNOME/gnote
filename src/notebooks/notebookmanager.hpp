@@ -88,6 +88,8 @@ public:
   NotebookEventHandler signal_note_removed_from_notebook;
   sigc::signal<void()> signal_notebook_list_changed;
   sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
+protected:
+  virtual void create_template_note(Notebook &notebook);
 private:
   static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const std::vector<Glib::ustring> & notes_to_add,
     std::function<void(Notebook::ORef)> on_complete);

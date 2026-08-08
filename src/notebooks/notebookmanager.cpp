@@ -90,29 +90,32 @@ namespace gnote {
       if (notebookName.empty())
         throw sharp::Exception ("NotebookManager.GetNotebook () called with a null name.");
       
-//      lock (locker) {
-        if(auto nb = get_notebook(notebookName)) {
-          return nb.value();
-        }
+      if(auto nb = get_notebook(notebookName)) {
+        return nb.value();
+      }
 
-        Notebook::Ptr notebook = Notebook::create(m_note_manager, notebookName);
-        m_all_notebooks.push_back(notebook);
-        
-        // Create the template note so the system tag
-        // that represents the notebook actually gets
-        // saved to a note (and persisted after Tomboy
-        // is shut down).
-        auto & template_note = notebook->get_template_note();
-        
-        // Make sure the template note has the notebook tag.
-        // Since it's possible for the template note to already
-        // exist, we need to make sure it gets tagged.
-        template_note.add_tag(*notebook->get_tag());
-        signal_note_added_to_notebook(template_note, *notebook);
-//      }
+      Notebook::Ptr notebook = Notebook::create(m_note_manager, notebookName);
+      m_all_notebooks.push_back(notebook);
+
+      // Create the template note so the system tag
+      // that represents the notebook actually gets
+      // saved to a note (and persisted after Tomboy
+      // is shut down).
+      create_template_note(*notebook);
 
       signal_notebook_list_changed();
       return *notebook;
+    }
+
+    void NotebookManager::create_template_note(Notebook &notebook)
+    {
+      auto & template_note = notebook.get_template_note();
+
+      // Make sure the template note has the notebook tag.
+      // Since it's possible for the template note to already
+      // exist, we need to make sure it gets tagged.
+      template_note.add_tag(*notebook.get_tag());
+      signal_note_added_to_notebook(template_note, notebook);
     }
 
     bool NotebookManager::add_notebook(Notebook::Ptr && notebook)
