@@ -172,9 +172,11 @@ namespace notebooks {
     auto content = NoteManager::get_note_template_content(title);
     auto & note = m_note_manager.create(std::move(title), std::move(content));
 
-    // Select the initial text
-    NoteBuffer::Ptr buffer = static_cast<Note&>(note).get_buffer();
-    buffer->select_note_body();
+    // not true when running tests
+    if(Note *n = dynamic_cast<Note*>(&note)) {
+      // Select the initial text
+      n->get_buffer()->select_note_body();
+    }
 
     // Flag this as a template note
     if(auto templ_tag = template_tag()) {
