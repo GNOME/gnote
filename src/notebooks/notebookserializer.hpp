@@ -102,10 +102,19 @@ public:
   [[nodiscard]]
   static Notebooks deserialize(const Glib::ustring &xml);
 
-  // returns loaded notebooks that aren't among current, or need updating, updates loaded to contain all after merge
+  struct MergedNotebooks
+  {
+    MergedNotebooks()
+      : all_has_changes(false)
+    {}
+
+    std::vector<NotebookData> all;
+    std::vector<NotebookData> updates;
+    bool all_has_changes;
+  };
+
   [[nodiscard]]
-  static std::vector<NotebookData> merge(std::vector<NotebookData> &loaded, const std::vector<INotebook::Ref> &current,
-    const Glib::DateTime &loaded_time);
+  static MergedNotebooks merge(const Notebooks &loaded, const std::vector<INotebook::Ref> &current);
 
 private:
   template <typename NotebookT>

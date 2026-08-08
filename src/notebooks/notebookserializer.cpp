@@ -115,13 +115,14 @@ NotebookSerializer::Notebooks NotebookSerializer::deserialize(const Glib::ustrin
   return result;
 }
 
-std::vector<NotebookData> NotebookSerializer::merge(std::vector<NotebookData> &loaded,
-  const std::vector<INotebook::Ref> &current, const Glib::DateTime &loaded_time)
+NotebookSerializer::MergedNotebooks NotebookSerializer::merge(const Notebooks &loaded, const std::vector<INotebook::Ref> &current)
 {
-  std::vector<NotebookData> updated;
+  MergedNotebooks merged;
 
   // loaded not among the current or requiring update
-  for(const auto &ld_nb : loaded) {
+  for(const auto &ld_nb : loaded.notebooks) {
+    merged.all.emplace_back(ld_nb);
+
     auto found = current.end();
     for(auto iter = current.begin(); iter != current.end(); ++iter) {
       if(iter->get().get_normalized_name() == ld_nb.get_normalized_name()) {
@@ -139,28 +140,29 @@ std::vector<NotebookData> NotebookSerializer::merge(std::vector<NotebookData> &l
     }
 
     if(update) {
-      updated.emplace_back(ld_nb.get_normalized_name(), ld_nb.created());
-      updated.back().set_name(ld_nb.get_name());
+      merged.updates.emplace_back(ld_nb.get_normalized_name(), ld_nb.created());
+      merged.updates.back().set_name(ld_nb.get_name());
     }
   }
 
   // current notebooks not among the loaded
   for(const INotebook &nb : current) {
-    auto found = loaded.end();
-    for(auto iter = loaded.begin(); iter != loaded.end(); ++iter) {
+    auto found = loaded.notebooks.end();
+    for(auto iter = loaded.notebooks.begin(); iter != loaded.notebooks.end(); ++iter) {
       if(iter->get_normalized_name() == nb.get_normalized_name()) {
         found = iter;
         break;
       }
     }
 
-    if(found == loaded.end() && nb.created() > loaded_time) {
-      loaded.emplace_back(nb.get_normalized_name(), nb.created());
-      loaded.back().set_name(nb.get_name());
+    if(!loaded.valid || (found == loaded.notebooks.end() && nb.created() > loaded.timestamp)) {
+      merged.all.emplace_back(nb.get_normalized_name(), nb.created());
+      merged.all.back().set_name(nb.get_name());
+      merged.all_has_changes = true;
     }
   }
 
-  return updated;
+  return merged;
 }
 
 }

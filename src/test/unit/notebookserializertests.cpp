@@ -159,22 +159,33 @@ SUITE(NotebookSerializer)
     Notebook new_date("New date", date1);
     Notebook removed("Removed", date1);
     std::vector<INotebook::Ref> current { same, new_date, removed };
-    std::vector<NotebookData> loaded;
-    loaded.emplace_back("same", date1);
-    loaded.back().set_name("Same");
-    loaded.emplace_back("new notebook", date2);
-    loaded.back().set_name("New Notebook");
-    loaded.emplace_back("new date", date2);
-    loaded.back().set_name("New date");
+    NotebookSerializer::Notebooks loaded;
+    loaded.valid = true;
+    loaded.notebooks.emplace_back("same", date1);
+    loaded.notebooks.back().set_name("Same");
+    loaded.notebooks.emplace_back("new notebook", date2);
+    loaded.notebooks.back().set_name("New Notebook");
+    loaded.notebooks.emplace_back("new date", date2);
+    loaded.notebooks.back().set_name("New date");
+    loaded.timestamp = date3;
 
-    auto updates = NotebookSerializer::merge(loaded, current, date3);
-    REQUIRE CHECK_EQUAL(3, loaded.size());
-    check_notebook_update(loaded, same);
+    auto merged = NotebookSerializer::merge(loaded, current);
+    REQUIRE CHECK_EQUAL(3, merged.all.size());
+    check_notebook_update(merged.all, same);
     new_date.created(date2);
-    check_notebook_update(loaded, new_date);
-    CHECK_EQUAL(2, updates.size());
-    check_notebook_update(updates, loaded[1]);
-    check_notebook_update(updates, loaded[2]);
+    check_notebook_update(merged.all, new_date);
+    CHECK_EQUAL(2, merged.updates.size());
+    check_notebook_update(merged.updates, loaded.notebooks[1]);
+    check_notebook_update(merged.updates, loaded.notebooks[2]);
+  }
+
+  TEST(merge_no_loaded)
+  {
+    auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    Notebook same("Same", date1);
+    std::vector<INotebook::Ref> current { same };
+    auto merged = NotebookSerializer::merge({}, current);
+    REQUIRE CHECK_EQUAL(1, merged.all.size());
   }
 }
 
