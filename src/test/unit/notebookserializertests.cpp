@@ -99,6 +99,14 @@ SUITE(NotebookSerializer)
     CHECK_EQUAL(reference, str);
   }
 
+  TEST(desrialize_invalid)
+  {
+    auto deserialized = NotebookSerializer::deserialize("");
+    CHECK(!deserialized.valid);
+    CHECK(!deserialized.timestamp);
+    CHECK(deserialized.notebooks.empty());
+  }
+
   TEST(deserialize)
   {
     const char *xml = "<?xml version=\"1.0\"?>"
@@ -113,6 +121,7 @@ SUITE(NotebookSerializer)
     auto timestamp = Glib::DateTime::create_utc(2025, 2, 10, 11, 12, 13.5);
 
     auto deserialized = NotebookSerializer::deserialize(xml);
+    CHECK(deserialized.valid);
     CHECK(bool(deserialized.timestamp));
     CHECK(timestamp.equal(deserialized.timestamp));
     auto result = deserialized.notebooks;
