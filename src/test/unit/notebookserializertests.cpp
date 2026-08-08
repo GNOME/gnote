@@ -74,7 +74,7 @@ SUITE(NotebookSerializer)
 
   TEST(serialize_empty)
   {
-    auto str = NotebookSerializer::serialize({});
+    auto str = NotebookSerializer::serialize(std::vector<NotebookData>());
     CHECK_EQUAL("", str);
   }
 
