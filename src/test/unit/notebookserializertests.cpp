@@ -74,8 +74,14 @@ SUITE(NotebookSerializer)
 
   TEST(serialize_empty)
   {
-    auto str = NotebookSerializer::serialize(std::vector<NotebookData>());
-    CHECK_EQUAL("", str);
+    const char *xml = "<?xml version=\"1.0\"?>"
+                      "<notebooks timestamp=\"2025-09-10T11:12:13.500000Z\"/>";
+    auto timestamp = Glib::DateTime::create_utc(2025, 9, 10, 11, 12, 13.5);
+    auto str = NotebookSerializer::serialize(std::vector<NotebookData>(), timestamp);
+    Glib::ustring reference = xml;
+    erase_white_space(reference);
+    erase_white_space(str);
+    CHECK_EQUAL(reference, str);
   }
 
   TEST(serialize_non_empty)

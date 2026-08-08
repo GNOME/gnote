@@ -44,9 +44,6 @@ Glib::DateTime parse_date(const Glib::ustring s)
 template <typename NotebookT>
 Glib::ustring NotebookSerializer::serialize(const std::vector<NotebookT> &notebooks, const Glib::DateTime &timestamp)
 {
-  if(notebooks.empty()) {
-    return Glib::ustring();
-  }
   auto timestamp_str = sharp::date_time_to_iso8601(timestamp.to_utc());
 
   sharp::XmlWriter writer;
