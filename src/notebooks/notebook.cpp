@@ -71,6 +71,7 @@ namespace notebooks {
 
   Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, const Glib::DateTime &created, bool is_special)
     : m_note_manager(manager)
+    , m_created(created)
   {
     // is special assume the name as is, and we don't want a tag.
     if(is_special) {
@@ -85,6 +86,7 @@ namespace notebooks {
 
   Notebook::Notebook(NoteManagerBase & manager, const Tag &notebook_tag, const Glib::DateTime &created)
     : m_note_manager(manager)
+    , m_created(created)
   {
   // Parse the notebook name from the tag name
     Glib::ustring systemNotebookPrefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
