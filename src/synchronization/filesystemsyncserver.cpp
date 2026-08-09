@@ -339,6 +339,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
     m_new_revision = 0;
   }
   m_new_revision_path = get_revision_dir_path(m_new_revision);
+  m_notebooks_updated = false;
 
   return true;
 }
@@ -348,7 +349,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
 {
   bool commitSucceeded = false;
 
-  if(m_updated_notes.size() > 0 || m_deleted_notes.size() > 0) {
+  if(m_updated_notes.size() > 0 || m_deleted_notes.size() > 0 || m_notebooks_updated) {
     // TODO: error-checking, etc
     auto manifest_file = m_new_revision_path->get_child("manifest.xml");
     mkdir_p(m_new_revision_path);
