@@ -44,6 +44,7 @@ protected:
   virtual void create_note_in_main_thread(const gnote::sync::NoteUpdate & noteUpdate) override;
   void update_note_in_main_thread(const gnote::NoteBase & existing_note, const gnote::sync::NoteUpdate & note_update) override;
   void delete_note_in_main_thread(const gnote::NoteBase & existing_note) override;
+  void update_local_notebooks_on_main_thread(std::vector<gnote::notebooks::NotebookData> &&updates) override;
 private:
   Glib::ustring m_sync_path;
 };
