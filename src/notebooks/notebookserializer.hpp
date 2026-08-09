@@ -38,7 +38,7 @@ public:
 
   [[nodiscard]]
   virtual Glib::ustring get_name() const = 0;
-  virtual void set_name(const Glib::ustring &name) = 0;
+  virtual void set_name(const Glib::ustring &name, const Glib::DateTime &created = Glib::DateTime::create_now_utc()) = 0;
   [[nodiscard]]
   virtual Glib::ustring get_normalized_name() const = 0;
   [[nodiscard]]
@@ -59,9 +59,10 @@ public:
     {
       return m_name;
     }
-  void set_name(const Glib::ustring &name) override
+  void set_name(const Glib::ustring &name, const Glib::DateTime &created = Glib::DateTime::create_now_utc()) override
     {
       m_name = name;
+      m_created = created;
     }
   Glib::ustring get_normalized_name() const override
     {

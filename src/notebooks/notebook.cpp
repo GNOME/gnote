@@ -96,11 +96,12 @@ namespace notebooks {
     m_tag = notebook_tag.normalized_name();
   }
 
-  void Notebook::set_name(const Glib::ustring & value)
+  void Notebook::set_name(const Glib::ustring & value, const Glib::DateTime &created)
   {
     Glib::ustring trimmedName = sharp::string_trim(value);
     if(!trimmedName.empty()) {
       m_name = trimmedName;
+      m_created = created;
       m_normalized_name = trimmedName.lowercase();
 
       // The templateNoteTite should show the name of the

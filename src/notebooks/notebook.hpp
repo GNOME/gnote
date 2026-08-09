@@ -50,7 +50,7 @@ public:
   static Ptr create(NoteManagerBase& manager, const Tag &tag);
   Glib::ustring get_name() const override
     { return m_name; }
-  void set_name(const Glib::ustring &) override;
+  void set_name(const Glib::ustring &name, const Glib::DateTime &created = Glib::DateTime::create_now_utc()) override;
   Glib::ustring get_normalized_name() const override;
   Glib::DateTime created() const override;
   [[nodiscard]]
