@@ -277,6 +277,23 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
 }
 
 
+notebooks::NotebookSerializer::Notebooks FileSystemSyncServer::get_notebooks()
+{
+  notebooks::NotebookSerializer::Notebooks  notebooks;
+  auto rev = latest_revision();
+  if(rev >= 0) {
+    auto path = get_revision_dir_path(rev);
+    auto serialized_file = path->get_child("notebooks");
+    if(serialized_file->query_exists()) {
+      auto content = sharp::file_read_all_text(*serialized_file);
+      notebooks = notebooks::NotebookSerializer::deserialize(content);
+    }
+  }
+
+  return notebooks;
+}
+
+
 bool FileSystemSyncServer::begin_sync_transaction()
 {
   // Lock expiration: If a lock file exists on the server, a client
