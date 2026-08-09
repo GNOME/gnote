@@ -803,5 +803,29 @@ namespace {
   }
 
 
+  void SyncManager::update_local_notebooks_on_main_thread(std::vector<notebooks::NotebookData> &&updates)
+  {
+    utils::main_context_call([this, updates=std::move(updates)] {
+      update_local_notebooks(updates);
+    });
+  }
+
+
+  void SyncManager::update_local_notebooks(const std::vector<notebooks::NotebookData> &updates)
+  {
+    auto &notebook_manager = note_mgr().notebook_manager();
+    for(auto &nb : updates) {
+      if(auto notebook = notebook_manager.get_notebook(nb.get_normalized_name())) {
+        // notebooks exists, probably name casing changed
+        notebook.value().get().set_name(nb.get_name(), nb.created());
+      }
+      else {
+        notebook_manager.get_or_create_notebook(nb.get_name()).set_name(nb.get_name(), nb.created());
+      }
+    }
+
+    notebook_manager.signal_notebook_list_changed();
+  }
+
 }
 }

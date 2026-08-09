@@ -60,10 +60,12 @@ namespace sync {
     virtual SyncServiceAddin *get_configured_sync_service();
     virtual void delete_notes_in_main_thread(SyncServer & server);
     void delete_notes(SyncServer & server);
+    void update_local_notebooks(const std::vector<notebooks::NotebookData> &updates);
     virtual void note_save(const NoteBase & note);
     virtual void create_note_in_main_thread(const NoteUpdate & noteUpdate);
     virtual void update_note_in_main_thread(const NoteBase & existing_note, const NoteUpdate & note_update);
     virtual void delete_note_in_main_thread(const NoteBase & existing_note);
+    virtual void update_local_notebooks_on_main_thread(std::vector<notebooks::NotebookData> &&updates);
     void create_note(const NoteUpdate & noteUpdate);
     void update_note(NoteBase & existing_note, const NoteUpdate & note_update);
     void delete_note(NoteBase & existing_note);
