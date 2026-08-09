@@ -89,6 +89,7 @@ public:
   virtual notebooks::NotebookSerializer::Notebooks get_notebooks() = 0;
   virtual void delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs) = 0;
   virtual void upload_notes(const std::vector<NoteBase::Ref> & notes) = 0;
+  virtual void upload_notebooks(const std::vector<notebooks::NotebookData> &notebooks) = 0;
   virtual int latest_revision() = 0; // NOTE: Only reliable during a transaction
   virtual SyncLockInfo current_sync_lock() = 0;
   virtual Glib::ustring id() = 0;

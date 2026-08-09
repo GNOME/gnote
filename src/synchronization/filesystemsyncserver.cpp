@@ -189,6 +189,16 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
 }
 
 
+void FileSystemSyncServer::upload_notebooks(const std::vector<notebooks::NotebookData> &notebooks)
+{
+  mkdir_p(m_new_revision_path);
+  auto serialized = notebooks::NotebookSerializer::serialize(notebooks);
+  auto file = m_new_revision_path->get_child("notebooks");
+  create_file(*file, serialized);
+  m_notebooks_updated = true;
+}
+
+
 void FileSystemSyncServer::delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs)
 {
   m_deleted_notes.insert(m_deleted_notes.end(), deletedNoteUUIDs.begin(), deletedNoteUUIDs.end());
