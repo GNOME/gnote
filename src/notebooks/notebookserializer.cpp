@@ -99,7 +99,7 @@ NotebookSerializer::Notebooks NotebookSerializer::deserialize(const Glib::ustrin
 	auto created = parse_date(reader.get_attribute("created"));
         if(!id.empty() && !name.empty()) {
           result.notebooks.emplace_back(std::move(id), created);
-          result.notebooks.back().set_name(name);
+          result.notebooks.back().set_name(name, created);
         }
       }
       else {
@@ -138,7 +138,7 @@ NotebookSerializer::MergedNotebooks NotebookSerializer::merge(const Notebooks &l
 
     if(update) {
       merged.updates.emplace_back(ld_nb.get_normalized_name(), ld_nb.created());
-      merged.updates.back().set_name(ld_nb.get_name());
+      merged.updates.back().set_name(ld_nb.get_name(), ld_nb.created());
     }
   }
 
@@ -154,7 +154,7 @@ NotebookSerializer::MergedNotebooks NotebookSerializer::merge(const Notebooks &l
 
     if(!loaded.valid || (found == loaded.notebooks.end() && nb.created() > loaded.timestamp)) {
       merged.all.emplace_back(nb.get_normalized_name(), nb.created());
-      merged.all.back().set_name(nb.get_name());
+      merged.all.back().set_name(nb.get_name(), nb.created());
       merged.all_has_changes = true;
     }
   }
