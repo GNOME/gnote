@@ -44,9 +44,10 @@ SUITE(NotebookSerializer)
       {
         return m_name;
       }
-    void set_name(const Glib::ustring &name) override
+    void set_name(const Glib::ustring &name, const Glib::DateTime &created = Glib::DateTime::create_now_utc()) override
       {
         m_name = name;
+        m_created = created;
       }
     Glib::ustring get_normalized_name() const override
       {
@@ -168,11 +169,11 @@ SUITE(NotebookSerializer)
     NotebookSerializer::Notebooks loaded;
     loaded.valid = true;
     loaded.notebooks.emplace_back("same", date1);
-    loaded.notebooks.back().set_name("Same");
+    loaded.notebooks.back().set_name("Same", loaded.notebooks.back().created());
     loaded.notebooks.emplace_back("new notebook", date2);
-    loaded.notebooks.back().set_name("New Notebook");
+    loaded.notebooks.back().set_name("New Notebook", loaded.notebooks.back().created());
     loaded.notebooks.emplace_back("new date", date2);
-    loaded.notebooks.back().set_name("New date");
+    loaded.notebooks.back().set_name("New date", loaded.notebooks.back().created());
     loaded.timestamp = date3;
 
     auto merged = NotebookSerializer::merge(loaded, current);
