@@ -383,6 +383,7 @@ namespace gnote {
         }
       }
       notebook_manager.delete_notebook(const_cast<Notebook&>(old_notebook));
+      notebook_manager.save_notebooks();
       select_notebook(new_notebook);
     }
 

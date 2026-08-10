@@ -65,6 +65,14 @@ xmlDocPtr parse_xml_file(Gio::File &xml_file)
   return xml;
 }
 
+void create_file(Gio::File &file, const Glib::ustring &content)
+{
+  auto stream = file.create_file();
+  gsize written;
+  stream->write_all(content, written);
+  stream->close();
+}
+
 struct NoteUpload
   : gnote::sync::FileTransfer
 {
@@ -181,6 +189,16 @@ void FileSystemSyncServer::upload_notes(const std::vector<NoteBase::Ref> & notes
 }
 
 
+void FileSystemSyncServer::upload_notebooks(const std::vector<notebooks::NotebookData> &notebooks)
+{
+  mkdir_p(m_new_revision_path);
+  auto serialized = notebooks::NotebookSerializer::serialize(notebooks);
+  auto file = m_new_revision_path->get_child("notebooks");
+  create_file(*file, serialized);
+  m_notebooks_updated = true;
+}
+
+
 void FileSystemSyncServer::delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs)
 {
   m_deleted_notes.insert(m_deleted_notes.end(), deletedNoteUUIDs.begin(), deletedNoteUUIDs.end());
@@ -269,6 +287,23 @@ SyncServer::NoteUpdatesMap FileSystemSyncServer::get_note_updates_since(int revi
 }
 
 
+notebooks::NotebookSerializer::Notebooks FileSystemSyncServer::get_notebooks()
+{
+  notebooks::NotebookSerializer::Notebooks  notebooks;
+  auto rev = latest_revision();
+  if(rev >= 0) {
+    auto path = get_revision_dir_path(rev);
+    auto serialized_file = path->get_child("notebooks");
+    if(serialized_file->query_exists()) {
+      auto content = sharp::file_read_all_text(*serialized_file);
+      notebooks = notebooks::NotebookSerializer::deserialize(content);
+    }
+  }
+
+  return notebooks;
+}
+
+
 bool FileSystemSyncServer::begin_sync_transaction()
 {
   // Lock expiration: If a lock file exists on the server, a client
@@ -304,6 +339,7 @@ bool FileSystemSyncServer::begin_sync_transaction()
     m_new_revision = 0;
   }
   m_new_revision_path = get_revision_dir_path(m_new_revision);
+  m_notebooks_updated = false;
 
   return true;
 }
@@ -313,12 +349,10 @@ bool FileSystemSyncServer::commit_sync_transaction()
 {
   bool commitSucceeded = false;
 
-  if(m_updated_notes.size() > 0 || m_deleted_notes.size() > 0) {
+  if(m_updated_notes.size() > 0 || m_deleted_notes.size() > 0 || m_notebooks_updated) {
     // TODO: error-checking, etc
     auto manifest_file = m_new_revision_path->get_child("manifest.xml");
-    if(!sharp::directory_exists(m_new_revision_path)) {
-      sharp::directory_create(m_new_revision_path);
-    }
+    mkdir_p(m_new_revision_path);
 
     std::map<Glib::ustring, Glib::ustring> notes;
     if(m_manifest.is_loaded()) {
@@ -373,10 +407,7 @@ bool FileSystemSyncServer::commit_sync_transaction()
       if(manifest_file->query_exists()) {
         manifest_file->remove();
       }
-      auto stream = manifest_file->create_file();
-      gsize written;
-      stream->write_all(xml_content, written);
-      stream->close();
+      create_file(*manifest_file, xml_content);
       manifest_content = std::move(xml_content);
     }
 

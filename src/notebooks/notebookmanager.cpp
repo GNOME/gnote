@@ -21,10 +21,12 @@
 
 
 #include <glibmm/i18n.h>
+#include <glibmm/miscutils.h>
 #include <glibmm/stringutils.h>
 
 #include "sharp/string.hpp"
 #include "sharp/exception.hpp"
+#include "sharp/files.hpp"
 #include "notebooks/notebookmanager.hpp"
 #include "notebooks/specialnotebooks.hpp"
 #include "debug.hpp"
@@ -88,29 +90,32 @@ namespace gnote {
       if (notebookName.empty())
         throw sharp::Exception ("NotebookManager.GetNotebook () called with a null name.");
       
-//      lock (locker) {
-        if(auto nb = get_notebook(notebookName)) {
-          return nb.value();
-        }
+      if(auto nb = get_notebook(notebookName)) {
+        return nb.value();
+      }
 
-        Notebook::Ptr notebook = Notebook::create(m_note_manager, notebookName);
-        m_all_notebooks.push_back(notebook);
-        
-        // Create the template note so the system tag
-        // that represents the notebook actually gets
-        // saved to a note (and persisted after Tomboy
-        // is shut down).
-        auto & template_note = notebook->get_template_note();
-        
-        // Make sure the template note has the notebook tag.
-        // Since it's possible for the template note to already
-        // exist, we need to make sure it gets tagged.
-        template_note.add_tag(*notebook->get_tag());
-        signal_note_added_to_notebook(template_note, *notebook);
-//      }
+      Notebook::Ptr notebook = Notebook::create(m_note_manager, notebookName);
+      m_all_notebooks.push_back(notebook);
+
+      // Create the template note so the system tag
+      // that represents the notebook actually gets
+      // saved to a note (and persisted after Tomboy
+      // is shut down).
+      create_template_note(*notebook);
 
       signal_notebook_list_changed();
       return *notebook;
+    }
+
+    void NotebookManager::create_template_note(Notebook &notebook)
+    {
+      auto & template_note = notebook.get_template_note();
+
+      // Make sure the template note has the notebook tag.
+      // Since it's possible for the template note to already
+      // exist, we need to make sure it gets tagged.
+      template_note.add_tag(*notebook.get_tag());
+      signal_note_added_to_notebook(template_note, notebook);
     }
 
     bool NotebookManager::add_notebook(Notebook::Ptr && notebook)
@@ -267,6 +272,9 @@ namespace gnote {
       if(on_complete) {
         on_complete(notebook);
       }
+      else {
+        g.notebook_manager().save_notebooks();
+      }
     }
     
     void NotebookManager::prompt_delete_notebook(IGnote & g, Gtk::Window * parent, Notebook & notebook)
@@ -297,15 +305,17 @@ namespace gnote {
         }
 
         if(auto nb = g.notebook_manager().get_notebook(notebook)) {
+          auto &manager = g.notebook_manager();
           Notebook & nbook = nb.value();
 
           // Grab the template note before removing all the notebook tags
           auto & template_note = nbook.get_template_note();
 
-          g.notebook_manager().delete_notebook(nbook);
+          manager.delete_notebook(nbook);
 
           // Delete the template note
-          g.notebook_manager().note_manager().delete_note(template_note);
+          manager.note_manager().delete_note(template_note);
+          manager.save_notebooks();
         }
       });
       dialog->show();
@@ -357,21 +367,66 @@ namespace gnote {
       return true;
     }
  
-    /// <summary>
-    /// Loop through the system tags looking for notebooks
-    /// </summary>
     void NotebookManager::load_notebooks()
     {
+      std::vector<NotebookData> saved_notebooks;
+      try {
+        const auto notebooks_file = notebooks_file_path();
+        auto xml = sharp::file_read_all_text(notebooks_file);
+        saved_notebooks = NotebookSerializer::deserialize(xml).notebooks;
+      }
+      catch(std::exception &e) {
+        ERR_OUT("Failed to load notebooks file: %s", e.what());
+      }
+
+      for(auto &nb : saved_notebooks) {
+        auto notebook = Notebook::create(m_note_manager, nb.get_name());
+        m_all_notebooks.push_back(notebook);
+      }
+
       auto tags = m_note_manager.tag_manager().all_tags();
       auto prefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX) + Notebook::NOTEBOOK_TAG_PREFIX;
+      bool extra_created = false;
       for(const Tag &tag : tags) {
         // Skip over tags that aren't notebooks
         if(!tag.is_system() || !Glib::str_has_prefix(tag.name(), prefix)) {
           continue;
         }
-        Notebook::Ptr notebook = Notebook::create(m_note_manager, tag);
-        m_all_notebooks.push_back(notebook);
+        if(!get_notebook_from_tag(tag).has_value()) {
+          auto notebook = Notebook::create(m_note_manager, tag);
+          m_all_notebooks.push_back(notebook);
+          extra_created = true;
+        }
       }
+
+      if(extra_created) {
+        save_notebooks();
+      }
+    }
+
+    void NotebookManager::save_notebooks() const
+    {
+      std::vector<INotebook::Ref> notebooks;
+      get_notebooks([&notebooks](const Notebook::Ptr &nb) { notebooks.emplace_back(*nb); });
+      if(notebooks.size() == 0) {
+        return;
+      }
+
+      try {
+        const auto serialized = NotebookSerializer::serialize(notebooks);
+        const auto notebooks_file = notebooks_file_path();
+        const auto tmp_file = notebooks_file + ".tmp";
+        sharp::file_write_all_text(tmp_file, serialized);
+        utils::replace_file_with_temp(notebooks_file, tmp_file);
+      }
+      catch(const std::exception &e) {
+        ERR_OUT("Failed to save notebooks: %s", e.what());
+      }
+    }
+
+    Glib::ustring NotebookManager::notebooks_file_path() const
+    {
+      return Glib::build_filename(m_note_manager.notes_dir(), "notebooks");
     }
 
   }

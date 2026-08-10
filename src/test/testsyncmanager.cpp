@@ -88,5 +88,10 @@ void SyncManager::delete_note_in_main_thread(const gnote::NoteBase & existing_no
   delete_note(const_cast<gnote::NoteBase&>(existing_note));
 }
 
+void SyncManager::update_local_notebooks_on_main_thread(std::vector<gnote::notebooks::NotebookData> &&updates)
+{
+  update_local_notebooks(updates);
+}
+
 }
 

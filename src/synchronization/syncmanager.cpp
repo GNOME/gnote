@@ -228,6 +228,12 @@ namespace {
       const auto note_updates = server->get_note_updates_since(m_client->last_synchronized_revision());
       DBG_OUT_1("%zu updates since rev %d", note_updates.size(), m_client->last_synchronized_revision());
 
+      auto saved_notebooks = server->get_notebooks();
+      bool write_notebooks = false;
+      if(!saved_notebooks.valid) {
+        write_notebooks = true;
+      }
+
       // Gather list of new/updated note titles
       // for title conflict handling purposes.
       const std::vector<Glib::ustring> note_update_titles{get_updated_note_titles(note_updates)};
@@ -327,6 +333,7 @@ namespace {
       if(new_or_modified_notes.size() > 0) {
         set_state(UPLOADING);
         server->upload_notes(new_or_modified_notes); // TODO: Callbacks to update GUI as upload progresses
+        write_notebooks = true;
       }
 
       DBG_OUT_2("upload complete, deleting notes");
@@ -351,6 +358,25 @@ namespace {
       if(locally_deleted_uuids.size() > 0) {
         set_state(DELETE_SERVER_NOTES);
         server->delete_notes(locally_deleted_uuids);
+        write_notebooks = true;
+      }
+
+      {
+      std::vector<notebooks::NotebookData> all_notebooks;
+      std::vector<notebooks::INotebook::Ref> current_notebooks;
+      m_note_manager.notebook_manager().get_notebooks([&current_notebooks](const notebooks::Notebook::Ptr &notebook){ current_notebooks.emplace_back(*notebook); });
+      auto merged = notebooks::NotebookSerializer::merge(saved_notebooks, current_notebooks);
+      if(merged.all_has_changes) {
+        all_notebooks = std::move(merged.all);
+        write_notebooks = true;
+      }
+      if(write_notebooks) {
+        server->upload_notebooks(all_notebooks);
+      }
+
+        if(!merged.updates.empty()) {
+          update_local_notebooks_on_main_thread(std::move(merged.updates));
+        }
       }
 
       DBG_OUT_1("note synchronization completed, finishing up transaction");
@@ -802,6 +828,30 @@ namespace {
     });
   }
 
+
+  void SyncManager::update_local_notebooks_on_main_thread(std::vector<notebooks::NotebookData> &&updates)
+  {
+    utils::main_context_call([this, updates=std::move(updates)] {
+      update_local_notebooks(updates);
+    });
+  }
+
+
+  void SyncManager::update_local_notebooks(const std::vector<notebooks::NotebookData> &updates)
+  {
+    auto &notebook_manager = note_mgr().notebook_manager();
+    for(auto &nb : updates) {
+      if(auto notebook = notebook_manager.get_notebook(nb.get_normalized_name())) {
+        // notebooks exists, probably name casing changed
+        notebook.value().get().set_name(nb.get_name(), nb.created());
+      }
+      else {
+        notebook_manager.get_or_create_notebook(nb.get_name()).set_name(nb.get_name(), nb.created());
+      }
+    }
+
+    notebook_manager.signal_notebook_list_changed();
+  }
 
 }
 }

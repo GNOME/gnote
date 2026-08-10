@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2015,2017,2019,2022-2024 Aurimas Cernius
+ * Copyright (C) 2012-2015,2017,2019,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -77,6 +77,7 @@ public:
     std::function<void(Notebook::ORef)> on_complete = {});
   static void prompt_delete_notebook(IGnote &, Gtk::Window *, Notebook &);
   bool move_note_to_notebook(Note &, Notebook::ORef);
+  void save_notebooks() const;
 
   Notebook & active_notes_notebook()
     {
@@ -87,10 +88,13 @@ public:
   NotebookEventHandler signal_note_removed_from_notebook;
   sigc::signal<void()> signal_notebook_list_changed;
   sigc::signal<void(const Note &, bool)> signal_note_pin_status_changed;
+protected:
+  virtual void create_template_note(Notebook &notebook);
 private:
   static void on_create_notebook_response(IGnote & g, CreateNotebookDialog & dialog, int respons, const std::vector<Glib::ustring> & notes_to_add,
     std::function<void(Notebook::ORef)> on_complete);
   void load_notebooks();
+  Glib::ustring notebooks_file_path() const;
 
   std::vector<Notebook::Ptr> m_all_notebooks;
   Notebook::Ptr                        m_active_notes;

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2023-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2023-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 
 #include "tag.hpp"
 #include "note.hpp"
+#include "notebookserializer.hpp"
 
 namespace gnote {
 namespace notebooks {
@@ -36,6 +37,7 @@ namespace notebooks {
 class Notebook 
   : public Glib::Object
   , public std::enable_shared_from_this<Notebook>
+  , public INotebook
 {
 public:
   typedef Glib::RefPtr<Notebook> Ptr;
@@ -46,10 +48,11 @@ public:
 
   static Ptr create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special = false);
   static Ptr create(NoteManagerBase& manager, const Tag &tag);
-  Glib::ustring get_name() const
+  Glib::ustring get_name() const override
     { return m_name; }
-  void set_name(const Glib::ustring &);
-  virtual Glib::ustring get_normalized_name() const;
+  void set_name(const Glib::ustring &name, const Glib::DateTime &created = Glib::DateTime::create_now_utc()) override;
+  Glib::ustring get_normalized_name() const override;
+  Glib::DateTime created() const override;
   [[nodiscard]]
   virtual Tag::ORef get_tag() const;
   Note::ORef find_template_note() const;
@@ -66,7 +69,7 @@ public:
       return m_note_manager;
     }
 protected:
-  Notebook(NoteManagerBase &, const Glib::ustring &, bool is_special = false);
+  Notebook(NoteManagerBase&, const Glib::ustring&, const Glib::DateTime&, bool is_special = false);
 
   Tag::ORef template_tag() const;
   bool is_template_note(const Note&);
@@ -75,11 +78,12 @@ protected:
 private:
   static Glib::ustring s_template_tag;
 
-  Notebook(NoteManagerBase &, const Tag&);
+  Notebook(NoteManagerBase &, const Tag&, const Glib::DateTime&);
   Notebook(const Notebook &);
   Notebook & operator=(const Notebook &);
   Glib::ustring m_name;
   Glib::ustring m_normalized_name;
+  Glib::DateTime m_created;
   Glib::ustring m_default_template_note_title;
   Glib::ustring m_tag;
 };

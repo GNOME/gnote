@@ -18,6 +18,7 @@ test_sources = [
   'unit/hashtests.cpp',
   'unit/manifestfiletests.cpp',
   'unit/noteutests.cpp',
+  'unit/notebookserializertests.cpp',
   'unit/notemanagerutests.cpp',
   'unit/stringutests.cpp',
   'unit/syncmanagerutests.cpp',

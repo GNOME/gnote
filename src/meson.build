@@ -58,6 +58,7 @@ libgnote_sources = [
   'notebooks/notebookmanager.cpp',
   'notebooks/notebooknamepopover.cpp',
   'notebooks/notebooknoteaddin.cpp',
+  'notebooks/notebookserializer.cpp',
   'notebooks/specialnotebooks.cpp',
   'synchronization/filesystemsyncserver.cpp',
   'synchronization/gvfssyncservice.cpp',

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2017-2020,2022-2023,2025 Aurimas Cernius
+ * Copyright (C) 2017-2020,2022-2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@
 #include <iostream>
 
 #include <glib/gstdio.h>
+#include <glibmm/miscutils.h>
 #include <UnitTest++/UnitTest++.h>
 
 #include "notemanager.hpp"
@@ -70,6 +71,13 @@ SUITE(SyncManagerTests)
       auto ui = gnote::sync::SilentUI::create(m_gnote, *m_note_manager);
       m_sync_manager->perform_synchronization(ui);
     }
+
+    std::vector<gnote::notebooks::INotebook::Ref> get_notebooks()
+    {
+      std::vector<gnote::notebooks::INotebook::Ref> notebooks;
+      m_note_manager->notebook_manager().get_notebooks([&notebooks](const gnote::notebooks::Notebook::Ptr &nb) { notebooks.emplace_back(*nb); });
+      return notebooks;
+    }
   private:
     test::Gnote m_gnote;
     std::unique_ptr<test::NoteManager> m_note_manager;
@@ -95,6 +103,7 @@ SUITE(SyncManagerTests)
       create_note(note_manager, "note1", "content1");
       create_note(note_manager, "note2", "content2");
       create_note(note_manager, "note3", "content3");
+      note_manager.notebook_manager().get_or_create_notebook("TestONE");
     }
 
     ~Fixture1()
@@ -138,6 +147,12 @@ SUITE(SyncManagerTests)
       note.set_change_type(gnote::CONTENT_CHANGED);
       note.save();
     }
+
+    std::vector<gnote::notebooks::NotebookData> deserialize_notebooks(const Glib::ustring &file)
+    {
+      auto content = sharp::file_read_all_text(file);
+      return gnote::notebooks::NotebookSerializer::deserialize(content).notebooks;
+    }
   };
 
   struct Fixture2
@@ -170,6 +185,42 @@ SUITE(SyncManagerTests)
     CHECK(find_note_in_files(files, "note1"));
     CHECK(find_note_in_files(files, "note2"));
     CHECK(find_note_in_files(files, "note3"));
+
+    auto notebooks_file = Glib::build_filename(syncednotesdir, "notebooks");
+    REQUIRE CHECK(sharp::file_exists(notebooks_file));
+    auto saved_notebooks = deserialize_notebooks(notebooks_file);
+    REQUIRE CHECK_EQUAL(1, saved_notebooks.size());
+    CHECK_EQUAL("TestONE", saved_notebooks[0].get_name());
+  }
+
+  TEST_FIXTURE(Fixture1, sync_no_notebooks_file)
+  {
+    synchronizer.perform_sync();
+
+    Glib::ustring syncednotesdir = syncdir + "/0/0";
+    auto notebooks_file = Glib::build_filename(syncednotesdir, "notebooks");
+    // simulate old store without notebooks file
+    sharp::file_delete(notebooks_file);
+
+    synchronizer.perform_sync();
+    syncednotesdir = syncdir + "/0/1";
+    notebooks_file = Glib::build_filename(syncednotesdir, "notebooks");
+    REQUIRE CHECK(sharp::file_exists(notebooks_file));
+    auto saved_notebooks = deserialize_notebooks(notebooks_file);
+    REQUIRE CHECK_EQUAL(1, saved_notebooks.size());
+    CHECK_EQUAL("TestONE", saved_notebooks[0].get_name());
+
+    create_note(synchronizer.note_manager(), "note4", "content4");
+    synchronizer.perform_sync();
+    syncednotesdir = syncdir + "/0/2";
+    notebooks_file = Glib::build_filename(syncednotesdir, "notebooks");
+    CHECK(sharp::file_exists(notebooks_file));
+
+    // sync without changes
+    synchronizer.perform_sync();
+    syncednotesdir = syncdir + "/0/3";
+    notebooks_file = Glib::build_filename(syncednotesdir, "notebooks");
+    CHECK(!sharp::file_exists(notebooks_file));
   }
 
   TEST_FIXTURE(Fixture2, first_sync_existing_store)
@@ -182,6 +233,9 @@ SUITE(SyncManagerTests)
     CHECK(find_note_in_files(files, "note1"));
     CHECK(find_note_in_files(files, "note2"));
     CHECK(find_note_in_files(files, "note3"));
+    auto notebooks = synchronizer2.get_notebooks();
+    REQUIRE CHECK_EQUAL(1, notebooks.size());
+    CHECK_EQUAL("TestONE", notebooks[0].get().get_name());
   }
 
   TEST_FIXTURE(Fixture2, merge_two_clients)
@@ -189,6 +243,7 @@ SUITE(SyncManagerTests)
     synchronizer.perform_sync();
 
     create_note(synchronizer2.note_manager(), "note4", "content4");
+    auto &notebook = synchronizer2.note_manager().notebook_manager().get_or_create_notebook("Test Book");
     synchronizer2.perform_sync();
 
     Glib::ustring syncednotesdir = syncdir + "/0/1";
@@ -203,6 +258,25 @@ SUITE(SyncManagerTests)
     files = get_notes_in_dir(synchronizer.notes_dir());
     CHECK_EQUAL(5, files.size());
     CHECK_EQUAL(5, synchronizer.note_manager().note_count());
+    auto notebooks1 = synchronizer.get_notebooks();
+    CHECK_EQUAL(2, notebooks1.size());
+    unsigned checked = 0;
+    for(const gnote::notebooks::INotebook &nb : notebooks1) {
+      if(nb.get_normalized_name() == "testone") {
+        ++checked;
+        auto test_nb = synchronizer2.note_manager().notebook_manager().get_notebook("testone");
+        CHECK(test_nb.has_value());
+        CHECK_EQUAL(nb.get_name(), test_nb.value().get().get_name());
+        CHECK(nb.created().equal(test_nb.value().get().created()));
+      }
+      else if(nb.get_normalized_name() == "test book") {
+        ++checked;
+        CHECK_EQUAL("Test Book", nb.get_name());
+        CHECK(nb.created().equal(notebook.created()));
+      }
+    }
+
+    CHECK_EQUAL(2, checked);
   }
 
   TEST_FIXTURE(Fixture2, download_new_notes_from_server)

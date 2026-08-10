@@ -1,0 +1,198 @@
+/*
+ * gnote
+ *
+ * Copyright (C) 2026 Aurimas Cernius
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+#include <algorithm>
+
+#include <UnitTest++/UnitTest++.h>
+
+#include "notebooks/notebookserializer.hpp"
+
+
+SUITE(NotebookSerializer)
+{
+  using gnote::notebooks::INotebook;
+  using gnote::notebooks::NotebookSerializer;
+  using gnote::notebooks::NotebookData;
+
+  class Notebook
+    : public INotebook
+  {
+  public:
+    explicit Notebook(const Glib::ustring &name, const Glib::DateTime &created)
+      : m_name(name)
+      , m_created(created)
+    {}
+
+    Glib::ustring get_name() const override
+      {
+        return m_name;
+      }
+    void set_name(const Glib::ustring &name, const Glib::DateTime &created = Glib::DateTime::create_now_utc()) override
+      {
+        m_name = name;
+        m_created = created;
+      }
+    Glib::ustring get_normalized_name() const override
+      {
+        return m_name.lowercase();
+      }
+    Glib::DateTime created() const override
+      {
+        return m_created;
+      }
+    void created(const Glib::DateTime &new_date)
+      {
+        m_created = new_date;
+      }
+  private:
+    Glib::ustring m_name;
+    Glib::DateTime m_created;
+  };
+
+  void erase_white_space(Glib::ustring &str)
+  {
+    std::string s = str;
+    s.erase(std::remove_if(s.begin(), s.end(), [](unsigned char c) { return std::isspace(c); }), s.end());
+    str = s;
+  }
+
+  TEST(serialize_empty)
+  {
+    const char *xml = "<?xml version=\"1.0\"?>"
+                      "<notebooks timestamp=\"2025-09-10T11:12:13.500000Z\"/>";
+    auto timestamp = Glib::DateTime::create_utc(2025, 9, 10, 11, 12, 13.5);
+    auto str = NotebookSerializer::serialize(std::vector<NotebookData>(), timestamp);
+    Glib::ustring reference = xml;
+    erase_white_space(reference);
+    erase_white_space(str);
+    CHECK_EQUAL(reference, str);
+  }
+
+  TEST(serialize_non_empty)
+  {
+    auto timestamp = Glib::DateTime::create_utc(2025, 9, 10, 11, 12, 13.5);
+    auto created = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    Notebook nb("Test", created);
+    std::vector<INotebook::Ref> notebooks;
+    notebooks.emplace_back(nb);
+    auto str = NotebookSerializer::serialize(notebooks, timestamp);
+
+    const char *xml = "<?xml version=\"1.0\"?>"
+                      "<notebooks timestamp=\"2025-09-10T11:12:13.500000Z\">"
+                      "  <notebook id=\"test\" name=\"Test\" created=\"2025-01-02T05:06:32.500000Z\"/>"
+                      "</notebooks>";
+
+    Glib::ustring reference = xml;
+    erase_white_space(reference);
+    erase_white_space(str);
+
+    CHECK_EQUAL(reference, str);
+  }
+
+  TEST(desrialize_invalid)
+  {
+    auto deserialized = NotebookSerializer::deserialize("");
+    CHECK(!deserialized.valid);
+    CHECK(!deserialized.timestamp);
+    CHECK(deserialized.notebooks.empty());
+  }
+
+  TEST(deserialize)
+  {
+    const char *xml = "<?xml version=\"1.0\"?>"
+                      "<notebooks timestamp=\"2025-02-10T11:12:13.500000Z\">"
+                      "  <notebook id=\"test\" name=\"Test\" created=\"2025-01-02T05:06:32.500000Z\"/>"
+                      "  <notebook id=\"testnb1\" name=\"Testnb1\" created=\"2025-02-02T05:06:32.500000Z\"/>"
+                      "  <notebook id=\"testnb2\" name=\"TestNB2\" created=\"2025-02-02T05:06:32.500000Z\"/>"
+                      "</notebooks>";
+
+    auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    auto date2 = Glib::DateTime::create_utc(2025, 2, 2, 5, 6, 32.5);
+    auto timestamp = Glib::DateTime::create_utc(2025, 2, 10, 11, 12, 13.5);
+
+    auto deserialized = NotebookSerializer::deserialize(xml);
+    CHECK(deserialized.valid);
+    CHECK(bool(deserialized.timestamp));
+    CHECK(timestamp.equal(deserialized.timestamp));
+    auto result = deserialized.notebooks;
+    REQUIRE CHECK_EQUAL(3, result.size());
+    CHECK_EQUAL("test", result[0].get_normalized_name());
+    CHECK_EQUAL("Test", result[0].get_name());
+    CHECK(date1.equal(result[0].created()));
+    CHECK_EQUAL("testnb1", result[1].get_normalized_name());
+    CHECK_EQUAL("Testnb1", result[1].get_name());
+    CHECK(date2.equal(result[1].created()));
+    CHECK_EQUAL("testnb2", result[2].get_normalized_name());
+    CHECK_EQUAL("TestNB2", result[2].get_name());
+    CHECK(date2.equal(result[2].created()));
+  }
+
+  void check_notebook_update(const std::vector<NotebookData> &updates, const INotebook &nb)
+  {
+    for(const auto &upd : updates) {
+      if(upd.get_normalized_name() == nb.get_normalized_name()) {
+        CHECK(upd.created().equal(nb.created()));
+        CHECK_EQUAL(nb.get_name(), upd.get_name());
+        return;
+      }
+    }
+
+    CHECK(false);
+  }
+
+  TEST(merge)
+  {
+    auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    auto date2 = Glib::DateTime::create_utc(2025, 2, 2, 5, 6, 32.5);
+    auto date3 = Glib::DateTime::create_utc(2025, 3, 3, 5, 6, 32.0);
+    Notebook same("Same", date1);
+    Notebook new_date("New date", date1);
+    Notebook removed("Removed", date1);
+    std::vector<INotebook::Ref> current { same, new_date, removed };
+    NotebookSerializer::Notebooks loaded;
+    loaded.valid = true;
+    loaded.notebooks.emplace_back("same", date1);
+    loaded.notebooks.back().set_name("Same", loaded.notebooks.back().created());
+    loaded.notebooks.emplace_back("new notebook", date2);
+    loaded.notebooks.back().set_name("New Notebook", loaded.notebooks.back().created());
+    loaded.notebooks.emplace_back("new date", date2);
+    loaded.notebooks.back().set_name("New date", loaded.notebooks.back().created());
+    loaded.timestamp = date3;
+
+    auto merged = NotebookSerializer::merge(loaded, current);
+    REQUIRE CHECK_EQUAL(3, merged.all.size());
+    check_notebook_update(merged.all, same);
+    new_date.created(date2);
+    check_notebook_update(merged.all, new_date);
+    CHECK_EQUAL(2, merged.updates.size());
+    check_notebook_update(merged.updates, loaded.notebooks[1]);
+    check_notebook_update(merged.updates, loaded.notebooks[2]);
+  }
+
+  TEST(merge_no_loaded)
+  {
+    auto date1 = Glib::DateTime::create_utc(2025, 1, 2, 5, 6, 32.5);
+    Notebook same("Same", date1);
+    std::vector<INotebook::Ref> current { same };
+    auto merged = NotebookSerializer::merge({}, current);
+    REQUIRE CHECK_EQUAL(1, merged.all.size());
+  }
+}
+

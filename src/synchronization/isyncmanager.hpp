@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2012-2014,2017,2019-2021,2023,2025 Aurimas Cernius
+ * Copyright (C) 2012-2014,2017,2019-2021,2023,2025-2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@
 #include "note.hpp"
 #include "syncui.hpp"
 #include "syncutils.hpp"
+#include "notebooks/notebookserializer.hpp"
 
 namespace gnote {
 namespace sync {
@@ -85,8 +86,10 @@ public:
   virtual bool cancel_sync_transaction() = 0;
   virtual std::vector<Glib::ustring> get_all_note_uuids() = 0;
   virtual NoteUpdatesMap get_note_updates_since(int revision) = 0;
+  virtual notebooks::NotebookSerializer::Notebooks get_notebooks() = 0;
   virtual void delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs) = 0;
   virtual void upload_notes(const std::vector<NoteBase::Ref> & notes) = 0;
+  virtual void upload_notebooks(const std::vector<notebooks::NotebookData> &notebooks) = 0;
   virtual int latest_revision() = 0; // NOTE: Only reliable during a transaction
   virtual SyncLockInfo current_sync_lock() = 0;
   virtual Glib::ustring id() = 0;

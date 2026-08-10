@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -47,7 +47,7 @@ public:
   virtual Glib::ustring get_icon_name() const = 0;
 protected:
   SpecialNotebook(NoteManagerBase & m, const Glib::ustring &s)
-    : Notebook(m, s, true)
+    : Notebook(m, s, {}, true)
     {
     }
   Tag::ORef get_tag() const override;

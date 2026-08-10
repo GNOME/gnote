@@ -57,6 +57,10 @@ class Preferences;
     void main_context_call(const sigc::slot<void()> & slot);
     void timeout_add_once(guint interval, std::function<void()> func);
 
+    // write temp file then replace original destination with it making backup of original. path~ is assumed by the first one.
+    void replace_file_with_temp(const Glib::ustring &path, const Glib::ustring &tmp_path);
+    void replace_file_with_temp(const Glib::ustring &path, const Glib::ustring &tmp_path, const Glib::ustring &backup);
+
     template <typename T>
     bool remove_swap_back(std::vector<T> & v, const T & e)
     {

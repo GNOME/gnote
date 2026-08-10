@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2014,2017,2019,2022-2024 Aurimas Cernius
+ * Copyright (C) 2010-2014,2017,2019,2022-2024,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,16 +61,17 @@ namespace notebooks {
 
   Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Glib::ustring& name, bool is_special)
   {
-    return Glib::make_refptr_for_instance(new Notebook(manager, name, is_special));
+    return Glib::make_refptr_for_instance(new Notebook(manager, name, Glib::DateTime::create_now_utc(), is_special));
   }
 
   Notebook::Ptr Notebook::create(NoteManagerBase& manager, const Tag &tag)
   {
-    return Glib::make_refptr_for_instance(new Notebook(manager, tag));
+    return Glib::make_refptr_for_instance(new Notebook(manager, tag, Glib::DateTime::create_now_utc()));
   }
 
-  Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, bool is_special)
+  Notebook::Notebook(NoteManagerBase & manager, const Glib::ustring & name, const Glib::DateTime &created, bool is_special)
     : m_note_manager(manager)
+    , m_created(created)
   {
     // is special assume the name as is, and we don't want a tag.
     if(is_special) {
@@ -83,8 +84,9 @@ namespace notebooks {
     }
   }
 
-  Notebook::Notebook(NoteManagerBase & manager, const Tag &notebook_tag)
+  Notebook::Notebook(NoteManagerBase & manager, const Tag &notebook_tag, const Glib::DateTime &created)
     : m_note_manager(manager)
+    , m_created(created)
   {
   // Parse the notebook name from the tag name
     Glib::ustring systemNotebookPrefix = Glib::ustring(Tag::SYSTEM_TAG_PREFIX)
@@ -94,11 +96,12 @@ namespace notebooks {
     m_tag = notebook_tag.normalized_name();
   }
 
-  void Notebook::set_name(const Glib::ustring & value)
+  void Notebook::set_name(const Glib::ustring & value, const Glib::DateTime &created)
   {
     Glib::ustring trimmedName = sharp::string_trim(value);
     if(!trimmedName.empty()) {
       m_name = trimmedName;
+      m_created = created;
       m_normalized_name = trimmedName.lowercase();
 
       // The templateNoteTite should show the name of the
@@ -115,6 +118,12 @@ namespace notebooks {
   Glib::ustring Notebook::get_normalized_name() const
   {
     return m_normalized_name;
+  }
+
+
+  Glib::DateTime Notebook::created() const
+  {
+    return m_created;
   }
 
 
@@ -166,9 +175,11 @@ namespace notebooks {
     auto content = NoteManager::get_note_template_content(title);
     auto & note = m_note_manager.create(std::move(title), std::move(content));
 
-    // Select the initial text
-    NoteBuffer::Ptr buffer = static_cast<Note&>(note).get_buffer();
-    buffer->select_note_body();
+    // not true when running tests
+    if(Note *n = dynamic_cast<Note*>(&note)) {
+      // Select the initial text
+      n->get_buffer()->select_note_body();
+    }
 
     // Flag this as a template note
     if(auto templ_tag = template_tag()) {

@@ -44,8 +44,10 @@ public:
   virtual bool cancel_sync_transaction() override;
   virtual std::vector<Glib::ustring> get_all_note_uuids() override;
   NoteUpdatesMap get_note_updates_since(int revision) override;
+  notebooks::NotebookSerializer::Notebooks get_notebooks() override;
   virtual void delete_notes(const std::vector<Glib::ustring> & deletedNoteUUIDs) override;
   void upload_notes(const std::vector<NoteBase::Ref> & notes) override;
+  void upload_notebooks(const std::vector<notebooks::NotebookData> &notebooks) override;
   virtual int latest_revision() override; // NOTE: Only reliable during a transaction
   virtual SyncLockInfo current_sync_lock() override;
   virtual Glib::ustring id() override;
@@ -71,6 +73,7 @@ private:
 
   std::vector<Glib::ustring> m_updated_notes;
   std::vector<Glib::ustring> m_deleted_notes;
+  bool m_notebooks_updated;
 
   Glib::ustring m_server_id;
 
