@@ -2,25 +2,25 @@
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2010.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Yuri Chornoivan <yurchor@ukr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-14 18:14+0000\n"
-"PO-Revision-Date: 2026-03-14 21:03+0200\n"
+"POT-Creation-Date: 2026-08-09 20:21+0000\n"
+"PO-Revision-Date: 2026-08-12 20:36+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>="
+"2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
-#: src/recentchanges.cpp:100 src/recentchanges.cpp:122
+#: src/recentchanges.cpp:100 src/recentchanges.cpp:121
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -51,6 +51,10 @@ msgstr ""
 "Крім того, у Gnote передбачено підтримку синхронізації для спрощення "
 "користування нотатками з різних пристроїв."
 
+#: data/org.gnome.Gnote.appdata.xml.in:33
+msgid "The Gnote Team"
+msgstr "Команда Gnote"
+
 #: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "Зібрати нотатки, пов'язати ідеї та залишитися зібраним"
@@ -70,8 +74,8 @@ msgstr ""
 msgid "New Window"
 msgstr "Створити вікно"
 
-#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:207
+#: src/notemanagerbase.cpp:293 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Створити нотатку"
 
@@ -894,8 +898,8 @@ msgstr "Вибрати піктограму…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
-#: src/utils.cpp:337
+#: src/notebooks/notebookmanager.cpp:293 src/note.cpp:65 src/utils.cpp:358
+#: src/utils.cpp:365
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -935,7 +939,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Якщо ви вилучите піктограму, її буде втрачено остаточно."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:289 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:297 src/note.cpp:69
 msgid "_Delete"
 msgstr "В_илучити"
 
@@ -1033,26 +1037,26 @@ msgstr "Не вдалося експортувати: %s"
 msgid "Could not save the file \"%1\""
 msgstr "Не вдалося зберегти файл «%1»"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:100
 msgid "_Folder Path:"
 msgstr "_Шлях до теки:"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:118
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:106
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:114
 msgid "Select Synchronization Folder..."
 msgstr "Вибрати теку для синхронізування…"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:154
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:150
 msgid "Folder path field is empty."
 msgstr "Поле шляху до теки — порожнє."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:161
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
 #: src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "За вказаною адресою теки немає, та Gnote не може її створити."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:225
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:221
 msgid "Local Folder"
 msgstr "Локальна тека"
 
@@ -1089,34 +1093,34 @@ msgstr "Додаток служби синхронізації мережеви�
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "Синхронізувати нотатки Gnote із мережевим каталогом"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:167
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:73
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:174
 msgid "Failed to mount the folder"
 msgstr "Не вдалося змонтувати теку"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:98
 msgid "Folder _URI:"
 msgstr "_Адреса теки:"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:110
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "Приклад: google-drive://ім'я.прізвище@gmail.com/notes"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:113
 msgid "Please, register your account in Online Accounts"
 msgstr ""
 "Будь ласка, зареєструйте ваш обліковий запис у «Облікових записах в "
 "інтернеті»"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:128
 msgid "The URI is empty"
 msgstr "Порожня адреса"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:129
 msgid "URI field is empty."
 msgstr "Поле адреси є порожнім."
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:171
 msgid "Online Folder"
 msgstr "Мережева тека"
 
@@ -1398,32 +1402,32 @@ msgstr "Додає функцію підкреслення тексту"
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière та проєкт Tomboy"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:116
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:121
 msgid "User_name:"
 msgstr "_Користувач:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:124
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:127
 msgid "_Password:"
 msgstr "_Пароль:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:147
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:150
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:170
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:177
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "Призначення синхронізації, %1, не існує!"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:185
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:190
 msgid "URL, username, or password field is empty."
 msgstr "Не вказано URL, користувача або пароль."
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:284
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:303
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1448,28 +1452,28 @@ msgstr "Синхронізувати нотатки Gnote з адресою WebD
 msgid "Exception thrown when creating note: %s"
 msgstr "Виключення під час створення нотатки: %s"
 
-#: src/gnote.cpp:216
+#: src/gnote.cpp:217
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Немає доступного з'єднання D-Bus. Пошук оболонки і віддалене керування не "
 "працюватимуть."
 
-#: src/gnote.cpp:249
+#: src/gnote.cpp:250
 msgid "Failed to get shortcuts window!"
 msgstr "Не вдалося отримати вікно клавіатурних скорочень!"
 
-#: src/gnote.cpp:263
+#: src/gnote.cpp:264
 msgid "and Tomboy original authors."
 msgstr "й автори Tomboy."
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:278
 msgid "translator-credits"
 msgstr ""
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/gnote.cpp:286
+#: src/gnote.cpp:287
 msgid ""
 "Copyright © 2010-2026 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1481,91 +1485,87 @@ msgstr ""
 "© Hubert Figuiere, 2009\n"
 "© Автори Tomboy, 2004–2009."
 
-#: src/gnote.cpp:290
+#: src/gnote.cpp:291
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Проста програма створення нотаток."
 
 #. TRANSLATORS:
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
-#: src/gnote.cpp:294
+#: src/gnote.cpp:295
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 
-#: src/gnote.cpp:295
+#: src/gnote.cpp:296
 msgid "Homepage"
 msgstr "Домашня сторінка"
 
-#: src/gnote.cpp:299
+#: src/gnote.cpp:300
 msgid "Contributors"
 msgstr "Учасники розробки"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:505
 msgid "Run Gnote in background."
 msgstr "Запустити Gnote на тлі."
 
-#: src/gnote.cpp:511
-msgid "Run Gnote as GNOME Shell search provider."
-msgstr "Запускати Gnote як надавач даних пошуку GNOME Shell."
-
-#: src/gnote.cpp:512
+#: src/gnote.cpp:506
 msgid "Specify the path of the directory containing the notes."
 msgstr "Вкажіть шлях до каталогу із нотатками."
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:506
 msgid "path"
 msgstr "шлях"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:507
 msgid "Open the search all notes window with the search text."
 msgstr "Відкрити вікно пошуку в усіх нотатках за допомогою тексту пошуку."
 
-#: src/gnote.cpp:513 src/gnote.cpp:519
+#: src/gnote.cpp:507 src/gnote.cpp:514
 msgid "text"
 msgstr "Текст"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:509
 msgid "Print version information."
 msgstr "Показати інформацію про версію."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:510
 msgid "Create and display a new note, with a optional title."
 msgstr "Створити та показати нову нотатку з довільним заголовком."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:510
 msgid "title"
 msgstr "заголовок"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:511
 msgid "Open a new window."
 msgstr "Відкрити нове вікно."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:512
 msgid "Display the existing note matching title."
 msgstr "Показати наявну нотатку з відповідним заголовком."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:512
 msgid "title/url"
 msgstr "Заголовок/посилання"
 
-#: src/gnote.cpp:518
+#: src/gnote.cpp:513
 msgid "Display the 'Start Here' note."
 msgstr "Показувати першу нотатку"
 
-#: src/gnote.cpp:519
+#: src/gnote.cpp:514
 msgid "Search and highlight text in the opened note."
 msgstr "Шукати та виділити текст у відкритій нотатці."
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:521
 msgid "A note taking application"
 msgstr "Програма для роботи з нотатками"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:521
 msgid "Gnote options at launch"
 msgstr "Параметри Gnote під час запуску"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:707
+#: src/gnote.cpp:711
 msgid "Version %1"
 msgstr "Версія %1"
 
@@ -1578,18 +1578,18 @@ msgid "Window is not embedded"
 msgstr "Вікно не вбудовано"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:221 src/note.cpp:354
+#: src/notebase.cpp:222 src/note.cpp:351
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "Виключення під час спроби зберегти нотатку: %s"
 
 #. write failure, but not critical
-#: src/notebase.cpp:466
+#: src/notebase.cpp:467
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "Не вдалося оновити формат нотатки: %s"
 
-#: src/notebase.cpp:584
+#: src/notebase.cpp:567
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "Помилка файлової системи: %s"
@@ -1621,15 +1621,15 @@ msgstr "С_творити записник…"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:109
+#: src/notebooks/notebook.cpp:112
 msgid "%1 Notebook Template"
 msgstr "Шаблон записника %1"
 
-#: src/notebooks/notebookmanager.cpp:279
+#: src/notebooks/notebookmanager.cpp:287
 msgid "Really delete this notebook?"
 msgstr "Вилучити цей записник?"
 
-#: src/notebooks/notebookmanager.cpp:280
+#: src/notebooks/notebookmanager.cpp:288
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1688,7 +1688,7 @@ msgstr "Активні"
 msgid "</list> tag mismatch"
 msgstr "Невідповідність теґу </list>"
 
-#: src/notebuffer.cpp:1477
+#: src/notebuffer.cpp:1476
 #, c-format
 msgid "Exception: %s"
 msgstr "Виключення: %s"
@@ -1725,22 +1725,22 @@ msgstr ""
 "та права на ~/.local/share/gnote. Подробиці щодо помилки можна знайти у "
 "~/.gnote.log."
 
-#: src/note.cpp:616
+#: src/note.cpp:608
 msgid "Setting text content for closed notes not supported"
 msgstr ""
 "Підтримки встановлення текстового вмісту для закритих нотаток не передбачено"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "Шаблон нової нотатки"
 
-#: src/notemanagerbase.cpp:349
+#: src/notemanagerbase.cpp:345
 msgid "Describe your new note here."
 msgstr "Опишіть тут вашу нотатку."
 
-#: src/notemanager.cpp:118
+#: src/notemanager.cpp:123
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1781,7 +1781,7 @@ msgstr ""
 "автоматично підкреслюється. Клацніть на посланні, щоб відкрити нотатку.</"
 "note-content>"
 
-#: src/notemanager.cpp:137
+#: src/notemanager.cpp:142
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1811,31 +1811,31 @@ msgstr ""
 "автоматично виникає посилання на неї.</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:152 src/notemanager.cpp:187
+#: src/notemanager.cpp:157 src/notemanager.cpp:192
 msgid "Start Here"
 msgstr "Перша нотатка"
 
-#: src/notemanager.cpp:156
+#: src/notemanager.cpp:161
 msgid "Using Links in Gnote"
 msgstr "Використання посилань у Gnote"
 
-#: src/notemanager.cpp:160
+#: src/notemanager.cpp:165
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "Помилка під час створення початкових нотаток: %s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:175
+#: src/notemanager.cpp:180
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "Помилка під час обробки XML нотатки, пропускаємо «%s»: %s"
 
-#: src/notemanager.cpp:386
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Error while saving: %s"
 msgstr "Помилка під час спроби зберегти: %s"
 
-#: src/notemanager.cpp:391
+#: src/notemanager.cpp:396
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "Не знайдено нотатку з адресою «%s» — збереження неможливе"
@@ -1942,27 +1942,27 @@ msgstr "Зберегти ви_бір"
 msgid "Save _Title"
 msgstr "Зберегти _назву"
 
-#: src/notewindow.cpp:497 src/notewindow.cpp:607
+#: src/notewindow.cpp:565
 msgid "Cannot create note"
 msgstr "Не вдалося створити нотатку"
 
-#: src/notewindow.cpp:1032
+#: src/notewindow.cpp:990
 msgid "_Highlight"
 msgstr "Під_свічений"
 
-#: src/notewindow.cpp:1036
+#: src/notewindow.cpp:994
 msgid "_Normal"
 msgstr "_Звичайний"
 
-#: src/notewindow.cpp:1037
+#: src/notewindow.cpp:995
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: src/notewindow.cpp:1038
+#: src/notewindow.cpp:996
 msgid "_Large"
 msgstr "_Великий"
 
-#: src/notewindow.cpp:1039
+#: src/notewindow.cpp:997
 msgid "Hu_ge"
 msgstr "В_еличезний"
 
@@ -1988,9 +1988,9 @@ msgid "Plugins"
 msgstr "Додатки"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
-#: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
+#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:766
+#: src/preferencesdialog.cpp:1003 src/preferencesdialog.cpp:1213
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:355
 msgid "_Close"
 msgstr "_Закрити"
 
@@ -2132,7 +2132,7 @@ msgstr "_Додатково…"
 msgid "Clear"
 msgstr "Очистити"
 
-#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1025
+#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1024
 msgid "Not configurable"
 msgstr "Немає змінюваних параметрів"
 
@@ -2152,25 +2152,25 @@ msgstr "_Вимкнути"
 msgid "In_formation"
 msgstr "В_ідомості"
 
-#: src/preferencesdialog.cpp:747
+#: src/preferencesdialog.cpp:746
 msgid "Not Implemented"
 msgstr "Не реалізовано"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:764
+#: src/preferencesdialog.cpp:763
 msgid "%1 Preferences"
 msgstr "Налаштування %1"
 
-#: src/preferencesdialog.cpp:860
+#: src/preferencesdialog.cpp:859
 msgid "Choose Note Font"
 msgstr "Вибрати шрифт нотатки"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:953
+#: src/preferencesdialog.cpp:952
 msgid "Other Synchronization Options"
 msgstr "Інші параметри синхронізації"
 
-#: src/preferencesdialog.cpp:956
+#: src/preferencesdialog.cpp:955
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2178,23 +2178,23 @@ msgstr ""
 "За виявлення конфлікту між локальною нотаткою та нотаткою на віддаленому "
 "сервері:"
 
-#: src/preferencesdialog.cpp:960
+#: src/preferencesdialog.cpp:959
 msgid "Always ask me what to do"
 msgstr "Завжди питати, що робити"
 
-#: src/preferencesdialog.cpp:961
+#: src/preferencesdialog.cpp:960
 msgid "Rename my local note"
 msgstr "Перейменовувати локальну нотатку"
 
-#: src/preferencesdialog.cpp:963
+#: src/preferencesdialog.cpp:962
 msgid "Replace my local note with the server's update"
 msgstr "Замінювати локальну нотатку нотаткою з сервера"
 
-#: src/preferencesdialog.cpp:1084
+#: src/preferencesdialog.cpp:1083
 msgid "Are you sure?"
 msgstr "Упевнені?"
 
-#: src/preferencesdialog.cpp:1085
+#: src/preferencesdialog.cpp:1084
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2203,11 +2203,11 @@ msgstr ""
 "примусового повторного синхронізування всіх нотаток за наступного "
 "налаштування."
 
-#: src/preferencesdialog.cpp:1096
+#: src/preferencesdialog.cpp:1095
 msgid "Resetting Synchronization Settings"
 msgstr "Скинути параметри синхронізації"
 
-#: src/preferencesdialog.cpp:1097
+#: src/preferencesdialog.cpp:1096
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2217,18 +2217,18 @@ msgstr ""
 "очищено. Можливо, буде потрібно примусово синхронізувати усі нотатки знову, "
 "коли зберігатимете нові параметри."
 
-#: src/preferencesdialog.cpp:1159
+#: src/preferencesdialog.cpp:1158
 msgid "Connection successful"
 msgstr "Успішно з'єднано"
 
-#: src/preferencesdialog.cpp:1160
+#: src/preferencesdialog.cpp:1159
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote готовий синхронізувати ваші нотатки. Синхронізувати їх зараз?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1186
+#: src/preferencesdialog.cpp:1185
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2236,19 +2236,19 @@ msgstr ""
 "Перевірте інформацію і спробуйте знову. Файл журналу %1 може містити "
 "докладнішу інформацію про цю помилку."
 
-#: src/preferencesdialog.cpp:1191
+#: src/preferencesdialog.cpp:1190
 msgid "Error connecting"
 msgstr "Помилка з'єднання"
 
-#: src/preferencesdialog.cpp:1256
+#: src/preferencesdialog.cpp:1255
 msgid "Version:"
 msgstr "Версія:"
 
-#: src/preferencesdialog.cpp:1259
+#: src/preferencesdialog.cpp:1258
 msgid "Author:"
 msgstr "Автор:"
 
-#: src/preferencesdialog.cpp:1263
+#: src/preferencesdialog.cpp:1262
 msgid "Copyright:"
 msgstr "Авторські права:"
 
@@ -2256,32 +2256,32 @@ msgstr "Авторські права:"
 msgid "Close"
 msgstr "Закрити"
 
-#: src/recentchanges.cpp:318
+#: src/recentchanges.cpp:313
 msgid "Search"
 msgstr "Пошук"
 
-#: src/recentchanges.cpp:393
+#: src/recentchanges.cpp:376
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr ""
 "Батьківським елементом вбудованої панелі не є Gtk::Grid. Будь ласка, "
 "повідомте розробникам про цю ваду!"
 
-#: src/recentchanges.cpp:424
+#: src/recentchanges.cpp:407
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr ""
 "Батьківським елементом запису для пошуку не є Gtk::Grid. Будь ласка, "
 "повідомте розробникам про цю ваду!"
 
-#: src/recentchanges.cpp:818
+#: src/recentchanges.cpp:785
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "Спроба вивести на передній план віджет, який не вбудовано до вікна"
 
-#: src/recentchanges.cpp:825
+#: src/recentchanges.cpp:792
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr ""
 "Спроба вивести на передній план віджет, який не є віджетом Gtk::Widget"
 
-#: src/recentchanges.cpp:1025
+#: src/recentchanges.cpp:986
 msgid "No configured actions"
 msgstr "Немає налаштованих дій"
 
@@ -2351,12 +2351,12 @@ msgstr "Нерозпізнаний стовпчик %s"
 msgid "Unrecognized order %s"
 msgstr "Нерозпізнаний порядок %s"
 
-#: src/sharp/modulemanager.cpp:62
+#: src/sharp/modulemanager.cpp:58
 #, c-format
 msgid "Error loading %s"
 msgstr "Помилка завантаження «%s»"
 
-#: src/sharp/modulemanager.cpp:69
+#: src/sharp/modulemanager.cpp:65
 #, c-format
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Помилка під час спроби отримати символ dynamic_module_instanciate: %s"
@@ -2393,12 +2393,12 @@ msgstr "Засоби"
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: src/sharp/xmlreader.cpp:219
+#: src/sharp/xmlreader.cpp:217
 #, c-format
 msgid "XML error: %s"
 msgstr "Помилка XML: %s"
 
-#: src/sharp/xmlreader.cpp:219
+#: src/sharp/xmlreader.cpp:217
 msgid "unknown parse error"
 msgstr "невідома помилка обробки"
 
@@ -2410,7 +2410,7 @@ msgstr "Помилка %1"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "Порожня таблиця стилів. Будь ласка, повідомте про цю ваду."
 
-#: src/synchronization/filesystemsyncserver.cpp:194
+#: src/synchronization/filesystemsyncserver.cpp:182
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Не вдалося вивантажити %1 нотатку"
@@ -2418,7 +2418,7 @@ msgstr[1] "Не вдалося вивантажити %1 нотатки"
 msgstr[2] "Не вдалося вивантажити %1 нотаток"
 msgstr[3] "Не вдалося вивантажити нотатку"
 
-#: src/synchronization/filesystemsyncserver.cpp:282
+#: src/synchronization/filesystemsyncserver.cpp:276
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Не вдалося отримати оновлення %1 нотатки"
@@ -2426,7 +2426,7 @@ msgstr[1] "Не вдалося отримати оновлення %1 нотат
 msgstr[2] "Не вдалося отримати оновлення %1 нотаток"
 msgstr[3] "Не вдалося отримати оновлення нотатки"
 
-#: src/synchronization/filesystemsyncserver.cpp:452
+#: src/synchronization/filesystemsyncserver.cpp:437
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2436,20 +2436,13 @@ msgstr ""
 "даних на сервері все гаразд, але можуть лишитися якісь зайві файли. Ось "
 "повідомлення про помилку: %s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:604
+#: src/synchronization/filesystemsyncserver.cpp:572
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Помилка під час оновлення блокування: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:643
+#: src/synchronization/filesystemsyncserver.cpp:597
 #, c-format
-msgid "Error deleting the old synchronization lock \"%s\": %s"
-msgstr ""
-"Помилка під час спроби вилучити старе блокування синхронізації «%s»: %s"
-
-#: src/synchronization/filesystemsyncserver.cpp:663
-#, c-format
-#| msgid "Error removing icon %s: %s"
 msgid "Error reading file '%s': %s"
 msgstr "Помилка під час читання файла «%s»: %s"
 
@@ -2701,7 +2694,7 @@ msgstr "Синхронізувати нотатки"
 
 #: src/synchronization/syncmanager.cpp:100
 #: src/synchronization/syncmanager.cpp:117
-#: src/synchronization/syncmanager.cpp:593
+#: src/synchronization/syncmanager.cpp:620
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Повідомте про ваду. Помилка під час виклику: %s"
@@ -2717,17 +2710,17 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Виключення під час створення SyncServer: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:384
+#: src/synchronization/syncmanager.cpp:411
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Помилка синхронізації із таким виключенням: %s"
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 #, c-format
 msgid "Failed to show help: %s"
 msgstr "Не вдалося показати довідку: %s"
 
-#: src/utils.cpp:76
+#: src/utils.cpp:77
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
@@ -2735,85 +2728,85 @@ msgstr ""
 "«Посібник до нотаток Gnote» не знайдено. Перевірте, що встановлення було "
 "виконано успішно."
 
-#: src/utils.cpp:82
+#: src/utils.cpp:83
 msgid "Help not found"
 msgstr "Довідку не знайдено"
 
-#: src/utils.cpp:99
+#: src/utils.cpp:100
 #, c-format
 msgid "Failed to open '%s': %s"
 msgstr "Не вдалося відкрити «%s»: %s"
 
-#: src/utils.cpp:131
+#: src/utils.cpp:132
 msgid "Cannot open location"
 msgstr "Не вдалося відкрити адресу"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:192
+#: src/utils.cpp:193
 msgid "Today, %1"
 msgstr "Сьогодні, %1"
 
-#: src/utils.cpp:193
+#: src/utils.cpp:194
 msgid "Today"
 msgstr "Сьогодні"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:198
+#: src/utils.cpp:199
 msgid "Tomorrow, %1"
 msgstr "Завтра, %1"
 
-#: src/utils.cpp:199
+#: src/utils.cpp:200
 msgid "Tomorrow"
 msgstr "Завтра"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:204
+#: src/utils.cpp:205
 msgid "Yesterday, %1"
 msgstr "Вчора, %1"
 
-#: src/utils.cpp:205
+#: src/utils.cpp:206
 msgid "Yesterday"
 msgstr "Вчора"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:210
+#: src/utils.cpp:211
 #, no-c-format
 msgid "%b %d"
 msgstr "%b, %d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:214
+#: src/utils.cpp:215
 msgid "%b %d %Y"
 msgstr "%d.%b.%Y"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:219
+#: src/utils.cpp:220
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:230
+#: src/utils.cpp:231
 msgid "No Date"
 msgstr "Без дати"
 
-#: src/utils.cpp:324 src/utils.cpp:338
+#: src/utils.cpp:352 src/utils.cpp:366
 msgid "_OK"
 msgstr "_Гаразд"
 
-#: src/utils.cpp:333
+#: src/utils.cpp:361
 msgid "_No"
 msgstr "_Ні"
 
-#: src/utils.cpp:334
+#: src/utils.cpp:362
 msgid "_Yes"
 msgstr "_Так"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: src/watchers.cpp:191
+#: src/watchers.cpp:190
 msgid "(Untitled %1)"
 msgstr "(Без назви %1)"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:230
+#: src/watchers.cpp:229
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
@@ -2821,13 +2814,21 @@ msgstr ""
 "Нотатка із заголовком <b>%1</b> вже існує. Перш ніж продовжити, виберіть для "
 "неї іншу назву."
 
-#: src/watchers.cpp:245
+#: src/watchers.cpp:241
 msgid "Note title taken"
 msgstr "Взято заголовок нотатки"
 
-#: src/watchers.cpp:312
+#: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Перевірка правопису"
+
+#~ msgid "Run Gnote as GNOME Shell search provider."
+#~ msgstr "Запускати Gnote як надавач даних пошуку GNOME Shell."
+
+#, c-format
+#~ msgid "Error deleting the old synchronization lock \"%s\": %s"
+#~ msgstr ""
+#~ "Помилка під час спроби вилучити старе блокування синхронізації «%s»: %s"
 
 #, c-format
 #~ msgid "Failed to upload note: %s"
