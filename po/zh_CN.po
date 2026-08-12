@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-14 18:14+0000\n"
-"PO-Revision-Date: 2026-03-15 11:05+0800\n"
+"POT-Creation-Date: 2026-08-09 20:21+0000\n"
+"PO-Revision-Date: 2026-08-12 08:50+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -23,10 +23,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
-#: src/recentchanges.cpp:100 src/recentchanges.cpp:122
+#: src/recentchanges.cpp:100 src/recentchanges.cpp:121
 msgid "Gnote"
 msgstr "Gnote"
 
@@ -54,6 +54,10 @@ msgid ""
 "devices."
 msgstr "Gnote 也支持同步，在多个设备上使用更简便。"
 
+#: data/org.gnome.Gnote.appdata.xml.in:33
+msgid "The Gnote Team"
+msgstr "Gnote 团队"
+
 #: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
 msgstr "记录便笺，汇集想法，保持井然有序"
@@ -71,8 +75,8 @@ msgstr "notes;idea;link;organize;便笺;笔记;思想;点子;想法;组织;"
 msgid "New Window"
 msgstr "新建窗口"
 
-#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:196
-#: src/notemanagerbase.cpp:297 src/searchnoteswidget.cpp:343
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:207
+#: src/notemanagerbase.cpp:293 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "新建便笺"
 
@@ -312,7 +316,7 @@ msgid ""
 "will continue linking to the renamed note."
 msgstr ""
 "整数值，代表重命名便笺时是否总是执行指定的链接更新动作，而不是提示用户。此值"
-"将会映射到内部枚举量上。0 代表用户希望在可能影响到其它便笺中存在的链接时得到"
+"将会映射到内部枚举量上。0 代表用户希望在可能影响到其他便笺中存在的链接时得到"
 "提示。1 代表自动删除链接。2 代表将链接更新到新便笺名的文本，以便可以继续链接"
 "到重命名后的便笺。"
 
@@ -838,8 +842,8 @@ msgstr "选择图标..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:285 src/note.cpp:65 src/utils.cpp:330
-#: src/utils.cpp:337
+#: src/notebooks/notebookmanager.cpp:293 src/note.cpp:65 src/utils.cpp:358
+#: src/utils.cpp:365
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -877,7 +881,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "如果您删除了图标，其内容将永久丢失。"
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:289 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:297 src/note.cpp:69
 msgid "_Delete"
 msgstr "删除(_D)"
 
@@ -938,7 +942,7 @@ msgstr "导出链接的便笺"
 
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:42
 msgid "Include all other linked notes"
-msgstr "包含链接的全部其它便笺"
+msgstr "包含链接的全部其他便笺"
 
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
@@ -975,26 +979,26 @@ msgstr "无法导出：%s"
 msgid "Could not save the file \"%1\""
 msgstr "无法保存文件“%1”"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:104
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:100
 msgid "_Folder Path:"
 msgstr "文件夹路径(_F)："
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:110
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:118
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:106
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:114
 msgid "Select Synchronization Folder..."
 msgstr "选择同步文件夹..."
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:154
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:150
 msgid "Folder path field is empty."
 msgstr "文件夹路径字段为空。"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:161
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:157
 #: src/synchronization/gvfssyncservice.cpp:75
 msgid ""
 "Specified folder path does not exist, and Gnote was unable to create it."
 msgstr "指定的文件夹路径不存在，Gnote 无法创建便笺。"
 
-#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:225
+#: src/plugins/filesystemsyncservice/filesystemsyncserviceaddin.cpp:221
 msgid "Local Folder"
 msgstr "本地文件夹"
 
@@ -1031,33 +1035,33 @@ msgstr "在线目录同步服务插件"
 msgid "Synchronize Gnote Notes to an online directory"
 msgstr "将 Gnote 便笺同步到在线目录"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:75
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:167
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:73
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:174
 msgid "Failed to mount the folder"
 msgstr "挂载文件夹失败"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:102
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:98
 msgid "Folder _URI:"
 msgstr "文件夹 _URI："
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:114
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:110
 msgid "Example: google-drive://name.surname@gmail.com/notes"
 msgstr "示例：google-drive://name.surname@gmail.com/notes"
 
 # 这部分信息来自于插件 Online Directory Sync Service Plugin，源码位于 src/plugins/gvfssyncservice。Online Accounts 在这里应该泛指所有支持 gvfs 的在线服务。
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:117
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:113
 msgid "Please, register your account in Online Accounts"
 msgstr "请先注册您的帐户"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:132
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:128
 msgid "The URI is empty"
 msgstr "URI 为空"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:133
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:129
 msgid "URI field is empty."
 msgstr "URI 字段为空。"
 
-#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:175
+#: src/plugins/gvfssyncservice/gvfssyncserviceaddin.cpp:171
 msgid "Online Folder"
 msgstr "在线文件夹"
 
@@ -1328,32 +1332,32 @@ msgstr "添加“文本下划线”功能。"
 msgid "Hubert Figuière and the Tomboy Project"
 msgstr "Hubert Figuière 和 Tomboy 项目"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:113
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:116
 msgid "_URL:"
 msgstr "_URL:"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:118
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:121
 msgid "User_name:"
 msgstr "用户名(_N)"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:124
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:127
 msgid "_Password:"
 msgstr "密码(_P)："
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:147
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:150
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:170
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:177
 msgid "Synchronization destination %1 doesn't exist!"
 msgstr "同步目标 %1 不存在！"
 
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:185
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:190
 msgid "URL, username, or password field is empty."
 msgstr "URL、用户名或密码为空。"
 
 #. TRANSLATORS: %1 is the format placeholder for the error message.
-#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:284
+#: src/plugins/webdavsyncservice/webdavsyncserviceaddin.cpp:303
 msgid ""
 "Saving configuration to the GNOME keyring failed with the following "
 "message:\n"
@@ -1377,20 +1381,20 @@ msgstr "将 Gnote 便笺同步到 WebDAV URL。"
 msgid "Exception thrown when creating note: %s"
 msgstr "创建便笺时异常：%s"
 
-#: src/gnote.cpp:216
+#: src/gnote.cpp:217
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr "没有可用的 D-Bus 连接，shell 搜索和远程控制功能将不可用。"
 
-#: src/gnote.cpp:249
+#: src/gnote.cpp:250
 msgid "Failed to get shortcuts window!"
 msgstr "获取快捷键窗口失败！"
 
-#: src/gnote.cpp:263
+#: src/gnote.cpp:264
 msgid "and Tomboy original authors."
 msgstr "以及 Tomboy 原作者。"
 
-#: src/gnote.cpp:277
+#: src/gnote.cpp:278
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@gmail.com>, 2005-2008\n"
@@ -1399,7 +1403,7 @@ msgstr ""
 "YunQiang Su <wzssyqa@gmail.com>, 2010\n"
 "lumingzh <lumingzh@qq.com>, 2023-2026"
 
-#: src/gnote.cpp:286
+#: src/gnote.cpp:287
 msgid ""
 "Copyright © 2010-2026 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1411,91 +1415,87 @@ msgstr ""
 "版权所有 © 2009 Hubert Figuiere\n"
 "版权所有 © 2004-2009 Tomboy 原作者们。"
 
-#: src/gnote.cpp:290
+#: src/gnote.cpp:291
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "简单易用的桌面随意帖应用程序。"
 
 #. TRANSLATORS:
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
-#: src/gnote.cpp:294
+#: src/gnote.cpp:295
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 
-#: src/gnote.cpp:295
+#: src/gnote.cpp:296
 msgid "Homepage"
 msgstr "主页"
 
-#: src/gnote.cpp:299
+#: src/gnote.cpp:300
 msgid "Contributors"
 msgstr "贡献者"
 
-#: src/gnote.cpp:510
+#: src/gnote.cpp:505
 msgid "Run Gnote in background."
 msgstr "后台运行 Gnote。"
 
-#: src/gnote.cpp:511
-msgid "Run Gnote as GNOME Shell search provider."
-msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
-
-#: src/gnote.cpp:512
+#: src/gnote.cpp:506
 msgid "Specify the path of the directory containing the notes."
 msgstr "给出包含便笺的目录路径。"
 
-#: src/gnote.cpp:512
+#: src/gnote.cpp:506
 msgid "path"
 msgstr "路径"
 
-#: src/gnote.cpp:513
+#: src/gnote.cpp:507
 msgid "Open the search all notes window with the search text."
 msgstr "打开搜索全部便笺窗口。"
 
-#: src/gnote.cpp:513 src/gnote.cpp:519
+#: src/gnote.cpp:507 src/gnote.cpp:514
 msgid "text"
 msgstr "文本"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:509
 msgid "Print version information."
 msgstr "显示版本信息。"
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:510
 msgid "Create and display a new note, with a optional title."
 msgstr "创建并显示一条带有可选标题的新便笺。"
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:510
 msgid "title"
 msgstr "标题"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:511
 msgid "Open a new window."
 msgstr "打开一个新窗口。"
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:512
 msgid "Display the existing note matching title."
 msgstr "显示匹配标题的现有便笺。"
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:512
 msgid "title/url"
 msgstr "标题/url"
 
-#: src/gnote.cpp:518
+#: src/gnote.cpp:513
 msgid "Display the 'Start Here' note."
 msgstr "显示“从这里开始”便笺。"
 
-#: src/gnote.cpp:519
+#: src/gnote.cpp:514
 msgid "Search and highlight text in the opened note."
 msgstr "在开启的便笺中搜索文本（高亮显示）。"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:521
 msgid "A note taking application"
 msgstr "一个记便笺应用程序"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:521
 msgid "Gnote options at launch"
 msgstr "Gnote 启动选项"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:707
+#: src/gnote.cpp:711
 msgid "Version %1"
 msgstr "版本 %1"
 
@@ -1508,18 +1508,18 @@ msgid "Window is not embedded"
 msgstr "窗口未被嵌入"
 
 #. Probably IOException or UnauthorizedAccessException?
-#: src/notebase.cpp:221 src/note.cpp:354
+#: src/notebase.cpp:222 src/note.cpp:351
 #, c-format
 msgid "Exception while saving note: %s"
 msgstr "保存便笺时异常：%s"
 
 #. write failure, but not critical
-#: src/notebase.cpp:466
+#: src/notebase.cpp:467
 #, c-format
 msgid "Failed to update note format: %s"
 msgstr "更新便笺格式失败：%s"
 
-#: src/notebase.cpp:584
+#: src/notebase.cpp:567
 #, c-format
 msgid "Filesystem error: %s"
 msgstr "文件系统错误：%s"
@@ -1551,15 +1551,15 @@ msgstr "新建便笺本(_B)..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:109
+#: src/notebooks/notebook.cpp:112
 msgid "%1 Notebook Template"
 msgstr "%1 便笺本模板"
 
-#: src/notebooks/notebookmanager.cpp:279
+#: src/notebooks/notebookmanager.cpp:287
 msgid "Really delete this notebook?"
 msgstr "真的要删除此便笺本？"
 
-#: src/notebooks/notebookmanager.cpp:280
+#: src/notebooks/notebookmanager.cpp:288
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1617,7 +1617,7 @@ msgstr "活动"
 msgid "</list> tag mismatch"
 msgstr "</list> 标签不匹配"
 
-#: src/notebuffer.cpp:1477
+#: src/notebuffer.cpp:1476
 #, c-format
 msgid "Exception: %s"
 msgstr "异常：%s"
@@ -1650,21 +1650,21 @@ msgstr ""
 "保存您的便笺时发生了错误。请检查您是否有足够的磁盘空间，以及您在 ~/.local/"
 "share/gnote 是否有足够的权限。错误细节可在 ~/.gnote.log 中找到。"
 
-#: src/note.cpp:616
+#: src/note.cpp:608
 msgid "Setting text content for closed notes not supported"
 msgstr "不支持为关闭的便笺设置文本内容"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:116 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:339
 msgid "New Note Template"
 msgstr "新建便笺模板"
 
-#: src/notemanagerbase.cpp:349
+#: src/notemanagerbase.cpp:345
 msgid "Describe your new note here."
 msgstr "在此描述您的新便笺。"
 
-#: src/notemanager.cpp:118
+#: src/notemanager.cpp:123
 msgid ""
 "<note-content xmlns:link=\"http://beatniksoftware.com/tomboy/link\">Start "
 "Here\n"
@@ -1702,7 +1702,7 @@ msgstr ""
 "link:internal>的时候，都会自动加下划线？单击链接即可打开该便笺。</note-"
 "content>"
 
-#: src/notemanager.cpp:137
+#: src/notemanager.cpp:142
 msgid ""
 "<note-content>Using Links in Gnote\n"
 "\n"
@@ -1723,38 +1723,38 @@ msgstr ""
 "工具栏中的<bold>链接</bold>按钮。执行此操作后，将创建一则新便笺，并将当前便笺"
 "中的选中文本作为新便笺的标题。\n"
 "\n"
-"更改便笺的标题将更新其它便笺中存在的链接。这可以保证重命名便笺时链接不会断"
+"更改便笺的标题将更新其他便笺中存在的链接。这可以保证重命名便笺时链接不会断"
 "开。\n"
 "\n"
-"另外，如果您在当前便笺中提到其它便笺的名称，程序也会自动为您创建相应的链接。"
+"另外，如果您在当前便笺中提到其他便笺的名称，程序也会自动为您创建相应的链接。"
 "</note-content>"
 
 #. Attempt to find an existing Start Here note
-#: src/notemanager.cpp:152 src/notemanager.cpp:187
+#: src/notemanager.cpp:157 src/notemanager.cpp:192
 msgid "Start Here"
 msgstr "从这里开始"
 
-#: src/notemanager.cpp:156
+#: src/notemanager.cpp:161
 msgid "Using Links in Gnote"
 msgstr "在 Gnote 中使用链接"
 
-#: src/notemanager.cpp:160
+#: src/notemanager.cpp:165
 #, c-format
 msgid "Error creating start notes: %s"
 msgstr "创建启动便笺出错：%s"
 
 #. TRANSLATORS: first %s is file, second is error
-#: src/notemanager.cpp:175
+#: src/notemanager.cpp:180
 #, c-format
 msgid "Error parsing note XML, skipping \"%s\": %s"
 msgstr "解析便笺 XML 失败，跳过“%s”: %s"
 
-#: src/notemanager.cpp:386
+#: src/notemanager.cpp:391
 #, c-format
 msgid "Error while saving: %s"
 msgstr "保存时出错：%s"
 
-#: src/notemanager.cpp:391
+#: src/notemanager.cpp:396
 #, c-format
 msgid "Did not find note with uri '%s', cannot save"
 msgstr "未通过 URI“%s”找到便笺，无法保存"
@@ -1798,7 +1798,7 @@ msgid ""
 "\n"
 "If you do not rename the links, they will no longer link to anything."
 msgstr ""
-"将其它便笺中的链接从“<span underline=\"single\">%1</span>”重命名为“<span "
+"将其他便笺中的链接从“<span underline=\"single\">%1</span>”重命名为“<span "
 "underline=\"single\">%2</span>”吗？\n"
 "\n"
 "如果不想重命名这些链接，它们将成为死链。"
@@ -1861,27 +1861,27 @@ msgstr "保存所选(_L)"
 msgid "Save _Title"
 msgstr "保存标题(_T)"
 
-#: src/notewindow.cpp:497 src/notewindow.cpp:607
+#: src/notewindow.cpp:565
 msgid "Cannot create note"
 msgstr "无法创建便笺"
 
-#: src/notewindow.cpp:1032
+#: src/notewindow.cpp:990
 msgid "_Highlight"
 msgstr "高亮(_H)"
 
-#: src/notewindow.cpp:1036
+#: src/notewindow.cpp:994
 msgid "_Normal"
 msgstr "普通(_N)"
 
-#: src/notewindow.cpp:1037
+#: src/notewindow.cpp:995
 msgid "S_mall"
 msgstr "小(_M)"
 
-#: src/notewindow.cpp:1038
+#: src/notewindow.cpp:996
 msgid "_Large"
 msgstr "大(_L)"
 
-#: src/notewindow.cpp:1039
+#: src/notewindow.cpp:997
 msgid "Hu_ge"
 msgstr "巨大(_G)"
 
@@ -1907,9 +1907,9 @@ msgid "Plugins"
 msgstr "插件"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:767
-#: src/preferencesdialog.cpp:1004 src/preferencesdialog.cpp:1214
-#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:327
+#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:766
+#: src/preferencesdialog.cpp:1003 src/preferencesdialog.cpp:1213
+#: src/synchronization/syncdialog.cpp:343 src/utils.cpp:355
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -2038,7 +2038,7 @@ msgstr "高级(_A)..."
 msgid "Clear"
 msgstr "清除"
 
-#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1025
+#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1024
 msgid "Not configurable"
 msgstr "不可配置"
 
@@ -2058,57 +2058,57 @@ msgstr "禁用(_D)"
 msgid "In_formation"
 msgstr "信息(_F)"
 
-#: src/preferencesdialog.cpp:747
+#: src/preferencesdialog.cpp:746
 msgid "Not Implemented"
 msgstr "尚未实现"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:764
+#: src/preferencesdialog.cpp:763
 msgid "%1 Preferences"
 msgstr "%1 首选项"
 
-#: src/preferencesdialog.cpp:860
+#: src/preferencesdialog.cpp:859
 msgid "Choose Note Font"
 msgstr "选择便笺字体"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:953
+#: src/preferencesdialog.cpp:952
 msgid "Other Synchronization Options"
 msgstr "其他的同步选项"
 
-#: src/preferencesdialog.cpp:956
+#: src/preferencesdialog.cpp:955
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr "当检测到本地便笺和配置的同步服务器上的便笺之间有冲突时："
 
-#: src/preferencesdialog.cpp:960
+#: src/preferencesdialog.cpp:959
 msgid "Always ask me what to do"
 msgstr "总是询问我怎么做"
 
-#: src/preferencesdialog.cpp:961
+#: src/preferencesdialog.cpp:960
 msgid "Rename my local note"
 msgstr "重命名我的本地便笺"
 
-#: src/preferencesdialog.cpp:963
+#: src/preferencesdialog.cpp:962
 msgid "Replace my local note with the server's update"
 msgstr "使用服务器上的更新覆盖我本地的便笺"
 
-#: src/preferencesdialog.cpp:1084
+#: src/preferencesdialog.cpp:1083
 msgid "Are you sure?"
 msgstr "您确定吗？"
 
-#: src/preferencesdialog.cpp:1085
+#: src/preferencesdialog.cpp:1084
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
 msgstr "不推荐您清除同步设置。当保存新设置时，可能会强制您再次同步所有的便笺。"
 
-#: src/preferencesdialog.cpp:1096
+#: src/preferencesdialog.cpp:1095
 msgid "Resetting Synchronization Settings"
 msgstr "重置同步设置"
 
-#: src/preferencesdialog.cpp:1097
+#: src/preferencesdialog.cpp:1096
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2117,36 +2117,36 @@ msgstr ""
 "您已经禁用了配置的同步服务。您的同步设置将被清除。当您保存新设置时，可能得再"
 "次同步所有便笺。"
 
-#: src/preferencesdialog.cpp:1159
+#: src/preferencesdialog.cpp:1158
 msgid "Connection successful"
 msgstr "连接成功"
 
-#: src/preferencesdialog.cpp:1160
+#: src/preferencesdialog.cpp:1159
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote 已准备同步您的便笺。您希望现在就同步它们吗？"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1186
+#: src/preferencesdialog.cpp:1185
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
 msgstr "请检查您的信息并重试。日志文件 %1 可能包含了该错误的更多信息。"
 
-#: src/preferencesdialog.cpp:1191
+#: src/preferencesdialog.cpp:1190
 msgid "Error connecting"
 msgstr "连接出错"
 
-#: src/preferencesdialog.cpp:1256
+#: src/preferencesdialog.cpp:1255
 msgid "Version:"
 msgstr "版本："
 
-#: src/preferencesdialog.cpp:1259
+#: src/preferencesdialog.cpp:1258
 msgid "Author:"
 msgstr "作者："
 
-#: src/preferencesdialog.cpp:1263
+#: src/preferencesdialog.cpp:1262
 msgid "Copyright:"
 msgstr "版权所有："
 
@@ -2154,27 +2154,27 @@ msgstr "版权所有："
 msgid "Close"
 msgstr "关闭"
 
-#: src/recentchanges.cpp:318
+#: src/recentchanges.cpp:313
 msgid "Search"
 msgstr "搜索"
 
-#: src/recentchanges.cpp:393
+#: src/recentchanges.cpp:376
 msgid "Parent of embed box is not a Gtk::Grid, please report a bug!"
 msgstr "embed box 的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:424
+#: src/recentchanges.cpp:407
 msgid "Parent of search entry is not Gtk::Grid, please report a bug!"
 msgstr "搜索条目的上一级不是 Gtk::Grid，请报告程序问题！"
 
-#: src/recentchanges.cpp:818
+#: src/recentchanges.cpp:785
 msgid "Attempt to foreground a widget, that is not embedded in the window"
 msgstr "尝试前置一个未内嵌在窗口中的部件"
 
-#: src/recentchanges.cpp:825
+#: src/recentchanges.cpp:792
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
 msgstr "尝试前置一个不是 Gtk::Widget 的部件"
 
-#: src/recentchanges.cpp:1025
+#: src/recentchanges.cpp:986
 msgid "No configured actions"
 msgstr "未配置操作"
 
@@ -2241,12 +2241,12 @@ msgstr "未识别的列 %s"
 msgid "Unrecognized order %s"
 msgstr "不可识别的排序 %s"
 
-#: src/sharp/modulemanager.cpp:62
+#: src/sharp/modulemanager.cpp:58
 #, c-format
 msgid "Error loading %s"
 msgstr "加载 %s 时出错"
 
-#: src/sharp/modulemanager.cpp:69
+#: src/sharp/modulemanager.cpp:65
 #, c-format
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "获取符号 dynamic_module_instanciate 时出错：%s"
@@ -2283,12 +2283,12 @@ msgstr "工具"
 msgid "Unknown"
 msgstr "未知"
 
-#: src/sharp/xmlreader.cpp:219
+#: src/sharp/xmlreader.cpp:217
 #, c-format
 msgid "XML error: %s"
 msgstr "XML 错误：%s"
 
-#: src/sharp/xmlreader.cpp:219
+#: src/sharp/xmlreader.cpp:217
 msgid "unknown parse error"
 msgstr "未知的解析错误"
 
@@ -2300,17 +2300,17 @@ msgstr "%1 已失败"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "没有样式表，请报告 bug"
 
-#: src/synchronization/filesystemsyncserver.cpp:194
+#: src/synchronization/filesystemsyncserver.cpp:182
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "上传 %1 便笺失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:282
+#: src/synchronization/filesystemsyncserver.cpp:276
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "下载 %1 便笺更新失败"
 
-#: src/synchronization/filesystemsyncserver.cpp:452
+#: src/synchronization/filesystemsyncserver.cpp:437
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2319,17 +2319,12 @@ msgstr ""
 "提交时服务器清理异常。服务器完整性没有问题但是可能会遗留一些文件。错误为："
 "%s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:604
+#: src/synchronization/filesystemsyncserver.cpp:572
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "更新锁时出错: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:643
-#, c-format
-msgid "Error deleting the old synchronization lock \"%s\": %s"
-msgstr "删除旧的同步锁“%s”时出错：%s"
-
-#: src/synchronization/filesystemsyncserver.cpp:663
+#: src/synchronization/filesystemsyncserver.cpp:597
 #, c-format
 msgid "Error reading file '%s': %s"
 msgstr "读取文件“%s”时出错：%s"
@@ -2573,7 +2568,7 @@ msgstr "同步便笺"
 
 #: src/synchronization/syncmanager.cpp:100
 #: src/synchronization/syncmanager.cpp:117
-#: src/synchronization/syncmanager.cpp:593
+#: src/synchronization/syncmanager.cpp:620
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "报告缺陷。类型转换失败：%s"
@@ -2589,113 +2584,120 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "创建 SyncServer 时异常：%s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:384
+#: src/synchronization/syncmanager.cpp:411
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "同步因以下异常失败：%s"
 
-#: src/utils.cpp:75
+#: src/utils.cpp:76
 #, c-format
 msgid "Failed to show help: %s"
 msgstr "显示帮助失败：%s"
 
-#: src/utils.cpp:76
+#: src/utils.cpp:77
 msgid ""
 "The \"Gnote Manual\" could not be found.  Please verify that your "
 "installation has been completed successfully."
 msgstr "找不到“Gnote 手册”。请检查您的安装是否已成功完成。"
 
-#: src/utils.cpp:82
+#: src/utils.cpp:83
 msgid "Help not found"
 msgstr "帮助未找到"
 
-#: src/utils.cpp:99
+#: src/utils.cpp:100
 #, c-format
 msgid "Failed to open '%s': %s"
 msgstr "打开“%s”失败：%s"
 
-#: src/utils.cpp:131
+#: src/utils.cpp:132
 msgid "Cannot open location"
 msgstr "无法打开位置"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:192
+#: src/utils.cpp:193
 msgid "Today, %1"
 msgstr "今天，%1"
 
-#: src/utils.cpp:193
+#: src/utils.cpp:194
 msgid "Today"
 msgstr "今天"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:198
+#: src/utils.cpp:199
 msgid "Tomorrow, %1"
 msgstr "明天，%1"
 
-#: src/utils.cpp:199
+#: src/utils.cpp:200
 msgid "Tomorrow"
 msgstr "明天"
 
 #. TRANSLATORS: argument %1 is time.
-#: src/utils.cpp:204
+#: src/utils.cpp:205
 msgid "Yesterday, %1"
 msgstr "昨天，%1"
 
-#: src/utils.cpp:205
+#: src/utils.cpp:206
 msgid "Yesterday"
 msgstr "昨天"
 
 #. TRANSLATORS: date in current year.
-#: src/utils.cpp:210
+#: src/utils.cpp:211
 #, no-c-format
 msgid "%b %d"
 msgstr "%b%d"
 
 #. TRANSLATORS: date in other than current year.
-#: src/utils.cpp:214
+#: src/utils.cpp:215
 msgid "%b %d %Y"
 msgstr "%Y年%m月%d日"
 
 #. TRANSLATORS: argument %1 is date, %2 is time.
-#: src/utils.cpp:219
+#: src/utils.cpp:220
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/utils.cpp:230
+#: src/utils.cpp:231
 msgid "No Date"
 msgstr "没有日期"
 
-#: src/utils.cpp:324 src/utils.cpp:338
+#: src/utils.cpp:352 src/utils.cpp:366
 msgid "_OK"
 msgstr "确定(_O)"
 
-#: src/utils.cpp:333
+#: src/utils.cpp:361
 msgid "_No"
 msgstr "否(_N)"
 
-#: src/utils.cpp:334
+#: src/utils.cpp:362
 msgid "_Yes"
 msgstr "是(_Y)"
 
 #. TRANSLATORS: %1 is the placeholder for the number.
-#: src/watchers.cpp:191
+#: src/watchers.cpp:190
 msgid "(Untitled %1)"
 msgstr "（无标题 %1）"
 
 #. TRANSLATORS: %1 is the placeholder for the title.
-#: src/watchers.cpp:230
+#: src/watchers.cpp:229
 msgid ""
 "A note with the title <b>%1</b> already exists. Please choose another name "
 "for this note before continuing."
 msgstr "已经存在标题为 <b>%1</b> 的便笺。请在继续前为此便笺选择另外的名称。"
 
-#: src/watchers.cpp:245
+#: src/watchers.cpp:241
 msgid "Note title taken"
 msgstr "便笺标题已被使用"
 
-#: src/watchers.cpp:312
+#: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "检查拼写"
+
+#~ msgid "Run Gnote as GNOME Shell search provider."
+#~ msgstr "将 Gnote 作为 GNOME Shell 搜索提供者运行。"
+
+#, c-format
+#~ msgid "Error deleting the old synchronization lock \"%s\": %s"
+#~ msgstr "删除旧的同步锁“%s”时出错：%s"
 
 #, c-format
 #~ msgid "Failed to upload note: %s"
