@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-23 20:42+0000\n"
-"PO-Revision-Date: 2026-03-13 23:59+0100\n"
+"POT-Creation-Date: 2026-04-19 14:44+0000\n"
+"PO-Revision-Date: 2026-08-13 03:09+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:100 src/recentchanges.cpp:122
@@ -51,6 +51,10 @@ msgid ""
 msgstr ""
 "Gnote stöder också synkronisering vilket gör det enkelt att använda på flera "
 "enheter."
+
+#: data/org.gnome.Gnote.appdata.xml.in:33
+msgid "The Gnote Team"
+msgstr "Gnote-gruppen"
 
 #: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
@@ -1444,22 +1448,22 @@ msgstr "Synkronisera Gnote-anteckningar till en WebDAV-URL."
 msgid "Exception thrown when creating note: %s"
 msgstr "Undantag kastat vid skapande av anteckning: %s"
 
-#: src/gnote.cpp:222
+#: src/gnote.cpp:216
 msgid ""
 "No D-Bus connection available, shell search and remote control will not work."
 msgstr ""
 "Ingen D-Bus-anslutning tillgänglig, skalsökning och fjärrkontroll kommer "
 "inte att fungera."
 
-#: src/gnote.cpp:255
+#: src/gnote.cpp:249
 msgid "Failed to get shortcuts window!"
 msgstr "Misslyckades med att hämta genvägsfönster!"
 
-#: src/gnote.cpp:269
+#: src/gnote.cpp:263
 msgid "and Tomboy original authors."
 msgstr "och de ursprungliga utvecklarna av Tomboy."
 
-#: src/gnote.cpp:283
+#: src/gnote.cpp:277
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -1471,7 +1475,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gnote.cpp:292
+#: src/gnote.cpp:286
 msgid ""
 "Copyright © 2010-2026 Aurimas Cernius\n"
 "Copyright © 2009-2011 Debarshi Ray\n"
@@ -1483,87 +1487,91 @@ msgstr ""
 "Copyright © 2009 Hubert Figuiere\n"
 "Copyright © 2004-2009 De ursprungliga Tomboy-upphovsmännen."
 
-#: src/gnote.cpp:296
+#: src/gnote.cpp:290
 msgid "A simple and easy to use desktop note-taking application."
 msgstr "Ett enkelt och lättanvänt program för att ta anteckningar."
 
 #. TRANSLATORS:
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
-#: src/gnote.cpp:300
+#: src/gnote.cpp:294
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/sv/home"
 
-#: src/gnote.cpp:301
+#: src/gnote.cpp:295
 msgid "Homepage"
 msgstr "Webbplats"
 
-#: src/gnote.cpp:305
+#: src/gnote.cpp:299
 msgid "Contributors"
 msgstr "Bidragsgivare"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:510
 msgid "Run Gnote in background."
 msgstr "Kör Gnote i bakgrunden."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:511
+msgid "Run Gnote as GNOME Shell search provider."
+msgstr "Kör Gnote som söktjänst för GNOME Shell."
+
+#: src/gnote.cpp:512
 msgid "Specify the path of the directory containing the notes."
 msgstr "Ange sökvägen för katalogen som innehåller anteckningarna."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:512
 msgid "path"
 msgstr "sökväg"
 
-#: src/gnote.cpp:518
+#: src/gnote.cpp:513
 msgid "Open the search all notes window with the search text."
 msgstr "Öppna ”Sök i alla anteckningar”-fönstret med söktexten."
 
-#: src/gnote.cpp:518 src/gnote.cpp:524
+#: src/gnote.cpp:513 src/gnote.cpp:520
 msgid "text"
 msgstr "text"
 
-#: src/gnote.cpp:519
+#: src/gnote.cpp:515
 msgid "Print version information."
 msgstr "Skriv ut versionsinformation."
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:516
 msgid "Create and display a new note, with a optional title."
 msgstr "Skapa och visa en ny anteckning, med en valfri titel."
 
-#: src/gnote.cpp:520
+#: src/gnote.cpp:516
 msgid "title"
 msgstr "titel"
 
-#: src/gnote.cpp:521
+#: src/gnote.cpp:517
 msgid "Open a new window."
 msgstr "Öppna ett nytt fönster."
 
-#: src/gnote.cpp:522
+#: src/gnote.cpp:518
 msgid "Display the existing note matching title."
 msgstr "Visa den befintliga matchande titeln för anteckningen."
 
-#: src/gnote.cpp:522
+#: src/gnote.cpp:518
 msgid "title/url"
 msgstr "titel/url"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:519
 msgid "Display the 'Start Here' note."
 msgstr "Visa ”Börja här”-anteckningen."
 
-#: src/gnote.cpp:524
+#: src/gnote.cpp:520
 msgid "Search and highlight text in the opened note."
 msgstr "Sök och färgmarkera text i den öppnade anteckningen."
 
-#: src/gnote.cpp:531
+#: src/gnote.cpp:524
 msgid "A note taking application"
 msgstr "Ett anteckningsblock"
 
-#: src/gnote.cpp:531
+#: src/gnote.cpp:524
 msgid "Gnote options at launch"
 msgstr "Gnote-alternativ vid uppstart"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:721
+#: src/gnote.cpp:708
 msgid "Version %1"
 msgstr "Version %1"
 
@@ -1688,7 +1696,7 @@ msgstr "Aktiva"
 msgid "</list> tag mismatch"
 msgstr "</list>-tagg ej korrekt matchad"
 
-#: src/notebuffer.cpp:1476
+#: src/notebuffer.cpp:1477
 #, c-format
 msgid "Exception: %s"
 msgstr "Undantag: %s"
@@ -2685,7 +2693,7 @@ msgstr "Synkronisera anteckningar"
 
 #: src/synchronization/syncmanager.cpp:100
 #: src/synchronization/syncmanager.cpp:117
-#: src/synchronization/syncmanager.cpp:594
+#: src/synchronization/syncmanager.cpp:593
 #, c-format
 msgid "Report a bug. Cast failed: %s"
 msgstr "Rapportera ett fel. Typkonvertering misslyckades: %s"
@@ -2701,7 +2709,7 @@ msgid "Exception while creating SyncServer: %s"
 msgstr "Undantag under skapande av SyncServer: %s"
 
 #. top-level try
-#: src/synchronization/syncmanager.cpp:385
+#: src/synchronization/syncmanager.cpp:384
 #, c-format
 msgid "Synchronization failed with the following exception: %s"
 msgstr "Synkronisering misslyckades med följande undantag: %s"
@@ -2812,9 +2820,6 @@ msgstr "Anteckningstiteln är upptagen"
 #: src/watchers.cpp:312
 msgid "Check spelling"
 msgstr "Kontrollera stavning"
-
-#~ msgid "Run Gnote as GNOME Shell search provider."
-#~ msgstr "Kör Gnote som söktjänst för GNOME Shell."
 
 #, c-format
 #~ msgid "Failed to upload note: %s"
