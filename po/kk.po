@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote gnome-49\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-14 18:14+0000\n"
-"PO-Revision-Date: 2026-03-15 00:45+0500\n"
+"POT-Creation-Date: 2026-04-19 14:44+0000\n"
+"PO-Revision-Date: 2026-08-16 08:03+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <Kazakh>\n"
 "Language: kk\n"
@@ -50,6 +50,10 @@ msgid ""
 msgstr ""
 "Gnote сондай-ақ синхрондауды қолдайды, бұл оны бірнеше құрылғыда пайдалануды "
 "жеңілдетеді."
+
+#: data/org.gnome.Gnote.appdata.xml.in:33
+msgid "The Gnote Team"
+msgstr "Gnote тобы"
 
 #: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
@@ -1481,7 +1485,6 @@ msgstr "Қарапайым және пайдалану оңай жазбалар
 #. * The link to main wiki page in English. You can localize it in subdirectory for your locale and have this link point to it.
 #.
 #: src/gnote.cpp:294
-#| msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/Gnote"
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 
@@ -1513,52 +1516,52 @@ msgstr "жол"
 msgid "Open the search all notes window with the search text."
 msgstr "Барлық жазбаларды іздеу терезесін іздеу мәтінімен ашу."
 
-#: src/gnote.cpp:513 src/gnote.cpp:519
+#: src/gnote.cpp:513 src/gnote.cpp:520
 msgid "text"
 msgstr "мәтін"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:515
 msgid "Print version information."
 msgstr "Нұсқа туралы ақпаратты шығару."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:516
 msgid "Create and display a new note, with a optional title."
 msgstr "Міндетті емес тақырыбы бар жаңа жазба жасау және көрсету."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:516
 msgid "title"
 msgstr "атауы"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:517
 msgid "Open a new window."
 msgstr "Жаңа терезе ашу."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:518
 msgid "Display the existing note matching title."
 msgstr "Тақырыпқа сәйкес келетін бұрыннан бар жазбаны көрсету."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:518
 msgid "title/url"
 msgstr "тақырыбы/url"
 
-#: src/gnote.cpp:518
+#: src/gnote.cpp:519
 msgid "Display the 'Start Here' note."
 msgstr "«Осыдан бастау» жазбасын көрсету."
 
-#: src/gnote.cpp:519
+#: src/gnote.cpp:520
 msgid "Search and highlight text in the opened note."
 msgstr "Ашылған жазбада мәтінді іздеу және түспен ерекшелеу."
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:524
 msgid "A note taking application"
 msgstr "Жазба жазу қолданбасы"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:524
 msgid "Gnote options at launch"
 msgstr "Іске қосу кезіндегі Gnote опциялары"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:707
+#: src/gnote.cpp:708
 msgid "Version %1"
 msgstr "Нұсқасы %1"
 
@@ -2419,7 +2422,6 @@ msgstr "Ескі «%s» синхрондау құлпын өшіру қатес�
 
 #: src/synchronization/filesystemsyncserver.cpp:663
 #, c-format
-#| msgid "Error removing icon %s: %s"
 msgid "Error reading file '%s': %s"
 msgstr "'%s' файлын оқу қатесі: %s"
 
