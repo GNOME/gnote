@@ -15,9 +15,9 @@ meson <dirname> && cd <dirname> && meson compile && ninja install
 
 Dependencies:
 - Glibmm 2.74
-- Gtkmm 4.0
-- libadwaita
-- libsecret
+- Gtkmm 4.10
+- libadwaita 1.6
+- libsecret 0.8
 - libuuid
 - libxml2
 - libxslt
