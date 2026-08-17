@@ -139,12 +139,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_gnote, editor_tab_width, EDITOR_TAB_WIDTH, uint);
 
     SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_clock_format, DESKTOP_GNOME_CLOCK_FORMAT, string);
-    m_schema_gnome_interface->signal_changed("accent-color").connect([this](const Glib::ustring &) {
-      signal_desktop_gnome_color_scheme_changed();
-    });
-    m_schema_gnome_interface->signal_changed("color-scheme").connect([this](const Glib::ustring &) {
-      signal_desktop_gnome_color_scheme_changed();
-    });
 
     SETUP_CACHED_KEY(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN, string);
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);

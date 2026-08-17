@@ -83,8 +83,6 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(editor_tab_width, unsigned);
 
     GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
-    sigc::signal<void()> signal_desktop_gnome_accent_color_changed;
-    sigc::signal<void()> signal_desktop_gnome_color_scheme_changed;
 
     Glib::ustring sync_client_id() const;
     Glib::ustring sync_local_path() const;
