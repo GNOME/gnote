@@ -20,6 +20,7 @@
 
 
 
+#include <adwaita.h>
 #include <gtk/gtk.h>
 #include <gtkmm/image.h>
 #include <gtkmm/linkbutton.h>
@@ -269,10 +270,10 @@ namespace {
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_background_setting_changed));
     m_preferences.signal_highlight_foreground_color_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_foreground_setting_changed));
-    m_preferences.signal_desktop_gnome_accent_color_changed
-      .connect(sigc::mem_fun(*this, &NoteTagTable::on_accent_color_setting_changed));
-    m_preferences.signal_desktop_gnome_color_scheme_changed
-      .connect(sigc::mem_fun(*this, &NoteTagTable::on_accent_color_setting_changed));
+
+    auto adw_style_manager = G_OBJECT(adw_style_manager_get_default());
+    g_signal_connect(adw_style_manager, "notify::accent-color", G_CALLBACK(on_coloring_changed), this);
+    g_signal_connect(adw_style_manager, "notify::dark", G_CALLBACK(on_coloring_changed), this);
 
     // Font stylings
 
@@ -371,6 +372,11 @@ namespace {
     change_highlight(*this, [this](Gtk::TextTag &tag) {
       tag.property_background() = m_preferences.highlight_background_color();
     });
+  }
+
+  void NoteTagTable::on_coloring_changed(GObject*, GParamSpec*, gpointer self)
+  {
+    static_cast<NoteTagTable*>(self)->on_accent_color_setting_changed();
   }
 
   void NoteTagTable::on_accent_color_setting_changed()
