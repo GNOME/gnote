@@ -47,6 +47,31 @@ namespace {
       ERR_OUT("Tag 'highlight' not found!");
     }
   }
+
+  Gdk::RGBA highlight_color_for_accent(AdwAccentColor color)
+  {
+    // Taken from Adwait paletter, the lightest option
+    switch(color)
+    {
+    case ADW_ACCENT_COLOR_BLUE:
+    case ADW_ACCENT_COLOR_TEAL:
+    default:
+      return Gdk::RGBA("#99c1f1");
+    case ADW_ACCENT_COLOR_GREEN:
+      return Gdk::RGBA("#8ff0a4");
+    case ADW_ACCENT_COLOR_YELLOW:
+      return Gdk::RGBA("#f9f06b");
+    case ADW_ACCENT_COLOR_ORANGE:
+      return Gdk::RGBA("#ffbe6f");
+    case ADW_ACCENT_COLOR_RED:
+      return Gdk::RGBA("#f66151");
+    case ADW_ACCENT_COLOR_PINK:
+    case ADW_ACCENT_COLOR_PURPLE:
+      return Gdk::RGBA("#dc8add");
+    case ADW_ACCENT_COLOR_SLATE:
+      return Gdk::RGBA("#cdab8f");
+    }
+  }
 }
 
   NoteTag::NoteTag(Glib::ustring && tag_name, int flags)
@@ -415,6 +440,18 @@ namespace {
     }
     m_link_tag->property_foreground_rgba().set_value(active_link_color);
     m_url_tag->property_foreground_rgba().set_value(active_link_color);
+
+    if(!g_highlight_accent_based) {
+      return;
+    }
+
+    change_highlight(*this, [this, accent, dark](Gtk::TextTag &tag) {
+      auto accent_rgba = highlight_color_for_accent(accent);
+      Gdk::RGBA rgba;
+      adw_rgba_to_standalone(accent_rgba.gobj(), !dark, rgba.gobj());
+      tag.property_background_rgba() = rgba;
+      tag.property_foreground().reset_value();
+    });
   }
 
   void NoteTagTable::on_highlight_foreground_setting_changed()
