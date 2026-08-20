@@ -407,15 +407,7 @@ namespace {
 
   void NoteTagTable::on_coloring_changed(GObject*, GParamSpec*, gpointer self)
   {
-    static_cast<NoteTagTable*>(self)->on_accent_color_setting_changed();
-  }
-
-  void NoteTagTable::on_accent_color_setting_changed()
-  {
-    // Colors don't update instantly after setting change, 100ms look enough
-    utils::timeout_add_once(100, [this] {
-      update_accent_color();
-    });
+    static_cast<NoteTagTable*>(self)->update_accent_color();
   }
 
   void NoteTagTable::update_accent_color()
