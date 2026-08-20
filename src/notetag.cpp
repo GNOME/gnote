@@ -35,6 +35,8 @@
 namespace gnote {
 
 namespace {
+  // temp, replace by setting
+  bool g_highlight_accent_based = true;
 
   void change_highlight(NoteTagTable &tag_table, const std::function<void(Gtk::TextTag &tag)> &closure)
   {
@@ -369,6 +371,10 @@ namespace {
 
   void NoteTagTable::on_highlight_background_setting_changed()
   {
+    if(g_highlight_accent_based) {
+      return;
+    }
+
     change_highlight(*this, [this](Gtk::TextTag &tag) {
       tag.property_background() = m_preferences.highlight_background_color();
     });
@@ -412,6 +418,10 @@ namespace {
 
   void NoteTagTable::on_highlight_foreground_setting_changed()
   {
+    if(g_highlight_accent_based) {
+      return;
+    }
+
     change_highlight(*this, [this](Gtk::TextTag &tag) {
       tag.property_foreground() = m_preferences.highlight_foreground_color();
     });
