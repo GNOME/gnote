@@ -78,6 +78,7 @@ const Glib::ustring ENABLE_AUTO_LINKS = "enable-auto-links";
 const Glib::ustring ENABLE_URL_LINKS = "enable-url-links";
 const Glib::ustring ENABLE_WIKIWORDS = "enable-wikiwords";
 const Glib::ustring ENABLE_CUSTOM_FONT = "enable-custom-font";
+const Glib::ustring HIGHLIGH_ACCENT_COLOR_BASED = "highlight-accent-color-based";
 const Glib::ustring HIGHLIGH_BACKGROUND_COLOR = "highlight-background-color";
 const Glib::ustring HIGHLIGH_FOREGROUND_COLOR = "highlight-foreground-color";
 const Glib::ustring ENABLE_AUTO_BULLETED_LISTS = "enable-bulleted-lists";
@@ -131,6 +132,7 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT, boolean);
+    SETUP_CACHED_KEY(m_schema_gnote, highlight_accent_color_based, HIGHLIGH_ACCENT_COLOR_BASED, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR, string);
     SETUP_CACHED_KEY(m_schema_gnote, highlight_foreground_color, HIGHLIGH_FOREGROUND_COLOR, string);
     SETUP_CACHED_KEY(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR, int);
@@ -149,6 +151,7 @@ namespace gnote {
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT)
+  DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, highlight_accent_color_based, HIGHLIGH_ACCENT_COLOR_BASED);
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_foreground_color, HIGHLIGH_FOREGROUND_COLOR)
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, enable_auto_bulleted_lists, ENABLE_AUTO_BULLETED_LISTS)
