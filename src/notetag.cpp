@@ -396,12 +396,13 @@ namespace {
   void NoteTagTable::update_accent_color()
   {
     Gdk::RGBA active_link_color, visited_link_color;
-    Gtk::LinkButton link;
-    auto style_ctx = link.get_style_context();
-    style_ctx->set_state(Gtk::StateFlags::LINK);
-    active_link_color = style_ctx->get_color();
-    style_ctx->set_state(Gtk::StateFlags::VISITED);
-    visited_link_color = style_ctx->get_color();
+    auto manager = adw_style_manager_get_default();
+    auto accent = adw_style_manager_get_accent_color(manager);
+    auto dark = adw_style_manager_get_dark(manager);
+    Gdk::RGBA rgba;
+    adw_accent_color_to_standalone_rgba(accent, dark, rgba.gobj());
+    active_link_color = rgba;
+    visited_link_color = rgba;
 
     if(auto tag = lookup("note-title")) {
       tag->property_foreground_rgba().set_value(active_link_color);
