@@ -308,6 +308,7 @@ private:
   static void on_coloring_changed(GObject*, GParamSpec*, gpointer);
 
   void _init_common_tags();
+  void on_highlight_accent_color_based_changed();
   void on_highlight_background_setting_changed();
   void on_highlight_foreground_setting_changed();
   void update_accent_color();

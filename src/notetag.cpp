@@ -35,9 +35,6 @@
 namespace gnote {
 
 namespace {
-  // temp, replace by setting
-  bool g_highlight_accent_based = true;
-
   void change_highlight(NoteTagTable &tag_table, const std::function<void(Gtk::TextTag &tag)> &closure)
   {
     if(auto tag = tag_table.lookup("highlight")) {
@@ -293,6 +290,8 @@ namespace {
   {
     NoteTag::Ptr tag;
 
+    m_preferences.signal_highlight_accent_color_based_changed
+      .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_accent_color_based_changed));
     m_preferences.signal_highlight_background_color_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_background_setting_changed));
     m_preferences.signal_highlight_foreground_color_changed
@@ -394,9 +393,20 @@ namespace {
     update_accent_color();
   }
 
+  void NoteTagTable::on_highlight_accent_color_based_changed()
+  {
+    if(m_preferences.highlight_accent_color_based()) {
+      update_accent_color();
+    }
+    else {
+      on_highlight_background_setting_changed();
+      on_highlight_foreground_setting_changed();
+    }
+  }
+
   void NoteTagTable::on_highlight_background_setting_changed()
   {
-    if(g_highlight_accent_based) {
+    if(m_preferences.highlight_accent_color_based()) {
       return;
     }
 
@@ -433,7 +443,7 @@ namespace {
     m_link_tag->property_foreground_rgba().set_value(active_link_color);
     m_url_tag->property_foreground_rgba().set_value(active_link_color);
 
-    if(!g_highlight_accent_based) {
+    if(!m_preferences.highlight_accent_color_based()) {
       return;
     }
 
@@ -448,7 +458,7 @@ namespace {
 
   void NoteTagTable::on_highlight_foreground_setting_changed()
   {
-    if(g_highlight_accent_based) {
+    if(m_preferences.highlight_accent_color_based()) {
       return;
     }
 
