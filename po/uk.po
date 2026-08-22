@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-08-09 20:21+0000\n"
-"PO-Revision-Date: 2026-08-12 20:36+0300\n"
+"POT-Creation-Date: 2026-08-22 09:15+0000\n"
+"PO-Revision-Date: 2026-08-22 19:11+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -174,34 +174,55 @@ msgstr ""
 "використовуватись шрифт з вказаною тут назвою."
 
 #: data/org.gnome.gnote.gschema.xml:46
-msgid "Background color for the highlighted text"
-msgstr "Колір тла для підсвіченого тексту"
+msgid "Base highlight background color on system accent color"
+msgstr "Основний колір тла підсвічування у системний колір акценту"
 
 #: data/org.gnome.gnote.gschema.xml:47
 msgid ""
-"When text is highlighted, use this color for background. A string "
-"gdk_rgba_parse() accepts."
+"When text is highlighted, determine background color based on system accent "
+"color Typically this means a lighter version of highlight."
 msgstr ""
-"Коли текст підсвічено, використати цей колір для тла. Рядок, який приймає "
-"gdk_rgba_parse()."
+"Якщо текст підсвічено, визначати колір тла на основі загальносистемного кольо"
+"ру акценту. Типово, це означає світлішу версію підсвічування."
 
 #: data/org.gnome.gnote.gschema.xml:51
+msgid "Background color for the highlighted text"
+msgstr "Колір тла для підсвіченого тексту"
+
+#: data/org.gnome.gnote.gschema.xml:52
+#| msgid ""
+#| "When text is highlighted, use this color for background. A string "
+#| "gdk_rgba_parse() accepts."
+msgid ""
+"When text is highlighted, use this color for background. A string "
+"gdk_rgba_parse() accepts. Only has effect when highlight-accent-color-based "
+"is false."
+msgstr ""
+"Коли текст підсвічено, використати цей колір для тла. Рядок, який приймає "
+"gdk_rgba_parse(). Працює, лише якщо значенням highlight-accent-color-based є "
+"false."
+
+#: data/org.gnome.gnote.gschema.xml:56
 msgid "Color for the highlighted text"
 msgstr "Колір підсвіченого тексту"
 
-#: data/org.gnome.gnote.gschema.xml:52
+#: data/org.gnome.gnote.gschema.xml:57
+#| msgid ""
+#| "When text is highlighted, use this color for text. A string "
+#| "gdk_rgba_parse() accepts."
 msgid ""
 "When text is highlighted, use this color for text. A string gdk_rgba_parse() "
-"accepts."
+"accepts. Only has effect when highlight-accent-color-based is false."
 msgstr ""
 "Коли текст підсвічено, використати цей колір для тексту. Рядок, який приймає "
-"gdk_rgba_parse()."
+"gdk_rgba_parse(). Працює, лише якщо значенням highlight-accent-color-based є "
+"false."
 
-#: data/org.gnome.gnote.gschema.xml:56
+#: data/org.gnome.gnote.gschema.xml:61
 msgid "Start Here Note"
 msgstr "Перша нотатка"
 
-#: data/org.gnome.gnote.gschema.xml:57
+#: data/org.gnome.gnote.gschema.xml:62
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -210,11 +231,11 @@ msgstr ""
 "Ідентифікатор (URI) нотатки, яка вважається «Першою нотаткою». Вона завжди "
 "розміщується внизу меню нотаток Gnote та доступно через комбінацію клавіш."
 
-#: data/org.gnome.gnote.gschema.xml:61
+#: data/org.gnome.gnote.gschema.xml:66
 msgid "Minimum number of notes to show in menu"
 msgstr "Мінімальна кількість нотаток у меню."
 
-#: data/org.gnome.gnote.gschema.xml:62
+#: data/org.gnome.gnote.gschema.xml:67
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
@@ -222,11 +243,11 @@ msgstr ""
 "Ціле число, що визначає мінімальну кількість нотаток, які повинні "
 "показуватись у меню нотаток Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:66
+#: data/org.gnome.gnote.gschema.xml:71
 msgid "List of pinned notes"
 msgstr "Список прикріплених нотаток"
 
-#: data/org.gnome.gnote.gschema.xml:67
+#: data/org.gnome.gnote.gschema.xml:72
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
@@ -234,56 +255,56 @@ msgstr ""
 "Розділений пробілам список ідентифікаторів (URI) нотаток, які повинні бути "
 "завжди видимі у меню нотаток Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:71
+#: data/org.gnome.gnote.gschema.xml:76
 msgid "Is main window maximized"
 msgstr "Чи максимізовано головне вікно"
 
-#: data/org.gnome.gnote.gschema.xml:72
+#: data/org.gnome.gnote.gschema.xml:77
 msgid "If true, Gnote window will be maximized."
 msgstr "Якщо має значення «true», вікно Gnote буде максимізовано."
 
-#: data/org.gnome.gnote.gschema.xml:76
+#: data/org.gnome.gnote.gschema.xml:81
 msgid "Saved height of Search window"
 msgstr "Збережено висоту вікна «Пошук»"
 
-#: data/org.gnome.gnote.gschema.xml:77
+#: data/org.gnome.gnote.gschema.xml:82
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr ""
 "Визначити висоту пікселя вікна «Пошук»; зберігається при виході з Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:81
+#: data/org.gnome.gnote.gschema.xml:86
 msgid "Saved width of Search window"
 msgstr "Збережено ширину вікна «Пошук»"
 
-#: data/org.gnome.gnote.gschema.xml:82
+#: data/org.gnome.gnote.gschema.xml:87
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr ""
 "Визначити ширину пікселя вікна «Пошук»; зберігається при виході з Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:86
+#: data/org.gnome.gnote.gschema.xml:91
 msgid "Saved splitter position of Search window splitter."
 msgstr "Збережено позицію розділювача вікна «Пошук»"
 
-#: data/org.gnome.gnote.gschema.xml:87
+#: data/org.gnome.gnote.gschema.xml:92
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr ""
 "Визначити положення роздільника вікна «Пошук» у пікселях; зберігається при "
 "виході з Gnote."
 
-#: data/org.gnome.gnote.gschema.xml:91
+#: data/org.gnome.gnote.gschema.xml:96
 msgid "Saved sorting of the Search window."
 msgstr "Збережене упорядкування у вікні «Пошук»."
 
-#: data/org.gnome.gnote.gschema.xml:92
+#: data/org.gnome.gnote.gschema.xml:97
 msgid "Determines Search window initial sorting."
 msgstr "Визначає початкове упорядкування у вікні «Пошук»."
 
-#: data/org.gnome.gnote.gschema.xml:96
+#: data/org.gnome.gnote.gschema.xml:101
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "Обмеження часу приєднання для FUSE (мс)"
 
-#: data/org.gnome.gnote.gschema.xml:97
+#: data/org.gnome.gnote.gschema.xml:102
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
@@ -291,46 +312,46 @@ msgstr ""
 "Час (у мілісекундах), протягом якого Gnote повинен чекати на відповідь, при "
 "використанні FUSE для приєднання до віддаленої теки синхронізації."
 
-#: data/org.gnome.gnote.gschema.xml:101
+#: data/org.gnome.gnote.gschema.xml:106
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "Віддалена тека синхронізації SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:102
+#: data/org.gnome.gnote.gschema.xml:107
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "Шлях до теки синхронізації Gnote на SSH сервері (необов'язково)"
 
-#: data/org.gnome.gnote.gschema.xml:106
+#: data/org.gnome.gnote.gschema.xml:111
 msgid "SSHFS Synchronization Server URL"
 msgstr "Посилання на сервер синхронізації SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:107
+#: data/org.gnome.gnote.gschema.xml:112
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "Посилання на SSH сервер, який містить теку синхронізації Gnote"
 
-#: data/org.gnome.gnote.gschema.xml:111
+#: data/org.gnome.gnote.gschema.xml:116
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "Користувач для доступу до віддаленої теки синхронізації SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:112
+#: data/org.gnome.gnote.gschema.xml:117
 msgid ""
 "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Користувач, який використовується при з'єднані з сервером синхронізації "
 "через SSH."
 
-#: data/org.gnome.gnote.gschema.xml:116
+#: data/org.gnome.gnote.gschema.xml:121
 msgid "SSHFS Synchronization Server Port"
 msgstr "Порт сервера синхронізації SSHFS"
 
-#: data/org.gnome.gnote.gschema.xml:117
+#: data/org.gnome.gnote.gschema.xml:122
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "Порт для з'єднання з сервером синхронізації через SSH."
 
-#: data/org.gnome.gnote.gschema.xml:121
+#: data/org.gnome.gnote.gschema.xml:126
 msgid "Link Updating Behavior on Note Rename"
 msgstr "Як оновлювати посилання на перейменовану нотатку"
 
-#: data/org.gnome.gnote.gschema.xml:122
+#: data/org.gnome.gnote.gschema.xml:127
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -347,32 +368,32 @@ msgstr ""
 "треба замінити на нову назву нотатки, щоб воно залишилось вказувати на "
 "перейменоване завдання."
 
-#: data/org.gnome.gnote.gschema.xml:126 data/org.gnome.gnote.gschema.xml:136
-#: data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:131 data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:146
 msgid "Deprecated"
 msgstr "Застаріле"
 
-#: data/org.gnome.gnote.gschema.xml:127 data/org.gnome.gnote.gschema.xml:142
+#: data/org.gnome.gnote.gschema.xml:132 data/org.gnome.gnote.gschema.xml:147
 msgid "This key is deprecated and its value is ignored."
 msgstr "Цей ключ є застарілим — його значення буде проігноровано."
 
-#: data/org.gnome.gnote.gschema.xml:131
+#: data/org.gnome.gnote.gschema.xml:136
 msgid "Use status icon, when started as an application"
 msgstr "Використовувати піктограму стану, коли запущено як програму"
 
-#: data/org.gnome.gnote.gschema.xml:132
+#: data/org.gnome.gnote.gschema.xml:137
 msgid "Deprecated, has no effect."
 msgstr "Застарілий, не працює."
 
-#: data/org.gnome.gnote.gschema.xml:137
+#: data/org.gnome.gnote.gschema.xml:142
 msgid "This setting is deprecated and its value is ignored"
 msgstr "Цей параметр є застарілим — його значення буде проігноровано"
 
-#: data/org.gnome.gnote.gschema.xml:146
+#: data/org.gnome.gnote.gschema.xml:151
 msgid "Use client side window decorations"
 msgstr "Обрамлення вікон на боці клієнта"
 
-#: data/org.gnome.gnote.gschema.xml:147
+#: data/org.gnome.gnote.gschema.xml:152
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
 "Possible values are 'enabled' to draw them, 'disabled' to leave them to "
@@ -386,11 +407,11 @@ msgstr ""
 "Gnote має малювати обрамлення самостійно. Зміни потребують перезапуску "
 "програми."
 
-#: data/org.gnome.gnote.gschema.xml:151
+#: data/org.gnome.gnote.gschema.xml:156
 msgid "Preferred color scheme to use"
 msgstr "Бажана схема кольорів для використання"
 
-#: data/org.gnome.gnote.gschema.xml:152
+#: data/org.gnome.gnote.gschema.xml:157
 msgid ""
 "The theme variant to use. Possible values are empty string to follow the "
 "system, 'dark' and 'light'."
@@ -398,11 +419,11 @@ msgstr ""
 "Варіант теми, яким слід скористатися. Можливими значеннями є порожній рядок "
 "(використовувати загальносистемний варіант), «dark» та «light»."
 
-#: data/org.gnome.gnote.gschema.xml:156
+#: data/org.gnome.gnote.gschema.xml:161
 msgid "Tab width in note editor"
 msgstr "Ширина табуляції у редакторі нотаток"
 
-#: data/org.gnome.gnote.gschema.xml:157
+#: data/org.gnome.gnote.gschema.xml:162
 msgid ""
 "Tab stop positions in editor will be setup using this number as a step in "
 "space characters. Zero to use the default tab width."
@@ -410,22 +431,22 @@ msgstr ""
 "Позиції табуляції у редакторі буде встановлено з використанням цієї "
 "кількості пробілів як кроку. Нуль — використовувати типову ширину табуляції."
 
-#: data/org.gnome.gnote.gschema.xml:168
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Last Directory"
 msgstr "Останній каталог експортування в HTML"
 
-#: data/org.gnome.gnote.gschema.xml:169
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr ""
 "Останній каталог куди експортували нотатку використовуючи додаток "
 "експортування у HTML."
 
-#: data/org.gnome.gnote.gschema.xml:173
+#: data/org.gnome.gnote.gschema.xml:178
 msgid "HTML Export Linked Notes"
 msgstr "Пов'язані нотатки при експортування в HTML"
 
-#: data/org.gnome.gnote.gschema.xml:174
+#: data/org.gnome.gnote.gschema.xml:179
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
@@ -433,11 +454,11 @@ msgstr ""
 "Останнє значення у полі «Експортувати пов'язані вузли» у додатку "
 "експортування у HTML."
 
-#: data/org.gnome.gnote.gschema.xml:178
+#: data/org.gnome.gnote.gschema.xml:183
 msgid "HTML Export All Linked Notes"
 msgstr "Вмикати усі пов'язані нотатки при експортуванні в HTML"
 
-#: data/org.gnome.gnote.gschema.xml:179
+#: data/org.gnome.gnote.gschema.xml:184
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -450,11 +471,11 @@ msgstr ""
 "потрібно враховувативсі нотатки (рекурсивно знайдені) при експортуванні в "
 "HTML."
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Synchronization Client ID"
 msgstr "Ідентифікатор клієнта синхронізації"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
@@ -462,11 +483,11 @@ msgstr ""
 "Унікальний ідентифікатор цього клієнта Gnote, що використовується для "
 "зв'язку з сервером синхронізації."
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Synchronization Local Server Path"
 msgstr "Розміщення локального сервера для синхронізації"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
@@ -474,22 +495,22 @@ msgstr ""
 "Шлях на сервері синхронізації для використання розширення служби "
 "синхронізації."
 
-#: data/org.gnome.gnote.gschema.xml:195
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Selected Synchronization Service Addin"
 msgstr "Вибране розширення служби синхронізації"
 
-#: data/org.gnome.gnote.gschema.xml:196
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr ""
 "Унікальний ідентифікатор для поточного налаштованого додатку синхронізації."
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "Збережена поведінка при конфлікті синхронізації нотаток"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -503,11 +524,11 @@ msgstr ""
 "підтвердження, таким чином користувач може обробляти кожну конфліктну "
 "ситуацію окремо."
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:210
 msgid "Automatic Background Synchronization Timeout"
 msgstr "Затримка автоматичного фонового синхронізування"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:211
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -518,19 +539,19 @@ msgstr ""
 "налаштовано). Будь-яке значення менше за 1 вимикає автоматичне "
 "синхронізування. Мінімальне значення — 5. Вказується у хвилинах."
 
-#: data/org.gnome.gnote.gschema.xml:213
+#: data/org.gnome.gnote.gschema.xml:218
 msgid "Online directory URI"
 msgstr "Адреса каталогу у мережі"
 
-#: data/org.gnome.gnote.gschema.xml:214
+#: data/org.gnome.gnote.gschema.xml:219
 msgid "URI to online directory where notes are synchronized to."
 msgstr "Адреса каталогу у мережі, з яким синхронізуються нотатки."
 
-#: data/org.gnome.gnote.gschema.xml:220
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Accept SSL Certificates"
 msgstr "Приймати сертифікати SSL"
 
-#: data/org.gnome.gnote.gschema.xml:221
+#: data/org.gnome.gnote.gschema.xml:226
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
@@ -538,38 +559,38 @@ msgstr ""
 "Використовувати для wdfs параметр «-ac», щоб приймати сертифікати SSL не "
 "повідомляючи користувача."
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid "Share URL"
 msgstr "Оприлюднити URL"
 
-#: data/org.gnome.gnote.gschema.xml:226
+#: data/org.gnome.gnote.gschema.xml:231
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "Спільне URL у WebDAV, де нотатки синхронізуються."
 
-#: data/org.gnome.gnote.gschema.xml:230
+#: data/org.gnome.gnote.gschema.xml:235
 msgid "Share username"
 msgstr "Оприлюднити користувача"
 
-#: data/org.gnome.gnote.gschema.xml:231
+#: data/org.gnome.gnote.gschema.xml:236
 msgid "Username to access WebDAV share."
 msgstr "Користувач для доступу до WebDAV."
 
-#: data/org.gnome.gnote.gschema.xml:237
+#: data/org.gnome.gnote.gschema.xml:242
 msgid "Timestamp format"
 msgstr "Формат позначки часу"
 
-#: data/org.gnome.gnote.gschema.xml:238
+#: data/org.gnome.gnote.gschema.xml:243
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr ""
 "Формат дати, який використовується для позначки часу у форматі strftime(3)."
 
-#: data/org.gnome.gnote.gschema.xml:244
+#: data/org.gnome.gnote.gschema.xml:249
 msgid "Time between checks"
 msgstr "Час між перевірками"
 
-#: data/org.gnome.gnote.gschema.xml:245
+#: data/org.gnome.gnote.gschema.xml:250
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr ""
