@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-08-09 20:21+0000\n"
-"PO-Revision-Date: 2026-08-12 08:50+0800\n"
+"POT-Creation-Date: 2026-08-22 09:15+0000\n"
+"PO-Revision-Date: 2026-08-23 07:50+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -166,30 +166,45 @@ msgid ""
 msgstr "若 enable_custom_font 为真，显示便笺时将使用此处设置的字体名。"
 
 #: data/org.gnome.gnote.gschema.xml:46
-msgid "Background color for the highlighted text"
-msgstr "高亮文本的背景颜色"
+msgid "Base highlight background color on system accent color"
+msgstr "基于系统强调色的高亮背景色"
 
 #: data/org.gnome.gnote.gschema.xml:47
 msgid ""
-"When text is highlighted, use this color for background. A string "
-"gdk_rgba_parse() accepts."
-msgstr "文本高亮时，使用该颜色作为背景。接受字符串 gdk_rgba_parse()。"
+"When text is highlighted, determine background color based on system accent "
+"color Typically this means a lighter version of highlight."
+msgstr "文本高亮时，基于系统强调色决定背景色，这通常意味着高亮的浅色版本。"
 
 #: data/org.gnome.gnote.gschema.xml:51
-msgid "Color for the highlighted text"
-msgstr "高亮文本的颜色"
+msgid "Background color for the highlighted text"
+msgstr "高亮文本的背景颜色"
 
 #: data/org.gnome.gnote.gschema.xml:52
 msgid ""
-"When text is highlighted, use this color for text. A string gdk_rgba_parse() "
-"accepts."
-msgstr "文本高亮时，使用该颜色作为文本颜色。接受字符串 gdk_rgba_parse()。"
+"When text is highlighted, use this color for background. A string "
+"gdk_rgba_parse() accepts. Only has effect when highlight-accent-color-based "
+"is false."
+msgstr ""
+"文本高亮时，使用该颜色作为背景。接受字符串 gdk_rgba_parse()。仅当 highlight-"
+"accent-color-based 为假时有效。"
 
 #: data/org.gnome.gnote.gschema.xml:56
+msgid "Color for the highlighted text"
+msgstr "高亮文本的颜色"
+
+#: data/org.gnome.gnote.gschema.xml:57
+msgid ""
+"When text is highlighted, use this color for text. A string gdk_rgba_parse() "
+"accepts. Only has effect when highlight-accent-color-based is false."
+msgstr ""
+"文本高亮时，使用该颜色作为文本颜色。接受字符串 gdk_rgba_parse()。仅当 "
+"highlight-accent-color-based 为假时有效。"
+
+#: data/org.gnome.gnote.gschema.xml:61
 msgid "Start Here Note"
 msgstr "“从这里开始”便笺"
 
-#: data/org.gnome.gnote.gschema.xml:57
+#: data/org.gnome.gnote.gschema.xml:62
 msgid ""
 "The note URI of the note that should be considered the \"Start Here\" note, "
 "which is always placed at the bottom of the Gnote note menu and also "
@@ -198,114 +213,114 @@ msgstr ""
 "应被视为“从这里开始”便笺的 URI，它将总显示在 Gnote 菜单的底端，并且可以用快捷"
 "键访问。"
 
-#: data/org.gnome.gnote.gschema.xml:61
+#: data/org.gnome.gnote.gschema.xml:66
 msgid "Minimum number of notes to show in menu"
 msgstr "菜单中要显示的最少便笺数"
 
-#: data/org.gnome.gnote.gschema.xml:62
+#: data/org.gnome.gnote.gschema.xml:67
 msgid ""
 "Integer determining the minimum number of notes to show in the Gnote note "
 "menu."
 msgstr "整数值，决定在 Gnote 菜单中显示的最少便笺数。"
 
-#: data/org.gnome.gnote.gschema.xml:66
+#: data/org.gnome.gnote.gschema.xml:71
 msgid "List of pinned notes"
 msgstr "加钉便笺列表"
 
-#: data/org.gnome.gnote.gschema.xml:67
+#: data/org.gnome.gnote.gschema.xml:72
 msgid ""
 "Whitespace-separated list of note URIs for notes that should always appear "
 "in the Gnote note menu."
 msgstr "总是出现在 Gnote 菜单中的 URI 列表，以空格分开。"
 
-#: data/org.gnome.gnote.gschema.xml:71
+#: data/org.gnome.gnote.gschema.xml:76
 msgid "Is main window maximized"
 msgstr "主窗口是否最大化"
 
-#: data/org.gnome.gnote.gschema.xml:72
+#: data/org.gnome.gnote.gschema.xml:77
 msgid "If true, Gnote window will be maximized."
 msgstr "如果为 true，Gnote 窗口将被最大化。"
 
-#: data/org.gnome.gnote.gschema.xml:76
+#: data/org.gnome.gnote.gschema.xml:81
 msgid "Saved height of Search window"
 msgstr "保存的搜索窗口高度"
 
-#: data/org.gnome.gnote.gschema.xml:77
+#: data/org.gnome.gnote.gschema.xml:82
 msgid "Determines pixel height of Search window; stored on Gnote exit."
 msgstr "决定搜索窗口的像素高度；当 Gnote 退出时保存。"
 
-#: data/org.gnome.gnote.gschema.xml:81
+#: data/org.gnome.gnote.gschema.xml:86
 msgid "Saved width of Search window"
 msgstr "保存的搜索窗口宽度"
 
-#: data/org.gnome.gnote.gschema.xml:82
+#: data/org.gnome.gnote.gschema.xml:87
 msgid "Determines pixel width of Search window; stored on Gnote exit."
 msgstr "决定搜索窗口的像素宽度；当 Gnote 退出时保存。"
 
-#: data/org.gnome.gnote.gschema.xml:86
+#: data/org.gnome.gnote.gschema.xml:91
 msgid "Saved splitter position of Search window splitter."
 msgstr "保存的搜索窗口分隔器的位置。"
 
-#: data/org.gnome.gnote.gschema.xml:87
+#: data/org.gnome.gnote.gschema.xml:92
 msgid ""
 "Determines Search window splitter position in pixels; stored on Gnote exit."
 msgstr "决定搜索窗口的分隔器位置(像素)；当 Gnote 退出时保存。"
 
-#: data/org.gnome.gnote.gschema.xml:91
+#: data/org.gnome.gnote.gschema.xml:96
 msgid "Saved sorting of the Search window."
 msgstr "保存的搜索窗口排序。"
 
-#: data/org.gnome.gnote.gschema.xml:92
+#: data/org.gnome.gnote.gschema.xml:97
 msgid "Determines Search window initial sorting."
 msgstr "决定搜索窗口初始排序。"
 
-#: data/org.gnome.gnote.gschema.xml:96
+#: data/org.gnome.gnote.gschema.xml:101
 msgid "FUSE Mounting Timeout (ms)"
 msgstr "FUSE 挂载超时(ms)"
 
-#: data/org.gnome.gnote.gschema.xml:97
+#: data/org.gnome.gnote.gschema.xml:102
 msgid ""
 "Time (in milliseconds) Gnote should wait for a response when using FUSE to "
 "mount a sync share."
 msgstr "当使用 FUSE 来挂载一个同步共享时，Gnote 等待回应的时间(毫秒)。"
 
-#: data/org.gnome.gnote.gschema.xml:101
+#: data/org.gnome.gnote.gschema.xml:106
 msgid "SSHFS Remote Synchronization Folder"
 msgstr "SSHFS 远程同步文件夹"
 
-#: data/org.gnome.gnote.gschema.xml:102
+#: data/org.gnome.gnote.gschema.xml:107
 msgid "Path on SSH server to Gnote synchronization directory (optional)."
 msgstr "SSH 服务器到 Gnote 同步目录的路径(可选)。"
 
-#: data/org.gnome.gnote.gschema.xml:106
+#: data/org.gnome.gnote.gschema.xml:111
 msgid "SSHFS Synchronization Server URL"
 msgstr "SSHFS 同步服务器 URL"
 
-#: data/org.gnome.gnote.gschema.xml:107
+#: data/org.gnome.gnote.gschema.xml:112
 msgid "URL of SSH server containing Gnote synchronization directory."
 msgstr "包含 Gnote 同步目录的 SSH 服务器 URL。"
 
-#: data/org.gnome.gnote.gschema.xml:111
+#: data/org.gnome.gnote.gschema.xml:116
 msgid "SSHFS Remote Synchronization User Name"
 msgstr "SSHFS 远程同步用户名"
 
-#: data/org.gnome.gnote.gschema.xml:112
+#: data/org.gnome.gnote.gschema.xml:117
 msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr "通过 SSH 连接同步服务器时使用的用户名。"
 
-#: data/org.gnome.gnote.gschema.xml:116
+#: data/org.gnome.gnote.gschema.xml:121
 msgid "SSHFS Synchronization Server Port"
 msgstr "SSHFS 同步服务器端口"
 
-#: data/org.gnome.gnote.gschema.xml:117
+#: data/org.gnome.gnote.gschema.xml:122
 msgid "The port to use when connecting to the synchronization server via SSH."
 msgstr "通过 SSH 连接同步服务器时使用的端口。"
 
-#: data/org.gnome.gnote.gschema.xml:121
+#: data/org.gnome.gnote.gschema.xml:126
 msgid "Link Updating Behavior on Note Rename"
 msgstr "重命名便笺时更新链接的行为"
 
-#: data/org.gnome.gnote.gschema.xml:122
+#: data/org.gnome.gnote.gschema.xml:127
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific link updating behavior when a note is renamed, instead of prompting "
@@ -320,32 +335,32 @@ msgstr ""
 "提示。1 代表自动删除链接。2 代表将链接更新到新便笺名的文本，以便可以继续链接"
 "到重命名后的便笺。"
 
-#: data/org.gnome.gnote.gschema.xml:126 data/org.gnome.gnote.gschema.xml:136
-#: data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:131 data/org.gnome.gnote.gschema.xml:141
+#: data/org.gnome.gnote.gschema.xml:146
 msgid "Deprecated"
 msgstr "已废弃"
 
-#: data/org.gnome.gnote.gschema.xml:127 data/org.gnome.gnote.gschema.xml:142
+#: data/org.gnome.gnote.gschema.xml:132 data/org.gnome.gnote.gschema.xml:147
 msgid "This key is deprecated and its value is ignored."
 msgstr "该设定键已废弃且已忽略其设定值。"
 
-#: data/org.gnome.gnote.gschema.xml:131
+#: data/org.gnome.gnote.gschema.xml:136
 msgid "Use status icon, when started as an application"
 msgstr "在以应用程序方式启动时，使用状态图标"
 
-#: data/org.gnome.gnote.gschema.xml:132
+#: data/org.gnome.gnote.gschema.xml:137
 msgid "Deprecated, has no effect."
 msgstr "无效，已弃用。"
 
-#: data/org.gnome.gnote.gschema.xml:137
+#: data/org.gnome.gnote.gschema.xml:142
 msgid "This setting is deprecated and its value is ignored"
 msgstr "该设置已废弃且已忽略其设定值"
 
-#: data/org.gnome.gnote.gschema.xml:146
+#: data/org.gnome.gnote.gschema.xml:151
 msgid "Use client side window decorations"
 msgstr "使用客户端窗口装饰"
 
-#: data/org.gnome.gnote.gschema.xml:147
+#: data/org.gnome.gnote.gschema.xml:152
 msgid ""
 "Should Gnote draw its window titlebar, or leave that to window manager. "
 "Possible values are 'enabled' to draw them, 'disabled' to leave them to "
@@ -356,50 +371,50 @@ msgstr ""
 "绘制它们，“disabled”来由窗口管理器决定，或应该由 Gnote 自己绘制窗口装饰的由英"
 "文逗号分隔的桌面环境列表。需要应用程序重启。"
 
-#: data/org.gnome.gnote.gschema.xml:151
+#: data/org.gnome.gnote.gschema.xml:156
 msgid "Preferred color scheme to use"
 msgstr "首选使用的配色方案"
 
-#: data/org.gnome.gnote.gschema.xml:152
+#: data/org.gnome.gnote.gschema.xml:157
 msgid ""
 "The theme variant to use. Possible values are empty string to follow the "
 "system, 'dark' and 'light'."
 msgstr "要使用的主题变种。可能的值为留空以跟随系统，“dark”和“light”。"
 
-#: data/org.gnome.gnote.gschema.xml:156
+#: data/org.gnome.gnote.gschema.xml:161
 msgid "Tab width in note editor"
 msgstr "笔记编辑器中的制表符宽度"
 
-#: data/org.gnome.gnote.gschema.xml:157
+#: data/org.gnome.gnote.gschema.xml:162
 msgid ""
 "Tab stop positions in editor will be setup using this number as a step in "
 "space characters. Zero to use the default tab width."
 msgstr "编辑器中以空格字符为单位的制表符宽度设置。设为 0 使用默认宽度。"
 
-#: data/org.gnome.gnote.gschema.xml:168
+#: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Last Directory"
 msgstr "上次 HTML 导出的目录"
 
-#: data/org.gnome.gnote.gschema.xml:169
+#: data/org.gnome.gnote.gschema.xml:174
 msgid ""
 "The last directory a note was exported to using the Export To HTML plugin."
 msgstr "上次使用“导出为 HTML”插件导出便笺时的导出目录。"
 
-#: data/org.gnome.gnote.gschema.xml:173
+#: data/org.gnome.gnote.gschema.xml:178
 msgid "HTML Export Linked Notes"
 msgstr "HTML 导出链接的便笺"
 
-#: data/org.gnome.gnote.gschema.xml:174
+#: data/org.gnome.gnote.gschema.xml:179
 msgid ""
 "The last setting for the 'Export linked notes' checkbox in the Export to "
 "HTML plugin."
 msgstr "“导出为 HTML”插件中“导出链接的便笺”复选框上次的选中状态。"
 
-#: data/org.gnome.gnote.gschema.xml:178
+#: data/org.gnome.gnote.gschema.xml:183
 msgid "HTML Export All Linked Notes"
 msgstr "HTML 导出链接的全部便笺"
 
-#: data/org.gnome.gnote.gschema.xml:179
+#: data/org.gnome.gnote.gschema.xml:184
 msgid ""
 "The last setting for the 'Include all other linked notes' checkbox in the "
 "Export to HTML plugin. This setting is used in conjunction with the 'HTML "
@@ -409,41 +424,41 @@ msgstr ""
 "“导出为 HTML” 插件中“包含链接的全部便笺”的上次设置。此设置将与“HTML 导出链接"
 "的便笺”设置组合使用，用于指定在导出至 HTML 时是否应递归包含所涉及的全部便笺。"
 
-#: data/org.gnome.gnote.gschema.xml:185
+#: data/org.gnome.gnote.gschema.xml:190
 msgid "Synchronization Client ID"
 msgstr "同步客户端 ID"
 
-#: data/org.gnome.gnote.gschema.xml:186
+#: data/org.gnome.gnote.gschema.xml:191
 msgid ""
 "Unique identifier for this Gnote client, used when communicating with a "
 "synchronization server."
 msgstr "当前 Gnote 客户端的唯一标识符，用于与同步服务器通讯。"
 
-#: data/org.gnome.gnote.gschema.xml:190
+#: data/org.gnome.gnote.gschema.xml:195
 msgid "Synchronization Local Server Path"
 msgstr "本地同步服务器路径"
 
-#: data/org.gnome.gnote.gschema.xml:191
+#: data/org.gnome.gnote.gschema.xml:196
 msgid ""
 "Path to the synchronization server when using the filesystem synchronization "
 "service addin."
 msgstr "使用文件系统同步服务插件时的同步服务器路径。"
 
-#: data/org.gnome.gnote.gschema.xml:195
+#: data/org.gnome.gnote.gschema.xml:200
 msgid "Selected Synchronization Service Addin"
 msgstr "所选的同步服务插件"
 
-#: data/org.gnome.gnote.gschema.xml:196
+#: data/org.gnome.gnote.gschema.xml:201
 msgid ""
 "Unique identifier for the currently configured note synchronization service "
 "addin."
 msgstr "目前已配置的便笺同步服务插件的唯一标识符。"
 
-#: data/org.gnome.gnote.gschema.xml:200
+#: data/org.gnome.gnote.gschema.xml:205
 msgid "Note Synchronization Conflict Saved Behavior"
 msgstr "便笺同步冲突保存行为"
 
-#: data/org.gnome.gnote.gschema.xml:201
+#: data/org.gnome.gnote.gschema.xml:206
 msgid ""
 "Integer value indicating if there is a preference to always perform a "
 "specific behavior when a conflict is detected, instead of prompting the "
@@ -454,11 +469,11 @@ msgstr ""
 "整数值，代表检测到冲突时是否总是执行特定的行为，而不是提示用户。此值将会映射"
 "到内部枚举量上。0 代表用户希望发生冲突时得到提示，以便可以逐一处理这些冲突。"
 
-#: data/org.gnome.gnote.gschema.xml:205
+#: data/org.gnome.gnote.gschema.xml:210
 msgid "Automatic Background Synchronization Timeout"
 msgstr "后台自动同步超时"
 
-#: data/org.gnome.gnote.gschema.xml:206
+#: data/org.gnome.gnote.gschema.xml:211
 msgid ""
 "Integer value indicating how frequently to perform a background sync of your "
 "notes (when sync is configured). Any value less than 1 indicates that "
@@ -468,55 +483,55 @@ msgstr ""
 "一个指定多久进行一次后台便笺同步的整数值(若配置了同步)。小于 1 的值表示禁用自"
 "动同步。可接受的最小取值为 5。单位为分钟。"
 
-#: data/org.gnome.gnote.gschema.xml:213
+#: data/org.gnome.gnote.gschema.xml:218
 msgid "Online directory URI"
 msgstr "在线目录 URI"
 
-#: data/org.gnome.gnote.gschema.xml:214
+#: data/org.gnome.gnote.gschema.xml:219
 msgid "URI to online directory where notes are synchronized to."
 msgstr "同步便笺的在线目录 URI。"
 
-#: data/org.gnome.gnote.gschema.xml:220
+#: data/org.gnome.gnote.gschema.xml:225
 msgid "Accept SSL Certificates"
 msgstr "接受 SSL 证书"
 
-#: data/org.gnome.gnote.gschema.xml:221
+#: data/org.gnome.gnote.gschema.xml:226
 msgid ""
 "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
 "user."
 msgstr "使用 wdfs 选项“-ac”让用户接受 SSL 证书时不出现提示信息。"
 
-#: data/org.gnome.gnote.gschema.xml:225
+#: data/org.gnome.gnote.gschema.xml:230
 msgid "Share URL"
 msgstr "共享 URL"
 
-#: data/org.gnome.gnote.gschema.xml:226
+#: data/org.gnome.gnote.gschema.xml:231
 msgid "WebDAV share URL where notes are synchronized to."
 msgstr "便笺同步到的 WebDAV 共享 URL。"
 
-#: data/org.gnome.gnote.gschema.xml:230
+#: data/org.gnome.gnote.gschema.xml:235
 msgid "Share username"
 msgstr "共享用户名"
 
-#: data/org.gnome.gnote.gschema.xml:231
+#: data/org.gnome.gnote.gschema.xml:236
 msgid "Username to access WebDAV share."
 msgstr "访问 WebDAV 共享的用户名。"
 
-#: data/org.gnome.gnote.gschema.xml:237
+#: data/org.gnome.gnote.gschema.xml:242
 msgid "Timestamp format"
 msgstr "时间戳格式"
 
-#: data/org.gnome.gnote.gschema.xml:238
+#: data/org.gnome.gnote.gschema.xml:243
 msgid ""
 "The date format that is used for the timestamp. It follows the format of "
 "strftime(3)."
 msgstr "用于时间戳的日期格式。格式与 strftime(3) 相同。"
 
-#: data/org.gnome.gnote.gschema.xml:244
+#: data/org.gnome.gnote.gschema.xml:249
 msgid "Time between checks"
 msgstr "检查间隔"
 
-#: data/org.gnome.gnote.gschema.xml:245
+#: data/org.gnome.gnote.gschema.xml:250
 msgid ""
 "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr "检查便笺目录的时间间隔（秒），最小值为 5。"
