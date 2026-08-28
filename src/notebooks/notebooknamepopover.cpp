@@ -88,7 +88,7 @@ void NotebookNamePopover::on_create()
 void NotebookNamePopover::on_rename()
 {
   const auto new_name = m_name->get_text();
-  if(new_name.empty() || m_nb_manager.notebook_exists(new_name)) {
+  if(new_name.empty()) {
     m_name->grab_focus();
     return;
   }
@@ -98,11 +98,21 @@ void NotebookNamePopover::on_rename()
     return;
   }
   Notebook& notebook = nb.value();
-
-  if(new_name != notebook.get_name()) {
-    m_renamed(notebook, new_name);
+  // new name same as old
+  if(new_name == notebook.get_name()) {
+    m_name->grab_focus();
+    return;
   }
 
+  // renaming to an already existing
+  if(auto n = m_nb_manager.get_notebook(new_name)) {
+    if(&n.value().get() != &notebook) {
+      m_name->grab_focus();
+      return;
+    }
+  }
+
+  m_renamed(notebook, new_name);
   popdown();
 }
 

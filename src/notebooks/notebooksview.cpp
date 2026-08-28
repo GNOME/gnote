@@ -376,13 +376,20 @@ namespace gnote {
       NotebookManager & notebook_manager = m_note_manager.notebook_manager();
       auto & new_notebook = notebook_manager.get_or_create_notebook(new_name);
       DBG_OUT_1("Renaming notebook '{%s}' to '{%s}'", old_notebook.get_name().c_str(), new_name.c_str());
-      if(auto t = old_notebook.get_tag()) {
-        Tag &tag = t.value();
-        for(NoteBase *note : tag.get_notes()) {
-          notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
-        }
+      if(&old_notebook == &new_notebook) {
+        DBG_OUT_2("Only case changed, simple renmae");
       }
-      notebook_manager.delete_notebook(const_cast<Notebook&>(old_notebook));
+      else {
+        DBG_OUT_2("True rename, creating notebook '{%s}' and moving notes over", new_name.c_str());
+        if(auto t = old_notebook.get_tag()) {
+          Tag &tag = t.value();
+          for(NoteBase *note : tag.get_notes()) {
+            notebook_manager.move_note_to_notebook(static_cast<Note&>(*note), new_notebook);
+          }
+        }
+        notebook_manager.delete_notebook(const_cast<Notebook&>(old_notebook));
+      }
+
       notebook_manager.save_notebooks();
       select_notebook(new_notebook);
     }
