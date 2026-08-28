@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2023 Aurimas Cernius
+ * Copyright (C) 2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -81,6 +81,7 @@ void NotebookNamePopover::on_create()
   }
 
   m_nb_manager.get_or_create_notebook(new_name);
+  m_nb_manager.save_notebooks();
   popdown();
 }
 
