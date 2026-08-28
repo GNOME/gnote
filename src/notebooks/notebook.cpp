@@ -201,11 +201,11 @@ namespace notebooks {
 
   Note & Notebook::create_notebook_note()
   {
-    Glib::ustring temp_title;
-    auto & note_template = get_template_note();
-
-    temp_title = m_note_manager.get_unique_name(_("New Note"));
-    auto & note = m_note_manager.create_note_from_template(std::move(temp_title), note_template);
+    auto note_title = m_note_manager.get_unique_name(_("New Note"));
+    auto note_template = find_template_note();
+    auto &note = note_template
+      ? m_note_manager.create_note_from_template(std::move(note_title), note_template.value())
+      : m_note_manager.create(std::move(note_title));
 
     // Add the notebook tag
     note.add_tag(*get_tag());
