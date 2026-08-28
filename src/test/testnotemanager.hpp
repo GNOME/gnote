@@ -57,20 +57,7 @@ protected:
   virtual gnote::NoteBase::Ptr note_create_new(Glib::ustring && title, Glib::ustring && file_name) override;
   gnote::NoteBase::Ptr note_load(Glib::ustring && file_name) override;
 private:
-  class NotebookManager
-    : public gnote::notebooks::NotebookManager
-  {
-  public:
-    NotebookManager(gnote::NoteManagerBase &manager)
-      : gnote::notebooks::NotebookManager(manager)
-    {}
-  protected:
-    // parent does UI related stuff
-    void create_template_note(gnote::notebooks::Notebook &notebook) override
-    {}
-  };
-
-  NotebookManager m_notebook_manager;
+  gnote::notebooks::NotebookManager m_notebook_manager;
   gnote::NoteArchiver m_note_archiver;
   TagManager m_tag_manager;
 };
