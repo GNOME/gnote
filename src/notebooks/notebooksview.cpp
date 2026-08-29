@@ -378,6 +378,7 @@ namespace gnote {
       DBG_OUT_1("Renaming notebook '{%s}' to '{%s}'", old_notebook.get_name().c_str(), new_name.c_str());
       if(&old_notebook == &new_notebook) {
         DBG_OUT_2("Only case changed, simple renmae");
+        new_notebook.set_name(new_name);
       }
       else {
         DBG_OUT_2("True rename, creating notebook '{%s}' and moving notes over", new_name.c_str());
