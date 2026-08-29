@@ -100,9 +100,10 @@ namespace notebooks {
   {
     Glib::ustring trimmedName = sharp::string_trim(value);
     if(!trimmedName.empty()) {
-      m_name = trimmedName;
+      Glib::ustring old_name = std::move(m_name);
+      m_name = std::move(trimmedName);
       m_created = created;
-      m_normalized_name = trimmedName.lowercase();
+      m_normalized_name = m_name.lowercase();
 
       // The templateNoteTite should show the name of the
       // notebook.  For example, if the name of the notebooks
@@ -111,6 +112,10 @@ namespace notebooks {
       // name of the notebook accordingly using "%1".
       Glib::ustring format = _("%1 Notebook Template");
       m_default_template_note_title = Glib::ustring::compose(format, m_name);
+
+      if(m_name != old_name) {
+        signal_name_changed(old_name);
+      }
     }
   }
 

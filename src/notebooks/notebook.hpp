@@ -68,6 +68,8 @@ public:
     {
       return m_note_manager;
     }
+
+  sigc::signal<void(Glib::ustring)> signal_name_changed;
 protected:
   Notebook(NoteManagerBase&, const Glib::ustring&, const Glib::DateTime&, bool is_special = false);
 
