@@ -145,6 +145,9 @@ namespace gnote {
             icon->property_icon_name() = IconManager::NOTEBOOK;
             label->set_text(nb->get_name());
             box->set_notebook(nb);
+            m_name_changed_cid = nb->signal_name_changed.connect([nb, label](const Glib::ustring&) {
+              label->set_text(nb->get_name());
+            });
           }
           else {
             ERR_OUT("Note a notebook. This should not happen, please report a bug!");
@@ -153,6 +156,7 @@ namespace gnote {
 
       void on_unbind(const Glib::RefPtr<Gtk::ListItem>& item)
         {
+          m_name_changed_cid.disconnect();
           if(auto box = dynamic_cast<NotebookBox*>(item->get_child())) {
             box->set_notebook(nullptr);
           }
@@ -160,6 +164,8 @@ namespace gnote {
             ERR_OUT("Not notebook box. This is a bug, please report it!");
           }
         }
+
+      sigc::connection m_name_changed_cid;
     };
 
 
