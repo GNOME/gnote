@@ -242,6 +242,25 @@ namespace gnote {
     case GDK_KEY_BackSpace:
       ret_value = std::static_pointer_cast<NoteBuffer>(get_buffer())->backspace_key_handler();
       break;
+    case GDK_KEY_Home:
+      {
+        auto buffer = std::static_pointer_cast<NoteBuffer>(get_buffer());
+        auto insert = buffer->get_insert();
+        auto iter = buffer->get_iter_at_mark(insert);
+        iter.set_line_offset(0);
+        if(buffer->find_depth_tag(iter)) {
+          iter.forward_chars(2);
+          buffer->move_mark(insert, iter);
+          if(Gdk::ModifierType::SHIFT_MASK != (state & Gdk::ModifierType::SHIFT_MASK)) {
+            buffer->move_mark(buffer->get_selection_bound(), iter);
+          }
+          ret_value = true;
+        }
+        else {
+          ret_value = false;
+        }
+        break;
+      }
     case GDK_KEY_Left:
     case GDK_KEY_Right:
     case GDK_KEY_Up:
