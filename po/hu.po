@@ -14,15 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-03-02 14:12+0000\n"
-"PO-Revision-Date: 2026-03-06 10:16+0100\n"
+"POT-Creation-Date: 2026-04-19 14:44+0000\n"
+"PO-Revision-Date: 2026-09-02 08:37+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
@@ -56,6 +56,10 @@ msgid ""
 msgstr ""
 "A Gnote támogatja a szinkronizálást is, így egyszerűvé téve a több eszközön "
 "való használatot."
+
+#: data/org.gnome.Gnote.appdata.xml.in:33
+msgid "The Gnote Team"
+msgstr "A Gnote csapata"
 
 #: data/org.gnome.Gnote.desktop.in:3
 msgid "Take notes, link ideas, and stay organized"
@@ -412,9 +416,9 @@ msgid ""
 "Tab stop positions in editor will be setup using this number as a step in "
 "space characters. Zero to use the default tab width."
 msgstr ""
-"A tabulátor megállítási pozíciói a szerkesztőben ezzel a számmal lesznek beáll"
-"ítva szóköz karakterekben való lépésként. Állítson be nullát az alapértelmezet"
-"t tabulátorszélesség használatához."
+"A tabulátor megállítási pozíciói a szerkesztőben ezzel a számmal lesznek "
+"beállítva szóköz karakterekben való lépésként. Állítson be nullát az "
+"alapértelmezett tabulátorszélesség használatához."
 
 #: data/org.gnome.gnote.gschema.xml:168
 msgid "HTML Export Last Directory"
@@ -1530,52 +1534,52 @@ msgstr "útvonal"
 msgid "Open the search all notes window with the search text."
 msgstr "A Keresés minden jegyzetben ablak megnyitása a keresőkifejezéssel."
 
-#: src/gnote.cpp:513 src/gnote.cpp:519
+#: src/gnote.cpp:513 src/gnote.cpp:520
 msgid "text"
 msgstr "szöveg"
 
-#: src/gnote.cpp:514
+#: src/gnote.cpp:515
 msgid "Print version information."
 msgstr "Verzióinformációk kiírása."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:516
 msgid "Create and display a new note, with a optional title."
 msgstr "Új jegyzet létrehozása és megjelenítése, elhagyható címmel."
 
-#: src/gnote.cpp:515
+#: src/gnote.cpp:516
 msgid "title"
 msgstr "cím"
 
-#: src/gnote.cpp:516
+#: src/gnote.cpp:517
 msgid "Open a new window."
 msgstr "Új ablak megnyitása."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:518
 msgid "Display the existing note matching title."
 msgstr "Az illeszkedő című meglévő jegyzet megjelenítése."
 
-#: src/gnote.cpp:517
+#: src/gnote.cpp:518
 msgid "title/url"
 msgstr "cím/url"
 
-#: src/gnote.cpp:518
+#: src/gnote.cpp:519
 msgid "Display the 'Start Here' note."
 msgstr "A „Kezdje itt” jegyzet megjelenítése."
 
-#: src/gnote.cpp:519
+#: src/gnote.cpp:520
 msgid "Search and highlight text in the opened note."
 msgstr "Szöveg keresése és kiemelése megnyitott jegyzetben."
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:524
 msgid "A note taking application"
 msgstr "Jegyzetkezelő alkalmazás"
 
-#: src/gnote.cpp:523
+#: src/gnote.cpp:524
 msgid "Gnote options at launch"
 msgstr "A Gnote indítási kapcsolói"
 
 #. TRANSLATORS: %1: format placeholder for the version string.
-#: src/gnote.cpp:707
+#: src/gnote.cpp:708
 msgid "Version %1"
 msgstr "%1 verzió"
 
@@ -2413,19 +2417,19 @@ msgstr "%1 meghiúsult"
 msgid "NULL stylesheet, please fill a bug"
 msgstr "NULL stíluslap, küldjön hibajelentést"
 
-#: src/synchronization/filesystemsyncserver.cpp:166
+#: src/synchronization/filesystemsyncserver.cpp:194
 msgid "Failed to upload %1 note"
 msgid_plural "Failed to upload %1 notes"
 msgstr[0] "Nem sikerült feltölteni %1 jegyzetet"
 msgstr[1] "Nem sikerült feltölteni %1 jegyzetet"
 
-#: src/synchronization/filesystemsyncserver.cpp:255
+#: src/synchronization/filesystemsyncserver.cpp:282
 msgid "Failed to download %1 note update"
 msgid_plural "Failed to download %1 note updates"
 msgstr[0] "Nem sikerült letölteni %1 jegyzetfrissítést"
 msgstr[1] "Nem sikerült letölteni %1 jegyzetfrissítést"
 
-#: src/synchronization/filesystemsyncserver.cpp:425
+#: src/synchronization/filesystemsyncserver.cpp:452
 #, c-format
 msgid ""
 "Exception during server cleanup while committing. Server integrity is OK, "
@@ -2435,15 +2439,21 @@ msgstr ""
 "integritása hibátlan, de néhány fölösleges fájl jelen lehet. A hibaüzenet: "
 "%s\n"
 
-#: src/synchronization/filesystemsyncserver.cpp:631
+#: src/synchronization/filesystemsyncserver.cpp:604
 #, c-format
 msgid "Error updating lock: %s"
 msgstr "Hiba a zár frissítésekor: %s"
 
-#: src/synchronization/filesystemsyncserver.cpp:670
+#: src/synchronization/filesystemsyncserver.cpp:643
 #, c-format
 msgid "Error deleting the old synchronization lock \"%s\": %s"
 msgstr "Hiba a régi szinkronizációs zár („%s”) törlésekor: %s"
+
+#: src/synchronization/filesystemsyncserver.cpp:663
+#, c-format
+#| msgid "Error removing icon %s: %s"
+msgid "Error reading file '%s': %s"
+msgstr "Hiba a(z) „%s” fájl olvasásakor: %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
