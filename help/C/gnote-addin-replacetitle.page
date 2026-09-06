@@ -13,7 +13,7 @@
     </credit>
     <credit type="editor">
       <name>Aurimas Cernius</name>
-      <years>2011,2013</years>
+      <years>2011,2013,2026</years>
     </credit>
     <credit type="editor">
       <name>Adam Dingle</name>
@@ -24,7 +24,8 @@
 
   <title>Replace title</title>
     <p>When the <app>Replace title</app> plugin is installed, the command <gui>Replace title</gui> is present in the <gui>Note Actions</gui> menu.</p>
-    <p>The <gui>Replace title</gui> command replaces a note's title with the currently selected text (from any application).</p>
-    <p>Alternatively, you can use the <keyseq><key>Ctrl</key><key>R</key></keyseq> shortcut.</p>
+    <p>The <gui>Replace title</gui> command replaces a note's title with the current clipboard content. From any application copy text and triggering title replace action in the note will replace it's title with most recently copied text.</p>
+    <p>Alternatively, you can use the <keyseq><key>Ctrl</key><key>R</key></keyseq> shortcut to trigger title replace.</p>
+    <p>Also, you can change the behavior of this plugin in gsettings by changing the '/org/gnome/gnote/replace-title/clipboard' key. There are two options: to use clipboard and to use primary selection (most recently selected text).</p>
 
 </page>
