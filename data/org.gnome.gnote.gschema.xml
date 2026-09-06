@@ -250,4 +250,11 @@
       <description>Time interval between note directory checks (in seconds). Min value is 5.</description>
     </key>
   </schema>
+  <schema id="org.gnome.gnote.replace-title" path="/org/gnome/gnote/replace-title/">
+    <key name="clipboard" type="i">
+      <default>0</default>
+      <summary>Clipboard to use</summary>
+      <description>Possible values: 0 - clipboard content (last copied text), 1 - primary clipboard (last selected text).</description>
+    </key>
+  </schema>
 </schemalist>
