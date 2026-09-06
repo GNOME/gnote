@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-08-22 09:15+0000\n"
-"PO-Revision-Date: 2026-08-22 14:02+0200\n"
+"POT-Creation-Date: 2026-09-06 16:03+0000\n"
+"PO-Revision-Date: 2026-09-06 18:28+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
+"n%100==4 ? 3: 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 3.8\n"
 
@@ -75,7 +75,7 @@ msgstr "sporočilce;sporočilca;zamisel;ideja;povezava;organizacija;urejanje;"
 msgid "New Window"
 msgstr "Novo okno"
 
-#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:207
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:209
 #: src/notemanagerbase.cpp:293 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Novo sporočilce"
@@ -581,6 +581,18 @@ msgstr ""
 "Časovni razmik med preverjanji mape sporočilc (v sekundah). Najmanjša možna "
 "vrednost je 5 s."
 
+#: data/org.gnome.gnote.gschema.xml:256
+msgid "Clipboard to use"
+msgstr "Odložišče za uporabo"
+
+#: data/org.gnome.gnote.gschema.xml:257
+msgid ""
+"Possible values: 0 - clipboard content (last copied text), 1 - primary "
+"clipboard (last selected text)."
+msgstr ""
+"Možne vrednosti: 0 – vsebina odložišča (zadnje kopirano besedilo), 1 – "
+"primarno odložišče (zadnje izbrano besedilo)."
+
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
 msgid "Main Window"
@@ -905,7 +917,7 @@ msgstr "Izberi ikono ..."
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:293 src/note.cpp:65 src/utils.cpp:358
+#: src/notebooks/notebookmanager.cpp:276 src/note.cpp:65 src/utils.cpp:358
 #: src/utils.cpp:365
 msgid "_Cancel"
 msgstr "Pre_kliči"
@@ -944,7 +956,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "V primeru, da ikono odstranite, bo trajno izgubljena."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:297 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:280 src/note.cpp:69
 msgid "_Delete"
 msgstr "_Izbriši"
 
@@ -1257,16 +1269,16 @@ msgstr "Podpora tiskanju"
 msgid "Allows you to print a note."
 msgstr "Omogoča tiskanje sporočilc."
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:82
 msgid "Print…"
 msgstr "Natisni …"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:130
 msgid "Error printing note"
 msgstr "Napaka med tiskanjem sporočilca"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:299
 msgid "Page %1 of %2"
 msgstr "Stran %1 od %2"
 
@@ -1284,17 +1296,17 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray in Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:3
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:70
 msgid "Replace title"
 msgstr "Zamenjaj naslov"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-msgid "Replace title with selection."
-msgstr "Zamenjaj naslov z izbiro."
+msgid "Replace title with clipboard or selection."
+msgstr "Zamenjaj naslov z vsebino odložišča ali izborom."
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:5
-msgid "Pierre-Yves Luyten"
-msgstr "Pierre-Yves Luyten"
+msgid "Pierre-Yves Luyten, Aurimas Černius"
+msgstr "Pierre-Yves Luyten, Aurimas Černius"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
 #: src/plugins/specialnotes/specialnotes.desktop.in.in:3
@@ -1622,15 +1634,15 @@ msgstr "Nova belež_ka ..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:112
+#: src/notebooks/notebook.cpp:113
 msgid "%1 Notebook Template"
 msgstr "Predloga beležke %1"
 
-#: src/notebooks/notebookmanager.cpp:287
+#: src/notebooks/notebookmanager.cpp:270
 msgid "Really delete this notebook?"
 msgstr "Ali naj bo beležka zares izbrisana?"
 
-#: src/notebooks/notebookmanager.cpp:288
+#: src/notebooks/notebookmanager.cpp:271
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1638,7 +1650,7 @@ msgstr ""
 "Sporočilca, ki spadajo v to beležko, ne bodo izbrisana, vendar pa ne bodo "
 "več povezana s to beležko. Dejanja ni mogoče razveljaviti."
 
-#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:204
+#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:210
 msgid "Notebook"
 msgstr "Beležnica"
 
@@ -1652,19 +1664,19 @@ msgstr "_Nova beležnica ..."
 msgid "No notebook"
 msgstr "Ni beležke"
 
-#: src/notebooks/notebooksview.cpp:209
+#: src/notebooks/notebooksview.cpp:215
 msgid "New Notebook"
 msgstr "Nova beležka"
 
-#: src/notebooks/notebooksview.cpp:213
+#: src/notebooks/notebooksview.cpp:219
 msgid "Rename Notebook"
 msgstr "Preimenuj beležko"
 
-#: src/notebooks/notebooksview.cpp:218
+#: src/notebooks/notebooksview.cpp:224
 msgid "Open Template Note"
 msgstr "Odpri predlogo sporočilc"
 
-#: src/notebooks/notebooksview.cpp:222
+#: src/notebooks/notebooksview.cpp:228
 msgid "Delete Notebook"
 msgstr "Izbriši beležko"
 
