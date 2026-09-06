@@ -45,6 +45,23 @@ void ReplaceTitleNoteAddin::on_note_opened()
 {
   register_main_window_action_callback("replacetitle-replace",
     sigc::mem_fun(*this, &ReplaceTitleNoteAddin::replacetitle_button_clicked));
+  m_shortcuts = Gtk::ShortcutController::create();
+  auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_R, Gdk::ModifierType::CONTROL_MASK);
+  auto action = Gtk::NamedAction::create("win.replacetitle-replace");
+  auto shortcut = Gtk::Shortcut::create(trigger, action);
+  m_shortcuts->add_shortcut(shortcut);
+}
+
+void ReplaceTitleNoteAddin::on_note_foregrounded()
+{
+  NoteAddin::on_note_foregrounded();
+  get_note().get_window()->add_controller(m_shortcuts);
+}
+
+void ReplaceTitleNoteAddin::on_note_backgrounded()
+{
+  NoteAddin::on_note_backgrounded();
+  get_note().get_window()->remove_controller(m_shortcuts);
 }
 
 std::vector<gnote::PopoverWidget> ReplaceTitleNoteAddin::get_actions_popover_widgets() const
@@ -57,6 +74,7 @@ std::vector<gnote::PopoverWidget> ReplaceTitleNoteAddin::get_actions_popover_wid
 
 void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&)
 {
+puts("Replace title triggered");
   Glib::RefPtr<Gdk::Clipboard> clipboard;
   if(use_primary_clipboard()) {
     // unix primary clipboard

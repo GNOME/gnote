@@ -47,10 +47,14 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  void on_note_foregrounded() override;
+  void on_note_backgrounded() override;
   virtual std::vector<gnote::PopoverWidget> get_actions_popover_widgets() const override;
 private:
   void replacetitle_button_clicked(const Glib::VariantBase&);
   bool use_primary_clipboard();
+
+  Glib::RefPtr<Gtk::ShortcutController> m_shortcuts;
 };
 
 
