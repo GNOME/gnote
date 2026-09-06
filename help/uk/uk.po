@@ -2,21 +2,21 @@
 # Copyright (C) 2020 gnote's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnote package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022, 2023, 2024, 2025.
+# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Yuri Chornoivan <yurchor@ukr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2025-03-11 19:10+0000\n"
-"PO-Revision-Date: 2025-03-11 23:10+0200\n"
+"POT-Creation-Date: 2026-09-06 15:46+0000\n"
+"PO-Revision-Date: 2026-09-06 18:56+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>="
+"2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -96,9 +96,8 @@ msgstr "Aurimas Cernius"
 #. (itstool) path: credit/years
 #: C/gnote-addin-bugzillalink.page:17 C/gnote-addin-fixedwidth.page:16
 #: C/gnote-addin-html.page:16 C/gnote-addin-noteoftheday.page:16
-#: C/gnote-addin-print.page:16 C/gnote-addin-replacetitle.page:16
-#: C/gnote-addin-timestamp.page:17 C/gnote-addin-underline.page:16
-#: C/gnote-links.page:16
+#: C/gnote-addin-print.page:16 C/gnote-addin-timestamp.page:17
+#: C/gnote-addin-underline.page:16 C/gnote-links.page:16
 msgid "2011,2013"
 msgstr "2011,2013"
 
@@ -428,6 +427,12 @@ msgstr ""
 msgid "Rename a note"
 msgstr "Перейменування нотатки"
 
+#. (itstool) path: credit/years
+#: C/gnote-addin-replacetitle.page:16
+#| msgid "2011,2013,2014"
+msgid "2011,2013,2026"
+msgstr "2011,2013,2026"
+
 #. (itstool) path: page/title
 #: C/gnote-addin-replacetitle.page:25
 msgid "Replace title"
@@ -444,21 +449,44 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:27
+#| msgid ""
+#| "The <gui>Replace title</gui> command replaces a note's title with the "
+#| "currently selected text (from any application)."
 msgid ""
 "The <gui>Replace title</gui> command replaces a note's title with the "
-"currently selected text (from any application)."
+"current clipboard content. From any application copy text and triggering "
+"title replace action in the note will replace it's title with most recently "
+"copied text."
 msgstr ""
 "Вибір пункту <gui>Замінити заголовок</gui> призводить до заміни заголовка "
-"нотатки на поточний позначний фрагмент тексту (з будь-якої програми)."
+"нотатки на поточний вміст буфера обміну даними. Скопіюйте текст з вікна будь-"
+"якої програми і активування дії із заміни у нотатці призведе до заміни її заг"
+"оловка найсвіжішим скопійованим текстом."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:28
+#| msgid ""
+#| "Alternatively, you can use the <keyseq><key>Ctrl</key><key>R</key></"
+#| "keyseq> shortcut."
 msgid ""
 "Alternatively, you can use the <keyseq><key>Ctrl</key><key>R</key></keyseq> "
-"shortcut."
+"shortcut to trigger title replace."
 msgstr ""
 "Крім того, ви можете скористатися натисканням комбінації клавіш "
-"<keyseq><key>Ctrl</key><key>R</key></keyseq>."
+"<keyseq><key>Ctrl</key><key>R</key></keyseq> для перемикання заміни заголовка"
+"."
+
+#. (itstool) path: page/p
+#: C/gnote-addin-replacetitle.page:29
+msgid ""
+"Also, you can change the behavior of this plugin in gsettings by changing "
+"the '/org/gnome/gnote/replace-title/clipboard' key. There are two options: "
+"to use clipboard and to use primary selection (most recently selected text)."
+msgstr ""
+"Також ви можете змінити поведінку цього додатка у gsettings, змінивши ключ '/"
+"org/gnome/gnote/replace-title/clipboard'. Є два варіанти: використовувати буф"
+"ер обміну даними і використовувати основне позначення (останній позначений те"
+"кст)."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-specialnotes.page:8
@@ -701,10 +729,10 @@ msgstr ""
 #. (itstool) path: license/p
 #: C/gnote-addin-tableofcontents.page:42
 msgid ""
-"This <em>help topic</em> is licensed under the <link href=\"http://www.gnu."
-"org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version 1.1</"
-"link> (GFDL). It means that you are free to copy, distribute and/or modify "
-"this document, under some conditions."
+"This <em>help topic</em> is licensed under the <link href=\"http://"
+"www.gnu.org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version "
+"1.1</link> (GFDL). It means that you are free to copy, distribute and/or "
+"modify this document, under some conditions."
 msgstr ""
 "Цю <em>частину довідки</em> ліцензовано за умов дотримання <link "
 "href=\"http://www.gnu.org/licenses/fdl-1.1.html\"> GNU Free Documentation "
@@ -792,10 +820,6 @@ msgstr "Структурована нотатка із її таблицею з�
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-addin-tableofcontents.page:114
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-addin-table-of-contents.png' "
-#| "md5='fdaa13ac6400173a4d05675a69c019f1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-addin-table-of-contents.png' "
@@ -1278,7 +1302,6 @@ msgstr "Створення нотаток"
 
 #. (itstool) path: credit/years
 #: C/gnote-creating-notes.page:16
-#| msgid "2011-2012,2019,2023-2024"
 msgid "2011-2012,2019,2023-2025"
 msgstr "2011-2012,2019,2023–2025"
 
@@ -1303,14 +1326,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:30
-#| msgid ""
-#| "In the <app>Gnote</app> window, click the toolbar item <gui>New</gui>."
 msgid ""
 "In the <app>Gnote</app> window, click the button <gui>New</gui> at the "
 "bottom of the notes list."
 msgstr ""
-"У вікні <app>Gnote</app> натисніть кнопку <gui>Створити</gui> у нижній"
-" частині списку нотаток."
+"У вікні <app>Gnote</app> натисніть кнопку <gui>Створити</gui> у нижній "
+"частині списку нотаток."
 
 #. (itstool) path: item/p
 #: C/gnote-creating-notes.page:31
@@ -1352,16 +1373,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:29
-#| msgid ""
-#| "In the list of notes press <key>Delete</key>. This will delete all "
-#| "selected notes."
 msgid ""
 "Press the <gui>Delete</gui> button at the bottom of notes list. This will "
 "delete all selected notes."
 msgstr ""
-"Натисніть кнопку <gui>Вилучити</gui> у нижній частині списку нотаток. У"
-" результаті буде "
-"вилучено усі позначені нотатки."
+"Натисніть кнопку <gui>Вилучити</gui> у нижній частині списку нотаток. У "
+"результаті буде вилучено усі позначені нотатки."
 
 #. (itstool) path: item/p
 #: C/gnote-deleting-notes.page:30
@@ -1439,10 +1456,6 @@ msgstr "Нотатка <app>Gnote</app>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-editing-notes.page:30
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-new-note.png' "
-#| "md5='325e546b0a2bad7aa7772a5da11bb2e2'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-new-note.png' "
@@ -1736,10 +1749,6 @@ msgstr "Головне вікно <app>Gnote</app>"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-introduction.page:39
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-search-all-notes.png' "
-#| "md5='20da8d0c6dcbf109d842d0874701aee1'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-search-all-notes.png' "
@@ -2322,10 +2331,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-template-notes.page:41
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/gnote-template-note.png' "
-#| "md5='23f1d757ae0e2b5486228d3c3f326af6'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gnote-template-note.png' "
@@ -2488,10 +2493,6 @@ msgstr "Створення записника з контекстного мен
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:50
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-notebook-search.png' "
-#| "md5='da324c883996c63cf7d4a275e64bc310'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-notebook-search.png' "
@@ -2562,10 +2563,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:66
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/add-to-notebook.png' "
-#| "md5='a54ae1f477dfcd565fa64b7c30feea1c'"
 msgctxt "_"
 msgid ""
 "external ref='figures/add-to-notebook.png' "
@@ -2643,10 +2640,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:84
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/note-template.png' "
-#| "md5='89b15214392c4b99fc4484fb70f3356b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/note-template.png' "
@@ -2721,10 +2714,6 @@ msgstr "Вилучення нотатників з головного вікна
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gnote-working-with-notebooks.page:98
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/delete-notebook.png' "
-#| "md5='521d085582846ea893f6af5ce15562fc'"
 msgctxt "_"
 msgid ""
 "external ref='figures/delete-notebook.png' "
