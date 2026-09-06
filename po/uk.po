@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-08-22 09:15+0000\n"
-"PO-Revision-Date: 2026-08-22 19:11+0300\n"
+"POT-Creation-Date: 2026-09-06 15:27+0000\n"
+"PO-Revision-Date: 2026-09-06 18:44+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -74,7 +74,7 @@ msgstr ""
 msgid "New Window"
 msgstr "Створити вікно"
 
-#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:207
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:209
 #: src/notemanagerbase.cpp:293 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Створити нотатку"
@@ -182,17 +182,14 @@ msgid ""
 "When text is highlighted, determine background color based on system accent "
 "color Typically this means a lighter version of highlight."
 msgstr ""
-"Якщо текст підсвічено, визначати колір тла на основі загальносистемного кольо"
-"ру акценту. Типово, це означає світлішу версію підсвічування."
+"Якщо текст підсвічено, визначати колір тла на основі загальносистемного "
+"кольору акценту. Типово, це означає світлішу версію підсвічування."
 
 #: data/org.gnome.gnote.gschema.xml:51
 msgid "Background color for the highlighted text"
 msgstr "Колір тла для підсвіченого тексту"
 
 #: data/org.gnome.gnote.gschema.xml:52
-#| msgid ""
-#| "When text is highlighted, use this color for background. A string "
-#| "gdk_rgba_parse() accepts."
 msgid ""
 "When text is highlighted, use this color for background. A string "
 "gdk_rgba_parse() accepts. Only has effect when highlight-accent-color-based "
@@ -207,9 +204,6 @@ msgid "Color for the highlighted text"
 msgstr "Колір підсвіченого тексту"
 
 #: data/org.gnome.gnote.gschema.xml:57
-#| msgid ""
-#| "When text is highlighted, use this color for text. A string "
-#| "gdk_rgba_parse() accepts."
 msgid ""
 "When text is highlighted, use this color for text. A string gdk_rgba_parse() "
 "accepts. Only has effect when highlight-accent-color-based is false."
@@ -597,6 +591,18 @@ msgstr ""
 "Інтервал часу між перевірками каталогу нотаток (у секундах). Мінімальним є "
 "значення 5."
 
+#: data/org.gnome.gnote.gschema.xml:256
+msgid "Clipboard to use"
+msgstr "Буфер для використання"
+
+#: data/org.gnome.gnote.gschema.xml:257
+msgid ""
+"Possible values: 0 - clipboard content (last copied text), 1 - primary "
+"clipboard (last selected text)."
+msgstr ""
+"Можливі значення: 0 — вміст буфера обміну даними (останній скопійований текст"
+"), 1 — основний буфер обміну (останній позначений текст)."
+
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
 msgid "Main Window"
@@ -919,7 +925,7 @@ msgstr "Вибрати піктограму…"
 #: src/plugins/bugzilla/bugzillapreferences.cpp:415
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:45
 #: src/notebooks/createnotebookdialog.cpp:65
-#: src/notebooks/notebookmanager.cpp:293 src/note.cpp:65 src/utils.cpp:358
+#: src/notebooks/notebookmanager.cpp:276 src/note.cpp:65 src/utils.cpp:358
 #: src/utils.cpp:365
 msgid "_Cancel"
 msgstr "_Скасувати"
@@ -960,7 +966,7 @@ msgid "If you remove an icon it is permanently lost."
 msgstr "Якщо ви вилучите піктограму, її буде втрачено остаточно."
 
 #: src/plugins/bugzilla/bugzillapreferences.cpp:419
-#: src/notebooks/notebookmanager.cpp:297 src/note.cpp:69
+#: src/notebooks/notebookmanager.cpp:280 src/note.cpp:69
 msgid "_Delete"
 msgstr "В_илучити"
 
@@ -1302,17 +1308,19 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray і Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:3
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
 msgid "Replace title"
 msgstr "Замінити назву"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-msgid "Replace title with selection."
-msgstr "Замінити назву на вибрану."
+#| msgid "Replace title with selection."
+msgid "Replace title with clipboard or selection."
+msgstr "Замінити назву на вміст буфера обміну або позначений фрагмент."
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:5
-msgid "Pierre-Yves Luyten"
-msgstr "Pierre-Yves Luyten"
+#| msgid "Pierre-Yves Luyten"
+msgid "Pierre-Yves Luyten, Aurimas Černius"
+msgstr "Pierre-Yves Luyten, Aurimas Černius"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
 #: src/plugins/specialnotes/specialnotes.desktop.in.in:3
@@ -1642,15 +1650,15 @@ msgstr "С_творити записник…"
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:112
+#: src/notebooks/notebook.cpp:113
 msgid "%1 Notebook Template"
 msgstr "Шаблон записника %1"
 
-#: src/notebooks/notebookmanager.cpp:287
+#: src/notebooks/notebookmanager.cpp:270
 msgid "Really delete this notebook?"
 msgstr "Вилучити цей записник?"
 
-#: src/notebooks/notebookmanager.cpp:288
+#: src/notebooks/notebookmanager.cpp:271
 msgid ""
 "The notes that belong to this notebook will not be deleted, but they will no "
 "longer be associated with this notebook.  This action cannot be undone."
@@ -1658,7 +1666,7 @@ msgstr ""
 "Нотатки, що належать до цього записника, не буде вилучено, але вони більше "
 "не будуть пов'язані з цим записником. Цю дію неможливо скасувати."
 
-#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:204
+#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:210
 msgid "Notebook"
 msgstr "Записник"
 
@@ -1672,19 +1680,19 @@ msgstr "С_творити записник…"
 msgid "No notebook"
 msgstr "Немає записників"
 
-#: src/notebooks/notebooksview.cpp:209
+#: src/notebooks/notebooksview.cpp:215
 msgid "New Notebook"
 msgstr "Новий записник"
 
-#: src/notebooks/notebooksview.cpp:213
+#: src/notebooks/notebooksview.cpp:219
 msgid "Rename Notebook"
 msgstr "Перейменувати записник"
 
-#: src/notebooks/notebooksview.cpp:218
+#: src/notebooks/notebooksview.cpp:224
 msgid "Open Template Note"
 msgstr "Відкрити шаблон нотатки"
 
-#: src/notebooks/notebooksview.cpp:222
+#: src/notebooks/notebooksview.cpp:228
 msgid "Delete Notebook"
 msgstr "Вилучити записник"
 
