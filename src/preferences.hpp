@@ -96,11 +96,13 @@ namespace gnote {
     GNOTE_PREFERENCES_SETTING_BOOL(sync_fuse_wdfs_accept_sllcert)
     GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_url)
     GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_username)
+    GNOTE_PREFERENCES_SETTING_INT(replace_title_clipboard)
   private:
     Preferences(const Preferences &) = delete;
 
     Glib::RefPtr<Gio::Settings> m_schema_gnote;
     Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
+    Glib::RefPtr<Gio::Settings> m_schema_replace_title;
     Glib::RefPtr<Gio::Settings> m_schema_sync;
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;
 

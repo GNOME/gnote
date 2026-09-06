@@ -70,6 +70,7 @@ namespace {
 
 const char *SCHEMA_GNOTE = "org.gnome.gnote";
 const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
+const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
@@ -113,6 +114,8 @@ const Glib::ustring SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";
 const Glib::ustring SYNC_FUSE_WDFS_URL = "url";
 const Glib::ustring SYNC_FUSE_WDFS_USERNAME = "username";
 
+const Glib::ustring REPLACE_TITLE_CLIPBOARD = "clipboard";
+
 }
 
 namespace gnote {
@@ -124,6 +127,7 @@ namespace gnote {
   {
     m_schema_gnote = Gio::Settings::create(SCHEMA_GNOTE);
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
+    m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
@@ -166,6 +170,8 @@ namespace gnote {
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, search_sorting, SEARCH_SORTING)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, use_client_side_decorations, USE_CLIENT_SIDE_DECORATIONS)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, color_scheme, COLOR_SCHEME)
+
+  DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
 
   DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
