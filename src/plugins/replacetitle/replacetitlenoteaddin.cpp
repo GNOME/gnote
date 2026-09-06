@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2016-2017,2019,2023 Aurimas Cernius
+ * Copyright (C) 2011-2013,2016-2017,2019,2023,2026 Aurimas Cernius
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 #include <glibmm/i18n.h>
 
 #include "iactionmanager.hpp"
+#include "ignote.hpp"
 #include "notewindow.hpp"
 #include "replacetitlenoteaddin.hpp"
 #include "sharp/string.hpp"
@@ -56,10 +57,17 @@ std::vector<gnote::PopoverWidget> ReplaceTitleNoteAddin::get_actions_popover_wid
 
 void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&)
 {
-  // unix primary clipboard
-  auto refClipboard = Gdk::Display::get_default()->get_primary_clipboard();
-  refClipboard->read_text_async([this, refClipboard](const Glib::RefPtr<Gio::AsyncResult> & result) {
-    const Glib::ustring newTitle = refClipboard->read_text_finish(result);
+  Glib::RefPtr<Gdk::Clipboard> clipboard;
+  if(use_primary_clipboard()) {
+    // unix primary clipboard
+    clipboard = Gdk::Display::get_default()->get_primary_clipboard();
+  }
+  else {
+    clipboard = Gdk::Display::get_default()->get_clipboard();
+  }
+
+  clipboard->read_text_async([this, clipboard](const Glib::RefPtr<Gio::AsyncResult> & result) {
+    const Glib::ustring newTitle = clipboard->read_text_finish(result);
     auto & note = get_note();
     auto & buffer = note.get_buffer();
 
@@ -78,6 +86,18 @@ void ReplaceTitleNoteAddin::replacetitle_button_clicked(const Glib::VariantBase&
       note.set_title(title_start.get_text(title_end));
     }
   });
+}
+
+bool ReplaceTitleNoteAddin::use_primary_clipboard()
+{
+  auto &preferences = ignote().preferences();
+  switch(preferences.replace_title_clipboard()) {
+  case 0:
+  default:
+    return false;
+  case 1:
+    return true;
+  }
 }
 
 }
