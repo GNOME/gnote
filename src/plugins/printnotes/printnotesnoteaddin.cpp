@@ -54,6 +54,25 @@ namespace printnotes {
   {
     register_main_window_action_callback("printnotes-print",
       sigc::mem_fun(*this, &PrintNotesNoteAddin::print_button_clicked));
+    m_shortcuts = Gtk::ShortcutController::create();
+    auto trigger = Gtk::KeyvalTrigger::create(GDK_KEY_P, Gdk::ModifierType::CONTROL_MASK);
+    auto action = Gtk::NamedAction::create("win.printnotes-print");
+    auto shortcut = Gtk::Shortcut::create(trigger, action);
+    m_shortcuts->add_shortcut(shortcut);
+  }
+
+
+  void PrintNotesNoteAddin::on_note_foregrounded()
+  {
+    NoteAddin::on_note_foregrounded();
+    get_note().get_window()->add_controller(m_shortcuts);
+  }
+
+
+  void PrintNotesNoteAddin::on_note_backgrounded()
+  {
+    NoteAddin::on_note_backgrounded();
+    get_note().get_window()->remove_controller(m_shortcuts);
   }
 
 

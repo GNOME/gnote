@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2016,2019 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2016,2019,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -84,6 +84,8 @@ public:
   virtual void initialize() override;
   virtual void shutdown() override;
   virtual void on_note_opened() override;
+  void on_note_foregrounded() override;
+  void on_note_backgrounded() override;
   virtual std::vector<gnote::PopoverWidget> get_actions_popover_widgets() const override;
 
   static int cm_to_pixel(double cm, double dpi)
@@ -115,6 +117,7 @@ private:
 /////
   void print_button_clicked(const Glib::VariantBase&);
 
+  Glib::RefPtr<Gtk::ShortcutController> m_shortcuts;
   int                  m_margin_top;
   int                  m_margin_left;
   int                  m_margin_right;
