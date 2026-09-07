@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
-"POT-Creation-Date: 2025-03-11 19:10+0000\n"
-"PO-Revision-Date: 2025-03-22 21:38+0200\n"
-"Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
+"POT-Creation-Date: 2026-09-07 20:13+0000\n"
+"PO-Revision-Date: 2026-09-07 23:15+0300\n"
+"Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -16,14 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr ""
-"Išvertė:\n"
-"Aurimas Černius <aurisc4@gmail.com>"
+msgstr "Aurimas Černius <aurimas.cernius@mailo.com>"
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-bugzillalink.page:9
@@ -98,9 +96,8 @@ msgstr "Aurimas Cernius"
 #. (itstool) path: credit/years
 #: C/gnote-addin-bugzillalink.page:17 C/gnote-addin-fixedwidth.page:16
 #: C/gnote-addin-html.page:16 C/gnote-addin-noteoftheday.page:16
-#: C/gnote-addin-print.page:16 C/gnote-addin-replacetitle.page:16
-#: C/gnote-addin-timestamp.page:17 C/gnote-addin-underline.page:16
-#: C/gnote-links.page:16
+#: C/gnote-addin-print.page:16 C/gnote-addin-timestamp.page:17
+#: C/gnote-addin-underline.page:16 C/gnote-links.page:16
 msgid "2011,2013"
 msgstr "2011,2013"
 
@@ -423,6 +420,11 @@ msgstr ""
 msgid "Rename a note"
 msgstr "Pakeisti raštelio pavadinimą"
 
+#. (itstool) path: credit/years
+#: C/gnote-addin-replacetitle.page:16
+msgid "2011,2013,2026"
+msgstr "2011,2013,2026"
+
 #. (itstool) path: page/title
 #: C/gnote-addin-replacetitle.page:25
 msgid "Replace title"
@@ -441,19 +443,35 @@ msgstr ""
 #: C/gnote-addin-replacetitle.page:27
 msgid ""
 "The <gui>Replace title</gui> command replaces a note's title with the "
-"currently selected text (from any application)."
+"current clipboard content. From any application copy text and press "
+"<gui>Replace title</gui> in the note to replace it's title with most "
+"recently copied text."
 msgstr ""
 "Pasirinkus punktą <gui>Pakeisti pavadinimą</gui> raštelio pavadinimas bus "
-"pakeistas šiuo metu bet kurioje programoje pažymėtu tekstu."
+"pakeistas iškarpinės turiniu. Bet kurioje programoje nukopijuokite tekstą ir "
+"paspauskite raštelyje <gui>Pakeisti pavadinimą</gui> jo pavadinimui pakeisti "
+"paskutiniu nukopijuotu tekstu."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:28
 msgid ""
 "Alternatively, you can use the <keyseq><key>Ctrl</key><key>R</key></keyseq> "
-"shortcut."
+"shortcut to trigger title replace."
 msgstr ""
 "Taip pat galite naudoti klavišų kombinaciją <keyseq><key>Vald</key><key>R</"
-"key></keyseq>."
+"key></keyseq> pavadinimui pakeisti."
+
+#. (itstool) path: page/p
+#: C/gnote-addin-replacetitle.page:29
+msgid ""
+"Also, you can change the behavior of this plugin in gsettings by changing "
+"the value of the '/org/gnome/gnote/replace-title/clipboard' key. There are "
+"two options: to use clipboard and to use primary selection (most recently "
+"selected text)."
+msgstr ""
+"Dar galite pakeisti šio įskiepio elgseną pakeisdami „/org/gnome/gnote/"
+"replace-title/clipboard“ rakto vertę. Galimi du pasirinkimai: naudoti "
+"iškarpinę arba naudoti pirminį žymėjimą (paskutinį pažymėtą tekstą)."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-specialnotes.page:8
@@ -685,10 +703,10 @@ msgstr ""
 #. (itstool) path: license/p
 #: C/gnote-addin-tableofcontents.page:42
 msgid ""
-"This <em>help topic</em> is licensed under the <link href=\"http://www.gnu."
-"org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version 1.1</"
-"link> (GFDL). It means that you are free to copy, distribute and/or modify "
-"this document, under some conditions."
+"This <em>help topic</em> is licensed under the <link href=\"http://"
+"www.gnu.org/licenses/fdl-1.1.html\"> GNU Free Documentation License, Version "
+"1.1</link> (GFDL). It means that you are free to copy, distribute and/or "
+"modify this document, under some conditions."
 msgstr ""
 "Ši <em>žinyno tema</em> pateikiama pagal <link href=\"http://www.gnu.org/"
 "licenses/fdl-1.1.html\">GNU laisvąją dokumentacijos licenciją, versija 1.1</"
