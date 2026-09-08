@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -89,6 +89,7 @@ private:
   void on_note_deleted(NoteBase & note);
   void on_note_added(NoteBase & note);
   void on_note_renamed(const NoteBase&, const Glib::ustring&);
+  void on_note_saved(const NoteBase&);
   void delete_note(NoteBase & note);
   void add_note(NoteBase & note);
 

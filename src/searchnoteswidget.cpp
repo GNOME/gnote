@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2015,2017,2019-2025 Aurimas Cernius
+ * Copyright (C) 2010-2015,2017,2019-2026 Aurimas Cernius
  * Copyright (C) 2010 Debarshi Ray
  * Copyright (C) 2009 Hubert Figuiere
  *
@@ -364,6 +364,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   m.signal_note_deleted.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_deleted));
   m.signal_note_added.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_added));
   m.signal_note_renamed.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_renamed));
+  m.signal_note_saved.connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_saved));
 
   // Watch when notes are added to notebooks so the search
   // results will be updated immediately instead of waiting
@@ -425,6 +426,9 @@ void SearchNotesWidget::perform_search()
   Glib::ustring text = m_search_text;
   if(text.empty()) {
     store_filter.clear_matches();
+    if (auto store_sort = std::dynamic_pointer_cast<Gtk::SortListModel>(m_store_sort)) {
+      store_sort->get_sorter()->changed(Gtk::Sorter::Change::DIFFERENT);
+    }
     return;
   }
   text = text.lowercase();
@@ -810,6 +814,11 @@ void SearchNotesWidget::on_note_renamed(const NoteBase & note,
                                         const Glib::ustring &)
 {
   restore_matches_window();
+}
+
+void SearchNotesWidget::on_note_saved(const NoteBase&)
+{
+  update_results();
 }
 
 void SearchNotesWidget::delete_note(NoteBase & note)
