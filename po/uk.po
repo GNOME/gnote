@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-09-06 15:27+0000\n"
-"PO-Revision-Date: 2026-09-06 18:44+0300\n"
+"POT-Creation-Date: 2026-09-08 18:37+0000\n"
+"PO-Revision-Date: 2026-09-08 21:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -178,9 +178,12 @@ msgid "Base highlight background color on system accent color"
 msgstr "Основний колір тла підсвічування у системний колір акценту"
 
 #: data/org.gnome.gnote.gschema.xml:47
+#| msgid ""
+#| "When text is highlighted, determine background color based on system "
+#| "accent color Typically this means a lighter version of highlight."
 msgid ""
 "When text is highlighted, determine background color based on system accent "
-"color Typically this means a lighter version of highlight."
+"color. Typically this means a lighter version of highlight."
 msgstr ""
 "Якщо текст підсвічено, визначати колір тла на основі загальносистемного "
 "кольору акценту. Типово, це означає світлішу версію підсвічування."
@@ -600,8 +603,8 @@ msgid ""
 "Possible values: 0 - clipboard content (last copied text), 1 - primary "
 "clipboard (last selected text)."
 msgstr ""
-"Можливі значення: 0 — вміст буфера обміну даними (останній скопійований текст"
-"), 1 — основний буфер обміну (останній позначений текст)."
+"Можливі значення: 0 — вміст буфера обміну даними (останній скопійований "
+"текст), 1 — основний буфер обміну (останній позначений текст)."
 
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
@@ -1281,16 +1284,16 @@ msgstr "Підтримка друкування"
 msgid "Allows you to print a note."
 msgstr "Дозволяє друкувати нотатки"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:82
 msgid "Print…"
 msgstr "Надрукувати…"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:130
 msgid "Error printing note"
 msgstr "Помилка друкування нотатки"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:299
 msgid "Page %1 of %2"
 msgstr "Сторінка %1 з %2"
 
@@ -1308,17 +1311,15 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray і Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:3
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:53
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:70
 msgid "Replace title"
 msgstr "Замінити назву"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-#| msgid "Replace title with selection."
 msgid "Replace title with clipboard or selection."
 msgstr "Замінити назву на вміст буфера обміну або позначений фрагмент."
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:5
-#| msgid "Pierre-Yves Luyten"
 msgid "Pierre-Yves Luyten, Aurimas Černius"
 msgstr "Pierre-Yves Luyten, Aurimas Černius"
 
@@ -2336,15 +2337,15 @@ msgstr[3] "%1 відповідність"
 msgid "Delete Note"
 msgstr "Вилучити нотатку"
 
-#: src/searchnoteswidget.cpp:575
+#: src/searchnoteswidget.cpp:579
 msgid "Note"
 msgstr "Нотатка"
 
-#: src/searchnoteswidget.cpp:587
+#: src/searchnoteswidget.cpp:591
 msgid "Modified"
 msgstr "Змінено"
 
-#: src/searchnoteswidget.cpp:749
+#: src/searchnoteswidget.cpp:753
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2352,30 +2353,30 @@ msgstr ""
 "Не знайдено результатів у вибраному записнику.\n"
 "Натисніть тут, щоб шукати по всіх нотатках. "
 
-#: src/searchnoteswidget.cpp:753
+#: src/searchnoteswidget.cpp:757
 msgid "Click here to search across all notebooks"
 msgstr "Натисніть тут, щоб шукати по всіх записниках"
 
-#: src/searchnoteswidget.cpp:768
+#: src/searchnoteswidget.cpp:772
 msgid "Matches"
 msgstr "Збіги"
 
-#: src/searchnoteswidget.cpp:1012 src/searchnoteswidget.cpp:1025
-#: src/searchnoteswidget.cpp:1036
+#: src/searchnoteswidget.cpp:1021 src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:1045
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Не вдалося обробити параметр search-sorting (Значення: %s):"
 
-#: src/searchnoteswidget.cpp:1013
+#: src/searchnoteswidget.cpp:1022
 msgid "Expected format 'column:order'"
 msgstr "Очікуваний формат — «стовпчик:порядок»"
 
-#: src/searchnoteswidget.cpp:1026
+#: src/searchnoteswidget.cpp:1035
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Нерозпізнаний стовпчик %s"
 
-#: src/searchnoteswidget.cpp:1037
+#: src/searchnoteswidget.cpp:1046
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Нерозпізнаний порядок %s"
