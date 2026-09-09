@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-08-29 19:01+0000\n"
-"PO-Revision-Date: 2026-09-02 08:35+0200\n"
+"POT-Creation-Date: 2026-09-08 18:37+0000\n"
+"PO-Revision-Date: 2026-09-09 20:21+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -182,45 +182,42 @@ msgid "Base highlight background color on system accent color"
 msgstr "Kiemelés háttérszíne a rendszer kiemelőszíne alapján"
 
 #: data/org.gnome.gnote.gschema.xml:47
+#| msgid ""
+#| "When text is highlighted, determine background color based on system "
+#| "accent color Typically this means a lighter version of highlight."
 msgid ""
 "When text is highlighted, determine background color based on system accent "
-"color Typically this means a lighter version of highlight."
+"color. Typically this means a lighter version of highlight."
 msgstr ""
-"Ha a szöveg ki van emelve, akkor a rendszer kiemelőszíne alapján határozza meg"
-" a háttérszínt. Általában ez a kiemelés világosabb változatát jelenti."
+"Ha a szöveg ki van emelve, akkor a rendszer kiemelőszíne alapján határozza "
+"meg a háttérszínt. Általában ez a kiemelés világosabb változatát jelenti."
 
 #: data/org.gnome.gnote.gschema.xml:51
 msgid "Background color for the highlighted text"
 msgstr "A kiemelt szöveg háttérszíne"
 
 #: data/org.gnome.gnote.gschema.xml:52
-#| msgid ""
-#| "When text is highlighted, use this color for background. A string "
-#| "gdk_rgba_parse() accepts."
 msgid ""
 "When text is highlighted, use this color for background. A string "
 "gdk_rgba_parse() accepts. Only has effect when highlight-accent-color-based "
 "is false."
 msgstr ""
-"Ha a szöveg ki van emelve, akkor ezt a színt használja háttérként. A gdk_rgba_"
-"parse() által elfogadott karakterlánc. Csak akkor van hatása, ha a „highlight-"
-"accent-color-based” hamis."
+"Ha a szöveg ki van emelve, akkor ezt a színt használja háttérként. A "
+"gdk_rgba_parse() által elfogadott karakterlánc. Csak akkor van hatása, ha a "
+"„highlight-accent-color-based” hamis."
 
 #: data/org.gnome.gnote.gschema.xml:56
 msgid "Color for the highlighted text"
 msgstr "A kiemelt szöveg színe"
 
 #: data/org.gnome.gnote.gschema.xml:57
-#| msgid ""
-#| "When text is highlighted, use this color for text. A string "
-#| "gdk_rgba_parse() accepts."
 msgid ""
 "When text is highlighted, use this color for text. A string gdk_rgba_parse() "
 "accepts. Only has effect when highlight-accent-color-based is false."
 msgstr ""
-"Ha a szöveg ki van emelve, akkor ezt a színt használja a szöveghez. A gdk_rgba"
-"_parse() által elfogadott karakterlánc. Csak akkor van hatása, ha a „highlight"
-"-accent-color-based” hamis."
+"Ha a szöveg ki van emelve, akkor ezt a színt használja a szöveghez. A "
+"gdk_rgba_parse() által elfogadott karakterlánc. Csak akkor van hatása, ha a "
+"„highlight-accent-color-based” hamis."
 
 #: data/org.gnome.gnote.gschema.xml:61
 msgid "Start Here Note"
@@ -606,6 +603,18 @@ msgid ""
 msgstr ""
 "A jegyzetkönyvtárak ellenőrzései közötti idő (másodpercben). A minimális "
 "érték 5."
+
+#: data/org.gnome.gnote.gschema.xml:256
+msgid "Clipboard to use"
+msgstr "Használandó vágólap"
+
+#: data/org.gnome.gnote.gschema.xml:257
+msgid ""
+"Possible values: 0 - clipboard content (last copied text), 1 - primary "
+"clipboard (last selected text)."
+msgstr ""
+"Lehetséges értékek: 0 – vágólaptartalom (utoljára másolt szöveg), 1 – elsődleg"
+"es vágólap (utoljára kijelölt szöveg)."
 
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
@@ -1283,16 +1292,16 @@ msgstr "Nyomtatás támogatása"
 msgid "Allows you to print a note."
 msgstr "Lehetővé teszi jegyzet kinyomtatását."
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:82
 msgid "Print…"
 msgstr "Nyomtatás…"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:130
 msgid "Error printing note"
 msgstr "Hiba a jegyzet nyomtatásakor"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:299
 msgid "Page %1 of %2"
 msgstr "%2 / %1. oldal"
 
@@ -1310,17 +1319,19 @@ msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray és Arief Bayu Purwanto"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:3
-#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
+#: src/plugins/replacetitle/replacetitlenoteaddin.cpp:70
 msgid "Replace title"
 msgstr "Cím cseréje"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-msgid "Replace title with selection."
-msgstr "Cím cseréje a kijelöléssel."
+#| msgid "Replace title with selection."
+msgid "Replace title with clipboard or selection."
+msgstr "Cím cseréje a vágólappal vagy a kijelöléssel."
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:5
-msgid "Pierre-Yves Luyten"
-msgstr "Pierre-Yves Luyten"
+#| msgid "Pierre-Yves Luyten"
+msgid "Pierre-Yves Luyten, Aurimas Černius"
+msgstr "Pierre-Yves Luyten, Aurimas Černius"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
 #: src/plugins/specialnotes/specialnotes.desktop.in.in:3
@@ -2331,15 +2342,15 @@ msgstr[1] "%1 találat"
 msgid "Delete Note"
 msgstr "Jegyzet törlése"
 
-#: src/searchnoteswidget.cpp:575
+#: src/searchnoteswidget.cpp:579
 msgid "Note"
 msgstr "Jegyzet"
 
-#: src/searchnoteswidget.cpp:587
+#: src/searchnoteswidget.cpp:591
 msgid "Modified"
 msgstr "Módosítva"
 
-#: src/searchnoteswidget.cpp:749
+#: src/searchnoteswidget.cpp:753
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2347,30 +2358,30 @@ msgstr ""
 "Nincs találat a kijelölt jegyzettömbben.\n"
 "Kattintson ide az összes jegyzetben való kereséshez."
 
-#: src/searchnoteswidget.cpp:753
+#: src/searchnoteswidget.cpp:757
 msgid "Click here to search across all notebooks"
 msgstr "Kattintson ide az összes jegyzetben való kereséshez"
 
-#: src/searchnoteswidget.cpp:768
+#: src/searchnoteswidget.cpp:772
 msgid "Matches"
 msgstr "Találat"
 
-#: src/searchnoteswidget.cpp:1012 src/searchnoteswidget.cpp:1025
-#: src/searchnoteswidget.cpp:1036
+#: src/searchnoteswidget.cpp:1021 src/searchnoteswidget.cpp:1034
+#: src/searchnoteswidget.cpp:1045
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "Nem sikerült feldolgozni a „search-sorting” beállítást (érték: %s):"
 
-#: src/searchnoteswidget.cpp:1013
+#: src/searchnoteswidget.cpp:1022
 msgid "Expected format 'column:order'"
 msgstr "A várt formátum: „oszlop:sorrend”"
 
-#: src/searchnoteswidget.cpp:1026
+#: src/searchnoteswidget.cpp:1035
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Ismeretlen oszlop: %s"
 
-#: src/searchnoteswidget.cpp:1037
+#: src/searchnoteswidget.cpp:1046
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Ismeretlen sorrend: %s"
@@ -2463,7 +2474,6 @@ msgstr "Hiba a zár frissítésekor: %s"
 
 #: src/synchronization/filesystemsyncserver.cpp:597
 #, c-format
-#| msgid "Error removing icon %s: %s"
 msgid "Error reading file '%s': %s"
 msgstr "Hiba a(z) „%s” fájl olvasásakor: %s"
 
