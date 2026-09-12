@@ -685,7 +685,7 @@ namespace gnote {
 
   bool Note::is_special() const
   {
-    return m_gnote.preferences().start_note_uri() == m_data.data().uri();
+    return m_gnote.preferences().gnote.start_note_uri == m_data.data().uri();
   }
 
   bool Note::is_pinned() const

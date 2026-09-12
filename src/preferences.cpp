@@ -84,7 +84,6 @@ const Glib::ustring HIGHLIGH_FOREGROUND_COLOR = "highlight-foreground-color";
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
 const Glib::ustring NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
-const Glib::ustring START_NOTE_URI = "start-note";
 const Glib::ustring CUSTOM_FONT_FACE = "custom-font-face";
 const Glib::ustring MENU_PINNED_NOTES = "menu-pinned-notes";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
@@ -123,6 +122,7 @@ namespace gnote {
 
   Preferences::GnoteSettings::GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema)
     : enable_auto_bulleted_lists(*schema, "enable-bulleted-lists")
+    , start_note_uri(*schema, "start-note")
     , m_schema(schema)
   {
   }
@@ -170,7 +170,6 @@ namespace gnote {
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_foreground_color, HIGHLIGH_FOREGROUND_COLOR)
   DEFINE_CACHING_SETTER_INT(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR)
-  DEFINE_GETTER_SETTER_STRING(m_schema_gnote, start_note_uri, START_NOTE_URI)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, menu_pinned_notes, MENU_PINNED_NOTES)
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, main_window_maximized, MAIN_WINDOW_MAXIMIZED)

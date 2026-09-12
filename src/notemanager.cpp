@@ -156,7 +156,7 @@ namespace gnote {
     try {
       auto & start_note = create(_("Start Here"), std::move(start_note_content));
       start_note.queue_save(CONTENT_CHANGED);
-      m_preferences.start_note_uri(start_note.uri());
+      m_preferences.gnote.start_note_uri = start_note.uri();
 
       auto & links_note = create(_("Using Links in Gnote"), std::move(links_note_content));
       links_note.queue_save(CONTENT_CHANGED);
@@ -186,12 +186,12 @@ namespace gnote {
     // make sure that the Uri is valid to prevent bug #508982. This
     // has to be done here for long-time Tomboy users who won't go
     // through the create_start_notes () process.
-    auto start_note_uri = m_preferences.start_note_uri();
+    Glib::ustring start_note_uri = m_preferences.gnote.start_note_uri;
     if (start_note_uri.empty() || !find_by_uri(start_note_uri)) {
       // Attempt to find an existing Start Here note
       auto start_note = find(_("Start Here"));
       if(start_note) {
-        m_preferences.start_note_uri(start_note.value().get().uri());
+        m_preferences.gnote.start_note_uri = start_note.value().get().uri();
       }
     }
   }

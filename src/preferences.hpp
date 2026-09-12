@@ -112,6 +112,7 @@ namespace gnote {
       friend Preferences;
 
       Setting<bool> enable_auto_bulleted_lists;
+      Setting<Glib::ustring> start_note_uri;
     private:
       explicit GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema);
 
@@ -131,7 +132,6 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_background_color, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_foreground_color, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING(note_rename_behavior, int)
-    GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
     GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)
     GNOTE_PREFERENCES_SETTING_STRING(menu_pinned_notes)
     GNOTE_PREFERENCES_SETTING_BOOL(main_window_maximized)
