@@ -84,6 +84,18 @@ namespace gnote {
       Glib::ustring m_key;
     };
 
+    class GnoteSettings
+    {
+    public:
+      friend Preferences;
+
+      Setting enable_auto_bulleted_lists;
+    private:
+      explicit GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema);
+
+      Glib::RefPtr<Gio::Settings> m_schema;
+    };
+
     Preferences();
     void init();
 

@@ -123,6 +123,13 @@ namespace gnote {
   const char *Preferences::COLOR_SCHEME_DARK_VAL = "dark";
   const char *Preferences::COLOR_SCHEME_LIGHT_VAL = "light";
 
+  Preferences::GnoteSettings::GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema)
+    : enable_auto_bulleted_lists(*schema, "enable-bulleted-lists")
+    , m_schema(schema)
+  {
+  }
+
+
   Preferences::Preferences()
   {
     init();
