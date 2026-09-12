@@ -99,6 +99,7 @@ namespace gnote {
     Preferences();
     void init();
 
+    GnoteSettings gnote;
     GNOTE_PREFERENCES_CACHING_SETTING(enable_spellchecking, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_auto_links, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_url_links, bool)
@@ -107,7 +108,6 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_accent_color_based, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_background_color, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_foreground_color, const Glib::ustring &)
-    GNOTE_PREFERENCES_SETTING_BOOL(enable_auto_bulleted_lists)
     GNOTE_PREFERENCES_CACHING_SETTING(note_rename_behavior, int)
     GNOTE_PREFERENCES_SETTING_STRING(start_note_uri)
     GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)

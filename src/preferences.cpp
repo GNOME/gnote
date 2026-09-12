@@ -68,7 +68,6 @@
 
 namespace {
 
-const char *SCHEMA_GNOTE = "org.gnome.gnote";
 const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
@@ -82,7 +81,6 @@ const Glib::ustring ENABLE_CUSTOM_FONT = "enable-custom-font";
 const Glib::ustring HIGHLIGH_ACCENT_COLOR_BASED = "highlight-accent-color-based";
 const Glib::ustring HIGHLIGH_BACKGROUND_COLOR = "highlight-background-color";
 const Glib::ustring HIGHLIGH_FOREGROUND_COLOR = "highlight-foreground-color";
-const Glib::ustring ENABLE_AUTO_BULLETED_LISTS = "enable-bulleted-lists";
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
 const Glib::ustring NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
@@ -131,13 +129,14 @@ namespace gnote {
 
 
   Preferences::Preferences()
+    : gnote(Gio::Settings::create("org.gnome.gnote"))
   {
     init();
   }
 
   void Preferences::init()
   {
-    m_schema_gnote = Gio::Settings::create(SCHEMA_GNOTE);
+    m_schema_gnote = gnote.m_schema;
     m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
     m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
@@ -170,7 +169,6 @@ namespace gnote {
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, highlight_accent_color_based, HIGHLIGH_ACCENT_COLOR_BASED);
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_foreground_color, HIGHLIGH_FOREGROUND_COLOR)
-  DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, enable_auto_bulleted_lists, ENABLE_AUTO_BULLETED_LISTS)
   DEFINE_CACHING_SETTER_INT(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, start_note_uri, START_NOTE_URI)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE)

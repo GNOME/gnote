@@ -279,7 +279,7 @@ namespace {
       check = make_check_button(_("Enable auto-_bulleted lists"));
       set_widget_tooltip(*check, _("Start new bulleted list by starting new line with character \"-\"."));
       options_list->attach(*check, 0, options_list_row++, 1, 1);
-      bullet_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_bulleted_lists, *check);
+      bullet_peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_auto_bulleted_lists); }, [this](bool v) { m_gnote.preferences().gnote.enable_auto_bulleted_lists = v; }, *check);
       bullet_peditor->setup();
 
       // Custom font...
