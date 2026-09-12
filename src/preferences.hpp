@@ -71,6 +71,7 @@ namespace gnote {
     static const char *COLOR_SCHEME_DARK_VAL;
     static const char *COLOR_SCHEME_LIGHT_VAL;
 
+    template<typename T>
     class Setting
     {
     public:
@@ -79,12 +80,12 @@ namespace gnote {
         , m_key(std::move(key))
         {}
 
-      operator bool() const
+      operator T() const
         {
-          return get_setting_value<bool>(m_schema, m_key);
+          return get_setting_value<T>(m_schema, m_key);
         }
 
-      Setting &operator=(bool value)
+      Setting &operator=(const T &value)
         {
           set_setting_value(m_schema, m_key, value);
           return *this;
@@ -102,7 +103,7 @@ namespace gnote {
     public:
       friend Preferences;
 
-      Setting enable_auto_bulleted_lists;
+      Setting<bool> enable_auto_bulleted_lists;
     private:
       explicit GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema);
 
