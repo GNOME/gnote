@@ -52,25 +52,59 @@
 
 namespace gnote {
 
-  template<typename T> T get_setting_value(Gio::Settings &schema, const Glib::ustring &key);
-  template<> inline bool get_setting_value<bool>(Gio::Settings &schema, const Glib::ustring &key)
-    {
-      return schema.get_boolean(key);
-    }
-  template<> inline Glib::ustring get_setting_value<Glib::ustring>(Gio::Settings &schema, const Glib::ustring &key)
-    {
-      return schema.get_string(key);
-    }
+  template<typename T>
+  class ReadableSetting
+  {
+  protected:
+    static T get_value(Gio::Settings &schema, const Glib::ustring &key);
+  };
 
-  template<typename T> void set_setting_value(Gio::Settings &schema, const Glib::ustring &key, const T &value);
-  template<> inline void set_setting_value<bool>(Gio::Settings &schema, const Glib::ustring &key, const bool &value)
-    {
-      schema.set_boolean(key, value);
-    }
-  template<> inline void set_setting_value<Glib::ustring>(Gio::Settings &schema, const Glib::ustring &key, const Glib::ustring &value)
-    {
-      schema.set_string(key, value);
-    }
+  template<>
+  class ReadableSetting<bool>
+  {
+  protected:
+    static bool get_value(Gio::Settings &schema, const Glib::ustring &key)
+      {
+        return schema.get_boolean(key);
+      }
+  };
+
+  template<>
+  class ReadableSetting<Glib::ustring>
+  {
+  protected:
+    static Glib::ustring get_value(Gio::Settings &schema, const Glib::ustring &key)
+      {
+        return schema.get_string(key);
+      }
+  };
+
+  template<typename T>
+  class WritableSetting
+  {
+  protected:
+    static void set_value(Gio::Settings &schema, const Glib::ustring &key, const T &value);
+  };
+
+  template<>
+  class WritableSetting<bool>
+  {
+  protected:
+    static void set_value(Gio::Settings &schema, const Glib::ustring &key, const bool &value)
+      {
+        schema.set_boolean(key, value);
+      }
+  };
+
+  template<>
+  class WritableSetting<Glib::ustring>
+  {
+  protected:
+    static void set_value(Gio::Settings &schema, const Glib::ustring &key, const Glib::ustring &value)
+      {
+        schema.set_string(key, value);
+      }
+  };
 
 
   class Preferences 
@@ -80,30 +114,42 @@ namespace gnote {
     static const char *COLOR_SCHEME_LIGHT_VAL;
 
     template<typename T>
-    class Setting
+    class ReadOnlySetting
+      : protected ReadableSetting<T>
     {
     public:
-      Setting(Gio::Settings &schema, Glib::ustring &&key)
+      ReadOnlySetting(Gio::Settings &schema, Glib::ustring &&key)
         : m_schema(schema)
         , m_key(std::move(key))
         {}
 
       operator T() const
         {
-          return get_setting_value<T>(m_schema, m_key);
+          return ReadableSetting<T>::get_value(m_schema, m_key);
         }
-
-      Setting &operator=(const T &value)
-        {
-          set_setting_value(m_schema, m_key, value);
-          return *this;
-        }
-    private:
-      Setting(const Setting&) = delete;
-      Setting &operator=(const Setting&) = delete;
+    protected:
+      ReadOnlySetting(const ReadOnlySetting&) = delete;
+      ReadOnlySetting &operator=(const ReadOnlySetting&) = delete;
 
       Gio::Settings &m_schema;
       Glib::ustring m_key;
+    };
+
+    template<typename T>
+    class Setting
+      : public ReadOnlySetting<T>
+      , protected WritableSetting<T>
+    {
+    public:
+      Setting(Gio::Settings &schema, Glib::ustring &&key)
+        : ReadOnlySetting<T>(schema, std::move(key))
+        {}
+
+      Setting &operator=(const T &value)
+        {
+          WritableSetting<T>::set_value(this->m_schema, this->m_key, value);
+          return *this;
+        }
     };
 
     class GnoteSettings
