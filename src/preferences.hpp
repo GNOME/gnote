@@ -52,6 +52,19 @@
 
 namespace gnote {
 
+  template<typename T> T get_setting_value(Gio::Settings &schema, const Glib::ustring &key);
+  template<> inline bool get_setting_value<bool>(Gio::Settings &schema, const Glib::ustring &key)
+    {
+      return schema.get_boolean(key);
+    }
+
+  template<typename T> void set_setting_value(Gio::Settings &schema, const Glib::ustring &key, const T &value);
+  template<> inline void set_setting_value<bool>(Gio::Settings &schema, const Glib::ustring &key, const bool &value)
+    {
+      schema.set_boolean(key, value);
+    }
+
+
   class Preferences 
   {
   public:
@@ -68,12 +81,12 @@ namespace gnote {
 
       operator bool() const
         {
-          return m_schema.get_boolean(m_key);
+          return get_setting_value<bool>(m_schema, m_key);
         }
 
       Setting &operator=(bool value)
         {
-          m_schema.set_boolean(m_key, value);
+          set_setting_value(m_schema, m_key, value);
           return *this;
         }
     private:
