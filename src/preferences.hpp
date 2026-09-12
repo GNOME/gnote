@@ -194,6 +194,18 @@ namespace gnote {
       Glib::RefPtr<Gio::Settings> m_schema;
     };
 
+    class GnomeDesktopSettings
+    {
+    public:
+      friend Preferences;
+
+      ReadOnlyMonitoredSetting<Glib::ustring> clock_format;
+    private:
+      explicit GnomeDesktopSettings(const Glib::RefPtr<Gio::Settings> &schema);
+
+      Glib::RefPtr<Gio::Settings> m_schema;
+    };
+
     Preferences();
     void init();
 

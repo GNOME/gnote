@@ -127,9 +127,16 @@ namespace gnote {
   {
   }
 
+  Preferences::GnomeDesktopSettings::GnomeDesktopSettings(const Glib::RefPtr<Gio::Settings> &schema)
+    : clock_format(*schema, "clock-format")
+    , m_schema(schema)
+  {
+  }
+
 
   Preferences::Preferences()
     : gnote(Gio::Settings::create("org.gnome.gnote"))
+    , gnome_desktop(Gio::Settings::create("org.gnome.desktop.interface"))
   {
     init();
   }
