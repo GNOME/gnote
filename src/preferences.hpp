@@ -106,6 +106,23 @@ namespace gnote {
       }
   };
 
+  template<typename T>
+  class MonitoredSetting
+  {
+  public:
+    sigc::signal<void()> signal_changed;
+  protected:
+    MonitoredSetting(Gio::Settings &schema, const Glib::ustring &key)
+      {
+        schema.signal_changed(key).connect(sigc::mem_fun(*this, &MonitoredSetting::on_changed));
+      }
+
+    void on_changed(const T&)
+      {
+        signal_changed();
+      }
+  };
+
 
   class Preferences 
   {
@@ -133,6 +150,18 @@ namespace gnote {
 
       Gio::Settings &m_schema;
       Glib::ustring m_key;
+    };
+
+    template<typename T>
+    class ReadOnlyMonitoredSetting
+      : public ReadOnlySetting<T>
+      , public MonitoredSetting<T>
+    {
+    public:
+      ReadOnlyMonitoredSetting(Gio::Settings &schema, Glib::ustring &&key)
+        : ReadOnlySetting<T>(schema, std::move(key))
+        , MonitoredSetting<T>(schema, this->m_key)
+        {}
     };
 
     template<typename T>
