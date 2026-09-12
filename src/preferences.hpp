@@ -58,7 +58,7 @@ namespace gnote {
     static const char *COLOR_SCHEME_DARK_VAL;
     static const char *COLOR_SCHEME_LIGHT_VAL;
 
-    Preferences() {}
+    Preferences();
     void init();
 
     GNOTE_PREFERENCES_CACHING_SETTING(enable_spellchecking, bool)
