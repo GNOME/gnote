@@ -58,6 +58,32 @@ namespace gnote {
     static const char *COLOR_SCHEME_DARK_VAL;
     static const char *COLOR_SCHEME_LIGHT_VAL;
 
+    class Setting
+    {
+    public:
+      Setting(Gio::Settings &schema, Glib::ustring &&key)
+        : m_schema(schema)
+        , m_key(std::move(key))
+        {}
+
+      operator bool() const
+        {
+          return m_schema.get_boolean(m_key);
+        }
+
+      Setting &operator=(bool value)
+        {
+          m_schema.set_boolean(m_key, value);
+          return *this;
+        }
+    private:
+      Setting(const Setting&) = delete;
+      Setting &operator=(const Setting&) = delete;
+
+      Gio::Settings &m_schema;
+      Glib::ustring m_key;
+    };
+
     Preferences();
     void init();
 
