@@ -230,7 +230,7 @@ namespace gnote {
     GNOTE_PREFERENCES_CACHING_SETTING(color_scheme, const Glib::ustring&)
     GNOTE_PREFERENCES_CACHING_SETTING(editor_tab_width, unsigned);
 
-    GNOTE_PREFERENCES_CACHING_SETTING_RO(desktop_gnome_clock_format, const Glib::ustring &)
+    GnomeDesktopSettings gnome_desktop;
 
     Glib::ustring sync_client_id() const;
     Glib::ustring sync_local_path() const;
@@ -248,7 +248,6 @@ namespace gnote {
     Preferences(const Preferences &) = delete;
 
     Glib::RefPtr<Gio::Settings> m_schema_gnote;
-    Glib::RefPtr<Gio::Settings> m_schema_gnome_interface;
     Glib::RefPtr<Gio::Settings> m_schema_replace_title;
     Glib::RefPtr<Gio::Settings> m_schema_sync;
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;

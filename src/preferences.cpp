@@ -68,7 +68,6 @@
 
 namespace {
 
-const char *SCHEMA_DESKTOP_GNOME_INTERFACE = "org.gnome.desktop.interface";
 const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
@@ -97,7 +96,6 @@ const Glib::ustring USE_CLIENT_SIDE_DECORATIONS = "use-client-side-decorations";
 const Glib::ustring COLOR_SCHEME = "color-scheme";
 const Glib::ustring EDITOR_TAB_WIDTH = "editor-tab-width";
 
-const Glib::ustring DESKTOP_GNOME_CLOCK_FORMAT = "clock-format";
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
 const Glib::ustring SYNC_CLIENT_ID = "sync-guid";
@@ -144,7 +142,6 @@ namespace gnote {
   void Preferences::init()
   {
     m_schema_gnote = gnote.m_schema;
-    m_schema_gnome_interface = Gio::Settings::create(SCHEMA_DESKTOP_GNOME_INTERFACE);
     m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
@@ -161,8 +158,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE, string);
     SETUP_CACHED_KEY(m_schema_gnote, color_scheme, COLOR_SCHEME, string);
     SETUP_CACHED_KEY(m_schema_gnote, editor_tab_width, EDITOR_TAB_WIDTH, uint);
-
-    SETUP_CACHED_KEY(m_schema_gnome_interface, desktop_gnome_clock_format, DESKTOP_GNOME_CLOCK_FORMAT, string);
 
     SETUP_CACHED_KEY(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN, string);
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
