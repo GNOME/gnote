@@ -57,11 +57,19 @@ namespace gnote {
     {
       return schema.get_boolean(key);
     }
+  template<> inline Glib::ustring get_setting_value<Glib::ustring>(Gio::Settings &schema, const Glib::ustring &key)
+    {
+      return schema.get_string(key);
+    }
 
   template<typename T> void set_setting_value(Gio::Settings &schema, const Glib::ustring &key, const T &value);
   template<> inline void set_setting_value<bool>(Gio::Settings &schema, const Glib::ustring &key, const bool &value)
     {
       schema.set_boolean(key, value);
+    }
+  template<> inline void set_setting_value<Glib::ustring>(Gio::Settings &schema, const Glib::ustring &key, const Glib::ustring &value)
+    {
+      schema.set_string(key, value);
     }
 
 
