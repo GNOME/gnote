@@ -377,7 +377,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   notebook_manager.signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
-  g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
+  g.preferences().gnome_desktop.clock_format.signal_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
 
   auto shortcuts = Gtk::ShortcutController::create();
   shortcuts->set_scope(Gtk::ShortcutScope::GLOBAL);

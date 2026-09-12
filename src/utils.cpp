@@ -139,7 +139,7 @@ namespace gnote {
     {
       bool use_12h = false;
       if(show_time) {
-        use_12h = preferences.desktop_gnome_clock_format() == "12h";
+        use_12h = preferences.gnome_desktop.clock_format == "12h";
       }
       return get_pretty_print_date(date, show_time, use_12h);
     }
