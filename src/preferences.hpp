@@ -180,6 +180,18 @@ namespace gnote {
         }
     };
 
+    template<typename T>
+    class MonitoredSetting
+      : public Setting<T>
+      , public MonitoredSettingBase
+    {
+    public:
+      MonitoredSetting(Gio::Settings &schema, Glib::ustring &&key)
+        : Setting<T>(schema, std::move(key))
+        , MonitoredSettingBase(schema, this->m_key)
+        {}
+    };
+
     class GnoteSettings
     {
     public:
