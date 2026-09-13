@@ -190,6 +190,8 @@ namespace gnote {
         : Setting<T>(schema, std::move(key))
         , MonitoredSettingBase(schema, this->m_key)
         {}
+
+       using Setting<T>::operator=;
     };
 
     class GnoteSettings
