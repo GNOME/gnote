@@ -65,27 +65,6 @@ namespace gnote {
     } \
   })
 
-#define SETUP_APP_ADDIN(key, klass) \
-  m_preferences.signal_##key##_changed.connect([this]() { \
-      if(m_preferences.key()) { \
-        auto iter = m_app_addins.find(typeid(klass).name()); \
-        if(iter != m_app_addins.end()) { \
-          iter->second->initialize(); \
-        } \
-        else { \
-          auto addin = klass::create(); \
-          m_app_addins.insert(std::make_pair(typeid(klass).name(), addin)); \
-          addin->initialize(m_gnote, m_note_manager); \
-        } \
-      } \
-      else { \
-        auto addin = m_app_addins.find(typeid(klass).name()); \
-        if(addin != m_app_addins.end()) { \
-          addin->second->shutdown(); \
-        } \
-      } \
-  })
-
 namespace {
   template <typename AddinType>
   Glib::ustring get_id_for_addin(const AbstractAddin & addin, const std::map<Glib::ustring, std::unique_ptr<AddinType>> & addins)
