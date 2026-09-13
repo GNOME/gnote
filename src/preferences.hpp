@@ -197,6 +197,7 @@ namespace gnote {
     public:
       friend Preferences;
 
+      MonitoredSetting<bool> enable_spellchecking;
       Setting<bool> enable_auto_bulleted_lists;
       Setting<Glib::ustring> start_note_uri;
     private:
@@ -221,7 +222,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_CACHING_SETTING(enable_spellchecking, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_auto_links, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_url_links, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_wikiwords, bool)
