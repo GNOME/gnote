@@ -92,6 +92,10 @@ private:
   void add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod);
   AddinInfo get_info_for_module(const Glib::ustring & module) const;
   void register_addin_actions() const;
+  template<typename PluginClass>
+  void setup_note_addin(Preferences::MonitoredSetting<bool> &setting);
+  template<typename PluginClass>
+  void setup_app_addin(Preferences::MonitoredSetting<bool> &setting);
     
   IGnote & m_gnote;
   NoteManager & m_note_manager;

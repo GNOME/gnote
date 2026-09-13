@@ -72,7 +72,6 @@ const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
-const Glib::ustring ENABLE_AUTO_LINKS = "enable-auto-links";
 const Glib::ustring ENABLE_URL_LINKS = "enable-url-links";
 const Glib::ustring ENABLE_WIKIWORDS = "enable-wikiwords";
 const Glib::ustring ENABLE_CUSTOM_FONT = "enable-custom-font";
@@ -119,6 +118,7 @@ namespace gnote {
 
   Preferences::GnoteSettings::GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema)
     : enable_spellchecking(*schema, "enable-spellchecking")
+    , enable_auto_links(*schema, "enable-auto-links")
     , enable_auto_bulleted_lists(*schema, "enable-bulleted-lists")
     , start_note_uri(*schema, "start-note")
     , m_schema(schema)
@@ -146,7 +146,6 @@ namespace gnote {
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
-    SETUP_CACHED_KEY(m_schema_gnote, enable_auto_links, ENABLE_AUTO_LINKS, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT, boolean);
@@ -162,7 +161,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_auto_links, ENABLE_AUTO_LINKS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_url_links, ENABLE_URL_LINKS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT)

@@ -390,7 +390,7 @@ namespace {
     check = make_check_button(_("_Automatically link to notes"));
     set_widget_tooltip(*check, _("Enable this option to create a link when text matches note title."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_links, *check);
+    peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_auto_links); }, [this](bool v) { m_gnote.preferences().gnote.enable_auto_links = v; }, *check);
     peditor->setup();
 
     // URLs
