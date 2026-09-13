@@ -106,7 +106,6 @@ namespace gnote {
       }
   };
 
-  template<typename T>
   class MonitoredSettingBase
   {
   public:
@@ -117,7 +116,7 @@ namespace gnote {
         schema.signal_changed(key).connect(sigc::mem_fun(*this, &MonitoredSettingBase::on_changed));
       }
 
-    void on_changed(const T&)
+    void on_changed(const Glib::ustring&)
       {
         signal_changed();
       }
@@ -155,12 +154,12 @@ namespace gnote {
     template<typename T>
     class ReadOnlyMonitoredSetting
       : public ReadOnlySetting<T>
-      , public MonitoredSettingBase<T>
+      , public MonitoredSettingBase
     {
     public:
       ReadOnlyMonitoredSetting(Gio::Settings &schema, Glib::ustring &&key)
         : ReadOnlySetting<T>(schema, std::move(key))
-        , MonitoredSettingBase<T>(schema, this->m_key)
+        , MonitoredSettingBase(schema, this->m_key)
         {}
     };
 
