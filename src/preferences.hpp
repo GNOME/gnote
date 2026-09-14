@@ -201,6 +201,7 @@ namespace gnote {
 
       MonitoredSetting<bool> enable_spellchecking;
       MonitoredSetting<bool> enable_auto_links;
+      MonitoredSetting<bool> enable_url_links;
       Setting<bool> enable_auto_bulleted_lists;
       Setting<Glib::ustring> start_note_uri;
     private:
@@ -225,7 +226,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_CACHING_SETTING(enable_url_links, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_wikiwords, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(enable_custom_font, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_accent_color_based, bool)

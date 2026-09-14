@@ -236,14 +236,14 @@ namespace {
     if (!sharp::directory_exists (m_addins_prefs_dir))
       g_mkdir_with_parents(m_addins_prefs_dir.c_str(), S_IRWXU);
 
-    SETUP_NOTE_ADDIN(enable_url_links, NoteUrlWatcher);
+    setup_note_addin<NoteUrlWatcher>(m_preferences.gnote.enable_url_links);
     setup_note_addin<NoteLinkWatcher>(m_preferences.gnote.enable_auto_links);
     setup_app_addin<AppLinkWatcher>(m_preferences.gnote.enable_auto_links);
     SETUP_NOTE_ADDIN(enable_wikiwords, NoteWikiWatcher);
 
     REGISTER_BUILTIN_NOTE_ADDIN(NoteRenameWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(NoteSpellChecker);
-    if(m_preferences.enable_url_links()) {
+    if(m_preferences.gnote.enable_url_links) {
       REGISTER_BUILTIN_NOTE_ADDIN(NoteUrlWatcher);
     }
     if(m_preferences.gnote.enable_auto_links) {

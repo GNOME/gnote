@@ -398,7 +398,7 @@ namespace {
     set_widget_tooltip(*check, _("Enable this option to create links for URLs. "
                                  "Clicking will open URL with appropriate program."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_url_links, *check);
+    peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_url_links); }, [this](bool v) { m_gnote.preferences().gnote.enable_url_links = v; }, *check);
     peditor->setup();
 
     // WikiWords...
