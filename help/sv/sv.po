@@ -1,12 +1,12 @@
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009.
 # Josef Andersson <josef.andersson@fripost.org>, 2016.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote manual\n"
-"POT-Creation-Date: 2025-03-11 19:10+0000\n"
-"PO-Revision-Date: 2025-12-26 18:03+0100\n"
+"POT-Creation-Date: 2026-09-07 20:13+0000\n"
+"PO-Revision-Date: 2026-09-13 19:42+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -97,9 +97,8 @@ msgstr "Aurimas Cernius"
 #. (itstool) path: credit/years
 #: C/gnote-addin-bugzillalink.page:17 C/gnote-addin-fixedwidth.page:16
 #: C/gnote-addin-html.page:16 C/gnote-addin-noteoftheday.page:16
-#: C/gnote-addin-print.page:16 C/gnote-addin-replacetitle.page:16
-#: C/gnote-addin-timestamp.page:17 C/gnote-addin-underline.page:16
-#: C/gnote-links.page:16
+#: C/gnote-addin-print.page:16 C/gnote-addin-timestamp.page:17
+#: C/gnote-addin-underline.page:16 C/gnote-links.page:16
 msgid "2011,2013"
 msgstr "2011,2013"
 
@@ -427,6 +426,11 @@ msgstr ""
 msgid "Rename a note"
 msgstr "Byt namn på anteckning"
 
+#. (itstool) path: credit/years
+#: C/gnote-addin-replacetitle.page:16
+msgid "2011,2013,2026"
+msgstr "2011,2013,2026"
+
 #. (itstool) path: page/title
 #: C/gnote-addin-replacetitle.page:25
 msgid "Replace title"
@@ -445,18 +449,36 @@ msgstr ""
 #: C/gnote-addin-replacetitle.page:27
 msgid ""
 "The <gui>Replace title</gui> command replaces a note's title with the "
-"currently selected text (from any application)."
+"current clipboard content. From any application copy text and press "
+"<gui>Replace title</gui> in the note to replace it's title with most "
+"recently copied text."
 msgstr ""
-"Kommandot <gui>Ersätt titel</gui> ersätter en antecknings titel med aktuell "
-"markerad text (från vilket program som helst)."
+"Kommandot <gui>Ersätt titel</gui> ersätter en antecknings titel med aktuellt "
+"urklippsinnehåll. Kopiera text från valfritt program och tryck på "
+"<gui>Ersätt titel</gui> i anteckningen för att ersätta dess titel med senast "
+"kopierad text."
 
 #. (itstool) path: page/p
 #: C/gnote-addin-replacetitle.page:28
 msgid ""
 "Alternatively, you can use the <keyseq><key>Ctrl</key><key>R</key></keyseq> "
-"shortcut."
+"shortcut to trigger title replace."
 msgstr ""
-"Du kan också använda genvägen <keyseq><key>Ctrl</key><key>R</key></keyseq>."
+"Du kan också använda kortkommandot <keyseq><key>Ctrl</key><key>R</key></"
+"keyseq> för att utlösa titelersättningen."
+
+#. (itstool) path: page/p
+#: C/gnote-addin-replacetitle.page:29
+msgid ""
+"Also, you can change the behavior of this plugin in gsettings by changing "
+"the value of the '/org/gnome/gnote/replace-title/clipboard' key. There are "
+"two options: to use clipboard and to use primary selection (most recently "
+"selected text)."
+msgstr ""
+"Du kan även ändra beteendet för denna insticksmodul i gsettings genom att "
+"ändra värdet på nyckeln ”/org/gnome/gnote/replace-title/clipboard”. Det "
+"finns två alternativ: att använda urklipp och att använda primär markering "
+"(senast markerad text)."
 
 #. (itstool) path: info/desc
 #: C/gnote-addin-specialnotes.page:8
