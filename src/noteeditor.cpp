@@ -43,12 +43,12 @@ namespace gnote {
     set_right_margin(default_margin());
     update_tab_stops();
 
-    m_preferences.signal_enable_custom_font_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
+    m_preferences.gnote.enable_custom_font.signal_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
     m_preferences.signal_custom_font_face_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
     m_preferences.signal_editor_tab_width_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_tab_stops));
 
     // query all monitored settings to get change notifications
-    bool enable_custom_font = m_preferences.enable_custom_font();
+    bool enable_custom_font = m_preferences.gnote.enable_custom_font;
     auto font_string = m_preferences.custom_font_face();
 
     // Set Font from preference
@@ -75,7 +75,7 @@ namespace gnote {
 
   void NoteEditor::update_custom_font_setting()
   {
-    if (m_preferences.enable_custom_font()) {
+    if (m_preferences.gnote.enable_custom_font) {
       auto fontString = m_preferences.custom_font_face();
       DBG_OUT_3( "Switching note font to '%s'...", fontString.c_str());
       modify_font_from_string (fontString);

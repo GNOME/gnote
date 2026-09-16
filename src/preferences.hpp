@@ -203,6 +203,7 @@ namespace gnote {
       MonitoredSetting<bool> enable_auto_links;
       MonitoredSetting<bool> enable_url_links;
       MonitoredSetting<bool> enable_wikiwords;
+      MonitoredSetting<bool> enable_custom_font;
       Setting<bool> enable_auto_bulleted_lists;
       Setting<Glib::ustring> start_note_uri;
     private:
@@ -227,7 +228,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_CACHING_SETTING(enable_custom_font, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_accent_color_based, bool)
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_background_color, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING(highlight_foreground_color, const Glib::ustring &)

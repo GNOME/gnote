@@ -286,7 +286,7 @@ namespace {
       check = make_check_button(_("Use custom _font"));
       check->set_hexpand(true);
       options_list->attach(*check, 0, options_list_row, 1, 1);
-      font_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_custom_font, *check);
+      font_peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_custom_font); }, [this](bool v) { m_gnote.preferences().gnote.enable_custom_font = v; }, *check);
       font_peditor->setup();
 
       font_button = manage(make_font_button());
