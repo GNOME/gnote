@@ -239,7 +239,7 @@ namespace {
     setup_note_addin<NoteUrlWatcher>(m_preferences.gnote.enable_url_links);
     setup_note_addin<NoteLinkWatcher>(m_preferences.gnote.enable_auto_links);
     setup_app_addin<AppLinkWatcher>(m_preferences.gnote.enable_auto_links);
-    SETUP_NOTE_ADDIN(enable_wikiwords, NoteWikiWatcher);
+    setup_note_addin<NoteWikiWatcher>(m_preferences.gnote.enable_wikiwords);
 
     REGISTER_BUILTIN_NOTE_ADDIN(NoteRenameWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(NoteSpellChecker);
@@ -250,7 +250,7 @@ namespace {
       REGISTER_APP_ADDIN(AppLinkWatcher);
       REGISTER_BUILTIN_NOTE_ADDIN(NoteLinkWatcher);
     }
-    if(m_preferences.enable_wikiwords()) {
+    if(m_preferences.gnote.enable_wikiwords) {
       REGISTER_BUILTIN_NOTE_ADDIN(NoteWikiWatcher);
     }
     REGISTER_BUILTIN_NOTE_ADDIN(MouseHandWatcher);

@@ -72,7 +72,6 @@ const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
-const Glib::ustring ENABLE_WIKIWORDS = "enable-wikiwords";
 const Glib::ustring ENABLE_CUSTOM_FONT = "enable-custom-font";
 const Glib::ustring HIGHLIGH_ACCENT_COLOR_BASED = "highlight-accent-color-based";
 const Glib::ustring HIGHLIGH_BACKGROUND_COLOR = "highlight-background-color";
@@ -119,6 +118,7 @@ namespace gnote {
     : enable_spellchecking(*schema, "enable-spellchecking")
     , enable_auto_links(*schema, "enable-auto-links")
     , enable_url_links(*schema, "enable-url-links")
+    , enable_wikiwords(*schema, "enable-wikiwords")
     , enable_auto_bulleted_lists(*schema, "enable-bulleted-lists")
     , start_note_uri(*schema, "start-note")
     , m_schema(schema)
@@ -146,7 +146,6 @@ namespace gnote {
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
-    SETUP_CACHED_KEY(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, highlight_accent_color_based, HIGHLIGH_ACCENT_COLOR_BASED, boolean);
     SETUP_CACHED_KEY(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR, string);
@@ -160,7 +159,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_wikiwords, ENABLE_WIKIWORDS)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, enable_custom_font, ENABLE_CUSTOM_FONT)
   DEFINE_CACHING_SETTER_BOOL(m_schema_gnote, highlight_accent_color_based, HIGHLIGH_ACCENT_COLOR_BASED);
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR)

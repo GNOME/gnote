@@ -406,7 +406,7 @@ namespace {
     set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
                                  "Clicking the word will create a note with that name."));
     vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_wikiwords, *check);
+    peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_wikiwords); }, [this](bool v) { m_gnote.preferences().gnote.enable_wikiwords = v; }, *check);
     peditor->setup();
 
     return vbox;
