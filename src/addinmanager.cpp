@@ -54,17 +54,6 @@ namespace gnote {
   m_app_addins.insert(std::make_pair(typeid(klass).name(),        \
                                      klass::create()))
 
-#define SETUP_NOTE_ADDIN(key, klass) \
-  m_preferences.signal_##key##_changed.connect([this]() { \
-    if(m_preferences.key()) { \
-      m_builtin_ifaces.push_back(std::make_unique<sharp::IfaceFactory<klass>>()); \
-      load_note_addin(typeid(klass).name(), sharp::IfaceFactoryBase::Ref(*m_builtin_ifaces.back())); \
-    } \
-    else { \
-      erase_note_addin_info(typeid(klass).name()); \
-    } \
-  })
-
 namespace {
   template <typename AddinType>
   Glib::ustring get_id_for_addin(const AbstractAddin & addin, const std::map<Glib::ustring, std::unique_ptr<AddinType>> & addins)
