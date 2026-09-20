@@ -233,6 +233,7 @@ namespace gnote {
       Setting<bool> main_window_maximized;
       Setting<int> search_window_width;
       Setting<int> search_window_height;
+      Setting<int> search_window_splitter_pos;
       Setting<Glib::ustring> start_note_uri;
       Setting<Glib::ustring> menu_pinned_notes;
     private:
@@ -257,7 +258,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_SETTING_INT(search_window_splitter_pos)
     GNOTE_PREFERENCES_SETTING_STRING(search_sorting)
     GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
     GNOTE_PREFERENCES_CACHING_SETTING(color_scheme, const Glib::ustring&)

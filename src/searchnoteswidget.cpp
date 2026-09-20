@@ -486,7 +486,7 @@ void SearchNotesWidget::save_position()
     return;
   }
 
-  m_gnote.preferences().search_window_splitter_pos(get_position());
+  m_gnote.preferences().gnote.search_window_splitter_pos = get_position();
 
   Gtk::Window *window = dynamic_cast<Gtk::Window*>(current_host);
   if(!window || window->is_maximized()) {
@@ -968,7 +968,7 @@ void SearchNotesWidget::background()
 
 void SearchNotesWidget::size_internals()
 {
-  int pos = m_gnote.preferences().search_window_splitter_pos();
+  int pos = m_gnote.preferences().gnote.search_window_splitter_pos;
   if(pos) {
     set_position(pos);
   }
