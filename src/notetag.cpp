@@ -300,7 +300,7 @@ namespace {
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_accent_color_based_changed));
     m_preferences.gnote.highlight_background_color.signal_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_background_setting_changed));
-    m_preferences.signal_highlight_foreground_color_changed
+    m_preferences.gnote.highlight_foreground_color.signal_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_foreground_setting_changed));
 
     auto adw_style_manager = G_OBJECT(adw_style_manager_get_default());
@@ -327,7 +327,7 @@ namespace {
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
     tag->property_background() = m_preferences.gnote.highlight_background_color;
-    tag->property_foreground() = m_preferences.highlight_foreground_color();
+    tag->property_foreground() = m_preferences.gnote.highlight_foreground_color;
     add(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
@@ -469,7 +469,7 @@ namespace {
     }
 
     change_highlight(*this, [this](Gtk::TextTag &tag) {
-      tag.property_foreground() = m_preferences.highlight_foreground_color();
+      tag.property_foreground() = m_preferences.gnote.highlight_foreground_color;
     });
   }
 

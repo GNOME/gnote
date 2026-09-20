@@ -206,6 +206,7 @@ namespace gnote {
       MonitoredSetting<bool> enable_custom_font;
       MonitoredSetting<bool> highlight_accent_color_based;
       MonitoredSetting<Glib::ustring> highlight_background_color;
+      MonitoredSetting<Glib::ustring> highlight_foreground_color;
       Setting<bool> enable_auto_bulleted_lists;
       Setting<Glib::ustring> start_note_uri;
     private:
@@ -230,7 +231,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_CACHING_SETTING(highlight_foreground_color, const Glib::ustring &)
     GNOTE_PREFERENCES_CACHING_SETTING(note_rename_behavior, int)
     GNOTE_PREFERENCES_CACHING_SETTING(custom_font_face, const Glib::ustring &)
     GNOTE_PREFERENCES_SETTING_STRING(menu_pinned_notes)
