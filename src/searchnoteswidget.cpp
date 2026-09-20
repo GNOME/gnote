@@ -496,7 +496,7 @@ void SearchNotesWidget::save_position()
   int width = window->get_width();
   int height = window->get_height();
 
-  m_gnote.preferences().search_window_width(width);
+  m_gnote.preferences().gnote.search_window_width = width;
   m_gnote.preferences().search_window_height(height);
 }
 

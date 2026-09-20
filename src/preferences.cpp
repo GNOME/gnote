@@ -76,7 +76,6 @@ const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
-const Glib::ustring SEARCH_WINDOW_WIDTH = "search-window-width";
 const Glib::ustring SEARCH_WINDOW_HEIGHT = "search-window-height";
 const Glib::ustring SEARCH_WINDOW_SPLITTER_POS = "search-window-splitter-pos";
 const Glib::ustring SEARCH_SORTING = "search-sorting";
@@ -119,6 +118,7 @@ namespace gnote {
     , custom_font_face(*schema, "custom-font-face")
     , enable_auto_bulleted_lists(*schema, "enable-bulleted-lists")
     , main_window_maximized(*schema, "main-window-maximized")
+    , search_window_width(*schema, "search-window-width")
     , start_note_uri(*schema, "start-note")
     , menu_pinned_notes(*schema, "menu-pinned-notes")
     , m_schema(schema)
@@ -153,7 +153,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_width, SEARCH_WINDOW_WIDTH)
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_height, SEARCH_WINDOW_HEIGHT)
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_splitter_pos, SEARCH_WINDOW_SPLITTER_POS)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, search_sorting, SEARCH_SORTING)

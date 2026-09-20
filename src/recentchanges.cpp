@@ -109,7 +109,7 @@ namespace gnote {
     if(g.preferences().gnote.main_window_maximized) {
       maximize();
     }
-    int width = m_gnote.preferences().search_window_width();
+    int width = m_gnote.preferences().gnote.search_window_width;
     int height = m_gnote.preferences().search_window_height();
     if(width && height) {
       set_default_size(width, height);
