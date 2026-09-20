@@ -300,7 +300,6 @@ namespace gnote {
   private:
     Preferences(const Preferences &) = delete;
 
-    Glib::RefPtr<Gio::Settings> m_schema_gnote;
     Glib::RefPtr<Gio::Settings> m_schema_replace_title;
     Glib::RefPtr<Gio::Settings> m_schema_sync;
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;
