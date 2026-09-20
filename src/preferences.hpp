@@ -70,6 +70,16 @@ namespace gnote {
   };
 
   template<>
+  class ReadableSetting<int>
+  {
+  protected:
+    static int get_value(Gio::Settings &schema, const Glib::ustring &key)
+      {
+        return schema.get_int(key);
+      }
+  };
+
+  template<>
   class ReadableSetting<Glib::ustring>
   {
   protected:
@@ -93,6 +103,16 @@ namespace gnote {
     static void set_value(Gio::Settings &schema, const Glib::ustring &key, const bool &value)
       {
         schema.set_boolean(key, value);
+      }
+  };
+
+  template<>
+  class WritableSetting<int>
+  {
+  protected:
+    static void set_value(Gio::Settings &schema, const Glib::ustring &key, const int &value)
+      {
+        schema.set_int(key, value);
       }
   };
 
