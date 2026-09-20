@@ -238,7 +238,7 @@ void ExportToHtmlNoteAddin::write_html_for_note(sharp::StreamWriter & writer,
   args.add_param("root-note", "", gnote::utils::XmlEncoder::encode(note.get_title()));
 
   if(ignote().preferences().gnote.enable_custom_font) {
-    Glib::ustring font_face = ignote().preferences().custom_font_face();
+    Glib::ustring font_face = ignote().preferences().gnote.custom_font_face;
     Pango::FontDescription font_desc (font_face);
     Glib::ustring font = Glib::ustring::compose("font-family:'%1';", font_desc.get_family());
 
