@@ -74,7 +74,6 @@ const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
-const Glib::ustring MENU_PINNED_NOTES = "menu-pinned-notes";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 const Glib::ustring MAIN_WINDOW_MAXIMIZED = "main-window-maximized";
@@ -121,6 +120,7 @@ namespace gnote {
     , custom_font_face(*schema, "custom-font-face")
     , enable_auto_bulleted_lists(*schema, "enable-bulleted-lists")
     , start_note_uri(*schema, "start-note")
+    , menu_pinned_notes(*schema, "menu-pinned-notes")
     , m_schema(schema)
   {
   }
@@ -153,7 +153,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  DEFINE_GETTER_SETTER_STRING(m_schema_gnote, menu_pinned_notes, MENU_PINNED_NOTES)
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, main_window_maximized, MAIN_WINDOW_MAXIMIZED)
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_width, SEARCH_WINDOW_WIDTH)
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_height, SEARCH_WINDOW_HEIGHT)

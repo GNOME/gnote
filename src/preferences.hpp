@@ -231,6 +231,7 @@ namespace gnote {
       MonitoredSetting<Glib::ustring> custom_font_face;
       Setting<bool> enable_auto_bulleted_lists;
       Setting<Glib::ustring> start_note_uri;
+      Setting<Glib::ustring> menu_pinned_notes;
     private:
       explicit GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema);
 
@@ -253,7 +254,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_SETTING_STRING(menu_pinned_notes)
     GNOTE_PREFERENCES_SETTING_BOOL(main_window_maximized)
     GNOTE_PREFERENCES_SETTING_INT(search_window_width)
     GNOTE_PREFERENCES_SETTING_INT(search_window_height)

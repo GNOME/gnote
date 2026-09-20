@@ -690,7 +690,7 @@ namespace gnote {
 
   bool Note::is_pinned() const
   {
-    auto pinned_uris = m_gnote.preferences().menu_pinned_notes();
+    Glib::ustring pinned_uris = m_gnote.preferences().gnote.menu_pinned_notes;
     return pinned_uris.find(uri()) != Glib::ustring::npos;
   }
 
@@ -698,7 +698,7 @@ namespace gnote {
   void Note::set_pinned(bool pinned) const
   {
     Glib::ustring new_pinned;
-    auto old_pinned = m_gnote.preferences().menu_pinned_notes();
+    Glib::ustring old_pinned = m_gnote.preferences().gnote.menu_pinned_notes;
     bool is_currently_pinned = old_pinned.find(uri()) != Glib::ustring::npos;
 
     if (pinned == is_currently_pinned)
@@ -716,7 +716,7 @@ namespace gnote {
         }
       }
     }
-    m_gnote.preferences().menu_pinned_notes(new_pinned);
+    m_gnote.preferences().gnote.menu_pinned_notes = new_pinned;
     m_gnote.notebook_manager().signal_note_pin_status_changed(*this, pinned);
   }
 
