@@ -599,7 +599,7 @@ void SearchNotesWidget::make_recent_notes_view()
 
   m_notes_view->append_column(m_change_column);
 
-  parse_sorting_setting(m_gnote.preferences().search_sorting());
+  parse_sorting_setting(m_gnote.preferences().gnote.search_sorting);
   if(!m_sort_column) {
     m_sort_column = m_change_column;
     m_sort_column_order = Gtk::SortType::DESCENDING;
@@ -1010,7 +1010,7 @@ void SearchNotesWidget::on_sorting_changed(Gtk::Sorter::Change)
   else {
     value += "desc";
   }
-  m_gnote.preferences().search_sorting(value);
+  m_gnote.preferences().gnote.search_sorting = value;
 }
 
 void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)

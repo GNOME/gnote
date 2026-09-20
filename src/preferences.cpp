@@ -76,7 +76,6 @@ const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
-const Glib::ustring SEARCH_SORTING = "search-sorting";
 const Glib::ustring USE_CLIENT_SIDE_DECORATIONS = "use-client-side-decorations";
 const Glib::ustring COLOR_SCHEME = "color-scheme";
 const Glib::ustring EDITOR_TAB_WIDTH = "editor-tab-width";
@@ -121,6 +120,7 @@ namespace gnote {
     , search_window_splitter_pos(*schema, "search-window-splitter-pos")
     , start_note_uri(*schema, "start-note")
     , menu_pinned_notes(*schema, "menu-pinned-notes")
+    , search_sorting(*schema, "search-sorting")
     , m_schema(schema)
   {
   }
@@ -153,7 +153,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  DEFINE_GETTER_SETTER_STRING(m_schema_gnote, search_sorting, SEARCH_SORTING)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, use_client_side_decorations, USE_CLIENT_SIDE_DECORATIONS)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, color_scheme, COLOR_SCHEME)
 

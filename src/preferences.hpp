@@ -236,6 +236,7 @@ namespace gnote {
       Setting<int> search_window_splitter_pos;
       Setting<Glib::ustring> start_note_uri;
       Setting<Glib::ustring> menu_pinned_notes;
+      Setting<Glib::ustring> search_sorting;
     private:
       explicit GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema);
 
@@ -258,7 +259,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_SETTING_STRING(search_sorting)
     GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
     GNOTE_PREFERENCES_CACHING_SETTING(color_scheme, const Glib::ustring&)
     GNOTE_PREFERENCES_CACHING_SETTING(editor_tab_width, unsigned);
