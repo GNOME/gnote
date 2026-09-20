@@ -45,7 +45,7 @@ namespace gnote {
 
     m_preferences.gnote.enable_custom_font.signal_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
     m_preferences.gnote.custom_font_face.signal_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_custom_font_setting));
-    m_preferences.signal_editor_tab_width_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_tab_stops));
+    m_preferences.gnote.editor_tab_width.signal_changed.connect(sigc::mem_fun(*this, &NoteEditor::update_tab_stops));
 
     // query all monitored settings to get change notifications
     bool enable_custom_font = m_preferences.gnote.enable_custom_font;
@@ -96,7 +96,7 @@ namespace gnote {
 
   void NoteEditor::update_tab_stops()
   {
-    const unsigned tab_width = m_preferences.editor_tab_width();
+    const unsigned tab_width = m_preferences.gnote.editor_tab_width;
     if(tab_width == 0 || tab_width > 32) {
       property_tabs().reset_value();
       return;

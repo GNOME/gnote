@@ -76,7 +76,6 @@ const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
-const Glib::ustring EDITOR_TAB_WIDTH = "editor-tab-width";
 
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
@@ -108,6 +107,7 @@ namespace gnote {
     , enable_custom_font(*schema, "enable-custom-font")
     , highlight_accent_color_based(*schema, "highlight-accent-color-based")
     , note_rename_behavior(*schema, "note-rename-behavior")
+    , editor_tab_width(*schema, "editor-tab-width")
     , highlight_background_color(*schema, "highlight-background-color")
     , highlight_foreground_color(*schema, "highlight-foreground-color")
     , custom_font_face(*schema, "custom-font-face")
@@ -145,8 +145,6 @@ namespace gnote {
     m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
-
-    SETUP_CACHED_KEY(m_schema_gnote, editor_tab_width, EDITOR_TAB_WIDTH, uint);
 
     SETUP_CACHED_KEY(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN, string);
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);

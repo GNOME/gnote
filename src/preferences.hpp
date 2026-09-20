@@ -246,6 +246,7 @@ namespace gnote {
       MonitoredSetting<bool> enable_custom_font;
       MonitoredSetting<bool> highlight_accent_color_based;
       MonitoredSetting<int> note_rename_behavior;
+      MonitoredSetting<unsigned> editor_tab_width;
       MonitoredSetting<Glib::ustring> highlight_background_color;
       MonitoredSetting<Glib::ustring> highlight_foreground_color;
       MonitoredSetting<Glib::ustring> custom_font_face;
@@ -281,7 +282,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_CACHING_SETTING(editor_tab_width, unsigned);
 
     GnomeDesktopSettings gnome_desktop;
 
