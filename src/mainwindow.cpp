@@ -71,7 +71,7 @@ MainWindow & MainWindow::present_default(IGnote & g, Note & note)
 bool MainWindow::use_client_side_decorations(Preferences & prefs)
 {
   if(s_use_client_side_decorations < 0) {
-    auto setting = prefs.use_client_side_decorations();
+    Glib::ustring setting = prefs.gnote.use_client_side_decorations;
     if(setting == "enabled") {
       s_use_client_side_decorations = 1;
     }

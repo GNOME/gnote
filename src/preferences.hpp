@@ -237,6 +237,7 @@ namespace gnote {
       Setting<Glib::ustring> start_note_uri;
       Setting<Glib::ustring> menu_pinned_notes;
       Setting<Glib::ustring> search_sorting;
+      Setting<Glib::ustring> use_client_side_decorations;
     private:
       explicit GnoteSettings(const Glib::RefPtr<Gio::Settings> &schema);
 
@@ -259,7 +260,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
     GNOTE_PREFERENCES_CACHING_SETTING(color_scheme, const Glib::ustring&)
     GNOTE_PREFERENCES_CACHING_SETTING(editor_tab_width, unsigned);
 
