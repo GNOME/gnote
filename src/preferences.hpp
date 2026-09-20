@@ -229,6 +229,7 @@ namespace gnote {
       MonitoredSetting<Glib::ustring> highlight_background_color;
       MonitoredSetting<Glib::ustring> highlight_foreground_color;
       MonitoredSetting<Glib::ustring> custom_font_face;
+      MonitoredSetting<Glib::ustring> color_scheme;
       Setting<bool> enable_auto_bulleted_lists;
       Setting<bool> main_window_maximized;
       Setting<int> search_window_width;
@@ -260,7 +261,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_CACHING_SETTING(color_scheme, const Glib::ustring&)
     GNOTE_PREFERENCES_CACHING_SETTING(editor_tab_width, unsigned);
 
     GnomeDesktopSettings gnome_desktop;

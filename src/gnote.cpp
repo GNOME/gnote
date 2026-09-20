@@ -161,7 +161,7 @@ namespace gnote {
     m_sync_manager = std::make_unique<sync::SyncManager>(*this, default_note_manager());
     m_sync_manager->init();
 
-    preferences().signal_color_scheme_changed.connect(sigc::mem_fun(*this, &Gnote::on_color_scheme_pref_changed));
+    preferences().gnote.color_scheme.signal_changed.connect(sigc::mem_fun(*this, &Gnote::on_color_scheme_pref_changed));
     on_color_scheme_pref_changed();
 
     m_manager->get_addin_manager().initialize_application_addins();
@@ -309,7 +309,7 @@ namespace gnote {
 
   void Gnote::on_color_scheme_pref_changed()
   {
-    auto scheme = preferences().color_scheme();
+    Glib::ustring scheme = preferences().gnote.color_scheme;
     auto color_scheme = ADW_COLOR_SCHEME_DEFAULT;
     if(scheme == Preferences::COLOR_SCHEME_DARK_VAL) {
       color_scheme = ADW_COLOR_SCHEME_FORCE_DARK;

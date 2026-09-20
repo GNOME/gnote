@@ -326,10 +326,10 @@ namespace {
       // TRANSLATORS: Option to use light variant of the theme
       color_scheme_model->append(ColorSchemeItem::create(_("Light"), Preferences::COLOR_SCHEME_LIGHT_VAL));
       auto color_scheme = Gtk::make_managed<Gtk::DropDown>(color_scheme_model, make_color_scheme_label_expr());
-      color_scheme->set_selected(color_scheme_item_idx(color_scheme_model, m_gnote.preferences().color_scheme()));
+      color_scheme->set_selected(color_scheme_item_idx(color_scheme_model, m_gnote.preferences().gnote.color_scheme));
       color_scheme->property_selected().signal_changed().connect([color_scheme, &gnote=m_gnote] {
         if(auto item = std::dynamic_pointer_cast<ColorSchemeItem>(color_scheme->get_selected_item())) {
-          gnote.preferences().color_scheme(item->value);
+          gnote.preferences().gnote.color_scheme = item->value;
         }
       });
       options_list->attach(*color_scheme, 1, options_list_row++, 1, 1);
