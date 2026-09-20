@@ -74,7 +74,6 @@ const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
-const Glib::ustring NOTE_RENAME_BEHAVIOR = "note-rename-behavior";
 const Glib::ustring MENU_PINNED_NOTES = "menu-pinned-notes";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
@@ -116,6 +115,7 @@ namespace gnote {
     , enable_wikiwords(*schema, "enable-wikiwords")
     , enable_custom_font(*schema, "enable-custom-font")
     , highlight_accent_color_based(*schema, "highlight-accent-color-based")
+    , note_rename_behavior(*schema, "note-rename-behavior")
     , highlight_background_color(*schema, "highlight-background-color")
     , highlight_foreground_color(*schema, "highlight-foreground-color")
     , custom_font_face(*schema, "custom-font-face")
@@ -146,7 +146,6 @@ namespace gnote {
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
-    SETUP_CACHED_KEY(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR, int);
     SETUP_CACHED_KEY(m_schema_gnote, color_scheme, COLOR_SCHEME, string);
     SETUP_CACHED_KEY(m_schema_gnote, editor_tab_width, EDITOR_TAB_WIDTH, uint);
 
@@ -154,7 +153,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  DEFINE_CACHING_SETTER_INT(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR)
   DEFINE_GETTER_SETTER_STRING(m_schema_gnote, menu_pinned_notes, MENU_PINNED_NOTES)
   DEFINE_GETTER_SETTER_BOOL(m_schema_gnote, main_window_maximized, MAIN_WINDOW_MAXIMIZED)
   DEFINE_GETTER_SETTER_INT(m_schema_gnote, search_window_width, SEARCH_WINDOW_WIDTH)

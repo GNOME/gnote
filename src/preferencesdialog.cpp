@@ -179,7 +179,7 @@ namespace {
     add_action_widget(*button, Gtk::ResponseType::CLOSE);
     set_default_response(Gtk::ResponseType::CLOSE);
 
-    m_gnote.preferences().signal_note_rename_behavior_changed.connect(
+    m_gnote.preferences().gnote.note_rename_behavior.signal_changed.connect(
         sigc::mem_fun(*this, &PreferencesDialog::on_note_rename_behavior_changed));
     m_gnote.preferences().signal_sync_autosync_timeout_changed
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_autosync_timeout_setting_changed));
@@ -305,10 +305,10 @@ namespace {
       rename_opts.emplace_back(_("Never rename links"));
       rename_opts.emplace_back(_("Always rename links"));
       m_rename_behavior_combo = Gtk::make_managed<Gtk::DropDown>(rename_opts);
-      guint rename_behavior = m_gnote.preferences().note_rename_behavior();
+      guint rename_behavior = m_gnote.preferences().gnote.note_rename_behavior;
       if (0 > rename_behavior || 2 < rename_behavior) {
         rename_behavior = 0;
-        m_gnote.preferences().note_rename_behavior(rename_behavior);
+        m_gnote.preferences().gnote.note_rename_behavior = rename_behavior;
       }
       m_rename_behavior_combo->set_selected(rename_behavior);
       m_rename_behavior_combo->property_selected().signal_changed().connect(sigc::mem_fun(*this, &PreferencesDialog::on_rename_behavior_changed));
@@ -903,10 +903,10 @@ namespace {
 
   void  PreferencesDialog::on_note_rename_behavior_changed()
   {
-    guint rename_behavior = m_gnote.preferences().note_rename_behavior();
+    guint rename_behavior = m_gnote.preferences().gnote.note_rename_behavior;
     if(0 > rename_behavior || 2 < rename_behavior) {
       rename_behavior = 0;
-      m_gnote.preferences().note_rename_behavior(rename_behavior);
+      m_gnote.preferences().gnote.note_rename_behavior = rename_behavior;
     }
     if(m_rename_behavior_combo->get_selected() != rename_behavior) {
       m_rename_behavior_combo->set_selected(rename_behavior);
@@ -936,7 +936,7 @@ namespace {
 
   void  PreferencesDialog::on_rename_behavior_changed()
   {
-    m_gnote.preferences().note_rename_behavior(m_rename_behavior_combo->get_selected());
+    m_gnote.preferences().gnote.note_rename_behavior = m_rename_behavior_combo->get_selected();
   }
 
 

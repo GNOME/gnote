@@ -225,6 +225,7 @@ namespace gnote {
       MonitoredSetting<bool> enable_wikiwords;
       MonitoredSetting<bool> enable_custom_font;
       MonitoredSetting<bool> highlight_accent_color_based;
+      MonitoredSetting<int> note_rename_behavior;
       MonitoredSetting<Glib::ustring> highlight_background_color;
       MonitoredSetting<Glib::ustring> highlight_foreground_color;
       MonitoredSetting<Glib::ustring> custom_font_face;
@@ -252,7 +253,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_CACHING_SETTING(note_rename_behavior, int)
     GNOTE_PREFERENCES_SETTING_STRING(menu_pinned_notes)
     GNOTE_PREFERENCES_SETTING_BOOL(main_window_maximized)
     GNOTE_PREFERENCES_SETTING_INT(search_window_width)
