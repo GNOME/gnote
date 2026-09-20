@@ -371,7 +371,7 @@ namespace {
     button->signal_clicked().connect(sigc::mem_fun(*this, &PreferencesDialog::on_font_button_clicked));
     button->set_child(*font_box);
 
-    update_font_button(m_gnote.preferences().custom_font_face());
+    update_font_button(m_gnote.preferences().gnote.custom_font_face);
 
     return button;
   }
@@ -858,14 +858,14 @@ namespace {
   {
     auto font_dialog = Gtk::make_managed<Gtk::FontChooserDialog>(_("Choose Note Font"));
 
-    auto font_name = m_gnote.preferences().custom_font_face();
+    Glib::ustring font_name = m_gnote.preferences().gnote.custom_font_face;
     font_dialog->set_font(font_name);
 
     font_dialog->signal_response().connect([this, font_name, font_dialog](int response) {
       if(Gtk::ResponseType::OK == response) {
         auto new_font = font_dialog->get_font();
         if(new_font != font_name) {
-          m_gnote.preferences().custom_font_face(new_font);
+          m_gnote.preferences().gnote.custom_font_face = new_font;
           update_font_button(new_font);
         }
       }
