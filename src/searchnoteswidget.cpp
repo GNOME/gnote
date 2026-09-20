@@ -497,7 +497,7 @@ void SearchNotesWidget::save_position()
   int height = window->get_height();
 
   m_gnote.preferences().gnote.search_window_width = width;
-  m_gnote.preferences().search_window_height(height);
+  m_gnote.preferences().gnote.search_window_height = height;
 }
 
 void SearchNotesWidget::on_notebook_selection_changed(const notebooks::Notebook & notebook)

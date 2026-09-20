@@ -232,6 +232,7 @@ namespace gnote {
       Setting<bool> enable_auto_bulleted_lists;
       Setting<bool> main_window_maximized;
       Setting<int> search_window_width;
+      Setting<int> search_window_height;
       Setting<Glib::ustring> start_note_uri;
       Setting<Glib::ustring> menu_pinned_notes;
     private:
@@ -256,7 +257,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_SETTING_INT(search_window_height)
     GNOTE_PREFERENCES_SETTING_INT(search_window_splitter_pos)
     GNOTE_PREFERENCES_SETTING_STRING(search_sorting)
     GNOTE_PREFERENCES_SETTING_STRING(use_client_side_decorations)
