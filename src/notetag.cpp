@@ -296,7 +296,7 @@ namespace {
   {
     NoteTag::Ptr tag;
 
-    m_preferences.signal_highlight_accent_color_based_changed
+    m_preferences.gnote.highlight_accent_color_based.signal_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_accent_color_based_changed));
     m_preferences.signal_highlight_background_color_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_background_setting_changed));
@@ -401,7 +401,7 @@ namespace {
 
   void NoteTagTable::on_highlight_accent_color_based_changed()
   {
-    if(m_preferences.highlight_accent_color_based()) {
+    if(m_preferences.gnote.highlight_accent_color_based) {
       update_accent_color();
     }
     else {
@@ -412,7 +412,7 @@ namespace {
 
   void NoteTagTable::on_highlight_background_setting_changed()
   {
-    if(m_preferences.highlight_accent_color_based()) {
+    if(m_preferences.gnote.highlight_accent_color_based) {
       return;
     }
 
@@ -449,7 +449,7 @@ namespace {
     m_link_tag->property_foreground_rgba().set_value(active_link_color);
     m_url_tag->property_foreground_rgba().set_value(active_link_color);
 
-    if(!m_preferences.highlight_accent_color_based()) {
+    if(!m_preferences.gnote.highlight_accent_color_based) {
       return;
     }
 
@@ -464,7 +464,7 @@ namespace {
 
   void NoteTagTable::on_highlight_foreground_setting_changed()
   {
-    if(m_preferences.highlight_accent_color_based()) {
+    if(m_preferences.gnote.highlight_accent_color_based) {
       return;
     }
 
