@@ -72,7 +72,6 @@ const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
 const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
-const Glib::ustring HIGHLIGH_BACKGROUND_COLOR = "highlight-background-color";
 const Glib::ustring HIGHLIGH_FOREGROUND_COLOR = "highlight-foreground-color";
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
@@ -119,6 +118,7 @@ namespace gnote {
     , enable_wikiwords(*schema, "enable-wikiwords")
     , enable_custom_font(*schema, "enable-custom-font")
     , highlight_accent_color_based(*schema, "highlight-accent-color-based")
+    , highlight_background_color(*schema, "highlight-background-color")
     , enable_auto_bulleted_lists(*schema, "enable-bulleted-lists")
     , start_note_uri(*schema, "start-note")
     , m_schema(schema)
@@ -146,7 +146,6 @@ namespace gnote {
     m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
-    SETUP_CACHED_KEY(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR, string);
     SETUP_CACHED_KEY(m_schema_gnote, highlight_foreground_color, HIGHLIGH_FOREGROUND_COLOR, string);
     SETUP_CACHED_KEY(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR, int);
     SETUP_CACHED_KEY(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE, string);
@@ -157,7 +156,6 @@ namespace gnote {
     SETUP_CACHED_KEY(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT, int);
   }
   
-  DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_background_color, HIGHLIGH_BACKGROUND_COLOR)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, highlight_foreground_color, HIGHLIGH_FOREGROUND_COLOR)
   DEFINE_CACHING_SETTER_INT(m_schema_gnote, note_rename_behavior, NOTE_RENAME_BEHAVIOR)
   DEFINE_CACHING_SETTER_STRING(m_schema_gnote, custom_font_face, CUSTOM_FONT_FACE)
