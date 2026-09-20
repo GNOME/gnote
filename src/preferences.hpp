@@ -230,6 +230,7 @@ namespace gnote {
       MonitoredSetting<Glib::ustring> highlight_foreground_color;
       MonitoredSetting<Glib::ustring> custom_font_face;
       Setting<bool> enable_auto_bulleted_lists;
+      Setting<bool> main_window_maximized;
       Setting<Glib::ustring> start_note_uri;
       Setting<Glib::ustring> menu_pinned_notes;
     private:
@@ -254,7 +255,6 @@ namespace gnote {
     void init();
 
     GnoteSettings gnote;
-    GNOTE_PREFERENCES_SETTING_BOOL(main_window_maximized)
     GNOTE_PREFERENCES_SETTING_INT(search_window_width)
     GNOTE_PREFERENCES_SETTING_INT(search_window_height)
     GNOTE_PREFERENCES_SETTING_INT(search_window_splitter_pos)
