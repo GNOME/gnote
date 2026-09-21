@@ -944,9 +944,9 @@ namespace {
   {
     // Get saved behavior
     sync::SyncTitleConflictResolution savedBehavior = sync::CANCEL;
-    int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
+    int dlg_behavior_pref = m_gnote.preferences().synchronization.configured_conflict_behavior;
     // TODO: Check range of this int
-    savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlgBehaviorPref);
+    savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlg_behavior_pref);
 
     // Create dialog
     Gtk::Dialog *advancedDlg = Gtk::make_managed<Gtk::Dialog>(_("Other Synchronization Options"), *this, true);
@@ -963,16 +963,16 @@ namespace {
     overwriteOnConflictRadio->set_group(*promptOnConflictRadio);
 
     auto on_toggle = [this, renameOnConflictRadio, overwriteOnConflictRadio] {
-      sync::SyncTitleConflictResolution newBehavior = sync::CANCEL;
+      sync::SyncTitleConflictResolution new_behavior = sync::CANCEL;
 
       if(renameOnConflictRadio->get_active()) {
-        newBehavior = sync::RENAME_EXISTING_NO_UPDATE;
+        new_behavior = sync::RENAME_EXISTING_NO_UPDATE;
       }
       else if(overwriteOnConflictRadio->get_active()) {
-        newBehavior = sync::OVERWRITE_EXISTING;
+        new_behavior = sync::OVERWRITE_EXISTING;
       }
 
-      m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(newBehavior));
+      m_gnote.preferences().synchronization.configured_conflict_behavior = new_behavior;
     };
 
     promptOnConflictRadio->signal_toggled().connect(on_toggle);
@@ -1058,7 +1058,7 @@ namespace {
       m_gnote.preferences().synchronization.selected_service_addin = "";
 
       // Reset conflict handling behavior
-      m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+      m_gnote.preferences().synchronization.configured_conflict_behavior = DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
 
       m_gnote.sync_manager().reset_client();
 

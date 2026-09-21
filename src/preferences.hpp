@@ -285,6 +285,7 @@ namespace gnote {
 
       MonitoredSetting<Glib::ustring> selected_service_addin;
       ReadOnlySetting<Glib::ustring> client_id;
+      Setting<int> configured_conflict_behavior;
       Setting<Glib::ustring> local_path;
     private:
       explicit SyncSettings(const Glib::RefPtr<Gio::Settings> &schema);
@@ -299,7 +300,6 @@ namespace gnote {
     GnomeDesktopSettings gnome_desktop;
     SyncSettings synchronization;
 
-    GNOTE_PREFERENCES_SETTING_INT(sync_configured_conflict_behavior)
     GNOTE_PREFERENCES_CACHING_SETTING(sync_autosync_timeout, int)
 
     GNOTE_PREFERENCES_SETTING_INT(sync_fuse_mount_timeout)
