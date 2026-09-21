@@ -68,16 +68,12 @@
 
 namespace {
 
-const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
-
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
 const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
 const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
-
-const Glib::ustring REPLACE_TITLE_CLIPBOARD = "clipboard";
 
 }
 
@@ -118,6 +114,12 @@ namespace gnote {
   {
   }
 
+  Preferences::ReplaceTitleSettings::ReplaceTitleSettings(const Glib::RefPtr<Gio::Settings> &schema)
+    : clipboard(*schema, "clipboard")
+    , m_schema(schema)
+  {
+  }
+
   Preferences::SyncSettings::SyncSettings(const Glib::RefPtr<Gio::Settings> &schema)
     : selected_service_addin(*schema, "sync-selected-service-addin")
     , autosync_timeout(*schema, "autosync-timeout")
@@ -141,6 +143,7 @@ namespace gnote {
   Preferences::Preferences()
     : gnote(Gio::Settings::create("org.gnome.gnote"))
     , gnome_desktop(Gio::Settings::create("org.gnome.desktop.interface"))
+    , replace_title(Gio::Settings::create("org.gnome.gnote.replace-title"))
     , synchronization(Gio::Settings::create("org.gnome.gnote.sync"))
     , web_dav(Gio::Settings::create("org.gnome.gnote.sync.wdfs"))
   {
@@ -149,9 +152,6 @@ namespace gnote {
 
   void Preferences::init()
   {
-    m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
   }
-  
-  DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
 }
 

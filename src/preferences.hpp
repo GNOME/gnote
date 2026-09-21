@@ -278,6 +278,18 @@ namespace gnote {
       Glib::RefPtr<Gio::Settings> m_schema;
     };
 
+    class ReplaceTitleSettings
+    {
+    public:
+      friend Preferences;
+
+      Setting<int> clipboard;
+    private:
+      explicit ReplaceTitleSettings(const Glib::RefPtr<Gio::Settings> &schema);
+
+      Glib::RefPtr<Gio::Settings> m_schema;
+    };
+
     class SyncSettings
     {
     public:
@@ -314,10 +326,9 @@ namespace gnote {
 
     GnoteSettings gnote;
     GnomeDesktopSettings gnome_desktop;
+    ReplaceTitleSettings replace_title;
     SyncSettings synchronization;
     SyncWebDavSettings web_dav;
-
-    GNOTE_PREFERENCES_SETTING_INT(replace_title_clipboard)
   private:
     Preferences(const Preferences &) = delete;
 
