@@ -54,7 +54,7 @@ class WebDavSyncServer
 public:
   static std::unique_ptr<WebDavSyncServer> create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
     {
-      return std::make_unique<WebDavSyncServer>(std::move(path), prefs.sync_client_id());
+      return std::make_unique<WebDavSyncServer>(std::move(path), prefs.synchronization.sync_client_id);
     }
 
   WebDavSyncServer(Glib::RefPtr<Gio::File> && local_sync_path, const Glib::ustring & client_id)

@@ -69,7 +69,6 @@
 namespace {
 
 const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
-const char *SCHEMA_SYNC = "org.gnome.gnote.sync";
 const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
@@ -79,7 +78,6 @@ const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
-const Glib::ustring SYNC_CLIENT_ID = "sync-guid";
 const Glib::ustring SYNC_LOCAL_PATH = "sync-local-path";
 const Glib::ustring SYNC_SELECTED_SERVICE_ADDIN = "sync-selected-service-addin";
 const Glib::ustring SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
@@ -131,10 +129,17 @@ namespace gnote {
   {
   }
 
+  Preferences::SyncSettings::SyncSettings(const Glib::RefPtr<Gio::Settings> &schema)
+    : sync_client_id(*schema, "sync-guid")
+    , m_schema(schema)
+  {
+  }
+
 
   Preferences::Preferences()
     : gnote(Gio::Settings::create("org.gnome.gnote"))
     , gnome_desktop(Gio::Settings::create("org.gnome.desktop.interface"))
+    , synchronization(Gio::Settings::create("org.gnome.gnote.sync"))
   {
     init();
   }
@@ -142,7 +147,7 @@ namespace gnote {
   void Preferences::init()
   {
     m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
-    m_schema_sync = Gio::Settings::create(SCHEMA_SYNC);
+    m_schema_sync = synchronization.m_schema;
     m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
 
     SETUP_CACHED_KEY(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN, string);
@@ -151,7 +156,6 @@ namespace gnote {
   
   DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
 
-  DEFINE_GETTER_STRING(m_schema_sync, sync_client_id, SYNC_CLIENT_ID)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
   DEFINE_CACHING_SETTER_STRING(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN)
   DEFINE_GETTER_SETTER_INT(m_schema_sync, sync_configured_conflict_behavior, SYNC_CONFIGURED_CONFLICT_BEHAVIOR)
