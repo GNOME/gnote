@@ -283,9 +283,9 @@ namespace gnote {
     public:
       friend Preferences;
 
-      MonitoredSetting<Glib::ustring> sync_selected_service_addin;
-      ReadOnlySetting<Glib::ustring> sync_client_id;
-      Setting<Glib::ustring> sync_local_path;
+      MonitoredSetting<Glib::ustring> selected_service_addin;
+      ReadOnlySetting<Glib::ustring> client_id;
+      Setting<Glib::ustring> local_path;
     private:
       explicit SyncSettings(const Glib::RefPtr<Gio::Settings> &schema);
 

@@ -128,9 +128,9 @@ namespace gnote {
   }
 
   Preferences::SyncSettings::SyncSettings(const Glib::RefPtr<Gio::Settings> &schema)
-    : sync_selected_service_addin(*schema, "sync-selected-service-addin")
-    , sync_client_id(*schema, "sync-guid")
-    , sync_local_path(*schema, "sync-local-path")
+    : selected_service_addin(*schema, "sync-selected-service-addin")
+    , client_id(*schema, "sync-guid")
+    , local_path(*schema, "sync-local-path")
     , m_schema(schema)
   {
   }

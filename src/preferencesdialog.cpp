@@ -445,7 +445,7 @@ namespace {
 
     // Read from Preferences which service is configured and select it
     // by default.  Otherwise, just select the first one in the list.
-    Glib::ustring addin_id = m_gnote.preferences().synchronization.sync_selected_service_addin;
+    Glib::ustring addin_id = m_gnote.preferences().synchronization.selected_service_addin;
 
     Glib::RefPtr<SyncService> active_sync;
     if(!addin_id.empty()) {
@@ -1055,7 +1055,7 @@ namespace {
         ERR_OUT("Error calling %s.reset_configuration: %s", active_sync->service().id().c_str(), e.what());
       }
 
-      m_gnote.preferences().synchronization.sync_selected_service_addin = "";
+      m_gnote.preferences().synchronization.selected_service_addin = "";
 
       // Reset conflict handling behavior
       m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
@@ -1142,7 +1142,7 @@ namespace {
     utils::HIGMessageDialog *dialog;
     if(saved) {
       auto active_sync = std::dynamic_pointer_cast<SyncService>(active_sync_service);
-      m_gnote.preferences().synchronization.sync_selected_service_addin  = active_sync->service().id();
+      m_gnote.preferences().synchronization.selected_service_addin  = active_sync->service().id();
 
       m_sync_addin_combo->set_sensitive(false);
       m_sync_addin_prefs_widget->set_sensitive(false);
@@ -1171,7 +1171,7 @@ namespace {
       // TODO: Change the SyncServiceAddin API so the call to
       // SaveConfiguration has a way of passing back an exception
       // or other text so it can be displayed to the user.
-      m_gnote.preferences().synchronization.sync_selected_service_addin = "";
+      m_gnote.preferences().synchronization.selected_service_addin = "";
 
       m_sync_addin_combo->set_sensitive(true);
       m_sync_addin_prefs_widget->set_sensitive(true);
