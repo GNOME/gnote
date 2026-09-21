@@ -294,14 +294,26 @@ namespace gnote {
       Glib::RefPtr<Gio::Settings> m_schema;
     };
 
+    class SyncWebDavSettings
+    {
+    public:
+      friend Preferences;
+
+      Setting<int> mount_timeout;
+    private:
+      explicit SyncWebDavSettings(const Glib::RefPtr<Gio::Settings> &schema);
+
+      Glib::RefPtr<Gio::Settings> m_schema;
+    };
+
     Preferences();
     void init();
 
     GnoteSettings gnote;
     GnomeDesktopSettings gnome_desktop;
     SyncSettings synchronization;
+    SyncWebDavSettings web_dav;
 
-    GNOTE_PREFERENCES_SETTING_INT(sync_fuse_mount_timeout)
     GNOTE_PREFERENCES_SETTING_BOOL(sync_fuse_wdfs_accept_sllcert)
     GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_url)
     GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_username)

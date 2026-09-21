@@ -69,7 +69,6 @@
 namespace {
 
 const char *SCHEMA_REPLACE_TITLE = "org.gnome.gnote.replace-title";
-const char *SCHEMA_SYNC_WDFS = "org.gnome.gnote.sync.wdfs";
 
 //const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
 const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
@@ -78,7 +77,6 @@ const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
-const Glib::ustring SYNC_FUSE_MOUNT_TIMEOUT = "sync-fuse-mount-timeout-ms";
 const Glib::ustring SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";
 const Glib::ustring SYNC_FUSE_WDFS_URL = "url";
 const Glib::ustring SYNC_FUSE_WDFS_USERNAME = "username";
@@ -134,11 +132,18 @@ namespace gnote {
   {
   }
 
+  Preferences::SyncWebDavSettings::SyncWebDavSettings(const Glib::RefPtr<Gio::Settings> &schema)
+    : mount_timeout(*schema, "sync-fuse-mount-timeout-ms")
+    , m_schema(schema)
+  {
+  }
+
 
   Preferences::Preferences()
     : gnote(Gio::Settings::create("org.gnome.gnote"))
     , gnome_desktop(Gio::Settings::create("org.gnome.desktop.interface"))
     , synchronization(Gio::Settings::create("org.gnome.gnote.sync"))
+    , web_dav(Gio::Settings::create("org.gnome.gnote.sync.wdfs"))
   {
     init();
   }
@@ -146,12 +151,11 @@ namespace gnote {
   void Preferences::init()
   {
     m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
-    m_schema_sync_wdfs = Gio::Settings::create(SCHEMA_SYNC_WDFS);
+    m_schema_sync_wdfs = web_dav.m_schema;
   }
   
   DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
 
-  DEFINE_GETTER_SETTER_INT(m_schema_sync_wdfs, sync_fuse_mount_timeout, SYNC_FUSE_MOUNT_TIMEOUT)
   DEFINE_GETTER_SETTER_BOOL(m_schema_sync_wdfs, sync_fuse_wdfs_accept_sllcert, SYNC_FUSE_WDFS_ACCEPT_SSLCERT)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync_wdfs, sync_fuse_wdfs_url, SYNC_FUSE_WDFS_URL)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync_wdfs, sync_fuse_wdfs_username, SYNC_FUSE_WDFS_USERNAME)
