@@ -317,12 +317,7 @@ bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib:
 
 bool WebDavSyncServiceAddin::accept_ssl_cert()
 {
-  try {
-    return ignote().preferences().sync_fuse_wdfs_accept_sllcert();
-  }
-  catch(...) {
-    return false;
-  }
+  return ignote().preferences().web_dav.accept_sllcert;
 }
 
 void WebDavSyncServiceAddin::add_row(Gtk::Grid &table, Gtk::Widget &widget, const Glib::ustring &labelText, uint row)

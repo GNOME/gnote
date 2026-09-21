@@ -77,7 +77,6 @@ const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
-const Glib::ustring SYNC_FUSE_WDFS_ACCEPT_SSLCERT = "accept-sslcert";
 const Glib::ustring SYNC_FUSE_WDFS_URL = "url";
 const Glib::ustring SYNC_FUSE_WDFS_USERNAME = "username";
 
@@ -134,6 +133,7 @@ namespace gnote {
 
   Preferences::SyncWebDavSettings::SyncWebDavSettings(const Glib::RefPtr<Gio::Settings> &schema)
     : mount_timeout(*schema, "sync-fuse-mount-timeout-ms")
+    , accept_sllcert(*schema, "accept-sslcert")
     , m_schema(schema)
   {
   }
@@ -156,7 +156,6 @@ namespace gnote {
   
   DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
 
-  DEFINE_GETTER_SETTER_BOOL(m_schema_sync_wdfs, sync_fuse_wdfs_accept_sllcert, SYNC_FUSE_WDFS_ACCEPT_SSLCERT)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync_wdfs, sync_fuse_wdfs_url, SYNC_FUSE_WDFS_URL)
   DEFINE_GETTER_SETTER_STRING(m_schema_sync_wdfs, sync_fuse_wdfs_username, SYNC_FUSE_WDFS_USERNAME)
 
