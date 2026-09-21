@@ -300,6 +300,7 @@ namespace gnote {
       friend Preferences;
 
       Setting<Glib::ustring> url;
+      Setting<Glib::ustring> username;
       Setting<int> mount_timeout;
       Setting<bool> accept_sllcert;
     private:
@@ -316,7 +317,6 @@ namespace gnote {
     SyncSettings synchronization;
     SyncWebDavSettings web_dav;
 
-    GNOTE_PREFERENCES_SETTING_STRING(sync_fuse_wdfs_username)
     GNOTE_PREFERENCES_SETTING_INT(replace_title_clipboard)
   private:
     Preferences(const Preferences &) = delete;

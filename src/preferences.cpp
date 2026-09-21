@@ -77,8 +77,6 @@ const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
-const Glib::ustring SYNC_FUSE_WDFS_USERNAME = "username";
-
 const Glib::ustring REPLACE_TITLE_CLIPBOARD = "clipboard";
 
 }
@@ -132,6 +130,7 @@ namespace gnote {
 
   Preferences::SyncWebDavSettings::SyncWebDavSettings(const Glib::RefPtr<Gio::Settings> &schema)
     : url(*schema, "url")
+    , username(*schema, "username")
     , mount_timeout(*schema, "sync-fuse-mount-timeout-ms")
     , accept_sllcert(*schema, "accept-sslcert")
     , m_schema(schema)
@@ -155,8 +154,5 @@ namespace gnote {
   }
   
   DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
-
-  DEFINE_GETTER_SETTER_STRING(m_schema_sync_wdfs, sync_fuse_wdfs_username, SYNC_FUSE_WDFS_USERNAME)
-
 }
 

@@ -254,7 +254,7 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
   username = "";
 
   try {
-    username = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_username());
+    username = sharp::string_trim(ignote().preferences().web_dav.username);
     url = sharp::string_trim(ignote().preferences().web_dav.url);
   }
   catch(KeyringException & ke) {
@@ -280,7 +280,7 @@ void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, con
 {
   // Save configuration into the GNOME Keyring and GSettings
   try {
-    ignote().preferences().sync_fuse_wdfs_username(username);
+    ignote().preferences().web_dav.username = username;
     ignote().preferences().web_dav.url = url;
 
     if(password != "") {
