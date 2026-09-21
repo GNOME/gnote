@@ -255,7 +255,7 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
 
   try {
     username = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_username());
-    url = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_url());
+    url = sharp::string_trim(ignote().preferences().web_dav.url);
   }
   catch(KeyringException & ke) {
     ERR_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
@@ -281,7 +281,7 @@ void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, con
   // Save configuration into the GNOME Keyring and GSettings
   try {
     ignote().preferences().sync_fuse_wdfs_username(username);
-    ignote().preferences().sync_fuse_wdfs_url(url);
+    ignote().preferences().web_dav.url = url;
 
     if(password != "") {
       Ring::create_password(Ring::default_keyring(), KEYRING_ITEM_NAME, s_request_attributes, password);
