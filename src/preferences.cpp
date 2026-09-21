@@ -22,60 +22,6 @@
 
 #include "preferences.hpp"
 
-#define SETUP_CACHED_KEY(schema, key, KEY, type) \
-  do { \
-    schema->signal_changed(KEY).connect([this](const Glib::ustring &) { \
-      m_##key = schema->get_##type(KEY); \
-      signal_##key##_changed(); \
-    }); \
-    m_##key = schema->get_##type(KEY); \
-  } while(0)
-
-
-#define DEFINE_GETTER(schema, key, KEY, type, rettype, paramtype) \
-  rettype Preferences::key() const \
-  { \
-    return schema->get_##type(KEY); \
-  }
-
-#define DEFINE_GETTER_BOOL(schema, key, KEY) DEFINE_GETTER(schema, key, KEY, boolean, bool, bool)
-#define DEFINE_GETTER_STRING(schema, key, KEY) DEFINE_GETTER(schema, key, KEY, string, Glib::ustring, const Glib::ustring)
-
-
-#define DEFINE_GETTER_SETTER(schema, key, KEY, type, rettype, paramtype) \
-  DEFINE_GETTER(schema, key, KEY, type, rettype, paramtype) \
-  void Preferences::key(paramtype value) \
-  { \
-    schema->set_##type(KEY, value); \
-  }
-
-#define DEFINE_GETTER_SETTER_BOOL(schema, key, KEY) DEFINE_GETTER_SETTER(schema, key, KEY, boolean, bool, bool)
-#define DEFINE_GETTER_SETTER_INT(schema, key, KEY) DEFINE_GETTER_SETTER(schema, key, KEY, int, int, int)
-#define DEFINE_GETTER_SETTER_STRING(schema, key, KEY) DEFINE_GETTER_SETTER(schema, key, KEY, string, Glib::ustring, const Glib::ustring &)
-
-
-#define DEFINE_CACHING_SETTER(schema, key, KEY, type, cpptype) \
-  void Preferences::key(cpptype value) \
-  { \
-    m_##key = value; \
-    schema->set_##type(KEY, value); \
-  }
-
-#define DEFINE_CACHING_SETTER_BOOL(schema, key, KEY) DEFINE_CACHING_SETTER(schema, key, KEY, boolean, bool)
-#define DEFINE_CACHING_SETTER_INT(schema, key, KEY) DEFINE_CACHING_SETTER(schema, key, KEY, int, int)
-#define DEFINE_CACHING_SETTER_STRING(schema, key, KEY) DEFINE_CACHING_SETTER(schema, key, KEY, string, const Glib::ustring &)
-
-
-namespace {
-
-//const Glib::ustring ENABLE_ICON_PASTE = "enable-icon-paste";  NOT USED CURRENTLY
-const Glib::ustring ENABLE_CLOSE_NOTE_ON_ESCAPE = "enable-close-note-on-escape";
-const Glib::ustring OPEN_NOTES_IN_NEW_WINDOW = "open-notes-in-new-window";
-const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
-
-const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
-
-}
 
 namespace gnote {
 
@@ -146,11 +92,6 @@ namespace gnote {
     , replace_title(Gio::Settings::create("org.gnome.gnote.replace-title"))
     , synchronization(Gio::Settings::create("org.gnome.gnote.sync"))
     , web_dav(Gio::Settings::create("org.gnome.gnote.sync.wdfs"))
-  {
-    init();
-  }
-
-  void Preferences::init()
   {
   }
 }

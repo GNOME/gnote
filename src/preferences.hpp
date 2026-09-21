@@ -28,28 +28,6 @@
 #include <giomm/settings.h>
 
 
-#define GNOTE_PREFERENCES_SETTING(key, rettype, paramtype) \
-  rettype key() const; \
-  void key(paramtype);
-
-#define GNOTE_PREFERENCES_SETTING_BOOL(key) GNOTE_PREFERENCES_SETTING(key, bool, bool)
-#define GNOTE_PREFERENCES_SETTING_INT(key) GNOTE_PREFERENCES_SETTING(key, int, int)
-#define GNOTE_PREFERENCES_SETTING_STRING(key) GNOTE_PREFERENCES_SETTING(key, Glib::ustring, const Glib::ustring &)
-
-
-#define GNOTE_PREFERENCES_CACHING_SETTING_RO(key, type) \
-  type key() const \
-    { \
-      return m_##key; \
-    } \
-  sigc::signal<void()> signal_##key##_changed;
-
-
-#define GNOTE_PREFERENCES_CACHING_SETTING(key, type) \
-  GNOTE_PREFERENCES_CACHING_SETTING_RO(key, type) \
-  void key(type);
-
-
 namespace gnote {
 
   template<typename T>
@@ -322,7 +300,6 @@ namespace gnote {
     };
 
     Preferences();
-    void init();
 
     GnoteSettings gnote;
     GnomeDesktopSettings gnome_desktop;
@@ -331,34 +308,9 @@ namespace gnote {
     SyncWebDavSettings web_dav;
   private:
     Preferences(const Preferences &) = delete;
-
-    Glib::RefPtr<Gio::Settings> m_schema_replace_title;
-
-    Glib::ustring m_custom_font_face;
-    bool m_highlight_accent_color_based;
-    Glib::ustring m_highlight_background_color;
-    Glib::ustring m_highlight_foreground_color;
-    Glib::ustring m_color_scheme;
-    unsigned m_editor_tab_width;
-
-    Glib::ustring m_desktop_gnome_clock_format;
-    Glib::ustring m_desktop_gnome_font;
-
-    Glib::ustring m_sync_selected_service_addin;
-
-    int m_note_rename_behavior;
-    int m_sync_autosync_timeout;
-
-    bool m_enable_spellchecking;
-    bool m_enable_auto_links;
-    bool m_enable_url_links;
-    bool m_enable_wikiwords;
-    bool m_enable_custom_font;
-    bool m_open_notes_in_new_window;
   };
-
 
 }
 
-
 #endif
+
