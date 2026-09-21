@@ -63,7 +63,7 @@ public:
   virtual bool is_supported() const override;
   virtual bool initialized() override;
 private:
-  bool get_config_settings(Glib::ustring & syncPath);
+  bool get_config_settings(Glib::ustring &sync_path);
 
   Gtk::Button *m_path_button;
   Glib::ustring m_path;

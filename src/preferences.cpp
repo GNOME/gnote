@@ -78,7 +78,6 @@ const Glib::ustring AUTOSIZE_NOTE_WINDOW = "autosize-note-window";
 
 const Glib::ustring DESKTOP_GNOME_FONT = "document-font-name";
 
-const Glib::ustring SYNC_LOCAL_PATH = "sync-local-path";
 const Glib::ustring SYNC_SELECTED_SERVICE_ADDIN = "sync-selected-service-addin";
 const Glib::ustring SYNC_CONFIGURED_CONFLICT_BEHAVIOR = "sync-conflict-behavior";
 const Glib::ustring SYNC_AUTOSYNC_TIMEOUT = "autosync-timeout";
@@ -131,6 +130,7 @@ namespace gnote {
 
   Preferences::SyncSettings::SyncSettings(const Glib::RefPtr<Gio::Settings> &schema)
     : sync_client_id(*schema, "sync-guid")
+    , sync_local_path(*schema, "sync-local-path")
     , m_schema(schema)
   {
   }
@@ -156,7 +156,6 @@ namespace gnote {
   
   DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
 
-  DEFINE_GETTER_SETTER_STRING(m_schema_sync, sync_local_path, SYNC_LOCAL_PATH)
   DEFINE_CACHING_SETTER_STRING(m_schema_sync, sync_selected_service_addin, SYNC_SELECTED_SERVICE_ADDIN)
   DEFINE_GETTER_SETTER_INT(m_schema_sync, sync_configured_conflict_behavior, SYNC_CONFIGURED_CONFLICT_BEHAVIOR)
   DEFINE_CACHING_SETTER_INT(m_schema_sync, sync_autosync_timeout, SYNC_AUTOSYNC_TIMEOUT)

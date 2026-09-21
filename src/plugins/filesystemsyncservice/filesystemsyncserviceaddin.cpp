@@ -197,7 +197,7 @@ bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void(bool, 
   m_path = syncPath;
 
   // TODO: Try to create and delete a file.  If it fails, this should fail
-  ignote().preferences().sync_local_path(m_path);
+  ignote().preferences().synchronization.sync_local_path = m_path;
 
   on_saved(true, "");
   return true;
@@ -206,13 +206,13 @@ bool FileSystemSyncServiceAddin::save_configuration(const sigc::slot<void(bool, 
 
 void FileSystemSyncServiceAddin::reset_configuration()
 {
-  ignote().preferences().sync_local_path("");
+  ignote().preferences().synchronization.sync_local_path = "";
 }
 
 
 bool FileSystemSyncServiceAddin::is_configured() const
 {
-  return ignote().preferences().sync_local_path() != "";
+  return ignote().preferences().synchronization.sync_local_path != "";
 }
 
 
@@ -241,10 +241,10 @@ bool FileSystemSyncServiceAddin::initialized()
 }
 
 
-bool FileSystemSyncServiceAddin::get_config_settings(Glib::ustring & syncPath)
+bool FileSystemSyncServiceAddin::get_config_settings(Glib::ustring &sync_path)
 {
-  syncPath = ignote().preferences().sync_local_path();
-  return syncPath != "";
+  sync_path = ignote().preferences().synchronization.sync_local_path;
+  return sync_path != "";
 }
 
 }

@@ -284,6 +284,7 @@ namespace gnote {
       friend Preferences;
 
       ReadOnlySetting<Glib::ustring> sync_client_id;
+      Setting<Glib::ustring> sync_local_path;
     private:
       explicit SyncSettings(const Glib::RefPtr<Gio::Settings> &schema);
 
@@ -297,8 +298,6 @@ namespace gnote {
     GnomeDesktopSettings gnome_desktop;
     SyncSettings synchronization;
 
-    Glib::ustring sync_local_path() const;
-    void sync_local_path(const Glib::ustring &);
     GNOTE_PREFERENCES_CACHING_SETTING(sync_selected_service_addin, const Glib::ustring &)
     GNOTE_PREFERENCES_SETTING_INT(sync_configured_conflict_behavior)
     GNOTE_PREFERENCES_CACHING_SETTING(sync_autosync_timeout, int)
