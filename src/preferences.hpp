@@ -310,7 +310,6 @@ namespace gnote {
     Preferences(const Preferences &) = delete;
 
     Glib::RefPtr<Gio::Settings> m_schema_replace_title;
-    Glib::RefPtr<Gio::Settings> m_schema_sync;
     Glib::RefPtr<Gio::Settings> m_schema_sync_wdfs;
 
     Glib::ustring m_custom_font_face;
