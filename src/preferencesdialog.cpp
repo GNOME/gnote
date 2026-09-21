@@ -181,7 +181,7 @@ namespace {
 
     m_gnote.preferences().gnote.note_rename_behavior.signal_changed.connect(
         sigc::mem_fun(*this, &PreferencesDialog::on_note_rename_behavior_changed));
-    m_gnote.preferences().signal_sync_autosync_timeout_changed
+    m_gnote.preferences().synchronization.autosync_timeout.signal_changed
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_autosync_timeout_setting_changed));
   }
 
@@ -482,10 +482,10 @@ namespace {
     vbox->attach(*m_sync_addin_prefs_container, 0, vbox_row++, 1, 1);
 
     // Autosync preference
-    int timeout = m_gnote.preferences().sync_autosync_timeout();
+    int timeout = m_gnote.preferences().synchronization.autosync_timeout;
     if(timeout > 0 && timeout < 5) {
       timeout = 5;
-      m_gnote.preferences().sync_autosync_timeout(5);
+      m_gnote.preferences().synchronization.autosync_timeout = 5;
     }
     auto autosyncBox = Gtk::make_managed<Gtk::Grid>();
     autosyncBox->set_column_spacing(5);
@@ -917,7 +917,7 @@ namespace {
 
   void PreferencesDialog::on_autosync_timeout_setting_changed()
   {
-    int timeout = m_gnote.preferences().sync_autosync_timeout();
+    int timeout = m_gnote.preferences().synchronization.autosync_timeout;
     if(timeout <= 0 && m_autosync_check->get_active()) {
       m_autosync_check->set_active(false);
     }
@@ -1324,8 +1324,9 @@ namespace {
 
   void PreferencesDialog::update_timeout_pref()
   {
-    m_gnote.preferences().sync_autosync_timeout(
-        m_autosync_check->get_active() ? static_cast<int>(m_autosync_spinner->get_value()) : -1);
+    m_gnote.preferences().synchronization.autosync_timeout = m_autosync_check->get_active()
+      ? static_cast<int>(m_autosync_spinner->get_value())
+      : -1;
   }
 
 }

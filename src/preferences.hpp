@@ -284,6 +284,7 @@ namespace gnote {
       friend Preferences;
 
       MonitoredSetting<Glib::ustring> selected_service_addin;
+      MonitoredSetting<int> autosync_timeout;
       ReadOnlySetting<Glib::ustring> client_id;
       Setting<int> configured_conflict_behavior;
       Setting<Glib::ustring> local_path;
@@ -299,8 +300,6 @@ namespace gnote {
     GnoteSettings gnote;
     GnomeDesktopSettings gnome_desktop;
     SyncSettings synchronization;
-
-    GNOTE_PREFERENCES_CACHING_SETTING(sync_autosync_timeout, int)
 
     GNOTE_PREFERENCES_SETTING_INT(sync_fuse_mount_timeout)
     GNOTE_PREFERENCES_SETTING_BOOL(sync_fuse_wdfs_accept_sllcert)
