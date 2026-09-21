@@ -150,7 +150,6 @@ namespace gnote {
   void Preferences::init()
   {
     m_schema_replace_title = Gio::Settings::create(SCHEMA_REPLACE_TITLE);
-    m_schema_sync_wdfs = web_dav.m_schema;
   }
   
   DEFINE_GETTER_SETTER_INT(m_schema_replace_title, replace_title_clipboard, REPLACE_TITLE_CLIPBOARD)
