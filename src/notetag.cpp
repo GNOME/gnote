@@ -45,7 +45,7 @@ namespace {
     }
   }
 
-  Gdk::RGBA highlight_color_for_accent(AdwAccentColor color)
+  Glib::ustring highlight_color_for_accent(AdwAccentColor color)
   {
     // Taken from Adwait paletter, the lightest option
     switch(color)
@@ -53,21 +53,26 @@ namespace {
     case ADW_ACCENT_COLOR_BLUE:
     case ADW_ACCENT_COLOR_TEAL:
     default:
-      return Gdk::RGBA("#99c1f1");
+      return "#99c1f1";
     case ADW_ACCENT_COLOR_GREEN:
-      return Gdk::RGBA("#8ff0a4");
+      return "#8ff0a4";
     case ADW_ACCENT_COLOR_YELLOW:
-      return Gdk::RGBA("#f9f06b");
+      return "#f9f06b";
     case ADW_ACCENT_COLOR_ORANGE:
-      return Gdk::RGBA("#ffbe6f");
+      return "#ffbe6f";
     case ADW_ACCENT_COLOR_RED:
-      return Gdk::RGBA("#f66151");
+      return "#f66151";
     case ADW_ACCENT_COLOR_PINK:
     case ADW_ACCENT_COLOR_PURPLE:
-      return Gdk::RGBA("#dc8add");
+      return "#dc8add";
     case ADW_ACCENT_COLOR_SLATE:
-      return Gdk::RGBA("#cdab8f");
+      return "#cdab8f";
     }
+  }
+
+  Gdk::RGBA highlight_rgba_for_accent(AdwAccentColor color)
+  {
+    return Gdk::RGBA(highlight_color_for_accent(color));
   }
 }
 
@@ -448,7 +453,7 @@ namespace {
     }
 
     change_highlight(*this, [this, accent, dark](Gtk::TextTag &tag) {
-      auto accent_rgba = highlight_color_for_accent(accent);
+      auto accent_rgba = highlight_rgba_for_accent(accent);
       Gdk::RGBA rgba;
       adw_rgba_to_standalone(accent_rgba.gobj(), !dark, rgba.gobj());
       tag.property_background_rgba() = rgba;
