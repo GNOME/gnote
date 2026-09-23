@@ -11,20 +11,21 @@
 # Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009.
 # Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 #
+# SPDX-FileCopyrightText: 2026 Jan Papez (honyczek)
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-09-08 18:37+0000\n"
-"PO-Revision-Date: 2026-09-12 12:12+0200\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"POT-Creation-Date: 2026-09-14 19:51+0000\n"
+"PO-Revision-Date: 2026-09-23 22:27+0200\n"
+"Last-Translator: Jan Papez (honyczek) <honyczek@centrum.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:100 src/recentchanges.cpp:121
@@ -181,19 +182,21 @@ msgstr ""
 #: data/org.gnome.gnote.gschema.xml:46
 msgid "Base highlight background color on system accent color"
 msgstr ""
+"Zvolit barvu zvýraznění pozadí na základě systémové barvy pro zdůraznění"
 
 #: data/org.gnome.gnote.gschema.xml:47
 msgid ""
 "When text is highlighted, determine background color based on system accent "
 "color. Typically this means a lighter version of highlight."
 msgstr ""
+"Když je text zvýrazněn, bude vyhodnocena barva pozadí na základě barvy "
+"systémového zdůraznění. To typicky znamená světlejší verzi zvýraznění."
 
 #: data/org.gnome.gnote.gschema.xml:51
 msgid "Background color for the highlighted text"
 msgstr "Barva pozadí pro zvýrazněný text"
 
 #: data/org.gnome.gnote.gschema.xml:52
-#, fuzzy
 #| msgid ""
 #| "When text is highlighted, use this color for background. A string "
 #| "gdk_rgba_parse() accepts."
@@ -202,15 +205,15 @@ msgid ""
 "gdk_rgba_parse() accepts. Only has effect when highlight-accent-color-based "
 "is false."
 msgstr ""
-"Když je text zvýrazněn, použít tuto barvu pro pozadí. Řetězec přijímaný "
-"gdk_rgba_parse()."
+"Když je text zvýrazněn, použít tuto barvu pro pozadí. Funkce"
+"gdk_rgba_parse() přijímá řetězec. Toto má efekt pouze tehdy, když je "
+"highlight-accent-color-based nastaveno na false."
 
 #: data/org.gnome.gnote.gschema.xml:56
 msgid "Color for the highlighted text"
 msgstr "Barva pro zvýrazněný text"
 
 #: data/org.gnome.gnote.gschema.xml:57
-#, fuzzy
 #| msgid ""
 #| "When text is highlighted, use this color for text. A string "
 #| "gdk_rgba_parse() accepts."
@@ -218,8 +221,9 @@ msgid ""
 "When text is highlighted, use this color for text. A string gdk_rgba_parse() "
 "accepts. Only has effect when highlight-accent-color-based is false."
 msgstr ""
-"Když je text zvýrazněn, použít tuto barvu pro text. Řetězec přijímaný "
-"gdk_rgba_parse()."
+"Když je text zvýrazněn, použít tuto barvu pro text. Funkce"
+"gdk_rgba_parse() přijímá řetězec. Toto má efekt pouze tehdy, když je "
+"highlight-accent-color-based nastaveno na false."
 
 #: data/org.gnome.gnote.gschema.xml:61
 msgid "Start Here Note"
@@ -427,13 +431,15 @@ msgstr ""
 
 #: data/org.gnome.gnote.gschema.xml:161
 msgid "Tab width in note editor"
-msgstr ""
+msgstr "Šířka tabulátoru v editoru poznámek"
 
 #: data/org.gnome.gnote.gschema.xml:162
 msgid ""
 "Tab stop positions in editor will be setup using this number as a step in "
 "space characters. Zero to use the default tab width."
 msgstr ""
+"Pozice zarážek tabulátoru v editoru bude nastavena pomocí kroku tohoto "
+"počtu znaků mezery. Nula znamená použít výchozí šířku tabulátoru."
 
 #: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Last Directory"
@@ -602,13 +608,15 @@ msgstr ""
 
 #: data/org.gnome.gnote.gschema.xml:256
 msgid "Clipboard to use"
-msgstr ""
+msgstr "Použití schránky"
 
 #: data/org.gnome.gnote.gschema.xml:257
 msgid ""
 "Possible values: 0 - clipboard content (last copied text), 1 - primary "
 "clipboard (last selected text)."
 msgstr ""
+"Dostupné hodnoty: 0 - obsah schránky (naposledy zkopírovaný text), "
+"1 - primární schránka (naposledy vybraný text)."
 
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
@@ -1323,15 +1331,13 @@ msgid "Replace title"
 msgstr "Nahradit název"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-#, fuzzy
 #| msgid "Replace title with selection."
 msgid "Replace title with clipboard or selection."
-msgstr "Nahradit název výběrem."
+msgstr "Nahradit název ze schránky nebo výběru."
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:5
-#| msgid "Pierre-Yves Luyten"
 msgid "Pierre-Yves Luyten, Aurimas Černius"
-msgstr ""
+msgstr "Pierre-Yves Luyten, Aurimas Černius"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39
 #: src/plugins/specialnotes/specialnotes.desktop.in.in:3
@@ -1512,7 +1518,8 @@ msgstr ""
 "Pavel Šefránek <ps@pjoul.cz>, 2008, 2009\n"
 "Petr Kovář <pknbe@volny.cz>, 2008, 2009\n"
 "Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009\n"
-"Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012"
+"Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012\n"
+"Jan Papež (honyczek) <honyczek@centrum.cz>, 2026"
 
 #: src/gnote.cpp:287
 msgid ""
@@ -1536,7 +1543,7 @@ msgstr ""
 #.
 #: src/gnote.cpp:295
 msgid "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
-msgstr ""
+msgstr "https://gitlab.gnome.org/GNOME/gnote/-/wikis/home"
 
 #: src/gnote.cpp:296
 msgid "Homepage"
@@ -2467,10 +2474,10 @@ msgid "Error updating lock: %s"
 msgstr "Chyba při aktualizaci zámku: %s"
 
 #: src/synchronization/filesystemsyncserver.cpp:597
-#, fuzzy, c-format
+#, c-format
 #| msgid "Error removing icon %s: %s"
 msgid "Error reading file '%s': %s"
-msgstr "Chyba při odstraňování ikony %s: %s"
+msgstr "Chyba při čtení souboru '%s': %s"
 
 #. TRANSLATORS: %s is file
 #: src/synchronization/gnotesyncclient.cpp:157
