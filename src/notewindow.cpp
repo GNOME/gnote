@@ -986,8 +986,16 @@ namespace gnote {
       highlight->set_action_name("win.change-font-highlight");
       highlight->set_has_frame(false);
       auto label = Gtk::make_managed<Gtk::Label>();
-      Glib::ustring markup = Glib::ustring::compose("<span color=\"%1\" background=\"%2\">%3</span>",
-        prefs.highlight_foreground_color(), prefs.highlight_background_color(), _("_Highlight"));
+      Glib::ustring highlight_background, highlight_foreground;
+      NoteTagTable::get_highlight_colors(prefs, highlight_background, highlight_foreground);
+      if(!highlight_background.empty()) {
+        highlight_background = Glib::ustring::compose(" background=\"%1\"", highlight_background);
+      }
+      if(!highlight_foreground.empty()) {
+        highlight_foreground = Glib::ustring::compose(" color=\"%1\"", highlight_foreground);
+      }
+      Glib::ustring markup = Glib::ustring::compose("<span%1%2>%3</span>",
+        highlight_foreground, highlight_background, _("_Highlight"));
       label->set_markup_with_mnemonic(markup);
       highlight->set_child(*label);
 
