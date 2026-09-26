@@ -270,6 +270,7 @@ public:
   static bool tag_is_spell_checkable(const Glib::RefPtr<const Gtk::TextTag> & );
   static bool tag_is_activatable(const Glib::RefPtr<Gtk::TextTag> & );
   static bool tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & );
+  static void get_highlight_colors(Preferences &prefs, Glib::ustring &background, Glib::ustring &foreground);
   bool has_link_tag(const Gtk::TextIter & iter);
 
   /// <summary>

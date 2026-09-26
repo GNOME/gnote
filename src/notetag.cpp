@@ -31,6 +31,7 @@
 #include "notetag.hpp"
 #include "noteeditor.hpp"
 #include "utils.hpp"
+#include "sharp/string.hpp"
 
 namespace gnote {
 
@@ -523,6 +524,57 @@ namespace {
   bool NoteTagTable::tag_has_depth(const Glib::RefPtr<Gtk::TextBuffer::Tag> & tag)
   {
     return (bool)std::dynamic_pointer_cast<DepthNoteTag>(tag);
+  }
+
+
+  void NoteTagTable::get_highlight_colors(Preferences &prefs, Glib::ustring &background, Glib::ustring &foreground)
+  {
+    if(!prefs.highlight_accent_color_based()) {
+      background = prefs.highlight_background_color();
+      foreground = prefs.highlight_foreground_color();
+      return;
+    }
+
+    auto manager = adw_style_manager_get_default();
+    auto accent = adw_style_manager_get_accent_color(manager);
+    auto dark = adw_style_manager_get_dark(manager);
+    auto accent_rgba = highlight_rgba_for_accent(accent);
+    Gdk::RGBA rgba;
+    adw_rgba_to_standalone(accent_rgba.gobj(), !dark, rgba.gobj());
+    auto color = rgba.to_string();
+    if(!color.empty()) {
+      auto start = color.find('(');
+      auto end = color.rfind(')');
+      if(start == Glib::ustring::npos || end == Glib::ustring::npos) {
+        color = "";
+      }
+      else {
+        std::vector<Glib::ustring> parts;
+        sharp::string_split(parts, color.substr(start + 1, end), ",");
+        if(parts.size() < 3) {
+          color = "";
+        }
+
+        auto to_hex = [](Glib::ustring &s) -> bool {
+          unsigned i = std::stoul(s);
+          char out[16];
+          std::sprintf(out, "%x", i);
+          s = out;
+          return s.length() == 2;
+        };
+
+        bool res = to_hex(parts[0]) && to_hex(parts[1]) && to_hex(parts[2]);
+        if(res) {
+          color = "#" + parts[0] + parts[1] + parts[2];
+        }
+        else {
+          color = "";
+        }
+      }
+    }
+
+    background = color;
+    foreground = "";
   }
 
 
