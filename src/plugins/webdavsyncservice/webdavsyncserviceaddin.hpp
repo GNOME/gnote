@@ -87,7 +87,6 @@ private:
   bool get_config_settings(Glib::ustring & url, Glib::ustring & username) const;
   void save_config_settings(const Glib::ustring & url, const Glib::ustring & username, const Glib::ustring & password);
   bool get_pref_widget_settings(Glib::ustring & url, Glib::ustring & username, Glib::ustring & password) const;
-  bool accept_ssl_cert();
   void add_row(Gtk::Grid &table, Gtk::Widget &widget, const Glib::ustring &labelText, uint row);
 
   Gtk::Entry *m_url_entry;

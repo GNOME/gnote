@@ -315,11 +315,6 @@ bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib:
   return url != "" && username != "" && password != "";
 }
 
-bool WebDavSyncServiceAddin::accept_ssl_cert()
-{
-  return ignote().preferences().web_dav.accept_sllcert;
-}
-
 void WebDavSyncServiceAddin::add_row(Gtk::Grid &table, Gtk::Widget &widget, const Glib::ustring &labelText, uint row)
 {
   auto l = Gtk::make_managed<Gtk::Label>(labelText, true);
