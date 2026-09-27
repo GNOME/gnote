@@ -51,9 +51,6 @@
 
 #define DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR 0
 
-#define NEW_PROPERTY_EDITOR_BOOL(property, check) new sharp::PropertyEditorBool([this]()->bool { return m_gnote.preferences().property(); }, \
-          [this](bool v) { m_gnote.preferences().property(v); }, check);
-
 namespace gnote {
 
 namespace {
