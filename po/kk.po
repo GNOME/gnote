@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote gnome-49\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-08-28 20:18+0000\n"
-"PO-Revision-Date: 2026-08-29 11:49+0500\n"
+"POT-Creation-Date: 2026-09-26 19:51+0000\n"
+"PO-Revision-Date: 2026-09-27 16:57+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <Kazakh>\n"
 "Language: kk\n"
@@ -61,7 +61,7 @@ msgstr "жазбалар;идея;сілтеме;ұйымдастыру;"
 msgid "New Window"
 msgstr "Жаңа терезе"
 
-#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:204 src/notemanagerbase.cpp:293 src/searchnoteswidget.cpp:343
+#: data/org.gnome.Gnote.desktop.in:23 src/notebooks/notebook.cpp:209 src/notemanagerbase.cpp:293 src/searchnoteswidget.cpp:343
 msgid "New Note"
 msgstr "Жаңа жазба"
 
@@ -134,8 +134,8 @@ msgid "Base highlight background color on system accent color"
 msgstr "Түспен ерекшелеу фонының түсін жүйенің акцент түсіне негіздеу"
 
 #: data/org.gnome.gnote.gschema.xml:47
-msgid "When text is highlighted, determine background color based on system accent color Typically this means a lighter version of highlight."
-msgstr "Мәтін түспен ерекшеленген кезде, фон түсін жүйенің акцент түсі негізінде анықтау. Әдетте бұл ерекшелеудің ашықтау нұсқасын білдіреді."
+msgid "When text is highlighted, determine background color based on system accent color. Typically this means a lighter version of highlight."
+msgstr "Мәтін түспен ерекшеленгенде, фон түсі жүйенің акцент түсі негізінде анықталады. Әдетте бұл ерекшелеудің ашықтау нұсқасын білдіреді."
 
 #: data/org.gnome.gnote.gschema.xml:51
 msgid "Background color for the highlighted text"
@@ -434,6 +434,14 @@ msgstr "Тексерулер арасындағы уақыт"
 #: data/org.gnome.gnote.gschema.xml:250
 msgid "Time interval between note directory checks (in seconds). Min value is 5."
 msgstr "Жазбалар бумасын тексеру арасындағы уақыт аралығы (секундпен). Минималды мән — 5."
+
+#: data/org.gnome.gnote.gschema.xml:256
+msgid "Clipboard to use"
+msgstr "Қолданылатын алмасу буфері"
+
+#: data/org.gnome.gnote.gschema.xml:257
+msgid "Possible values: 0 - clipboard content (last copied text), 1 - primary clipboard (last selected text)."
+msgstr "Мүмкін мәндер: 0 — алмасу буферінің мазмұны (соңғы көшірілген мәтін), 1 — негізгі алмасу буфері (соңғы таңдалған мәтін)."
 
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
@@ -1065,16 +1073,16 @@ msgstr "Басып шығаруды қолдау"
 msgid "Allows you to print a note."
 msgstr "Жазбаны басып шығаруға мүмкіндік береді."
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:63
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:82
 msgid "Print…"
 msgstr "Басып шығару…"
 
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:111
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:130
 msgid "Error printing note"
 msgstr "Жазбаны басып шығару қатесі"
 
 #. %1 is the page number, %2 is the total number of pages
-#: src/plugins/printnotes/printnotesnoteaddin.cpp:280
+#: src/plugins/printnotes/printnotesnoteaddin.cpp:299
 msgid "Page %1 of %2"
 msgstr "Бет %1/%2"
 
@@ -1090,17 +1098,17 @@ msgstr "Кейбір жазбаларды тек оқу үшін деп белг
 msgid "Aurimas Černius, Debarshi Ray and Arief Bayu Purwanto"
 msgstr "Aurimas Černius, Debarshi Ray және Arief Bayu Purwanto"
 
-#: src/plugins/replacetitle/replacetitle.desktop.in.in:3 src/plugins/replacetitle/replacetitlenoteaddin.cpp:52
+#: src/plugins/replacetitle/replacetitle.desktop.in.in:3 src/plugins/replacetitle/replacetitlenoteaddin.cpp:70
 msgid "Replace title"
 msgstr "Тақырыпты ауыстыру"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-msgid "Replace title with selection."
-msgstr "Тақырыпты таңдалған мәтінмен ауыстыру."
+msgid "Replace title with clipboard or selection."
+msgstr "Атауды алмасу буферімен немесе таңдаумен алмастыру."
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:5
-msgid "Pierre-Yves Luyten"
-msgstr "Pierre-Yves Luyten"
+msgid "Pierre-Yves Luyten, Aurimas Černius"
+msgstr "Pierre-Yves Luyten, Aurimas Černius"
 
 #: src/plugins/specialnotes/specialnotesapplicationaddin.cpp:39 src/plugins/specialnotes/specialnotes.desktop.in.in:3
 msgid "Special Notes"
@@ -1412,7 +1420,7 @@ msgstr "Жаңа жазба _кітапшасы..."
 #. "Meetings", the templateNoteTitle should be "Meetings
 #. Notebook Template".  Translators should place the
 #. name of the notebook accordingly using "%1".
-#: src/notebooks/notebook.cpp:112
+#: src/notebooks/notebook.cpp:113
 msgid "%1 Notebook Template"
 msgstr "%1 жазба кітапшасының шаблоны"
 
@@ -1424,7 +1432,7 @@ msgstr "Бұл жазба кітапшасын шынымен өшіру кер�
 msgid "The notes that belong to this notebook will not be deleted, but they will no longer be associated with this notebook.  This action cannot be undone."
 msgstr "Осы жазба кітапшасына жататын жазбалар өшірілмейді, бірақ олар енді осы жазба кітапшасымен байланысты болмайды. Бұл әрекетті болдырмау мүмкін емес."
 
-#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:204
+#: src/notebooks/notebooknoteaddin.cpp:104 src/notebooks/notebooksview.cpp:210
 msgid "Notebook"
 msgstr "Жазба кітапшасы"
 
@@ -1438,19 +1446,19 @@ msgstr "_Жаңа жазба кітапшасы..."
 msgid "No notebook"
 msgstr "Жазба кітапшасы жоқ"
 
-#: src/notebooks/notebooksview.cpp:209
+#: src/notebooks/notebooksview.cpp:215
 msgid "New Notebook"
 msgstr "Жаңа жазба кітапшасы"
 
-#: src/notebooks/notebooksview.cpp:213
+#: src/notebooks/notebooksview.cpp:219
 msgid "Rename Notebook"
 msgstr "Жазба кітапшасының атын өзгерту"
 
-#: src/notebooks/notebooksview.cpp:218
+#: src/notebooks/notebooksview.cpp:224
 msgid "Open Template Note"
 msgstr "Шаблон жазбасын ашу"
 
-#: src/notebooks/notebooksview.cpp:222
+#: src/notebooks/notebooksview.cpp:228
 msgid "Delete Notebook"
 msgstr "Жазба кітапшасын өшіру"
 
@@ -1691,23 +1699,23 @@ msgstr "_Тақырыпты сақтау"
 msgid "Cannot create note"
 msgstr "Жазбаны жасау мүмкін емес"
 
-#: src/notewindow.cpp:990
+#: src/notewindow.cpp:998
 msgid "_Highlight"
 msgstr "Түспен _ерекшелеу"
 
-#: src/notewindow.cpp:994
+#: src/notewindow.cpp:1002
 msgid "_Normal"
 msgstr "Қал_ыпты"
 
-#: src/notewindow.cpp:995
+#: src/notewindow.cpp:1003
 msgid "S_mall"
 msgstr "_Кіші"
 
-#: src/notewindow.cpp:996
+#: src/notewindow.cpp:1004
 msgid "_Large"
 msgstr "_Үлкен"
 
-#: src/notewindow.cpp:997
+#: src/notewindow.cpp:1005
 msgid "Hu_ge"
 msgstr "Ө_те үлкен"
 
@@ -1999,15 +2007,15 @@ msgstr[0] "%1 сәйкестік"
 msgid "Delete Note"
 msgstr "Жазбаны өшіру"
 
-#: src/searchnoteswidget.cpp:575
+#: src/searchnoteswidget.cpp:579
 msgid "Note"
 msgstr "Жазба"
 
-#: src/searchnoteswidget.cpp:587
+#: src/searchnoteswidget.cpp:591
 msgid "Modified"
 msgstr "Өзгертілген"
 
-#: src/searchnoteswidget.cpp:749
+#: src/searchnoteswidget.cpp:753
 msgid ""
 "No results found in the selected notebook.\n"
 "Click here to search across all notes."
@@ -2015,29 +2023,29 @@ msgstr ""
 "Таңдалған жазба кітапшасында нәтижелер табылмады.\n"
 "Барлық жазбалар бойынша іздеу үшін осы жерді шертіңіз."
 
-#: src/searchnoteswidget.cpp:753
+#: src/searchnoteswidget.cpp:757
 msgid "Click here to search across all notebooks"
 msgstr "Барлық жазба кітапшалары бойынша іздеу үшін осы жерді шертіңіз"
 
-#: src/searchnoteswidget.cpp:768
+#: src/searchnoteswidget.cpp:772
 msgid "Matches"
 msgstr "Сәйкестіктер"
 
-#: src/searchnoteswidget.cpp:1012 src/searchnoteswidget.cpp:1025 src/searchnoteswidget.cpp:1036
+#: src/searchnoteswidget.cpp:1021 src/searchnoteswidget.cpp:1034 src/searchnoteswidget.cpp:1045
 #, c-format
 msgid "Failed to parse setting search-sorting (Value: %s):"
 msgstr "search-sorting баптауын талдау сәтсіз аяқталды (Мән: %s):"
 
-#: src/searchnoteswidget.cpp:1013
+#: src/searchnoteswidget.cpp:1022
 msgid "Expected format 'column:order'"
 msgstr "«баған:рет» пішімі күтілді"
 
-#: src/searchnoteswidget.cpp:1026
+#: src/searchnoteswidget.cpp:1035
 #, c-format
 msgid "Unrecognized column %s"
 msgstr "Танылмаған %s бағаны"
 
-#: src/searchnoteswidget.cpp:1037
+#: src/searchnoteswidget.cpp:1046
 #, c-format
 msgid "Unrecognized order %s"
 msgstr "Танылмаған %s реті"
