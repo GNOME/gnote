@@ -80,7 +80,6 @@ namespace gnote {
     : url(*schema, "url")
     , username(*schema, "username")
     , mount_timeout(*schema, "sync-fuse-mount-timeout-ms")
-    , accept_sllcert(*schema, "accept-sslcert")
     , m_schema(schema)
   {
   }

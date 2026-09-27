@@ -292,7 +292,6 @@ namespace gnote {
       Setting<Glib::ustring> url;
       Setting<Glib::ustring> username;
       Setting<int> mount_timeout;
-      Setting<bool> accept_sllcert;
     private:
       explicit SyncWebDavSettings(const Glib::RefPtr<Gio::Settings> &schema);
 
