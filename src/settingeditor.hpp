@@ -69,13 +69,14 @@ private:
 };
 
 
-class SettingEditorBool
+template<>
+class SettingEditor<bool>
   : public Gtk::CheckButton
   , public SettingEditorBase<bool>
 {
 public:
-  SettingEditorBool(Preferences::Setting<bool> &setting);
-  SettingEditorBool(Preferences::Setting<bool> &setting, const Glib::ustring &label, bool mnemonic = false);
+  SettingEditor(Preferences::Setting<bool> &setting);
+  SettingEditor(Preferences::Setting<bool> &setting, const Glib::ustring &label, bool mnemonic = false);
   void add_guard(Gtk::Widget &w)
     {
       m_guarded.push_back(w);

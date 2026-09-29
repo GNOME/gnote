@@ -46,33 +46,33 @@ void SettingEditor<Glib::ustring>::on_changed()
 }
 
 
-SettingEditorBool::SettingEditorBool(Preferences::Setting<bool> &setting)
+SettingEditor<bool>::SettingEditor(Preferences::Setting<bool> &setting)
   : SettingEditorBase<bool>(setting)
 {
   ctor();
 }
 
-SettingEditorBool::SettingEditorBool(Preferences::Setting<bool> &setting, const Glib::ustring &label, bool mnemonic)
+SettingEditor<bool>::SettingEditor(Preferences::Setting<bool> &setting, const Glib::ustring &label, bool mnemonic)
   : Gtk::CheckButton(label, mnemonic)
   , SettingEditorBase<bool>(setting)
 {
   ctor();
 }
 
-void SettingEditorBool::ctor()
+void SettingEditor<bool>::ctor()
 {
   set_active(m_setting);
-  property_active().signal_changed().connect(sigc::mem_fun(*this, &SettingEditorBool::on_changed));
+  property_active().signal_changed().connect(sigc::mem_fun(*this, &SettingEditor::on_changed));
 }
 
-void SettingEditorBool::guard(bool v)
+void SettingEditor<bool>::guard(bool v)
 {
   for(Gtk::Widget & widget : m_guarded) {
     widget.set_sensitive(v);
   }
 }
 
-void SettingEditorBool::on_changed()
+void SettingEditor<bool>::on_changed()
 {
   bool active = get_active();
   m_setting = active;

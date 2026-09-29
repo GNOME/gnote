@@ -281,7 +281,7 @@ namespace {
       bullet_peditor->setup();
 
       // Custom font...
-      auto font_check = Gtk::make_managed<SettingEditorBool>(m_gnote.preferences().gnote.enable_custom_font, _("Use custom _font"), true);
+      auto font_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_custom_font, _("Use custom _font"), true);
       font_check->set_hexpand(true);
       options_list->attach(*font_check, 0, options_list_row, 1, 1);
 
