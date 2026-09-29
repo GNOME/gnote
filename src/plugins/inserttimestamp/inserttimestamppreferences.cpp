@@ -129,7 +129,7 @@ namespace inserttimestamp {
     custom_radio->set_group(*selected_radio);
     customBox->attach(*custom_radio, 0, 0, 1, 1);
 
-    custom_entry = Gtk::make_managed<gnote::SettingEditor>(ts_settings.format);
+    custom_entry = Gtk::make_managed<gnote::SettingEditor<Glib::ustring>>(ts_settings.format);
     customBox->attach(*custom_entry, 1, 0, 1, 1);
 
     // Activate/deactivate widgets
