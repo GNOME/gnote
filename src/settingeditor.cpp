@@ -45,5 +45,39 @@ void SettingEditor::on_changed()
   m_setting = get_text();
 }
 
+
+SettingEditorBool::SettingEditorBool(Preferences::Setting<bool> &setting)
+  : SettingEditorBase<bool>(setting)
+{
+  ctor();
+}
+
+SettingEditorBool::SettingEditorBool(Preferences::Setting<bool> &setting, const Glib::ustring &label, bool mnemonic)
+  : Gtk::CheckButton(label, mnemonic)
+  , SettingEditorBase<bool>(setting)
+{
+  ctor();
+}
+
+void SettingEditorBool::ctor()
+{
+  set_active(m_setting);
+  property_active().signal_changed().connect(sigc::mem_fun(*this, &SettingEditorBool::on_changed));
+}
+
+void SettingEditorBool::guard(bool v)
+{
+  for(Gtk::Widget & widget : m_guarded) {
+    widget.set_sensitive(v);
+  }
+}
+
+void SettingEditorBool::on_changed()
+{
+  bool active = get_active();
+  m_setting = active;
+  guard(active);
+}
+
 }
 

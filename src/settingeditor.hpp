@@ -29,6 +29,7 @@
 #include <vector>
 
 #include <giomm/settings.h>
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/entry.h>
 
 #include "preferences.hpp"
@@ -57,6 +58,25 @@ public:
   explicit SettingEditor(Preferences::Setting<Glib::ustring> &setting);
 private:
   void on_changed();
+};
+
+
+class SettingEditorBool
+  : public Gtk::CheckButton
+  , public SettingEditorBase<bool>
+{
+public:
+  SettingEditorBool(Preferences::Setting<bool> &setting);
+  SettingEditorBool(Preferences::Setting<bool> &setting, const Glib::ustring &label, bool mnemonic = false);
+  void add_guard(Gtk::Widget &w)
+    {
+      m_guarded.push_back(w);
+    }
+private:
+  void ctor();
+  void guard(bool v);
+  void on_changed();
+  std::vector<std::reference_wrapper<Gtk::Widget>> m_guarded;
 };
 
 }
