@@ -47,6 +47,7 @@ libgnote_sources = [
   'popoverwidgets.cpp',
   'preferences.cpp',
   'search.cpp',
+  'settingeditor.cpp',
   'tag.cpp',
   'tagmanager.cpp',
   'undo.cpp',
