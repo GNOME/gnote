@@ -33,14 +33,14 @@ SettingEditorBase<T>::SettingEditorBase(Preferences::Setting<T> &setting)
 {
 }
 
-SettingEditor::SettingEditor(Preferences::Setting<Glib::ustring> &setting)
+SettingEditor<Glib::ustring>::SettingEditor(Preferences::Setting<Glib::ustring> &setting)
   : SettingEditorBase(setting)
 {
   set_text(m_setting);
   property_text().signal_changed().connect(sigc::mem_fun(*this, &SettingEditor::on_changed));
 }
 
-void SettingEditor::on_changed()
+void SettingEditor<Glib::ustring>::on_changed()
 {
   m_setting = get_text();
 }

@@ -50,7 +50,15 @@ protected:
 };
 
 
+template<typename T>
 class SettingEditor
+  : public SettingEditorBase<T>
+{
+};
+
+
+template<>
+class SettingEditor<Glib::ustring>
   : public Gtk::Entry
   , public SettingEditorBase<Glib::ustring>
 {
