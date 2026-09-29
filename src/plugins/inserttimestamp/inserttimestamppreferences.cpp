@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2017,2019-2020,2023 Aurimas Cernius
+ * Copyright (C) 2011-2013,2017,2019-2020,2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 #include "sharp/propertyeditor.hpp"
 
 #include "preferences.hpp"
+#include "settingeditor.hpp"
 #include "inserttimestamppreferences.hpp"
  
 namespace inserttimestamp {
@@ -47,17 +48,22 @@ namespace inserttimestamp {
 
   }
 
+  InsertTimestampSettings::InsertTimestampSettings(const Glib::RefPtr<Gio::Settings> &schema)
+    : format(*schema, INSERT_TIMESTAMP_FORMAT)
+    , m_schema(schema)
+    {}
+
   bool InsertTimestampPreferences::s_static_inited = false;
   std::vector<Glib::ustring> InsertTimestampPreferences::s_formats;
-  Glib::RefPtr<Gio::Settings> InsertTimestampPreferences::s_settings;
+  std::unique_ptr<InsertTimestampSettings> InsertTimestampPreferences::s_settings;
 
-  Glib::RefPtr<Gio::Settings> & InsertTimestampPreferences::settings()
+  InsertTimestampSettings& InsertTimestampPreferences::settings()
   {
     if(!s_settings) {
-      s_settings = Gio::Settings::create(SCHEMA_INSERT_TIMESTAMP);
+      s_settings = std::make_unique<InsertTimestampSettings>(Gio::Settings::create(SCHEMA_INSERT_TIMESTAMP));
     }
 
-    return s_settings;
+    return *s_settings;
   }
 
   void InsertTimestampPreferences::_init_static()
@@ -82,8 +88,8 @@ namespace inserttimestamp {
     int row = 0;
 
     // Get current values
-    auto ts_settings = settings();
-    Glib::ustring dateFormat = ts_settings->get_string(INSERT_TIMESTAMP_FORMAT);
+    auto &ts_settings = settings();
+    Glib::ustring dateFormat = ts_settings.format;
 
     auto now = Glib::DateTime::create_now_local();
 
@@ -123,14 +129,8 @@ namespace inserttimestamp {
     custom_radio->set_group(*selected_radio);
     customBox->attach(*custom_radio, 0, 0, 1, 1);
 
-    custom_entry = Gtk::make_managed<Gtk::Entry>();
+    custom_entry = Gtk::make_managed<gnote::SettingEditor>(ts_settings.format);
     customBox->attach(*custom_entry, 1, 0, 1, 1);
-
-    sharp::PropertyEditor *entryEditor = new sharp::PropertyEditor(
-      [ts_settings]()->Glib::ustring { return ts_settings->get_string(INSERT_TIMESTAMP_FORMAT); },
-      [ts_settings](const Glib::ustring & value) { ts_settings->set_string(INSERT_TIMESTAMP_FORMAT, value); },
-      *custom_entry);
-    entryEditor->setup ();
 
     // Activate/deactivate widgets
     bool useCustom = true;
@@ -188,7 +188,7 @@ namespace inserttimestamp {
     auto item = std::dynamic_pointer_cast<Gtk::SingleSelection>(m_list->get_model())->get_selected_item();
     if(item) {
       Glib::ustring format = std::dynamic_pointer_cast<FormatColumns>(item)->value.format;
-      settings()->set_string(INSERT_TIMESTAMP_FORMAT, format);
+      settings().format = format;
     }
   }
 

@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010-2013,2016-2017,2019-2021,2023 Aurimas Cernius
+ * Copyright (C) 2010-2013,2016-2017,2019-2021,2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -60,9 +60,10 @@ namespace inserttimestamp {
       sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_menu_item_activated));
 
     if(s_on_format_setting_changed_cid.empty()) {
-      s_on_format_setting_changed_cid = InsertTimestampPreferences::settings()->signal_changed(INSERT_TIMESTAMP_FORMAT)
+      auto &settings = InsertTimestampPreferences::settings();
+      s_on_format_setting_changed_cid = settings.format.signal_changed
         .connect(sigc::ptr_fun(InsertTimestampNoteAddin::on_format_setting_changed));
-      s_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
+      s_date_format = settings.format;
     }
 
     get_window()->signal_foregrounded.connect(sigc::mem_fun(*this, &InsertTimestampNoteAddin::on_note_foregrounded));
@@ -123,9 +124,9 @@ namespace inserttimestamp {
   }
 
 
-  void InsertTimestampNoteAddin::on_format_setting_changed(const Glib::ustring &)
+  void InsertTimestampNoteAddin::on_format_setting_changed()
   {
-    s_date_format = InsertTimestampPreferences::settings()->get_string(INSERT_TIMESTAMP_FORMAT);
+    s_date_format = InsertTimestampPreferences::settings().format;
   }
 
 }
