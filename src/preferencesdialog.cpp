@@ -45,6 +45,7 @@
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "preferences.hpp"
+#include "settingeditor.hpp"
 #include "utils.hpp"
 #include "watchers.hpp"
 
@@ -248,7 +249,7 @@ namespace {
   {
       Gtk::Label *label;
       Gtk::CheckButton *check;
-      sharp::PropertyEditorBool *font_peditor,* bullet_peditor;
+      sharp::PropertyEditorBool * bullet_peditor;
 
       Gtk::Grid *options_list = Gtk::make_managed<Gtk::Grid>();
       options_list->set_row_spacing(12);
@@ -280,18 +281,15 @@ namespace {
       bullet_peditor->setup();
 
       // Custom font...
-      check = make_check_button(_("Use custom _font"));
-      check->set_hexpand(true);
-      options_list->attach(*check, 0, options_list_row, 1, 1);
-      font_peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_custom_font); }, [this](bool v) { m_gnote.preferences().gnote.enable_custom_font = v; }, *check);
-      font_peditor->setup();
+      auto font_check = Gtk::make_managed<SettingEditorBool>(m_gnote.preferences().gnote.enable_custom_font, _("Use custom _font"), true);
+      font_check->set_hexpand(true);
+      options_list->attach(*font_check, 0, options_list_row, 1, 1);
 
       font_button = manage(make_font_button());
       font_button->set_sensitive(check->get_active());
       font_button->set_hexpand(true);
       options_list->attach(*font_button, 1, options_list_row++, 1, 1);
-
-      font_peditor->add_guard(font_button);
+      font_check->add_guard(*font_button);
 
       // Note renaming behavior
       label = make_label(_("When renaming a linked note: "));
