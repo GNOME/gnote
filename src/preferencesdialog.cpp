@@ -369,6 +369,7 @@ namespace {
 
   Gtk::Widget *PreferencesDialog::make_links_pane()
   {
+    auto &gnote_prefs = m_gnote.preferences().gnote;
     auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(12);
     vbox->set_margin(12);
@@ -376,17 +377,17 @@ namespace {
     int vbox_row = 0;
 
     // internal links
-    auto auto_links_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_auto_links, _("_Automatically link to notes"), true);
+    auto auto_links_check = Gtk::make_managed<SettingEditor<bool>>(gnote_prefs.enable_auto_links, _("_Automatically link to notes"), true);
     set_widget_tooltip(*auto_links_check, _("Enable this option to create a link when text matches note title."));
     vbox->attach(*auto_links_check, 0, vbox_row++, 1, 1);
 
     // URLs
-    auto url_links_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_url_links, _("Create links for _URLs"), true);
+    auto url_links_check = Gtk::make_managed<SettingEditor<bool>>(gnote_prefs.enable_url_links, _("Create links for _URLs"), true);
     set_widget_tooltip(*url_links_check, _("Enable this option to create links for URLs. " "Clicking will open URL with appropriate program."));
     vbox->attach(*url_links_check, 0, vbox_row++, 1, 1);
 
     // WikiWords...
-    auto wiki_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_wikiwords, _("Highlight _WikiWords"), true);
+    auto wiki_check = Gtk::make_managed<SettingEditor<bool>>(gnote_prefs.enable_wikiwords, _("Highlight _WikiWords"), true);
     set_widget_tooltip(*wiki_check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
                                  "Clicking the word will create a note with that name."));
     vbox->attach(*wiki_check, 0, vbox_row++, 1, 1);
