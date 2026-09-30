@@ -286,7 +286,7 @@ namespace {
       options_list->attach(*font_check, 0, options_list_row, 1, 1);
 
       font_button = manage(make_font_button());
-      font_button->set_sensitive(check->get_active());
+      font_button->set_sensitive(font_check->get_active());
       font_button->set_hexpand(true);
       options_list->attach(*font_button, 1, options_list_row++, 1, 1);
       font_check->add_guard(*font_button);
