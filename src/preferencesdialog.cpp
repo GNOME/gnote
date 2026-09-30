@@ -373,8 +373,6 @@ namespace {
     vbox->set_row_spacing(12);
     vbox->set_margin(12);
 
-    Gtk::CheckButton *check;
-    sharp::PropertyEditorBool *peditor;
     int vbox_row = 0;
 
     // internal links
@@ -388,12 +386,10 @@ namespace {
     vbox->attach(*url_links_check, 0, vbox_row++, 1, 1);
 
     // WikiWords...
-    check = make_check_button(_("Highlight _WikiWords"));
-    set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
+    auto wiki_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_wikiwords, _("Highlight _WikiWords"), true);
+    set_widget_tooltip(*wiki_check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
                                  "Clicking the word will create a note with that name."));
-    vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_wikiwords); }, [this](bool v) { m_gnote.preferences().gnote.enable_wikiwords = v; }, *check);
-    peditor->setup();
+    vbox->attach(*wiki_check, 0, vbox_row++, 1, 1);
 
     return vbox;
   }
