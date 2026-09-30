@@ -529,9 +529,9 @@ namespace {
 
   void NoteTagTable::get_highlight_colors(Preferences &prefs, Glib::ustring &background, Glib::ustring &foreground)
   {
-    if(!prefs.highlight_accent_color_based()) {
-      background = prefs.highlight_background_color();
-      foreground = prefs.highlight_foreground_color();
+    if(!prefs.gnote.highlight_accent_color_based) {
+      background = prefs.gnote.highlight_background_color;
+      foreground = prefs.gnote.highlight_foreground_color;
       return;
     }
 
