@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2011-2013,2015-2017,2019-2020,2022-2023 Aurimas Cernius
+ * Copyright (C) 2011-2013,2015-2017,2019-2020,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -54,7 +54,6 @@ private:
   void set_widget_tooltip(Gtk::Widget & widget, Glib::ustring label_text);
   Gtk::Button *make_font_button();
   Gtk::Label *make_label(const Glib::ustring & label_text/*, params object[] args*/);
-  Gtk::CheckButton *make_check_button(const Glib::ustring & label_text);
 
   void enable_addin(bool enable);
   void enable_app_addin(ApplicationAddin *addin, bool enable);

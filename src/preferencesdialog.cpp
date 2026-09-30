@@ -824,13 +824,6 @@ namespace {
     return label;
   }
 
-  Gtk::CheckButton *PreferencesDialog::make_check_button(const Glib::ustring & label_text)
-  {
-    Gtk::CheckButton *check = Gtk::make_managed<Gtk::CheckButton>(label_text, true);
-    return check;
-  }
-
-
   void PreferencesDialog::set_widget_tooltip(Gtk::Widget & widget, Glib::ustring label_text)
   {
     widget.set_tooltip_markup(Glib::ustring::compose("<small>%1</small>", label_text));
