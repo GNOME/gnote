@@ -378,11 +378,9 @@ namespace {
     int vbox_row = 0;
 
     // internal links
-    check = make_check_button(_("_Automatically link to notes"));
-    set_widget_tooltip(*check, _("Enable this option to create a link when text matches note title."));
-    vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_auto_links); }, [this](bool v) { m_gnote.preferences().gnote.enable_auto_links = v; }, *check);
-    peditor->setup();
+    auto auto_links_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_auto_links, _("_Automatically link to notes"), true);
+    set_widget_tooltip(*auto_links_check, _("Enable this option to create a link when text matches note title."));
+    vbox->attach(*auto_links_check, 0, vbox_row++, 1, 1);
 
     // URLs
     check = make_check_button(_("Create links for _URLs"));
