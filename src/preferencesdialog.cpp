@@ -248,8 +248,6 @@ namespace {
   Gtk::Widget *PreferencesDialog::make_editing_pane()
   {
       Gtk::Label *label;
-      Gtk::CheckButton *check;
-      sharp::PropertyEditorBool * bullet_peditor;
 
       Gtk::Grid *options_list = Gtk::make_managed<Gtk::Grid>();
       options_list->set_row_spacing(12);
@@ -274,11 +272,9 @@ namespace {
 
 
       // Auto bulleted list
-      check = make_check_button(_("Enable auto-_bulleted lists"));
-      set_widget_tooltip(*check, _("Start new bulleted list by starting new line with character \"-\"."));
-      options_list->attach(*check, 0, options_list_row++, 1, 1);
-      bullet_peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_auto_bulleted_lists); }, [this](bool v) { m_gnote.preferences().gnote.enable_auto_bulleted_lists = v; }, *check);
-      bullet_peditor->setup();
+      auto bullet_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_auto_bulleted_lists, _("Enable auto-_bulleted lists"), true);
+      set_widget_tooltip(*bullet_check, _("Start new bulleted list by starting new line with character \"-\"."));
+      options_list->attach(*bullet_check, 0, options_list_row++, 1, 1);
 
       // Custom font...
       auto font_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_custom_font, _("Use custom _font"), true);
