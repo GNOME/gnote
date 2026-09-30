@@ -8,7 +8,6 @@ libgnote_sources = [
   'sharp/fileinfo.cpp',
   'sharp/files.cpp',
   'sharp/modulemanager.cpp',
-  'sharp/propertyeditor.cpp',
   'sharp/streamreader.cpp',
   'sharp/streamwriter.cpp',
   'sharp/string.cpp',
