@@ -260,8 +260,7 @@ namespace {
       // TODO I'm not sure there is a proper reason to do that.
       // it is in or NOT. if not, disable the UI.
       if (NoteSpellChecker::gtk_spell_available()) {
-        check = manage(make_check_button (
-                         _("_Spell check while typing")));
+        check = Gtk::make_managed<Gtk::CheckButton>(_("_Spell check while typing"), true);
         set_widget_tooltip(*check, _("Misspellings will be underlined in red, with correct spelling "
                                      "suggestions shown in the context menu."));
         options_list->attach(*check, 0, options_list_row++, 1, 1);
