@@ -23,7 +23,6 @@
 #include <gtkmm/singleselection.h>
 
 #include "sharp/datetime.hpp"
-#include "sharp/propertyeditor.hpp"
 
 #include "preferences.hpp"
 #include "settingeditor.hpp"
