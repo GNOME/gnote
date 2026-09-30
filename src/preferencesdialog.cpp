@@ -34,7 +34,6 @@
 #include <gtkmm/separator.h>
 
 #include "sharp/modulemanager.hpp"
-#include "sharp/propertyeditor.hpp"
 #include "synchronization/syncserviceaddin.hpp"
 #include "iactionmanager.hpp"
 #include "addinmanager.hpp"
