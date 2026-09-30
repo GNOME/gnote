@@ -383,12 +383,9 @@ namespace {
     vbox->attach(*auto_links_check, 0, vbox_row++, 1, 1);
 
     // URLs
-    check = make_check_button(_("Create links for _URLs"));
-    set_widget_tooltip(*check, _("Enable this option to create links for URLs. "
-                                 "Clicking will open URL with appropriate program."));
-    vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = new sharp::PropertyEditorBool([this]()->bool { return bool(m_gnote.preferences().gnote.enable_url_links); }, [this](bool v) { m_gnote.preferences().gnote.enable_url_links = v; }, *check);
-    peditor->setup();
+    auto url_links_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_url_links, _("Create links for _URLs"), true);
+    set_widget_tooltip(*url_links_check, _("Enable this option to create links for URLs. " "Clicking will open URL with appropriate program."));
+    vbox->attach(*url_links_check, 0, vbox_row++, 1, 1);
 
     // WikiWords...
     check = make_check_button(_("Highlight _WikiWords"));
