@@ -40,9 +40,6 @@ namespace gnote {
 
 namespace inserttimestamp {
 
-extern const char * SCHEMA_INSERT_TIMESTAMP;
-extern const char * INSERT_TIMESTAMP_FORMAT;
-
 class InsertTimestampSettings
 {
 public:

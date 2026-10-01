@@ -30,9 +30,6 @@
  
 namespace inserttimestamp {
 
-  const char * SCHEMA_INSERT_TIMESTAMP = "org.gnome.gnote.insert-timestamp";
-  const char * INSERT_TIMESTAMP_FORMAT = "format";
-
   namespace {
 
     class FormatFactory
@@ -48,7 +45,7 @@ namespace inserttimestamp {
   }
 
   InsertTimestampSettings::InsertTimestampSettings(const Glib::RefPtr<Gio::Settings> &schema)
-    : format(*schema, INSERT_TIMESTAMP_FORMAT)
+    : format(*schema, "format")
     , m_schema(schema)
     {}
 
@@ -59,7 +56,7 @@ namespace inserttimestamp {
   InsertTimestampSettings& InsertTimestampPreferences::settings()
   {
     if(!s_settings) {
-      s_settings = std::make_unique<InsertTimestampSettings>(Gio::Settings::create(SCHEMA_INSERT_TIMESTAMP));
+      s_settings = std::make_unique<InsertTimestampSettings>(Gio::Settings::create("org.gnome.gnote.insert-timestamp"));
     }
 
     return *s_settings;
