@@ -106,11 +106,11 @@ namespace gnote {
   {
     set_resizable(true);
     set_handle_menubar_accel(false);
-    if(g.preferences().main_window_maximized()) {
+    if(g.preferences().gnote.main_window_maximized) {
       maximize();
     }
-    int width = m_gnote.preferences().search_window_width();
-    int height = m_gnote.preferences().search_window_height();
+    int width = m_gnote.preferences().gnote.search_window_width;
+    int height = m_gnote.preferences().gnote.search_window_height;
     if(width && height) {
       set_default_size(width, height);
     }
@@ -634,7 +634,7 @@ namespace gnote {
 
   void NoteRecentChanges::close_window()
   {
-    m_preferences.main_window_maximized(is_maximized());
+    m_preferences.gnote.main_window_maximized = is_maximized();
 
     if(m_embed_book.get_n_pages() > 0) {
       EmbeddableWidget *widget = dynamic_cast<EmbeddableWidget*>(m_embed_book.get_nth_page(m_embed_book.get_current_page()));

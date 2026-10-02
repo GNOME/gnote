@@ -143,7 +143,7 @@ namespace gnote {
   Glib::ustring RemoteControl::FindStartHereNote()
   {
     Glib::ustring ret;
-    m_manager.find_by_uri(m_gnote.preferences().start_note_uri(), [&ret](NoteBase & note) {
+    m_manager.find_by_uri(m_gnote.preferences().gnote.start_note_uri, [&ret](NoteBase &note) {
       ret = note.uri();
     });
     return ret;

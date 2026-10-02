@@ -109,7 +109,7 @@ puts("Replace title triggered");
 bool ReplaceTitleNoteAddin::use_primary_clipboard()
 {
   auto &preferences = ignote().preferences();
-  switch(preferences.replace_title_clipboard()) {
+  switch(preferences.replace_title.clipboard) {
   case 0:
   default:
     return false;

@@ -296,11 +296,11 @@ namespace {
   {
     NoteTag::Ptr tag;
 
-    m_preferences.signal_highlight_accent_color_based_changed
+    m_preferences.gnote.highlight_accent_color_based.signal_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_accent_color_based_changed));
-    m_preferences.signal_highlight_background_color_changed
+    m_preferences.gnote.highlight_background_color.signal_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_background_setting_changed));
-    m_preferences.signal_highlight_foreground_color_changed
+    m_preferences.gnote.highlight_foreground_color.signal_changed
       .connect(sigc::mem_fun(*this, &NoteTagTable::on_highlight_foreground_setting_changed));
 
     auto adw_style_manager = G_OBJECT(adw_style_manager_get_default());
@@ -326,8 +326,8 @@ namespace {
     add(tag);
 
     tag = NoteTag::create("highlight", NoteTag::CAN_UNDO | NoteTag::CAN_GROW | NoteTag::CAN_SPELL_CHECK);
-    tag->property_background() = m_preferences.highlight_background_color();
-    tag->property_foreground() = m_preferences.highlight_foreground_color();
+    tag->property_background() = m_preferences.gnote.highlight_background_color;
+    tag->property_foreground() = m_preferences.gnote.highlight_foreground_color;
     add(tag);
 
     tag = NoteTag::create("find-match", NoteTag::CAN_SPELL_CHECK);
@@ -401,7 +401,7 @@ namespace {
 
   void NoteTagTable::on_highlight_accent_color_based_changed()
   {
-    if(m_preferences.highlight_accent_color_based()) {
+    if(m_preferences.gnote.highlight_accent_color_based) {
       update_accent_color();
     }
     else {
@@ -412,12 +412,12 @@ namespace {
 
   void NoteTagTable::on_highlight_background_setting_changed()
   {
-    if(m_preferences.highlight_accent_color_based()) {
+    if(m_preferences.gnote.highlight_accent_color_based) {
       return;
     }
 
     change_highlight(*this, [this](Gtk::TextTag &tag) {
-      tag.property_background() = m_preferences.highlight_background_color();
+      tag.property_background() = m_preferences.gnote.highlight_background_color;
     });
   }
 
@@ -449,7 +449,7 @@ namespace {
     m_link_tag->property_foreground_rgba().set_value(active_link_color);
     m_url_tag->property_foreground_rgba().set_value(active_link_color);
 
-    if(!m_preferences.highlight_accent_color_based()) {
+    if(!m_preferences.gnote.highlight_accent_color_based) {
       return;
     }
 
@@ -464,12 +464,12 @@ namespace {
 
   void NoteTagTable::on_highlight_foreground_setting_changed()
   {
-    if(m_preferences.highlight_accent_color_based()) {
+    if(m_preferences.gnote.highlight_accent_color_based) {
       return;
     }
 
     change_highlight(*this, [this](Gtk::TextTag &tag) {
-      tag.property_foreground() = m_preferences.highlight_foreground_color();
+      tag.property_foreground() = m_preferences.gnote.highlight_foreground_color;
     });
   }
 
@@ -529,9 +529,9 @@ namespace {
 
   void NoteTagTable::get_highlight_colors(Preferences &prefs, Glib::ustring &background, Glib::ustring &foreground)
   {
-    if(!prefs.highlight_accent_color_based()) {
-      background = prefs.highlight_background_color();
-      foreground = prefs.highlight_foreground_color();
+    if(!prefs.gnote.highlight_accent_color_based) {
+      background = prefs.gnote.highlight_background_color;
+      foreground = prefs.gnote.highlight_foreground_color;
       return;
     }
 

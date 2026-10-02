@@ -54,7 +54,7 @@ class WebDavSyncServer
 public:
   static std::unique_ptr<WebDavSyncServer> create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
     {
-      return std::make_unique<WebDavSyncServer>(std::move(path), prefs.sync_client_id());
+      return std::make_unique<WebDavSyncServer>(std::move(path), prefs.synchronization.client_id);
     }
 
   WebDavSyncServer(Glib::RefPtr<Gio::File> && local_sync_path, const Glib::ustring & client_id)
@@ -254,8 +254,8 @@ bool WebDavSyncServiceAddin::get_config_settings(Glib::ustring & url, Glib::ustr
   username = "";
 
   try {
-    username = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_username());
-    url = sharp::string_trim(ignote().preferences().sync_fuse_wdfs_url());
+    username = sharp::string_trim(ignote().preferences().web_dav.username);
+    url = sharp::string_trim(ignote().preferences().web_dav.url);
   }
   catch(KeyringException & ke) {
     ERR_OUT("Getting configuration from the GNOME keyring failed with the following message: %s", ke.what());
@@ -280,8 +280,8 @@ void WebDavSyncServiceAddin::save_config_settings(const Glib::ustring & url, con
 {
   // Save configuration into the GNOME Keyring and GSettings
   try {
-    ignote().preferences().sync_fuse_wdfs_username(username);
-    ignote().preferences().sync_fuse_wdfs_url(url);
+    ignote().preferences().web_dav.username = username;
+    ignote().preferences().web_dav.url = url;
 
     if(password != "") {
       Ring::create_password(Ring::default_keyring(), KEYRING_ITEM_NAME, s_request_attributes, password);
@@ -313,16 +313,6 @@ bool WebDavSyncServiceAddin::get_pref_widget_settings(Glib::ustring & url, Glib:
   password = sharp::string_trim(m_password_entry->get_text());
 
   return url != "" && username != "" && password != "";
-}
-
-bool WebDavSyncServiceAddin::accept_ssl_cert()
-{
-  try {
-    return ignote().preferences().sync_fuse_wdfs_accept_sllcert();
-  }
-  catch(...) {
-    return false;
-  }
 }
 
 void WebDavSyncServiceAddin::add_row(Gtk::Grid &table, Gtk::Widget &widget, const Glib::ustring &labelText, uint row)

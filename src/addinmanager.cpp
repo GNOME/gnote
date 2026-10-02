@@ -54,38 +54,6 @@ namespace gnote {
   m_app_addins.insert(std::make_pair(typeid(klass).name(),        \
                                      klass::create()))
 
-#define SETUP_NOTE_ADDIN(key, klass) \
-  m_preferences.signal_##key##_changed.connect([this]() { \
-    if(m_preferences.key()) { \
-      m_builtin_ifaces.push_back(std::make_unique<sharp::IfaceFactory<klass>>()); \
-      load_note_addin(typeid(klass).name(), sharp::IfaceFactoryBase::Ref(*m_builtin_ifaces.back())); \
-    } \
-    else { \
-      erase_note_addin_info(typeid(klass).name()); \
-    } \
-  })
-
-#define SETUP_APP_ADDIN(key, klass) \
-  m_preferences.signal_##key##_changed.connect([this]() { \
-      if(m_preferences.key()) { \
-        auto iter = m_app_addins.find(typeid(klass).name()); \
-        if(iter != m_app_addins.end()) { \
-          iter->second->initialize(); \
-        } \
-        else { \
-          auto addin = klass::create(); \
-          m_app_addins.insert(std::make_pair(typeid(klass).name(), addin)); \
-          addin->initialize(m_gnote, m_note_manager); \
-        } \
-      } \
-      else { \
-        auto addin = m_app_addins.find(typeid(klass).name()); \
-        if(addin != m_app_addins.end()) { \
-          addin->second->shutdown(); \
-        } \
-      } \
-  })
-
 namespace {
   template <typename AddinType>
   Glib::ustring get_id_for_addin(const AbstractAddin & addin, const std::map<Glib::ustring, std::unique_ptr<AddinType>> & addins)
@@ -257,21 +225,21 @@ namespace {
     if (!sharp::directory_exists (m_addins_prefs_dir))
       g_mkdir_with_parents(m_addins_prefs_dir.c_str(), S_IRWXU);
 
-    SETUP_NOTE_ADDIN(enable_url_links, NoteUrlWatcher);
-    SETUP_NOTE_ADDIN(enable_auto_links, NoteLinkWatcher);
-    SETUP_APP_ADDIN(enable_auto_links, AppLinkWatcher);
-    SETUP_NOTE_ADDIN(enable_wikiwords, NoteWikiWatcher);
+    setup_note_addin<NoteUrlWatcher>(m_preferences.gnote.enable_url_links);
+    setup_note_addin<NoteLinkWatcher>(m_preferences.gnote.enable_auto_links);
+    setup_app_addin<AppLinkWatcher>(m_preferences.gnote.enable_auto_links);
+    setup_note_addin<NoteWikiWatcher>(m_preferences.gnote.enable_wikiwords);
 
     REGISTER_BUILTIN_NOTE_ADDIN(NoteRenameWatcher);
     REGISTER_BUILTIN_NOTE_ADDIN(NoteSpellChecker);
-    if(m_preferences.enable_url_links()) {
+    if(m_preferences.gnote.enable_url_links) {
       REGISTER_BUILTIN_NOTE_ADDIN(NoteUrlWatcher);
     }
-    if(m_preferences.enable_auto_links()) {
+    if(m_preferences.gnote.enable_auto_links) {
       REGISTER_APP_ADDIN(AppLinkWatcher);
       REGISTER_BUILTIN_NOTE_ADDIN(NoteLinkWatcher);
     }
-    if(m_preferences.enable_wikiwords()) {
+    if(m_preferences.gnote.enable_wikiwords) {
       REGISTER_BUILTIN_NOTE_ADDIN(NoteWikiWatcher);
     }
     REGISTER_BUILTIN_NOTE_ADDIN(MouseHandWatcher);
@@ -300,6 +268,44 @@ namespace {
       dmod->enabled(true); // enable all loaded modules on startup
       add_module_addins(mod_id, dmod);
     }
+  }
+
+  template<typename PluginClass>
+  void AddinManager::setup_note_addin(Preferences::MonitoredSetting<bool> &setting)
+  {
+    setting.signal_changed.connect([this, &setting]() {
+      if(setting) {
+        m_builtin_ifaces.push_back(std::make_unique<sharp::IfaceFactory<PluginClass>>());
+        load_note_addin(typeid(PluginClass).name(), sharp::IfaceFactoryBase::Ref(*m_builtin_ifaces.back()));
+      }
+      else {
+        erase_note_addin_info(typeid(PluginClass).name());
+      }
+    });
+  }
+
+  template<typename PluginClass>
+  void AddinManager::setup_app_addin(Preferences::MonitoredSetting<bool> &setting)
+  {
+    setting.signal_changed.connect([this, &setting]() {
+      if(setting) {
+        auto iter = m_app_addins.find(typeid(PluginClass).name());
+        if(iter != m_app_addins.end()) {
+          iter->second->initialize();
+        }
+        else {
+          auto addin = PluginClass::create();
+          m_app_addins.insert(std::make_pair(typeid(PluginClass).name(), addin));
+          addin->initialize(m_gnote, m_note_manager);
+        }
+      }
+      else {
+        auto addin = m_app_addins.find(typeid(PluginClass).name());
+        if(addin != m_app_addins.end()) {
+          addin->second->shutdown();
+        }
+      }
+    });
   }
 
   void AddinManager::add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod)

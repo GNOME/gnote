@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2017,2019-2020,2023 Aurimas Cernius
+ * Copyright (C) 2013,2017,2019-2020,2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -40,8 +40,16 @@ namespace gnote {
 
 namespace inserttimestamp {
 
-extern const char * SCHEMA_INSERT_TIMESTAMP;
-extern const char * INSERT_TIMESTAMP_FORMAT;
+class InsertTimestampSettings
+{
+public:
+  explicit InsertTimestampSettings(const Glib::RefPtr<Gio::Settings> &schema);
+
+  gnote::Preferences::MonitoredSetting<Glib::ustring> format;
+private:
+  Glib::RefPtr<Gio::Settings> m_schema;
+};
+
 
 class InsertTimestampPreferences
   : public Gtk::Grid
@@ -54,7 +62,7 @@ public:
   };
   typedef gnote::utils::ModelRecord<Columns> FormatColumns;
 
-  static Glib::RefPtr<Gio::Settings> & settings();
+  static InsertTimestampSettings &settings();
 
   InsertTimestampPreferences(gnote::IGnote &, gnote::Preferences &, gnote::NoteManager &);
 private:
@@ -65,7 +73,7 @@ private:
 
   static bool       s_static_inited;
   static std::vector<Glib::ustring> s_formats;
-  static Glib::RefPtr<Gio::Settings> s_settings;
+  static std::unique_ptr<InsertTimestampSettings> s_settings;
 
   Gtk::CheckButton *selected_radio;
   Gtk::CheckButton *custom_radio;

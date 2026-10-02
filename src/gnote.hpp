@@ -137,7 +137,7 @@ public:
     }
   virtual Preferences & preferences()
     {
-      return m_preferences;
+      return *m_preferences;
     }
   RemoteControlProxy & remote_control()
     {
@@ -183,7 +183,7 @@ private:
   void register_object();
 
   std::unique_ptr<NoteManager> m_manager;
-  Preferences m_preferences;
+  std::unique_ptr<Preferences> m_preferences;
   ActionManager m_action_manager;
   std::unique_ptr<sync::SyncManager> m_sync_manager;
   Glib::RefPtr<Gtk::IconTheme> m_icon_theme;

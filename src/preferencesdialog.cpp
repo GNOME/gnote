@@ -34,7 +34,6 @@
 #include <gtkmm/separator.h>
 
 #include "sharp/modulemanager.hpp"
-#include "sharp/propertyeditor.hpp"
 #include "synchronization/syncserviceaddin.hpp"
 #include "iactionmanager.hpp"
 #include "addinmanager.hpp"
@@ -45,14 +44,12 @@
 #include "notewindow.hpp"
 #include "preferencesdialog.hpp"
 #include "preferences.hpp"
+#include "settingeditor.hpp"
 #include "utils.hpp"
 #include "watchers.hpp"
 
 
 #define DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR 0
-
-#define NEW_PROPERTY_EDITOR_BOOL(property, check) new sharp::PropertyEditorBool([this]()->bool { return m_gnote.preferences().property(); }, \
-          [this](bool v) { m_gnote.preferences().property(v); }, check);
 
 namespace gnote {
 
@@ -179,9 +176,9 @@ namespace {
     add_action_widget(*button, Gtk::ResponseType::CLOSE);
     set_default_response(Gtk::ResponseType::CLOSE);
 
-    m_gnote.preferences().signal_note_rename_behavior_changed.connect(
+    m_gnote.preferences().gnote.note_rename_behavior.signal_changed.connect(
         sigc::mem_fun(*this, &PreferencesDialog::on_note_rename_behavior_changed));
-    m_gnote.preferences().signal_sync_autosync_timeout_changed
+    m_gnote.preferences().synchronization.autosync_timeout.signal_changed
       .connect(sigc::mem_fun(*this, &PreferencesDialog::on_autosync_timeout_setting_changed));
   }
 
@@ -250,8 +247,6 @@ namespace {
   Gtk::Widget *PreferencesDialog::make_editing_pane()
   {
       Gtk::Label *label;
-      Gtk::CheckButton *check;
-      sharp::PropertyEditorBool *font_peditor,* bullet_peditor;
 
       Gtk::Grid *options_list = Gtk::make_managed<Gtk::Grid>();
       options_list->set_row_spacing(12);
@@ -264,8 +259,7 @@ namespace {
       // TODO I'm not sure there is a proper reason to do that.
       // it is in or NOT. if not, disable the UI.
       if (NoteSpellChecker::gtk_spell_available()) {
-        check = manage(make_check_button (
-                         _("_Spell check while typing")));
+        check = Gtk::make_managed<Gtk::CheckButton>(_("_Spell check while typing"), true);
         set_widget_tooltip(*check, _("Misspellings will be underlined in red, with correct spelling "
                                      "suggestions shown in the context menu."));
         options_list->attach(*check, 0, options_list_row++, 1, 1);
@@ -276,25 +270,20 @@ namespace {
 
 
       // Auto bulleted list
-      check = make_check_button(_("Enable auto-_bulleted lists"));
-      set_widget_tooltip(*check, _("Start new bulleted list by starting new line with character \"-\"."));
-      options_list->attach(*check, 0, options_list_row++, 1, 1);
-      bullet_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_bulleted_lists, *check);
-      bullet_peditor->setup();
+      auto bullet_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_auto_bulleted_lists, _("Enable auto-_bulleted lists"), true);
+      set_widget_tooltip(*bullet_check, _("Start new bulleted list by starting new line with character \"-\"."));
+      options_list->attach(*bullet_check, 0, options_list_row++, 1, 1);
 
       // Custom font...
-      check = make_check_button(_("Use custom _font"));
-      check->set_hexpand(true);
-      options_list->attach(*check, 0, options_list_row, 1, 1);
-      font_peditor = NEW_PROPERTY_EDITOR_BOOL(enable_custom_font, *check);
-      font_peditor->setup();
+      auto font_check = Gtk::make_managed<SettingEditor<bool>>(m_gnote.preferences().gnote.enable_custom_font, _("Use custom _font"), true);
+      font_check->set_hexpand(true);
+      options_list->attach(*font_check, 0, options_list_row, 1, 1);
 
       font_button = manage(make_font_button());
-      font_button->set_sensitive(check->get_active());
+      font_button->set_sensitive(font_check->get_active());
       font_button->set_hexpand(true);
       options_list->attach(*font_button, 1, options_list_row++, 1, 1);
-
-      font_peditor->add_guard(font_button);
+      font_check->add_guard(*font_button);
 
       // Note renaming behavior
       label = make_label(_("When renaming a linked note: "));
@@ -305,10 +294,10 @@ namespace {
       rename_opts.emplace_back(_("Never rename links"));
       rename_opts.emplace_back(_("Always rename links"));
       m_rename_behavior_combo = Gtk::make_managed<Gtk::DropDown>(rename_opts);
-      guint rename_behavior = m_gnote.preferences().note_rename_behavior();
+      guint rename_behavior = m_gnote.preferences().gnote.note_rename_behavior;
       if (0 > rename_behavior || 2 < rename_behavior) {
         rename_behavior = 0;
-        m_gnote.preferences().note_rename_behavior(rename_behavior);
+        m_gnote.preferences().gnote.note_rename_behavior = rename_behavior;
       }
       m_rename_behavior_combo->set_selected(rename_behavior);
       m_rename_behavior_combo->property_selected().signal_changed().connect(sigc::mem_fun(*this, &PreferencesDialog::on_rename_behavior_changed));
@@ -326,10 +315,10 @@ namespace {
       // TRANSLATORS: Option to use light variant of the theme
       color_scheme_model->append(ColorSchemeItem::create(_("Light"), Preferences::COLOR_SCHEME_LIGHT_VAL));
       auto color_scheme = Gtk::make_managed<Gtk::DropDown>(color_scheme_model, make_color_scheme_label_expr());
-      color_scheme->set_selected(color_scheme_item_idx(color_scheme_model, m_gnote.preferences().color_scheme()));
+      color_scheme->set_selected(color_scheme_item_idx(color_scheme_model, m_gnote.preferences().gnote.color_scheme));
       color_scheme->property_selected().signal_changed().connect([color_scheme, &gnote=m_gnote] {
         if(auto item = std::dynamic_pointer_cast<ColorSchemeItem>(color_scheme->get_selected_item())) {
-          gnote.preferences().color_scheme(item->value);
+          gnote.preferences().gnote.color_scheme = item->value;
         }
       });
       options_list->attach(*color_scheme, 1, options_list_row++, 1, 1);
@@ -371,43 +360,35 @@ namespace {
     button->signal_clicked().connect(sigc::mem_fun(*this, &PreferencesDialog::on_font_button_clicked));
     button->set_child(*font_box);
 
-    update_font_button(m_gnote.preferences().custom_font_face());
+    update_font_button(m_gnote.preferences().gnote.custom_font_face);
 
     return button;
   }
 
   Gtk::Widget *PreferencesDialog::make_links_pane()
   {
+    auto &gnote_prefs = m_gnote.preferences().gnote;
     auto vbox = Gtk::make_managed<Gtk::Grid>();
     vbox->set_row_spacing(12);
     vbox->set_margin(12);
 
-    Gtk::CheckButton *check;
-    sharp::PropertyEditorBool *peditor;
     int vbox_row = 0;
 
     // internal links
-    check = make_check_button(_("_Automatically link to notes"));
-    set_widget_tooltip(*check, _("Enable this option to create a link when text matches note title."));
-    vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_auto_links, *check);
-    peditor->setup();
+    auto auto_links_check = Gtk::make_managed<SettingEditor<bool>>(gnote_prefs.enable_auto_links, _("_Automatically link to notes"), true);
+    set_widget_tooltip(*auto_links_check, _("Enable this option to create a link when text matches note title."));
+    vbox->attach(*auto_links_check, 0, vbox_row++, 1, 1);
 
     // URLs
-    check = make_check_button(_("Create links for _URLs"));
-    set_widget_tooltip(*check, _("Enable this option to create links for URLs. "
-                                 "Clicking will open URL with appropriate program."));
-    vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_url_links, *check);
-    peditor->setup();
+    auto url_links_check = Gtk::make_managed<SettingEditor<bool>>(gnote_prefs.enable_url_links, _("Create links for _URLs"), true);
+    set_widget_tooltip(*url_links_check, _("Enable this option to create links for URLs. " "Clicking will open URL with appropriate program."));
+    vbox->attach(*url_links_check, 0, vbox_row++, 1, 1);
 
     // WikiWords...
-    check = make_check_button(_("Highlight _WikiWords"));
-    set_widget_tooltip(*check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
+    auto wiki_check = Gtk::make_managed<SettingEditor<bool>>(gnote_prefs.enable_wikiwords, _("Highlight _WikiWords"), true);
+    set_widget_tooltip(*wiki_check, _("Enable this option to highlight words <b>ThatLookLikeThis</b>. "
                                  "Clicking the word will create a note with that name."));
-    vbox->attach(*check, 0, vbox_row++, 1, 1);
-    peditor = NEW_PROPERTY_EDITOR_BOOL(enable_wikiwords, *check);
-    peditor->setup();
+    vbox->attach(*wiki_check, 0, vbox_row++, 1, 1);
 
     return vbox;
   }
@@ -445,7 +426,7 @@ namespace {
 
     // Read from Preferences which service is configured and select it
     // by default.  Otherwise, just select the first one in the list.
-    Glib::ustring addin_id = m_gnote.preferences().sync_selected_service_addin();
+    Glib::ustring addin_id = m_gnote.preferences().synchronization.selected_service_addin;
 
     Glib::RefPtr<SyncService> active_sync;
     if(!addin_id.empty()) {
@@ -482,14 +463,14 @@ namespace {
     vbox->attach(*m_sync_addin_prefs_container, 0, vbox_row++, 1, 1);
 
     // Autosync preference
-    int timeout = m_gnote.preferences().sync_autosync_timeout();
+    int timeout = m_gnote.preferences().synchronization.autosync_timeout;
     if(timeout > 0 && timeout < 5) {
       timeout = 5;
-      m_gnote.preferences().sync_autosync_timeout(5);
+      m_gnote.preferences().synchronization.autosync_timeout = 5;
     }
     auto autosyncBox = Gtk::make_managed<Gtk::Grid>();
     autosyncBox->set_column_spacing(5);
-    m_autosync_check = make_check_button(_("Automatic background s_ync interval (minutes)"));
+    m_autosync_check = Gtk::make_managed<Gtk::CheckButton>(_("Automatic background s_ync interval (minutes)"), true);
     m_autosync_spinner = Gtk::make_managed<Gtk::SpinButton>(1);
     m_autosync_spinner->set_range(5, 1000);
     m_autosync_spinner->set_value(timeout >= 5 ? timeout : 10);
@@ -842,13 +823,6 @@ namespace {
     return label;
   }
 
-  Gtk::CheckButton *PreferencesDialog::make_check_button(const Glib::ustring & label_text)
-  {
-    Gtk::CheckButton *check = Gtk::make_managed<Gtk::CheckButton>(label_text, true);
-    return check;
-  }
-
-
   void PreferencesDialog::set_widget_tooltip(Gtk::Widget & widget, Glib::ustring label_text)
   {
     widget.set_tooltip_markup(Glib::ustring::compose("<small>%1</small>", label_text));
@@ -858,14 +832,14 @@ namespace {
   {
     auto font_dialog = Gtk::make_managed<Gtk::FontChooserDialog>(_("Choose Note Font"));
 
-    auto font_name = m_gnote.preferences().custom_font_face();
+    Glib::ustring font_name = m_gnote.preferences().gnote.custom_font_face;
     font_dialog->set_font(font_name);
 
     font_dialog->signal_response().connect([this, font_name, font_dialog](int response) {
       if(Gtk::ResponseType::OK == response) {
         auto new_font = font_dialog->get_font();
         if(new_font != font_name) {
-          m_gnote.preferences().custom_font_face(new_font);
+          m_gnote.preferences().gnote.custom_font_face = new_font;
           update_font_button(new_font);
         }
       }
@@ -903,10 +877,10 @@ namespace {
 
   void  PreferencesDialog::on_note_rename_behavior_changed()
   {
-    guint rename_behavior = m_gnote.preferences().note_rename_behavior();
+    guint rename_behavior = m_gnote.preferences().gnote.note_rename_behavior;
     if(0 > rename_behavior || 2 < rename_behavior) {
       rename_behavior = 0;
-      m_gnote.preferences().note_rename_behavior(rename_behavior);
+      m_gnote.preferences().gnote.note_rename_behavior = rename_behavior;
     }
     if(m_rename_behavior_combo->get_selected() != rename_behavior) {
       m_rename_behavior_combo->set_selected(rename_behavior);
@@ -917,7 +891,7 @@ namespace {
 
   void PreferencesDialog::on_autosync_timeout_setting_changed()
   {
-    int timeout = m_gnote.preferences().sync_autosync_timeout();
+    int timeout = m_gnote.preferences().synchronization.autosync_timeout;
     if(timeout <= 0 && m_autosync_check->get_active()) {
       m_autosync_check->set_active(false);
     }
@@ -936,7 +910,7 @@ namespace {
 
   void  PreferencesDialog::on_rename_behavior_changed()
   {
-    m_gnote.preferences().note_rename_behavior(m_rename_behavior_combo->get_selected());
+    m_gnote.preferences().gnote.note_rename_behavior = m_rename_behavior_combo->get_selected();
   }
 
 
@@ -944,9 +918,9 @@ namespace {
   {
     // Get saved behavior
     sync::SyncTitleConflictResolution savedBehavior = sync::CANCEL;
-    int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
+    int dlg_behavior_pref = m_gnote.preferences().synchronization.configured_conflict_behavior;
     // TODO: Check range of this int
-    savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlgBehaviorPref);
+    savedBehavior = static_cast<sync::SyncTitleConflictResolution>(dlg_behavior_pref);
 
     // Create dialog
     Gtk::Dialog *advancedDlg = Gtk::make_managed<Gtk::Dialog>(_("Other Synchronization Options"), *this, true);
@@ -963,16 +937,16 @@ namespace {
     overwriteOnConflictRadio->set_group(*promptOnConflictRadio);
 
     auto on_toggle = [this, renameOnConflictRadio, overwriteOnConflictRadio] {
-      sync::SyncTitleConflictResolution newBehavior = sync::CANCEL;
+      sync::SyncTitleConflictResolution new_behavior = sync::CANCEL;
 
       if(renameOnConflictRadio->get_active()) {
-        newBehavior = sync::RENAME_EXISTING_NO_UPDATE;
+        new_behavior = sync::RENAME_EXISTING_NO_UPDATE;
       }
       else if(overwriteOnConflictRadio->get_active()) {
-        newBehavior = sync::OVERWRITE_EXISTING;
+        new_behavior = sync::OVERWRITE_EXISTING;
       }
 
-      m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(newBehavior));
+      m_gnote.preferences().synchronization.configured_conflict_behavior = new_behavior;
     };
 
     promptOnConflictRadio->signal_toggled().connect(on_toggle);
@@ -1055,10 +1029,10 @@ namespace {
         ERR_OUT("Error calling %s.reset_configuration: %s", active_sync->service().id().c_str(), e.what());
       }
 
-      m_gnote.preferences().sync_selected_service_addin("");
+      m_gnote.preferences().synchronization.selected_service_addin = "";
 
       // Reset conflict handling behavior
-      m_gnote.preferences().sync_configured_conflict_behavior(DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR);
+      m_gnote.preferences().synchronization.configured_conflict_behavior = DEFAULT_SYNC_CONFIGURED_CONFLICT_BEHAVIOR;
 
       m_gnote.sync_manager().reset_client();
 
@@ -1142,7 +1116,7 @@ namespace {
     utils::HIGMessageDialog *dialog;
     if(saved) {
       auto active_sync = std::dynamic_pointer_cast<SyncService>(active_sync_service);
-      m_gnote.preferences().sync_selected_service_addin(active_sync->service().id());
+      m_gnote.preferences().synchronization.selected_service_addin  = active_sync->service().id();
 
       m_sync_addin_combo->set_sensitive(false);
       m_sync_addin_prefs_widget->set_sensitive(false);
@@ -1171,7 +1145,7 @@ namespace {
       // TODO: Change the SyncServiceAddin API so the call to
       // SaveConfiguration has a way of passing back an exception
       // or other text so it can be displayed to the user.
-      m_gnote.preferences().sync_selected_service_addin("");
+      m_gnote.preferences().synchronization.selected_service_addin = "";
 
       m_sync_addin_combo->set_sensitive(true);
       m_sync_addin_prefs_widget->set_sensitive(true);
@@ -1324,8 +1298,9 @@ namespace {
 
   void PreferencesDialog::update_timeout_pref()
   {
-    m_gnote.preferences().sync_autosync_timeout(
-        m_autosync_check->get_active() ? static_cast<int>(m_autosync_spinner->get_value()) : -1);
+    m_gnote.preferences().synchronization.autosync_timeout = m_autosync_check->get_active()
+      ? static_cast<int>(m_autosync_spinner->get_value())
+      : -1;
   }
 
 }

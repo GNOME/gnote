@@ -135,7 +135,7 @@ namespace sync {
 
 std::unique_ptr<SyncServer> FileSystemSyncServer::create(Glib::RefPtr<Gio::File> && path, Preferences & prefs)
 {
-  return std::make_unique<FileSystemSyncServer>(std::move(path), prefs.sync_client_id());
+  return std::make_unique<FileSystemSyncServer>(std::move(path), prefs.synchronization.client_id);
 }
 
 

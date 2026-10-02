@@ -577,7 +577,7 @@ void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
                                         NoteUpdate remoteNote,
                                         const std::vector<Glib::ustring> & noteUpdateTitles)
 {
-  int dlgBehaviorPref = m_gnote.preferences().sync_configured_conflict_behavior();
+  int dlg_behavior_pref = m_gnote.preferences().synchronization.configured_conflict_behavior;
   CompletionMonitor wait;
   {
     CompletionMonitor::WaitLock lock(wait);
@@ -589,10 +589,10 @@ void SyncDialog::note_conflict_detected(NoteBase & localConflictNote,
     auto local_conflict_note = localConflictNote.uri();
     auto & manager = localConflictNote.manager();
     utils::main_context_invoke(
-      [this, &manager, local_conflict_note, remoteNote, noteUpdateTitles, dlgBehaviorPref, &wait]() {
+      [this, &manager, local_conflict_note, remoteNote, noteUpdateTitles, dlg_behavior_pref, &wait]() {
         if(auto note = manager.find_by_uri(local_conflict_note)) {
           note_conflict_detected_(static_cast<Note&>(note.value().get()), remoteNote, noteUpdateTitles,
-                                  static_cast<SyncTitleConflictResolution>(dlgBehaviorPref),
+                                  static_cast<SyncTitleConflictResolution>(dlg_behavior_pref),
                                   OVERWRITE_EXISTING, wait);
         }
         else {
@@ -696,7 +696,7 @@ void SyncDialog::conflict_dialog_response(
     }
   }
 
-  m_gnote.preferences().sync_configured_conflict_behavior(static_cast<int>(savedBehavior));
+  m_gnote.preferences().synchronization.configured_conflict_behavior = savedBehavior;
 
   conflictDlg->hide();
 }

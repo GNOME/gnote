@@ -477,12 +477,12 @@ namespace gnote {
     };
 
     if (!linking_notes.empty()) {
-      const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(m_gnote.preferences().note_rename_behavior());
+      const NoteRenameBehavior behavior = static_cast<NoteRenameBehavior>(int(m_gnote.preferences().gnote.note_rename_behavior));
 
       auto process_rename_link_update_end = [this, old_title](NoteRenameDialog::Response response, NoteRenameDialog &dialog) {
         const NoteRenameBehavior selected_behavior = dialog.get_selected_behavior();
         if(NoteRenameDialog::Response::CANCEL != response && NOTE_RENAME_ALWAYS_SHOW_DIALOG != selected_behavior) {
-          m_gnote.preferences().note_rename_behavior(selected_behavior);
+          m_gnote.preferences().gnote.note_rename_behavior = selected_behavior;
         }
 
         const auto notes = dialog.get_notes();
@@ -685,12 +685,12 @@ namespace gnote {
 
   bool Note::is_special() const
   {
-    return m_gnote.preferences().start_note_uri() == m_data.data().uri();
+    return m_gnote.preferences().gnote.start_note_uri == m_data.data().uri();
   }
 
   bool Note::is_pinned() const
   {
-    auto pinned_uris = m_gnote.preferences().menu_pinned_notes();
+    Glib::ustring pinned_uris = m_gnote.preferences().gnote.menu_pinned_notes;
     return pinned_uris.find(uri()) != Glib::ustring::npos;
   }
 
@@ -698,7 +698,7 @@ namespace gnote {
   void Note::set_pinned(bool pinned) const
   {
     Glib::ustring new_pinned;
-    auto old_pinned = m_gnote.preferences().menu_pinned_notes();
+    Glib::ustring old_pinned = m_gnote.preferences().gnote.menu_pinned_notes;
     bool is_currently_pinned = old_pinned.find(uri()) != Glib::ustring::npos;
 
     if (pinned == is_currently_pinned)
@@ -716,7 +716,7 @@ namespace gnote {
         }
       }
     }
-    m_gnote.preferences().menu_pinned_notes(new_pinned);
+    m_gnote.preferences().gnote.menu_pinned_notes = new_pinned;
     m_gnote.notebook_manager().signal_note_pin_status_changed(*this, pinned);
   }
 

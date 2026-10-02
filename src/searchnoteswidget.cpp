@@ -377,7 +377,7 @@ SearchNotesWidget::SearchNotesWidget(IGnote & g, NoteManagerBase & m)
   notebook_manager.signal_note_pin_status_changed
     .connect(sigc::mem_fun(*this, &SearchNotesWidget::on_note_pin_status_changed));
 
-  g.preferences().signal_desktop_gnome_clock_format_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
+  g.preferences().gnome_desktop.clock_format.signal_changed.connect(sigc::mem_fun(*this, &SearchNotesWidget::update_results));
 
   auto shortcuts = Gtk::ShortcutController::create();
   shortcuts->set_scope(Gtk::ShortcutScope::GLOBAL);
@@ -486,7 +486,7 @@ void SearchNotesWidget::save_position()
     return;
   }
 
-  m_gnote.preferences().search_window_splitter_pos(get_position());
+  m_gnote.preferences().gnote.search_window_splitter_pos = get_position();
 
   Gtk::Window *window = dynamic_cast<Gtk::Window*>(current_host);
   if(!window || window->is_maximized()) {
@@ -496,8 +496,8 @@ void SearchNotesWidget::save_position()
   int width = window->get_width();
   int height = window->get_height();
 
-  m_gnote.preferences().search_window_width(width);
-  m_gnote.preferences().search_window_height(height);
+  m_gnote.preferences().gnote.search_window_width = width;
+  m_gnote.preferences().gnote.search_window_height = height;
 }
 
 void SearchNotesWidget::on_notebook_selection_changed(const notebooks::Notebook & notebook)
@@ -599,7 +599,7 @@ void SearchNotesWidget::make_recent_notes_view()
 
   m_notes_view->append_column(m_change_column);
 
-  parse_sorting_setting(m_gnote.preferences().search_sorting());
+  parse_sorting_setting(m_gnote.preferences().gnote.search_sorting);
   if(!m_sort_column) {
     m_sort_column = m_change_column;
     m_sort_column_order = Gtk::SortType::DESCENDING;
@@ -968,7 +968,7 @@ void SearchNotesWidget::background()
 
 void SearchNotesWidget::size_internals()
 {
-  int pos = m_gnote.preferences().search_window_splitter_pos();
+  int pos = m_gnote.preferences().gnote.search_window_splitter_pos;
   if(pos) {
     set_position(pos);
   }
@@ -1010,7 +1010,7 @@ void SearchNotesWidget::on_sorting_changed(Gtk::Sorter::Change)
   else {
     value += "desc";
   }
-  m_gnote.preferences().search_sorting(value);
+  m_gnote.preferences().gnote.search_sorting = value;
 }
 
 void SearchNotesWidget::parse_sorting_setting(const Glib::ustring & sorting)
