@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnote master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-09-08 18:37+0000\n"
-"PO-Revision-Date: 2026-09-08 22:31+0200\n"
+"POT-Creation-Date: 2026-10-01 20:04+0000\n"
+"PO-Revision-Date: 2026-10-02 22:15+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -537,12 +537,8 @@ msgid "Accept SSL Certificates"
 msgstr "Sprejmi potrdila SSL"
 
 #: data/org.gnome.gnote.gschema.xml:226
-msgid ""
-"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
-"user."
-msgstr ""
-"Uporabite wdfs možnost \"-ac\" za sprejem potrdil SSL brez vprašanj "
-"uporabniku."
+msgid "Obsolete. Has no effect."
+msgstr "Opuščeno, nima nobenega učinka."
 
 #: data/org.gnome.gnote.gschema.xml:230
 msgid "Share URL"
@@ -777,7 +773,7 @@ msgstr "_Novo sporočilce"
 msgid "New _Window"
 msgstr "Novo _okno"
 
-#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:582
 msgid "_Preferences"
 msgstr "_Možnosti"
 
@@ -802,42 +798,42 @@ msgstr "Nalaganje podatkov o vstavku je spodletelo!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Neskladen vstavek %s: pričakovan je %s, prejet pa %s"
 
-#: src/addinmanager.cpp:134
+#: src/addinmanager.cpp:102
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Podatki o vstavku %s že naloženi"
 
-#: src/addinmanager.cpp:141
+#: src/addinmanager.cpp:109
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s ne omogoča %s"
 
-#: src/addinmanager.cpp:156
+#: src/addinmanager.cpp:124
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Vstavek %s je že nameščen"
 
-#: src/addinmanager.cpp:175
+#: src/addinmanager.cpp:143
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Manjkajo podatki o vstavku %s"
 
-#: src/addinmanager.cpp:188
+#: src/addinmanager.cpp:156
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Vstavek %s ni nameščen"
 
-#: src/addinmanager.cpp:220
+#: src/addinmanager.cpp:188
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Modula %s za vstavek %s ni mogoče najti"
 
-#: src/addinmanager.cpp:224
+#: src/addinmanager.cpp:192
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Nalaganje podatkov o vstavku %s je spodletelo: %s"
 
-#: src/addinmanager.cpp:351
+#: src/addinmanager.cpp:357
 msgid "Trying to load addins when they are already loaded"
 msgstr "Poskus nalaganja vstavkov, ki so že naloženi"
 
@@ -1022,7 +1018,7 @@ msgstr "Vključi vsa ostala povezana sporočilca"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:530
+#: src/preferencesdialog.cpp:511
 msgid "_Save"
 msgstr "_Shrani"
 
@@ -1140,7 +1136,7 @@ msgid "Online Folder"
 msgstr "Spletna mapa"
 
 #: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:3
-#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
+#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:77
 msgid "Insert Timestamp"
 msgstr "Vstavi časovni žig"
 
@@ -1149,16 +1145,16 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Vstavi trenutni datum in čas na položaj kazalke."
 
 #. Label
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:91
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:93
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Izberite eno od določenih oblik ali uporabite obliko po meri."
 
 #. Use Selected Format
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:97
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:99
 msgid "Use _Selected Format"
 msgstr "Uporabi _izbrano obliko"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:122
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:124
 msgid "_Use Custom Format"
 msgstr "_Uporabi obliko po meri"
 
@@ -1744,7 +1740,7 @@ msgstr "Določanje vsebine besedila za zaprta sporočilca ni podprto"
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:328
 msgid "New Note Template"
 msgstr "Nova predloga sporočilca"
 
@@ -1958,64 +1954,64 @@ msgstr "Shrani _naslov"
 msgid "Cannot create note"
 msgstr "Ni mogoče ustvariti sporočilca"
 
-#: src/notewindow.cpp:990
+#: src/notewindow.cpp:998
 msgid "_Highlight"
 msgstr "_Poudarjeno"
 
-#: src/notewindow.cpp:994
+#: src/notewindow.cpp:1002
 msgid "_Normal"
 msgstr "_Običajna"
 
-#: src/notewindow.cpp:995
+#: src/notewindow.cpp:1003
 msgid "S_mall"
 msgstr "_Majhna"
 
-#: src/notewindow.cpp:996
+#: src/notewindow.cpp:1004
 msgid "_Large"
 msgstr "_Velika"
 
-#: src/notewindow.cpp:997
+#: src/notewindow.cpp:1005
 msgid "Hu_ge"
 msgstr "O_gromna"
 
-#: src/preferencesdialog.cpp:164
+#: src/preferencesdialog.cpp:161
 msgid "Gnote Preferences"
 msgstr "Možnosti Gnote"
 
-#: src/preferencesdialog.cpp:171
+#: src/preferencesdialog.cpp:168
 msgid "General"
 msgstr "Splošno"
 
-#: src/preferencesdialog.cpp:172
+#: src/preferencesdialog.cpp:169
 msgid "Links"
 msgstr "Povezave"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:173 src/sharp/pluginsmodel.cpp:205
+#: src/preferencesdialog.cpp:170 src/sharp/pluginsmodel.cpp:205
 msgid "Synchronization"
 msgstr "Usklajevanje"
 
-#: src/preferencesdialog.cpp:174
+#: src/preferencesdialog.cpp:171
 msgid "Plugins"
 msgstr "Vstavki"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:766
-#: src/preferencesdialog.cpp:1003 src/preferencesdialog.cpp:1213
+#: src/preferencesdialog.cpp:175 src/preferencesdialog.cpp:747
+#: src/preferencesdialog.cpp:977 src/preferencesdialog.cpp:1187
 #: src/synchronization/syncdialog.cpp:343 src/utils.cpp:355
 msgid "_Close"
 msgstr "_Zapri"
 
-#: src/preferencesdialog.cpp:216
+#: src/preferencesdialog.cpp:213
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Vstavek %s ni nameščen"
 
-#: src/preferencesdialog.cpp:268
+#: src/preferencesdialog.cpp:262
 msgid "_Spell check while typing"
 msgstr "Preverjaj _črkovanje med tipkanjem"
 
-#: src/preferencesdialog.cpp:269
+#: src/preferencesdialog.cpp:263
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2024,57 +2020,57 @@ msgstr ""
 "bodo prikazani v priročnem meniju."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:279
+#: src/preferencesdialog.cpp:273
 msgid "Enable auto-_bulleted lists"
 msgstr "Omogoči samodejno _vrstično označene sezname"
 
-#: src/preferencesdialog.cpp:280
+#: src/preferencesdialog.cpp:274
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Začni vrstični seznam z znakom \"-\" na začetku vrstice."
 
 #. Custom font...
-#: src/preferencesdialog.cpp:286
+#: src/preferencesdialog.cpp:278
 msgid "Use custom _font"
 msgstr "Uporabi p_isavo po meri"
 
 #. Note renaming behavior
-#: src/preferencesdialog.cpp:300
+#: src/preferencesdialog.cpp:289
 msgid "When renaming a linked note: "
 msgstr "Ob preimenovanju povezanega sporočilca: "
 
-#: src/preferencesdialog.cpp:304
+#: src/preferencesdialog.cpp:293
 msgid "Ask me what to do"
 msgstr "Vedno vprašaj za potrditev"
 
-#: src/preferencesdialog.cpp:305
+#: src/preferencesdialog.cpp:294
 msgid "Never rename links"
 msgstr "Nikoli ne preimenuj povezav"
 
-#: src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:295
 msgid "Always rename links"
 msgstr "Vedno preimenuj povezave"
 
 #. Color scheme
-#: src/preferencesdialog.cpp:319
+#: src/preferencesdialog.cpp:308
 msgid "Color Scheme: "
 msgstr "Barvna shema: "
 
 #. TRANSLATORS: Option to follow the system color scheme setting
-#: src/preferencesdialog.cpp:323
+#: src/preferencesdialog.cpp:312
 msgid "Follow the System"
 msgstr "Sledi sistemu"
 
 #. TRANSLATORS: Option to use dark variant of the theme
-#: src/preferencesdialog.cpp:325
+#: src/preferencesdialog.cpp:314
 msgid "Dark"
 msgstr "Temna"
 
 #. TRANSLATORS: Option to use light variant of the theme
-#: src/preferencesdialog.cpp:327
+#: src/preferencesdialog.cpp:316
 msgid "Light"
 msgstr "Svetla"
 
-#: src/preferencesdialog.cpp:340
+#: src/preferencesdialog.cpp:329
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2082,27 +2078,27 @@ msgstr ""
 "Uporabite predlogo novega sporočilca za navedbo besedila, ki naj bo "
 "uporabljeno ob ustvarjanju novega sporočilca."
 
-#: src/preferencesdialog.cpp:345
+#: src/preferencesdialog.cpp:334
 msgid "Open New Note Template"
 msgstr "Odpri predlogo novega sporočilca"
 
 #. internal links
-#: src/preferencesdialog.cpp:390
+#: src/preferencesdialog.cpp:378
 msgid "_Automatically link to notes"
 msgstr "_Samodejno poveži s sporočilci"
 
-#: src/preferencesdialog.cpp:391
+#: src/preferencesdialog.cpp:379
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Omogoči to možnost za ustvarjanje povezav, ko se besedilo sklada z naslovom "
 "sporočilca."
 
 #. URLs
-#: src/preferencesdialog.cpp:397
+#: src/preferencesdialog.cpp:383
 msgid "Create links for _URLs"
 msgstr "Ustvari povezave za naslove _URL"
 
-#: src/preferencesdialog.cpp:398
+#: src/preferencesdialog.cpp:384
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2111,11 +2107,11 @@ msgstr ""
 "odprete URL v ustreznem programu."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:405
+#: src/preferencesdialog.cpp:388
 msgid "Highlight _WikiWords"
 msgstr "Poudarjanje _WikiWords"
 
-#: src/preferencesdialog.cpp:406
+#: src/preferencesdialog.cpp:389
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2123,85 +2119,85 @@ msgstr ""
 "Omogočite to možnost za poudarjanje besed <b>KiImajoTakVidez</b>. S klikom "
 "na besedo bo ustvarjeno sporočilce s tem imenom."
 
-#: src/preferencesdialog.cpp:427
+#: src/preferencesdialog.cpp:408
 msgid "Ser_vice:"
 msgstr "S_toritev:"
 
-#: src/preferencesdialog.cpp:492
+#: src/preferencesdialog.cpp:473
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Interval samo_dejnega usklajevanja v ozadju (v minutah)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:514
+#: src/preferencesdialog.cpp:495
 msgid "_Advanced..."
 msgstr "_Napredno ..."
 
-#: src/preferencesdialog.cpp:519
+#: src/preferencesdialog.cpp:500
 msgid "Clear"
 msgstr "Počisti"
 
-#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1024
+#: src/preferencesdialog.cpp:528 src/preferencesdialog.cpp:998
 msgid "Not configurable"
 msgstr "Ni nastavljivo"
 
-#: src/preferencesdialog.cpp:567
+#: src/preferencesdialog.cpp:548
 msgid "The following plugins are installed:"
 msgstr "Nameščeni so naslednji vstavki:"
 
-#: src/preferencesdialog.cpp:591
+#: src/preferencesdialog.cpp:572
 msgid "_Enable"
 msgstr "_Omogoči"
 
-#: src/preferencesdialog.cpp:596
+#: src/preferencesdialog.cpp:577
 msgid "_Disable"
 msgstr "O_nemogoči"
 
-#: src/preferencesdialog.cpp:606
+#: src/preferencesdialog.cpp:587
 msgid "In_formation"
 msgstr "In_formacije"
 
-#: src/preferencesdialog.cpp:746
+#: src/preferencesdialog.cpp:727
 msgid "Not Implemented"
 msgstr "Ni del programa"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:763
+#: src/preferencesdialog.cpp:744
 msgid "%1 Preferences"
 msgstr "Možnosti %1"
 
-#: src/preferencesdialog.cpp:859
+#: src/preferencesdialog.cpp:833
 msgid "Choose Note Font"
 msgstr "Izberi pisavo sporočilca"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:952
+#: src/preferencesdialog.cpp:926
 msgid "Other Synchronization Options"
 msgstr "Druge možnosti usklajevanja"
 
-#: src/preferencesdialog.cpp:955
+#: src/preferencesdialog.cpp:929
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
 msgstr ""
 "Ko je zaznan spor med krajevno in oddaljeno kopijo na strežniku usklajevanja:"
 
-#: src/preferencesdialog.cpp:959
+#: src/preferencesdialog.cpp:933
 msgid "Always ask me what to do"
 msgstr "Vedno vprašaj za izbor dejanja"
 
-#: src/preferencesdialog.cpp:960
+#: src/preferencesdialog.cpp:934
 msgid "Rename my local note"
 msgstr "Preimenuj krajevno sporočilce"
 
-#: src/preferencesdialog.cpp:962
+#: src/preferencesdialog.cpp:936
 msgid "Replace my local note with the server's update"
 msgstr "Zamenjaj krajevno sporočilce s posodobljenim sporočilcem na strežniku"
 
-#: src/preferencesdialog.cpp:1083
+#: src/preferencesdialog.cpp:1057
 msgid "Are you sure?"
 msgstr "Ali ste prepričani?"
 
-#: src/preferencesdialog.cpp:1084
+#: src/preferencesdialog.cpp:1058
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2209,11 +2205,11 @@ msgstr ""
 "Čiščenje nastavitev usklajevanja ni priporočeno. Lahko se zgodi, da boste "
 "morali po shranjevanju novih nastavitev ponovno uskladiti vsa sporočilca."
 
-#: src/preferencesdialog.cpp:1095
+#: src/preferencesdialog.cpp:1069
 msgid "Resetting Synchronization Settings"
 msgstr "Ponastavljanje nastavitev usklajevanja"
 
-#: src/preferencesdialog.cpp:1096
+#: src/preferencesdialog.cpp:1070
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2223,11 +2219,11 @@ msgstr ""
 "usklajevanja bodo počiščene. Lahko se zgodi, da bo treba vsa sporočilca "
 "znova uskladiti z novimi nastavitvami."
 
-#: src/preferencesdialog.cpp:1158
+#: src/preferencesdialog.cpp:1132
 msgid "Connection successful"
 msgstr "Povezava je uspešno vzpostavljena"
 
-#: src/preferencesdialog.cpp:1159
+#: src/preferencesdialog.cpp:1133
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2236,7 +2232,7 @@ msgstr ""
 "zagnati usklajevanje?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1185
+#: src/preferencesdialog.cpp:1159
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2244,19 +2240,19 @@ msgstr ""
 "Preverite podatke in poskusite znova. Več podrobnosti o napaki je mogoče "
 "najti tudi v dnevniški datoteki %1."
 
-#: src/preferencesdialog.cpp:1190
+#: src/preferencesdialog.cpp:1164
 msgid "Error connecting"
 msgstr "Napaka med povezovanjem"
 
-#: src/preferencesdialog.cpp:1255
+#: src/preferencesdialog.cpp:1229
 msgid "Version:"
 msgstr "Različica:"
 
-#: src/preferencesdialog.cpp:1258
+#: src/preferencesdialog.cpp:1232
 msgid "Author:"
 msgstr "Avtor:"
 
-#: src/preferencesdialog.cpp:1262
+#: src/preferencesdialog.cpp:1236
 msgid "Copyright:"
 msgstr "Avtorske pravice:"
 
