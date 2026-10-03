@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2013,2019,2022-2025 Aurimas Cernius
+ * Copyright (C) 2013,2019,2022-2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,6 +44,7 @@ namespace gnote {
     sigc::signal<void(Note&)> signal_open_template_note;
   private:
     void on_selection_changed(guint, guint);
+    void on_notebook_renamed(const Glib::ustring&);
     bool on_notebooks_key_pressed(guint keyval, guint keycode, Gdk::ModifierType state);
     void on_selected_notebook_changed(const Notebook&);
     void on_create_new_notebook();

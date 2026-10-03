@@ -248,6 +248,11 @@ namespace gnote {
       append(*actions);
 
       m_list.get_model()->signal_selection_changed().connect(sigc::mem_fun(*this, &NotebooksView::on_selection_changed));
+      for(guint i = 0; i < model->get_n_items(); ++i) {
+        if(auto notebook = std::dynamic_pointer_cast<Notebook>(model->get_object(i))) {
+          notebook->signal_name_changed.connect(sigc::mem_fun(*this, &NotebooksView::on_notebook_renamed));
+        }
+      }
     }
 
     Notebook::ORef NotebooksView::get_selected_notebook() const
@@ -335,6 +340,15 @@ namespace gnote {
       }
       else {
         select_all_notes_notebook();
+      }
+    }
+
+    void NotebooksView::on_notebook_renamed(const Glib::ustring&)
+    {
+      // simply emit signal for selected notebook, so listener updates if that's the one renamed
+      if(auto notebook = get_selected_notebook()) {
+        const Notebook& nb = notebook.value();
+        signal_selected_notebook_changed(nb);
       }
     }
 
