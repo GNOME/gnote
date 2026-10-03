@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tomboy\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-09-08 18:37+0000\n"
-"PO-Revision-Date: 2026-09-08 21:41+0300\n"
+"POT-Creation-Date: 2026-10-03 10:06+0000\n"
+"PO-Revision-Date: 2026-10-03 18:51+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>="
-"2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2"
+" && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 25.12.1\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
@@ -67,8 +67,8 @@ msgstr "Записник"
 #: data/org.gnome.Gnote.desktop.in:6
 msgid "notes;idea;link;organize;"
 msgstr ""
-"notes;idea;link;organize;нотатки;нотатка;ідея;посилання;упорядкування;організ"
-"ація;"
+"notes;idea;link;organize;нотатки;нотатка;ідея;посилання;упорядкування;організа"
+"ція;"
 
 #: data/org.gnome.Gnote.desktop.in:19
 msgid "New Window"
@@ -178,9 +178,6 @@ msgid "Base highlight background color on system accent color"
 msgstr "Основний колір тла підсвічування у системний колір акценту"
 
 #: data/org.gnome.gnote.gschema.xml:47
-#| msgid ""
-#| "When text is highlighted, determine background color based on system "
-#| "accent color Typically this means a lighter version of highlight."
 msgid ""
 "When text is highlighted, determine background color based on system accent "
 "color. Typically this means a lighter version of highlight."
@@ -330,8 +327,7 @@ msgid "SSHFS Remote Synchronization User Name"
 msgstr "Користувач для доступу до віддаленої теки синхронізації SSHFS"
 
 #: data/org.gnome.gnote.gschema.xml:117
-msgid ""
-"User name to use when connecting to the synchronization server via SSH."
+msgid "User name to use when connecting to the synchronization server via SSH."
 msgstr ""
 "Користувач, який використовується при з'єднані з сервером синхронізації "
 "через SSH."
@@ -549,12 +545,9 @@ msgid "Accept SSL Certificates"
 msgstr "Приймати сертифікати SSL"
 
 #: data/org.gnome.gnote.gschema.xml:226
-msgid ""
-"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
-"user."
-msgstr ""
-"Використовувати для wdfs параметр «-ac», щоб приймати сертифікати SSL не "
-"повідомляючи користувача."
+#| msgid "Deprecated, has no effect."
+msgid "Obsolete. Has no effect."
+msgstr "Застарілий, не працює."
 
 #: data/org.gnome.gnote.gschema.xml:230
 msgid "Share URL"
@@ -792,7 +785,7 @@ msgstr "С_творити нотатку"
 msgid "New _Window"
 msgstr "С_творити вікно"
 
-#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:582
 msgid "_Preferences"
 msgstr "П_араметри"
 
@@ -817,42 +810,42 @@ msgstr "Не вдалося завантажити дані щодо додат�
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Несумісний додаток %s: мало бути %s, маємо %s"
 
-#: src/addinmanager.cpp:134
+#: src/addinmanager.cpp:102
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Дані щодо %s додатка нотаток вже отримано"
 
-#: src/addinmanager.cpp:141
+#: src/addinmanager.cpp:109
 #, c-format
 msgid "%s does not implement %s"
 msgstr "%s не реалізує %s"
 
-#: src/addinmanager.cpp:156
+#: src/addinmanager.cpp:124
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Додаток нотаток %s вже працює"
 
-#: src/addinmanager.cpp:175
+#: src/addinmanager.cpp:143
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Немає відомостей %s додатка нотаток"
 
-#: src/addinmanager.cpp:188
+#: src/addinmanager.cpp:156
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Немає додатка нотаток %s"
 
-#: src/addinmanager.cpp:220
+#: src/addinmanager.cpp:188
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Не вдалося знайти модуль %s для додатка %s"
 
-#: src/addinmanager.cpp:224
+#: src/addinmanager.cpp:192
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Не вдалося завантажити відомості щодо додатка для %s: %s"
 
-#: src/addinmanager.cpp:351
+#: src/addinmanager.cpp:357
 msgid "Trying to load addins when they are already loaded"
 msgstr "Спроба завантажити додатки, коли їх вже завантажено"
 
@@ -1035,7 +1028,7 @@ msgstr "Урахувати всі інші пов'язані нотатки"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:530
+#: src/preferencesdialog.cpp:511
 msgid "_Save"
 msgstr "З_берегти"
 
@@ -1155,7 +1148,7 @@ msgid "Online Folder"
 msgstr "Мережева тека"
 
 #: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:3
-#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
+#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:77
 msgid "Insert Timestamp"
 msgstr "Вставити позначку часу"
 
@@ -1164,16 +1157,16 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Вставляє поточну дату та час під курсором"
 
 #. Label
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:91
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:93
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Виберіть один з готових форматів чи вкажіть власний."
 
 #. Use Selected Format
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:97
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:99
 msgid "Use _Selected Format"
 msgstr "Використовувати _вибраний формат"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:122
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:124
 msgid "_Use Custom Format"
 msgstr "Використовувати _інший формат"
 
@@ -1762,7 +1755,7 @@ msgstr ""
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:328
 msgid "New Note Template"
 msgstr "Шаблон нової нотатки"
 
@@ -1976,64 +1969,64 @@ msgstr "Зберегти _назву"
 msgid "Cannot create note"
 msgstr "Не вдалося створити нотатку"
 
-#: src/notewindow.cpp:990
+#: src/notewindow.cpp:998
 msgid "_Highlight"
 msgstr "Під_свічений"
 
-#: src/notewindow.cpp:994
+#: src/notewindow.cpp:1002
 msgid "_Normal"
 msgstr "_Звичайний"
 
-#: src/notewindow.cpp:995
+#: src/notewindow.cpp:1003
 msgid "S_mall"
 msgstr "_Маленький"
 
-#: src/notewindow.cpp:996
+#: src/notewindow.cpp:1004
 msgid "_Large"
 msgstr "_Великий"
 
-#: src/notewindow.cpp:997
+#: src/notewindow.cpp:1005
 msgid "Hu_ge"
 msgstr "В_еличезний"
 
-#: src/preferencesdialog.cpp:164
+#: src/preferencesdialog.cpp:161
 msgid "Gnote Preferences"
 msgstr "Параметри Gnote"
 
-#: src/preferencesdialog.cpp:171
+#: src/preferencesdialog.cpp:168
 msgid "General"
 msgstr "Загальне"
 
-#: src/preferencesdialog.cpp:172
+#: src/preferencesdialog.cpp:169
 msgid "Links"
 msgstr "Посилання"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:173 src/sharp/pluginsmodel.cpp:205
+#: src/preferencesdialog.cpp:170 src/sharp/pluginsmodel.cpp:205
 msgid "Synchronization"
 msgstr "Синхронізація"
 
-#: src/preferencesdialog.cpp:174
+#: src/preferencesdialog.cpp:171
 msgid "Plugins"
 msgstr "Додатки"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:766
-#: src/preferencesdialog.cpp:1003 src/preferencesdialog.cpp:1213
+#: src/preferencesdialog.cpp:175 src/preferencesdialog.cpp:747
+#: src/preferencesdialog.cpp:977 src/preferencesdialog.cpp:1187
 #: src/synchronization/syncdialog.cpp:343 src/utils.cpp:355
 msgid "_Close"
 msgstr "_Закрити"
 
-#: src/preferencesdialog.cpp:216
+#: src/preferencesdialog.cpp:213
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Немає додатка %s"
 
-#: src/preferencesdialog.cpp:268
+#: src/preferencesdialog.cpp:262
 msgid "_Spell check while typing"
 msgstr "_Перевіряти орфографію під час вводу"
 
-#: src/preferencesdialog.cpp:269
+#: src/preferencesdialog.cpp:263
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2042,59 +2035,59 @@ msgstr ""
 "показуються коректні варіанти заміни."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:279
+#: src/preferencesdialog.cpp:273
 msgid "Enable auto-_bulleted lists"
 msgstr "Увімкнути авто_матичні списки"
 
-#: src/preferencesdialog.cpp:280
+#: src/preferencesdialog.cpp:274
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr ""
 "Розпочинати новий список із позначками введенням символу «-» на початку "
 "рядку."
 
 #. Custom font...
-#: src/preferencesdialog.cpp:286
+#: src/preferencesdialog.cpp:278
 msgid "Use custom _font"
 msgstr "Використовувати інший _шрифт"
 
 #. Note renaming behavior
-#: src/preferencesdialog.cpp:300
+#: src/preferencesdialog.cpp:289
 msgid "When renaming a linked note: "
 msgstr "Коли перейменовується нотатка, на яку є посилання: "
 
-#: src/preferencesdialog.cpp:304
+#: src/preferencesdialog.cpp:293
 msgid "Ask me what to do"
 msgstr "Питати мене, що робити"
 
-#: src/preferencesdialog.cpp:305
+#: src/preferencesdialog.cpp:294
 msgid "Never rename links"
 msgstr "Ніколи не перейменовувати посилання"
 
-#: src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:295
 msgid "Always rename links"
 msgstr "Завжди перейменовувати посилання"
 
 #. Color scheme
-#: src/preferencesdialog.cpp:319
+#: src/preferencesdialog.cpp:308
 msgid "Color Scheme: "
 msgstr "Схема кольорів: "
 
 #. TRANSLATORS: Option to follow the system color scheme setting
-#: src/preferencesdialog.cpp:323
+#: src/preferencesdialog.cpp:312
 msgid "Follow the System"
 msgstr "Така, як у системі"
 
 #. TRANSLATORS: Option to use dark variant of the theme
-#: src/preferencesdialog.cpp:325
+#: src/preferencesdialog.cpp:314
 msgid "Dark"
 msgstr "Темна"
 
 #. TRANSLATORS: Option to use light variant of the theme
-#: src/preferencesdialog.cpp:327
+#: src/preferencesdialog.cpp:316
 msgid "Light"
 msgstr "Світла"
 
-#: src/preferencesdialog.cpp:340
+#: src/preferencesdialog.cpp:329
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
@@ -2102,27 +2095,27 @@ msgstr ""
 "Щоб вказати текст, що використовується при створенні нових нотаток, "
 "скористайтеся шаблоном нової нотатки."
 
-#: src/preferencesdialog.cpp:345
+#: src/preferencesdialog.cpp:334
 msgid "Open New Note Template"
 msgstr "Відкрити шаблон нової нотатки"
 
 #. internal links
-#: src/preferencesdialog.cpp:390
+#: src/preferencesdialog.cpp:378
 msgid "_Automatically link to notes"
 msgstr "_Автоматичні посилання на нотатки"
 
-#: src/preferencesdialog.cpp:391
+#: src/preferencesdialog.cpp:379
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Увімкніть цей ключ, щоб створювати посилання, якщо фрагмент тексту "
 "збігається із заголовком нотатки."
 
 #. URLs
-#: src/preferencesdialog.cpp:397
+#: src/preferencesdialog.cpp:383
 msgid "Create links for _URLs"
 msgstr "Створ_ювати посилання для адрес"
 
-#: src/preferencesdialog.cpp:398
+#: src/preferencesdialog.cpp:384
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2132,11 +2125,11 @@ msgstr ""
 "відповідній програмі."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:405
+#: src/preferencesdialog.cpp:388
 msgid "Highlight _WikiWords"
 msgstr "Підкреслювати _ВікіСлова"
 
-#: src/preferencesdialog.cpp:406
+#: src/preferencesdialog.cpp:389
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2145,62 +2138,62 @@ msgstr ""
 "<b>ЯкіВиглядаютьТакимЧином</b>. Клацання на слові призведе до створення "
 "нотатки з цією назвою."
 
-#: src/preferencesdialog.cpp:427
+#: src/preferencesdialog.cpp:408
 msgid "Ser_vice:"
 msgstr "Слу_жба:"
 
-#: src/preferencesdialog.cpp:492
+#: src/preferencesdialog.cpp:473
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Інтервал автоматично син_хронізації у фоновому режимі (у хвилинах)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:514
+#: src/preferencesdialog.cpp:495
 msgid "_Advanced..."
 msgstr "_Додатково…"
 
-#: src/preferencesdialog.cpp:519
+#: src/preferencesdialog.cpp:500
 msgid "Clear"
 msgstr "Очистити"
 
-#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1024
+#: src/preferencesdialog.cpp:528 src/preferencesdialog.cpp:998
 msgid "Not configurable"
 msgstr "Немає змінюваних параметрів"
 
-#: src/preferencesdialog.cpp:567
+#: src/preferencesdialog.cpp:548
 msgid "The following plugins are installed:"
 msgstr "Встановлено такі додатки:"
 
-#: src/preferencesdialog.cpp:591
+#: src/preferencesdialog.cpp:572
 msgid "_Enable"
 msgstr "_Увімкнути"
 
-#: src/preferencesdialog.cpp:596
+#: src/preferencesdialog.cpp:577
 msgid "_Disable"
 msgstr "_Вимкнути"
 
-#: src/preferencesdialog.cpp:606
+#: src/preferencesdialog.cpp:587
 msgid "In_formation"
 msgstr "В_ідомості"
 
-#: src/preferencesdialog.cpp:746
+#: src/preferencesdialog.cpp:727
 msgid "Not Implemented"
 msgstr "Не реалізовано"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:763
+#: src/preferencesdialog.cpp:744
 msgid "%1 Preferences"
 msgstr "Налаштування %1"
 
-#: src/preferencesdialog.cpp:859
+#: src/preferencesdialog.cpp:833
 msgid "Choose Note Font"
 msgstr "Вибрати шрифт нотатки"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:952
+#: src/preferencesdialog.cpp:926
 msgid "Other Synchronization Options"
 msgstr "Інші параметри синхронізації"
 
-#: src/preferencesdialog.cpp:955
+#: src/preferencesdialog.cpp:929
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2208,23 +2201,23 @@ msgstr ""
 "За виявлення конфлікту між локальною нотаткою та нотаткою на віддаленому "
 "сервері:"
 
-#: src/preferencesdialog.cpp:959
+#: src/preferencesdialog.cpp:933
 msgid "Always ask me what to do"
 msgstr "Завжди питати, що робити"
 
-#: src/preferencesdialog.cpp:960
+#: src/preferencesdialog.cpp:934
 msgid "Rename my local note"
 msgstr "Перейменовувати локальну нотатку"
 
-#: src/preferencesdialog.cpp:962
+#: src/preferencesdialog.cpp:936
 msgid "Replace my local note with the server's update"
 msgstr "Замінювати локальну нотатку нотаткою з сервера"
 
-#: src/preferencesdialog.cpp:1083
+#: src/preferencesdialog.cpp:1057
 msgid "Are you sure?"
 msgstr "Упевнені?"
 
-#: src/preferencesdialog.cpp:1084
+#: src/preferencesdialog.cpp:1058
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2233,11 +2226,11 @@ msgstr ""
 "примусового повторного синхронізування всіх нотаток за наступного "
 "налаштування."
 
-#: src/preferencesdialog.cpp:1095
+#: src/preferencesdialog.cpp:1069
 msgid "Resetting Synchronization Settings"
 msgstr "Скинути параметри синхронізації"
 
-#: src/preferencesdialog.cpp:1096
+#: src/preferencesdialog.cpp:1070
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2247,18 +2240,18 @@ msgstr ""
 "очищено. Можливо, буде потрібно примусово синхронізувати усі нотатки знову, "
 "коли зберігатимете нові параметри."
 
-#: src/preferencesdialog.cpp:1158
+#: src/preferencesdialog.cpp:1132
 msgid "Connection successful"
 msgstr "Успішно з'єднано"
 
-#: src/preferencesdialog.cpp:1159
+#: src/preferencesdialog.cpp:1133
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
 msgstr "Gnote готовий синхронізувати ваші нотатки. Синхронізувати їх зараз?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1185
+#: src/preferencesdialog.cpp:1159
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2266,19 +2259,19 @@ msgstr ""
 "Перевірте інформацію і спробуйте знову. Файл журналу %1 може містити "
 "докладнішу інформацію про цю помилку."
 
-#: src/preferencesdialog.cpp:1190
+#: src/preferencesdialog.cpp:1164
 msgid "Error connecting"
 msgstr "Помилка з'єднання"
 
-#: src/preferencesdialog.cpp:1255
+#: src/preferencesdialog.cpp:1229
 msgid "Version:"
 msgstr "Версія:"
 
-#: src/preferencesdialog.cpp:1258
+#: src/preferencesdialog.cpp:1232
 msgid "Author:"
 msgstr "Автор:"
 
-#: src/preferencesdialog.cpp:1262
+#: src/preferencesdialog.cpp:1236
 msgid "Copyright:"
 msgstr "Авторські права:"
 
@@ -2308,8 +2301,7 @@ msgstr "Спроба вивести на передній план віджет,
 
 #: src/recentchanges.cpp:792
 msgid "Attempt to foreground a widget, that is not Gtk::Widget"
-msgstr ""
-"Спроба вивести на передній план віджет, який не є віджетом Gtk::Widget"
+msgstr "Спроба вивести на передній план віджет, який не є віджетом Gtk::Widget"
 
 #: src/recentchanges.cpp:986
 msgid "No configured actions"
@@ -2851,6 +2843,13 @@ msgstr "Взято заголовок нотатки"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Перевірка правопису"
+
+#~ msgid ""
+#~ "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
+#~ "user."
+#~ msgstr ""
+#~ "Використовувати для wdfs параметр «-ac», щоб приймати сертифікати SSL не "
+#~ "повідомляючи користувача."
 
 #~ msgid "Run Gnote as GNOME Shell search provider."
 #~ msgstr "Запускати Gnote як надавач даних пошуку GNOME Shell."
