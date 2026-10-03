@@ -126,7 +126,7 @@ namespace {
   {
   }
 
-  void AddinManager::add_note_addin_info(Glib::ustring && id, const sharp::DynamicModule * dmod)
+  void AddinManager::add_note_addin_info(const Glib::ustring &id, const sharp::DynamicModule * dmod)
   {
     {
       const IdInfoMap::const_iterator iter = m_note_addin_infos.find(id);
@@ -142,10 +142,10 @@ namespace {
       return;
     }
 
-    load_note_addin(std::move(id), f.value().get());
+    load_note_addin(id, f.value().get());
   }
 
-  void AddinManager::load_note_addin(Glib::ustring && id, sharp::IfaceFactoryBase &f)
+  void AddinManager::load_note_addin(const Glib::ustring &id, sharp::IfaceFactoryBase &f)
   {
     m_note_addin_infos.insert(std::make_pair(id, sharp::IfaceFactoryBase::Ref(f)));
     for(NoteAddinMap::iterator iter = m_note_addins.begin();
@@ -157,11 +157,11 @@ namespace {
         continue;
       }
 
-      m_note_manager.find_by_uri(iter->first, [this, id=std::move(id), &f, &id_addin_map](NoteBase & note) {
+      m_note_manager.find_by_uri(iter->first, [this, id, &f, &id_addin_map](NoteBase & note) {
         NoteAddin *const addin = dynamic_cast<NoteAddin*>(f());
         if(addin) {
           addin->initialize(m_gnote, std::static_pointer_cast<Note>(note.shared_from_this()));
-          id_addin_map.insert(std::make_pair(std::move(id), addin));
+          id_addin_map.insert(std::make_pair(id, addin));
         }
       });
     }

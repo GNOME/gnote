@@ -54,7 +54,7 @@ public:
   AddinManager(IGnote & g, NoteManager & note_manager, Preferences & preferences, const Glib::ustring & conf_dir);
   ~AddinManager();
 
-  void add_note_addin_info(Glib::ustring && id, const sharp::DynamicModule * dmod);
+  void add_note_addin_info(const Glib::ustring &id, const sharp::DynamicModule * dmod);
   void erase_note_addin_info(const Glib::ustring & id);
 
   Glib::ustring & get_prefs_dir()
@@ -86,7 +86,7 @@ public:
 private:
   void load_addin_infos(const Glib::ustring & global_path, const Glib::ustring & local_path);
   void load_addin_infos(const Glib::ustring & path);
-  void load_note_addin(Glib::ustring && id, sharp::IfaceFactoryBase &f);
+  void load_note_addin(const Glib::ustring &id, sharp::IfaceFactoryBase &f);
   std::vector<Glib::ustring> get_enabled_addins() const;
   void initialize_sharp_addins();
   void add_module_addins(const Glib::ustring & mod_id, sharp::DynamicModule * dmod);

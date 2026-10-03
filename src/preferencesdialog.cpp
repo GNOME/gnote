@@ -198,7 +198,7 @@ namespace {
 
     if (module->query_interface(NoteAddin::IFACE_NAME)) {
       if (enable)
-        m_addin_manager.add_note_addin_info(std::move(id), module);
+        m_addin_manager.add_note_addin_info(id, module);
       else
         m_addin_manager.erase_note_addin_info(id);
     }
@@ -572,7 +572,6 @@ namespace {
     hbox->set_column_spacing(6);
     int hbox_col = 0;
 
-    // TreeView of Add-ins
     m_plugin_view = Gtk::make_managed<Gtk::ColumnView>();
     m_plugin_model = sharp::AddinsModel::create(m_plugin_view);
 
