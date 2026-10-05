@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -72,11 +72,11 @@ private:
   void on_bind(const Glib::RefPtr<Gtk::ListItem> & list_item)
   {
     auto child = dynamic_cast<Gtk::Grid*>(list_item->get_child());
-    auto item = std::dynamic_pointer_cast<sharp::Plugin>(list_item->get_item());
+    auto plugin = std::dynamic_pointer_cast<sharp::Plugin>(list_item->get_item());
     auto label = dynamic_cast<Gtk::Label*>(child->get_child_at(1, 0));
-    auto module = item->module();
+    auto module = plugin->module();
     auto color = (module && module->is_enabled()) ? "black" : "grey";
-    label->set_markup(Glib::ustring::compose("<span foreground=\"%2\">%1</span>", item->info.name(), color));
+    label->set_markup(Glib::ustring::compose("<span foreground=\"%2\">%1</span>", plugin->info.name(), color));
   }
 };
 
