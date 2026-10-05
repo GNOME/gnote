@@ -192,9 +192,13 @@ namespace {
     if(!module) {
       return;
     }
-    else {
-      set_module_for_selected_addin(module);
+
+    auto plugin = m_plugin_model->get_selected_plugin();
+    if(!plugin) {
+      return;
     }
+
+    plugin->set_module(module);
 
     if (module->query_interface(NoteAddin::IFACE_NAME)) {
       if (enable)
@@ -631,15 +635,6 @@ namespace {
       return item->info.id();
     }
     return "";
-  }
-
-
-  void PreferencesDialog::set_module_for_selected_addin(sharp::DynamicModule * module)
-  {
-    auto plugin = m_plugin_model->get_selected_plugin();
-    if(plugin) {
-      plugin->set_module(module);
-    }
   }
 
 
