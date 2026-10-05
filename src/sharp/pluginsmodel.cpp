@@ -138,6 +138,15 @@ namespace sharp {
     return m_module && m_module->is_enabled();
   }
 
+  void Plugin::enabled(bool enable)
+  {
+    if(!m_module) {
+      throw std::runtime_error("Enabling plugin without module set");
+    }
+
+    m_module->enabled(enable);
+  }
+
 
   AddinsModel::Ptr AddinsModel::create(Gtk::ColumnView *view)
   {

@@ -220,7 +220,7 @@ namespace {
       }
     }
 
-    module->enabled(enable);
+    plugin->enabled(enable);
     m_addin_manager.save_addins_prefs();
   }
 

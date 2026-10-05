@@ -50,6 +50,7 @@ public:
     }
   void set_module(DynamicModule *mod);
   bool enabled() const;
+  void enabled(bool enable);
 private:
   Plugin(const gnote::AddinInfo &info, sharp::DynamicModule *module);
 
