@@ -41,7 +41,7 @@ class Plugin
   : public Glib::Object
 {
 public:
-  static Glib::RefPtr<Plugin> create(const gnote::AddinInfo &, const sharp::DynamicModule *);
+  static Glib::RefPtr<Plugin> create(const gnote::AddinInfo &info, sharp::DynamicModule *module);
 
   const gnote::AddinInfo info;
   const DynamicModule* module() const
@@ -51,9 +51,9 @@ public:
   void set_module(DynamicModule *mod);
   bool enabled() const;
 private:
-  Plugin(const gnote::AddinInfo &, const sharp::DynamicModule *);
+  Plugin(const gnote::AddinInfo &info, sharp::DynamicModule *module);
 
-  const DynamicModule* m_module;
+  DynamicModule* m_module;
 };
 
 class AddinsModel
@@ -65,7 +65,7 @@ public:
 
   Glib::RefPtr<Plugin> get_selected_plugin();
 
-  void append(const gnote::AddinInfo &, const sharp::DynamicModule *);
+  void append(const gnote::AddinInfo &info, sharp::DynamicModule *module);
 
   sigc::signal<void(const Glib::RefPtr<Plugin>&)> signal_selection_changed;
 

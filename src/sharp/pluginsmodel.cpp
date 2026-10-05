@@ -117,12 +117,12 @@ protected:
 
 namespace sharp {
 
-  Glib::RefPtr<Plugin> Plugin::create(const gnote::AddinInfo & info, const sharp::DynamicModule *module)
+  Glib::RefPtr<Plugin> Plugin::create(const gnote::AddinInfo &info, sharp::DynamicModule *module)
   {
     return Glib::make_refptr_for_instance(new Plugin(info, module));
   }
 
-  Plugin::Plugin(const gnote::AddinInfo & info, const sharp::DynamicModule *module)
+  Plugin::Plugin(const gnote::AddinInfo &info, sharp::DynamicModule *module)
     : info(info)
     , m_module(module)
   {
@@ -187,7 +187,7 @@ namespace sharp {
   }
 
 
-  void AddinsModel::append(const gnote::AddinInfo & module_info, const sharp::DynamicModule *module)
+  void AddinsModel::append(const gnote::AddinInfo &module_info, sharp::DynamicModule *module)
   {
     Gio::ListStore<Plugin>::append(Plugin::create(module_info, module));
   }
