@@ -74,8 +74,7 @@ private:
     auto child = dynamic_cast<Gtk::Grid*>(list_item->get_child());
     auto plugin = std::dynamic_pointer_cast<sharp::Plugin>(list_item->get_item());
     auto label = dynamic_cast<Gtk::Label*>(child->get_child_at(1, 0));
-    auto module = plugin->module();
-    auto color = (module && module->is_enabled()) ? "black" : "grey";
+    auto color = plugin->enabled() ? "black" : "grey";
     label->set_markup(Glib::ustring::compose("<span foreground=\"%2\">%1</span>", plugin->info.name(), color));
   }
 };
@@ -132,6 +131,11 @@ namespace sharp {
   void Plugin::set_module(DynamicModule *mod)
   {
     m_module = mod;
+  }
+
+  bool Plugin::enabled() const
+  {
+    return m_module && m_module->is_enabled();
   }
 
 
