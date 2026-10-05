@@ -42,6 +42,32 @@
 
 namespace {
 
+class PluginNameView
+  : public Gtk::Label
+{
+public:
+  void bind(const Glib::RefPtr<sharp::Plugin> &plugin)
+  {
+    m_plugin = plugin;
+    m_enabled_changed_cid = m_plugin->signal_enabled_changed.connect(sigc::mem_fun(*this, &PluginNameView::update_view));
+  }
+
+  void unbind()
+  {
+    m_enabled_changed_cid.disconnect();
+    m_plugin.reset();
+  }
+
+  void update_view()
+  {
+    auto color = m_plugin->enabled() ? "black" : "grey";
+    set_markup(Glib::ustring::compose("<span foreground=\"%2\">%1</span>", m_plugin->info.name(), color));
+  }
+private:
+  Glib::RefPtr<sharp::Plugin> m_plugin;
+  sigc::connection m_enabled_changed_cid;
+};
+
 class PluginNameFactory
   : public Gtk::SignalListItemFactory
 {
@@ -55,6 +81,7 @@ private:
   {
     signal_setup().connect(sigc::mem_fun(*this, &PluginNameFactory::on_setup));
     signal_bind().connect(sigc::mem_fun(*this, &PluginNameFactory::on_bind));
+    signal_unbind().connect(sigc::mem_fun(*this, &PluginNameFactory::on_unbind));
   }
 
   void on_setup(const Glib::RefPtr<Gtk::ListItem> & list_item)
@@ -64,7 +91,7 @@ private:
     image->property_icon_name() = "application-x-addon-symbolic";
     image->set_margin_end(5);
     child->attach(*image, 0, 0);
-    auto label = Gtk::make_managed<Gtk::Label>();
+    auto label = Gtk::make_managed<PluginNameView>();
     child->attach(*label, 1, 0);
     list_item->set_child(*child);
   }
@@ -73,9 +100,16 @@ private:
   {
     auto child = dynamic_cast<Gtk::Grid*>(list_item->get_child());
     auto plugin = std::dynamic_pointer_cast<sharp::Plugin>(list_item->get_item());
-    auto label = dynamic_cast<Gtk::Label*>(child->get_child_at(1, 0));
-    auto color = plugin->enabled() ? "black" : "grey";
-    label->set_markup(Glib::ustring::compose("<span foreground=\"%2\">%1</span>", plugin->info.name(), color));
+    auto label = dynamic_cast<PluginNameView*>(child->get_child_at(1, 0));
+    label->bind(plugin);
+    label->update_view();
+  }
+
+  void on_unbind(const Glib::RefPtr<Gtk::ListItem> &list_item)
+  {
+    auto child = dynamic_cast<Gtk::Grid*>(list_item->get_child());
+    auto label = dynamic_cast<PluginNameView*>(child->get_child_at(1, 0));
+    label->unbind();
   }
 };
 
