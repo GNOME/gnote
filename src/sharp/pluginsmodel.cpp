@@ -144,7 +144,11 @@ namespace sharp {
       throw std::runtime_error("Enabling plugin without module set");
     }
 
+    bool was = m_module->is_enabled();
     m_module->enabled(enable);
+    if(was != enable) {
+      signal_enabled_changed();
+    }
   }
 
 
