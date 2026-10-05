@@ -73,7 +73,6 @@ private:
   void on_rename_behavior_changed();
 
   Glib::ustring get_selected_addin();
-  void set_module_for_selected_addin(sharp::DynamicModule * module);
   void on_plugin_view_selection_changed(const Glib::RefPtr<sharp::Plugin> & plugin);
   void update_addin_buttons();
   void update_addin_buttons(const Glib::RefPtr<sharp::Plugin> & plugin);
