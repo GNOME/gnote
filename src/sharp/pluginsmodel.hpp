@@ -51,6 +51,8 @@ public:
   void set_module(DynamicModule *mod);
   bool enabled() const;
   void enabled(bool enable);
+
+  sigc::signal<void()> signal_enabled_changed;
 private:
   Plugin(const gnote::AddinInfo &info, sharp::DynamicModule *module);
 
