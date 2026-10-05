@@ -1,7 +1,7 @@
 /*
  * gnote
  *
- * Copyright (C) 2010,2012-2013,2017,2019,2022-2023 Aurimas Cernius
+ * Copyright (C) 2010,2012-2013,2017,2019,2022-2023,2026 Aurimas Cernius
  * Copyright (C) 2009 Hubert Figuiere
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -49,6 +49,7 @@ public:
       return m_module;
     }
   void set_module(DynamicModule *mod);
+  bool enabled() const;
 private:
   Plugin(const gnote::AddinInfo &, const sharp::DynamicModule *);
 
