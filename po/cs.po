@@ -12,20 +12,22 @@
 # Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 #
 # SPDX-FileCopyrightText: 2026 Jan Papez (honyczek)
+# Patrik Sivek <patriksivek@gnome.org>, 2026.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnote\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnote/issues/\n"
-"POT-Creation-Date: 2026-09-14 19:51+0000\n"
-"PO-Revision-Date: 2026-09-23 22:27+0200\n"
-"Last-Translator: Jan Papez (honyczek) <honyczek@centrum.cz>\n"
-"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"POT-Creation-Date: 2026-10-06 21:02+0000\n"
+"PO-Revision-Date: 2026-10-31 20:42+0100\n"
+"Last-Translator: Patrik Sivek <patriksivek@gnome.org>\n"
+"Language-Team: Czech\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Gtranslator 51.0\n"
 
 #: data/org.gnome.Gnote.appdata.xml.in:7 data/org.gnome.Gnote.desktop.in:2
 #: src/recentchanges.cpp:100 src/recentchanges.cpp:121
@@ -197,33 +199,27 @@ msgid "Background color for the highlighted text"
 msgstr "Barva pozadí pro zvýrazněný text"
 
 #: data/org.gnome.gnote.gschema.xml:52
-#| msgid ""
-#| "When text is highlighted, use this color for background. A string "
-#| "gdk_rgba_parse() accepts."
 msgid ""
 "When text is highlighted, use this color for background. A string "
 "gdk_rgba_parse() accepts. Only has effect when highlight-accent-color-based "
 "is false."
 msgstr ""
-"Když je text zvýrazněn, použít tuto barvu pro pozadí. Funkce"
-"gdk_rgba_parse() přijímá řetězec. Toto má efekt pouze tehdy, když je "
-"highlight-accent-color-based nastaveno na false."
+"Když je text zvýrazněn, použít tuto barvu pro pozadí. Funkcegdk_rgba_parse() "
+"přijímá řetězec. Toto má efekt pouze tehdy, když je highlight-accent-color-"
+"based nastaveno na false."
 
 #: data/org.gnome.gnote.gschema.xml:56
 msgid "Color for the highlighted text"
 msgstr "Barva pro zvýrazněný text"
 
 #: data/org.gnome.gnote.gschema.xml:57
-#| msgid ""
-#| "When text is highlighted, use this color for text. A string "
-#| "gdk_rgba_parse() accepts."
 msgid ""
 "When text is highlighted, use this color for text. A string gdk_rgba_parse() "
 "accepts. Only has effect when highlight-accent-color-based is false."
 msgstr ""
-"Když je text zvýrazněn, použít tuto barvu pro text. Funkce"
-"gdk_rgba_parse() přijímá řetězec. Toto má efekt pouze tehdy, když je "
-"highlight-accent-color-based nastaveno na false."
+"Když je text zvýrazněn, použít tuto barvu pro text. Funkcegdk_rgba_parse() "
+"přijímá řetězec. Toto má efekt pouze tehdy, když je highlight-accent-color-"
+"based nastaveno na false."
 
 #: data/org.gnome.gnote.gschema.xml:61
 msgid "Start Here Note"
@@ -438,8 +434,8 @@ msgid ""
 "Tab stop positions in editor will be setup using this number as a step in "
 "space characters. Zero to use the default tab width."
 msgstr ""
-"Pozice zarážek tabulátoru v editoru bude nastavena pomocí kroku tohoto "
-"počtu znaků mezery. Nula znamená použít výchozí šířku tabulátoru."
+"Pozice zarážek tabulátoru v editoru bude nastavena pomocí kroku tohoto počtu "
+"znaků mezery. Nula znamená použít výchozí šířku tabulátoru."
 
 #: data/org.gnome.gnote.gschema.xml:173
 msgid "HTML Export Last Directory"
@@ -560,12 +556,8 @@ msgid "Accept SSL Certificates"
 msgstr "Přijímat certifikáty SSL"
 
 #: data/org.gnome.gnote.gschema.xml:226
-msgid ""
-"Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
-"user."
-msgstr ""
-"Chcete-li přijímat certifikáty SSL bez zobrazení výzvy, spouštějte wdfs s "
-"přepínačem „-ac“."
+msgid "Obsolete. Has no effect."
+msgstr "Zastaralé. Nemá žádný efekt."
 
 #: data/org.gnome.gnote.gschema.xml:230
 msgid "Share URL"
@@ -615,8 +607,8 @@ msgid ""
 "Possible values: 0 - clipboard content (last copied text), 1 - primary "
 "clipboard (last selected text)."
 msgstr ""
-"Dostupné hodnoty: 0 - obsah schránky (naposledy zkopírovaný text), "
-"1 - primární schránka (naposledy vybraný text)."
+"Dostupné hodnoty: 0 - obsah schránky (naposledy zkopírovaný text), 1 - "
+"primární schránka (naposledy vybraný text)."
 
 #: data/shortcuts-gnote.ui:9
 msgctxt "shortcut window"
@@ -802,7 +794,7 @@ msgstr "_Nová poznámka"
 msgid "New _Window"
 msgstr "No_vé okno"
 
-#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:601
+#: src/actionmanager.cpp:133 src/preferencesdialog.cpp:585
 msgid "_Preferences"
 msgstr "_Předvolby"
 
@@ -827,42 +819,42 @@ msgstr "Selhalo načtení informací o zásuvném modulu!"
 msgid "Incompatible plug-in %s: expected %s, got %s"
 msgstr "Nekompatibilní zásuvný modul %s: očekáván %s, obdržen %s"
 
-#: src/addinmanager.cpp:134
+#: src/addinmanager.cpp:102
 #, c-format
 msgid "Note plugin info %s already present"
 msgstr "Informace o zásuvném modulu %s pro poznámky jsou již přítomny"
 
-#: src/addinmanager.cpp:141
+#: src/addinmanager.cpp:109
 #, c-format
 msgid "%s does not implement %s"
 msgstr "Doplněk %s neimplementuje rozhraní %s"
 
-#: src/addinmanager.cpp:156
+#: src/addinmanager.cpp:124
 #, c-format
 msgid "Note plugin %s already present"
 msgstr "Zásuvný modul %s pro poznámky je již přítomen"
 
-#: src/addinmanager.cpp:175
+#: src/addinmanager.cpp:143
 #, c-format
 msgid "Note plugin info %s is absent"
 msgstr "Informace o zásuvném modulu %s pro poznámky schází"
 
-#: src/addinmanager.cpp:188
+#: src/addinmanager.cpp:156
 #, c-format
 msgid "Note plugin %s is absent"
 msgstr "Zásuvný modul %s pro poznámky schází"
 
-#: src/addinmanager.cpp:220
+#: src/addinmanager.cpp:188
 #, c-format
 msgid "Failed to find module %s for addin %s"
 msgstr "Selhalo vyhledání modulu %s pro doplněk %s"
 
-#: src/addinmanager.cpp:224
+#: src/addinmanager.cpp:192
 #, c-format
 msgid "Failed to load addin info for %s: %s"
 msgstr "Selhalo načtení informací o doplňku pro %s: %s"
 
-#: src/addinmanager.cpp:351
+#: src/addinmanager.cpp:357
 msgid "Trying to load addins when they are already loaded"
 msgstr "Zkouší se načíst doplněk, který je už načten"
 
@@ -1048,7 +1040,7 @@ msgstr "Zahrnout všechny související poznámky"
 #. TODO: Tabbing should go directly from sync prefs widget to here
 #. TODO: Consider connecting to "Enter" pressed in sync prefs widget
 #: src/plugins/exporttohtml/exporttohtmldialog.cpp:46
-#: src/preferencesdialog.cpp:530
+#: src/preferencesdialog.cpp:515
 msgid "_Save"
 msgstr "_Uložit"
 
@@ -1167,7 +1159,7 @@ msgid "Online Folder"
 msgstr "On-line složka"
 
 #: src/plugins/inserttimestamp/inserttimestamp.desktop.in.in:3
-#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:76
+#: src/plugins/inserttimestamp/inserttimestampnoteaddin.cpp:77
 msgid "Insert Timestamp"
 msgstr "Vložit časové razítko"
 
@@ -1176,16 +1168,16 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "Vloží na současnou pozici aktuální datum a čas."
 
 #. Label
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:91
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:93
 msgid "Choose one of the predefined formats or use your own."
 msgstr "Zvolte jeden z předdefinovaných formátů nebo použití svého vlastního."
 
 #. Use Selected Format
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:97
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:99
 msgid "Use _Selected Format"
 msgstr "Používat _vybraný formát"
 
-#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:122
+#: src/plugins/inserttimestamp/inserttimestamppreferences.cpp:124
 msgid "_Use Custom Format"
 msgstr "Používat v_lastní formát"
 
@@ -1331,7 +1323,6 @@ msgid "Replace title"
 msgstr "Nahradit název"
 
 #: src/plugins/replacetitle/replacetitle.desktop.in.in:4
-#| msgid "Replace title with selection."
 msgid "Replace title with clipboard or selection."
 msgstr "Nahradit název ze schránky nebo výběru."
 
@@ -1779,7 +1770,7 @@ msgstr "Nastavení textového obsahu pro uzavřenou poznámku není podporováno
 
 #. New Note Template
 #. TRANSLATORS: This is 'New Note' Template, not New 'Note Template'
-#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:339
+#: src/notemanagerbase.cpp:112 src/preferencesdialog.cpp:332
 msgid "New Note Template"
 msgstr "Nová šablona"
 
@@ -1991,64 +1982,64 @@ msgstr "Uloži_t název"
 msgid "Cannot create note"
 msgstr "Nelze vytvořit poznámku"
 
-#: src/notewindow.cpp:990
+#: src/notewindow.cpp:998
 msgid "_Highlight"
 msgstr "_Zvýraznění"
 
-#: src/notewindow.cpp:994
+#: src/notewindow.cpp:1002
 msgid "_Normal"
 msgstr "_Normální"
 
-#: src/notewindow.cpp:995
+#: src/notewindow.cpp:1003
 msgid "S_mall"
 msgstr "_Malé"
 
-#: src/notewindow.cpp:996
+#: src/notewindow.cpp:1004
 msgid "_Large"
 msgstr "_Velké"
 
-#: src/notewindow.cpp:997
+#: src/notewindow.cpp:1005
 msgid "Hu_ge"
 msgstr "_Obrovské"
 
-#: src/preferencesdialog.cpp:164
+#: src/preferencesdialog.cpp:161
 msgid "Gnote Preferences"
 msgstr "Předvolby Gnote"
 
-#: src/preferencesdialog.cpp:171
+#: src/preferencesdialog.cpp:168
 msgid "General"
 msgstr "Obecné"
 
-#: src/preferencesdialog.cpp:172
+#: src/preferencesdialog.cpp:169
 msgid "Links"
 msgstr "Odkazy"
 
 #. TRANSLATORS: Addin category.
-#: src/preferencesdialog.cpp:173 src/sharp/pluginsmodel.cpp:205
+#: src/preferencesdialog.cpp:170 src/sharp/pluginsmodel.cpp:256
 msgid "Synchronization"
 msgstr "Synchronizace"
 
-#: src/preferencesdialog.cpp:174
+#: src/preferencesdialog.cpp:171
 msgid "Plugins"
 msgstr "Zásuvné moduly"
 
 #. Button to close dialog.
-#: src/preferencesdialog.cpp:178 src/preferencesdialog.cpp:766
-#: src/preferencesdialog.cpp:1003 src/preferencesdialog.cpp:1213
+#: src/preferencesdialog.cpp:175 src/preferencesdialog.cpp:741
+#: src/preferencesdialog.cpp:971 src/preferencesdialog.cpp:1181
 #: src/synchronization/syncdialog.cpp:343 src/utils.cpp:355
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: src/preferencesdialog.cpp:216
+#: src/preferencesdialog.cpp:217
 #, c-format
 msgid "Plugin %s is absent"
 msgstr "Zásuvný modul %s schází"
 
-#: src/preferencesdialog.cpp:268
+#: src/preferencesdialog.cpp:266
 msgid "_Spell check while typing"
 msgstr "_Kontrola překlepů během psaní"
 
-#: src/preferencesdialog.cpp:269
+#: src/preferencesdialog.cpp:267
 msgid ""
 "Misspellings will be underlined in red, with correct spelling suggestions "
 "shown in the context menu."
@@ -2057,83 +2048,83 @@ msgstr ""
 "kontextové nabídce."
 
 #. Auto bulleted list
-#: src/preferencesdialog.cpp:279
+#: src/preferencesdialog.cpp:277
 msgid "Enable auto-_bulleted lists"
 msgstr "Po_volit automatické seznamy s odrážkami"
 
-#: src/preferencesdialog.cpp:280
+#: src/preferencesdialog.cpp:278
 msgid "Start new bulleted list by starting new line with character \"-\"."
 msgstr "Při započetí nového řádku znakem „-“ začít nový seznam s odrážkami."
 
 #. Custom font...
-#: src/preferencesdialog.cpp:286
+#: src/preferencesdialog.cpp:282
 msgid "Use custom _font"
 msgstr "Používat vlastní _font"
 
 #. Note renaming behavior
-#: src/preferencesdialog.cpp:300
+#: src/preferencesdialog.cpp:293
 msgid "When renaming a linked note: "
 msgstr "Při přejmenování odkazované poznámky:"
 
-#: src/preferencesdialog.cpp:304
+#: src/preferencesdialog.cpp:297
 msgid "Ask me what to do"
 msgstr "Dotázat se mě, co udělat"
 
-#: src/preferencesdialog.cpp:305
+#: src/preferencesdialog.cpp:298
 msgid "Never rename links"
 msgstr "Odkazy nikdy nepřejmenovat"
 
-#: src/preferencesdialog.cpp:306
+#: src/preferencesdialog.cpp:299
 msgid "Always rename links"
 msgstr "Odkazy vždy přejmenovat"
 
 #. Color scheme
-#: src/preferencesdialog.cpp:319
+#: src/preferencesdialog.cpp:312
 msgid "Color Scheme: "
 msgstr "Barevné schéma: "
 
 #. TRANSLATORS: Option to follow the system color scheme setting
-#: src/preferencesdialog.cpp:323
+#: src/preferencesdialog.cpp:316
 msgid "Follow the System"
 msgstr "Následovat systém"
 
 #. TRANSLATORS: Option to use dark variant of the theme
-#: src/preferencesdialog.cpp:325
+#: src/preferencesdialog.cpp:318
 msgid "Dark"
 msgstr "Tmavé"
 
 #. TRANSLATORS: Option to use light variant of the theme
-#: src/preferencesdialog.cpp:327
+#: src/preferencesdialog.cpp:320
 msgid "Light"
 msgstr "Světlé"
 
-#: src/preferencesdialog.cpp:340
+#: src/preferencesdialog.cpp:333
 msgid ""
 "Use the new note template to specify the text that should be used when "
 "creating a new note."
 msgstr "Použijte šablonu k upřesnění, jaký text se má vložit do nové poznámky."
 
-#: src/preferencesdialog.cpp:345
+#: src/preferencesdialog.cpp:338
 msgid "Open New Note Template"
 msgstr "Otevřít šablonu"
 
 #. internal links
-#: src/preferencesdialog.cpp:390
+#: src/preferencesdialog.cpp:382
 msgid "_Automatically link to notes"
 msgstr "_Automaticky odkazovat na poznámky"
 
-#: src/preferencesdialog.cpp:391
+#: src/preferencesdialog.cpp:383
 msgid "Enable this option to create a link when text matches note title."
 msgstr ""
 "Tuto volbu zapněte, aby se vytvářely odkazy v situaci, kdy se text shoduje s "
 "názvem poznámky."
 
 #. URLs
-#: src/preferencesdialog.cpp:397
+#: src/preferencesdialog.cpp:387
 msgid "Create links for _URLs"
 msgstr "Vytvářet odkazy pro adresy _URL"
 
-#: src/preferencesdialog.cpp:398
+#: src/preferencesdialog.cpp:388
 msgid ""
 "Enable this option to create links for URLs. Clicking will open URL with "
 "appropriate program."
@@ -2142,11 +2133,11 @@ msgstr ""
 "tyto adresy otevřou v příslušném programu."
 
 #. WikiWords...
-#: src/preferencesdialog.cpp:405
+#: src/preferencesdialog.cpp:392
 msgid "Highlight _WikiWords"
 msgstr "Zvýrazňovat _WikiSlova"
 
-#: src/preferencesdialog.cpp:406
+#: src/preferencesdialog.cpp:393
 msgid ""
 "Enable this option to highlight words <b>ThatLookLikeThis</b>. Clicking the "
 "word will create a note with that name."
@@ -2154,62 +2145,62 @@ msgstr ""
 "Tuto volbu zapněte, aby se zvýrazňovala slova, <b>KteráVypadajíTakto</b>. "
 "Kliknutím na slovo se vytvoří poznámka s takovým názvem."
 
-#: src/preferencesdialog.cpp:427
+#: src/preferencesdialog.cpp:412
 msgid "Ser_vice:"
 msgstr "Služ_ba:"
 
-#: src/preferencesdialog.cpp:492
+#: src/preferencesdialog.cpp:477
 msgid "Automatic background s_ync interval (minutes)"
 msgstr "Četnost automatické s_ynchronizace na pozadí (v minutách)"
 
 #. "Advanced..." button to bring up extra sync config dialog
-#: src/preferencesdialog.cpp:514
+#: src/preferencesdialog.cpp:499
 msgid "_Advanced..."
 msgstr "P_okročilé…"
 
-#: src/preferencesdialog.cpp:519
+#: src/preferencesdialog.cpp:504
 msgid "Clear"
 msgstr "Smazat"
 
-#: src/preferencesdialog.cpp:547 src/preferencesdialog.cpp:1024
+#: src/preferencesdialog.cpp:532 src/preferencesdialog.cpp:992
 msgid "Not configurable"
 msgstr "Nedostupné"
 
-#: src/preferencesdialog.cpp:567
+#: src/preferencesdialog.cpp:552
 msgid "The following plugins are installed:"
 msgstr "Máte nainstalovány následující zásuvné moduly:"
 
-#: src/preferencesdialog.cpp:591
+#: src/preferencesdialog.cpp:575
 msgid "_Enable"
 msgstr "_Povolit"
 
-#: src/preferencesdialog.cpp:596
+#: src/preferencesdialog.cpp:580
 msgid "_Disable"
 msgstr "_Zakázat"
 
-#: src/preferencesdialog.cpp:606
+#: src/preferencesdialog.cpp:590
 msgid "In_formation"
 msgstr "In_formace"
 
-#: src/preferencesdialog.cpp:746
+#: src/preferencesdialog.cpp:721
 msgid "Not Implemented"
 msgstr "Není implementováno"
 
 #. TRANSLATORS: %1 is the placeholder for the addin name.
-#: src/preferencesdialog.cpp:763
+#: src/preferencesdialog.cpp:738
 msgid "%1 Preferences"
 msgstr "Předvolby %1"
 
-#: src/preferencesdialog.cpp:859
+#: src/preferencesdialog.cpp:827
 msgid "Choose Note Font"
 msgstr "Zvolte font poznámek"
 
 #. Create dialog
-#: src/preferencesdialog.cpp:952
+#: src/preferencesdialog.cpp:920
 msgid "Other Synchronization Options"
 msgstr "Další volby synchronizace"
 
-#: src/preferencesdialog.cpp:955
+#: src/preferencesdialog.cpp:923
 msgid ""
 "When a conflict is detected between a local note and a note on the "
 "configured synchronization server:"
@@ -2217,23 +2208,23 @@ msgstr ""
 "Když nastane konflikt mezi místní poznámkou a poznámkou na nastaveném "
 "synchronizačním serveru:"
 
-#: src/preferencesdialog.cpp:959
+#: src/preferencesdialog.cpp:927
 msgid "Always ask me what to do"
 msgstr "Vždy se mě zeptat, co dělat"
 
-#: src/preferencesdialog.cpp:960
+#: src/preferencesdialog.cpp:928
 msgid "Rename my local note"
 msgstr "Přejmenovat moji místní poznámku"
 
-#: src/preferencesdialog.cpp:962
+#: src/preferencesdialog.cpp:930
 msgid "Replace my local note with the server's update"
 msgstr "Zaměnit moji místní poznámku s poznámkou na serveru"
 
-#: src/preferencesdialog.cpp:1083
+#: src/preferencesdialog.cpp:1051
 msgid "Are you sure?"
 msgstr "Jste si jisti?"
 
-#: src/preferencesdialog.cpp:1084
+#: src/preferencesdialog.cpp:1052
 msgid ""
 "Clearing your synchronization settings is not recommended.  You may be "
 "forced to synchronize all of your notes again when you save new settings."
@@ -2241,11 +2232,11 @@ msgstr ""
 "Nedoporučuje se mazat nastavení synchronizace. Při příští synchronizaci "
 "můžete být znovu vyzváni k synchronizaci všech svých poznámek."
 
-#: src/preferencesdialog.cpp:1095
+#: src/preferencesdialog.cpp:1063
 msgid "Resetting Synchronization Settings"
 msgstr "Obnovuje se nastavení synchronizace"
 
-#: src/preferencesdialog.cpp:1096
+#: src/preferencesdialog.cpp:1064
 msgid ""
 "You have disabled the configured synchronization service.  Your "
 "synchronization settings will now be cleared.  You may be forced to "
@@ -2255,11 +2246,11 @@ msgstr ""
 "nyní smazáno. Může se stát, že při uložení nového nastavení budete muset "
 "synchronizovat všechny své poznámky znovu."
 
-#: src/preferencesdialog.cpp:1158
+#: src/preferencesdialog.cpp:1126
 msgid "Connection successful"
 msgstr "Úspěšné připojení"
 
-#: src/preferencesdialog.cpp:1159
+#: src/preferencesdialog.cpp:1127
 msgid ""
 "Gnote is ready to synchronize your notes. Would you like to synchronize them "
 "now?"
@@ -2268,7 +2259,7 @@ msgstr ""
 "synchronizovat právě teď?"
 
 #. TRANSLATORS: %1 is the placeholder for the log file path.
-#: src/preferencesdialog.cpp:1185
+#: src/preferencesdialog.cpp:1153
 msgid ""
 "Please check your information and try again.  The log file %1 may contain "
 "more information about the error."
@@ -2276,19 +2267,19 @@ msgstr ""
 "Zkontrolujte prosím zadané informace a zkuste to znovu. Můžete se také "
 "zkusit o chybě najít více informací v souboru %1 se záznamem."
 
-#: src/preferencesdialog.cpp:1190
+#: src/preferencesdialog.cpp:1158
 msgid "Error connecting"
 msgstr "Chyba připojování"
 
-#: src/preferencesdialog.cpp:1255
+#: src/preferencesdialog.cpp:1223
 msgid "Version:"
 msgstr "Verze:"
 
-#: src/preferencesdialog.cpp:1258
+#: src/preferencesdialog.cpp:1226
 msgid "Author:"
 msgstr "Autor:"
 
-#: src/preferencesdialog.cpp:1262
+#: src/preferencesdialog.cpp:1230
 msgid "Copyright:"
 msgstr "Copyright:"
 
@@ -2396,35 +2387,35 @@ msgstr "Chyba při načítání modulu %s"
 msgid "Error getting symbol dynamic_module_instanciate: %s"
 msgstr "Chyba při získávání symbolu dynamic_module_instanciate: %s"
 
-#: src/sharp/pluginsmodel.cpp:176
+#: src/sharp/pluginsmodel.cpp:227
 msgid "Name"
 msgstr "Název"
 
-#: src/sharp/pluginsmodel.cpp:179
+#: src/sharp/pluginsmodel.cpp:230
 msgid "Version"
 msgstr "Verze"
 
-#: src/sharp/pluginsmodel.cpp:181
+#: src/sharp/pluginsmodel.cpp:232
 msgid "Category"
 msgstr "Kategorie"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/pluginsmodel.cpp:196
+#: src/sharp/pluginsmodel.cpp:247
 msgid "Formatting"
 msgstr "Formátování"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/pluginsmodel.cpp:199
+#: src/sharp/pluginsmodel.cpp:250
 msgid "Desktop integration"
 msgstr "Integrace do pracovního prostředí"
 
 #. TRANSLATORS: Addin category.
-#: src/sharp/pluginsmodel.cpp:202
+#: src/sharp/pluginsmodel.cpp:253
 msgid "Tools"
 msgstr "Nástroje"
 
 #. TRANSLATORS: Addin category is unknown.
-#: src/sharp/pluginsmodel.cpp:209
+#: src/sharp/pluginsmodel.cpp:260
 msgid "Unknown"
 msgstr "Neznámá"
 
@@ -2475,7 +2466,6 @@ msgstr "Chyba při aktualizaci zámku: %s"
 
 #: src/synchronization/filesystemsyncserver.cpp:597
 #, c-format
-#| msgid "Error removing icon %s: %s"
 msgid "Error reading file '%s': %s"
 msgstr "Chyba při čtení souboru '%s': %s"
 
@@ -2854,6 +2844,13 @@ msgstr "Název poznámky používán"
 #: src/watchers.cpp:306
 msgid "Check spelling"
 msgstr "Kontrolovat pravopis"
+
+#~ msgid ""
+#~ "Use wdfs option \"-ac\" to accept SSL certificates without prompting the "
+#~ "user."
+#~ msgstr ""
+#~ "Chcete-li přijímat certifikáty SSL bez zobrazení výzvy, spouštějte wdfs s "
+#~ "přepínačem „-ac“."
 
 #~ msgid "Run Gnote as GNOME Shell search provider."
 #~ msgstr "Spustit Gnote jako poskytovatele vyhledávání pro GNOME Shell"
