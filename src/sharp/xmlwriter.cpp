@@ -205,7 +205,7 @@ namespace sharp {
     if(!m_buf) {
       return "";
     }
-    Glib::ustring output((const char*)m_buf->content);
+    Glib::ustring output((const char*)xmlBufferContent(m_buf));
     return output;
   }
 
